@@ -1,0 +1,742 @@
+[
+ {
+  "section": "transform",
+  "ids": [
+   10
+  ],
+  "text": "主キーにできる項目がないときは、データストリームの数式項目でCONCAT関数を使い、2つ以上の項目をつないだ複合キーを作って主キーに設定します。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_use_case_2.htm&type=5",
+  "note": "公式ヘルプのユースケースで、CONCATで作った数式項目「Unique ID」を主キーに選ぶ手順が示されています。"
+ },
+ {
+  "section": "transform",
+  "ids": [
+   24,
+   48
+  ],
+  "text": "データストリームの数式項目は、同じ行の項目から新しい項目を作る機能です。日時を日付に変換するなど、単純な行単位の計算や文字列操作に向いています。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_formula_expression_library.htm&type=5",
+  "note": "公式ヘルプでは、数式項目はデータストリーム内の他の項目から導出する追加項目で、戻り値の型にDateなども選べると説明されています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   26
+  ],
+  "text": "Webおよびモバイルアプリのコネクタを設定すると、SDKがデータを送る先の「テナント固有エンドポイント」が自動生成されます。スキーマは更新で項目を追加できますが、既存の項目は削除できません。",
+  "status": "confirmed",
+  "source_url": "https://developer.salesforce.com/docs/data/data-cloud-int/guide/c360-a-tenant-specific-endpoint.html",
+  "note": "公式の統合ガイドで、テナント固有エンドポイントはアプリ接続の設定時に自動生成され、スキーマ更新では新しいイベントと項目の追加だけができると説明されています。"
+ },
+ {
+  "section": "category",
+  "ids": [
+   28
+  ],
+  "text": "セマンティックモデル(Tableau Next)の計算項目はクエリのたびに計算され、保存されません。最新の値で、地域や期間などの動的な絞り込みに使えます。",
+  "status": "confirmed",
+  "source_url": "https://developer.salesforce.com/docs/data/semantic-layer/guide/query-api-in-depth-calculated-fields.html",
+  "note": "公式の開発者ガイドで、計算項目の値はクエリ時に計算され、元のテーブルには保存されないと説明されています。"
+ },
+ {
+  "section": "zerocopy",
+  "ids": [
+   32
+  ],
+  "text": "Amazon SageMakerなど外部で学習したモデルは、AIモデル(旧Einstein Studio)の独自モデルの持ち込み(BYOM)でData 360に接続し、データを複製せずに予測を使えます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_connect_your_external_model.htm&type=5",
+  "note": "公式ヘルプに、SageMakerのエンドポイントをAIモデルに接続して予測を使う手順があります。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   34
+  ],
+  "text": "CRMコネクタは通常10分ごとの増分更新で同期し、手動の「今すぐ更新」もできます。取り込む列が追加・削除されたときは、フルリフレッシュが行われるとされています。",
+  "status": "unconfirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_stream_schedule.htm&type=5",
+  "note": "公式ヘルプで増分更新が10分ごとであること、手動更新ができること、数式項目の追加でフルリフレッシュが始まることは確認できましたが、列の追加・削除でフルリフレッシュになるという記述は見つかりません。"
+ },
+ {
+  "section": "mapping",
+  "ids": [
+   41
+  ],
+  "text": "データエクスプローラーでは、DLO、DMO、計算済みインサイト、データグラフの中身を確認できます。セグメントやアクティベーションは対象外です。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_explorer.htm&type=5",
+  "note": "公式ヘルプで、データエクスプローラーの対象はDLO、DMO、計算済みインサイト、データグラフと説明されています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   42,
+   112
+  ],
+  "text": "CRMコネクタは、取り込み元のCRM組織にいる連携ユーザー(Platform Integration User)の権限で読み取ります。オブジェクトの「すべて表示」や項目の参照権限がないと、データストリームで選べません。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_enable_user_permissions_external_salesforce_org.htm&type=5",
+  "note": "公式ヘルプで、取り込みにはオブジェクトと項目への「すべて表示」が必要で、Platform Integration Userの権限セットで取得できるデータが決まると説明されています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   52
+  ],
+  "text": "日付型(Date_Only)の項目に時刻付きの値を取り込むと、時刻部分は無視され、日付だけが保存されます。日付として読めない値はnullになります。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_types.htm&type=5",
+  "note": "公式ヘルプのデータ型の表で、日付型の項目に時刻付きの値が来ると時刻部分は無視されると説明されています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   58
+  ],
+  "text": "CRMコネクタのデータストリームは、バッチ(10〜15分間隔)のほかストリーミングでも処理できます。ストリーミングでは、CRM側の変更がすぐにData 360に反映されます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_crm_connector_streaming.htm&type=5",
+  "note": "公式ヘルプで、ストリーミングモードは組織での変更をすぐに反映すると説明されています。バッチで取り込む数式項目を含むストリームなどはストリーミングの対象外です。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   63
+  ],
+  "text": "B2C CommerceのOrderバンドルでデータストリームを作成すると、過去30日分の履歴データが読み込まれ、その後は新しいデータが定期的に取り込まれます。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_stream_schedule.htm&type=5",
+  "note": "公式ヘルプでは、Orderバンドルは30日分の履歴データを読み込むと書かれており、「履歴データを取り込まない」という問題の正解とは食い違い、選択肢D(30日分)と一致します。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   64
+  ],
+  "text": "Phone型の項目は、電話番号の形式を検証も変換もせず、テキストとして取り込みます。Phone型を選んでも、E164形式に自動で揃うわけではありません。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_types.htm&type=5",
+  "note": "公式ヘルプでは、Phone型はテキスト型をもとにしていて形式を検証しないと書かれており、Phone型を割り当てればE164に標準化されるという問題の正解の根拠は見当たりません。"
+ },
+ {
+  "section": "mapping",
+  "ids": [
+   70
+  ],
+  "text": "セグメントで使う値の提案は、テキスト型のDMO項目ごとに、DMOのレコードホームで有効にします。組織全体で500属性までで、候補が出るまで最大24時間かかります。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_suggested_values_in_segments.htm&type=5",
+  "note": "公式ヘルプでは、値の提案はDMOのレコードホームで有効にすると書かれており、問題の正解「セグメント設定」とは食い違います。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   71
+  ],
+  "text": "データ削除(忘れられる権利)のリクエストは、すべてConsent APIで送ります。ShouldForgetアクションで、個人のPIIと関連するレコードが恒久的に削除されます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_deletion_request.htm&type=5",
+  "note": "公式ヘルプで、Data 360のデータ削除リクエストはすべてConsent APIで送信すると説明されています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   82
+  ],
+  "text": "取り込みAPIでは、最初の大量の履歴データをバルク取り込みで読み込み、その後の新規・更新データはストリーミング取り込みで少しずつ送るのが基本の使い分けです。",
+  "status": "confirmed",
+  "source_url": "https://developer.salesforce.com/docs/data/data-cloud-dev/guide/data-integration.html",
+  "note": "公式の開発者ガイドで、履歴データの初回取り込みはバルクで行い、その後はストリーミングで少しずつ送る例が示されています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   95
+  ],
+  "text": "Marketing Cloud Engagementのデータエクステンションは、そのままデータストリームとして取り込めます。フル抽出は毎日、差分抽出は毎時で自動実行されます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_stream_schedule.htm&type=5",
+  "note": "公式ヘルプに、データエクステンションからデータストリームを作る手順と、フル抽出は毎日、差分抽出は毎時という更新スケジュールが載っています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   97
+  ],
+  "text": "データストリームの失敗通知などのイベントはフローで受け取れます。フローを使えば、Slackやメールへの通知、ケースの作成もまとめて自動化できます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_stream_edit_settings.htm&type=5",
+  "note": "公式ヘルプが、データストリームの失敗通知について、ナレッジ記事「Data Cloud: Control Event Notifications Using Flows」を参照先にしています。Slack通知やケース作成の部分は原本の考え方です。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   102
+  ],
+  "text": "Phone型はテキスト型をもとにした型で、どんなテキスト値も取り込めます。Data 360は電話番号の形式や桁数を検証しません。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_types.htm&type=5",
+  "note": "公式ヘルプで、Phone型は形式を検証せず、有効なテキスト値ならどれでも取り込めると説明されています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   108
+  ],
+  "text": "B2C CommerceのOrderバンドルで読み込まれる履歴は過去30日分です。2年分など長い取引履歴が必要なときは、スターターバンドルにカスタム抽出を組み合わせます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_stream_schedule.htm&type=5",
+  "note": "公式ヘルプでは、Orderバンドルの履歴読み込みは30日分(原本の解説にある90日ではありません)です。カスタム抽出を組み合わせる点は、ここから導いた結論です。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   109
+  ],
+  "text": "Amazon S3のデータストリームが「ファイルが見つからない」で失敗したときは、指定したバケットの場所にファイルがあるかと、ファイルにアクセスする権限が正しいかを確認します。",
+  "status": "unconfirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_stream_edit_settings.htm&type=5",
+  "note": "公式ヘルプには、ファイルが見つからないときの動作(設定によって失敗ステータスになり通知される)はありますが、確認すべき権限がData 360ユーザー側かS3ユーザー側かの記述はありません。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   115
+  ],
+  "text": "購買オーダー番号や郵便番号のように先頭のゼロを残したいコードは、数値型ではなくテキスト型で取り込みます。",
+  "status": "unconfirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_types.htm&type=5",
+  "note": "公式ヘルプのデータ型の表には、テキスト型と数値型の定義はありますが、先頭のゼロを保持できるかどうかの記述はありません。"
+ },
+ {
+  "section": "dlo",
+  "ids": [
+   140
+  ],
+  "text": "データストリームを削除すると、元になるDLOも削除されます。先に、DMOへのマッピングやデータ変換での使用、データキットとの関連付けといったDLOの依存関係を外します。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_delete_a_data_stream.htm&type=5",
+  "note": "公式ヘルプが削除前の確認事項としてデータ変換での使用を挙げています。ただし、選択肢B(DMOにマッピングできない)の文言も公式の列挙と一致し、S3などではDLOを残す条件付き削除(選択肢D)もできると書かれています。"
+ },
+ {
+  "section": "mapping",
+  "ids": [
+   142
+  ],
+  "text": "Customer 360データモデルのPartyサブジェクトエリアには、個人や組織など、顧客や取引先を表すDMOがまとめられています。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_party_data_model.htm&type=5",
+  "note": "公式ヘルプで、Partyサブジェクトは特定の顧客や取引先の連絡先情報(個人または法人)を表すDMOをまとめたものと説明されています。"
+ },
+ {
+  "section": "stream",
+  "ids": [
+   289,
+   297
+  ],
+  "text": "Marketing Cloud Engagementのスターターデータバンドルは、Email Studio、MobileConnect(SMS)、MobilePush、WhatsAppの4つです。CloudPagesのデータは含まれないため、カスタム連携が必要です。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_starter_data_bundles.htm&type=5",
+  "note": "公式ヘルプで、スターターデータバンドルはEmail Studio、MobileConnect、MobilePush、WhatsAppだと説明されています。CloudPagesにカスタム連携が必要という点は、ここから導いた結論です。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   16
+  ],
+  "text": "プロファイルAPIは、統合プロファイルの属性と計算済みインサイトを、顧客単位で高速に取得するためのAPIです。ただし対応するのはプロファイルカテゴリのDMOだけで、エンゲージメントカテゴリのDMOは対象外です。",
+  "status": "conflict",
+  "source_url": "https://developer.salesforce.com/docs/data/data-cloud-query-guide/references/data-cloud-query-api-reference/c360a-api-profile-call-overview.html",
+  "note": "公式リファレンスでは、Profile APIはプロファイルカテゴリのDMOのみ対応し、エンゲージメントカテゴリのDMOは非対応とされ、購入履歴(エンゲージメント)も取得する前提の正解と食い違います。"
+ },
+ {
+  "section": "share",
+  "ids": [
+   39
+  ],
+  "text": "クリーンルームのユースケーステンプレートでは、使う属性をデータプロバイダーがテンプレートの設定で決めます。結果を地域や年齢層などで絞り込みたい場合は、その項目をセグメンテーション属性として含めておく必要があるとされます。",
+  "status": "unconfirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_crc_segment_overlap_use_case.htm",
+  "note": "公式のセグメントオーバーラップテンプレートの必須属性はセグメント名・個人ID・ハッシュ化メールなど、任意属性はセグメントの親カテゴリのみで、地域や年齢層での絞り込みについての記述は見つかりませんでした。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   59,
+   66
+  ],
+  "text": "セグメントとアクティベーションの公開スケジュールは、ログインしているユーザーのタイムゾーンで解釈・表示されます。組織のタイムゾーンは、「直近N日」などの日付演算子に使われます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_update_segment_time_zone.htm",
+  "note": "公式ヘルプ「Segment Time Zone」に、公開スケジュールはユーザーのタイムゾーンで解釈され、組織のタイムゾーンは日付演算子などに適用されると記載があります。"
+ },
+ {
+  "section": "ci",
+  "ids": [
+   60
+  ],
+  "text": "計算済みインサイトを作る前に、ID解決で統合プロファイルを作っておきます。新しく取り込んだデータは、データストリームの更新→ID解決→計算済みインサイトの順で処理します。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_analyze_ci_dc4sales.htm",
+  "note": "公式ヘルプに「計算済みインサイトを作成する前に、ID解決で統合プロファイルを作成する」と記載があります。"
+ },
+ {
+  "section": "ci",
+  "ids": [
+   72
+  ],
+  "text": "作成済みの計算済みインサイトを編集するとき、既存のメジャーとディメンションは削除できません。メジャーは追加でき、ディメンションの追加はキー修飾子のディメンションに限られます。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_edit_a_calculated_insight_in_customer_data_platform.htm",
+  "note": "公式ヘルプ「Edit an Insight」では、メジャーとディメンションはどちらも削除不可、メジャーは追加可、ディメンションはキー修飾子の場合のみ追加可とされ、正解A以外にD(メジャーの追加)も成り立ちます。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   73
+  ],
+  "text": "Amazon S3のアクティベーションターゲットへの接続は、アクセスキーとシークレットキー、またはIdP(IAMロール)で認証します。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_set_up_an_amazon_s3_target_connection.htm",
+  "note": "公式ヘルプ「Set Up an Amazon S3 Target Connection」で、認証方式はアクセスキー/シークレットまたはIdPと説明されています。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   76,
+   117
+  ],
+  "text": "Amazon S3などのファイルストレージへのアクティベーションでは、CSVなどのデータファイルにセグメントメンバーと属性(ペイロード)が入り、同じ場所のJSONファイルにセグメントのメタデータ(セグメントIDと名前、件数、属性名など)が入ります。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_create_cloud_file_storage_activation_target.htm",
+  "note": "公式ヘルプに、データファイルにはセグメントメンバーと追加属性、セグメントメタデータJSONにはセグメントID・名前、件数、属性名と型などが入ると記載があります。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   84
+  ],
+  "text": "Data Cloud Activation Specialist(旧Marketing Specialist)は、セグメントとアクティベーションを作成できる権限セットです。データストリームやDMOは閲覧のみで、Data Cloud設定にはアクセスできません。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_userpermissions.htm",
+  "note": "公式の標準権限セット一覧で、Activation Specialist(旧Marketing Specialist)はセグメントとアクティベーションがフルアクセス、データストリーム等は閲覧のみとされています。レポート作成可否の記述はありません。"
+ },
+ {
+  "section": "ci",
+  "ids": [
+   85
+  ],
+  "text": "セグメントで「セグメントが複雑すぎます」というエラーが出たときは、多数の属性や入れ子の演算子の代わりに計算済みインサイトを使うと解消できます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_segmentation_troubleshooting.htm",
+  "note": "公式ヘルプ「Troubleshoot Segment Errors」で、Segment is too complexの対処としてCIを使うことが挙げられています。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   88
+  ],
+  "text": "データストリームの数式項目では、PROPER(単語の先頭を大文字にする)やCOALESCE(空でない最初の値を返す)などの関数で、取り込み時に行単位で値を整えられます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_supported_library_functions.htm",
+  "note": "公式の数式関数一覧にPROPERとCOALESCEがあり、数式項目で大文字小文字の統一や空値の置換ができます。この問題と同じシナリオの記述はありません。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   92
+  ],
+  "text": "Data 360のデータは、Salesforce Data CloudコネクタでTableauに接続し、統合プロファイルやインサイトをダッシュボードで可視化・分析できます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_set_up_tableau_connected_app.htm",
+  "note": "公式ヘルプでTableauからData 360に接続して統合プロファイル等を分析できると説明されています。「すべてのチャネルを一覧する」用途そのものの記述はありません。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   93
+  ],
+  "text": "アクティベーションに最新のデータを反映するには、取り込み→計算済みインサイト→セグメントの更新→公開の順に実行されるよう、各処理のスケジュールをそろえます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_act_on_data.htm",
+  "note": "公式ヘルプで、取り込み完了後に計算済みインサイトを更新し、セグメントを実行するように処理をつなげる例が示されています。遅延のトラブルシューティングとしての直接の記述はありません。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   94
+  ],
+  "text": "アクティベーションターゲットに「Data Cloud」を選んでセグメントを公開すると、アクティベーションされたレコードがData 360内のAudience DMOに入り、データエクスプローラーやAPIで取得できます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_audience_data_model_object.htm",
+  "note": "公式ヘルプに、Data Cloudアクティベーションターゲットへの公開でAudience DMOが更新され、データエクスプローラーやAPIで参照できると記載があります。"
+ },
+ {
+  "section": "action",
+  "ids": [
+   104
+  ],
+  "text": "ストリーミングデータ変換は、取り込んだデータを1件ずつ継続的に加工して、別のDLOやDMOに書き込むData 360内の機能です。取り込んだデータを整えてからデータモデルにマッピングするために使います。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_streaming_transform_overview.htm",
+  "note": "公式ではストリーミングデータ変換はData 360内でデータを整える機能とされ、Salesforce CRMとのリアルタイム連携の手段という正解とは一致しません。"
+ },
+ {
+  "section": "ci",
+  "ids": [
+   107
+  ],
+  "text": "「メトリクスのメトリクス(Metrics on metrics)」は、計算済みインサイトの結果を別の計算済みインサイトで再利用し、複数段階の計算を組み立てる機能です。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_metrics_on_metrics.htm",
+  "note": "公式ヘルプ「Metrics on Metrics」で、CIのメトリクスを段階的に組み合わせて再利用できると説明されています。チャネル別の内訳はディメンションでも実現できます。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   122
+  ],
+  "text": "アクティベーションでは、属性ごとに出力名(旧称「優先名(Preferred Name)」)を設定できます。出力ファイルの項目名を、命名規則に合わせて変えられます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=release-notes.rn_cdp_2026_spring_output_name_activation_attributes.htm&release=260&type=5",
+  "note": "公式リリースノートで、Preferred Name列がOutput Name列に名称変更され、アクティベーション内で一意の独自名で上書きできると説明されています。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   126
+  ],
+  "text": "無効化したセグメントは公開されず、アクティベーションにも選べなくなり、再び有効にはできません。あとで再び使う予定なら、公開スケジュールを停止します。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_disable_segment.htm",
+  "note": "公式ヘルプ「Deactivated Segment」では、無効化したセグメントは再有効化できず、再利用するなら公開スケジュールを停止するよう書かれており、正解(無効化)と矛盾します。"
+ },
+ {
+  "section": "si",
+  "ids": [
+   128
+  ],
+  "text": "ストリーミングインサイトからデータアクションでJourney Builderにイベントを送る場合、ジャーニーに取り込む頻度はジャーニー側のエントリースケジュールで決まるとされます。",
+  "status": "unconfirmed",
+  "source_url": null,
+  "note": "公式ではストリーミングインサイトの集計時間枠(1分〜24時間)の設定は確認できましたが、ジャーニーのエントリースケジュールで頻度を制御するという記述は見つかりませんでした。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   293,
+   302
+  ],
+  "text": "アクティベーションの関連属性は、選んだ関連パスに沿って取得されます。エンゲージメントデータは過去90日分(高速公開では7日分)だけが対象です。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_considerations_for_related_attributes.htm",
+  "note": "公式ヘルプに、エンゲージメントデータのさかのぼり期間は90日(高速公開では7日)で、関連属性はアクティベーションDMOからのパスに沿って選ぶと記載があります。"
+ },
+ {
+  "section": "activation",
+  "ids": [
+   294
+  ],
+  "text": "特定のセグメントのアクティベーションが失敗したときに知らせを受けるには、アクティベーションアラートを使うとされます。",
+  "status": "unconfirmed",
+  "source_url": null,
+  "note": "「アクティベーションアラート」の公式ページは見つかりませんでした。公式ではアクティベーション履歴で公開ステータス(失敗など)を確認できると説明されています。"
+ },
+ {
+  "section": "intro",
+  "ids": [
+   1
+  ],
+  "text": "医療分野では、Data 360で患者の関連レコードを集約し、計算済みインサイトで「統合ヘルススコア」を算出して、患者の健康状態とエンゲージメントの全体像を把握する使い方があります。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=ind.admin_unified_health_scoring_cdp.htm",
+  "note": "Health CloudのUnified Health Scoringでは、Data 360の計算済みインサイトでスコアを算出すると説明されています。"
+ },
+ {
+  "section": "intro",
+  "ids": [
+   13
+  ],
+  "text": "データ倫理では、年齢、性別、民族などの機微なデータは、本当に必要かを慎重に検討してから求めます。集めるのは必要なものだけにします。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_ethics.htm",
+  "note": "公式の「Data Ethics」で、年齢・性別・民族などの収集は慎重に検討し、必要なものだけを集めるよう説明されています。"
+ },
+ {
+  "section": "intro",
+  "ids": [
+   83
+  ],
+  "text": "信頼にもとづくファーストパーティデータとは、本人の同意を得て集めたデータを透明かつ安全に扱い、提供してくれた本人に価値を返すことです。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_ethics.htm",
+  "note": "公式の「Data Ethics」で、顧客に設定の主導権を与えて尊重し、データと引き換えに明確な価値を提供するよう説明されています。"
+ },
+ {
+  "section": "intro",
+  "ids": [
+   56
+  ],
+  "text": "Data 360でのAIの役割は、統合したデータから洞察や予測を生み出し、顧客とのやり取りをよりよくすることです。",
+  "status": "unconfirmed",
+  "source_url": null,
+  "note": "この表現そのものを述べた公式ページは見つかりませんでした。"
+ },
+ {
+  "section": "intro",
+  "ids": [
+   96
+  ],
+  "text": "Data 360の導入は、まずユースケースを明確にし、必要なデータソースとデータ品質を確認するところから始めます。",
+  "status": "unconfirmed",
+  "source_url": null,
+  "note": "導入の最初の段階をこのように定めた公式ページは見つかりませんでした。"
+ },
+ {
+  "section": "intro",
+  "ids": [
+   295
+  ],
+  "text": "Data 360は、データを複数のリージョンやデータセンターに分散して持つことで、高可用性と耐障害性を確保しています。",
+  "status": "unconfirmed",
+  "source_url": null,
+  "note": "Data 360の高可用性の仕組みを説明した公式ページは見つかりませんでした。"
+ },
+ {
+  "section": "intro",
+  "ids": [
+   301
+  ],
+  "text": "Data 360のデータは、保存時(at rest)も転送時(in transit)も暗号化されて保護されます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_platform_encryption_for_data_cloud.htm",
+  "note": "公式ヘルプで、転送中はエンドツーエンド暗号化、保存時はディスク暗号化で保護されると説明されています。"
+ },
+ {
+  "section": "space",
+  "ids": [
+   3,
+   68
+  ],
+  "text": "個人データの削除(忘れられる権利)は、Consent APIで依頼します。Individual DMOのレコードと、個人IDで直接つながるDMO、それらにマッピングされたDLO、関連する計算済みインサイトのレコードが削除されます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_deletion_request.htm",
+  "note": "公式ヘルプで、削除リクエストはすべてConsent APIで送信し、Individual DMOと直接関連するDMO・DLO・計算済みインサイトのレコードが削除されると説明されています。"
+ },
+ {
+  "section": "space",
+  "ids": [
+   101
+  ],
+  "text": "削除リクエストは個人(Individual)のプロフィール単位で送ります。追加データの削除のため30日、60日、90日後に再処理されます。ほかの接続システムやSalesforceクラウドには、それぞれ別に削除依頼が必要です。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_deletion_request.htm",
+  "note": "公式ヘルプでは30・60・90日後に再処理され、接続している各システムとクラウドにはそれぞれ削除依頼が必要とされており、問題の正解(C・D)とは食い違います。"
+ },
+ {
+  "section": "space",
+  "ids": [
+   51
+  ],
+  "text": "Data 360の構成(データストリームやマッピングなど)を別の組織へ移すには、データキットにまとめてパッケージ化します。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_package_kits.htm",
+  "note": "公式ヘルプで、データキットはパッケージ可能なData 360のメタデータをまとめて展開する仕組みと説明されています。"
+ },
+ {
+  "section": "space",
+  "ids": [
+   89
+  ],
+  "text": "データキットには、データストリーム、DMO、計算済みインサイト、セグメント、アクティベーションなど、パッケージ可能なData 360の構成を含められます。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_build_and_share_functionality.htm",
+  "note": "公式ヘルプでは、データキットにセグメントや計算済みインサイトも含められるとされ、DMOとID解決だけを正解とする問題とは食い違います。"
+ },
+ {
+  "section": "space",
+  "ids": [
+   106
+  ],
+  "text": "取り込んだデータの確認と、DMOへのマッピングやデータストリームの変更までできる最小の権限セットは、Data Aware Specialistです。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_userpermissions_cdp.htm",
+  "note": "公式ヘルプで、Data Aware Specialistはデータのマッピング、データストリーム、ID解決、計算済みインサイトを担当すると説明されています。"
+ },
+ {
+  "section": "idr",
+  "ids": [
+   9
+  ],
+  "text": "一致ルールを増やすなど、一致するプロフィールが増える方向にルールセットを変えると、統合率(Consolidation Rate)は上がります。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_identity_resolution_match_rule_terms.htm",
+  "note": "公式ヘルプで、一致ルールを増やすと統合率が上がり、条件を増やすと下がると説明されています。"
+ },
+ {
+  "section": "idr",
+  "ids": [
+   27,
+   37
+  ],
+  "text": "統合結果の検証には、1人分の統合プロフィールを確認するプロファイルエクスプローラーと、SQLでDLO、DMO、計算済みインサイトを直接照会するクエリエディターを使います。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_query_editor.htm",
+  "note": "公式ヘルプで、クエリエディターはData 360 SQLでDLO・DMO・CIOを照会してデータを検証でき、プロファイルエクスプローラーは統合プロフィールの検証に使うと説明されています。"
+ },
+ {
+  "section": "idr",
+  "ids": [
+   298
+  ],
+  "text": "ID解決の画面ではルールセットの処理結果(統合率など)を、データエクスプローラーでは統合個人などのレコードを確認でき、統合結果の確認に使えます。",
+  "status": "unconfirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_identity_resolution_optimize.htm",
+  "note": "ID解決の要約統計を確認する公式ページはありますが、データエクスプローラーを統合結果の検証に使うと明記したページは見つかりませんでした。"
+ },
+ {
+  "section": "idr",
+  "ids": [
+   53
+  ],
+  "text": "AI Models(旧Einstein Studio)の予測モデルには、二値分類、回帰、多クラス分類があります。金額などの数値を予測するときは回帰モデルを選びます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=release-notes.rn_cdp_2026_spring_predictive_model_enhanced_model_creation.htm&release=260",
+  "note": "公式リリースノートで、モデルの種類としてbinary、regression、multiclassを選ぶと説明されています。"
+ },
+ {
+  "section": "idr",
+  "ids": [
+   78
+  ],
+  "text": "統合個人に関連するレコードをCRMの画面に表示したいときは、プロファイルAPIでデータを取得し、Lightning Webコンポーネントで表示する方法があります。",
+  "status": "unconfirmed",
+  "source_url": "https://developer.salesforce.com/docs/atlas.en-us.c360a_api.meta/c360a_api/c360a_api_profile_call_overview.htm",
+  "note": "プロファイルAPIで統合プロフィールと子レコードを取得できることは公式で確認できますが、LWCとの組み合わせを明記したページは見つかりませんでした。"
+ },
+ {
+  "section": "idr",
+  "ids": [
+   90
+  ],
+  "text": "ルールセットを削除すると、統合顧客データが恒久的に消え、DMOへの依存関係もなくなります。元のソースのデータは残ります。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_identity_resolution_deletion.htm",
+  "note": "公式ヘルプで、削除すると統合顧客データが恒久的に削除され、DMOへの依存関係が解消され、処理と実行履歴も止まり消えると説明されています。"
+ },
+ {
+  "section": "idr",
+  "ids": [
+   130
+  ],
+  "text": "一致ルールを見直すときは、既存のルールセットを直接変えず、厳しい条件の新しいルールセットを作って結果を比べ、承認後に切り替えるのが安全です。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_identity_resolution_in_segments.htm",
+  "note": "公式ヘルプで、同じエンティティに厳しいルールと緩いルールの2つのルールセットを作り、セグメントで人数を比べて検証できると説明されています。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   14,
+   47,
+   110
+  ],
+  "text": "値の提案は、テキスト型のDMO項目で有効にでき、条件の値を候補から選べます。有効にできるのは組織全体で500属性まで、表示まで最大24時間かかり、1,000件を超える値は出現頻度の高い上位1,000件が表示されます。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_suggested_values_in_segments.htm",
+  "note": "公式ヘルプで、テキスト型のみ、組織で500属性まで、反映に最大24時間、1,000件超は頻度上位1,000件をアルファベット順に表示と説明されています。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   23
+  ],
+  "text": "複数のセグメントで共通の除外条件を使うときは、再利用可能なコンテナブロックにまとめておくと、1か所の更新がすべてのセグメントに反映されるとされます。",
+  "status": "unconfirmed",
+  "source_url": null,
+  "note": "「再利用可能なコンテナブロック」を説明した公式ページは見つかりませんでした(類似機能として属性ショートカットや入れ子のセグメントがあります)。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   30
+  ],
+  "text": "サンドボックスを更新(Refresh)すると、Data 360の構成は本番の現在の設定で上書きされ、取り込み済みのデータは置き換わるため、再取り込みが必要です。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_use_cloning_to_replicate_data360_sandboxes.htm",
+  "note": "公式ヘルプの比較表で、Refreshは本番の現行設定で既存の構成を上書きし、本番のメタデータですべてのサンドボックスデータを置き換えると説明されています。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   57
+  ],
+  "text": "セグメントインテリジェンスの設定には、Data Cloud Admin(管理者)の権限セットが必要とされます。",
+  "status": "unconfirmed",
+  "source_url": null,
+  "note": "セグメントインテリジェンスの設定に必要な権限セットを明記した公式ページは見つかりませんでした。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   86
+  ],
+  "text": "ファイルストレージ(Amazon S3など)へのアクティベーションでは、ファイル名をアクティベーション名、セグメント名、その組み合わせから選ぶか、カスタムのファイル名を指定できます。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_create_cloud_file_storage_activation_target.htm",
+  "note": "公式ヘルプでは、既定のファイル名にセグメント名も選べるため、セグメント名を不正解とする問題の正解(A・C)とは食い違います。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   100
+  ],
+  "text": "セグメントが最後に公開された日時は、公開履歴(Publish History)で確認できます。セグメントの項目を使ったレポートやダッシュボードで確認する方法もあります。",
+  "status": "unconfirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_publish_segment.htm",
+  "note": "公式ヘルプでは公開日時は公開履歴で確認すると説明されていますが、レポートとダッシュボードで確認する方法は見つかりませんでした。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   103
+  ],
+  "text": "従業員リストのように「人」を表すデータも、カテゴリはProfileです。セグメント対象に選べるのは、ProfileまたはEngagementのDMOです。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_category.htm",
+  "note": "本文の「カテゴリ」の表では従業員はProfileの例です。過去問の正解(その他)とは食い違います。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   132
+  ],
+  "text": "セグメントのテキスト演算子は、「値あり」「値なし」を除いて大文字小文字を区別しません。「San Jose」と等しい、の条件は「san jose」にも一致します。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_datatype_expression_operators.htm",
+  "note": "公式ヘルプで、テキスト演算子は値あり・値なしを除き大文字小文字を区別しないと確認できましたが、アクセント記号の扱いは確認できていません。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   141
+  ],
+  "text": "セグメント対象は統合個人(Unified Individual)と個人(Individual)が選べます。複数のソースがあるときは、ID解決をして統合個人でセグメントを作ることが推奨されます。",
+  "status": "conflict",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_segment_on.htm",
+  "note": "公式ヘルプでは、ID解決と統合個人の利用は推奨であり必須ではないため、ID解決を必須の設定とする問題の正解とは食い違う可能性があります。"
+ },
+ {
+  "section": "segment",
+  "ids": [
+   296
+  ],
+  "text": "日付の演算子「Last Number of Days」は、今日からさかのぼって指定した日数内の出来事を対象にします。「直近7日間に訪問した人」のような条件に使います。",
+  "status": "confirmed",
+  "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_datatype_expression_operators.htm",
+  "note": "公式ヘルプで、Last Number Of Daysは指定日数前から現在までの出来事を対象にすると説明されています。"
+ }
+]

@@ -1,0 +1,860 @@
+{
+ "sections": {
+  "stream": {
+   "title": "Ch2·1データストリームData Stream",
+   "current_text": [
+    "外部システムからデータを取り込む「通り道」です。取り込むと、データレイクオブジェクト(DLO)ができます。",
+    "たとえるなら倉庫の搬入口です。どの取引先から、何を、どのくらいの頻度で受け取るかを決めます。",
+    "データストリームは「搬入口」。カテゴリ・主キー・更新モードを決めて取り込むと、DLOができます。",
+    "データストリームタブで新規作成し、コネクタ(Salesforce CRM、Amazon S3、Marketing Cloud Engagement、Ingestion APIなど)を選ぶ",
+    "取り込むオブジェクトやファイルを選ぶ",
+    "カテゴリ(Profile、Engagement、Other)を選ぶ",
+    "主キーを決める。Engagementの場合は「イベント時間項目」も指定する",
+    "更新モード(増分、アップサート、全件更新)とスケジュールを決めて保存する",
+    "顧客マスタ(取引先責任者) → Profile",
+    "注文履歴 → Engagement。イベント時間項目は「注文作成日」を選ぶ",
+    "商品マスタ、店舗マスタ → Other",
+    "試験ポイント",
+    "カテゴリは、保存したあとで変更できません。最初の選択が大切です。",
+    "Engagementのイベント時間項目も、保存後は編集できません。「更新日」のように値が変わる項目を選ぶと、同じ主キーのレコードが重複して入る原因になります。",
+    "時系列のデータでも、変わらない日付項目がなければOtherを選びます。"
+   ]
+  },
+  "dlo": {
+   "title": "Ch2·4データレイクオブジェクトDLO",
+   "current_text": [
+    "取り込んだデータを、元のまま保管する入れ物です。取り込み元の項目の並びがそのまま残ります。",
+    "たとえるなら荷物を受け取って、開封せずにとりあえず置いておく「受け取り棚」です。",
+    "DLOは「開封前の受け取り棚」。マッピングで、共通の書式の棚(DMO)へ書き写します。",
+    "同じDLOを複数のデータスペースに追加し、データスペースごとに別のフィルタをかけて使い分けられます(地域別、ブランド別など)。",
+    "ゼロコピー連携で作られるDLOは、データを持たない「外部DLO(仮想DLO)」です。",
+    "試験ポイント",
+    "DLOは「元の形のまま」。共通の形に揃えるのは、次の章のDMOです。"
+   ]
+  },
+  "category": {
+   "title": "Ch2·2カテゴリ(Profile / Engagement / Other)",
+   "current_text": [
+    "データの「種類」の区分です。カテゴリによって、あとで入れられるDMOが決まります。",
+    "たとえるなら荷物に貼る仕分けシールです。「人の情報」「出来事の記録」「その他の参考資料」の3色があり、色が合う棚にしか置けません。",
+    "Profileセグメントや統合の対象になる主体(人、企業、デバイスなど)顧客リスト、取引先、従業員",
+    "Engagement日時のついたイベントデータ購入履歴、メール開封、Web閲覧",
+    "OtherProfileやEngagementに情報を足す参照データ商品カタログ、店舗情報",
+    "図2 DLOのカテゴリとDMOへのマッピング可否。緑は可、赤の点線は不可。",
+    "試験ポイント",
+    "DMOにはカテゴリの設定がなく、最初にマッピングされたDLOのカテゴリを引き継ぎます。",
+    "例: Sales Order DMOに最初にEngagementのDLOをマッピングすると、以後はEngagementのDLOしかマッピングできません。",
+    "ProfileまたはOtherのDLOは、ProfileまたはOtherのDMOへ。EngagementのDLOは、EngagementのDMOへだけです。"
+   ]
+  },
+  "zerocopy": {
+   "title": "Ch2·5ゼロコピー連携Zero Copy Data Federation",
+   "current_text": [
+    "Snowflake、Databricks、Google BigQuery、Amazon Redshiftなどの外部データを、コピーせずに参照する方法です。",
+    "たとえるなら他社の図書館の本を借りてきて自分の棚に並べるのではなく、窓越しにその場で見せてもらう形です。本を複製する手間と保管場所が要りません。",
+    "外部DLOは実データを持たない「窓」。重いデータは、アクセラレーション(キャッシュ)で速くできます。",
+    "クエリフェデレーションData 360が外部システムの計算機能にSQLを投げ、結果だけ受け取ります。結果は処理後に保持されません。",
+    "ファイルフェデレーションオープンテーブル形式で保管された外部ストレージを、Data 360のクエリエンジンで直接読みます。結果は保持されません。",
+    "接続(コネクタ)を作成する",
+    "外部のテーブルを選んでデータストリームを作成する → 外部DLOができる",
+    "外部DLOをDMOへマッピングする",
+    "試験ポイント",
+    "外部DLOは実データを持たず、外部テーブルへのポインタ(指し示すだけの存在)として働きます。",
+    "大きなデータや頻繁に変わるデータは、アクセラレーション(キャッシュ)を有効にすると、Data 360内のDLOに一時保存されて速くなります。更新頻度も選べます。",
+    "速度、データの新しさ、クレジット消費の観点で、ライブクエリ、キャッシュ、ファイルフェデレーションを使い分けます。"
+   ]
+  },
+  "mapping": {
+   "title": "Ch3·1データマッピングとDMOData Mapping / DMO",
+   "current_text": [
+    "DLOの項目を、DMOの項目に対応づける作業です。DMOは、Data 360が用意した共通の書式の棚です。",
+    "たとえるなら支店ごとにバラバラの伝票を、社内の標準書式に書き写す作業です。「氏名」「Name」「お名前」の列を、すべて標準の「氏名」欄に対応づけます。",
+    "1つのDLOは複数のDMOへ。ただし、1つのDMO項目に入れられるDLO項目は1つだけです。",
+    "DLOの画面からデータマッピングを開く",
+    "互換性のあるDMO(標準DMOまたはカスタムDMO)を選ぶ",
+    "項目同士をドラッグしてつなぐ。氏名、メール、電話などは、Individual、連絡先(メール、電話、住所)など別のDMOに分けてマッピングする",
+    "CRMの取引先責任者DLO → Individual DMO(氏名、生年月日)と、連絡先メールDMO(メールアドレス)の両方へ",
+    "ECサイトの注文DLO → Sales Order DMO(Engagement)",
+    "試験ポイント",
+    "1つのDLOは、1つ以上のDMOにマッピングできます。",
+    "1つのDMO項目にマップできるソースのDLO項目は、1つだけです。",
+    "DMOは正規化されています(1行に1つの情報)。1行にメールが3列ある、といった形のデータは、マッピングの前に変換して分ける必要があります。"
+   ]
+  },
+  "transform": {
+   "title": "Ch3·2データ変換Data Transform",
+   "current_text": [
+    "取り込んだデータを、ID解決やセグメントで使いやすい形に整える処理です。",
+    "たとえるなら名簿を清書する作業です。全角と半角の統一や、1行に詰まった情報の分割をします。",
+    "DMOは正規化(1行に1つの情報)。マッピングの前に、データ変換で形を整えます。",
+    "動き手順の連なりを、手動またはスケジュールで実行変更を拾いながら、継続して実行",
+    "入出力DLO、DMOを入力に、DLOやDMOへ出力1件のレコードを読んで整形し、別のオブジェクトに1件以上書く",
+    "制約有効なバッチ変換の数に上限あり入力と出力は別のオブジェクトにする",
+    "Marketing Cloudのデータエクステンションで、1行にメールが3列ある場合は、変換で「1メール1行」に分けてからメールDMOにマッピングする",
+    "電話番号の表記ゆれ(ハイフンの有無など)を揃えてから、ID解決に使う"
+   ]
+  }
+ },
+ "questions": [
+  {
+   "id": 10,
+   "section": "transform",
+   "source": "v2026-09-21 Q10 / v2026-02-28 Q35",
+   "question_ja": "Cumulus Financial は、取り込むデータソースで「顧客リージョン」と「顧客識別子」の項目を組み合わせた複合キーを作成する必要があります。データストリームに主キーがない場合、複合キーを作るにはどの数式関数を使いますか?",
+   "question_en": "Cumulus Financial needs to create a composite key on an incoming data source that combines the fields Customer Region and Customer Identifier. Which formula function should a Data 360 Consultant use to create a composite key when a primary key is not available in a data stream?",
+   "options_ja": [
+    "COALESCE",
+    "CONCAT",
+    "COMBINE",
+    "CAST"
+   ],
+   "options_en": [
+    "COALESCE",
+    "CONCAT",
+    "COMBINE",
+    "CAST"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "CONCAT"
+   ],
+   "explanation_ja": "複数の項目を1つの文字列につなげて複合キーにするのは CONCAT です。COALESCE は最初に NULL でない値を返す関数、CAST はデータ型の変換で、複合キーの生成には使いません。COMBINE は一般的な数式関数ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 24,
+   "section": "transform",
+   "source": "v2026-09-21 Q24",
+   "question_ja": "データストリームの取り込み時に数式(formula)を作成する理由は何ですか?",
+   "question_en": "What is a reason to create a formula when ingesting a data stream?",
+   "options_ja": [
+    "ファイルを連結して、正しい順序で取り込まれるようにする",
+    "データストリームから重複行を削除する",
+    "既存のルールセットに一意の外部識別子を追加する",
+    "データマッピングで使うために、日時項目を日付項目に変換する"
+   ],
+   "options_en": [
+    "To concatenate files so they are ingested in the correct sequence",
+    "To remove duplicate rows of data from the data stream",
+    "To add a unique external identifier to an existing ruleset",
+    "To transform a datetime field into a date field for use in data mapping"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "データマッピングで使うために、日時項目を日付項目に変換する"
+   ],
+   "explanation_ja": "取り込み時の数式は、項目単位でデータを整える機能です。たとえば日時を日付に変換し、マッピング先の型に合わせます。ファイル順序の制御、重複行の削除、ルールセットの変更は、数式の役割ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 26,
+   "section": "stream",
+   "source": "v2026-09-21 Q26",
+   "question_ja": "Data 360 の Web およびモバイルアプリケーションコネクタについて、正しい記述はどれですか?",
+   "question_en": "Which statement about Data 360's Web and Mobile Application Connector is true?",
+   "options_ja": [
+    "コネクタに関連付けられたデータストリームは、Data 360 の設定からアプリを削除すると自動的に削除される",
+    "コネクタのスキーマを更新して、既存の項目を削除できる",
+    "コネクタの設定時に、イベント・プロファイル・取引データを含む標準スキーマが作成される",
+    "テナント固有エンドポイントは、コネクタの設定時に Data 360 で自動生成される"
+   ],
+   "options_en": [
+    "Any data streams associated with the connector will be automatically deleted upon deleting the app from Data 360 Setup.",
+    "The connector schema can be updated to delete an existing field.",
+    "A standard schema containing event, profile, and transaction data is created at the time the connector is configured.",
+    "The Tenant Specific Endpoint is auto-generated in Data 360 when setting the connector."
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "テナント固有エンドポイントは、コネクタの設定時に Data 360 で自動生成される"
+   ],
+   "explanation_ja": "コネクタを設定すると、テナント固有エンドポイント(データを送る先の URL)が Data 360 側で自動生成されます。スキーマはユーザーが定義・アップロードするもので、あらかじめ標準スキーマが作られるわけではありません。既存項目の削除や、アプリ削除に伴うデータストリームの自動削除もできません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 28,
+   "section": "category",
+   "source": "v2026-09-21 Q28 / v2026-09-03 Q11",
+   "question_ja": "Data 360 コンサルタントは、Tableau Next で使う派生インサイト「純利益(Net Profit)」について、リアルタイムの多次元分析を提供する必要があります。要件は、指標をできるだけ最新に保ちつつ、ユーザーがリージョン・期間・商品カテゴリで動的にフィルタリングできることです。どの方法を取るべきですか?",
+   "question_en": "A Data 360 Consultant needs to provide real-time, multidimensional analytics for a derived insight, Net Profit, to be used within Tableau Next. The requirements specify that the metrics must be as up to date as possible while allowing users to dynamically filter by region, period, and product category. Which approach should the consultant take?",
+   "options_ja": [
+    "リアルタイムのデータグラフを定義する",
+    "SQL を使って計算済みインサイトを作成する",
+    "セマンティックレイヤーで計算項目(calculated field)を作成する",
+    "ストリーミング変換を構成する"
+   ],
+   "options_en": [
+    "Define a real-time data graph.",
+    "Create a calculated insight using SQL.",
+    "Create a calculated field in the semantic layer.",
+    "Configure a streaming transform."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "セマンティックレイヤーで計算項目(calculated field)を作成する"
+   ],
+   "explanation_ja": "セマンティックレイヤーの計算項目は、クエリ時に計算されるため常に最新の値を反映でき、ディメンションを変えた動的なフィルタリングにも対応します。計算済みインサイトは事前にバッチで集計するため、最新性と柔軟なフィルタリングの両方を求める要件には合いません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 32,
+   "section": "zerocopy",
+   "source": "v2026-09-21 Q32",
+   "question_ja": "Northern Trail Outfitters(NTO)は、Amazon SageMaker で外部学習させた顧客離反予測の機械学習モデルを持っており、データを複製せずに、そのモデルの推論を Data 360 内で使いたいと考えています。NTO は何をすべきですか?",
+   "question_en": "Northern Trail Outfitters (NTO) has a machine learning (ML) model trained externally in Amazon SageMaker to predict customer churn, and wants to use that model's inference inside Data 360 without duplicating data. What should NTO do to achieve this?",
+   "options_ja": [
+    "Data 360 の組み込みの計算済みインサイトを使う",
+    "外部プラットフォームの予測を、データレイクオブジェクト(DLO)として取り込む",
+    "学習済みモデルを、Data 360 の独自モデルの持ち込み(BYOM)で接続する",
+    "標準提供の Einstein Studio の顧客離反予測モデルを使う"
+   ],
+   "options_en": [
+    "Use built-in Data 360 Calculated Insights.",
+    "Consume the predictions from the external platform as a data lake object (DLO).",
+    "Connect the trained model in Data 360 in Bring Your Own Model (BYOM).",
+    "Use an out-of-the-box Einstein Studio customer churn predictive model."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "学習済みモデルを、Data 360 の独自モデルの持ち込み(BYOM)で接続する"
+   ],
+   "explanation_ja": "外部で学習したモデルを、データを複製せずに Data 360 から使うには、BYOM(Bring Your Own Model)で接続します。DLO への取り込みは予測結果のデータを複製する方法で、要件に合いません。標準モデルの利用では、すでに持っているモデルを使えません。",
+   "note": "Salesforce公式の開発者ブログとプレスリリースで、Einstein Studio の Bring Your Own Model(BYOM)が、Amazon SageMaker や Google Cloud Vertex AI で学習したモデルを、ゼロコピーで Data Cloud と連携させる仕組みであることを確認しました。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 34,
+   "section": "stream",
+   "source": "v2026-09-21 Q34",
+   "question_ja": "Salesforce CRM からのバッチ取り込みについて、正しい記述はどれですか?",
+   "question_en": "Which statement is true related to batch ingestions from Salesforce CRM?",
+   "options_ja": [
+    "列が追加または削除されると、CRM コネクタはフルリフレッシュを実行する",
+    "CRM データは手動で更新できず、次回のスケジュール同期を待つ必要がある",
+    "CRM コネクタは、60万件以上の削除レコードが検出されると増分リフレッシュを実行する",
+    "CRM コネクタの同期時間は、最短15分間隔までカスタマイズできる"
+   ],
+   "options_en": [
+    "When a column is added or removed, the CRM Connector performs a full refresh.",
+    "CRM data cannot be manually refreshed and must wait for the next scheduled synchronization.",
+    "The CRM Connector performs an incremental refresh when 600,000 or more deletion records are detected.",
+    "The CRM Connector's synchronization times can be customized to up to 15-minute intervals."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "列が追加または削除されると、CRM コネクタはフルリフレッシュを実行する"
+   ],
+   "explanation_ja": "CRM コネクタは通常は増分で同期しますが、スキーマが変わる(列の追加・削除)と、全データを再取得するフルリフレッシュになります。手動更新も可能で、大量の削除が検出された場合も増分ではなくフルリフレッシュ側に倒れます。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 41,
+   "section": "mapping",
+   "source": "v2026-09-21 Q41",
+   "question_ja": "Data 360 コンサルタントは、Data 360 のデータを調べるためにデータエクスプローラーを使う予定です。データエクスプローラーで調べられるデータはどれですか?",
+   "question_en": "A Data 360 Consultant is planning to use Data Explorer to examine Data 360 data. Which data is the consultant able to examine in Data Explorer?",
+   "options_ja": [
+    "有効化、データレイクオブジェクト、計算済みインサイト",
+    "データレイクオブジェクト、データモデルオブジェクト、計算済みインサイト",
+    "セグメント、データモデルオブジェクト、計算済みインサイト",
+    "データソースオブジェクト、データレイクオブジェクト、データモデルオブジェクト"
+   ],
+   "options_en": [
+    "Activations, data lake objects, calculated insights",
+    "Data lake objects, data model objects, calculated insights",
+    "Segments, data model objects, calculated insights",
+    "Data source objects, data lake objects, data model objects"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "データレイクオブジェクト、データモデルオブジェクト、計算済みインサイト"
+   ],
+   "explanation_ja": "データエクスプローラーで中身を確認できるのは、データレイクオブジェクト(DLO)、データモデルオブジェクト(DMO)、計算済みインサイトです。セグメントや有効化は、データエクスプローラーの確認対象ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 42,
+   "section": "stream",
+   "source": "v2026-09-21 Q42",
+   "question_ja": "カスタムの Salesforce CRM オブジェクトが、新規データストリームの設定で選択できない場合、Data 360 コンサルタントはどの権限設定を確認すべきですか?",
+   "question_en": "Which permission setting should a Data 360 Consultant check if a custom Salesforce CRM object is not available in New Data Stream configuration?",
+   "options_ja": [
+    "取り込み元の Salesforce CRM 組織で、オブジェクトの「すべて表示」権限が有効になっていることを確認する",
+    "Salesforce CRM 組織で、オブジェクトの「取り込み(Ingest)」権限が有効になっていることを確認する",
+    "Data 360 組織で、オブジェクトの「作成」権限が有効になっていることを確認する",
+    "Data 360 組織で、オブジェクトの「編集」権限が有効になっていることを確認する"
+   ],
+   "options_en": [
+    "Confirm the View All object permission is enabled in the source Salesforce CRM org.",
+    "Confirm the Ingest object permission is enabled in the Salesforce CRM org.",
+    "Confirm the Create object permission is enabled in the Data 360 org.",
+    "Confirm the Modify object permission is enabled in the Data 360 org."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "取り込み元の Salesforce CRM 組織で、オブジェクトの「すべて表示」権限が有効になっていることを確認する"
+   ],
+   "explanation_ja": "CRM コネクタで取り込み対象のオブジェクトを選べるかどうかは、取り込み元の CRM 組織側のオブジェクト権限で決まり、「すべて表示(View All)」が必要です。権限を確認する場所は、Data 360 側ではなく、ソースの CRM 組織です。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 48,
+   "section": "transform",
+   "source": "v2026-09-03 Q2",
+   "question_ja": "Data 360 で、一般に、変換(トランスフォーム)よりも数式(formula)を使うのが望ましいのはどんなときですか?",
+   "question_en": "When is it generally preferred to use a formula over a transform in Data 360?",
+   "options_ja": [
+    "数テラバイト規模のデータセットを並列処理するとき",
+    "単純な行単位の算術演算や文字列操作を行うとき",
+    "複数行にまたがる複雑な結合を行うとき",
+    "10個の異なる取り込みソースでロジックを再利用する必要があるとき"
+   ],
+   "options_en": [
+    "When processing multi-terabyte datasets in parallel",
+    "When performing simple, row-level arithmetic or string manipulation",
+    "When performing complex multi-row joins",
+    "When the logic needs to be reused across 10 different ingestion sources"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "単純な行単位の算術演算や文字列操作を行うとき"
+   ],
+   "explanation_ja": "データストリームの数式項目は、取り込んだ値から行単位で項目を導出する軽い処理(算術、文字列操作、型変換、キーやフラグの追加など)に向いています。複数のDLOの結合や集計、複数ステップの加工、大量データの処理は、一括処理データ変換のほうが向いています。",
+   "note": null,
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 52,
+   "section": "stream",
+   "source": "v2026-09-03 Q9",
+   "question_ja": "Northern Trail Outfitters の Data 360 コンサルタントが、Salesforce CRM の Contact オブジェクトの項目を取り込もうとしています。この項目には、yyyy-mm-dd 形式と yyyy-mm-dd hh:mm:ss 形式の値が混在していて、取り込み先の項目は Date データ型に設定されています。この状況で正しい記述はどれですか?",
+   "question_en": "A Data 360 Consultant at Northern Trail Outfitters is attempting to ingest a field from the Contact object in Salesforce CRM that contains both yyyy-mm-dd and yyyy-mm-dd hh:mm:ss values. The target field is set to Date datatype. Which statement is true in this situation?",
+   "options_ja": [
+    "取り込み先の項目は時刻部分だけを保持し、日付部分は無視される",
+    "取り込み先の項目はエラーになり、null が格納される",
+    "取り込み先の項目は日付部分だけを保持し、時刻部分は無視される",
+    "取り込み先の項目は、両方の形式の値を保持できる"
+   ],
+   "options_en": [
+    "The target field will only hold the time part and ignore the date part.",
+    "The target field will throw an error and store null values.",
+    "The target field will only hold the date part and ignore the time part.",
+    "The target field will be able to hold both types of values."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "取り込み先の項目は日付部分だけを保持し、時刻部分は無視される"
+   ],
+   "explanation_ja": "Date 型の項目は日付部分だけを保持し、時刻部分は切り捨てられます。日付と時刻の両方を保持したい場合は、DateTime 型にします。エラーになって null が入るわけではありません。",
+   "note": "公式ドキュメントの記述は確認できていません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 58,
+   "section": "stream",
+   "source": "v2026-02-28 Q6",
+   "question_ja": "Data Cloud が CRM データを取り込む方法に関する考慮事項のうち、正しいものはどれですか?",
+   "question_en": "Which consideration related to the way Data Cloud ingests CRM data is true?",
+   "options_ja": [
+    "CRM データは手動で更新できず、次回のスケジュール同期を待つ必要がある",
+    "CRM コネクタの同期時間は、最短15分間隔までカスタマイズできる",
+    "数式項目は定期的な同期間隔で更新され、次回のフルリフレッシュで反映される",
+    "CRM コネクタは、標準項目をリアルタイムで Data Cloud にストリームできる"
+   ],
+   "options_en": [
+    "CRM data cannot be manually refreshed and must wait for the next scheduled synchronization.",
+    "The CRM Connector's synchronization times can be customized to up to 15-minute intervals.",
+    "Formula fields are refreshed at regular sync intervals and are updated at the next full refresh.",
+    "The CRM Connector allows standard fields to stream into Data Cloud in real time."
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "CRM コネクタは、標準項目をリアルタイムで Data Cloud にストリームできる"
+   ],
+   "explanation_ja": "原本の解説は、CRMコネクタのストリーミングで標準項目がほぼリアルタイムに反映されるとしています。他の選択肢は、「手動更新できない」「同期間隔は最短15分」「数式項目は定期同期で更新される」といった誤りを含んでいます。公式ヘルプでも、CRMデータは手動でリフレッシュでき、増分更新は10分ごとに実行されると説明されています。",
+   "note": "公式ヘルプでは、CRMデータはフル/増分のリフレッシュをオンデマンドで実行でき(Aは誤り)、増分更新は10分ごとに実行されます。「CRM Connector Streaming」のトピックもありますが、Dの「標準項目がリアルタイムで流れ込む」の詳細は確認できていません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 63,
+   "section": "stream",
+   "source": "v2026-02-28 Q11",
+   "question_ja": "Northern Trail Outfitters は B2C Commerce を使っており、顧客とそのすべての注文取引の統合ビューを得るために Data Cloud の導入を検討しています。B2C Commerce の Order バンドルで注文データの履歴データを取り込む際に、コンサルタントが念頭に置くべきことは何ですか?",
+   "question_en": "Northern Trail Outfitters uses B2C Commerce and is exploring implementing Data Cloud to get a unified view of its customers and all their order transactions. What should the consultant keep in mind with regard to historical data ingesting order data using the B2C Commerce Order Bundle?",
+   "options_ja": [
+    "Order バンドルは12か月分の履歴データを取り込む",
+    "Order バンドルは6か月分の履歴データを取り込む",
+    "Order バンドルは履歴データを取り込まず、そこから先の新しい注文だけを取り込む",
+    "Order バンドルは30日分の履歴データを取り込む"
+   ],
+   "options_en": [
+    "The B2C Commerce Order Bundle ingests 12 months of historical data.",
+    "The B2C Commerce Order Bundle ingests 6 months of historical data.",
+    "The B2C Commerce Order Bundle does not ingest any historical data and only ingests new orders from that point on.",
+    "The B2C Commerce Order Bundle ingests 30 days of historical data."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "Order バンドルは履歴データを取り込まず、そこから先の新しい注文だけを取り込む"
+   ],
+   "explanation_ja": "原本の解説は、Order バンドルが作るデータストリームは、データストリーム作成以降の新しい注文だけを取り込み、履歴データは取り込まないとしています。履歴が必要な場合は、B2C Commerce からデータをエクスポートして別途取り込む、という考え方です。ただし同じ原本の別の問題(Q108)と結論が食い違うため、現行の仕様は公式で確認してください。",
+   "note": "同じ原本のQ61(スターターバンドルは過去90日分を取り込むとしている)と食い違います。公式ページは確認できていません。Salesforceのブログでは、B2C Commerce Intelligence コネクタによって履歴データへのアクセスが改善されたと説明されています。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 64,
+   "section": "stream",
+   "source": "v2026-02-28 Q12",
+   "question_ja": "コンサルタントは、モバイル電話番号を含むプロファイル情報のデータストリームの取り込みを計画しています。将来の SMS キャンペーンで電話番号を使えるようにするため、電話番号項目が E164 形式になっていることを確認する必要があります。しかし、ファイル内の電話番号はさまざまな形式になっています。さまざまな電話番号の形式を確実に標準化する最も効率的な方法は何ですか?",
+   "question_en": "A consultant is planning the ingestion of a data stream that has profile information including a mobile phone number. To ensure that the phone number can be used for future SMS campaigns, they need to confirm the phone number field is in the proper E164 Phone Number format. However, the phone numbers in the file appear to be in varying formats. What is the most efficient way to guarantee that the various phone number formats are standardized?",
+   "options_ja": [
+    "数式項目を作成して、形式を標準化する",
+    "Data Cloud に送る前に、ソースシステム内のデータを編集・更新する",
+    "データストリームの作成時に、PhoneNumber 項目タイプを割り当てる",
+    "取り込み後に計算済みインサイトを作成する"
+   ],
+   "options_en": [
+    "Create a formula field to standardize the format.",
+    "Edit and update the data in the source system prior to sending to Data Cloud.",
+    "Assign the PhoneNumber field type when creating the data stream.",
+    "Create a calculated insight after ingestion."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "データストリームの作成時に、PhoneNumber 項目タイプを割り当てる"
+   ],
+   "explanation_ja": "原本の解説は、データストリーム作成時に項目タイプを PhoneNumber にすれば、自動的に E164 形式に変換されるとしています。ソースシステムのデータ修正は手間がかかり、取り込み後の計算済みインサイトは形式の標準化に使う機能ではありません。",
+   "note": "項目タイプに PhoneNumber を選ぶと E164 に変換されるという記述は、公式ドキュメントでは確認できていません。取り込みAPIのスキーマでは、Phone 型は「文字列型の phone 形式」とされています。数式項目でフォーマットを整える方法(選択肢A)との優劣も要確認です。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 70,
+   "section": "mapping",
+   "source": "v2026-02-28 Q18",
+   "question_ja": "セグメンテーションでの属性の値の提案(value suggestion)は、DMO を作成するとき、どこで有効にしますか?",
+   "question_en": "Where is value suggestion for attributes in segmentation enabled when creating the DMO?",
+   "options_ja": [
+    "データマッピング",
+    "データ変換",
+    "セグメント設定",
+    "データストリーム設定"
+   ],
+   "options_en": [
+    "Data Mapping",
+    "Data Transformation",
+    "Segment Setup",
+    "Data Stream Setup"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "セグメント設定"
+   ],
+   "explanation_ja": "原本の解説は、値の提案がセグメント条件を作るときにテキスト項目の取り得る値を表示・選択できる機能で、DMO の項目ごとに有効にし、組織全体で最大500属性まで、候補が表示されるまで最大24時間かかると説明しています。ただし、有効にする場所について、解説の記述と正解(セグメント設定)が噛み合っていないため、正解は公式で確認が必要です。",
+   "note": "原本の解説は、値の提案を「各DMO項目に対して、DMOのレコードホームで有効にする」と説明しながら、正解を「Segment Setup」としており、説明と選択肢が噛み合いません。第三者のブログでも、DMOを編集して項目ごとに有効にする機能と説明されています。公式ページは確認できていません。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 71,
+   "section": "stream",
+   "source": "v2026-02-28 Q19",
+   "question_ja": "ある会社は、顧客データを Marketing Cloud に保存し、Marketing Cloud コネクタを使って Data Cloud に取り込んでいます。データ削除(忘れられる権利)のリクエストは、どこに送信しますか?",
+   "question_en": "A company stores customer data in Marketing Cloud and uses the Marketing Cloud Connector to ingest data into Data Cloud. Where does a request for data deletion or right to be forgotten get submitted?",
+   "options_ja": [
+    "Marketing Cloud の設定で",
+    "Consent API を通して",
+    "Data Cloud の個人データプロファイル上で",
+    "Data Cloud の設定で"
+   ],
+   "options_en": [
+    "In Marketing Cloud settings",
+    "through Consent API",
+    "On the individual data profile in Data Cloud",
+    "In Data Cloud settings"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "Consent API を通して"
+   ],
+   "explanation_ja": "忘れられる権利は、Consent API の ShouldForget アクションで要求します。個人情報(PII)と関連するレコードが恒久的に削除されます。この API を使うには、「すべてのデータの編集」または ConsentApiUpdate の権限が必要です。",
+   "note": "原本には解説がありません。公式の Consent API ドキュメントで確認しました。Marketing Cloud コネクタを使っている場合に特有の記述は確認できていません。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 82,
+   "section": "stream",
+   "source": "v2026-02-28 Q31",
+   "question_ja": "Northern Trail Outfitters は、コンサルタントに、モバイルアプリ「Track My Run」からランナーのプロファイルとアクティビティログを抽出して、Data Cloud に読み込むよう依頼しました。マーケティング部門は、直近90日分の履歴データが必要で、今後は新規・更新データが利用可能になり次第すべて取り込みたいと考えています。ベストプラクティスとして、コンサルタントはどの順序で対応すべきですか?",
+   "question_en": "Northern Trail Outfitters asks its consultant to extract the runner profiles and activity logs from its Track My Run mobile app and load them into Data Cloud. The marketing department also indicates that they need the last 90 days of historical data and want all new and updated data as it becomes available on a go-forward basis. As best practice, which sequence of actions should the consultant use to implement this request?",
+   "options_ja": [
+    "直近90日分を最初にバルク取り込みで読み込み、今後のデータの同期にも、引き続きバルク取り込みを使う",
+    "直近90日分を最初にストリーミング取り込みで読み込み、今後のデータの同期にもストリーミング取り込みを使う",
+    "直近90日分を最初にストリーミング取り込みで読み込み、その後の同期にはバルク取り込みを使う",
+    "直近90日分を最初にバルク取り込みで読み込み、その後の同期にはストリーミング取り込みを使う"
+   ],
+   "options_en": [
+    "Use bulk ingestion to first load the last 90 days of data, and also subsequently use bulk ingestion to synchronize the future data as it becomes available.",
+    "Use streaming ingestion to first load the last 90 days of data, and also subsequently use streaming ingestion synchronize future data as it becomes available.",
+    "Use streaming ingestion to first load the last 90 days of data, and then use bulk ingestion to synchronize future data as it becomes available.",
+    "Use bulk ingestion to first load the last 90 days of data, and then use streaming ingestion to synchronize future data as it becomes available."
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "直近90日分を最初にバルク取り込みで読み込み、その後の同期にはストリーミング取り込みを使う"
+   ],
+   "explanation_ja": "大量の履歴データの初回読み込みは、スループットの高いバルク取り込みが向いています。その後に発生する新規・更新データは、ストリーミング取り込みでほぼリアルタイムに同期します。逆の組み合わせや、どちらか一方だけでは、初回の負荷か鮮度のどちらかで不利になります。",
+   "note": "公式の Ingestion API のドキュメントに、この問題と同じシナリオ(Track My Run、直近90日分の履歴と今後の更新)が模範例として載っています。初回はバルク取り込み、その後の変更はストリーミング取り込みの Upsert で同期すると説明されています。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 95,
+   "section": "stream",
+   "source": "v2026-02-28 Q47",
+   "question_ja": "Marketing Cloud のサブスクライバープロファイル属性を、毎日 Data Cloud に取り込む簡単な方法はどれですか?",
+   "question_en": "Which solution provides an easy way to ingest Marketing Cloud subscriber profile attributes into Data Cloud on a daily basis?",
+   "options_ja": [
+    "Automation Studio とプロファイルファイル API",
+    "Marketing Cloud Connect API",
+    "Marketing Cloud のデータエクステンションデータストリーム",
+    "Email Studio スターターデータバンドル"
+   ],
+   "options_en": [
+    "Automation Studio and Profile file API",
+    "Marketing Cloud Connect API",
+    "Marketing Cloud Data extension Data Stream",
+    "Email Studio Starter Data Bundle"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "Marketing Cloud のデータエクステンションデータストリーム"
+   ],
+   "explanation_ja": "Marketing Cloud のデータエクステンションは、データストリームとして Data Cloud に取り込めます。コードや複雑な連携を組まずに、サブスクライバーの属性などを定期的に取り込めます。Automation Studio とプロファイルファイル API は外部へ書き出す側の手段、Marketing Cloud Connect API は Salesforce の他製品との連携で、Data Cloud への取り込みの仕組みではありません。スターターデータバンドルは、あらかじめ用意された取り込み設定の一式です。",
+   "note": "公式ヘルプ「Data Stream Schedule」に、Marketing Cloud のデータエクステンションのデータストリーム(フル抽出は毎日、差分抽出は毎時)が載っています。「簡単な方法」という比較の部分は原本どおりです。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 97,
+   "section": "stream",
+   "source": "v2026-02-28 Q49",
+   "question_ja": "Northern Trail Outfitters(NTO)の Data Cloud 管理者は、いずれかのデータストリームが何らかの理由で失敗したら、Slack とメールで、すぐに能動的に通知を受けたいと考えています。その場合、NTO の既存のサポート・トリアージの流れに沿ってケースも作成し、グローバル監視ダッシュボードにも反映したいと考えています。コンサルタントは、この要件に何を推奨すべきですか?",
+   "question_en": "The Data Cloud admin at Northern Trail Outfitters (NTO) wants to be proactively and immediately informed via Slack and email if any of the data streams fail for any reason. If this happens, a case should also be triggered as part of NTO's existing support and triage process, and reflected in its global monitoring dashboard. What should a consultant recommend for these requirements?",
+   "options_ja": [
+    "データアクション",
+    "Data Cloud クエリエディター",
+    "Salesforce フロー",
+    "Salesforce のレポートとダッシュボード"
+   ],
+   "options_en": [
+    "Data actions",
+    "Data Cloud Query Editor",
+    "Salesforce flows",
+    "Salesforce reports and dashboards"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "Salesforce フロー"
+   ],
+   "explanation_ja": "フローは、データストリームの失敗を検知して、Slack やメールの通知、ケースの作成といった複数の処理を自動で組み立てられます。データアクションは主に Data Cloud のデータ変更を外部へ伝える機能、クエリエディターは照会ツール、レポートとダッシュボードは可視化の機能で、通知やケース作成を自動化するものではありません。",
+   "note": "公式ヘルプには、データストリーム失敗の通知を購読できる標準の機能があります。Slack 連携やケース作成まで含む要件をフローで実現するという整理は、原本の考え方です。Salesforce公開のサンプル資料でも、データストリームのエラーをトリガーにフローが起動する構成が紹介されています。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 102,
+   "section": "stream",
+   "source": "v2026-02-28 Q54",
+   "question_ja": "Cloud Kicks のマーケティングマネージャーは、取引先の法人の電話番号を Data Cloud に取り込む予定です。電話番号の保存には、データ型が Phone に設定されたカスタム項目を使う予定です。電話番号の取り込みについて、正しい記述はどれですか?",
+   "question_en": "The marketing manager at Cloud Kicks plans to bring in corporate phone numbers for its accounts into Data Cloud. They plan to use a custom field with data set to Phone to store these phone numbers. Which statement is true when ingesting phone numbers?",
+   "options_ja": [
+    "Phone データ型の項目に、テキスト値を取り込める",
+    "Data Cloud は、取り込み時に電話番号の形式を検証する",
+    "電話番号項目は10桁の値しか受け付けない",
+    "電話番号項目は主キーとして使うべきである"
+   ],
+   "options_en": [
+    "Text value can be accepted for ingestion into a phone data type field.",
+    "Data Cloud validates the format of the phone number at the time of ingestion.",
+    "The phone number field can only accept 10-digit values.",
+    "The phone number field should be used as a primary key."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "Phone データ型の項目に、テキスト値を取り込める"
+   ],
+   "explanation_ja": "電話番号は文字列として保存されるので、テキスト値を Phone 型の項目に取り込めます。取り込み時に形式を検証したり、10桁に限定したりはしません。電話番号は一意とは限らないので、主キーには向きません。",
+   "note": "Q64(PhoneNumber項目タイプでE164に変換されるという原本の説明)と、「取り込み時に形式は検証しない」とするこの問題の解説は、言い回しが緊張関係にあります。取り込みAPIのスキーマでは、Phone 型は「文字列型の phone 形式」とされていますが、形式の検証については記述がありません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 108,
+   "section": "stream",
+   "source": "v2026-02-28 Q61",
+   "question_ja": "Northern Trail Outfitters(NTO)は、B2C Commerce のデータを Data Cloud に接続し、2年分の取引履歴を Data Cloud に取り込みたいと考えています。NTO は何を使うべきですか?",
+   "question_en": "Northern Trail Outfitters (NTO) wants to connect their B2C Commerce data with Data Cloud and bring two years of transactional history into Data Cloud. What should NTO use to achieve this?",
+   "options_ja": [
+    "B2C Commerce スターターバンドル",
+    "Sales Order エンティティの直接取り込み",
+    "Sales Product エンティティの直接取り込み",
+    "B2C Commerce スターターバンドルとカスタム抽出"
+   ],
+   "options_en": [
+    "B2C Commerce Starter Bundles",
+    "Direct Sales Order entity ingestion",
+    "Direct Sales Product entity ingestion",
+    "B2C Commerce Starter Bundles plus a custom extract"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "B2C Commerce スターターバンドルとカスタム抽出"
+   ],
+   "explanation_ja": "原本の解説は、スターターバンドルが取り込む履歴は既定で直近90日分なので、2年分が必要ならカスタム抽出を併用するとしています。ただし同じ原本のQ11(Q63)では、Order バンドルは履歴を取り込まないとされており、結論が食い違います。現行の仕様は公式で確認してください。",
+   "note": "同じ原本のQ11(Order バンドルは履歴を取り込まない)と結論が食い違います(Q63 参照)。公式ページは確認できていません。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 109,
+   "section": "stream",
+   "source": "v2026-02-28 Q62",
+   "question_ja": "正しく設定された Amazon S3 のデータストリームが、「NO FILE FOUND」エラーメッセージで更新に失敗します。コンサルタントが取るべき手順を2つ選んでください。",
+   "question_en": "Which two steps should a consultant take if a successfully configured Amazon S3 data stream fails to refresh with a NO FILE FOUND error message? Choose 2 answers",
+   "options_ja": [
+    "Data Cloud ユーザーに正しい権限が設定されているか確認する",
+    "Amazon S3 のデータソースが Data Cloud の設定で有効になっているか確認する",
+    "指定したバケットの場所にファイルが存在するか確認する",
+    "S3 ユーザーに正しい権限が設定されているか確認する"
+   ],
+   "options_en": [
+    "Check if correct permissions are configured for the Data Cloud user.",
+    "Check if the Amazon S3 data source is enabled in Data Cloud Setup.",
+    "Check If the file exists in the specified bucket location.",
+    "Check if correct permissions are configured for the S3 user."
+   ],
+   "correct_index": [
+    0,
+    2
+   ],
+   "correct_ja": [
+    "Data Cloud ユーザーに正しい権限が設定されているか確認する",
+    "指定したバケットの場所にファイルが存在するか確認する"
+   ],
+   "explanation_ja": "原本の解説は、「NO FILE FOUND」を Data Cloud がファイルにアクセスできないか見つけられないことを示すとして、Data Cloud ユーザーの権限と、指定した場所にファイルがあるかの2点を挙げています。公式ヘルプでは、ファイルが見つからないときの動作(設定により、更新履歴で失敗ステータスになり、失敗通知の購読があれば通知される)が説明されています。S3 側のユーザーの権限(D)も、ファイルを読めない原因になり得るため、この問題の正解は見直しが必要です。",
+   "note": "C(ファイルの存在確認)は妥当ですが、A(Data Cloud ユーザーの権限)を選ぶ根拠は確認できず、D(S3 ユーザーの権限)も原因になり得ます。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 112,
+   "section": "stream",
+   "source": "v2026-02-28 Q65",
+   "question_ja": "Salesforce CRM コネクタを設定し、Case オブジェクトのデータストリームも作成済みです。その後、Salesforce CRM の Case オブジェクトに「Business Priority」というカスタム項目を新しく作りましたが、この項目をデータストリームに追加しようとしても利用できません。原因を説明する記述はどれですか?",
+   "question_en": "The Salesforce CRM Connector is configured and the Case object data stream is set up. Subsequently, a new custom field named Business Priority is created on the Case object in Salesforce CRM. However, the new field is not available when trying to add it to the data stream. Which statement addresses the cause of this issue?",
+   "options_ja": [
+    "Salesforce の連携ユーザーに、新しく作った項目の参照権限がない",
+    "Salesforce データローダーを使って、デスクトップから一括アップロードすべき",
+    "Case オブジェクトのカスタム項目は、Data Cloud への取り込みに対応していない",
+    "24時間後にデータストリームが更新されると、Salesforce CRM に追加された新しい項目が自動的に含まれる"
+   ],
+   "options_en": [
+    "The Salesforce Integration User Is missing Rad permissions on the newly created field.",
+    "The Salesforce Data Loader application should be used to perform a bulk upload from a desktop.",
+    "Custom fields on the Case object are not supported for ingesting into Data Cloud.",
+    "After 24 hours when the data stream refreshes it will automatically include any new fields that were added to the Salesforce CRM."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "Salesforce の連携ユーザーに、新しく作った項目の参照権限がない"
+   ],
+   "explanation_ja": "CRM コネクタは連携ユーザーの権限でデータを読み取るため、新しい項目への参照権限(項目レベルセキュリティ)がないと、データストリームの項目選択に表示されません。権限セットやプロファイルで参照権限を付与します。カスタム項目も取り込めます。",
+   "note": "公式の開発者ガイドで、CRM コネクタのデータストリームの項目が使えなくなる原因として、Platform Integration User(連携ユーザー)が項目レベルのアクセスを失うことが挙げられています。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 115,
+   "section": "stream",
+   "source": "v2026-02-28 Q68",
+   "question_ja": "コンサルタントは、取引データのデータストリームを設定しています。購買オーダー番号の先頭のゼロを保持するには、どの項目タイプを選ぶべきですか?",
+   "question_en": "A consultant is setting up a data stream with transactional data. Which field type should the consultant choose to ensure that leading zeros in the purchase order number are preserved?",
+   "options_ja": [
+    "テキスト",
+    "数値",
+    "小数",
+    "シリアル"
+   ],
+   "options_en": [
+    "Text",
+    "Number",
+    "Decimal",
+    "Serial"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "テキスト"
+   ],
+   "explanation_ja": "先頭のゼロは、数値として保存されると消えます。文字列(テキスト)として保存すれば、元の形のまま保持されます。購買オーダー番号や郵便番号のように、計算に使わないコードはテキストにします。",
+   "note": "取り込みAPIのスキーマでは、テキスト型は文字列型、数値型は数値型と定義されています。先頭のゼロの保持そのものについての公式の記述は確認できていません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 140,
+   "section": "dlo",
+   "source": "v2025-08-07 Q55",
+   "question_ja": "Cloud Kicks は、既存のデータストリームの1つと、その元になるデータレイクオブジェクト(DLO)を、完全に削除する予定です。データストリームを削除する前に、コンサルタントは何を考慮すべきですか?",
+   "question_en": "Cloud Kicks plans to do a full deletion of one of its existing data streams and its underlying data lake object (DLO). What should the consultant consider before deleting the data stream?",
+   "options_ja": [
+    "元になる DLO が、データ変換で使われている可能性がある",
+    "元になる DLO は、データモデルオブジェクトにマッピングできない",
+    "データストリームは、データキットに関連づけられている必要がある",
+    "データストリームは、元になる DLO を暗黙的に削除せずに削除できる"
+   ],
+   "options_en": [
+    "The underlying DLO can be used in a data transform.",
+    "The underlying DLO cannot be mapped to a data model object.",
+    "The data stream must be associated with a data kit.",
+    "The data stream can be deleted without implicitly deleting the underlying DLO."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "元になる DLO が、データ変換で使われている可能性がある"
+   ],
+   "explanation_ja": "データストリームを削除する前には、元になる DLO の依存関係と使われ方を確認します。DLO が、データ変換で使われていると、データストリームを削除したときに、その DLO を使うデータ変換に影響します。DLO は DMO にマッピングできるので(B は誤り)、データストリームがデータキットに関連づけられている必要はありません(C)。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 142,
+   "section": "mapping",
+   "source": "v2025-08-07 Q59",
+   "question_ja": "Customer 360 データモデルで、組織(Organization)、個人(Individual)、メンバー(Member)に使うべきデータモデルのサブジェクトエリアはどれですか?",
+   "question_en": "Which data model subject area should be used for any Organization, Individual, or Member in the Customer 360 data model?",
+   "options_ja": [
+    "エンゲージメント(Engagement)",
+    "メンバーシップ(Membership)",
+    "パーティ(Party)",
+    "グローバルアカウント(Global Account)"
+   ],
+   "options_en": [
+    "Engagement",
+    "Membership",
+    "Party",
+    "Global Account"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "パーティ(Party)"
+   ],
+   "explanation_ja": "Customer 360 データモデルの Party サブジェクトエリアは、組織、個人など、取引や関係に関わる主体を表します。エンゲージメントは、クリックや購入などの人の行動を表すサブジェクトエリアです。メンバーシップは、ロイヤルティプログラムなどのグループへの所属、グローバルアカウントは、組織間の階層関係を表します。",
+   "note": "公式のデータモデルのドキュメントでの確認は未実施です。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 289,
+   "section": "stream",
+   "source": "v2025-03-20 Q2",
+   "question_ja": "Northern Trail Outfitters は、Marketing Cloud のデータの一部を Data Cloud で使いたいと考えています。カスタム連携が必要になるのは、どのエンゲージメントチャネルのデータですか?",
+   "question_en": "Northern Trail Outfitters wants to use some of its Marketing Cloud data in Data Cloud. Which engagement channel data will require custom integration?",
+   "options_ja": [
+    "SMS",
+    "メール",
+    "CloudPage",
+    "モバイルプッシュ"
+   ],
+   "options_en": [
+    "SMS",
+    "Email",
+    "CloudPage",
+    "Mobile push"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "CloudPage"
+   ],
+   "explanation_ja": "Marketing Cloud のスターターデータバンドルで標準で取り込めるのは、メール・SMS(MobileConnect)・モバイルプッシュ(MobilePush)などのエンゲージメントデータです。CloudPage は Marketing Cloud でホストする Web ページで、標準のエンゲージメントチャネルには含まれないため、Data Cloud で使うにはカスタム連携が必要です。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 297,
+   "section": "stream",
+   "source": "v2025-03-20 Q36",
+   "question_ja": "Northern Trail Outfitters は、Marketing Cloud スターターデータバンドルを使って Marketing Cloud のデータを Data Cloud に取り込んでいます。Marketing Cloud スターターデータバンドルで利用できるデータセットはどれですか?(2つ選択)",
+   "question_en": "Northern Trail Outfitters is using the Marketing Cloud Starter Data Bundles to bring Marketing Cloud data into Data Cloud. What are two of the available datasets in Marketing Cloud Starter Data Bundles? Choose 2 answers",
+   "options_ja": [
+    "Personalization",
+    "MobileConnect",
+    "Loyalty Management",
+    "MobilePush"
+   ],
+   "options_en": [
+    "Personalization",
+    "MobileConnect",
+    "Loyalty Management",
+    "MobilePush"
+   ],
+   "correct_index": [
+    1,
+    3
+   ],
+   "correct_ja": [
+    "MobileConnect",
+    "MobilePush"
+   ],
+   "explanation_ja": "Marketing Cloud スターターデータバンドルには、メール、MobileConnect(SMS)、MobilePush(プッシュ通知)などのチャネルのエンゲージメントデータが含まれます。Personalization は Marketing Cloud の機能、Loyalty Management は別の製品で、スターターデータバンドルのデータセットではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  }
+ ]
+}

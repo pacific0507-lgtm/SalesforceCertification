@@ -1,0 +1,1044 @@
+{
+ "sections": {
+  "segment": {
+   "title": "Ch6·1セグメントSegment",
+   "current_text": [
+    "条件で顧客(DMOのレコード)を抜き出す、動的なフィルタです。",
+    "たとえるなら共通名簿から「去年10万円以上買った人、ただしDM拒否の人は除く」という条件で作る抽出リストです。条件に合う人が入れ替わるので、動的と呼びます。",
+    "高速公開は作成後に標準から切り替えられません。作れるのは20セグメントまでです。",
+    "セグメントタブで新規作成し、セグメント対象(Segment On)を選ぶ。ProfileまたはEngagementのDMO(統合個人、取引先、販売注文など)が選べる",
+    "「含める」タブで条件を作る。直接属性(1:1)はそのままフィルタに使う。関連属性(1:N)を使うとコンテナが作られ、その中で条件を決める。1つのコンテナには最大20個のフィルタを置ける",
+    "「除外」タブで除外条件を作る",
+    "必要なら「ランクと制限」タブで、グループ化、順位づけ、件数制限をかける",
+    "各フィルタやコンテナの下に出る人数を見て、条件の効き具合を確認する",
+    "公開スケジュールを決めて保存する。すぐ反映したければ「今すぐ公開」を使う",
+    "セグメント対象統合個人",
+    "含める生涯購入額(計算済みインサイト)が10万円以上、かつ、直近30日以内に注文がある(関連属性のコンテナ)",
+    "除外メール配信を拒否している人",
+    "標準公開12時間または24時間ごと同時実行の上限に達すると、公開が後ろにずれることがある",
+    "高速公開(Rapid Publish)1時間または4時間ごと公開キューで優先される。作成後に標準から高速へは変えられない。作れるのは20セグメントまで",
+    "試験ポイント",
+    "条件に使える材料は、属性、計算済みインサイトの結果、入れ子のセグメントです。",
+    "条件に使える計算済みインサイトは、セグメント対象のDMOに紐づく(同じ単位で作られた)ものだけです。",
+    "公開するたびに、メンバーを保持する「セグメントメンバーシップDMO」が作成または更新されます。",
+    "セグメントの種類は、画面(セグメントビルダー)で作るUI型と、APIで作るDBT型があります。"
+   ]
+  },
+  "idr": {
+   "title": "Ch4·1ID解決Identity Resolution",
+   "current_text": [
+    "複数のソースにバラバラにあるプロフィールを、ルールにしたがって1つにまとめる処理です。一般に「名寄せ」と呼ばれます。",
+    "たとえるなら名刺ホルダーの整理です。営業Aがもらった名刺と、営業Bがもらった名刺が同じ人なら、1枚にまとめます。その際、「どの名刺の肩書きを採用するか」も決めます。",
+    "図3 ID解決の流れ。一致ルールで「同じ人か」を判定し、調整ルールで「どの値を採用するか」を決めます。",
+    "ルールセット一致ルールと調整ルールの集まり。IndividualまたはAccountのDMOを土台にする",
+    "一致ルール(Match Rule)どのレコードを同一人物とみなすか",
+    "調整ルール(Reconciliation Rule)複数の値があるとき、統合プロフィールにどの値を採用するか",
+    "統合個人(Unified Individual)まとめた結果できる1人分のプロフィール",
+    "統合リンク(Unified Link)統合プロフィールと、元のソースデータをつなぐもの",
+    "統合連絡先(Unified Contact Point)統合プロフィールに紐づく、メール、電話などの連絡先を全部保持する",
+    "ID解決タブでルールセットを新規作成し、土台のDMO(IndividualまたはAccount)を選ぶ",
+    "一致ルールを設定する。標準のルールから選ぶか、カスタムルールを作る",
+    "調整ルールを設定する。オブジェクトごとの既定のルールを決め、必要な項目だけ個別に上書きする",
+    "保存して実行する。ジョブは、ソースデータやルール設定に変更があれば、ルールセットごとに最低1日1回走る",
+    "Fuzzy Name and Normalized Email名: あいまい一致(中精度)、姓: 完全一致、メール: 正規化一致",
+    "Fuzzy Name and Normalized Phone名: あいまい一致(中精度)、姓: 完全一致、電話(E.164形式): 正規化一致",
+    "Fuzzy Name and Normalized Address名: あいまい一致(中精度)、姓: 完全一致、住所1: 正規化一致、市: 完全一致、国: 正規化一致",
+    "Fuzzy Name and Normalized Phone and Normalized Email上の電話とメールを、両方満たす",
+    "照合方法は3つです。完全一致(Exact)、あいまい一致(Fuzzy。「太郎」と「タロウ」のような表記ゆれを許す)、正規化一致(Exact Normalized。メール、電話、住所で、大文字小文字や記号の違いを吸収して比べる)。",
+    "カスタムルールでは、会員番号などのパーティIDや、デバイスの広告主ID(IDFA、AAID)も使えます。",
+    "「空欄でも一致させる(Match on Blank)」は、品質低下や巨大プロフィールのリスクがあるため、慎重に使います。",
+    "同じ個人ID(Individual.Id)のレコードは、ルールがなくても一致します。",
+    "最終更新(Last Updated)最後に更新されたレコードの値。DMOの最終更新日項目がマッピングされているときだけ選べる氏名や住所など、新しいほうを信じたい項目",
+    "最頻値(Most Frequent)最も多く出てくる値。同数なら最終更新の値誕生日や性別など、多数決で決めたい項目",
+    "ソース優先(Source Priority)優先順位の高いデータソースの値ID値の安定化、信頼できるソースがある項目",
+    "最終更新で、Bのほうが新しい → 「Sam」",
+    "ソース優先で、Aの優先順位が高い → 「Samantha」",
+    "試験ポイント",
+    "一致は「同じ人か」、調整は「どの値を採用するか」です。この2つを混同させる問題が出やすいです。",
+    "調整ルールは、連絡先(メール、電話など)には適用されません。すべての連絡先が統合プロフィールに残ります。配信する連絡先は、アクティベーションの「ソース優先順位」で決めます。",
+    "調整は、統合プロフィールに見せる値を決めるだけで、元のデータは変更されません。",
+    "ソースプロフィールのどれか1つでも「既知」なら、統合プロフィールは既知です。匿名だけでできたものは匿名です。Accountは常に既知です。"
+   ]
+  },
+  "intro": {
+   "title": "Ch1·1Data 360とは",
+   "current_text": [
+    "会社のあちこちにバラバラにあるお客様のデータを集めて、1人ずつの「顧客カード」にまとめ、条件で絞り込んで、広告やメールなどの出口に届ける仕組みです。",
+    "たとえるなら支店ごとに別々の紙の名簿をつけていた会社が、全部を1つの共通名簿にまとめ直し、「去年10万円以上買った人」のリストを作って、DM発送業者に渡すイメージです。",
+    "図1 Data 360の全体の流れ。この流れのどこの話かを意識すると、各機能が整理しやすくなります。",
+    "1 取り込むデータを受け取る",
+    "2 整える共通の形に揃える",
+    "3 統合する同じ人を1人にまとめる",
+    "4 分析する指標を計算しておく",
+    "5 活用する絞り込んで届ける",
+    "DLOデータレイクオブジェクト(Data Lake Object)取り込んだデータを、元の形のまま置く棚",
+    "DMOデータモデルオブジェクト(Data Model Object)共通の書式に揃えたデータの棚",
+    "CI計算済みインサイト(Calculated Insight)あらかじめ計算しておいた指標(生涯購入額など)",
+    "ID解決Identity Resolution同じ人のデータを見つけて1人にまとめる処理(名寄せ)",
+    "セグメントSegment条件で顧客を絞り込んだリスト",
+    "アクティベーションActivationセグメントを外部サービスに渡すこと",
+    "試験ポイント",
+    "Data 360は以前の名称がData Cloudで、公式ドキュメントや試験問題に旧名称が残っていることがあります。同じ製品として読み替えてください。",
+    "各機能について「どの段階の話か」を答えられると、選択肢を絞りやすくなります。"
+   ]
+  },
+  "space": {
+   "title": "Ch3·3データスペースData Space",
+   "current_text": [
+    "ブランド、地域、事業部ごとにデータを分けて、同じData 360の中で独立して運用する仕組みです。",
+    "たとえるなら同じビルの中の「部屋」です。日本ブランドの部屋と米国ブランドの部屋で、見える書類と入れる人を分けます。",
+    "データスペースは同じビルの別の部屋。権限セットが自動で付くのは、既定のデータスペースだけです。",
+    "データスペースを作成し、使うDLO、DMOなどを追加する(DLOにはフィルタもかけられる)",
+    "権限セットに「Data Cloud Data Space Management」のアプリ権限を足し、データスペースを関連づける",
+    "データスペースごとに、機能の権限(表示のみか、カスタマイズ可か)を決める",
+    "試験ポイント",
+    "標準の権限セットが付与されるのは、既定のデータスペースだけです。ほかのデータスペースには手動で関連づけます。",
+    "DMOへのマッピング、ID解決、計算済みインサイト、セグメント、アクティベーションは、データスペースごとに独立しています。"
+   ]
+  }
+ },
+ "questions": [
+  {
+   "id": 1,
+   "section": "intro",
+   "source": "v2026-09-21 Q1",
+   "question_ja": "ヘルスケア・ライフサイエンス業界で、患者体験を向上させる Data 360 のユースケースはどれですか?",
+   "question_en": "What is a Data 360 use case for improving the patient experience in the Healthcare and Life Sciences sector?",
+   "options_ja": [
+    "統合ヘルススコアを有効化し、患者のウェルネスとエンゲージメントの全体像を提供する",
+    "往診する医師の給与計算を、カスタムモバイルアプリで管理する",
+    "データを使って、患者がどの病院を受診すべきか最適な場所を予測する",
+    "病院内の売店でのレジ会計を自動化する"
+   ],
+   "options_en": [
+    "Activating a Unified Health Score to provide a holistic view of patient wellness and engagement",
+    "Managing the payroll of visiting physicians via a custom mobile app",
+    "Using data to predict the best location for which hospital the patient should visit",
+    "Automating the retail checkout process in hospital gift shops"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "統合ヘルススコアを有効化し、患者のウェルネスとエンゲージメントの全体像を提供する"
+   ],
+   "explanation_ja": "Data 360 の価値は、統合・ガバナンスされたデータを患者中心の成果につなげる点にあります。統合ヘルススコアを有効化すれば、ウェルネスや接点履歴を横断した全体像をもとに、より適切なエンゲージメントが可能になります。給与計算や売店のレジ自動化は顧客データの統合と無関係で、受診病院の位置予測も患者体験の向上という文脈では典型的な活用例ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 3,
+   "section": "space",
+   "source": "v2026-09-21 Q3",
+   "question_ja": "Data 360 は、個人の「忘れられる権利」にどのように対応しますか?",
+   "question_en": "How does Data 360 handle an individual's Right to Be Forgotten?",
+   "options_ja": [
+    "すべてのデータソースオブジェクトのレコードを削除し、下流のデータモデルオブジェクトは次回のスケジュール取り込み時に更新される",
+    "指定した Individual と、その Individual に関連するデータモデルオブジェクト/データレイクオブジェクト内のレコードを削除する",
+    "指定した Individual レコードと、その Unified Individual Link レコードを削除する",
+    "指定した Individual と、Individual データモデルオブジェクトにマッピングされたデータソースオブジェクト内のレコードを削除する"
+   ],
+   "options_en": [
+    "Deletes the records from all data source objects, and any downstream data model objects are updated at the next scheduled ingestion",
+    "Deletes the specified Individual and records from any data model object/data lake object related to the Individual",
+    "Deletes the specified Individual record and its Unified Individual Link record",
+    "Deletes the specified Individual and records from any data source object mapped to the Individual data model object"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "指定した Individual と、その Individual に関連するデータモデルオブジェクト/データレイクオブジェクト内のレコードを削除する"
+   ],
+   "explanation_ja": "削除要求は個人(Individual)単位で処理され、Individual 本体に加えて、関連する DMO と DLO のレコードも削除されます。次回取り込みまで反映を待つ方式や、Unified Individual Link だけを消す方式ではありません。なお、元のソースシステム側のデータ削除は別途対応が必要です。",
+   "note": "公式の Consent API ドキュメントで、ShouldForget アクションが「忘れられる権利」として、個人情報(PII)と関連するレコードを恒久的に削除することを確認しました。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 9,
+   "section": "idr",
+   "source": "v2026-09-21 Q9",
+   "question_ja": "Data 360 コンサルタントは、顧客の統合率(consolidation rate)が最近上昇していることに気づきました。ID解決ルールセットに対するどの変更が、通常この結果を引き起こしますか?",
+   "question_en": "A Data 360 Consultant noticed a recent increase in a customer's consolidation rate. Which change to the identity resolution ruleset typically causes this result?",
+   "options_ja": [
+    "一致するプロファイルの数が増えるようにルールセットを変更する",
+    "既存のID解決ルールを削除する",
+    "Individual オブジェクトにマッピングされるデータソースの数を減らす",
+    "ソースのデータストリームから重複レコードを削除する"
+   ],
+   "options_en": [
+    "Modifying a ruleset that increases the number of matched profiles",
+    "Removing existing identity resolution rules",
+    "Reducing the number of data sources mapped to the Individual object",
+    "Deleting duplicate records from source data streams"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "一致するプロファイルの数が増えるようにルールセットを変更する"
+   ],
+   "explanation_ja": "統合率は、複数のソースプロファイルがどれだけ1つの統合プロファイルにまとまったかを表す指標です。一致するプロファイルが増えるようルールを変更すれば、統合が進んで統合率が上がります。ルールの削除やソースの削減は一致が減る方向、元データの重複削除はそもそもルールセットの変更ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 13,
+   "section": "intro",
+   "source": "v2026-09-21 Q13",
+   "question_ja": "Data 360 の導入を準備しているコンサルタントが、顧客データに関して守るべき倫理はどれですか?",
+   "question_en": "A Data 360 Consultant is preparing to implement Data 360. Which ethic should the consultant adhere to regarding customer data?",
+   "options_ja": [
+    "年齢・性別・民族などの機微なデータを求めるかどうかを、慎重に検討する",
+    "監査目的で、社内の上級管理職に顧客データへのアクセスを与える",
+    "すべてのデータを収集・活用して、よりパーソナライズされた体験を作る",
+    "削除しやすいように、機微データを同じデータモデルオブジェクトにマッピングする"
+   ],
+   "options_en": [
+    "Carefully consider asking for sensitive data such as age, gender, and ethnicity.",
+    "Give senior leaders in the firm access to customer data for audit purposes.",
+    "Collect and use all of the data to create more personalized experiences.",
+    "Map sensitive data to the same data model object for ease of deletion."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "年齢・性別・民族などの機微なデータを求めるかどうかを、慎重に検討する"
+   ],
+   "explanation_ja": "データ倫理の基本は、必要最小限の収集と目的の明確化です。機微データは本当に必要かを慎重に検討します。「すべて収集する」や「役職だけを理由にアクセスを与える」は最小権限・目的限定の原則に反します。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 14,
+   "section": "segment",
+   "source": "v2026-09-21 Q14",
+   "question_ja": "ある組織は、ユーザーがテキスト属性を、ピックリストの選択肢から特定・選択できるようにしたいと考えています。このユースケースに役立つ Data 360 の機能はどれですか?",
+   "question_en": "An organization wants to give users the ability to identify and select text attributes from a picklist of options. Which Data 360 feature should help with this use case?",
+   "options_ja": [
+    "データハーモナイゼーション",
+    "値の提案(Value suggestion)",
+    "変換数式",
+    "グローバル選択リスト"
+   ],
+   "options_en": [
+    "Data harmonization",
+    "Value suggestion",
+    "Transformation formulas",
+    "Global picklists"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "値の提案(Value suggestion)"
+   ],
+   "explanation_ja": "「値の提案」は、テキスト項目に入っている値の候補を一覧表示し、そこから選べるようにする機能です(セグメントの条件を作るときなどに、値を手入力せず選べます)。ハーモナイゼーションはデータの統一、変換数式はデータ加工の機能です。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 23,
+   "section": "segment",
+   "source": "v2026-09-21 Q23",
+   "question_ja": "Data 360 コンサルタントは、複数のブランドチームが管理するすべてのセグメントが、毎月更新される同じ除外条件に従うようにしたいと考えています。これを実現する最も効率的な方法はどれですか?",
+   "question_en": "A Data 360 Consultant wants to ensure that every segment managed by multiple brand teams adheres to the same set of exclusion criteria that are updated on a monthly basis. What is the most efficient option to allow for this capability?",
+   "options_ja": [
+    "セグメントを1つ作成し、ブランドごとにコピーする",
+    "データキットを作成・公開・デプロイする",
+    "共通の条件を持つ再利用可能なコンテナブロックを作成する",
+    "入れ子セグメントを作成する"
+   ],
+   "options_en": [
+    "Create a segment and copy it for each brand.",
+    "Create, publish, and deploy a data kit.",
+    "Create a reusable container block with common criteria.",
+    "Create a nested segment."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "共通の条件を持つ再利用可能なコンテナブロックを作成する"
+   ],
+   "explanation_ja": "共通の除外条件を再利用可能なコンテナブロックにまとめておけば、1か所の更新がそれを使うすべてのセグメントに反映されます。コピーは更新のたびに全コピーを直す必要があり、データキットは構成を別環境へ移行する仕組みです。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 27,
+   "section": "idr",
+   "source": "v2026-09-21 Q27",
+   "question_ja": "グローバルな旅行会社の Data 360 コンサルタントは、新しいロイヤルティプログラム向けに、複数のデータレイクオブジェクト(DLO)をデータモデルオブジェクト(DMO)へのマッピングを完了しました。セグメントを作る前に、統合個人(Unified Individual)とカスタムの Loyalty Ledger DMO の間の結合キーが、期待どおりの結果を返すか確認する必要があります。手動で SQL クエリを実行して結果をプレビューするには、どのツールを使いますか?",
+   "question_en": "A Data 360 Consultant at a global travel company has completed the mapping of several data lake objects (DLOs) to the data model objects (DMOs) for a new loyalty program. Before building segments, the consultant needs to verify that the join keys between the Unified Individual and the custom Loyalty Ledger DMO are returning the expected results. Which tool should the consultant use to execute a manual SQL query to preview these results?",
+   "options_ja": [
+    "Data 360 の計算済みインサイトビルダー",
+    "Data 360 のクエリエディター",
+    "Data 360 のメタデータ検索",
+    "Data 360 のデータエクスプローラー"
+   ],
+   "options_en": [
+    "The Data 360 Calculated Insights Builder",
+    "The Data 360 Query Editor",
+    "The Data 360 Metadata Search",
+    "The Data 360 Data Explorer"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "Data 360 のクエリエディター"
+   ],
+   "explanation_ja": "クエリエディターは Data 360 SQL を使って、DLO・DMO・計算済みインサイトオブジェクトなどを直接クエリできるツールです。結合キーの結果確認のような手動の SQL 検証に向いています。データエクスプローラーはデータの閲覧用で、SQL を自由に書く用途ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 30,
+   "section": "segment",
+   "source": "v2026-09-21 Q30",
+   "question_ja": "アーキテクトは、Data 360 のセグメントのパフォーマンステストに使う Full サンドボックスを管理しています。チームは、本番環境の最新のスキーマ変更とレコード更新を取り込むため、サンドボックスの更新(リフレッシュ)を行うことにしました。この更新は、サンドボックス内の既存の Data 360 構成にどのような影響を与えますか?",
+   "question_en": "An architect is managing a Full Sandbox that is used for performance testing of Data 360 segments. The team decides to perform a sandbox refresh to bring over the latest Schema changes and record updates from the production environment. What is the impact of this refresh on the existing Data 360 configuration within that sandbox?",
+   "options_ja": [
+    "サンドボックスは既存の Data 360 インスタンスとの接続を維持するが、すべてのデータマッピングが下書きステータスに戻る",
+    "ID解決ルールだけが削除され、データストリームは有効なまま、更新されたサンドボックスのオブジェクトからデータを取得し続ける",
+    "Data 360 インスタンスは削除され、更新後に新しい空のインスタンスをプロビジョニングする必要がある",
+    "すべての Data 360 メタデータが本番インスタンスの現行バージョンから複製され、取り込み済みのレコードはクリアされるため、再取り込みが必要になる"
+   ],
+   "options_en": [
+    "The sandbox maintains its connection to the existing Data 360 instance, but all data mapping is reverted to Draft status.",
+    "Only the identity resolution rules are deleted, while data streams remain active and continue to pull data from the refreshed sandbox objects.",
+    "The Data 360 instance is deleted and a new, blank Data 360 instance must be provisioned after the refresh.",
+    "All Data 360 metadata is replicated from the current version of production instance, and the ingested records are cleared and must be re-ingested."
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "すべての Data 360 メタデータが本番インスタンスの現行バージョンから複製され、取り込み済みのレコードはクリアされるため、再取り込みが必要になる"
+   ],
+   "explanation_ja": "サンドボックスの更新では、Data 360 のメタデータ(構成)が本番の現行版から複製される一方、取り込み済みのレコード自体はクリアされるため、再取り込みが必要です。構成が失われたり、インスタンスが削除されたりするわけではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 37,
+   "section": "idr",
+   "source": "v2026-09-21 Q37",
+   "question_ja": "Data 360 コンサルタントは、顧客の Data 360 実装でID解決ルールセットを設定し、その結果を確認したいと考えています。統合プロファイル上のデータを検証するために使うべき2つの機能はどれですか?",
+   "question_en": "A Data 360 Consultant has set up an identity resolution ruleset for their client's Data 360 implementation and now wants to confirm the results. Which two features should the consultant use to validate the data on a unified profile?",
+   "options_ja": [
+    "プロファイルエクスプローラーとクエリエディター",
+    "データエクスプローラーとアクション",
+    "ID解決とクエリ API",
+    "データアクションとクエリ API"
+   ],
+   "options_en": [
+    "Profile Explorer and Query Editor",
+    "Data Explorer and Actions",
+    "Identity Resolution and Query API",
+    "Data Actions and Query API"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "プロファイルエクスプローラーとクエリエディター"
+   ],
+   "explanation_ja": "プロファイルエクスプローラーは個々の統合プロファイルの中身を、クエリエディターは SQL でデータ全体を確認するためのツールで、統合結果の検証に使われます。データアクションは外部へのイベント連携の機能で、検証用ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 47,
+   "section": "segment",
+   "source": "v2026-09-03 Q1",
+   "question_ja": "Northern Trail Outfitters は、マーケターがセグメントキャンバスで使えるように、データモデルの複数の属性で提案値(Suggested Values)を有効にしたいと考えています。検討中の属性の1つ「Secondary Product Code」には、現在 5,000 件の異なる値が含まれています。この属性で値の提案を有効にする前に、Data 360 コンサルタントは何を考慮すべきですか?",
+   "question_en": "Northern Trail Outfitters wants to enable Suggested Values for several attributes in the Data Model to assist marketers in the segment canvas. One of the attributes being considered is Secondary Product Code, which currently contains 5,000 distinct values. What should a Data 360 Consultant consider before enabling value suggestions for this specific attribute?",
+   "options_ja": [
+    "この機能は最初の1,000件の異なる値しか表示しないため、ユーザーにとって不完全な結果になる可能性がある",
+    "属性に500件を超える一意の値があると、提案値は読み込みに失敗する",
+    "値の種類が多い属性の値を更新するには、カスタムのストリーミングデータ変換が必要である",
+    "値の提案は、エンゲージメントカテゴリにマッピングされた属性でのみ使える"
+   ],
+   "options_en": [
+    "The feature only displays the first 1,000 distinct values, which may lead to incomplete results for the user.",
+    "Suggested values will fail to load if the attribute contains more than 500 unique entries.",
+    "The system requires a custom streaming data transform to refresh values for high-cardinality attributes.",
+    "Value suggestions are only available for attributes that have been mapped to the Engagement category."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "この機能は最初の1,000件の異なる値しか表示しないため、ユーザーにとって不完全な結果になる可能性がある"
+   ],
+   "explanation_ja": "値の種類が多い(カーディナリティの高い)テキスト属性では、提案値として表示される件数に上限があります。5,000件の値があると、候補にはすべての値が出ません。原本の解説によると、公式ドキュメントでは「出現頻度の高い上位1,000件をアルファベット順に表示」とされており、選択肢Aの「最初の1,000件」はやや不正確な表現です。500という上限は、1つの属性の値の数ではなく、組織全体で値の提案を有効にできる属性の数です。ストリーミングデータ変換やエンゲージメントカテゴリは必須ではありません。",
+   "note": "原本の解説は、公式ドキュメントの記述を根拠にしていますが、公式ページ自体は確認できていません。500属性という上限は、第三者サイトにも同じ記載があります。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 51,
+   "section": "space",
+   "source": "v2026-09-03 Q8",
+   "question_ja": "ある顧客は Data 360 組織を2つ持っています。一方の組織で、Amazon S3 のデータストリームとそのマッピングの新しい構成が完成し、テストも済みました。この構成をパッケージ化して、顧客の2つ目の組織に反映するために推奨される方法はどれですか?",
+   "question_en": "A customer has two Data 360 orgs. A new configuration has been completed and tested for an Amazon S3 data stream and its mappings in one of the Data 360 orgs. What is recommended to package and promote this configuration to the customer's second org?",
+   "options_ja": [
+    "Salesforce CRM コネクタを使う",
+    "メタデータ API を使う",
+    "AppExchange アプリケーションとしてパッケージ化する",
+    "データキットを作成する"
+   ],
+   "options_en": [
+    "Use the Salesforce CRM Connector.",
+    "Use the Metadata API.",
+    "Package as an AppExchange application.",
+    "Create a data kit."
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "データキットを作成する"
+   ],
+   "explanation_ja": "データキットは、データストリームやデータモデルのマッピングなどの Data 360 の構成要素をまとめて、別の組織(や別のデータスペース)に展開するための仕組みです。CRMコネクタは取り込みの経路であり、構成を移行するためのものではありません。",
+   "note": null,
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 53,
+   "section": "idr",
+   "source": "v2026-09-03 Q10",
+   "question_ja": "高級旅行会社は、優良顧客の維持施策を最適化したいと考えています。マーケティングチームは、統合プロファイルが今後12か月の予約に使う合計金額を見積もる予測インサイトを必要としており、この予測はコンシェルジュサービスの割り当ての優先順位づけに使われます。この結果を予測するために、Data 360 コンサルタントが Einstein Studio で選ぶべきネイティブのモデルタイプはどれですか?",
+   "question_en": "A luxury travel company wants to optimize its high-value customer retention strategy. The marketing team requires a predictive insight that estimates the total dollar amount a unified profile is likely to spend on bookings over the next 12 months. This prediction will be used to prioritize concierge service assignments. Which native model type should a Data 360 Consultant select in Einstein Studio to predict this outcome?",
+   "options_ja": [
+    "基盤モデル",
+    "回帰モデル",
+    "二値モデル",
+    "多クラスモデル"
+   ],
+   "options_en": [
+    "Foundational model",
+    "Regression model",
+    "Binary model",
+    "Multiclass model"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "回帰モデル"
+   ],
+   "explanation_ja": "予測したいのは「合計金額」という連続した数値なので、回帰モデル(数値を予測するモデル)を選びます。二値分類は「購入する/しない」のような2択、多クラス分類は複数のカテゴリから1つを選ぶ場合に使います。基盤モデルは、この種の構造化データの数値予測に使うネイティブの予測モデルではありません。",
+   "note": "Einstein Studio は2026年春から「AI Models」に名称変更されています。Trailheadでは、モデルの種類として回帰(数値を予測)と二値分類(2択を予測)が説明されています。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 56,
+   "section": "intro",
+   "source": "v2026-02-28 Q3",
+   "question_ja": "Data Cloud における人工知能(AI)の役割は何ですか?",
+   "question_en": "What is the role of artificial intelligence (AI) in Data Cloud?",
+   "options_ja": [
+    "データ検証の自動化",
+    "動的なデータ駆動型のマネジメントダッシュボードの作成",
+    "インサイトと予測による、顧客とのやり取りの強化",
+    "ユースケース向けのメールテンプレートの生成"
+   ],
+   "options_en": [
+    "Automating data validation",
+    "Creating dynamic data-driven management dashboards",
+    "Enhancing customer interactions through insights and predictions",
+    "Generating email templates for use cases"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "インサイトと予測による、顧客とのやり取りの強化"
+   ],
+   "explanation_ja": "Data 360 では AI が、蓄積したデータから洞察と予測(離反予測、レコメンデーションなど)を生み出し、顧客とのやり取りをよりパーソナルにするために使われます。データ検証の自動化やダッシュボード作成、メールテンプレート生成は、中心的な役割ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 57,
+   "section": "segment",
+   "source": "v2026-02-28 Q4",
+   "question_ja": "Northern Trail Outfitters のマーケティングマネージャーは、Data Cloud のセグメントインテリジェンス(Segment Intelligence)のインサイトを活用して、マーケティングの投資対効果(ROI)を改善したいと考えています。これを設定するために、ユーザーにはどの権限セットが必要ですか?",
+   "question_en": "A marketing manager at Northern Trail Outfitters wants to improve marketing return on investment (ROI) by tapping into Insights from Data Cloud Segment Intelligence. Which permission set does a user need to set this up?",
+   "options_ja": [
+    "Data Cloud Data Aware Specialist",
+    "Data Cloud User",
+    "Cloud Marketing Manager",
+    "Data Cloud Admin"
+   ],
+   "options_en": [
+    "Data Cloud Data Aware Specialist",
+    "Data Cloud User",
+    "Cloud Marketing Manager",
+    "Data Cloud Admin"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "Data Cloud Admin"
+   ],
+   "explanation_ja": "セグメントインテリジェンスの設定は管理者の作業で、Data Cloud(Data 360)管理者の権限セットが必要です。「Cloud Marketing Manager」は Data Cloud の標準権限セットとして存在しません。Data Aware Specialist はデータの取り込みや変換、User は基本的な閲覧・利用向けの権限セットです。",
+   "note": "Trailheadの Marketing Intelligence の設定手順では、Data 360 Admin の権限を持つ管理者がセグメントインテリジェンスを有効にすると説明されていますが、権限セットの完全な要件は確認できていません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 68,
+   "section": "space",
+   "source": "v2026-02-28 Q16",
+   "question_ja": "顧客が、自分の個人データの削除を要求しています。この要求に対応するために、Data Cloud でコンサルタントはどの対応を取るべきですか?",
+   "question_en": "A customer requests that their personal data be deleted. Which action should the consultant take to accommodate this request in Data Cloud?",
+   "options_ja": [
+    "Consent API を使って、顧客情報の削除をリクエストする",
+    "プロファイルエクスプローラーを使って、Data Cloud から顧客データを削除する",
+    "ストリーミング API コールを使って、顧客情報を削除する",
+    "データ権利のサブジェクトリクエスト(Data Rights Subject Request)ツールを使って、顧客情報の削除をリクエストする"
+   ],
+   "options_en": [
+    "Use Consent API to request deletion of the customer's information.",
+    "Use Profile Explorer to delete the customer data from Data Cloud.",
+    "Use a streaming API call to delete the customer's information.",
+    "Use the Data Rights Subject Request tool to request deletion of the customer's information."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "Consent API を使って、顧客情報の削除をリクエストする"
+   ],
+   "explanation_ja": "公式の Consent API のドキュメントでは、ShouldForget アクションが忘れられる権利にあたり、個人情報(PII)と関連レコードを恒久的に削除すると説明されています。プロファイルエクスプローラーやストリーミング API は、削除要求を処理するための手段ではありません。同じ原本のQ19(Q71)でも Consent API が正解です。原本の正解は D(データ権利のサブジェクトリクエストツール)でしたが、公式のドキュメントに合わせて A に変更しています。",
+   "note": "原本の正解は D でしたが、公式のドキュメントに合わせて A に変更しました。「データ権利のサブジェクトリクエストツール」の公式な記述は確認できていません。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 78,
+   "section": "idr",
+   "source": "v2026-02-28 Q27",
+   "question_ja": "Cumulus Financial は、サービスエージェントが、取引先責任者レコード上で、統合個人に関連するすべてのケースを一覧表示できるようにしたいと考えています。このユースケースでコンサルタントが検討すべき機能を2つ選んでください。",
+   "question_en": "Cumulus Financial wants its service agents to view a display of all cases associated with a Unified Individual on a contact record. Which two features should a consultant consider for this use case? Choose 2 answers",
+   "options_ja": [
+    "データアクション",
+    "プロファイル API",
+    "Lightning Web コンポーネント",
+    "クエリ API"
+   ],
+   "options_en": [
+    "Data Action",
+    "Profile API",
+    "Lightning Web Components",
+    "Query APL"
+   ],
+   "correct_index": [
+    1,
+    2
+   ],
+   "correct_ja": [
+    "プロファイル API",
+    "Lightning Web コンポーネント"
+   ],
+   "explanation_ja": "統合個人に関するデータをプロファイル API で取得し、Lightning Web コンポーネントで取引先責任者レコード上に表示する、という構成です。データアクションは外部へのイベント連携、クエリ API は SQL でのデータ照会で、レコードページへの表示を実現する部品ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 83,
+   "section": "intro",
+   "source": "v2026-02-28 Q32",
+   "question_ja": "「信頼ベースのファーストパーティデータ資産(trust-based, first-party data asset)」を構築するとは、どういう意味ですか?",
+   "question_en": "What does it mean to build a trust-based, first-party data asset?",
+   "options_ja": [
+    "個人から同意を得て収集し、その見返りに価値を提供する、データの透明性とセキュリティを確保すること",
+    "コンプライアンス規制をすべて満たす、信頼できるファーストパーティデータを Data Cloud Marketplace に提供すること",
+    "法律で求められているとおり、すべてのメールマーケティングについてオプトインの同意を取得すること",
+    "インタビュー、アンケート、世論調査を通じて、信頼できる情報源から競合データを入手すること"
+   ],
+   "options_en": [
+    "To provide transparency and security for data gathered from individuals who provide consent for its use and receive value in exchange",
+    "To provide trusted, first-party data in the Data Cloud Marketplace that follows all compliance regulations",
+    "To ensure opt-in consents are collected for all email marketing as required by law",
+    "To obtain competitive data from reliable sources through interviews, surveys, and polls"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "個人から同意を得て収集し、その見返りに価値を提供する、データの透明性とセキュリティを確保すること"
+   ],
+   "explanation_ja": "ファーストパーティデータは、自社が顧客から直接得たデータです。「信頼ベース」とは、収集の目的と使い道を透明にし、本人の同意のもとで安全に管理し、本人にも価値を返すことです。メールのオプトインだけ、マーケットプレイスでの提供、競合データの収集は、この意味とは異なります。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 86,
+   "section": "segment",
+   "source": "v2026-02-28 Q37",
+   "question_ja": "Salesforce CRM のキャンペーンにキャンペーンメンバーをインポートするため、ユーザーはセグメントを Amazon S3 にエクスポートしたいと考えています。出力されるファイルの名前に、Salesforce CRM のキャンペーンIDを含める必要があります。これを実現する方法を2つ選んでください。",
+   "question_en": "To import campaign members into a campaign in Salesforce CRM, a user wants to export the segment to Amazon S3. The resulting file needs to include the Salesforce CRM Campaign ID in the name. What are two ways to achieve this outcome? Choose 2 answers",
+   "options_ja": [
+    "アクティベーション名にキャンペーン識別子を含める",
+    "キャンペーンのアクティベーションに、新しい属性としてキャンペーン識別子を固定値で入れる",
+    "ファイル名の指定にキャンペーン識別子を含める",
+    "セグメント名にキャンペーン識別子を含める"
+   ],
+   "options_en": [
+    "Include campaign identifier in the activation name.",
+    "Hard code the campaign identifier as a new attribute in the campaign activation.",
+    "Include campaign identifier in the filename specification.",
+    "Include campaign identifier in the segment name."
+   ],
+   "correct_index": [
+    0,
+    2
+   ],
+   "correct_ja": [
+    "アクティベーション名にキャンペーン識別子を含める",
+    "ファイル名の指定にキャンペーン識別子を含める"
+   ],
+   "explanation_ja": "原本の解説は、ファイル名にキャンペーンIDを入れる方法として、アクティベーション名とファイル名の指定の2つを正解にしています。ただし公式ヘルプでは、既定のファイル名は「セグメント名_アクティベーション名_日時」の形式とされているため、セグメント名(D)に含めてもファイル名に反映されると考えられます。この問題の正解は見直しが必要です。",
+   "note": "原本の解説は、セグメント名はファイル名に使われないとしていますが、公式ヘルプでは、既定のファイル名は「セグメント名_アクティベーション名_日時」の形式、またはカスタムのファイル名とされています。そのため D にキャンペーンIDを入れても反映されると考えられ、原本の正解(A と C)と食い違う可能性があります。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 89,
+   "section": "space",
+   "source": "v2026-02-28 Q40",
+   "question_ja": "コンサルタントは、Data Cloud のコンポーネントを、ある組織から別の組織へパッケージ化する必要があります。この目的のために、データキットに含めるべき Data Cloud のコンポーネントを2つ選んでください。",
+   "question_en": "A consultant needs to package Data Cloud components from one organization to another. Which two Data Cloud components should the consultant include in a data kit to achieve this goal? Choose 2 answers",
+   "options_ja": [
+    "データモデルオブジェクト",
+    "セグメント",
+    "計算済みインサイト",
+    "ID解決ルールセット"
+   ],
+   "options_en": [
+    "Data model objects",
+    "Segments",
+    "Calculated insights",
+    "Identity resolution rulesets"
+   ],
+   "correct_index": [
+    0,
+    3
+   ],
+   "correct_ja": [
+    "データモデルオブジェクト",
+    "ID解決ルールセット"
+   ],
+   "explanation_ja": "原本の解説は、データモデルオブジェクト(DMO)とID解決ルールセットをデータキットに含めるべきコンポーネントとしています。ただし、現行の公式のデータキット対応表では、DMO、セグメント、計算済みインサイト、ID解決のいずれも含められるとされているため、「2つ選ぶ」問題としては成立しない可能性があります。",
+   "note": "現行の公式のデータキット対応表では、データモデルオブジェクト、セグメント(Market Segment)、計算済みインサイト、ID解決のいずれもデータキットに含められるとされています。古いバージョンの表では、ID解決はデータキットでのサポートなしと記載されていました。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 90,
+   "section": "idr",
+   "source": "v2026-02-28 Q41",
+   "question_ja": "コンサルタントは、顧客の Data Cloud 組織で作業しており、既存のID解決ルールセットを削除するよう頼まれました。この操作の結果として、コンサルタントが伝えるべき影響を2つ選んでください。",
+   "question_en": "A consultant is working in a customer's Data Cloud org and is asked to delete the existing identity resolution ruleset. Which two impacts should the consultant communicate as a result of this action? Choose 2 answers",
+   "options_ja": [
+    "すべての個人データが削除される",
+    "このルールセットに関連する統合顧客データが削除される",
+    "データモデルオブジェクトへの依存関係が解消される",
+    "すべてのソースプロファイルデータが削除される"
+   ],
+   "options_en": [
+    "All individual data will be removed.",
+    "Unified customer data associated with this ruleset will be removed.",
+    "Dependencies on data model objects will be removed.",
+    "All source profile data will be removed"
+   ],
+   "correct_index": [
+    1,
+    2
+   ],
+   "correct_ja": [
+    "このルールセットに関連する統合顧客データが削除される",
+    "データモデルオブジェクトへの依存関係が解消される"
+   ],
+   "explanation_ja": "公式ヘルプによると、ルールセットを削除すると、統合顧客データがすべて恒久的に削除され、データモデルオブジェクトへの依存関係が解消され、ルールセットの処理が止まり、過去の実行履歴も削除されます。元のソースのデータ(個人データやソースプロファイル)は残ります。削除から完了まで最大24時間かかり、以前の統合データは復元できません。",
+   "note": null,
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 96,
+   "section": "intro",
+   "source": "v2026-02-28 Q48",
+   "question_ja": "Data Cloud コンサルタントが、ある会社の Data Cloud ライフサイクルの最初の段階を評価しています。ライフサイクルを効果的に始めるうえで欠かせない行動はどれですか?",
+   "question_en": "A Data Cloud consultant is evaluating the initial phase of the Data Cloud lifecycle for a company. Which action is essential to effectively begin the Data Cloud lifecycle?",
+   "options_ja": [
+    "ユースケースと、必要なデータソース、データ品質を特定する",
+    "データを分析してデータスペースに分ける",
+    "既存のデータを Customer 360 データモデルに移行する",
+    "計算済みインサイトを使って、この会社にとっての Data Cloud のメリットを判断する"
+   ],
+   "options_en": [
+    "Identify use cases and the required data sources and data quality.",
+    "Analyze and partition the data into data spaces.",
+    "Migrate the existing data into the Customer 360 Data Model.",
+    "Use calculated insights determine the benefits of Data Cloud for this company."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "ユースケースと、必要なデータソース、データ品質を特定する"
+   ],
+   "explanation_ja": "最初に、何を実現したいか(ユースケース)を明確にし、必要なデータソースとデータの品質を確認します。データスペースの分割やデータモデルへの移行、インサイトによる効果検証は、ユースケースとデータが決まってからの段階です。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 100,
+   "section": "segment",
+   "source": "v2026-02-28 Q52",
+   "question_ja": "顧客は、Data Cloud 組織内で、各セグメントが最後に公開された日時を確認できるようにしたいと考えています。この要件に最も適した機能を2つ、コンサルタントは推奨すべきです。",
+   "question_en": "A customer has a requirement to be able to view the last time each segment was published within their Data Cloud org. Which two features should the consultant recommend to best address this requirement? Choose 2 answers",
+   "options_ja": [
+    "プロファイルエクスプローラー",
+    "計算済みインサイト",
+    "ダッシュボード",
+    "レポート"
+   ],
+   "options_en": [
+    "Profile Explorer",
+    "Calculated insight",
+    "Dashboard",
+    "Report"
+   ],
+   "correct_index": [
+    2,
+    3
+   ],
+   "correct_ja": [
+    "ダッシュボード",
+    "レポート"
+   ],
+   "explanation_ja": "原本の解説は、セグメントの名前、公開日、公開ステータスなどの項目を使ったレポートとダッシュボードで確認できるとしています。プロファイルエクスプローラーは個々の顧客プロファイルを見るツール、計算済みインサイトは指標の集計機能で、セグメントの公開日時を確認する用途ではありません。",
+   "note": "Trailheadでは、セグメントの公開ステータスは、公開履歴(Publish History)やセグメントの詳細で、アクティベーションターゲットごとに確認できると説明されています。レポートとダッシュボードで確認する方法は、公式の説明とは別の方法です。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 101,
+   "section": "space",
+   "source": "v2026-02-28 Q53",
+   "question_ja": "プライバシー法について顧客と話し合っているとき、顧客は忘れられる権利に対応する必要があると言いました。コンサルタントは、Consent API がこのニーズを解決すると判断しました。コンサルタントが顧客に伝えるべき考慮事項を2つ選んでください。",
+   "question_en": "During a privacy law discussion with a customer, the customer indicates they need to honor requests for the right to be forgotten. The consultant determines that Consent API will solve this business need. Which two considerations should the consultant inform the customer about? Choose 2 answers",
+   "options_ja": [
+    "データ削除リクエストは、30日、60日、90日後に再処理される",
+    "データ削除リクエストは1時間以内に処理される",
+    "データ削除リクエストは、Individual プロファイル向けに送信される",
+    "Data Cloud に送信されたデータ削除リクエストは、接続されているすべての Salesforce クラウドに伝えられる"
+   ],
+   "options_en": [
+    "Data deletion requests are reprocessed at 30, 60, and 90 days.",
+    "Data deletion requests are processed within 1 hour.",
+    "Data deletion requests are submitted for Individual profiles.",
+    "Data deletion requests submitted to Data Cloud are passed to all connected Salesforce clouds."
+   ],
+   "correct_index": [
+    2,
+    3
+   ],
+   "correct_ja": [
+    "データ削除リクエストは、Individual プロファイル向けに送信される",
+    "Data Cloud に送信されたデータ削除リクエストは、接続されているすべての Salesforce クラウドに伝えられる"
+   ],
+   "explanation_ja": "原本の解説は、削除リクエストは Individual(個人)のプロファイルを対象に送り、Data Cloud に送った削除リクエストは接続している他の Salesforce クラウドにも伝わるとしています。公式ドキュメントでも、指定する ID は Individual の ID にマッピングされた項目にある必要があるとされています。「30日・60日・90日後に再処理」や「1時間以内に処理」といった記述は、原本では誤りとされています。",
+   "note": "公式ドキュメント(Consent API)で確認できたのはCのみです(指定するIDは Individual.Individual Id にマッピングされた項目に存在する必要がある)。D「Data Cloud に送信された削除リクエストが接続されているすべての Salesforce クラウドに伝えられる」は確認できていません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 103,
+   "section": "segment",
+   "source": "v2026-02-28 Q55",
+   "question_ja": "コンサルタントは、人事データベースの従業員リストを取り込み、それをもとにセグメント化したいと考えています。コンサルタントは、このデータを取り込むとき、どのデータストリームのカテゴリを選ぶべきですか?",
+   "question_en": "A consultant is ingesting a list of employees from their human resources database that they want to segment on. Which data stream category should the consultant choose when ingesting this data?",
+   "options_ja": [
+    "プロファイルデータ",
+    "連絡先データ",
+    "その他のデータ",
+    "エンゲージメントデータ"
+   ],
+   "options_en": [
+    "Profile Data",
+    "Contact Data",
+    "Other Data",
+    "Engagement Data"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "その他のデータ"
+   ],
+   "explanation_ja": "原本の解説は、従業員データは顧客データ向けのプロファイルやエンゲージメントには当てはまらないため、「その他」を選ぶとしています。",
+   "note": "公式ヘルプでは、データストリームのカテゴリは Profile、Engagement、Other の3種類で、「Contact Data」というカテゴリは確認できません。従業員を「個人」として扱うか(Profile)どうかは要件次第で、公式な明記は確認できていません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 106,
+   "section": "space",
+   "source": "v2026-02-28 Q58",
+   "question_ja": "Data Cloud の新規ユーザーは、取り込まれたデータの個々の行を確認し、リンクされたデータモデルオブジェクトに正しくモデリングされたか検証するだけでよく、必要なら変更もできる必要があります。このユースケースに必要な最小の権限セットはどれですか?",
+   "question_en": "A new user of Data Cloud only needs to be able to review individual rows of ingested data and validate that it has been modeled successfully to its linked data model object. The user will also need to make changes if required. What is the minimum permission set needed to accommodate this use case?",
+   "options_ja": [
+    "Data Cloud for Marketing Specialist",
+    "Data Cloud Admin",
+    "Data Cloud User",
+    "Data Cloud for Marketing Data Aware Specialist"
+   ],
+   "options_en": [
+    "Data Cloud for Marketing Specialist",
+    "Data Cloud Admin",
+    "Data Cloud User",
+    "Data Cloud for Marketing Data Aware Specialist"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "Data Cloud for Marketing Data Aware Specialist"
+   ],
+   "explanation_ja": "Data Cloud User は「機能を閲覧する」権限セットで、データのマッピングやデータストリームなどを変更する権限は含まれません。Data Aware Specialist は、データのマッピング、データストリーム、ID解決、計算済みインサイトを担当する権限セットで、取り込んだデータが DMO に正しくモデリングされているかの検証と、必要な変更の両方に対応できます。Marketing Specialist はセグメント作成向け、Admin は全機能が使える権限セットで、この要件には広すぎます。原本の正解は Data Cloud User(C)でしたが、公式の説明に合わせて正解を D に変更しています。",
+   "note": "原本の正解は C(Data Cloud User)でしたが、Trailheadの標準権限セットの説明では、Data Cloud User は「機能を閲覧する」権限セット、Data Aware Specialist は「データのマッピング、データストリーム作成、ID解決、計算済みインサイト」を担当するとされています。「変更もできる」という要件を満たす最小の権限セットとして、正解を D にしています。データエクスプローラーでの行の閲覧に限った公式の権限表は確認できていません。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 110,
+   "section": "segment",
+   "source": "v2026-02-28 Q63",
+   "question_ja": "ユーザーが、新しくモデリングしたデータの提案値が、セグメントの作成時に表示されないことに気づきました。原因は何ですか?",
+   "question_en": "A user is not seeing suggested values from newly-modeled data when building a segment. What is causing this issue?",
+   "options_ja": [
+    "値の提案は、特定の属性の最初の50値に対してしか結果を返さない",
+    "値の提案は、直接属性でしか機能せず、関連属性では機能しない",
+    "値の提案には、最低でも Data Aware Specialist の権限が必要",
+    "値の提案がまだ処理中で、利用可能になるまで最大24時間かかる"
+   ],
+   "options_en": [
+    "Value suggestion will only return results for the first 50 values of a specific attribute,",
+    "Value suggestion can only work on direct attributes and not related attributes.",
+    "Value suggestion requires Data Aware Specialist permissions at a minimum.",
+    "Value suggestion is still processing and takes up to 24 hours to be available."
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "値の提案がまだ処理中で、利用可能になるまで最大24時間かかる"
+   ],
+   "explanation_ja": "値の提案は、DMO の項目ごとに有効にすると、提案値が表示されるまで最大24時間かかります。新しくモデリングしたデータで提案が出ない場合は、まだ処理中の可能性があります。",
+   "note": "「最大24時間・最大500属性」という記述は、公式ヘルプのページを確認できておらず、原本と第三者サイトの記述によります。第三者のブログにも、「反映までしばらく待つ」旨の記載があります。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 130,
+   "section": "idr",
+   "source": "v2025-08-07 Q30",
+   "question_ja": "Data Cloud コンサルタントは、ID解決で、メールアドレスや電話番号を共有しているが同一人物ではない個人が、一致してしまっていることを発見しました。この問題に対処するために、コンサルタントは何をすべきですか?",
+   "question_en": "A Data Cloud consultant recently discovered that their identity resolution process is matching individuals that share email addresses or phone numbers, but are not actually the same individual. What should the consultant do to address this issue?",
+   "options_ja": [
+    "既存のルールセットを、より厳しい一致条件に変更し、実行して結果を確認し、個人が正しく一致するまで調整する",
+    "一致ルールを減らした新しいルールセットを作成・実行し、2つのルールセットを比較して確認し、承認されたら新しいルールセットに移行する",
+    "より厳しい一致条件の新しいルールセットを作成・実行し、2つのルールセットを比較して確認し、承認されたら新しいルールセットに移行する",
+    "既存のルールセットを、より厳しい一致条件に変更し、2つのルールセットを比較して確認し、承認されたら新しいルールセットに移行する"
+   ],
+   "options_en": [
+    "Modify the existing ruleset with stricter matching criteria, run the ruleset and review the updated results, then adjust as needed until the individuals are matching correctly.",
+    "Create and run a new rules fewer matching rules, compare the two rulesets to review and verify the results, and then migrate to the new ruleset once approved.",
+    "Create and run a new ruleset with stricter matching criteria, compare the two rulesets to review and verify the results, and then migrate to the new ruleset once approved.",
+    "Modify the existing ruleset with stricter matching criteria, compare the two rulesets to review and verify the results, and then migrate to the new ruleset once approved."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "より厳しい一致条件の新しいルールセットを作成・実行し、2つのルールセットを比較して確認し、承認されたら新しいルールセットに移行する"
+   ],
+   "explanation_ja": "同一人物でない個人が一致してしまうのは、一致ルールが緩すぎるためです。より厳しい一致条件(属性の追加など)の新しいルールセットを作成・実行し、既存のルールセットと比較して結果を確認し、承認されたら移行するのが、安全な進め方です。既存のルールセットを直接変更すると、既存の統合プロファイルに影響して、データの欠落や不整合を招くおそれがあります。一致ルールを減らす方法は、一致が減りすぎるおそれがあります。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 132,
+   "section": "segment",
+   "source": "v2025-08-07 Q35",
+   "question_ja": "「City | Is Equal To | 'San Jose'」でセグメント条件を絞り込むと、どのような結果になりますか?",
+   "question_en": "What is the result of a segmentation criteria filtering on City | Is Equal To | 'San Jose'?",
+   "options_ja": [
+    "'San Jose'、'San Jose'、'san jose'、'san jose' を含む都市",
+    "'San Jose' または 'san jose' だけを含む都市",
+    "'San Jose' または 'San Jose' だけを含む都市",
+    "'San Jose' または 'san jose' だけを含む都市"
+   ],
+   "options_en": [
+    "Cities containing 'San Jose', 'San Jose', 'san jose', or 'san jose'",
+    "Cities only containing 'San Jose' or 'san jose'",
+    "Cities only containing 'San Jose' or 'San Jose'",
+    "Cities only containing 'San Jose' or 'san jose'"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "'San Jose' または 'san jose' だけを含む都市"
+   ],
+   "explanation_ja": "公式ヘルプ「Segmentation Operators」では、テキストの演算子は(「値あり」「値なし」を除いて)大文字小文字を区別しないとされています。そのため、「Is Equal To」では、'San Jose'、'san jose'、'SAN JOSE' のように、大文字小文字が違うだけの値は、同じものとして扱われます。原本の解説は「大文字小文字を区別する」としていますが、公式の説明とは食い違います。アクセント記号(San José と San Jose)を区別するかは、公式で確認できていません。また、この原本では、選択肢BとDが同じ文面になっていて(アクセント付きの文字が失われた可能性があります)、この問題の正解は確定できません。",
+   "note": "公式ヘルプで、テキストの演算子は大文字小文字を区別しないと確認できました。原本の解説(大文字小文字を区別する)は誤りです。アクセント記号を区別するかは確認できていません(原本のコメントは区別すると指摘)。原本では選択肢BとDが同じ文面になっていて、アクセント付きの文字が失われた可能性があるため、正解は D のまま保持して、要確認としています。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 141,
+   "section": "segment",
+   "source": "v2025-08-07 Q57",
+   "question_ja": "実装プロジェクトの中で、コンサルタントは、顧客のすべてのデータストリームの取り込みを完了しました。そのデータをセグメント化して活用する前に、追加で必要な設定はどれですか?",
+   "question_en": "During an implementation project, a consultant completed ingestion of all data streams for their customer. Prior to segmenting and acting on that data, which additional configuration is required?",
+   "options_ja": [
+    "データのアクティベーション",
+    "計算済みインサイト",
+    "データマッピング",
+    "ID解決"
+   ],
+   "options_en": [
+    "Data Activation",
+    "Calculated Insights",
+    "Data Mapping",
+    "Identity Resolution"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "ID解決"
+   ],
+   "explanation_ja": "原本の解説は、取り込み後、セグメント化して活用する前に必要な設定はID解決だとしています。ただし、公式のTrailheadでは、「Segment On」の一般的な選択肢は Individual(1つのデータソースの個人)と Unified Individual(ID解決で統合した個人)で、Unified Individual は推奨されているものの、必須とはされていません。また、セグメントの属性ライブラリは、取り込んでマッピングしたデータストリームをもとにしています。そのため、データマッピング(C)が必要と考えられますが、どちらが試験の正解かは確定できません。",
+   "note": "公式のTrailheadで、Segment On は Individual と Unified Individual の2つが一般的で、Unified Individual が推奨(必須ではない)とされています。属性ライブラリは、取り込んでマッピングしたデータストリームをもとにしています。そのため、ID解決は必須ではなく、データマッピング(C)が必要と考えられますが、原本は D(ID解決)を正解としていて、どちらが試験の正解かは確定できません。原本の正解は D のまま保持して、要確認としています。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 295,
+   "section": "intro",
+   "source": "v2025-03-20 Q31",
+   "question_ja": "Data Cloud は、顧客データの高可用性と耐障害性をどのように確保していますか?",
+   "question_en": "How does Data Cloud ensure high availability and fault tolerance for customer data?",
+   "options_ja": [
+    "データを複数のリージョンとデータセンターに分散する",
+    "堅牢なバックアップを持つデータセンターを使う",
+    "自動のデータ復旧手順を実装する",
+    "データへのアクセスを必要最小限の担当者に限定する"
+   ],
+   "options_en": [
+    "By distributing data across multiple regions and data centers",
+    "By using a data center with robust backups",
+    "By Implementing automatic data recovery procedures",
+    "By limiting data access to essential personnel"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "データを複数のリージョンとデータセンターに分散する"
+   ],
+   "explanation_ja": "高可用性は止まらずに使い続けられること、耐障害性は一部が壊れても動き続けられることです。データを複数のリージョンやデータセンターに分散して持つことで、1か所に障害が起きてもほかの場所で処理を続けられます。バックアップや復旧手順は障害後に戻すための備え、アクセス制限はセキュリティの対策で、どちらも高可用性・耐障害性の直接の答えではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 296,
+   "section": "segment",
+   "source": "v2025-03-20 Q33",
+   "question_ja": "Cloud Kicks は、過去7日以内に Web サイトを訪問した顧客のセグメントを作れるようにしたいと考えています。エンゲージメントの日付項目に使う絞り込み演算子として適切なものはどれですか?",
+   "question_en": "Cloud Kicks wants to be able to build a segment of customers who have visited its website within the previous 7 days. Which filter operator on the Engagement Date field fits this use case?",
+   "options_ja": [
+    "次の範囲内(Is Between)",
+    "次の日数より前(Greater than Last Number of)",
+    "次の N 日間(Next Number of Days)",
+    "過去 N 日間(Last Number of Days)"
+   ],
+   "options_en": [
+    "Is Between",
+    "Greater than Last Number of",
+    "Next Number of Days",
+    "Last Number of Days"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "過去 N 日間(Last Number of Days)"
+   ],
+   "explanation_ja": "「過去 N 日間(Last Number of Days)」は、今日を基準にさかのぼる相対日付の条件です。7 を指定すれば、毎日自動で「直近7日間」に更新されるので、日付を固定する「次の範囲内」より、このような動的なセグメントに向いています。「次の N 日間」は未来の日付を対象にする演算子です。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 298,
+   "section": "idr",
+   "source": "v2025-03-20 Q41",
+   "question_ja": "Northern Trail Outfitters は、Data Cloud で個人を統合しています。統合プロファイルのデータを検証するために、コンサルタントが使える機能はどれですか?(3つ選択)",
+   "question_en": "Northern Trail Outfitters unifies individuals in its Data Cloud instance. Which three features can the consultant use to validate the data on a unified profile? Choose 3 answers",
+   "options_ja": [
+    "ID 解決",
+    "クエリ API",
+    "データエクスプローラー",
+    "プロファイルエクスプローラー",
+    "データアクション"
+   ],
+   "options_en": [
+    "Identity Resolution",
+    "Query API",
+    "Data Explorer",
+    "Profile Explorer",
+    "Data Actions"
+   ],
+   "correct_index": [
+    0,
+    2,
+    3
+   ],
+   "correct_ja": [
+    "ID 解決",
+    "データエクスプローラー",
+    "プロファイルエクスプローラー"
+   ],
+   "explanation_ja": "原本の正解は「ID 解決」「データエクスプローラー」「プロファイルエクスプローラー」です。ID 解決の画面ではルールセットと処理結果(統合率など)を確認でき、データエクスプローラーでは統合個人などのレコードを一覧で、プロファイルエクスプローラーでは1人分の統合プロファイルと元のソースレコードを確認できます。データアクションはイベントを外部に送る機能で、検証には使いません。なお新しい版の問題(2つの組み合わせを選ぶ形式)では、「プロファイルエクスプローラーとクエリエディタ」が正解になっています。",
+   "note": "新しい版(v2026-09-21 Q37)では「プロファイルエクスプローラーとクエリエディタ」が正解になっており、原本の正解(ID 解決・データエクスプローラー・プロファイルエクスプローラー)と食い違います。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 301,
+   "section": "intro",
+   "source": "v2025-03-20 Q48",
+   "question_ja": "Data Cloud は、データのプライバシーとセキュリティをどのように確保していますか?",
+   "question_en": "How does Data Cloud ensure data privacy and security?",
+   "options_ja": [
+    "保存時と通信時のデータを暗号化する",
+    "同意の参照を強制・管理する",
+    "オフサイトのサーバーにデータを安全に保管する",
+    "データへのアクセスを権限のある管理者に限定する"
+   ],
+   "options_en": [
+    "By encrypting data at rest and in transit",
+    "By enforcing and controlling consent references",
+    "By securely storing data in an offsite server",
+    "By limiting data access to authorized admins"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "保存時と通信時のデータを暗号化する"
+   ],
+   "explanation_ja": "保存されているデータ(at rest)と、やり取りされているデータ(in transit)の両方を暗号化することで、不正に読み取られても中身が分からないように守ります。同意の管理はプライバシー対応の一部、アクセス制限は運用上の対策ですが、プラットフォームとしてのデータ保護の基本は暗号化です。",
+   "note": null,
+   "verification": "原本どおり"
+  }
+ ]
+}

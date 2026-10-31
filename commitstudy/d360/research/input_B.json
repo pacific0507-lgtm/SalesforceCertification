@@ -1,0 +1,749 @@
+{
+ "sections": {
+  "activation": {
+   "title": "Ch6·2アクティベーションとターゲットActivation / Activation Target",
+   "current_text": [
+    "セグメントを、外部のプラットフォームに公開(配信)する機能です。アクティベーションターゲットは、送り先に接続するための認証情報を持っています。",
+    "たとえるなら作った抽出リストを、配送業者(メール配信システムや広告媒体)に渡す作業です。「ターゲット」は、その業者との契約書にあたります。",
+    "最初の公開は必ず全件。全件→増分には変えられますが、増分→全件には戻せません。",
+    "先にアクティベーションターゲットを作る(Marketing Cloud Engagement、Amazon S3、広告媒体、SFTP、Google Cloud Storage、Microsoft Azure Storageなど)",
+    "セグメントの画面からアクティベーションを新規作成し、ターゲットを選ぶ",
+    "対象(統合個人か個人か)を選び、配信する連絡先(メールなど)と、複数あるときのソース優先順位を決める",
+    "追加で送る属性を選び、更新タイプ(全件か増分)を決めて保存し、公開する",
+    "全件更新セグメントの全レコードを、毎回送る",
+    "増分更新前回成功時から、追加、更新、削除されたレコードだけ送る。Marketing Cloud Engagement、Amazon S3、SFTPなどでは、増分が既定",
+    "試験ポイント",
+    "最初の公開は、更新タイプにかかわらず必ず全件更新です。設定を変えたときも全件更新が走ります。",
+    "全件から増分には切り替えられますが、増分から全件には戻せません。",
+    "アクティベーションのオーディエンスDMOの保持期間(TTL)は30日です。増分の更新間隔が30日以上空くと結果が不正確になるので、そうした運用では全件更新を使います。",
+    "Marketing Cloud Engagementへは、データエクステンションとして届き、サブスクライバーキーを主キーにして更新されます。更新タイプを切り替えると新しいデータエクステンションができ、ジャーニーのつなぎ直しが必要です。",
+    "統合個人の単位で配信すると、複数の個人プロフィールの属性を1行にまとめられます。"
+   ]
+  },
+  "action": {
+   "title": "Ch6·3データアクションData Action",
+   "current_text": [
+    "DMOや計算済みインサイトの変化を見張り、条件を満たしたときに、ほぼリアルタイムで外部にイベントを送る機能です。",
+    "たとえるなら火災報知器です。「煙が出たら、すぐ管理室に通報」のように、条件を満たした瞬間に知らせます。セグメントのような「リストを定期的に作る」仕組みとは別物です。",
+    "リストを定期的に作るセグメントとは別物。条件を満たした瞬間に、ほぼリアルタイムで知らせます。",
+    "先にデータアクションターゲットを作る。送り先は、Salesforceプラットフォームイベント、Webhook、Marketing Cloud Engagementの3種類",
+    "データアクションを新規作成し、見張るオブジェクト(DMO、計算済みインサイト、ストリーミングインサイト)を選ぶ",
+    "イベントを送る条件を決める",
+    "送るペイロード(中身)を決める。必要ならデータグラフの属性で情報を足す",
+    "ターゲットを選んで保存する",
+    "試験ポイント",
+    "プラットフォームイベントへは、標準イベントDataObjectDataChgEventで送られます。",
+    "Webhookでは、Salesforceが生成する秘密鍵で、メッセージの改ざんを防げます。",
+    "連携の例は、Flowでの自動化、MuleSoft、サーバーレス関数の起動、他のSaaSとの連携です。",
+    "リアルタイムの応答が必要なときは、リアルタイムのデータアクション。文章データ(非構造化データ)に反応させるときは、ベクトル検索のデータアクションを使います。"
+   ]
+  },
+  "share": {
+   "title": "Ch6·4データシェアと、その他の出口Data Share ほか",
+   "current_text": [
+    "セグメントやデータアクション以外にも、Data 360のデータを活用する出口があります。",
+    "セグメント・データアクション以外の出口。名前と用途をセットで覚えましょう。",
+    "データシェア(Data Share): Snowflakeなどの外部システムに、DLO、DMO、計算済みインサイトオブジェクトを、コピーなしで共有します。外部からほぼリアルタイムで使えます。",
+    "エンリッチメント: 関連リストエンリッチメントと、項目コピーエンリッチメントで、Data 360のデータをSalesforceのレコードページに表示します。",
+    "クリーンルーム: 生データを見せずに、他社と安全にオーディエンスデータを共同分析します。",
+    "フロー連携: Flow Builderで、取り込み、ID解決、計算済みインサイト、セグメント、アクティベーションの処理を順番につなげます。例: 取り込みが終わったらインサイトを更新し、続けてセグメントを実行。"
+   ]
+  },
+  "si": {
+   "title": "Ch5·2ストリーミングインサイトStreaming Insight",
+   "current_text": [
+    "Web SDKやモバイルSDKなどのリアルタイムのデータを、直近の時間枠で集計する機能です。ほぼリアルタイムで、データアクションを動かすために使います。",
+    "たとえるなら「この10分間にカートに商品を入れた回数」を数え続けるカウンターです。夜に作る成績表(計算済みインサイト)とは違い、今の動きを見ます。",
+    "ストリーミングインサイトは「いまのカウンター」。使えるのはデータアクションだけです。",
+    "ストリーミングインサイトタブで新規作成し、SQLで時間枠と集計を定義して有効化します。",
+    "集計の時間枠は、最小1分から最大24時間",
+    "ディメンションは最大10、メジャーは最大5",
+    "6つ以上作成できますが、実行されるのは最初の5つだけ",
+    "元になるDMOは、Web SDK、モバイルSDK、Marketing Cloud Personalization、Ingestion APIなど、ストリーミング系のソースから作られたもの",
+    "処理バッチ(1〜24時間ごと)ほぼリアルタイム(時間枠)",
+    "対象データDMO全般ストリーミング系のエンゲージメントデータ",
+    "セグメント条件使える使えない",
+    "アクティベーション使える使えない",
+    "データアクションきっかけにできるきっかけにできる",
+    "試験ポイント",
+    "ストリーミングインサイトは、セグメントとアクティベーションでは使えません。使い道は、データアクションです。"
+   ]
+  },
+  "ci": {
+   "title": "Ch5·1計算済みインサイトCalculated Insight",
+   "current_text": [
+    "DMOのデータをSQLやビルダーで集計して、顧客ごとなどの指標(生涯購入額、購入回数など)を、あらかじめ計算しておく機能です。結果は、セグメントの条件や、データアクションのきっかけに使えます。",
+    "たとえるなら顧客ごとの成績表を、夜のうちに作っておく作業です。セグメントを作るときに、毎回ゼロから集計しなくて済みます。",
+    "メジャー=「いくら・何回」、ディメンション=「誰ごと」。計算結果はセグメントやデータアクションで使えます。",
+    "メジャー: 集計関数でくくった数値(SUM、COUNT、AVGなど)。「いくら」「何回」にあたります。",
+    "ディメンション: 集計の切り口。「誰ごとに」「どの商品ごとに」にあたります。SELECTにあって集計関数に入っていない項目は、自動的にディメンションとみなされ、GROUP BYに書く必要があります。",
+    "計算済みインサイトタブで新規作成し、データスペースを選ぶ(使えるオブジェクトは、そのデータスペースにあるものだけ)",
+    "作り方を選ぶ。ビルダーならオブジェクトを選び、集計ノードとメジャーを足して保存する。SQLならSQLを書いて有効化する",
+    "スケジュールを選んで有効化する。1、6、12、24時間ごと、または「スケジュールなし」(一覧から手動で公開)が選べる",
+    "total_amount__cがメジャー、customer_id__cがディメンションです。結果は計算済みインサイトオブジェクト(CIO)として保存され、セグメントや他のインサイトから参照できます。",
+    "メジャーが最低1つ必要集計関数がないクエリは作れない",
+    "集計関数に入っていない項目は、GROUP BYに入れる入れ忘れるとエラー",
+    "ディメンションの別名は、元の項目名と変えるId__c as Id__cはエラー。Id__c as customer_id__cならOK",
+    "集計の中で集計はできないSUM(AVG(x))はNG",
+    "最上位のSELECTで、DISTINCTとORDER BYは使えない並べ替えは、取り出す側(セグメントなど)で行う",
+    "WHEREに集計式や別名は使えない集計結果での絞り込みは、CASE WHENで表現する",
+    "DMO名は大文字小文字を区別するデータモデルタブの「オブジェクトAPI名」どおりに書く",
+    "通貨項目はTRY_CONVERT_CURRENCYを使うSELECT句で通貨換算を指定する",
+    "試験ポイント",
+    "計算済みインサイトはバッチ処理で、そのDMOを単位に集計します。",
+    "前回の実行が終わらないまま次の実行時刻が来ると、次の実行はスキップされます。",
+    "集計を含むCASEやRANKで作ったメジャーは「集計不可」になり、クエリ時にはすべてのディメンションを指定する必要があります。"
+   ]
+  }
+ },
+ "questions": [
+  {
+   "id": 16,
+   "section": "activation",
+   "source": "v2026-09-21 Q16",
+   "question_ja": "リードアーキテクトは、カスタム Web ポータルに、統合された顧客の最近の購入履歴(エンゲージメントデータ)と、計算済みのロイヤルティスコアを表示するリアルタイムの「カスタマーヘルスダッシュボード」を構築する必要があります。この要件に最も適した API 戦略はどれですか?",
+   "question_en": "A lead architect needs to build a real-time Customer Health Dashboard in a custom web portal that displays a unified customer's recent purchase history (Engagement data) and their calculated loyalty score. Which API strategy is most appropriate to meet this requirement?",
+   "options_ja": [
+    "メタデータ API で統合プロファイルのスキーマを取得し、その後 Individual オブジェクトに標準の REST GET をコールする",
+    "クエリ API で SQL/SOQL ベースのリクエストを送り、データを結合して包括的なビューを取得する",
+    "プロファイル API を使う。統合プロファイルの属性と計算済みインサイトの高速な取得に最適化されているため",
+    "取り込み API でダッシュボード要件をデータストリームにプッシュし、Webhook をトリガーする"
+   ],
+   "options_en": [
+    "Use the Metadata API to retrieve the schema of the unified profile, then use a standard REST GET call on the Individual object.",
+    "Use the Query API to send an SQL/SOQL-based request to join data to retrieve a comprehensive view.",
+    "Use the Profile API because it is optimized for high-speed retrieval of unified profile attributes and calculated insights.",
+    "Use the Ingestion API to push the dashboard requirements into a data stream to trigger a webhook."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "プロファイル API を使う。統合プロファイルの属性と計算済みインサイトの高速な取得に最適化されているため"
+   ],
+   "explanation_ja": "プロファイル API は、統合プロファイルの属性・エンゲージメント・計算済みインサイトを、顧客単位で高速に参照するための API で、Web アプリへの組み込みに向いています。クエリ API は任意の SQL を実行する汎用的な手段で、画面表示向けのリアルタイム参照には最適化されていません。取り込み API は「入れる」ための API です。 ただし公式では、Profile API はエンゲージメントカテゴリの DMO に対応しないとされているため、この解説は見直しが必要です。",
+   "note": "公式の Profile API リファレンスでは、Profile API は「プロファイルカテゴリの DMO のみ対応し、エンゲージメントカテゴリの DMO は対応しない」とされています。一方で、統合プロファイルと計算済みインサイトの取得に最適化されており、インデックス列での絞り込みで高速に応答します。問題文の「最近の購入履歴(エンゲージメントデータ)」を Profile API で取得できるかは確認できず、原本の解説(エンゲージメントも参照できる)と食い違います。原本の正解は C のまま保持しています。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 39,
+   "section": "share",
+   "source": "v2026-09-21 Q39",
+   "question_ja": "世界的な飲料会社(データプロバイダー)とスポーツメディアネットワーク(データコンシューマー)が、Data 360 クリーンルームで協力し、価値の高い提携機会を探っています。両者は、セグメントオーバーラップのユースケーステンプレートを使い、生の個人を特定できる情報(PII)を公開せずに、飲料会社の「プレミアムロイヤルティ会員」のうち、スポーツネットワークのアクティブな購読者が何人いるかを調べます。セグメントオーバーラップテンプレートを構成する際、最終出力を「リージョン」や「年齢層」などの属性で絞り込めるようにするには、どの要件を満たす必要がありますか?",
+   "question_en": "A global beverage company (data provider) and a sports media network (data consumer) are collaborating in a Data 360 clean room to identify high-value partnership opportunities. The parties decide to use the segment overlap use case template to determine how many of the beverage company's Premium Loyalty Members are also active subscribers of the sports network, without exposing raw personally identifiable information (PII). When configuring the segment overlap template, which requirement must be met to allow the results to be filtered by specific demographics like Region or Age Group in the final output?",
+   "options_ja": [
+    "リージョンと年齢層の項目を、両組織のデータモデルオブジェクト(DMO)で外部キーに設定する必要がある",
+    "両者がクリーンルームに参加する前に、リージョンと年齢層のデータを共有の計算済みインサイトにマッピングする必要がある",
+    "コンサルタントが、2つの検索インデックス DMO の間に多対多のリレーションシップを構成する必要がある",
+    "データプロバイダーが、これらの追加項目を、ユースケーステンプレートの設定内でセグメンテーション属性として含める必要がある"
+   ],
+   "options_en": [
+    "The Region and Age Group fields must be set as foreign keys in the data model objects (DMOs) of both organizations.",
+    "Both parties must map their Region and Age Group data to a shared calculated insight before joining the clean room.",
+    "The Data 360 Consultant must configure a many-to-many relationship between the two search index data model objects (DMOs).",
+    "The data provider must include these additional fields as segmentation attributes within the use case template configuration."
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "データプロバイダーが、これらの追加項目を、ユースケーステンプレートの設定内でセグメンテーション属性として含める必要がある"
+   ],
+   "explanation_ja": "クリーンルームの結果を属性で絞り込むには、データプロバイダー側が、ユースケーステンプレートの設定でその項目を「セグメンテーション属性」として含めておく必要があります。外部キーや多対多のリレーション、共有インサイトの作成は要件ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 59,
+   "section": "activation",
+   "source": "v2026-02-28 Q7",
+   "question_ja": "セグメンテーションやアクティベーションを行うとき、データの公開と更新にはどのタイムゾーンが使われますか?",
+   "question_en": "When performing segmentation or activation, which time zone is used to publish and refresh data?",
+   "options_ja": [
+    "作成時にアクティビティで指定されたタイムゾーン",
+    "アクティビティを作成するユーザーのタイムゾーン",
+    "Data Cloud 管理者ユーザーのタイムゾーン",
+    "Salesforce Data Cloud 組織に設定されたタイムゾーン"
+   ],
+   "options_en": [
+    "Time zone specified on the activity at the time of creation",
+    "Time zone of the user creating the activity",
+    "Time zone of the Data Cloud Admin user",
+    "Time zone set by the Salesforce Data Cloud org"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "アクティビティを作成するユーザーのタイムゾーン"
+   ],
+   "explanation_ja": "公式ヘルプ「Segment Time Zone」では、セグメントの公開スケジュールは、ログインしているユーザーのタイムゾーンで解釈・表示されます。組織のタイムゾーンは、日付演算子(直近N日など)などのセグメンテーションの動作に適用されますが、公開や更新のスケジュールそのものはユーザーのタイムゾーンが基準です。公式で確認できた Q66 とも整合します。原本の正解は D(組織のタイムゾーン)でしたが、公式の説明に合わせて B に変更しています。",
+   "note": "原本の正解は D でしたが、公式の説明に合わせて B に変更しました。公式ヘルプ「Segment Time Zone」で、公開スケジュールはユーザーのタイムゾーンで解釈され、組織のタイムゾーンは日付演算子などに適用されると説明されています。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 60,
+   "section": "ci",
+   "source": "v2026-02-28 Q8 / v2026-02-28 Q60",
+   "question_ja": "Northern Trail Outfitters は、毎日新しい顧客データを Amazon S3 バケットにアップロードし、Data Cloud に取り込んでいます。これをもとに、直近30日間の顧客ごとの合計支出を示す計算済みインサイトを作成しています。取り込んだばかりのデータを、どのセグメントでも使える状態にするには、各処理をどの順序で実行すべきですか?",
+   "question_en": "Northern Trail Outfitters uploads new customer data to an Amazon S3 Bucket on a daily basis to be ingested in Data Cloud. Based on this, a calculated insight is created that shows the total spend per customer in the last 30 days. In which sequence should each process be run to ensure that freshly imported data is ready and available to use for any segment?",
+   "options_ja": [
+    "データストリームの更新 > ID解決 > 計算済みインサイト",
+    "データストリームの更新 > 計算済みインサイト > ID解決",
+    "計算済みインサイト > データストリームの更新 > ID解決",
+    "ID解決 > データストリームの更新 > 計算済みインサイト"
+   ],
+   "options_en": [
+    "Refresh Data Stream > Identity Resolution > Calculated Insight",
+    "Refresh Data Stream > Calculated Insight > Identity Resolution",
+    "Calculated Insight > Refresh Data Stream > Identity Resolution",
+    "Identity Resolution > Refresh Data Stream > Calculated Insight"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "データストリームの更新 > ID解決 > 計算済みインサイト"
+   ],
+   "explanation_ja": "データストリームを更新して最新データを取り込み、次にID解決で統合プロファイルを更新し、最後に統合プロファイルをもとにした計算済みインサイトを計算します。計算済みインサイトは統合後のプロファイル単位で集計するため、ID解決より前には実行できません。",
+   "note": "Trailheadの「インサイトを作る」プロジェクトで、ID解決のルールセットが完了していることを確認してから、ID解決で作られる Unified Individual を入力に計算済みインサイトを作る手順が説明されています。同じ原本のQ8とQ60は重複です。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 66,
+   "section": "activation",
+   "source": "v2026-02-28 Q14",
+   "question_ja": "ある顧客では、異なるタイムゾーンで働く複数のチームメンバーがセグメントのオーディエンスを作成しています。1人は本社勤務で、組織のタイムゾーン設定と一致する太平洋標準時です。もう1人はリモート勤務で、東部標準時です。セグメントとアクティベーションのスケジュール領域で、自分のホームタイムゾーンが表示されるのはどのユーザーですか?",
+   "question_en": "A customer has multiple team members who create segment audiences that work in different time zones. One team member works at the home office in the Pacific time zone, that matches the org Time Zone setting. Another team member works remotely in the Eastern time zone. Which user will see their home time zone in the segment and activation schedule areas?",
+   "options_ja": [
+    "太平洋標準時のチームメンバー",
+    "東部標準時のチームメンバー",
+    "どちらのチームメンバーでもない。Data Cloud はすべてのスケジュールを GMT で表示する",
+    "両方のメンバー。Data Cloud は、セグメントとアクティベーションのスケジュールを、ログインしているユーザーのタイムゾーンに合わせて調整する"
+   ],
+   "options_en": [
+    "The team member in the Pacific time zone.",
+    "The team member in the Eastern time zone.",
+    "Neither team member; Data Cloud shows all schedules in GMT.",
+    "Both team members; Data Cloud adjusts the segment and activation schedules to the time zone of the logged-in user"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "両方のメンバー。Data Cloud は、セグメントとアクティベーションのスケジュールを、ログインしているユーザーのタイムゾーンに合わせて調整する"
+   ],
+   "explanation_ja": "公式ヘルプのとおり、セグメントの公開スケジュールは、ログインしているユーザーのタイムゾーンで解釈・表示されます。そのため、両方のメンバーが、それぞれ自分のタイムゾーンでスケジュールを見ます。GMT固定の表示ではありません。",
+   "note": null,
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 72,
+   "section": "ci",
+   "source": "v2026-02-28 Q20",
+   "question_ja": "顧客は、顧客生涯価値に関する計算済みインサイトを持っています。この計算済みインサイトを変更する必要がある場合、コンサルタントは何に注意する必要がありますか?",
+   "question_en": "A customer has a calculated insight about lifetime value. What does the consultant need to be aware of if the calculated insight needs to be modified?",
+   "options_ja": [
+    "新しいディメンションを追加できる",
+    "既存のディメンションを削除できる",
+    "既存の基準(メジャー)を削除できる",
+    "新しい基準(メジャー)を追加できる"
+   ],
+   "options_en": [
+    "New dimensions can be added.",
+    "Existing dimensions can be removed.",
+    "Existing measures can be removed.",
+    "New measures can be added."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "新しいディメンションを追加できる"
+   ],
+   "explanation_ja": "原本の解説は、計算済みインサイトを変更するときの制約として、既存のディメンションは削除できず(削除するとインサイトの実行が失敗する)、新しいディメンションは追加できる、と説明しています。基準(メジャー)は追加も削除もできるとしています。ただし、解説の途中に「したがって正解はB」という誤記があり、公式ドキュメントでも確認できていないため、変更の可否は公式で確認してください。",
+   "note": "原本の解説は、「既存のディメンションは削除できない」「新しいディメンションは追加できる」と説明しながら、途中で「したがって正解はB」と書いており、正解Aと矛盾しています(誤記の可能性が高い)。ここでは原本の正解Aを採用しています。公式ドキュメントでの確認はできていません。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 73,
+   "section": "activation",
+   "source": "v2026-02-28 Q21",
+   "question_ja": "顧客は、Data Cloud から Amazon S3 クラウドファイルストレージのバケットにデータをアクティベーションしようとしています。コンサルタントは、Data Cloud から S3 バケットに接続するために、どの認証方式を推奨すべきですか?",
+   "question_en": "A customer is trying to activate data from Data Cloud to an Amazon S3 Cloud File Storage Bucket. Which authentication type should the consultant recommend to connect to the S3 bucket from Data Cloud?",
+   "options_ja": [
+    "S3 の暗号化されたユーザー名とパスワードを使う",
+    "S3 の秘密鍵証明書を使う",
+    "S3 で生成した JWT トークンを使う",
+    "S3 のアクセスキーとシークレットキーを使う"
+   ],
+   "options_en": [
+    "Use an S3 Encrypted Username and Password.",
+    "Use an S3 Private Key Certificate.",
+    "Use a JWT Token generated on S3.",
+    "Use an S3 Access Key and Secret Key."
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "S3 のアクセスキーとシークレットキーを使う"
+   ],
+   "explanation_ja": "原本には解説がありません。S3 への接続は、IAM ユーザーなどのアクセスキーとシークレットキーで認証するのが一般的です。ユーザー名とパスワードや、S3 で生成した JWT トークンは、S3 の標準的な認証方式ではありません。",
+   "note": "公式の Amazon S3 接続の設定手順で、認証方式が「アクセスキーとシークレット」または「IdP(IAM ロール)」であることを確認しました。このページは取り込み用の接続の説明で、アクティベーションターゲット固有のページは確認できていません。選択肢に IdP はないため、答えは D のままです。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 76,
+   "section": "activation",
+   "source": "v2026-02-28 Q24",
+   "question_ja": "コンサルタントは、Amazon S3 にアクティベーションされたキャンペーンを、顧客の宛先システムと統合しています。宛先システムがセグメントに関するメタデータを見つけて処理するには、S3 上のどのファイルにその情報が入っていますか?",
+   "question_en": "A consultant is integrating an Amazon S3 activated campaign with the customer's destination system. In order for the destination system to find the metadata about the segment, which file on the S3 will contain this information for processing?",
+   "options_ja": [
+    ".txt ファイル",
+    "json ファイル",
+    ".csv ファイル",
+    ".zip ファイル"
+   ],
+   "options_en": [
+    "The .txt file",
+    "The json file",
+    "The .csv file",
+    "The .zip file"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "json ファイル"
+   ],
+   "explanation_ja": "ファイルストレージ(S3 など)へのセグメントのアクティベーションでは、データ本体のファイルに加えて、セグメントのメタデータを記録した JSON ファイル(segment_metadata.json など)が出力されます。宛先システムはこの JSON ファイルを見て、セグメントの情報を把握できます。",
+   "note": "公式ヘルプの「ファイルストレージのアクティベーションのファイル名の例」に、セグメントメタデータJSONファイルの説明があります(S3(Legacy)では segment_metadata.json)。メタデータの項目の詳細までは確認していません。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 84,
+   "section": "activation",
+   "source": "v2026-02-28 Q34",
+   "question_ja": "ユーザーは、Data Cloud でセグメントを作成・管理・アクティベーションするための権限が必要ですが、レポートの作成やデータソースの管理はできないようにする必要があります。コンサルタントはどの権限セットを割り当てるべきですか?",
+   "question_en": "A user needs permissions to access Data Cloud to create, manage, and activate segments, However, the user should not be allowed to created reports or manage data sources. Which permission set should the consultant assign?",
+   "options_ja": [
+    "Data Cloud Marketing Specialist",
+    "Data Cloud Marketing Manager",
+    "Data Cloud Data Aware Specialist",
+    "Data Cloud User"
+   ],
+   "options_en": [
+    "Data Cloud Marketing Specialist",
+    "Data Cloud Marketing Manager",
+    "Data Cloud Data Aware Specialist",
+    "Data Cloud user"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "Data Cloud Marketing Specialist"
+   ],
+   "explanation_ja": "Data Cloud Marketing Specialist は、マーケティング施策のためのセグメントを作成する権限セットで、データソースの管理(データ取り込みやマッピング)は含みません。Marketing Manager は、セグメント戦略全体、アクティベーションターゲット、アクティベーションまで管理する、より広い権限セットです。Data Aware Specialist はデータのマッピング、データストリーム、ID解決、計算済みインサイトを担当し、User は機能の閲覧向けです。",
+   "note": "Trailheadでは、旧名の Activation Specialist が「セグメントとアクティベーションを作成する」、Activation Manager が「セグメンテーション戦略全体とアクティベーションターゲット・アクティベーションを管理する」、Data Aware Specialist が「データのマッピング、データストリーム、ID解決、計算済みインサイト」、User が「機能を閲覧する」と説明されています。「レポートを作成できない」点を直接示す公式の記述は確認できていません。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 85,
+   "section": "ci",
+   "source": "v2026-02-28 Q36",
+   "question_ja": "コンサルタントは、セグメントのエラーのトラブルシューティングをしています。入れ子セグメントの代わりに計算済みインサイトを使うことで解決できるエラーメッセージはどれですか?",
+   "question_en": "A consultant is troubleshooting a segment error. Which error message is solved by using calculated insights instead of nested segments?",
+   "options_ja": [
+    "セグメントが複雑すぎます",
+    "複数の母集団カウントが進行中です",
+    "セグメントの母集団カウントに失敗しました",
+    "セグメントを公開できません"
+   ],
+   "options_en": [
+    "Segment is too complex.",
+    "Multiple population counts are in progress.",
+    "Segment population count failed.",
+    "Segment can't be published."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "セグメントが複雑すぎます"
+   ],
+   "explanation_ja": "入れ子セグメントを重ねすぎると、セグメントの条件が複雑になりすぎてエラーになることがあります。複雑なロジックを計算済みインサイトに事前に集計しておけば、セグメントの条件を単純にできます。",
+   "note": "第三者のまとめに「複雑すぎる場合は、多数の属性や入れ子の演算子の代わりに計算済みインサイトを使う」とありますが、公式ページは確認できていません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 88,
+   "section": "activation",
+   "source": "v2026-02-28 Q39",
+   "question_ja": "ある会社は、アクティベーションで関連属性を含めることで、メールにパーソナライズ項目を入れたいと考えています。購入した商品名の値の大文字小文字が、Marketing Cloud Engagement で一貫していないことに気づきました(例: Jacket、jacket、shoes、SHOES)。会社は、すべての商品名をプロパーケース(先頭のみ大文字)に統一し、null 値をデフォルト値に置き換えたいと考えています。コンサルタントは Data Cloud 内でこの要件をどう満たすべきですか?",
+   "question_en": "A company wants to include certain personalized fields in an email by including related attributes during the activation in Data Cloud. It notices that some values, such as purchased product names, do not have consistent casing in Marketing Cloud Engagement. For example, purchased product names appear as follows: Jacket, jacket, shoes, SHOES. The company wants to normalize all names to proper case and replace any null values with a default value. How should a consultant fulfill this requirement within Data Cloud?",
+   "options_ja": [
+    "ストリーミングインサイトとデータアクションを作成する",
+    "データストリームの取り込み時に数式項目を使う",
+    "データストリームごとに一括処理データ変換を1つずつ作成する",
+    "新しい DLO を作成する一括処理データ変換を1つ作成する"
+   ],
+   "options_en": [
+    "Create a streaming insight with a data action.",
+    "Use formula fields when ingesting at the data stream level.",
+    "Create one batch data transform per data stream.",
+    "Create one batch data transform that creates a new DLO."
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "データストリームの取り込み時に数式項目を使う"
+   ],
+   "explanation_ja": "行単位の文字列操作(プロパーケース変換と null の置換)は、データストリームの数式項目で、取り込み時に行えます。数式項目は、取り込んだ値から行単位で項目を導出する軽い処理に向いています(Q48)。一括処理データ変換は、複数 DLO の結合や集計など、複雑な処理向けです。原本の正解は D(一括処理データ変換)でしたが、公式の説明に合わせて B に変更しています。",
+   "note": "原本の正解は D でしたが、公式の説明に合わせて B に変更しました。公式にこの問題と同じシナリオの記述があるわけではなく、公式の使い分け(数式項目は行単位の軽い処理、一括処理データ変換は複雑な処理)からの判断です。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 92,
+   "section": "activation",
+   "source": "v2026-02-28 Q43",
+   "question_ja": "Data Cloud を使うある金融会社は、ユーザーが顧客の関わるさまざまなチャネルをすべて一覧できるように、簡単にしたいと考えています。コンサルタントはどの機能を推奨すべきですか?",
+   "question_en": "A finance company that uses Data Cloud wants to simplify how its users can view all the various channels a customer engages with Which feature should the consultant recommend to meet this requirement?",
+   "options_ja": [
+    "Data Cloud を Tableau などの分析ツールに接続する",
+    "計算済みインサイトを使って、さまざまな顧客といつ・どのように接点を持つかを判断する",
+    "取り込んだデータとインサイトをもとにセグメントを作成し、Marketing Cloud にアクティベーションする",
+    "Data Cloud を使って、利用可能なさまざまなデータソースからデータを取り込む"
+   ],
+   "options_en": [
+    "Use Data Cloud to connect with analytic tools, like Tableau.",
+    "Use calculated insights to determine when and how to engage with various customers.",
+    "Create segments based on the ingested data and insights to activate in Marketing Cloud.",
+    "Use Data Cloud to ingest data from various available data sources."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "Data Cloud を Tableau などの分析ツールに接続する"
+   ],
+   "explanation_ja": "原本の解説は、Data Cloud に集約したデータを Tableau などの分析ツールにつなぎ、チャネル横断のダッシュボードで可視化するのが、チャネルを一覧する方法だとしています。計算済みインサイトは指標の計算、セグメントは顧客のグルーピング、データの取り込みは下準備で、「見る」ことそのものを簡単にする機能ではありません。",
+   "note": "原本の解説に出てくる設定手順(「Setup > Analytics > Tableau CRM」)は古い手順の可能性があります。「すべてのチャネルを一覧で見る」という要件を満たす手段は他にもあり得るため、正解の妥当性は要確認です。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 93,
+   "section": "activation",
+   "source": "v2026-02-28 Q44",
+   "question_ja": "コンサルタントのアクティベーションは12時間ごとに公開されるよう設定されていますが、アクティベーション前のデータ更新が最大24時間遅れていることがわかりました。この問題をトラブルシューティングするために、コンサルタントが確認すべき2つの点はどれですか?",
+   "question_en": "A consultant has an activation that is set to publish every 12 hours, but has discovered that updates to the data prior to activation are delayed by up to 24 hours. Which two areas should a consultant review to troubleshoot this issue? Choose 2 answers",
+   "options_ja": [
+    "データ変換が、計算済みインサイトの後に実行されることを確認する",
+    "計算済みインサイトが、セグメントの更新より前に実行されることを確認する",
+    "セグメントが、データの取り込み後に更新されることを確認する",
+    "計算済みインサイトが、セグメントの更新より後に実行されることを確認する"
+   ],
+   "options_en": [
+    "Review data transformations to ensure they're run after calculated insights.",
+    "Review calculated insights to make sure they're run before segments are refreshed.",
+    "Review segments to ensure they're refreshed after the data is ingested.",
+    "Review calculated insights to make sure they're run after the segments are refreshed."
+   ],
+   "correct_index": [
+    1,
+    2
+   ],
+   "correct_ja": [
+    "計算済みインサイトが、セグメントの更新より前に実行されることを確認する",
+    "セグメントが、データの取り込み後に更新されることを確認する"
+   ],
+   "explanation_ja": "取り込み、計算済みインサイトの更新、セグメントの更新、アクティベーション公開の順序がそろっていないと、前の周期のデータが使われて遅延が積み重なります。セグメントは取り込み後に、計算済みインサイトはセグメントの更新前に実行されるようにそろえます。データ変換は取り込み段階の処理で、この問題の確認点ではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 94,
+   "section": "activation",
+   "source": "v2026-02-28 Q45",
+   "question_ja": "コンサルタントは、クエリ API で取得できる Audience DMO に、セグメントデータを公開する必要があります。アクティベーションターゲットを作成するときに、どのタイプのターゲットを選ぶべきですか?",
+   "question_en": "A consultant needs to publish segment data to the Audience DMO that can be retrieved using the Query APIs. When creating the activation target, which type of target should the consultant select?",
+   "options_ja": [
+    "Marketing Cloud Personalization",
+    "外部アクティベーションターゲット",
+    "Marketing Cloud",
+    "Data Cloud"
+   ],
+   "options_en": [
+    "Marketing Cloud Personalization",
+    "External Activation Target",
+    "Marketing Cloud",
+    "Data Cloud"
+   ],
+   "correct_index": [
+    3
+   ],
+   "correct_ja": [
+    "Data Cloud"
+   ],
+   "explanation_ja": "アクティベーションターゲットで「Data Cloud」を選んでセグメントを公開すると、アクティベーションされたレコードが Audience DMO として Data 360 内に作られます。この Audience DMO は、データエクスプローラーで確認でき、クエリ API でも取得できます。Marketing Cloud や外部のターゲットは、Data Cloud の外にデータを送る先です。",
+   "note": "原本には正解も解説も記載がありませんでした。Trailheadの「セグメントとレポートを作る」プロジェクトで、アクティベーションターゲットに Data Cloud を選ぶと Audience DMO が作られ、クエリ API で取得できると説明されていることから、正解を D としています。",
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 104,
+   "section": "action",
+   "source": "v2026-02-28 Q56",
+   "question_ja": "顧客は、Salesforce CRM とリアルタイムで統合する必要があります。この要件を満たす機能はどれですか?",
+   "question_en": "A customer needs to integrate in real time with Salesforce CRM. Which feature accomplishes this requirement?",
+   "options_ja": [
+    "ストリーミング変換",
+    "データモデルトリガー",
+    "Sales and Service バンドル",
+    "データアクションと Lightning Web コンポーネント"
+   ],
+   "options_en": [
+    "Streaming transforms",
+    "Data model triggers",
+    "Sales and Service bundle",
+    "Data actions and Lightning web components"
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "ストリーミング変換"
+   ],
+   "explanation_ja": "原本の解説は、ストリーミング変換が Data Cloud のストリーミング API を使って、CRM と Data Cloud の間で小さなバッチの更新をほぼリアルタイムで同期するとしています。ただし公式ドキュメントでは、ストリーミング変換は Data Cloud 内でストリーミングデータを加工する機能とされており、この問題の正解は見直しが必要です。",
+   "note": "公式ドキュメントでは、ストリーミング変換は Data Cloud 内でストリーミングデータを加工する機能とされ、CRMとの同期は、CRMコネクタ(増分は10分ごと、ストリーミングのトピックあり)や、データアクションによるCRM側の更新で扱われます。「データモデルトリガー」という機能の公式な記述も確認できていません。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 107,
+   "section": "ci",
+   "source": "v2026-02-28 Q59",
+   "question_ja": "Northern Trail Outfitters は、顧客ごとの生涯価値(LTV)を計算しつつ、Web サイト、モバイルアプリ、店舗のチャネル別の売上の内訳も作りたいと考えています。コンサルタントは、Data Cloud でこのユースケースに何を使うべきですか?",
+   "question_en": "Northern Trail Outfitters wants to be able to calculate each customer's lifetime value (LTV) but also create breakdowns of the revenue sourced by website, mobile app, and retail channels. What should a consultant use to address this use case in Data Cloud?",
+   "options_ja": [
+    "Flow Orchestration",
+    "入れ子セグメント",
+    "メトリクスのメトリクス(Metrics on metrics)",
+    "ストリーミングデータ変換"
+   ],
+   "options_en": [
+    "Flow Orchestration",
+    "Nested segments",
+    "Metrics on metrics",
+    "Streaming data transform"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "メトリクスのメトリクス(Metrics on metrics)"
+   ],
+   "explanation_ja": "原本の解説は、「メトリクスのメトリクス」で既存のメトリクスから新しいメトリクスを作り、チャネルをディメンションにして内訳を作るとしています。ただし公式の計算済みインサイトのサンプルでは、LTV に販売チャネルをディメンションとして含めている例があり、「メトリクスのメトリクス」は公式ドキュメントで確認できていません。この問題の正解は見直しが必要です。",
+   "note": "公式の計算済みインサイトのサンプルには、LTV の計算済みインサイトに「販売チャネル」などをディメンションとして含める例があり、チャネル別の内訳はディメンションで実現できます。「メトリクスのメトリクス」は公式ドキュメントで確認できていません。",
+   "verification": "要確認(矛盾あり)"
+  },
+  {
+   "id": 117,
+   "section": "activation",
+   "source": "v2026-02-28 Q71",
+   "question_ja": "Amazon S3 にアクティベーションするとき、.csv ファイルにはどの情報が入りますか?",
+   "question_en": "Which information is provided in a .csv file when activating to Amazon S3?",
+   "options_ja": [
+    "アクティベーションしたユーザーと日時を示す監査ログ",
+    "アクティベーションされたデータのペイロード",
+    "セグメント定義に関するメタデータ",
+    "Data Cloud 内の元のソースのマニフェスト"
+   ],
+   "options_en": [
+    "An audit log showing the user who activated the segment and when it was activated",
+    "The activated data payload",
+    "The metadata regarding the segment definition",
+    "The manifest of origin sources within Data Cloud"
+   ],
+   "correct_index": [
+    1
+   ],
+   "correct_ja": [
+    "アクティベーションされたデータのペイロード"
+   ],
+   "explanation_ja": "CSV ファイルには、セグメントに含まれる個人の属性と値など、アクティベーションされたデータそのものが入ります。セグメント定義などのメタデータは別の JSON ファイルに出力され、監査ログは Data Cloud の画面(アクティベーション履歴)で確認します。",
+   "note": null,
+   "verification": "公式で確認済み"
+  },
+  {
+   "id": 122,
+   "section": "activation",
+   "source": "v2025-08-07 Q12",
+   "question_ja": "Cloud File Storage ターゲットで、属性名を命名規則に合わせて変更するには、コンサルタントはどうすればよいですか?",
+   "question_en": "How can a consultant modify attribute names to match a naming convention in Cloud File Storage targets?",
+   "options_ja": [
+    "数式項目を使って、アクティベーション内の項目名を更新する",
+    "データストリームの設定で、属性名を更新する",
+    "アクティベーションの設定時に、優先する属性名(Preferred Attribute Name)を設定する",
+    "データモデルオブジェクトの項目名を更新する"
+   ],
+   "options_en": [
+    "Use a formula field to update the field name in an activation.",
+    "Update attribute names in the data stream configuration.",
+    "Set preferred attribute names when configuring activation.",
+    "Update field names in the data model object."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "アクティベーションの設定時に、優先する属性名(Preferred Attribute Name)を設定する"
+   ],
+   "explanation_ja": "Cloud File Storage へのアクティベーションでは、属性ごとに「優先する属性名(Preferred Attribute Name)」を設定でき、出力ファイルの項目名として使われます。データモデルオブジェクトやデータストリームの名前を変えると、他のアクティベーションなどにも影響します。数式項目は値を作るもので、項目名を変えるものではありません。",
+   "note": "アクティベーションで優先する属性名を設定できるという記述は、第三者のページでは確認できましたが、公式ページは確認できていません。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 126,
+   "section": "activation",
+   "source": "v2025-08-07 Q22",
+   "question_ja": "セグメントのアクティベーションを、そのセグメントを再び使う前提で一時停止するには、ユーザーは何をすべきですか?",
+   "question_en": "What should a user do to pause a segment activation with the intent of using that segment again?",
+   "options_ja": [
+    "セグメントを無効化(Deactivate)する",
+    "セグメントを削除する",
+    "アクティベーションをスキップする",
+    "公開スケジュールを停止する"
+   ],
+   "options_en": [
+    "Deactivate the segment.",
+    "Delete the segment.",
+    "Skip the activation.",
+    "Stop the publish schedule."
+   ],
+   "correct_index": [
+    0
+   ],
+   "correct_ja": [
+    "セグメントを無効化(Deactivate)する"
+   ],
+   "explanation_ja": "セグメントが不要になった場合は、Data Cloud で無効化(Deactivate)でき、選んだすべてのターゲットに適用されます。無効化したセグメントは公開されなくなりますが、いつでも再び有効にできます。そのため、再び使うつもりで一時停止するには、無効化が適しています。削除は元に戻せず、アクティベーションのスキップは今回の周期だけを飛ばす操作で、今後の周期には影響しません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 128,
+   "section": "si",
+   "source": "v2025-08-07 Q24",
+   "question_ja": "顧客は、カゴ落ち(閲覧放棄)行動をきっかけにジャーニーを起動する要件を示しました。要件をもとに、コンサルタントは、ストリーミングインサイトを使って、Journey Builder へのデータアクションを1時間ごとに起動すると判断しました。必要な頻度でデータアクションが起動されるようにするには、どのように構成すべきですか?",
+   "question_en": "A customer has outlined requirements to trigger a journey for an abandoned browse behavior. Based on the requirements, the consultant determines they will use streaming insights to trigger a data action to Journey Builder every hour. How should the consultant configure the solution to ensure the data action is triggered at the cadence required?",
+   "options_ja": [
+    "データを1時間ごとのバッチで取り込むようにする",
+    "アクティベーションのスケジュールを1時間ごとにする",
+    "ジャーニーのエントリースケジュールを1時間ごとに実行するように設定する",
+    "インサイトの集計時間窓を1時間に設定する"
+   ],
+   "options_en": [
+    "Configure the data to be ingested in hourly batches.",
+    "Set the activation schedule to hourly.",
+    "Set the journey entry schedule to run every hour.",
+    "Set the insights aggregation time window to 1 hour."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "ジャーニーのエントリースケジュールを1時間ごとに実行するように設定する"
+   ],
+   "explanation_ja": "原本には解説がなく、正解は C とされています。ストリーミングインサイトからのデータアクションは、条件を満たしたときに Journey Builder にイベントを送り、ジャーニー側のエントリースケジュールで、ジャーニーに取り込む頻度が決まる、という考え方です。集計の時間窓を1時間にしても、ジャーニーに入る頻度は変わりません。",
+   "note": "原本には解説がなく、上の解説はこちらで補ったもの(推定)です。公式での確認は未実施です。",
+   "verification": "原本どおり"
+  },
+  {
+   "id": 293,
+   "section": "activation",
+   "source": "v2025-03-20 Q16",
+   "question_ja": "ユーザーは Data Cloud でセグメントを作り、アクティベーションを作成しています。関連属性を選ぶとき、個人に関連していると分かっている属性の一部が見つかりません。これらの属性が選べない理由として正しいものはどれですか?",
+   "question_en": "A user has built a segment in Data Cloud and is in the process of creating an activation. When selecting related attributes, they cannot find a specific set of attributes they know to be related to the individual. Which statement explains why these attributes are not available?",
+   "options_ja": [
+    "セグメントがプロファイルデータでセグメント化されていない",
+    "その属性がほかのアクティベーションで使われている",
+    "目的の属性が、別の関連パス上にある",
+    "アクティベーションには1対1の属性しか含められない"
+   ],
+   "options_en": [
+    "The segment is not segmenting on profile data.",
+    "The attributes are being used in another activation.",
+    "The desired attributes reside on different related paths.",
+    "Activations can only include 1-to-1 attributes."
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "目的の属性が、別の関連パス上にある"
+   ],
+   "explanation_ja": "アクティベーションで選べる関連属性は、セグメント対象のオブジェクトから選んだ関連パス(どの DMO をたどってつながるか)によって決まります。目的の属性が別の経路でつながっている場合、その属性は選択肢に出てきません。1対多の関連属性もアクティベーションに含められるので、「1対1のみ」は誤りです。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 294,
+   "section": "activation",
+   "source": "v2025-03-20 Q18",
+   "question_ja": "ある顧客は、特定のセグメントのアクティベーションが失敗したときに通知を受け取りたいと考えています。このユースケースを満たすために、コンサルタントはどの機能を使うべきですか?",
+   "question_en": "A customer has a requirement to receive a notification whenever an activation fails for a particular segment. Which feature should the consultant use to solution for this use case?",
+   "options_ja": [
+    "フロー",
+    "レポート",
+    "アクティベーションアラート",
+    "ダッシュボード"
+   ],
+   "options_en": [
+    "Flow",
+    "Report",
+    "Activation alert",
+    "Dashboard"
+   ],
+   "correct_index": [
+    2
+   ],
+   "correct_ja": [
+    "アクティベーションアラート"
+   ],
+   "explanation_ja": "原本の正解は「アクティベーションアラート」です。アクティベーションの成功・失敗を受信者に知らせる通知の仕組みで、失敗を見逃さずに対応できます。レポートやダッシュボードは状況を見に行くための機能で、失敗したときに自動で知らせるものではありません。",
+   "note": null,
+   "verification": "原本どおり"
+  },
+  {
+   "id": 302,
+   "section": "activation",
+   "source": "v2025-03-20 Q54",
+   "question_ja": "コンサルタントは、エンゲージメントにもとづく関連属性を使った最近のアクティベーションを確認していますが、セグメントメンバーの大半でペイロードに関連属性が含まれていません。この問題をトラブルシューティングするために、確認すべき点はどれですか?(2つ選択)",
+   "question_en": "A consultant is reviewing a recent activation using engagement-based related attributes but is not seeing any related attributes in their payload for the majority of their segment members. Which two areas should the consultant review to help troubleshoot this issue? Choose 2 answers",
+   "options_ja": [
+    "関連するエンゲージメントイベントが、過去90日以内に発生しているか",
+    "アクティベーションが、エンゲージメントデータではなくプロファイルデータでセグメント化したセグメントを参照していないか",
+    "関連属性に正しいパスが選ばれているか",
+    "アクティベーションされたプロファイルに統合連絡先ポイントがあるか"
+   ],
+   "options_en": [
+    "The related engagement events occurred within the last 90 days.",
+    "The activations are referencing segments that segment on profile data rather than engagement data.",
+    "The correct path is selected for the related attributes.",
+    "The activated profiles have a Unified Contact Point."
+   ],
+   "correct_index": [
+    0,
+    2
+   ],
+   "correct_ja": [
+    "関連するエンゲージメントイベントが、過去90日以内に発生しているか",
+    "関連属性に正しいパスが選ばれているか"
+   ],
+   "explanation_ja": "エンゲージメントデータを関連属性としてアクティベーションに含める場合、さかのぼれるのは過去90日分のイベントだけです。それより古いイベントはペイロードに含まれません。また、関連属性は選んだ関連パスに沿って取得されるので、パスが違うと値が入りません。この2点をまず確認します。",
+   "note": "Salesforce ヘルプ「Considerations for Selecting Related Attributes in Data 360 Activations」に、エンゲージメントデータのさかのぼり期間は90日(高速公開では7日)との記載があります。",
+   "verification": "公式で確認済み"
+  }
+ ]
+}
