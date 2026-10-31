@@ -48,3 +48,14 @@ python3 commitstudy/patch_fix_20261101.py index.html chapters.json index.new.htm
 - 黄「クラウドに接続しています…」… 3秒経っても未接続(15秒で赤に切り替え)
 
 `syncbar.js` / `syncbar.css` は社労士版から写した部分。
+
+## 過去問の追加 `add_questions.py`
+
+Notion の過去問原本(英語)から、問題集に入っていない問題を追加する。英語の問題文・選択肢は原本から取り、日本語訳・解説・テキストの項目・出題範囲は追加分の JSON に書く。
+
+- 2026-11-01: v2025-03-20 から15問を追加(`d360/add_v20250320.json`、問題ID 289〜303)。
+  公式ドキュメントで確認できた3問(Q8・Q43・Q54)は「公式で確認済み」、新しい版と正解が食い違う Q41 は「要確認(矛盾あり)」、ほかは「原本どおり」。
+
+```bash
+python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.json v2025-03-20 questions.json qrows.json
+```
