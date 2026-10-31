@@ -1,0 +1,6 @@
+/* 保存状態の帯: アカウントに保存されていないときだけ、メニューの一番上に出る */
+.syncb{display:flex;align-items:center;justify-content:center;gap:8px;padding:3px 10px;font-size:12px;font-weight:700;line-height:1.5;background:var(--shu);color:#fff;text-align:center}
+.syncb[data-s=pend]{background:var(--yama)}
+.syncb button{font:inherit;font-size:11.5px;font-weight:700;color:inherit;background:transparent;border:1px solid currentColor;border-radius:999px;padding:0 10px;min-height:22px;cursor:pointer;flex:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .syncb{color:#2a0a06}}
+:root[data-theme="dark"] .syncb{color:#2a0a06}

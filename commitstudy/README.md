@@ -39,3 +39,12 @@ python3 commitstudy/patch_fix_20261101.py index.html chapters.json index.new.htm
 旧アーティファクト(JAJpRpzNWPU4rRBRuyqbDL)の `data/users/<自分>/quiz`・`study` を、CommitStudy の `d360-quiz`・`d360-study` へ合算した。
 問題288問は番号・問題文・選択肢・正解がすべて一致していたので、番号はそのまま。
 回答の集計(hist)・回答履歴(log)・しおり(bm)・読了済みの項目(done)を合算し、CommitStudy 側の絞り込み・位置などの設定はそのまま残した。
+
+## 保存状態の帯 `patch_syncbar.py`(社労士版と同じ)
+
+アカウントに記録が保存されていないときだけ、メニューバーの一番上に帯を出す。
+- 赤「アカウントに保存されていません(この端末のみ)」+ 再読み込み … クラウドにつながっていない
+- 赤「クラウドへの保存に失敗しています」+ 再試行 … 学習の記録・問題集の記録の保存に失敗
+- 黄「クラウドに接続しています…」… 3秒経っても未接続(15秒で赤に切り替え)
+
+`syncbar.js` / `syncbar.css` は社労士版から写した部分。
