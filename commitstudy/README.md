@@ -23,3 +23,19 @@ python3 commitstudy/apply_talks.py chapters.json commitstudy/d360/talks.json cha
 ```bash
 python3 commitstudy/patch_quiz_like_sharoushi.py index.html index.new.html
 ```
+
+## 修正パッチ(2026-11-01) `patch_fix_20261101.py`
+
+- 絞り込み中(例: 出典=過去問)は、絞り込んだ問題だけで1から番号を振り直し、一覧にも絞り込み中の問題だけを出す
+- テーマを `sr-theme` にも保存し、起動部分からの復元(`window.__srThemeSync`)を受け取る(iPhone で開き直すと「自動」に戻る不具合)
+- 960幅の横長の図3枚(全体の流れ・カテゴリ・ID解決)がスマホで小さくならないよう、`figure` の余白をなくして横スクロールにする
+
+```bash
+python3 commitstudy/patch_fix_20261101.py index.html chapters.json index.new.html chapters.new.json
+```
+
+## 旧「Data360 AI先生テキスト問題集」からの記録の引き継ぎ(2026-11-01 実施)
+
+旧アーティファクト(JAJpRpzNWPU4rRBRuyqbDL)の `data/users/<自分>/quiz`・`study` を、CommitStudy の `d360-quiz`・`d360-study` へ合算した。
+問題288問は番号・問題文・選択肢・正解がすべて一致していたので、番号はそのまま。
+回答の集計(hist)・回答履歴(log)・しおり(bm)・読了済みの項目(done)を合算し、CommitStudy 側の絞り込み・位置などの設定はそのまま残した。
