@@ -153,8 +153,8 @@ function drawCard(){
   if(TI>=TL.length)TI=0;if(TI<0)TI=TL.length-1;var c=TL[TI],sj=SUBJ.filter(function(s){return s.id===c.subj})[0];
   fc.querySelector(".front").innerHTML='<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span><span>'+esc(c.title)+'</span></p><h3>'+esc(c.t)+'</h3><p class="hint">押すと説明が出ます</p>';
   fc.querySelector(".back").innerHTML='<p class="bx-k"><span>'+esc(c.t)+'</span></p><p class="tc-d">'+esc(c.d)+'</p><p class="tq-links"><a class="bx-go" href="/'+c.subj+'/#f-'+esc(c.s)+'">テキストで確認する</a></p><div class="gk"><button type="button" data-k="again">まだ</button><button type="button" data-k="known"'+(KNOWN[tkey(c)]?' aria-pressed="true"':"")+'>覚えた</button></div>';
-  $("#g-pos").textContent=(TI+1)+" / "+TL.length+(TL.shuffled?"(シャッフル中)":"");
-  $("#g-shuf").textContent=TL.shuffled?"順番どおりに戻す":"シャッフル";
+  $("#g-pos").textContent=(TI+1)+" / "+TL.length;
+  var sb=$("#g-shuf");sb.textContent=TL.shuffled?"順番に戻す":"シャッフル";sb.setAttribute("aria-pressed",String(!!TL.shuffled));sb.title=TL.shuffled?"シャッフル中。押すと順番どおりに戻します":"カードの順番をシャッフルします";
 }
 function bindTerms(){
   var fc=$("#fc");fc.addEventListener("click",function(e){var k=e.target.closest(".gk button");if(k){e.stopPropagation();var c=TL[TI];if(k.dataset.k==="known")KNOWN[tkey(c)]=Date.now();else delete KNOWN[tkey(c)];LS.set(TKN,KNOWN);TI++;renderTerms(false);return}if(e.target.closest("a"))return;FLIP=!FLIP;fc.classList.toggle("on",FLIP)});
