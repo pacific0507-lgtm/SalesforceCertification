@@ -1,0 +1,176 @@
+figure.viz{--vz-a:var(--accent,var(--brand,#1a3e5c));--vz-as:var(--accent-soft,var(--brand-soft,#e2eaf2));--vz-b:#8f5b00;--vz-bs:#fbb9443d;--vz-ok:var(--ok,#2a9765);--vz-ng:var(--shu,var(--ng,#d0473a));--vz-sub:var(--muted,var(--sub,#5d6270));--vz-line:var(--line,#e6e1d6);--vz-bg:var(--surface,var(--paper,#fff));background:var(--vz-bg);border:1px solid var(--vz-line);color:var(--ink,#191b20);border-radius:14px;margin:12px 0 4px;padding:14px;font-size:13.5px;line-height:1.55;overflow:hidden}
+figure.viz figcaption{letter-spacing:.06em;color:var(--vz-sub);margin:0 0 10px;font-size:12px;font-weight:800}
+.vz-i{flex:none;width:20px;height:20px}
+.t-a{--c:var(--vz-a);--cs:var(--vz-as)}
+.t-b{--c:var(--vz-b);--cs:var(--vz-bs)}
+.t-ok{--c:var(--vz-ok);--cs:color-mix(in srgb,var(--vz-ok) 14%,transparent)}
+.t-ng{--c:var(--vz-ng);--cs:color-mix(in srgb,var(--vz-ng) 13%,transparent)}
+@media (prefers-color-scheme:dark){figure.viz{--vz-b:#fbb944}}
+:root[data-theme=dark] figure.viz{--vz-b:#fbb944}
+:root[data-theme=light] figure.viz{--vz-b:#8f5b00}
+figure.viz [style*=--i]{opacity:0;transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i) * 90ms);transform:translateY(8px)}
+figure.viz.vz-in [style*=--i]{opacity:1;transform:none}
+.vz-nums{grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;display:grid}
+.vz-num{background:var(--cs);color:var(--c);border-radius:12px;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 12px;display:flex}
+.vz-num .vz-ic{background:var(--vz-bg);border-radius:50%;place-items:center;width:30px;height:30px;margin-bottom:4px;display:grid}
+.vz-num b{letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-size:30px;font-weight:800;line-height:1.05}
+.vz-num b small{letter-spacing:0;margin-left:2px;font-size:13px;font-weight:800}
+.vz-num>span{color:var(--ink,#191b20);font-size:12.5px;font-weight:700}
+.vz-line{align-items:stretch;gap:0;padding-top:30px;display:flex}
+.vz-seg{flex:var(--w) 1 0;flex-direction:column;gap:3px;min-width:6.5em;padding:0 4px;display:flex}
+.vz-seg i{background:var(--c);transform-origin:0;height:14px;transition:transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i) * .16s + .1s);border-radius:7px;display:block;transform:scaleX(0)}
+figure.viz.vz-in .vz-seg i{transform:none}
+.vz-seg b{color:var(--c);font-size:13px;font-weight:800}
+.vz-seg span{color:var(--vz-sub);font-size:12px}
+.vz-mark{background:var(--ink,#191b20);border-radius:1px;flex:none;align-self:flex-start;width:2px;height:34px;margin:-12px 2px 0;position:relative}
+.vz-mark em{white-space:nowrap;background:var(--ink,#191b20);color:var(--vz-bg);border-radius:999px;padding:0 7px;font-size:11.5px;font-style:normal;font-weight:800;position:absolute;top:-2px;left:50%;transform:translate(-50%,-100%)}
+.vz-vs{grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:8px;display:grid}
+.vz-col{background:var(--cs);border-radius:12px;padding:10px 12px}
+.vz-col b{color:var(--c);align-items:center;gap:6px;margin-bottom:4px;font-size:13.5px;display:flex}
+.vz-col ul{margin:0;padding:0 0 0 1.1em}
+.vz-col li{margin:2px 0}
+.vz-col li::marker{color:var(--c)}
+.vz-flow{grid-auto-columns:minmax(0,1fr);grid-auto-flow:column;gap:22px;margin:0;padding:0;list-style:none;display:grid}
+.vz-flow li{flex-direction:column;align-items:flex-start;gap:6px;display:flex;position:relative}
+.vz-flow li+li:before{content:"";border-top:2.5px solid var(--vz-sub);border-right:2.5px solid var(--vz-sub);width:10px;height:10px;position:absolute;top:9px;left:-17px;transform:rotate(45deg)}
+.vz-no{background:var(--vz-a);width:28px;height:28px;color:var(--vz-bg);border-radius:50%;place-items:center;font-size:13px;font-weight:800;display:grid}
+.vz-flow b{font-size:13.5px;display:block}
+.vz-flow span:not(.vz-no){color:var(--vz-sub);font-size:12px}
+.vz-clock{align-items:center;gap:14px;display:flex}
+.vz-clock svg{flex:none;width:120px;height:120px}
+.vz-track{fill:none;stroke:var(--vz-line);stroke-width:12px}
+.vz-arc{fill:none;stroke:var(--c);stroke-width:12px;stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.1s cubic-bezier(.2,.7,.2,1) .15s}
+figure.viz.vz-in .vz-arc{stroke-dashoffset:0}
+.vz-clock text{fill:var(--vz-sub);text-anchor:middle;font-size:9px;font-weight:700}
+.vz-clock text.vz-c{fill:var(--ink,#191b20);font-size:12px;font-weight:800}
+.vz-clock ul{gap:6px;margin:0;padding:0;list-style:none;display:grid}
+.vz-clock li{flex-wrap:wrap;align-items:center;gap:6px;display:flex}
+.vz-clock li i{background:var(--c);border-radius:3px;width:12px;height:12px}
+.vz-clock li b{color:var(--c)}
+.vz-ox{gap:6px;margin:0;padding:0;list-style:none;display:grid}
+.vz-ox li{background:color-mix(in srgb,var(--c) 10%,transparent);border-radius:10px;align-items:flex-start;gap:8px;padding:7px 10px;display:flex}
+.vz-ox li.ok{--c:var(--vz-ok)}
+.vz-ox li.ng{--c:var(--vz-ng)}
+.vz-ox li span{background:var(--c);color:#fff;border-radius:50%;flex:none;place-items:center;width:22px;height:22px;font-size:13px;font-weight:800;display:grid}
+.vz-say{align-items:flex-start;gap:8px;margin-top:10px;display:flex}
+.vz-say img{background:#fff;border-radius:50%;flex:none;width:32px;height:32px}
+.vz-say p{background:color-mix(in srgb,var(--vz-sub) 10%,transparent);border-radius:4px 12px 12px;margin:0;padding:6px 10px;font-size:12.5px}
+.vz-say b{color:var(--vz-sub);font-size:10.5px;display:block}
+@media (width<=520px){.vz-line{flex-direction:column;gap:4px;padding-top:0}.vz-seg{flex:none;grid-template-columns:10px 1fr;column-gap:10px;min-width:0;padding:0;display:grid}.vz-seg i{transform-origin:top;border-radius:5px;grid-row:1/span 2;width:10px;height:auto;min-height:36px;transform:scaleY(0)}.vz-seg b,.vz-seg span{grid-column:2}.vz-mark{align-self:stretch;width:auto;height:2px;max-height:none;margin:6px 0}.vz-mark em{white-space:normal;margin-left:18px;display:inline-block;position:relative;top:auto;left:auto;transform:translateY(-50%)}}
+.vz-mark em{white-space:normal;text-align:center;max-width:16em;padding:2px 8px;line-height:1.35}
+@media (width<=520px){.vz-flow{grid-auto-flow:row;gap:10px}.vz-flow li{flex-direction:row;align-items:center}.vz-flow li+li:before{width:8px;height:8px;top:-10px;left:9px;transform:rotate(135deg)}.vz-vs{grid-template-columns:1fr}.vz-clock svg{width:100px;height:100px}}
+figure.viz.vz-still [style*=--i],figure.viz.vz-still .vz-seg i,figure.viz.vz-still .vz-arc{transition:none!important}
+/*$vite$:1*/
+
+
+.pr{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start;padding-bottom:24px}
+.trow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+.trow .tabs{margin:0}
+/* 大きく表示: カード右上のボタンで、画面いっぱいにカードだけを中央に出す(閉じるは右上の×・戻る・Esc) */
+.cw{position:relative}
+.upbtn{position:absolute;z-index:3;top:12px;right:12px;width:36px;height:36px;display:grid;place-items:center;padding:0;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--sub);cursor:pointer;transition:color .2s,border-color .2s,transform .2s var(--ease)}
+.upbtn:hover{color:var(--ink);border-color:var(--ink);transform:scale(1.06)}
+.upbtn svg{width:18px;height:18px}
+.cw>.bx>:first-child,.cw .fc>div>:first-child{margin-right:44px}
+.fbar{display:none}
+body.focus{overflow:hidden}
+body.focus .stage{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:var(--bg);padding:0 max(16px,calc((100vw - 720px)/2)) calc(24px + env(safe-area-inset-bottom,0));animation:zin .3s var(--ease)}
+body.focus .trow,body.focus .flt,body.focus .flt-l,body.focus .upbtn{display:none}
+body.focus .cw>.bx>:first-child,body.focus .cw .fc>div>:first-child{margin-right:0}
+body.focus .fbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:4;margin:0 0 8px;padding:calc(10px + env(safe-area-inset-top,0)) 0 10px;background:var(--bg)}
+.fbar b{font-size:14px}
+.fbar .mini{margin:0;flex:1;min-width:0;font-size:12.5px;font-weight:700;color:var(--sub)}
+.fbar .x-close{flex:none;width:40px;height:40px;display:grid;place-items:center;padding:0;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
+body.focus section[role="tabpanel"]:not([hidden]){margin:auto 0;width:100%}
+body.focus #qbox,body.focus .fc>div{box-shadow:0 28px 60px -32px rgba(0,0,0,.4)}
+body.focus #qbox .dq{font-size:17px;line-height:1.9}
+body.focus .fc .front h3{font-size:clamp(22px,3.2vw,30px)}
+/* 大きく表示のときは、下の操作を画面の下に固定する(答える前は ○×、答えたあとは同じ位置に「テキストで確かめる」「次の問題」) */
+body.focus .stage{padding-bottom:calc(100px + env(safe-area-inset-bottom,0))}
+body.focus .stage::after{content:"";position:fixed;z-index:61;left:0;right:0;bottom:0;height:calc(92px + env(safe-area-inset-bottom,0));background:linear-gradient(color-mix(in srgb,var(--bg) 0%,transparent),var(--bg) 28%);pointer-events:none}
+body.focus #qbox:not(.done) .ox,body.focus #qbox.done .qnav,body.focus .fc-nav{position:fixed;z-index:62;left:max(16px,calc((100vw - 720px)/2));right:max(16px,calc((100vw - 720px)/2));bottom:calc(14px + env(safe-area-inset-bottom,0));margin:0}
+body.focus #qbox:not(.done) .ox button{background:var(--paper)}
+body.focus #qbox.out,body.focus #qbox.pre{transform:none}
+body.focus #qbox.done .qnav{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+body.focus #qbox.done .qnav>*{display:flex;align-items:center;justify-content:center;min-height:56px;margin:0;border-radius:16px;text-align:center}
+body.focus #qbox.done .qnav>.pri{grid-column:2}
+body.focus .fc-nav{display:grid;grid-template-columns:1fr auto 1fr 1fr;align-items:center;gap:8px}
+body.focus .fc-nav button{min-height:52px;border-radius:14px}
+body.focus .fc-nav span{text-align:center;min-width:4.5em}
+@keyframes zin{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.drag{transition:none!important}
+.tabs{position:relative;display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px}
+.tabs button{position:relative;z-index:1;font:inherit;font-size:14px;font-weight:700;color:var(--sub);background:none;border:0;border-radius:999px;padding:7px 18px;cursor:pointer;transition:color .25s}
+.tabs button[aria-selected="true"]{color:var(--brand-ink)}
+.tabs{max-width:100%}
+.tabs button{white-space:nowrap}
+/* スマホ: タブ3つを横幅いっぱいに等分(はみ出して画面が横に伸びないように) */
+
+.tabs .pill{position:absolute;top:4px;bottom:4px;left:0;border-radius:999px;background:var(--brand);transition:transform .45s var(--ease),width .45s var(--ease)}
+/* ○×問題/覚え方カードの切り替えは中央に。選んでいる方がわかるように、選んでいない方は文字を薄く */
+.trow{justify-content:center}
+.trow .tabs{padding:5px;border-width:1.5px}
+.trow .tabs button{font-size:15px;padding:9px 24px;min-width:9em;opacity:.7}
+.trow .tabs button:hover{opacity:1}
+/* スマホ: タブ3つを横幅いっぱいに等分(はみ出して画面が横に伸びないように) */
+@media (max-width:600px){.trow .tabs{display:flex;width:100%}.trow .tabs button{flex:1 1 0;min-width:0;padding:9px 4px;font-size:13.5px;overflow:hidden;text-overflow:ellipsis}}
+.trow .tabs button[aria-selected="true"]{opacity:1;font-weight:800}
+.trow .tabs .pill{box-shadow:0 2px 10px rgba(0,0,0,.22)}
+.gknown{margin:8px 0 0;font-size:13px;font-weight:700;color:var(--sub)}
+.flt{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.flt button{font:inherit;font-size:13px;font-weight:700;color:var(--sub);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s}
+.flt button:hover{transform:translateY(-1px)}
+.flt button[aria-pressed="true"]{background:var(--c,var(--ink));border-color:var(--c,var(--ink));color:var(--paper)}
+.flt button small{margin-left:4px;font-weight:600}
+.flt-l{font-size:11.5px;font-weight:700;letter-spacing:.12em;color:var(--sub);margin:0 0 6px}
+#qbox{transition:opacity .2s,transform .25s var(--ease)}
+#qbox.out{opacity:0;transform:translateX(-24px)}
+#qbox.pre{opacity:0;transform:translateX(24px);transition:none}
+.side{display:grid;gap:14px;position:sticky;top:80px}
+.meter{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.meter div{background:var(--bg);border-radius:14px;padding:10px 4px}
+.meter b{display:block;font-family:var(--en);font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.meter small{font-size:11.5px;color:var(--sub);font-weight:700}
+.meter .hot b{color:#e0623f;animation:beat .5s var(--spring)}
+@keyframes beat{0%{transform:scale(1.5)}100%{transform:none}}
+/* 覚え方カード(めくると裏に覚え方) */
+.flip{perspective:1400px}
+.fc{position:relative;display:grid;min-height:260px;transition:transform .7s var(--ease);transform-style:preserve-3d;cursor:pointer}
+.fc.on{transform:rotateY(180deg)}
+.fc>div{grid-area:1/1;align-self:start;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.fc .back{transform:rotateY(180deg);background:var(--sun-soft);border-color:color-mix(in srgb,var(--sun) 40%,var(--line))}
+.fc .front h3{font-size:clamp(20px,2.6vw,26px);line-height:1.45;margin:auto 0;letter-spacing:-.01em}
+.fc .hint{font-size:12.5px;color:var(--sub);display:flex;align-items:center;gap:6px}
+.fc .hint svg{width:16px;height:16px;animation:nudge 2s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:none}50%{transform:rotate(18deg)}}
+.gr{font-size:15px;line-height:1.95}
+.gr b{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--sun) 55%,transparent) 62%)}
+.gk{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.gk button{font:inherit;font-size:14px;font-weight:700;border-radius:12px;padding:10px 0;cursor:pointer;border:1.5px solid var(--line);background:var(--paper);color:var(--ink)}
+.gk button[data-k="known"]{border-color:var(--ok);color:var(--ok)}
+.gk button[aria-pressed="true"]{background:var(--ok);color:var(--paper)}
+.fc .known-badge{font-size:11px;font-weight:800;color:var(--ok);margin-left:6px}
+.fc-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;flex-wrap:wrap}
+.fc-nav button{white-space:nowrap}
+#g-pos{flex:1;min-width:7em;text-align:center}
+.fc-nav span{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.fc.swipe-l{animation:swl .32s var(--ease)}
+.fc.swipe-r{animation:swr .32s var(--ease)}
+@keyframes swl{0%{transform:translateX(30px);opacity:0}100%{transform:none;opacity:1}}
+@keyframes swr{0%{transform:translateX(-30px);opacity:0}100%{transform:none;opacity:1}}
+@media (max-width:860px){.pr{grid-template-columns:minmax(0,1fr)}.side{position:static;order:-1}.side .say{display:none}}
+/* 数字カード(穴埋め。空欄を押すと答え) */
+.nc{min-height:240px}
+.nc h3{font-size:clamp(18px,2.3vw,22px);line-height:1.45;margin:0}
+.nc-t{font-size:clamp(17px,2.2vw,20px);line-height:2.1;margin:0}
+.nc-b{max-width:100%;white-space:normal;font:inherit;font-weight:800;display:inline-block;min-width:3.2em;padding:0 10px;margin:0 2px;line-height:1.6;border-radius:8px;border:2px dashed var(--brand);background:var(--brand-soft);color:var(--brand);cursor:pointer;vertical-align:baseline}
+.nc-b.on{border-style:solid;background:var(--sun-soft);border-color:var(--sun);color:var(--ink);animation:ncpop .35s var(--ease)}
+@keyframes ncpop{0%{transform:scale(.8)}60%{transform:scale(1.08)}100%{transform:none}}
+.nc .hint{font-size:12.5px;color:var(--sub);margin:0}
+.nc-act{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.nc .gk{margin-top:0}
+.nc-note{margin-top:8px}
+.nc.swipe-l{animation:swl .32s var(--ease)}
+.nc.swipe-r{animation:swr .32s var(--ease)}
+body.focus .nc{min-height:min(60vh,520px);justify-content:center}
+body.focus .nc .nc-t{font-size:clamp(20px,3vw,28px)}
