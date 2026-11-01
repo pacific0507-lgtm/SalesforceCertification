@@ -66,6 +66,7 @@ function chips(box,items,cur,cb){box.innerHTML=items.map(function(it){return '<b
   box.onclick=function(e){var b=e.target.closest("button[data-v]");if(b)cb(b.dataset.v)}}
 function subjItems(){return [{v:"all",l:"すべて"}].concat(SUBJ.map(function(s){return {v:s.id,l:s.short}}))}
 function renderMeter(){var m=LS.get("cs-train-today",{});if(m.date!==today())m={n:0,c:0,combo:0};$("#m-n").textContent=m.n||0;$("#m-c").textContent=m.c||0;$("#m-combo").textContent=m.combo||0;
+  var mi=$("#mini");if(mi)mi.textContent="今日 "+(m.n||0)+"問・正解 "+(m.c||0)+"・連続正解 "+(m.combo||0);
   $("#m-say").innerHTML='<p class="bx-s">'+(m.n?(m.combo>=5?"連続正解 "+m.combo+"問。その調子です。":"今日は "+m.n+" 問解きました。"):"1問からどうぞ。解いた数は学習の記録にも数えます。")+'</p>'}
 function setTab(t){ST.tab=t;save();$$(".tabs [role=tab]").forEach(function(b){var on=b.id==="t-"+t;b.setAttribute("aria-selected",String(on));if(on){var p=$(".tabs .pill");if(p){p.style.width=b.offsetWidth+"px";p.style.transform="translateX("+b.offsetLeft+"px)"}}});
   $("#p-q").hidden=t!=="q";$("#p-g").hidden=t!=="g";if(t==="g")renderTerms()}
@@ -123,7 +124,7 @@ function choose(i){if(!CUR||DONE)return;var multi=CUR.a.length>1,k=SEL.indexOf(i
 function check(){if(!CUR||DONE||!SEL.length)return;if(CUR.a.length>1&&SEL.length!==CUR.a.length)return;DONE=true;var ok=SEL.length===CUR.a.length&&SEL.every(function(i){return CUR.a.indexOf(i)>=0});record(CUR,ok);renderQ();renderFilters()}
 function next(){advance();CUR=pick();SEL=[];DONE=false;renderFilters();renderQ();var b=$("#qbox");if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView({block:"start",behavior:"smooth"})}
 function bindQ(){var box=$("#qbox");box.addEventListener("click",function(e){var b=e.target.closest(".tq-b");if(b){choose(+b.dataset.i);return}if(e.target.closest("#tq-check"))check();else if(e.target.closest("#tq-next")||e.target.closest("#tq-skip"))next()});
-  document.addEventListener("keydown",function(e){if(ST.tab!=="q"||e.target.closest&&e.target.closest("input,textarea,select"))return;if(/^[1-8]$/.test(e.key)&&CUR&&+e.key<=CUR.o.length){choose(+e.key-1);e.preventDefault()}else if(e.key==="Enter"){DONE?next():check();e.preventDefault()}})}
+  document.addEventListener("keydown",function(e){if(ST.tab!=="q"||e.target.closest&&e.target.closest("input,textarea,select,#fclose,a"))return;if(/^[1-8]$/.test(e.key)&&CUR&&+e.key<=CUR.o.length){choose(+e.key-1);e.preventDefault()}else if(e.key==="Enter"){DONE?next():check();e.preventDefault()}})}
 
 /* 用語カード */
 var TERMS={},TKN="cs-term-known-v1",KNOWN=LS.get(TKN,{}),TL=[],TI=0,FLIP=false;
@@ -156,9 +157,21 @@ function bindTerms(){
   $("#g-shuf").onclick=function(){if(TL.shuffled){renderTerms(true)}else{for(var i=TL.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=TL[i];TL[i]=TL[j];TL[j]=t}TL.shuffled=true;TI=0;drawCard()}};
 }
 
+/* 大きく表示(社労士版と同じ): カード右上のボタンで画面いっぱいに。閉じるは右上の×・戻る・Esc */
+var upHist=false;
+function focusMode(on){document.body.classList.toggle("focus",on);
+  if(on){$("#ftitle").textContent=ST.tab==="g"?"用語カード":"問題";renderMeter();window.scrollTo(0,0);requestAnimationFrame(function(){var b=$("#fclose");if(b)b.focus()})}
+  else requestAnimationFrame(function(){setTab(ST.tab)})}
+function closeFocus(){if(upHist)history.back();else focusMode(false)}
+function bindFocus(){
+  $$("[data-up]").forEach(function(b){b.onclick=function(e){e.stopPropagation();try{history.pushState({up:1},"");upHist=true}catch(x){upHist=false}focusMode(true)}});
+  $("#fclose").onclick=function(e){e.stopPropagation();closeFocus()};
+  window.addEventListener("popstate",function(){if(document.body.classList.contains("focus")){upHist=false;focusMode(false)}});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&document.body.classList.contains("focus"))closeFocus()});
+}
 function init(){
   $$(".tabs [role=tab]").forEach(function(b){b.onclick=function(){setTab(b.id.slice(2))}});
-  bindQ();bindTerms();renderMeter();
+  bindQ();bindTerms();bindFocus();renderMeter();
   if(location.hash==="#terms")ST.tab="g";
   setTab(ST.tab==="g"?"g":"q");requestAnimationFrame(function(){setTab(ST.tab)});
   refreshQ(true);

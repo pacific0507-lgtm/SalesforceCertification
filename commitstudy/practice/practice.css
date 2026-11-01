@@ -36,3 +36,11 @@
 .tq-h{justify-content:flex-start;flex-wrap:wrap;gap:4px 8px}
 .tq-h .tq-sj{margin-right:0}
 .tq-h>span:last-child:not(.tq-sj):not(.tq-pos){margin-left:auto;text-align:right}
+/* 大きく表示: 操作ボタンを画面の下に固定(社労士版と同じ) */
+body.focus #qbox .tq-act{position:fixed;z-index:62;left:max(16px,calc((100vw - 720px)/2));right:max(16px,calc((100vw - 720px)/2));bottom:calc(14px + env(safe-area-inset-bottom,0));margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+body.focus #qbox .tq-act>*{display:flex;align-items:center;justify-content:center;min-height:56px;margin:0;border-radius:16px;text-align:center}
+body.focus #qbox .tq-act>.bx-btn{background:var(--paper)}
+body.focus #qbox .tq-act>#tq-next{grid-column:1/-1}
+body.focus .tq-key{display:none}
+body.focus .tq-q{font-size:17.5px}
+body.focus .tq-b{font-size:15.5px}
