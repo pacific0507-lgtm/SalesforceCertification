@@ -79,3 +79,4 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `build_mcadmin.py`: 章ごとの原稿 `mcadmin/manuscript/out_ch*.json` から `data/mcadmin/*.json` を組み立てる(選択肢は問題ごとに固定の乱数で並べ替え)。
 - 構成: 5章21項目(デジタルマーケティングの基礎/セットアップ/サブスクライバーとデータの管理/チャネルの管理/メンテナンス)、オリジナル問題132問。すべて本文の該当箇所に結び付け済み。根拠は help.salesforce.com(各問題の参照ページ)。
 - Trailhead のクイズはログインが必要で取得できなかったため、問題は Trailhead の資格対策モジュールの出題範囲と公式ヘルプをもとにしたオリジナル。
+- 図: `mcadmin/figs.py` で21項目の図(SVG)を描き、各項目の「たとえるなら」の直後に入れる(Data 360 の図と同じクラスで、ライト/ダークに追従)。

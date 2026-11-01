@@ -32,7 +32,7 @@ for n in sorted(chs):
         nos[sid] = k; titles[sid] = s["title"]; secmap[sid] = f"{n}.1"
         order += 1
         sections.append({"id": f"mcadmin:{sid}", "subject_id": "mcadmin", "chapter_id": f"mcadmin:ch{n:02d}", "sort_order": order, "title": s["title"], "no": s["no"]})
-        units = {plain(m) for m in re.findall(r"<(?:li|p)[^>]*>(.*?)</(?:li|p)>", s["html"], re.S)}
+        units = {plain(m[1]) for m in re.findall(r"<(li|p)(?:\s[^>]*)?>(.*?)</\1>", re.sub(r"<svg.*?</svg>", "", s["html"], flags=re.S), re.S)}
         units |= {plain(m) for m in re.findall(r"<tr[^>]*>(.*?)</tr>", s["html"], re.S)}
         for q in s.get("questions", []):
             qid += 1
