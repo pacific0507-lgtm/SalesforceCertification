@@ -1,7 +1,7 @@
 """章ごとの原稿(out_ch1.json など)から、科目 mcadmin のデータファイルを組み立てる。
 使い方: python3 build_mcadmin.py <原稿フォルダ> <出力フォルダ(data/mcadmin)>
 """
-import glob, html, json, os, re, sys, time
+import glob, html, json, os, random, re, sys, time
 src, out = sys.argv[1:3]
 os.makedirs(out, exist_ok=True)
 CX = {1: 0, 3: 1, 2: 2, 4: 3, 5: 4}  # 章 → 出題範囲(デジタルマーケティング/サブスクライバー/セットアップ/チャネル/メンテナンス)
@@ -38,7 +38,10 @@ for n in sorted(chs):
             qid += 1
             x = q.get("x") or ""
             if x not in units: print(f"警告: 該当箇所が本文にない Q{qid} [{sid}] {x[:40]}", file=sys.stderr)
-            d = {"a": q["a"], "c": CX[n], "ex": q["ex"], "f": f"f-{sid}", "id": qid, "n": None, "o": q["o"], "q": q["q"],
+            # 正解の位置が偏らないよう、選択肢を問題ごとに固定の乱数で並べ替える
+            perm = list(range(len(q["o"]))); random.Random(f"mcadmin-{qid}").shuffle(perm)
+            opts = [q["o"][k] for k in perm]; ans = sorted(perm.index(k) for k in q["a"])
+            d = {"a": ans, "c": CX[n], "ex": q["ex"], "f": f"f-{sid}", "id": qid, "n": None, "o": opts, "q": q["q"],
                  "s": "オリジナル(公式ヘルプにもとづく)", "u": q.get("u"), "v": "公式ヘルプにもとづく", "x": x}
             Q.append({"id": f"q{qid:04d}", "data": d})
             R.append({"id": f"mcadmin:q{qid}", "subject_id": "mcadmin", "n": qid, "kind": "mc", "source": "orig", "exam": d["s"], "text": q["q"], "section_id": f"mcadmin:{sid}", "kq": [], "law": None})

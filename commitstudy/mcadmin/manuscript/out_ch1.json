@@ -1,0 +1,305 @@
+{
+ "chapter": 1,
+ "chapter_title": "デジタルマーケティングの基礎",
+ "chapter_sub": "Marketing Cloud Engagement の製品の全体像と、法令順守、データを守るためのベストプラクティスを学びます。",
+ "sections": [
+  {
+   "id": "products",
+   "no": "Ch1·1",
+   "title": "Marketing Cloud Engagement の製品の全体像",
+   "tag": "Product Offerings",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>クイズです。「サイトの訪問者に、いま見ている商品に合わせたおすすめを即座に出したい」。おすすめする製品は?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>はいはい!メールなら Email Studio、だからサイトなら…Web Studio?</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>ブブー。正解は Marketing Cloud Personalization だ。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Engagement の中のスタジオやビルダーが基本の道具箱で、Personalization は外付けの拡張製品です。リアルタイムの1対1対応が得意です。</p><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>道具箱の中身と、外付けのオプション。まずそこを分けて覚えるんだね。</p></div><p class=\"one\">Marketing Cloud Engagement は、チャネルごとの「スタジオ」と、データやコンテンツを扱う「ビルダー」の組み合わせでできています。さらに、目的に応じて拡張製品を追加します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>キッチンです。コンロ、オーブン、冷蔵庫(スタジオとビルダー)は最初からあります。そこに、食洗機や業務用ミキサー(拡張製品)を、作りたい料理に合わせて買い足します。</p></div><h4>スタジオとビルダー</h4><div class=\"tw\"><table><thead><tr><th>名前</th><th>役割</th></tr></thead>\n<tr><td>Email Studio</td><td>簡単なニュースレターから複雑なキャンペーンまで、メールを作って送る。販促、トランザクション、トリガーのメールに対応し、トラッキングで効果を改善する</td></tr>\n<tr><td>Mobile Studio</td><td>モバイル端末にパーソナライズしたメッセージを届ける</td></tr>\n<tr><td>Advertising Studio</td><td>Engagement の顧客データを、デジタル広告のターゲティングに使う</td></tr>\n<tr><td>Journey Builder</td><td>顧客がブランドとたどる道筋(ジャーニー)を設計し、キャンペーンを自動化する</td></tr>\n<tr><td>Automation Studio</td><td>複数ステップのマーケティング処理やデータ管理を、自動で実行する</td></tr>\n<tr><td>Contact Builder</td><td>データエクステンションを関連付け、1人の連絡先の情報を1つのレコードとして扱う</td></tr>\n<tr><td>Content Builder</td><td>画像、ドキュメント、コンテンツを1か所にまとめる、チャネル共通のコンテンツ管理ツール</td></tr>\n<tr><td>Analytics Builder</td><td>メールの効果測定、標準レポート、ダッシュボードで、チャネルをまたいだ反応を分析する</td></tr>\n</table></div><ul>\n<li>Mobile Studio は、SMSとMMSを送受信する MobileConnect、アプリのプッシュ通知を送る MobilePush、LINE などのメッセージアプリに送る GroupConnect の3つでできています。</li>\n<li>Advertising Studio(現在の名称は Marketing Cloud Advertising)の Advertising Audiences では、顧客データから Facebook、Instagram、Google Ads、LinkedIn などの広告オーディエンスを作れます。既存顧客への広告、類似オーディエンスの種づくり、新規獲得広告からの既存顧客の除外、反応のないメール購読者の掘り起こしに使います。</li>\n</ul><h4>拡張製品と、おすすめする場面</h4><div class=\"tw\"><table><thead><tr><th>製品</th><th>できること</th><th>おすすめする場面</th></tr></thead>\n<tr><td>Marketing Cloud Personalization(旧 Interaction Studio)</td><td>サイト、アプリ、メールでの行動に合わせて、リアルタイムにパーソナライズする。AIによるおすすめも出せる</td><td>Webサイトの訪問者に、閲覧中の行動に応じたおすすめをその場で出したいとき</td></tr>\n<tr><td>Marketing Cloud Intelligence</td><td>広告、Web解析、CRM、ECなどのデータを取り込み、ハーモナイズ(項目をそろえて統合)して可視化する</td><td>複数の広告媒体やチャネルの成果を、1つのダッシュボードで比べたいとき</td></tr>\n<tr><td>Distributed Marketing</td><td>本社のマーケターが作ったブランド準拠のコンテンツを、営業、代理店、パートナーがCRMの画面からパーソナライズして送る</td><td>金融アドバイザーや販売代理店など、現場の担当者に承認済みのメールを送らせたいとき</td></tr>\n<tr><td>Marketing Cloud Connect</td><td>Sales Cloud、Service Cloud と Engagement をつなぐ。CRMのデータを同期して使い、CRMからメールを送り、配信結果をCRMに戻す</td><td>CRMの取引先責任者やリードに配信し、開封などの結果を営業がCRMで見たいとき</td></tr>\n</table></div><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>Personalization と Intelligence、名前が似てて混ざりそう。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Personalization は「目の前の1人にいま出すもの」を決めます。Intelligence は「たくさんの媒体の成果を集計して見る」ものです。</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>片方はリアルタイム処理、片方は集計バッチ。用途がまるで違う。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>要件の言葉から製品を選ぶ問題が出ます。「リアルタイムにWebで個別対応」なら Personalization、「複数媒体の成果を統合して分析」なら Intelligence です。</li>\n<li>「現場の営業やパートナーが、承認済みコンテンツをCRMから送る」なら Distributed Marketing です。</li>\n<li>「CRMのデータを Engagement で使う」「配信結果をCRMで見る」なら Marketing Cloud Connect です。</li>\n<li>SMSは MobileConnect、プッシュ通知は MobilePush、LINE は GroupConnect です。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "あるアパレル会社は、ECサイトの訪問者が見ている商品やクリックに合わせて、その場でおすすめ商品を表示したいと考えています。管理者がおすすめすべき製品はどれですか?",
+     "o": [
+      "Marketing Cloud Personalization",
+      "Marketing Cloud Intelligence",
+      "Automation Studio",
+      "Distributed Marketing"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Marketing Cloud Personalization は、サイトやアプリでの行動に合わせてリアルタイムにパーソナライズする製品です。Intelligence は複数媒体の成果を集めて分析する製品で、訪問中の1人に対応するものではありません。Automation Studio はスケジュールなどで処理を実行する道具です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_pers.htm&type=5",
+     "x": "Marketing Cloud Personalization(旧 Interaction Studio)サイト、アプリ、メールでの行動に合わせて、リアルタイムにパーソナライズする。AIによるおすすめも出せるWebサイトの訪問者に、閲覧中の行動に応じたおすすめをその場で出したいとき"
+    },
+    {
+     "q": "ある保険会社では、全国の代理店の担当者が、本社マーケティング部門の承認済みメールを、Sales Cloud の画面から自分の顧客向けに少し手直しして送りたいと考えています。どの製品をおすすめすべきですか?",
+     "o": [
+      "Marketing Cloud Connect のみ",
+      "Distributed Marketing",
+      "Marketing Cloud Personalization",
+      "Content Builder の共有フォルダー"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Distributed Marketing は、本社が作ったブランド準拠のコンテンツを、代理店やパートナーがCRMからパーソナライズして送るための製品です。Marketing Cloud Connect は CRM と Engagement をつなぐ製品で、承認済みコンテンツを現場で編集して送る仕組みそのものではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_dm_distributed_marketing.htm&type=5",
+     "x": "Distributed Marketing本社のマーケターが作ったブランド準拠のコンテンツを、営業、代理店、パートナーがCRMの画面からパーソナライズして送る金融アドバイザーや販売代理店など、現場の担当者に承認済みのメールを送らせたいとき"
+    },
+    {
+     "q": "あるメーカーは、Google Ads、Facebook 広告、Web解析、Engagement のメール成果をまとめて、チャネル横断の1つのダッシュボードで比較したいと考えています。最も適した製品はどれですか?",
+     "o": [
+      "Analytics Builder の標準レポート",
+      "Journey Builder の Journey Analytics",
+      "Marketing Cloud Intelligence",
+      "Advertising Studio の Advertising Audiences"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Marketing Cloud Intelligence は、広告、Web解析、CRMなど多数のソースのデータを取り込み、ハーモナイズして可視化します。Analytics Builder の標準レポートは主に Engagement 内の配信成果が対象です。Advertising Audiences は広告用のオーディエンスを作る機能で、成果の統合分析には使いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.datorama.htm&type=5",
+     "x": "Marketing Cloud Intelligence広告、Web解析、CRM、ECなどのデータを取り込み、ハーモナイズ(項目をそろえて統合)して可視化する複数の広告媒体やチャネルの成果を、1つのダッシュボードで比べたいとき"
+    },
+    {
+     "q": "ある会社は、メール購読者のデータを使って Facebook と Instagram に既存顧客向けの広告を出し、新規獲得キャンペーンからは既存顧客を除外したいと考えています。使うべき機能はどれですか?",
+     "o": [
+      "MobilePush",
+      "GroupConnect",
+      "Advertising Studio の Advertising Audiences",
+      "Marketing Cloud Personalization のレシピ"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Advertising Audiences は、顧客データから Facebook、Instagram、Google Ads などの広告オーディエンスを作り、既存顧客への配信や新規獲得広告からの除外に使えます。MobilePush はアプリのプッシュ通知、GroupConnect は LINE などのメッセージアプリ向けです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_ads_advertising_audiences.htm&type=5",
+     "x": "Advertising Studio(現在の名称は Marketing Cloud Advertising)の Advertising Audiences では、顧客データから Facebook、Instagram、Google Ads、LinkedIn などの広告オーディエンスを作れます。既存顧客への広告、類似オーディエンスの種づくり、新規獲得広告からの既存顧客の除外、反応のないメール購読者の掘り起こしに使います。"
+    },
+    {
+     "q": "ある小売企業は、顧客の携帯電話にセール情報のSMSを送り、自社アプリの利用者にはプッシュ通知を送りたいと考えています。Mobile Studio のどの機能を使いますか?(2つ選択)",
+     "o": [
+      "MobileConnect",
+      "MobilePush",
+      "GroupConnect",
+      "Content Builder"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "SMSとMMSは MobileConnect、アプリのプッシュ通知は MobilePush で送ります。GroupConnect は LINE などのメッセージアプリ向けです。Content Builder はコンテンツを管理するツールで、Mobile Studio の配信機能ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_mobile_studio.htm&type=5",
+     "x": "Mobile Studio は、SMSとMMSを送受信する MobileConnect、アプリのプッシュ通知を送る MobilePush、LINE などのメッセージアプリに送る GroupConnect の3つでできています。"
+    },
+    {
+     "q": "営業部門は、Sales Cloud のリードや取引先責任者の最新データを Engagement の配信に使い、メールの開封などの結果を Sales Cloud で確認したいと考えています。管理者は何を導入すべきですか?",
+     "o": [
+      "Distributed Marketing の Quick Send",
+      "Marketing Cloud Connect",
+      "Marketing Cloud Intelligence",
+      "Automation Studio のファイルドロップ"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Marketing Cloud Connect は Sales Cloud、Service Cloud と Engagement をつなぎ、CRMデータの同期、CRMからの送信、配信結果のCRMへの反映を行います。Distributed Marketing は現場の担当者がコンテンツを送るための製品で、CRMでの指標表示にはむしろ Marketing Cloud Connect が必要です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_co_synchronized_data_sources.htm&type=5",
+     "x": "Marketing Cloud ConnectSales Cloud、Service Cloud と Engagement をつなぐ。CRMのデータを同期して使い、CRMからメールを送り、配信結果をCRMに戻すCRMの取引先責任者やリードに配信し、開封などの結果を営業がCRMで見たいとき"
+    }
+   ]
+  },
+  {
+   "id": "compliance",
+   "no": "Ch1·2",
+   "title": "法令順守と同意",
+   "tag": "Compliance",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"eager\"><b class=\"who\">コミットくん</b>配信停止の依頼が来た。3か月後にまとめて処理する予定だ。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>遅すぎ!CAN-SPAMだと10日以内だよ。</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>では注文確認メールも、配信停止した人には止めるべきか。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>うーん、それは…どうなの、クラウドちゃん?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>注文確認のようなトランザクションメールは、商用メールより要件がゆるやかです。配信停止した人に届けるかどうかは、送信分類の設定で決めます。</p></div><p class=\"one\">商用メールに関する法律と、受信者の同意や配信停止の意思を、Marketing Cloud Engagement の設定と機能で守ることです。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>マンションの郵便受けの「チラシお断り」のシールです。チラシ(商用メール)は入れてはいけませんが、電気料金のお知らせ(トランザクションメール)は届きます。シールが貼られたら、すぐに配る名簿から外します。</p></div><h4>CAN-SPAMの要件(商用メール)</h4><p>CAN-SPAM法(米国の商用メールに関する法律)は、商用コンテンツを届けることが主な目的のメールに、次の要件を課しています。</p><ul>\n<li>送信者を、ヘッダー情報で正しく示します。</li>\n<li>件名は、メールの内容を正確に表すものにします。</li>\n<li>受信者の明示的な同意(オプトイン)がない限り、広告であることを明示します。</li>\n<li>会社の物理的な郵送先住所を記載します。住所は Setup の「Account Settings」の Company Information で更新でき、送信前に住所が入っているか検証できます。</li>\n<li>オプトアウト(配信停止)の手段を用意します。配信停止のためにログインさせたり、2ページ以上を見せたりしてはいけません。</li>\n<li>配信停止の依頼は10日以内に処理します。配信停止の仕組みは、送信後少なくとも30日間は動くようにします。</li>\n</ul><h4>商用とトランザクション</h4><ul>\n<li>送信分類(Send Classification)は、送信者プロファイル、配信プロファイル、CAN-SPAMの分類(Commercial か Transactional)、送信の優先度をまとめた設定です。</li>\n<li>Transactional を選ぶと「Honor source and publication list level opt outs」のチェックボックスが表示されます。オンにすると、以前に配信停止した人やスパム報告した人が除外されます。</li>\n<li>このオプションをオフにすると、配信停止した人もトランザクションメールを受け取ります。その場合、メールには配信停止リンクが入りません。</li>\n</ul><h4>配信停止と購読者のステータス</h4><ul>\n<li>配信停止リンクのクリック、プロファイルセンターでの停止、ユーザーの手動変更で、ステータスは Unsubscribed になります。</li>\n<li>フィードバックループ(FBL。ISPが迷惑メール報告を送信者に知らせる仕組み)のあるISPでスパム報告されると、All Subscribers のレベルで Unsubscribed になります。</li>\n<li>All Subscribers リストで配信停止になると、すべてのリストとグループから配信停止になります。逆に、リストやグループでは停止、All Subscribers では Active という状態はありえます。</li>\n<li>All Subscribers で Active に戻しても、ほかのリストやグループには、それぞれ改めてオプトインしてもらう必要があります。</li>\n</ul><h4>同意とデータ保護の機能</h4><div class=\"tw\"><table><thead><tr><th>顧客の要望</th><th>使う機能</th></tr></thead>\n<tr><td>マーケティングメールへの同意を記録したい</td><td>Email Studio のプロファイルセンターとサブスクリプションセンターで、同意とオプトインの確認を取る</td></tr>\n<tr><td>開封やクリックを追跡しないでほしい</td><td>Email Studio の DoNotTrack 属性</td></tr>\n<tr><td>個人データを消してほしい</td><td>Contact Builder の Contact Delete、または Contact Delete の REST API</td></tr>\n<tr><td>自分のデータのコピーがほしい(データポータビリティ)</td><td>Automation Studio のデータ抽出で、連絡先のキーやIDをもとにファイルを作る</td></tr>\n<tr><td>データの処理を止めてほしい(処理の制限)</td><td>Contact Restriction の REST API。連絡先データのコピーを凍結し、以後の処理や変更を止める</td></tr>\n</table></div><h4>Do Not Track(開封とクリックを追跡しない)</h4><ul>\n<li>DoNotTrack はプリファレンス属性です。オンの購読者には送信時にトラッキングIDが付かないため、開封とクリックが記録されません。</li>\n<li>配信そのものは続けられます。止まるのはトラッキングだけで、その購読者の反応はトラッキングレポートに出ません。</li>\n<li>Do Not Track を有効にする前に送ったメールにはトラッキングIDが付いているため、その開封とクリックは記録されます。</li>\n<li>DoNotTrack のプリファレンス属性を作れるのは、最上位のビジネスユニットだけです。</li>\n</ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>配信停止は10日以内に処理し、仕組みは送信後30日以上動かします。ログインや2ページ以上の操作を求めてはいけません。</li>\n<li>トランザクションの送信分類では、オプトアウトを尊重するかどうかを選べます。尊重しない場合、配信停止リンクは入りません。</li>\n<li>スパム報告(FBL)と All Subscribers での配信停止は、アカウント全体での配信停止です。</li>\n<li>Do Not Track は「送るけれど追跡しない」設定です。配信停止とは違います。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社の法務部門は、CAN-SPAMに沿った配信停止の運用を求めています。管理者が守るべき条件として正しいものはどれですか?",
+     "o": [
+      "配信停止の依頼を10日以内に処理し、配信停止の仕組みは送信後少なくとも30日間動くようにする",
+      "配信停止の依頼を30日以内に処理し、仕組みは送信後10日間動けばよい",
+      "配信停止の前に、購読者にログインして本人確認をしてもらう",
+      "配信停止の依頼は、次の四半期の名簿更新時にまとめて反映する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "CAN-SPAMでは、配信停止は10日以内に処理し、仕組みは送信後少なくとも30日間動かす必要があります。日数を逆にした選択肢は誤りです。配信停止にログインを求めることは禁止されています。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_can_spam_requirements.htm&type=5",
+     "x": "配信停止の依頼は10日以内に処理します。配信停止の仕組みは、送信後少なくとも30日間は動くようにします。"
+    },
+    {
+     "q": "あるECサイトは、注文確認メールを、マーケティングメールを配信停止した顧客にも届けたいと考えています。管理者はどのように設定すべきですか?",
+     "o": [
+      "Commercial の送信分類を使い、配信停止リンクを削除する",
+      "Transactional の送信分類を使い、「Honor source and publication list level opt outs」をオフにする",
+      "配信停止した顧客のステータスを All Subscribers で Active に戻す",
+      "Do Not Track 属性をオンにする"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Transactional の送信分類で「Honor source and publication list level opt outs」をオフにすると、配信停止した人もトランザクションメールを受け取り、配信停止リンクは入りません。Unsubscribed を Active に戻すことは推奨されず、同意なく購読を戻すべきではありません。Do Not Track は追跡を止める設定で、配信先には影響しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_create_send_classification.htm&type=5",
+     "x": "このオプションをオフにすると、配信停止した人もトランザクションメールを受け取ります。その場合、メールには配信停止リンクが入りません。"
+    },
+    {
+     "q": "ある購読者から「メールは今後も受け取りたいが、開封やクリックを追跡しないでほしい」という依頼がありました。管理者は何をすべきですか?",
+     "o": [
+      "購読者を All Subscribers で Unsubscribed にする",
+      "Contact Delete で連絡先を削除する",
+      "購読者の DoNotTrack プリファレンス属性をオンにする",
+      "Contact Restriction の REST API で処理を制限する"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "DoNotTrack 属性がオンの購読者には、送信時にトラッキングIDが付かず、開封とクリックが記録されません。配信は続けられます。Unsubscribed や Contact Delete では、メールそのものが届かなくなります。処理の制限は、連絡先へのあらゆる処理を止める措置です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_do_not_track_email_opens_and_clicks.htm&type=5",
+     "x": "DoNotTrack はプリファレンス属性です。オンの購読者には送信時にトラッキングIDが付かないため、開封とクリックが記録されません。"
+    },
+    {
+     "q": "ある購読者が、Outlook.com の画面で自社のメールを迷惑メールとして報告しました。フィードバックループが設定されている場合、Engagement でのこの購読者のステータスはどうなりますか?",
+     "o": [
+      "報告したメールのリストだけで Unsubscribed になる",
+      "All Subscribers のレベルで Unsubscribed になる",
+      "Held になる",
+      "Bounced になる"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "フィードバックループのあるISPでスパム報告されると、All Subscribers のレベルで Unsubscribed になり、すべてのリストに送られなくなります。Held と Bounced は、バウンス(不達)によるステータスです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_bounce_mail_management.htm&type=5",
+     "x": "フィードバックループ(FBL。ISPが迷惑メール報告を送信者に知らせる仕組み)のあるISPでスパム報告されると、All Subscribers のレベルで Unsubscribed になります。"
+    },
+    {
+     "q": "カリフォルニア州の顧客から、自分の個人データをすべて削除してほしいという依頼がありました。Engagement で使うべき機能はどれですか?",
+     "o": [
+      "Automation Studio のデータ抽出",
+      "Contact Builder の Contact Delete",
+      "データエクステンションのデータ保持ポリシー",
+      "All Subscribers での配信停止"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "連絡先の情報を Engagement から削除するには、Contact Builder の Contact Delete か、その REST API を使います。データ抽出はデータのコピーを渡すポータビリティ向けです。配信停止ではデータは残ります。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_data_protection_privacy.htm&type=5",
+     "x": "個人データを消してほしいContact Builder の Contact Delete、または Contact Delete の REST API"
+    },
+    {
+     "q": "以前 All Subscribers で配信停止した購読者から、改めて同意を得られたため、All Subscribers のステータスを Active に戻しました。この購読者に「新商品ニュース」リストで配信するには、何が必要ですか?",
+     "o": [
+      "何もしなくてよい。All Subscribers が Active になれば全リストで Active になる",
+      "「新商品ニュース」リストにも改めてオプトインしてもらう",
+      "Transactional の送信分類で送る",
+      "Do Not Track 属性をオフにする"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "All Subscribers で Active に戻しても、ほかのリストやグループには個別にオプトインしてもらう必要があります。商用のニュースを Transactional として送るのは、分類の目的に合いません。Do Not Track は追跡の設定で、配信の可否とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_all_subscribers_list.htm&type=5",
+     "x": "All Subscribers で Active に戻しても、ほかのリストやグループには、それぞれ改めてオプトインしてもらう必要があります。"
+    }
+   ]
+  },
+  {
+   "id": "security-bp",
+   "no": "Ch1·3",
+   "title": "データと個人情報を守るベストプラクティス",
+   "tag": "Security Best Practices",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>なぞなぞだ。鍵は少なく、扉は二重、出口には名簿。これなーんだ。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>うーん…銀行の金庫?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>正解は、Engagement のセキュリティ設定だ。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>鍵は最小限の権限、二重の扉は多要素認証、出口の名簿はエクスポート先の許可リストですね。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>なるほど、ちゃんと全部に意味があった!</p></div><p class=\"one\">誰が何に触れるかを必要最小限に絞り、ログインとデータの出口を守り、機密データは暗号化して期限を決めて持つ、という管理者の基本の守りです。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>会社の書類保管室です。鍵は必要な人にだけ渡し、入るときは社員証と暗証番号の両方を確認します。持ち出しは決まった宛先だけ、出入りは記録し、保存期限が来た書類はシュレッダーにかけます。</p></div><h4>権限は必要最小限に</h4><ul>\n<li>ロールは、業務に必要な権限だけを与えるように割り当てます。</li>\n<li>Administrator と Marketing Cloud Administrator のロールを持つユーザーの数を絞ります。どちらもほとんどの機能にアクセスできるためです。</li>\n<li>どれかのロールや個人の設定に Deny(拒否)があると、ほかのロールで許可されていても、その機能は使えません。</li>\n<li>すべてのロールや権限を1人に与えてはいけません。設定が競合し、かえって機能が使えなくなります。</li>\n</ul><h4>ログインを守る設定と推奨値</h4><div class=\"tw\"><table><thead><tr><th>設定</th><th>推奨</th></tr></thead>\n<tr><td>Session Timeout(操作がないと自動でログアウト)</td><td>20分</td></tr>\n<tr><td>Login Expires After Inactivity(長く使われないログインを無効化)</td><td>90日以内。ただしAPIユーザーがいるアカウントには推奨されない</td></tr>\n<tr><td>Invalid Logins Before Lockout(ロックまでの失敗回数)</td><td>3回</td></tr>\n<tr><td>Minimum Password Length</td><td>8文字以上</td></tr>\n</table></div><ul>\n<li>多要素認証(MFA)を使います。最も安全なのは、物理的なセキュリティキーなど、フィッシングに強い方式です。</li>\n<li>Login IP Allowlist で、許可していないIPアドレスからのログインを防げます。</li>\n</ul><h4>データの出口と記録</h4><ul>\n<li>Enforce Export Email Allowlist をオンにすると、許可リストにあるメールアドレスとドメインにだけデータをエクスポートします。顧客情報の不正な持ち出しや、うっかり漏えいを防げます。</li>\n<li>Audit Trail(Basic は既定でオン)には、アクセスや操作の記録が残ります。記録は Automation Studio のデータ抽出か REST API で取り出せます。</li>\n</ul><h4>機密データを守る機能</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>内容</th></tr></thead>\n<tr><td>Data at Rest Encryption</td><td>ファイルシステムに保存されたファイルを暗号化する。アプリのコードを変える必要はない。有効化は担当の営業に相談する</td></tr>\n<tr><td>Field-Level Encryption</td><td>データエクステンションの項目単位で、保存時に暗号化する。送信時に自動で復号されるので、暗号化した項目もメールの差し込みに使える</td></tr>\n<tr><td>Tokenized Sending</td><td>Engagement のデータベースに保存できないほど機密性の高いデータを、自社システムから API で渡し、送信時にだけ使う</td></tr>\n</table></div><ul>\n<li>AMPscript の CloudPagesURL 関数は、AES-GCMで暗号化したクエリ文字列を付けたURLを作ります。顧客データを平文のURLパラメーターではなく、暗号化して渡せます。</li>\n</ul><h4>データを持ちすぎない(データ保持ポリシー)</h4><p>データ保持ポリシーは、データエクステンションの古いデータを自動で削除する設定です。</p><ul>\n<li>Individual Records は、各レコードを追加された日から数えて期間が過ぎたら削除します。データエクステンション自体は残ります。</li>\n<li>All Records は、期間が過ぎたらすべてのレコードを削除します。データエクステンションは空の状態で残ります。</li>\n<li>All Records and Data Extension は、期間が過ぎたらデータエクステンションごと削除します。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>暗号化しておけば、権限は広めでも大丈夫じゃない?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいえ。Field-Level Encryption の項目は送信時に復号されて使えます。見られる人を絞るのは、やはり権限の役目です。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>管理者ロールを持つ人を絞り、必要な権限だけを与えます。Deny は他の許可より優先されます。</li>\n<li>データの持ち出し対策は Enforce Export Email Allowlist、操作の記録は Audit Trail です。</li>\n<li>項目単位の暗号化は Field-Level Encryption、そもそも保存しないなら Tokenized Sending です。</li>\n<li>データ保持ポリシーの3つの範囲(Individual Records、All Records、All Records and Data Extension)の違いを押さえます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社の Engagement アカウントでは、作業を早く進めるため、マーケティング担当者のほとんどに Marketing Cloud Administrator ロールが付いています。セキュリティのベストプラクティスに沿った対応はどれですか?",
+     "o": [
+      "全員にすべてのロールを追加し、権限不足のエラーをなくす",
+      "管理者ロールを持つユーザーを絞り、業務に必要な権限だけを持つロールを割り当てる",
+      "管理者ロールはそのままにし、Session Timeout を長くする",
+      "管理者ロールはそのままにし、全員のパスワードを毎週変えさせる"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "ロールは業務に必要な権限だけを与えるように割り当て、Administrator と Marketing Cloud Administrator を持つ人数は絞ります。すべてのロールを1人に与えると競合が起き、機能が使えなくなることもあります。パスワードの頻繁な変更は、権限の広さの問題を解決しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_roles_permissions_use_cases.htm&type=5",
+     "x": "Administrator と Marketing Cloud Administrator のロールを持つユーザーの数を絞ります。どちらもほとんどの機能にアクセスできるためです。"
+    },
+    {
+     "q": "あるユーザーには2つのロールが割り当てられています。1つのロールではデータエクステンションの削除が Allow、もう1つでは Deny です。このユーザーはデータエクステンションを削除できますか?",
+     "o": [
+      "削除できる。Allow が優先される",
+      "削除できない。Deny が優先される",
+      "最後に割り当てたロールの設定が使われる",
+      "Email Studio のロールの設定だけが使われる"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "どれかのロールや個人の設定に Deny があると、ほかで許可されていてもその機能は使えません。割り当ての順番や、ロールの種類で決まるわけではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_roles_permissions_use_cases.htm&type=5",
+     "x": "どれかのロールや個人の設定に Deny(拒否)があると、ほかのロールで許可されていても、その機能は使えません。"
+    },
+    {
+     "q": "情報セキュリティ部門は、ユーザーが顧客データのエクスポートを個人のメールアドレスに送ってしまう事故を防ぎたいと考えています。管理者は何を設定すべきですか?",
+     "o": [
+      "Login IP Allowlist",
+      "Enforce Export Email Allowlist",
+      "Session Timeout",
+      "Do Not Track 属性"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Enforce Export Email Allowlist をオンにすると、許可リストにあるアドレスとドメインにだけデータをエクスポートします。Login IP Allowlist はログイン元のIPを制限するもので、エクスポート先は制限しません。Do Not Track は開封とクリックの追跡を止める設定です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_security_settings.htm&type=5",
+     "x": "Enforce Export Email Allowlist をオンにすると、許可リストにあるメールアドレスとドメインにだけデータをエクスポートします。顧客情報の不正な持ち出しや、うっかり漏えいを防げます。"
+    },
+    {
+     "q": "ある銀行は、データエクステンションの生年月日や口座の種類などの項目を保存時に暗号化しつつ、その値をメールの差し込みにも使いたいと考えています。最も適した機能はどれですか?",
+     "o": [
+      "Field-Level Encryption",
+      "Tokenized Sending",
+      "データ保持ポリシー",
+      "Enforce Export Email Allowlist"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Field-Level Encryption は、データエクステンションの項目を保存時に暗号化し、送信時に自動で復号するので、差し込みにも使えます。Tokenized Sending は、データを Engagement に保存せず送信時に渡す方式です。データ保持ポリシーは古いデータを削除する設定で、暗号化はしません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_field_level_encryption.htm&type=5",
+     "x": "Field-Level Encryptionデータエクステンションの項目単位で、保存時に暗号化する。送信時に自動で復号されるので、暗号化した項目もメールの差し込みに使える"
+    },
+    {
+     "q": "あるキャンペーンでは、応募データを受け付け順にデータエクステンションに追加しています。各レコードは追加から30日たったら削除し、データエクステンション自体は残したいと考えています。どのデータ保持設定を選びますか?",
+     "o": [
+      "All Records and Data Extension",
+      "All Records",
+      "Individual Records",
+      "Contact Delete"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Individual Records は、各レコードを追加された日から数えて期間が過ぎたら削除し、データエクステンションは残します。All Records は全レコードをまとめて削除し、All Records and Data Extension はデータエクステンションごと削除します。Contact Delete は連絡先の削除機能で、保持設定ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_manage_data_retention_policy.htm&type=5",
+     "x": "Individual Records は、各レコードを追加された日から数えて期間が過ぎたら削除します。データエクステンション自体は残ります。"
+    },
+    {
+     "q": "ある医療関連企業は、非常に機密性の高い情報を Engagement のデータベースに保存せずに、送信の時だけ使いたいと考えています。管理者がすすめるべき機能はどれですか?",
+     "o": [
+      "Field-Level Encryption",
+      "Data at Rest Encryption",
+      "Tokenized Sending",
+      "Marketing Cloud Connect の同期データソース"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Tokenized Sending は、保存できないほど機密性の高いデータを自社システムから API で渡し、送信時にだけ使う方式です。Field-Level Encryption と Data at Rest Encryption は、データを Engagement に保存したうえで暗号化します。同期データソースは CRM のデータを Engagement に取り込む機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_security_settings.htm&type=5",
+     "x": "Tokenized SendingEngagement のデータベースに保存できないほど機密性の高いデータを、自社システムから API で渡し、送信時にだけ使う"
+    }
+   ]
+  }
+ ]
+}

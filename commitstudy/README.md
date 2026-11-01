@@ -72,3 +72,10 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 本文に論点がなかった過去問83問について、公式ドキュメントで調べ、各項目の「試験ポイント」の直前に「過去問で問われた関連知識」として73本の箇条書きを追記した(`d360/pastq_additions.json`)。これで過去問159問はすべて本文の該当箇所に結び付く。
 - 公式で確認できた57問は「公式で確認済み」(参照URL付き)、公式と正解が食い違う12問は「要確認(矛盾あり)」、確認できなかった14問は本文を「〜とされます」と控えめに書いた。
 - 調べた問題の入力は `d360/research/`。未対応(Trailhead のみ105問)は `d360/uncovered.md`。
+
+## 科目 Marketing Cloud Administrator(mcadmin)
+
+- `patch_multisubj.py`: エンジンの設定を科目ごとに切り替え、科目リスト(ホーム・科目一覧・学習記録・ルーター)に mcadmin を登録する。
+- `build_mcadmin.py`: 章ごとの原稿 `mcadmin/manuscript/out_ch*.json` から `data/mcadmin/*.json` を組み立てる(選択肢は問題ごとに固定の乱数で並べ替え)。
+- 構成: 5章21項目(デジタルマーケティングの基礎/セットアップ/サブスクライバーとデータの管理/チャネルの管理/メンテナンス)、オリジナル問題132問。すべて本文の該当箇所に結び付け済み。根拠は help.salesforce.com(各問題の参照ページ)。
+- Trailhead のクイズはログインが必要で取得できなかったため、問題は Trailhead の資格対策モジュールの出題範囲と公式ヘルプをもとにしたオリジナル。

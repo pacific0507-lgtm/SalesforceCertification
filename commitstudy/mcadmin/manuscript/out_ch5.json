@@ -1,0 +1,306 @@
+{
+ "chapter": 5,
+ "chapter_title": "メンテナンス",
+ "chapter_sub": "Automation Studioの自動化と通知、データの抽出とレポート、アカウントの監視と保守を学びます(試験配分15%)。",
+ "sections": [
+  {
+   "id": "automation",
+   "no": "Ch5·1",
+   "title": "Automation Studio と通知",
+   "tag": "Automation Studio",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>クイズです。毎朝6時に会員リストを取り込んで、誕生日メールを送りたい。オートメーションの開始方法はどれにしますか?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>ファイルドロップ!ファイルを置いたら動くやつでしょ?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>惜しいです。決まった時刻に動かすならスケジュールです。ファイルドロップは、Enhanced FTPにファイルが置かれたときに動きます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>cronとファイル監視の違いだ。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>時刻で動くか、ファイルで動くか。ちゃんと分けて覚える!</p></div><p class=\"one\">Automation Studioは、取り込み、SQLクエリ、メール送信などの作業(アクティビティ)を組み合わせて、決まった条件で自動実行する機能です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>家電の予約です。「6時になったら炊飯器が動く」がスケジュール、「洗濯物をカゴに入れたら洗濯機が動く」がファイルドロップです。</p></div><h4>開始ソース(Starting Source)の3種類</h4><div class=\"tw\"><table><thead><tr><th>開始ソース</th><th>開始のきっかけ</th><th>使用例</th></tr></thead><tr><td>スケジュール</td><td>自分で決めた日時と間隔で開始する</td><td>誕生日リストを毎日取り込み、当日が誕生日の人にメールを送る</td></tr><tr><td>ファイルドロップ</td><td>Enhanced FTPのImportまたはTriggered_Automationsフォルダ(その下のフォルダを含む)にファイルがアップロードされたとき</td><td>別のシステムがFTPに置くファイルを合図に処理を始める</td></tr><tr><td>トリガー</td><td>Amazon S3、Google Cloud Storage、Microsoft Azure Blob Storageなど、外部の場所にファイルが置かれたとき</td><td>外部ストレージの更新を合図に処理を始める</td></tr></table></div><ul><li>スケジュールのオートメーションは、開始日時、タイムゾーン、繰り返し間隔、終了を設定し、有効化(Activate)しないと実行されません。</li><li>オートメーションの所要時間はスケジュールに合わせます。24時間ごとの実行なのに36時間かかると、次の実行が始まった時点で止まり、いつまでも完了しません。</li><li>ファイルドロップでは、ファイル名パターンか、監視するフォルダを指定します。ファイル名パターンには拡張子を含めません。</li><li>ファイルドロップは既定でキューが有効です。実行中に届いたファイルは順番待ちになります。キューをオフにすると、実行中に届いたファイルは無視されます。</li><li>1つのファイルが複数の有効なトリガーに一致すると、どれか1つがランダムに選ばれます。確実に選ばせたいときはサブフォルダを使います。</li><li>「Run Once」で今すぐ1回だけ実行できます。一部のアクティビティだけを選んで実行する「Advanced Run Once」は、スケジュールのオートメーションだけで使えます。</li></ul><h4>主なアクティビティ</h4><div class=\"tw\"><table><thead><tr><th>アクティビティ</th><th>役割</th></tr></thead><tr><td>SQL Query</td><td>データエクステンションやデータビューから、SQLで条件に合うデータを取り出し、データエクステンションに入れる</td></tr><tr><td>Filter</td><td>データフィルターを適用し、条件に合うレコードでグループやデータエクステンションを作る</td></tr><tr><td>Data Copy or Import(旧Import File)</td><td>外部ファイルなどを使って、リストやデータエクステンションを更新する</td></tr><tr><td>File Transfer</td><td>ファイルの解凍、復号や、Safehouseから指定のFTPの場所へのファイル移動を行う</td></tr><tr><td>Data Extract</td><td>アプリケーションの外で使うファイルを作る。XMLを区切りファイルに変換することもできる</td></tr><tr><td>Send Email</td><td>メールを単独で、またはスケジュールに沿って送信する</td></tr><tr><td>Verification</td><td>対象のデータエクステンションが設定した条件に当てはまると、オートメーションを止めたり、メールで知らせたりする</td></tr></table></div><ul><li>SQL QueryとFilterは、合わせて40個まで同時に実行できます。超えた分はキューに入ります。</li><li>同じステップのアクティビティは同時に、別のステップは順番に実行されます。前の結果を使う処理は、ステップを分けます。</li></ul><h4>通知と監視</h4><ul><li>通知は、オートメーションの「Activity」タブの「Notification Settings」にメールアドレスを入れて設定します。実行がスキップされたとき、エラーになったとき、完了したときに届きます。</li><li>Event Notification Service(ENS)で、オートメーションのアラートを受け取ることもできます。</li><li>実行中のオートメーションを編集すると、実行中のインスタンスは止まり、変更を保存するまで以後の実行も一時停止します。</li><li>「Pause」はスケジュールを一時停止します。実行中の回は最後まで動き、次回以降の実行が行われません。</li><li>スケジュールの「Skip Next Occurrence」は、スケジュールを止めずに、次の1回だけを飛ばします。</li><li>「Stop」は実行中のオートメーションを止めます。進行中のステップのアクティビティは完了し、次のステップは始まりません。</li><li>Historyダッシュボードで、実行回数、成功率、エラー、スキップの多いオートメーションを確認できます。履歴はCSVでもダウンロードできます。</li></ul><div class=\"tw\"><table><thead><tr><th>ステータス</th><th>意味</th></tr></thead><tr><td>Scheduled</td><td>将来の実行が予定されている</td></tr><tr><td>AwaitingTrigger</td><td>ファイルドロップまたはトリガーを待っている</td></tr><tr><td>Paused</td><td>手動で一時停止され、再有効化するまで実行されない</td></tr><tr><td>Error</td><td>実行時にエラーが起きた</td></tr><tr><td>BuildingError</td><td>無効な設定のまま保存された</td></tr><tr><td>Skipped</td><td>実行がスキップされた</td></tr></table></div><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>エラーが出てないか、毎朝画面を見に行かないとダメ?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Notification Settingsにメールアドレスを入れておけば、エラー、スキップ、完了のときにメールが届きます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>監視はpullよりpush。アラートを仕掛けておけ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>決まった時刻ならスケジュール、Enhanced FTPへのファイル到着ならファイルドロップ、S3などの外部ストレージへのファイル到着ならトリガーです。</li><li>通知の設定場所は、オートメーションの「Activity」タブの「Notification Settings」です。スキップ、エラー、完了で通知されます。</li><li>Pauseはスケジュールを止める、Skip Next Occurrenceは次の1回だけ飛ばす、Stopは実行中の回を止める、の違いを押さえます。</li><li>スケジュールの間隔より所要時間が長いと、オートメーションは完了しません。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社の基幹システムは、毎晩決まっていない時刻に、会員データのファイルをEnhanced FTPのImportフォルダに置きます。ファイルが届いたらすぐに取り込みを始めたいです。管理者はどの開始ソースを使うべきですか?",
+     "o": [
+      "ファイルドロップ",
+      "スケジュール",
+      "トリガー",
+      "Run Once"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Enhanced FTPのImportまたはTriggered_Automationsフォルダへのファイル到着で始まるのは、ファイルドロップです。トリガーは、Amazon S3などの外部の場所に置かれたファイルで始まる開始ソースです。スケジュールは時刻で動くため、到着時刻が決まっていない場合には向きません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_triggered_automations.htm&type=5",
+     "x": "ファイルドロップEnhanced FTPのImportまたはTriggered_Automationsフォルダ(その下のフォルダを含む)にファイルがアップロードされたとき別のシステムがFTPに置くファイルを合図に処理を始める"
+    },
+    {
+     "q": "ある管理者は、夜間のインポート用オートメーションがエラーになったときや、実行がスキップされたときに、メールで知らせてほしいと考えています。どうすべきですか?",
+     "o": [
+      "オートメーションの「Activity」タブの「Notification Settings」にメールアドレスを入力する",
+      "Setupのセキュリティ設定で、通知用のメールアドレスを登録する",
+      "オートメーションの最後のステップにWaitアクティビティを追加する",
+      "Email Studioのトラッキング画面で、エラーアラートを有効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Automation Studioの通知は、オートメーションの「Activity」タブにある「Notification Settings」でメールアドレスを登録します。スキップ、エラー、完了のときに通知されます。Waitアクティビティは待機するだけで、通知の機能はありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_get_automation_studio_notifications.htm&type=5",
+     "x": "通知は、オートメーションの「Activity」タブの「Notification Settings」にメールアドレスを入れて設定します。実行がスキップされたとき、エラーになったとき、完了したときに届きます。"
+    },
+    {
+     "q": "毎日実行しているスケジュールのオートメーションを、来週の祝日の1回だけ実行しないようにしたいです。それ以降は今のスケジュールのまま動かしたいです。管理者は何をすべきですか?",
+     "o": [
+      "スケジュールの「Skip Next Occurrence」を使う",
+      "オートメーションを「Pause」する",
+      "実行中に「Stop」をクリックする",
+      "オートメーションを削除して、祝日の翌日に作り直す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "「Skip Next Occurrence」は、スケジュールを止めずに次の1回だけを飛ばします。Pauseはスケジュールそのものを止めるため、再有効化するまで実行されません。Stopは実行中の回を止める操作で、将来の実行を飛ばすものではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_skip_an_automation.htm&type=5",
+     "x": "スケジュールの「Skip Next Occurrence」は、スケジュールを止めずに、次の1回だけを飛ばします。"
+    },
+    {
+     "q": "24時間ごとに実行するよう設定したオートメーションが、毎回完了しません。調べると、すべてのアクティビティを終えるのに約36時間かかっていました。最も考えられる原因はどれですか?",
+     "o": [
+      "所要時間がスケジュールの間隔より長く、次の実行が始まった時点で止まっている",
+      "ファイルドロップのキューがオフになっている",
+      "Notification Settingsにメールアドレスが登録されていない",
+      "SQL Queryアクティビティを同じステップに置きすぎている"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "オートメーションの所要時間は、スケジュールの間隔に合わせる必要があります。24時間ごとの実行に36時間かかると、次の実行が始まった時点で止まり、完了しません。通知の設定は実行結果に影響しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_triggered_automations.htm&type=5",
+     "x": "オートメーションの所要時間はスケジュールに合わせます。24時間ごとの実行なのに36時間かかると、次の実行が始まった時点で止まり、いつまでも完了しません。"
+    },
+    {
+     "q": "ある会社では、多数のオートメーションが同じ時刻にSQL QueryとFilterのアクティビティを開始します。一部のアクティビティがすぐに始まらず、待たされています。理由として正しいものはどれですか?",
+     "o": [
+      "SQL QueryとFilterは合わせて40個まで同時に実行でき、超えた分はキューに入るため",
+      "SQL Queryは1つのビジネスユニットで1つずつしか実行できないため",
+      "Filterアクティビティは、ファイルドロップのオートメーションでしか使えないため",
+      "Verificationアクティビティがない場合、SQL Queryは自動で一時停止するため"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "SQL QueryとFilterのアクティビティは、合わせて40個まで同時に実行でき、上限を超えた分はキューに入ります。1つずつしか実行できないわけではありません。Verificationアクティビティは条件に応じて止める機能で、実行の待ちとは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_automation_studio_activities_reference.htm&type=5",
+     "x": "SQL QueryとFilterは、合わせて40個まで同時に実行できます。超えた分はキューに入ります。"
+    },
+    {
+     "q": "管理者は、ファイルドロップで始まるオートメーションで、テストのために一部のアクティビティだけを選んで実行しようとしました。しかし、そのための画面が使えません。理由として正しいものはどれですか?",
+     "o": [
+      "一部のアクティビティだけを実行するAdvanced Run Onceは、スケジュールのオートメーションだけで使えるため",
+      "Advanced Run Onceは、トリガーのオートメーションだけで使えるため",
+      "ファイルドロップのオートメーションは、Run Onceで実行できないため",
+      "アクティビティを選んで実行するには、先にNotification Settingsを空にする必要があるため"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Advanced Run Onceは、スケジュールのオートメーションだけが対応しています。ファイルドロップやトリガーのオートメーションでは使えません。通知設定はAdvanced Run Onceの可否に関係しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_advanced_run_once.htm&type=5",
+     "x": "「Run Once」で今すぐ1回だけ実行できます。一部のアクティビティだけを選んで実行する「Advanced Run Once」は、スケジュールのオートメーションだけで使えます。"
+    }
+   ]
+  },
+  {
+   "id": "reports",
+   "no": "Ch5·2",
+   "title": "データの抽出とレポート",
+   "tag": "Data Extract & Reports",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>今日は私が説明するね!データを外に出すときは、Data Extractを1つ作ればSFTPまで一発で届く!</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>バグ発見。Data Extractはファイルを作るだけだ。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そうです。作ったファイルはSafehouseという安全な場所に置かれます。FTPへ移すのは、File Transferの「Move a File From Safehouse」です。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>作る係と運ぶ係が別なんだ。じゃあ2つを同じステップに置けば早いよね?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そこも注意です。File Transferは別のステップにします。同じステップだと、抽出が終わる前にファイルを探しに行ってしまいます。</p></div><p class=\"one\">送信のトラッキングデータやデータエクステンションの中身をファイルにして外部に出す仕組みと、成果を画面で確認するレポート機能をまとめて学びます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>宅配便です。Data Extractが荷物を箱に詰めて倉庫(Safehouse)に置き、File Transferが倉庫から届け先のFTPへ運びます。伝票の宛名(ファイル名パターン)が違うと、運ぶ係は荷物を見つけられません。</p></div><h4>抽出してFTPに置くまでの流れ</h4><ol class=\"steps\"><li>Setupで、ファイルの転送先(File Location)を設定しておく</li><li>Data Extractアクティビティを作り、ファイル名パターンと抽出タイプ(Extract Type)を選ぶ</li><li>File Transferアクティビティで「Move a File From Safehouse」を選び、同じファイル名パターンを入れる</li><li>オートメーションの1つ目のステップにData Extract、次のステップにFile Transferを置き、1回だけ実行するか、スケジュールを設定する</li></ol><h4>主な抽出タイプ</h4><div class=\"tw\"><table><thead><tr><th>抽出タイプ</th><th>内容</th></tr></thead><tr><td>Tracking Extract</td><td>Email Studioの送信ジョブについて、クリック、バウンス、アンケート回答などの細かいトラッキングデータを外部システム向けに出力する</td></tr><tr><td>Data Extension Extract</td><td>データエクステンションの内容を、カンマ、タブ、パイプのいずれかで区切ったファイルにする</td></tr><tr><td>Convert XML</td><td>単純なXMLファイルを区切りファイルに変換し、データエクステンションに取り込めるようにする</td></tr><tr><td>GlobalUnsubImport</td><td>Enterprise 1.0アカウントで、グローバル配信停止リストにデータを取り込む</td></tr></table></div><h4>抽出の注意点</h4><ul><li>抽出タイプは、アカウントでプロビジョニング(利用可能に設定)されている必要があります。</li><li>File TransferはData Extractとは別のステップに置きます。同じステップだと、抽出が終わる前にファイルを探してしまいます。</li><li>Data ExtractとFile Transferのファイル名パターンは一致させます。%%Minute%%や%%Second%%を使うと、File Transferがファイルを見つけられないことがあります。</li><li>ファイル名の拡張子は、Tracking Extractなら.zip、Data Extension Extractなら.csvを付けます。</li><li>Tracking Extractの期間は、Rolling Range(1、7、30、60、90日)か、最大30日のSpecific Rangeで指定します。</li><li>Tracking Extractで「Use Local TZ in Query」を選ばないと、出力は中部標準時(夏時間なし)になります。</li><li>Tracking Extractの出力には、Opens、Clicks、Bounces、Unsubs、Sent、NotSent、SurveyResponsesなどを選べます。</li></ul><h4>レポートとデータの確認</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>できること</th></tr></thead><tr><td>Analytics Builderの標準レポート</td><td>Email Studio、Journey Builder、MobileConnect、MobilePushなどの標準レポートを、手動またはスケジュールで実行し、受信者を選んで配布する</td></tr><tr><td>Intelligence Reports for Engagement</td><td>Email、Push、Journeyのキャンペーン単位のデータを、ダッシュボード、ピボットテーブル、スケジュールレポートで分析する。購読者単位のデータは表示しない</td></tr><tr><td>データビュー</td><td>SQL Queryアクティビティで、送信、開封、クリック、バウンスなどの記録を最大6か月分照会する</td></tr><tr><td>Report Definitionアクティビティ</td><td>標準レポートやカスタムレポートを、オートメーションの中で毎回同じ条件で実行する</td></tr></table></div><ul><li>標準レポートは6MBを超えないようにします。大きなレポートは、Enhanced FTPで受信者に届けます。</li><li>レポートを作成したユーザーを無効化すると、そのユーザーのレポートは削除されます。</li><li>Intelligence Reports for Engagementは、Pro以上のエディションに含まれます。機能を増やしたAdvanced版は、追加費用のアドオンです。</li></ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>Data Extractはファイルを作るだけです。外部のFTPに出すには、File Transferの「Move a File From Safehouse」を別のステップで実行します。</li><li>送信ごとの開封、クリック、バウンスを外部システムに渡すなら、Tracking Extractです。</li><li>キャンペーン単位の傾向をダッシュボードで見るならIntelligence Reports、細かい記録をSQLで見るならデータビュー(6か月分)です。</li><li>標準レポートのメール配信は6MBまでです。大きいものはEnhanced FTPで届けます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、メール送信ごとのクリックとバウンスの詳細を、毎日社外のBIツールに渡したいと考えています。BIツールはSFTPからファイルを読み込みます。管理者はどう構成すべきですか?",
+     "o": [
+      "Tracking ExtractタイプのData Extractを実行し、次のステップのFile Transferで「Move a File From Safehouse」を使う",
+      "Data Extension ExtractでAll Subscribersリストを抽出し、同じステップでSend Emailを実行する",
+      "Analytics Builderの標準レポートを作り、BIツールの担当者にメールで送る",
+      "Filterアクティビティでクリックした購読者を抽出し、Enhanced FTPに直接書き出す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "送信ジョブのクリックやバウンスなどの細かいトラッキングデータを外部システムへ出すのはTracking Extractです。作ったファイルは、File Transferの「Move a File From Safehouse」でFTPへ移します。Filterはグループやデータエクステンションを作るだけで、ファイルは出力しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_tracking_extract.htm&type=5",
+     "x": "Tracking ExtractEmail Studioの送信ジョブについて、クリック、バウンス、アンケート回答などの細かいトラッキングデータを外部システム向けに出力する"
+    },
+    {
+     "q": "管理者は、Data ExtractとFile Transferのアクティビティを、オートメーションの同じステップに置きました。実行すると、File Transferがファイルを見つけられずに失敗することがあります。どう直すべきですか?",
+     "o": [
+      "File Transferを、Data Extractの次の別のステップに移す",
+      "File Transferの代わりにWaitアクティビティを同じステップに追加する",
+      "Data Extractの抽出タイプをConvert XMLに変える",
+      "オートメーションの開始ソースをファイルドロップに変える"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "同じステップのアクティビティは同時に動くため、抽出が終わる前にFile Transferがファイルを探してしまいます。File Transferは別のステップに置きます。抽出タイプや開始ソースを変えても、この順序の問題は解決しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_use_a_data_extract_activity.htm&type=5",
+     "x": "File TransferはData Extractとは別のステップに置きます。同じステップだと、抽出が終わる前にファイルを探してしまいます。"
+    },
+    {
+     "q": "Data Extractのファイル名パターンに「extract_%%Year%%%%Month%%%%Day%%_%%Hour%%%%Minute%%」を使ったところ、次のステップのFile Transferがファイルを見つけられないことがありました。最も適切な対応はどれですか?",
+     "o": [
+      "%%Minute%%や%%Second%%を使わず、Data ExtractとFile Transferで同じファイル名パターンにする",
+      "File Transferのファイル名パターンだけに%%Second%%を追加する",
+      "Data Extractの抽出範囲を90日に広げる",
+      "Data ExtractのファイルをData Copy or Importで取り込み直す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Data ExtractとFile Transferのファイル名パターンは一致させる必要があります。%%Minute%%や%%Second%%を使うと実行のたびに名前がずれ、File Transferがファイルを見つけられないことがあります。抽出範囲はファイル名とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_create_a_data_extract_file.htm&type=5",
+     "x": "Data ExtractとFile Transferのファイル名パターンは一致させます。%%Minute%%や%%Second%%を使うと、File Transferがファイルを見つけられないことがあります。"
+    },
+    {
+     "q": "東京の分析チームから、Tracking Extractの日時が日本時間とずれていると指摘されました。管理者はどうすべきですか?",
+     "o": [
+      "Tracking Extractで「Use Local TZ in Query」を選び、タイムゾーンを指定する",
+      "Data Extension Extractに切り替えて、タイムゾーンの変換をオンにする",
+      "Specific Rangeの期間を30日以内に短くする",
+      "File Transferの設定でタイムゾーンを日本時間にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Tracking Extractは「Use Local TZ in Query」を選ばないと、中部標準時(夏時間なし)で出力されます。このオプションを選んでタイムゾーンを指定します。期間の長さは時刻のずれと関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_use_a_data_extract_activity.htm&type=5",
+     "x": "Tracking Extractで「Use Local TZ in Query」を選ばないと、出力は中部標準時(夏時間なし)になります。"
+    },
+    {
+     "q": "スケジュール実行している標準レポートが、受信者にメールで届かず、送信失敗になることがあります。レポートのサイズは毎回10MB前後です。管理者はどうすべきですか?",
+     "o": [
+      "レポートをEnhanced FTPで受信者に届けるようにする",
+      "受信者のメールアドレスをセミコロンで区切り直す",
+      "レポートを作成したユーザーを無効化して作り直す",
+      "Report Definitionアクティビティの実行回数を増やす"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "標準レポートは6MBを超えないようにする必要があり、送信失敗の多くは添付が上限を超えていることが原因です。大きなレポートはEnhanced FTPで届けます。作成者を無効化すると、その人のレポートは削除されてしまいます。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_re_standard_reports.htm&type=5",
+     "x": "標準レポートは6MBを超えないようにします。大きなレポートは、Enhanced FTPで受信者に届けます。"
+    },
+    {
+     "q": "Intelligence Reports for Engagementの説明として正しいものはどれですか?(2つ選択)",
+     "o": [
+      "Email、Push、Journeyのキャンペーン単位のデータを分析できる",
+      "ピボットテーブルやスケジュールレポートを使える",
+      "購読者ごとの開封やクリックのイベントを1件ずつ表示できる",
+      "Advanced版は、すべてのエディションに追加費用なしで含まれる"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Intelligence Reports for Engagementは、Email、Push、Journeyのキャンペーン単位のデータを、ダッシュボード、ピボットテーブル、スケジュールレポートで分析します。購読者単位やイベント単位のデータは表示しません。Advanced版は追加費用のアドオンです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_dat_datorama_reports.htm&type=5",
+     "x": "Intelligence Reports for EngagementEmail、Push、Journeyのキャンペーン単位のデータを、ダッシュボード、ピボットテーブル、スケジュールレポートで分析する。購読者単位のデータは表示しない"
+    }
+   ]
+  },
+  {
+   "id": "maintenance",
+   "no": "Ch5·3",
+   "title": "アカウントの監視と保守",
+   "tag": "Account Maintenance",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>大変!メールが送れない。きっと私の設定ミスだ。全部作り直そう!</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>待ってください。まず、Salesforce側で障害やメンテナンスが起きていないかを確認しましょう。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>再インストールの前にステータスページ。基本だ。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>どこで見るの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Marketing Cloud EngagementのテナントならSalesforce My Trust Centerです。全製品のインスタンスの状況はTrust Status(status.salesforce.com)で見られます。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>作り直す前に、まずTrustを見る。覚えた!</p></div><p class=\"one\">アカウントを健全に保つために、データの保持期間を決めて不要なデータを消し、システムの稼働状況や操作の記録を定期的に確認する作業です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>冷蔵庫の管理です。賞味期限(保持ポリシー)を決めて古い食材を捨て、停電(障害)は電力会社のお知らせ(Trust)で確かめ、誰が冷蔵庫を開けたかは記録(Audit Trail)で追います。</p></div><h4>データ保持ポリシー(Data Retention)</h4><div class=\"tw\"><table><thead><tr><th>削除の対象</th><th>動き</th></tr></thead><tr><td>Individual Records</td><td>レコードごとに、追加されてから保持期間が過ぎたものを削除する。データエクステンションは残る</td></tr><tr><td>All Records</td><td>保持期間が過ぎたら全レコードを削除する。データエクステンションは空のまま残る</td></tr><tr><td>All Records and Data Extension</td><td>保持期間が過ぎたら、データエクステンションごと全データを削除する</td></tr></table></div><ul><li>保持期間は、日、週、月、年の数で指定するか、特定の日付を選びます。</li><li>「Reset period on import」を選ぶと、インポートのたびに保持期間がリセットされます。日付ではなく期間で指定したときだけ使えます。</li><li>保持ポリシーは、Contact Builderのデータエクステンション画面の「Data Retention」で設定、変更します。</li></ul><h4>ストレージの整理</h4><ul><li>最上位のEnterprise 2.0アカウントのSetupホームで、Metricsの「Download Storage Details」をクリックすると、データエクステンションごとの件数や使用量(GB)をCSVでダウンロードできます。情報は毎日更新されます。</li><li>送信ログのデータエクステンションは30日以下、トリガー送信のデータエクステンションは7日の保持期間が推奨されています。</li><li>名前に「backup」「test」「copy」などを含む古いデータエクステンションは、削除を検討します。</li></ul><h4>コンタクトの削除</h4><ul><li>Contact Builderの「Contacts Configuration」でContact Deleteを有効にし、抑制期間(Suppression Period)の日数を決めます。</li><li>抑制期間の既定は2日です。この間データは残りますが、表示や送信には使えません。期間が過ぎると、リストと送信可能なデータエクステンションから削除されます。</li><li>削除は開始後に取り消せず、削除した情報は復元できません。</li></ul><h4>稼働状況と監査の確認</h4><div class=\"tw\"><table><thead><tr><th>ツール</th><th>確認できること</th></tr></thead><tr><td>Salesforce My Trust Center</td><td>Marketing Cloud Engagementのテナントに影響するインシデント、メンテナンス、パッチリリース。今後90日の予定メンテナンスも見られる</td></tr><tr><td>Trust Status(status.salesforce.com)</td><td>全Salesforce製品のインスタンスの稼働状況。メールやSMSで通知を購読できる</td></tr><tr><td>Audit Trail</td><td>ユーザーのアクセスと操作の記録。Automation StudioのData ExtractかREST APIで取り出す</td></tr></table></div><ul><li>Basic Audit Trailは全アカウントで既定で有効で、30日分のデータを保持します。</li><li>Advanced Audit Trailはアドオンです。チャネル、サイト、分析、オートメーションに関する指標が加わり、60日分のデータを保持します。</li><li>親ビジネスユニットは、自分と子アカウントの監査イベントとセキュリティイベントを見られます。</li></ul><h4>追加の機能や製品を検討する</h4><div class=\"tw\"><table><thead><tr><th>課題</th><th>検討する機能</th></tr></thead><tr><td>キャンペーン分析のダッシュボードやKPIを自分で作りたい</td><td>Intelligence Reports for Engagement Advanced(アドオン)</td></tr><tr><td>受信者ごとに、開封されやすい時刻に送りたい</td><td>Einstein Send Time Optimization</td></tr><tr><td>送りすぎによる購読者の疲れを防ぎたい</td><td>Einstein Engagement Frequency</td></tr><tr><td>監査データをより詳しく、より長く残したい</td><td>Advanced Audit Trail(アドオン)</td></tr></table></div><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>保持ポリシーって、あとから付けられる?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Email Studioのヘルプでは、保持設定はデータエクステンションの作成時に有効にする必要があると説明されています。作成時に有効にしたものは、あとから期間などを変更できます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>スキーマ設計の段階で決めておけ、ということだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>Individual Recordsはレコードごと、All Recordsは中身だけ、All Records and Data Extensionは箱ごと削除です。</li><li>Marketing Cloud Engagementの障害やメンテナンスは、Salesforce My Trust Centerで確認します。全製品のインスタンスはTrust Statusで見られます。</li><li>Audit Trailは、Basicが30日、Advanced(アドオン)が60日分を保持します。</li><li>コンタクト削除には抑制期間(既定2日)があり、開始後は取り消せません。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、キャンペーン応募者を一時的に保存するデータエクステンションを使っています。各レコードは登録から30日たったら消したいですが、データエクステンション自体は残して使い続けたいです。管理者はどの保持設定を選ぶべきですか?",
+     "o": [
+      "Individual Records",
+      "All Records",
+      "All Records and Data Extension",
+      "Reset period on importだけをオンにする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Individual Recordsは、レコードごとに追加から保持期間が過ぎたものを削除し、データエクステンションは残します。All Recordsは期間が過ぎたときに全レコードをまとめて消します。All Records and Data Extensionはデータエクステンションごと削除します。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_manage_data_retention_policy.htm&type=5",
+     "x": "Individual Recordsレコードごとに、追加されてから保持期間が過ぎたものを削除する。データエクステンションは残る"
+    },
+    {
+     "q": "複数のユーザーから、Marketing Cloud Engagementの画面が遅く、送信も止まっているようだと報告がありました。管理者はまず、Salesforce側で障害やメンテナンスが起きていないかを確認したいです。何を使うべきですか?",
+     "o": [
+      "Salesforce My Trust Centerで、テナントのインシデントやメンテナンスを確認する",
+      "Automation StudioのHistoryダッシュボードで、成功率を確認する",
+      "Audit Trailを抽出して、ログインの記録を確認する",
+      "Email Studioのトラッキングで、送信ジョブのバウンスを確認する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Marketing Cloud Engagementのテナントに影響するインシデント、メンテナンス、パッチリリースは、Salesforce My Trust Centerで確認できます。HistoryダッシュボードやAudit Trailは自社のオートメーションや操作の記録で、Salesforce側の障害の有無は分かりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=xcloud.mytrust_overview.htm&type=5",
+     "x": "Salesforce My Trust CenterMarketing Cloud Engagementのテナントに影響するインシデント、メンテナンス、パッチリリース。今後90日の予定メンテナンスも見られる"
+    },
+    {
+     "q": "セキュリティチームは、Marketing Cloud Engagementのアクセスと操作の記録を、オートメーション関連の指標も含めて60日分さかのぼって確認したいと考えています。管理者は何を提案すべきですか?",
+     "o": [
+      "Advanced Audit Trailのアドオンを導入する",
+      "Basic Audit Trailの保持期間を設定で60日に延ばす",
+      "Tracking ExtractでStatusChangesを出力する",
+      "データビューの_Bounceを照会する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Advanced Audit Trailはアドオンで、チャネル、サイト、分析、オートメーションに関する指標が加わり、60日分のデータを保持します。Basic Audit Trailの保持は30日です。Tracking Extractやデータビューは送信の記録で、ユーザーの操作記録ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_audit_trail.htm&type=5",
+     "x": "Advanced Audit Trailはアドオンです。チャネル、サイト、分析、オートメーションに関する指標が加わり、60日分のデータを保持します。"
+    },
+    {
+     "q": "ある会社は、データの保存容量が増え続けています。管理者は、どのデータエクステンションが大きいか、件数と使用量を一覧で確認したいです。どうすべきですか?",
+     "o": [
+      "最上位のEnterprise 2.0アカウントのSetupホームで「Download Storage Details」からCSVをダウンロードする",
+      "Contact Builderの「Contacts Configuration」で抑制期間を確認する",
+      "Analytics BuilderのContacts Countレポートを実行する",
+      "Automation StudioのHistoryダッシュボードをCSVでダウンロードする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "データエクステンションごとの件数や使用量(GB)は、最上位のEnterprise 2.0アカウントのSetupホームにある「Download Storage Details」でCSVとして取得できます。Contacts Countレポートはコンタクトの数を示すもので、データエクステンションの容量は分かりません。Historyダッシュボードはオートメーションの実行履歴です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_as_data_extension_storage.htm&type=5",
+     "x": "最上位のEnterprise 2.0アカウントのSetupホームで、Metricsの「Download Storage Details」をクリックすると、データエクステンションごとの件数や使用量(GB)をCSVでダウンロードできます。情報は毎日更新されます。"
+    },
+    {
+     "q": "Contact Builderのコンタクト削除について、正しい説明はどれですか?(2つ選択)",
+     "o": [
+      "既定では2日の抑制期間があり、その間データは残るが表示や送信には使えない",
+      "削除は開始後に取り消せず、削除した情報は復元できない",
+      "抑制期間が過ぎたあと、90日以内なら管理者が復元できる",
+      "送信不可のデータエクステンションも含め、すべてのデータエクステンションから自動で削除される"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "コンタクト削除には既定2日の抑制期間があり、その間はデータが残りますが表示や送信には使えません。削除は開始後に取り消せず、復元もできません。自動で削除されるのはリストと送信可能なデータエクステンションで、送信不可のデータエクステンションは対象外です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_contact_deletion.htm&type=5",
+     "x": "抑制期間の既定は2日です。この間データは残りますが、表示や送信には使えません。期間が過ぎると、リストと送信可能なデータエクステンションから削除されます。"
+    },
+    {
+     "q": "ある会社では、メールを送るたびに配信停止が増えています。マーケティング部門は、購読者ごとに送りすぎを防ぐ仕組みを検討したいと考えています。管理者が提案すべき機能はどれですか?",
+     "o": [
+      "Einstein Engagement Frequency",
+      "Einstein Send Time Optimization",
+      "Advanced Audit Trail",
+      "Intelligence Reports for Engagement Advanced"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Engagement Frequencyは、送る数の適正値を予測して、送りすぎによる購読者の疲れを防ぐための機能です。Einstein Send Time Optimizationは送る時刻を最適化する機能で、送る数は調整しません。Advanced Audit Trailは監査用のアドオンです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mktg_apps_email_reporting_tools.htm&type=5",
+     "x": "送りすぎによる購読者の疲れを防ぎたいEinstein Engagement Frequency"
+    }
+   ]
+  }
+ ]
+}

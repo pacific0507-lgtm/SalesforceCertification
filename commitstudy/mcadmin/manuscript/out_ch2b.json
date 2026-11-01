@@ -1,0 +1,351 @@
+{
+ "chapter": 2,
+ "chapter_title": "セットアップ",
+ "chapter_sub": "アカウント、ユーザー、送信の設定、CRM連携、Setupの各機能など、Marketing Cloud Engagementを使い始めるための設定を学びます。",
+ "sections": [
+  {
+   "id": "sending",
+   "no": "Ch2·4",
+   "title": "送信の設定",
+   "tag": "Sender Authentication",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>問題です。「送信分類」の中に入っていないものはどれでしょう。送信者プロファイル、配信プロファイル、CAN-SPAM区分、メールの件名。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>えーと…配信プロファイル!名前が似てて紛らわしいから!</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>ブッブー。答えは件名だ。件名はメール本体の持ち物だ。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>うっ。送信分類って「誰から、どの経路で、どんな種類として送るか」のセットなんだね。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>そのとおりです。その土台に、送信元ドメインの認証があります。今日はSAPから順に見ていきましょう。</p></div><p class=\"one\">メールを「誰から」「どの経路で」「どんな種類として」送るかを決める設定のまとまりです。土台にドメインの認証があり、その上に送信者プロファイル、配信プロファイル、送信分類を重ねます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>会社の郵便物の発送ルールです。差出人欄に書く名前(送信者プロファイル)、どの集配ルートで出すかと封筒の定型文(配信プロファイル)、ダイレクトメールか請求書か(送信分類)を決めておきます。そもそも差出人の住所が本物か(ドメイン検証)も確認されます。</p></div><h4>Sender Authentication Package(SAP)の中身</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>内容</th></tr></thead><tr><td>アカウントブランディング</td><td>「Webページとして表示」のリンク、リンクのトラッキング、画像のURLが、共有ドメインではなく自社のSAPドメインになる</td></tr><tr><td>送信用のプライベートドメイン</td><td>Fromアドレスに使うドメイン。SPF、Sender ID、DKIMで送信が認証される</td></tr><tr><td>CloudPagesのカスタムドメイン</td><td>アカウントのCloudPagesを、自社のドメインで公開できる</td></tr><tr><td>専用IPアドレス</td><td>アカウントから送るすべてのメールを、自社専用のIPアドレスで送る</td></tr><tr><td>返信メール管理(Reply Mail Management)</td><td>受信者からの返信を管理する。不在通知や、手動の配信停止依頼をフィルタで処理できる</td></tr></table></div><ul><li>月に25万通を超えてメールを送るお客様は、SAPの利用が必須です。</li><li>プライベートドメイン、専用IP、返信メール管理は個別にも購入できますが、アカウントブランディングはSAPでしか使えません。</li><li>ブランディング用のSAPは、1つのビジネスユニットにつき1つです。Fromアドレス用のプライベートドメインは、1つのビジネスユニットで複数使えます。</li><li>送信が月10万通未満なら、SAPの申請時に、共有IPアドレスを使い続けるよう依頼できます。依頼しなければ専用IPが割り当てられます。</li></ul><h4>専用IPアドレスとウォームアップ</h4><ul><li>専用IPは、受け取ったあとに送信者がウォームアップ(新しいIPで送信実績を積み、評判を育てること)します。</li><li>専用IPを温かく保つには、1つのIPにつき月10万通以上を送ります。下回ると、配信の遅延、迷惑メールフォルダ行き、ブロックが起きることがあります。</li></ul><h4>ドメイン検証</h4><ul><li>メールを送るには、Fromアドレスの送信ドメインが検証済みドメイン(Verified Domain)である必要があります。なりすまし(スプーフィング)を防ぐための仕組みです。</li><li>検証済みドメインを作る方法は3つです。SAPの購入、プライベートドメインの購入、登録ドメイン(Domain Registration)の作成です。</li><li>登録ドメインは、認証済みドメインを持たないアカウント向けです。ドメイン全体の所有を確認すると、そのドメインのアドレスは確認メールなしで検証済みになります。</li></ul><h4>3つの設定の役割分担</h4><div class=\"tw\"><table><thead><tr><th>設定</th><th>決めること</th><th>補足</th></tr></thead><tr><td>送信者プロファイル(Sender Profile)</td><td>From名とFromアドレス</td><td>アカウントのユーザーから選ぶか、直接入力する。差し込み文字列やAMPscriptで受信者ごとのFromにもできる</td></tr><tr><td>配信プロファイル(Delivery Profile)</td><td>送信に使うIPアドレス、ヘッダーとフッター</td><td>フッターをNoneやライブラリコンテンツにしたときは、配信停止リンクと郵送先住所を本文などに自分で入れる</td></tr><tr><td>送信分類(Send Classification)</td><td>送信者プロファイル、配信プロファイル、CAN-SPAM区分をまとめたセット</td><td>メッセージの送信を作るときに選ぶ。送信者プロファイルと配信プロファイルは、その場で上書きできる</td></tr></table></div><h4>送信分類の作り方</h4><ol class=\"steps\"><li>先に、送信者プロファイルと配信プロファイルを作る</li><li>SetupのQuick Findに「classification」と入力し、「Send Classifications」を開いて「Create」をクリックする</li><li>CAN-SPAM区分を、Commercial(商用)かTransactional(トランザクション)から選ぶ</li></ol><ul><li>Commercialは、商品やサービスの広告、宣伝が主目的のメールです。送信時に配信停止リンクがあるかチェックされます。</li><li>Transactionalは、受信者が同意した取引を進める、完了させる、確認するためのメールです。配信停止リンクのチェックは行われません。</li><li>Transactionalを選ぶと「Honor source and publication list level opt outs」が表示されます。選ぶと、過去に配信停止した人や迷惑メール報告をした人は除外されます。選ばなければ、配信停止した人にもトランザクションメールが届きます。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>SAPがあれば、ドメイン検証は何もしなくていいの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>SAPやプライベートドメインを買うと、そのドメインが検証済みドメインになります。持っていないときは、登録ドメインで所有を確認します。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>どちらも、検証済みドメインのFromアドレスは個別の確認メールが要らない。一括で認証が通るイメージだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>SAPの5つの機能と、「アカウントブランディングはSAPでしか手に入らない」をセットで覚えます。</li><li>月25万通超はSAPが必須で、専用IPを使います。専用IPの維持には1IPあたり月10万通以上が目安です。</li><li>送信分類は、送信者プロファイル、配信プロファイル、CAN-SPAM区分のセットです。プロファイル2つは作成済みであることが前提です。</li><li>検証済みドメインの作り方は、SAP、プライベートドメイン、登録ドメインの3つです。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある小売企業は、メール内の「Webページとして表示」リンク、トラッキング用リンク、画像のURLを、Marketing Cloud Engagementの共有ドメインではなく自社のドメインで表示したいと考えています。管理者は何を導入すべきですか?",
+     "o": [
+      "Sender Authentication Package(SAP)",
+      "プライベートドメインのみ",
+      "専用IPアドレスのみ",
+      "Reply Mail Management"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "リンクや画像のURLを自社ドメインにするのはアカウントブランディングの機能で、SAPでしか提供されません。プライベートドメインはFromアドレスの認証、専用IPは送信元IP、Reply Mail Managementは返信の処理で、どれもURLのブランディングは行いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_sender_authentication_package.htm&type=5",
+     "x": "プライベートドメイン、専用IP、返信メール管理は個別にも購入できますが、アカウントブランディングはSAPでしか使えません。"
+    },
+    {
+     "q": "ある会社は、来月からMarketing Cloud Engagementで月に約30万通のメールを送る予定です。送信量に関して、管理者が満たすべき要件はどれですか?",
+     "o": [
+      "Sender Authentication Package(SAP)を利用する",
+      "送信分類をTransactionalに設定する",
+      "ビジネスユニットを送信量に応じて分割する",
+      "Reply Mail Managementを無効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "月に25万通を超えてメールを送るお客様は、SAPの利用が必須です。送信分類の区分はメールの目的で決めるもので、送信量とは関係ありません。ビジネスユニットの分割やReply Mail Managementの設定は、この要件を満たす方法ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_sender_authentication_package.htm&type=5",
+     "x": "月に25万通を超えてメールを送るお客様は、SAPの利用が必須です。"
+    },
+    {
+     "q": "月に約5万通を送る会社がSAPを購入しました。担当者は、専用IPだと評判を保つのが難しいのではと心配しています。管理者はどう対応すべきですか?",
+     "o": [
+      "SAPの申請時に、共有IPアドレスを使い続けるよう依頼する",
+      "SAPを使わずにプライベートドメインだけを購入し直す",
+      "専用IPを2つ追加して送信を分散する",
+      "送信分類の送信優先度をHighにする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "専用IPの評判を保つには月10万通以上の送信が目安で、それ未満ならSAPの申請時に共有IPの継続を依頼できます。依頼しなければ専用IPが割り当てられます。IPを増やすと1IPあたりの量がさらに減り逆効果です。送信優先度は評判と関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_sender_authentication_package.htm&type=5",
+     "x": "送信が月10万通未満なら、SAPの申請時に、共有IPアドレスを使い続けるよう依頼できます。依頼しなければ専用IPが割り当てられます。"
+    },
+    {
+     "q": "あるマーケティングチームでは、担当者ごとにFrom名、送信IP、フッター、CAN-SPAM区分の選び方がばらばらで、ミスが起きています。毎回同じ組み合わせで送れるようにするには、管理者は何を作成すべきですか?",
+     "o": [
+      "送信分類",
+      "送信者プロファイルだけ",
+      "配信プロファイルだけ",
+      "データエクステンションのテンプレート"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "送信分類は、送信者プロファイル(From)、配信プロファイル(IPとヘッダー、フッター)、CAN-SPAM区分をまとめたセットで、送信のたびに再利用できます。送信者プロファイルや配信プロファイルだけでは、ほかの要素が揃いません。データエクステンションは宛先データの入れ物です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_send_classifications.htm&type=5",
+     "x": "送信分類(Send Classification)送信者プロファイル、配信プロファイル、CAN-SPAM区分をまとめたセットメッセージの送信を作るときに選ぶ。送信者プロファイルと配信プロファイルは、その場で上書きできる"
+    },
+    {
+     "q": "メッセージの送信を作成するときに送信分類を選んだ場合、その送信だけ別の設定に上書きできるものはどれですか?(2つ選択)",
+     "o": [
+      "送信者プロファイル",
+      "配信プロファイル",
+      "CAN-SPAM区分",
+      "送信分類の外部キー"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "送信分類をメッセージの送信に含めたとき、送信者プロファイルと配信プロファイルはその場で上書きできます。CAN-SPAM区分は送信分類そのものに定義する項目で、外部キーはAPIで送信分類を識別する値です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_send_classifications.htm&type=5",
+     "x": "送信分類(Send Classification)送信者プロファイル、配信プロファイル、CAN-SPAM区分をまとめたセットメッセージの送信を作るときに選ぶ。送信者プロファイルと配信プロファイルは、その場で上書きできる"
+    },
+    {
+     "q": "ある会社は注文確認メールをTransactionalの送信分類で送っています。過去に配信停止した人や迷惑メール報告をした人には、注文確認メールも送りたくありません。管理者は何をすべきですか?",
+     "o": [
+      "送信分類で「Honor source and publication list level opt outs」を選択する",
+      "送信分類をCommercialに変更し、配信停止リンクを外す",
+      "配信プロファイルのフッターをNoneにする",
+      "送信者プロファイルのFromアドレスを変更する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Transactionalの送信分類では、このチェックボックスを選ぶと、配信停止した人や迷惑メール報告をした人が除外されます。選ばなければ、その人たちにもトランザクションメールが届きます。Commercialで配信停止リンクを外すのは不適切で、フッターやFromの変更は除外に関係しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_create_send_classification.htm&type=5",
+     "x": "Transactionalを選ぶと「Honor source and publication list level opt outs」が表示されます。選ぶと、過去に配信停止した人や迷惑メール報告をした人は除外されます。選ばなければ、配信停止した人にもトランザクションメールが届きます。"
+    },
+    {
+     "q": "ある会社はSAPもプライベートドメインも購入していません。自社ドメインの複数のアドレスをFromアドレスに使いたいのですが、アドレスごとの確認メールを受け取れない受信箱もあります。管理者はどうすべきですか?",
+     "o": [
+      "Domain Registrationでドメインを登録し、ドメイン全体の所有を確認する",
+      "送信者プロファイルにAMPscriptでFromアドレスを書く",
+      "配信プロファイルで専用IPを選ぶ",
+      "送信分類をTransactionalにして検証を省略する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "登録ドメインは、認証済みドメインを持たないアカウント向けの方法で、ドメイン全体の所有を確認すると、そのドメインのアドレスは確認メールなしで検証済みになります。AMPscriptや専用IPでは検証は済みません。送信分類の区分で検証を省略することはできません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_domain_verification.htm&type=5",
+     "x": "登録ドメインは、認証済みドメインを持たないアカウント向けです。ドメイン全体の所有を確認すると、そのドメインのアドレスは確認メールなしで検証済みになります。"
+    }
+   ]
+  },
+  {
+   "id": "connect",
+   "no": "Ch2·5",
+   "title": "Marketing Cloud Connect と連携",
+   "tag": "Marketing Cloud Connect",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>Marketing Cloud Connectって、Salesforceの顧客データを丸ごとコピーしてくる機能でしょ?</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>半分正解、半分ボケだ。丸ごとではない。選んだオブジェクトと項目だけ、決めた間隔で同期する。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>じゃあ同期したデータに、そのままメールを送れる?</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>それもボケだ。同期データエクステンションは送信可能じゃない。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>まなびんさん、ボケが2連続です。でも、どちらも試験で狙われる所なので、良い間違え方ですよ。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>ほめられてるのか分からない…。</p></div><p class=\"one\">Marketing Cloud Connectは、Marketing Cloud EngagementとSales Cloud、Service Cloudをつなぐ連携機能です。CRMのデータをマーケティングに使い、メールの反応をCRMに戻せます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>営業部とマーケティング部の間に引いた専用回線です。営業部の名簿の写しが決まった間隔でマーケティング部に届き(同期)、配ったチラシの反応はマーケティング部から営業部に報告されます(トラッキング)。</p></div><h4>Connectでできること</h4><ul><li>Journey BuilderでCRMのデータを使えます。リード、取引先責任者、ユーザーをジャーニーに入れたり、ジャーニーの途中でSalesforceのオブジェクトを更新したりできます。</li><li>Sales CloudやService Cloudの画面から、Marketing Cloud Engagementのメールを送れます。リード、取引先責任者、個人取引先への単発送信と、キャンペーンやレポートへの一斉送信ができます。</li><li>レポートやキャンペーンへの送信では、1回に最大10件を宛先に指定できます。レポートにはContact IDかLead IDの項目が必要で、標準フォルダではなくカスタムフォルダに保存しておきます。結合レポートには送れません。</li></ul><h4>連携に登場するユーザー</h4><div class=\"tw\"><table><thead><tr><th>ユーザー</th><th>役割</th></tr></thead><tr><td>Marketing Cloud Connect APIユーザー</td><td>Marketing Cloud Engagement側のユーザー。アカウントレベルの接続を担う。専用のシステムユーザーが推奨。Enterprise 2.0では、このユーザーがアクセスできるビジネスユニットが、CRM側で使えるビジネスユニットになる</td></tr><tr><td>Salesforceシステムユーザー</td><td>Sales CloudやService Cloud側のユーザー(旧称トラッキングユーザー)。Marketing Cloud EngagementのトラッキングデータをCRMで使えるようにする。ユーザーライセンスを1つ消費する</td></tr></table></div><h4>接続の流れ</h4><ol class=\"steps\"><li>Sales CloudまたはService Cloudに、Marketing Cloud Connectの管理パッケージをインストールする</li><li>Salesforceシステムユーザーでログインした状態で、Email Studioの「Admin」から「Salesforce Integration」を開き、「Connect Account」をクリックする</li><li>Marketing Cloud APIユーザーを作成する(「API User」を選び、管理者のロールを付ける)</li><li>Marketing Cloud APIユーザーを、Salesforceシステムユーザーと接続する</li><li>Enterprise 2.0アカウントでは、APIユーザーにビジネスユニットを割り当てる</li></ol><ul><li>データアクセスの方式は「Scope by User」と「Scope by Userなし」から選びます。Scope by Userでは、CRMのユーザーは自分が所有するレコードだけを見て、送信できます。</li><li>この方式は、Setupの「Platform Tools」→「Apps」→「Salesforce Integration」から、いつでも変更できます。</li></ul><h4>同期データソース(Synchronized Data Sources)</h4><ul><li>Contact Builderの「Data Sources」タブにある「Synchronized」で、同期するオブジェクトと項目を選びます。Salesforceの標準オブジェクトとカスタムオブジェクトに対応します。</li><li>同期の頻度は「Poll Schedule」で選びます。同期するレコードは、すべてのレコード、メールアドレスがあるレコード、指定日以降に作成されたレコード、Boolean項目の値で絞り込めます。</li><li>同期データエクステンションは、送信可能(Sendable)データエクステンションとしては使えません。クエリアクティビティで送信可能なデータエクステンションに移してから使います。</li><li>1分間に60万行を超える追加、変更、削除があると自動でリフレッシュされ、完了するまで同期データエクステンションは空になります。</li></ul><h4>マルチ組織(Multi-Org)</h4><ul><li>マルチ組織(Multi-Org)は、Enterprise 2.0アカウントで使える構成です。ビジネスユニットごとに、別々のSalesforce組織と接続できます。</li><li>できるのは「1つのビジネスユニットを1つの組織に」と「複数のビジネスユニットを1つの組織に」です。1つのビジネスユニットを複数の組織につなぐことはできません。</li><li>1人のSalesforceシステムユーザーに接続するビジネスユニットは5つまでにします。それより多いときは、システムユーザーを追加します。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>APIユーザーとシステムユーザー、どっちがどっちのクラウドにいるんだっけ?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>APIユーザーはMarketing Cloud Engagement側、システムユーザーはCRM側だ。変数のスコープを取り違えるとバグる。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>接続の手順では、この2人を最後にひも付けます。トラッキングデータをCRMに送る通信は、このひも付けで動きます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>同期データエクステンションは送信に直接使えません。クエリアクティビティで送信可能なデータエクステンションに移します。</li><li>APIユーザーはMarketing Cloud Engagement側、SalesforceシステムユーザーはCRM側です。役割を取り違えさせる問題が出やすいです。</li><li>マルチ組織はEnterprise 2.0の構成です。1つのビジネスユニットを複数の組織につなぐことはできません。</li><li>Scope by Userにすると、CRMのユーザーは自分が所有するレコードにだけ送信できます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、Sales CloudのContactを同期データソースでMarketing Cloud Engagementに取り込みました。このデータを使ってメールを送りたいのですが、同期データエクステンションを送信先に選べません。管理者は何をすべきですか?",
+     "o": [
+      "クエリアクティビティで、同期データエクステンションのデータを送信可能なデータエクステンションに移す",
+      "同期データエクステンションの設定で「Sendable」をオンにする",
+      "Contact Builderから同期データエクステンションにデータをインポートし直す",
+      "Poll Scheduleを短い間隔に変更する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "同期データエクステンションは送信可能データエクステンションとして使えないため、クエリアクティビティで送信可能なデータエクステンションに移します。同期データソースにはContact Builderからインポートできません。Poll Scheduleは同期の頻度で、送信可否とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_co_implement_synchronized_data_sources_best_practices.htm&type=5",
+     "x": "同期データエクステンションは、送信可能(Sendable)データエクステンションとしては使えません。クエリアクティビティで送信可能なデータエクステンションに移してから使います。"
+    },
+    {
+     "q": "ある会社はSales Cloudのリードを同期データソースで取り込む予定です。メールアドレスのないリードまで取り込むと、送れない連絡先が増えてしまいます。管理者はどう設定すべきですか?",
+     "o": [
+      "同期の設定で、メールアドレスがあるレコードだけを同期対象にする",
+      "同期データエクステンションにデータ保持ポリシーを設定する",
+      "Salesforceシステムユーザーの権限からリードを外す",
+      "Scope by Userを有効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "同期データソースでは、同期するレコードを、メールアドレスがあるレコード、指定日以降に作成されたレコード、Boolean項目の値などで絞り込めます。データ保持ポリシーは古いデータの削除、Scope by UserはCRMユーザーの送信範囲の設定で、同期対象の絞り込みではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_creating_and_interacting_with_synchronized_data_sources.htm&type=5",
+     "x": "同期の頻度は「Poll Schedule」で選びます。同期するレコードは、すべてのレコード、メールアドレスがあるレコード、指定日以降に作成されたレコード、Boolean項目の値で絞り込めます。"
+    },
+    {
+     "q": "ある会社はEnterprise 2.0アカウントを使っており、3つのブランドがそれぞれ別のSalesforce組織を持っています。ブランドごとのビジネスユニットを、それぞれの組織とつなげたいと考えています。どの構成を使うべきですか?",
+     "o": [
+      "マルチ組織(Multi-Org)",
+      "Scope by User",
+      "同期データソースの共有",
+      "Distributed Marketing"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "マルチ組織はEnterprise 2.0の構成で、ビジネスユニットごとに別々のSalesforce組織と接続できます。Scope by UserはCRMユーザーのデータアクセス範囲、同期データソースの共有はデータの共有方法で、組織との接続構成ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_co_multi_org_account_configuration.htm&type=5",
+     "x": "マルチ組織(Multi-Org)は、Enterprise 2.0アカウントで使える構成です。ビジネスユニットごとに、別々のSalesforce組織と接続できます。"
+    },
+    {
+     "q": "マルチ組織の構成で、サポートされていない接続はどれですか?",
+     "o": [
+      "1つのビジネスユニットを、2つのSalesforce組織に接続する",
+      "1つのビジネスユニットを、1つのSalesforce組織に接続する",
+      "3つのビジネスユニットを、1つのSalesforce組織に接続する",
+      "ビジネスユニットごとに、別々のSalesforce組織に接続する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "マルチ組織でできるのは、1つのビジネスユニットを1つの組織に、または複数のビジネスユニットを1つの組織につなぐことです。1つのビジネスユニットを複数の組織につなぐことはできません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_co_multi_org_account_and_user_configuration.htm&type=5",
+     "x": "できるのは「1つのビジネスユニットを1つの組織に」と「複数のビジネスユニットを1つの組織に」です。1つのビジネスユニットを複数の組織につなぐことはできません。"
+    },
+    {
+     "q": "Marketing Cloud Connectの導入で、Marketing Cloud EngagementのトラッキングデータをSales Cloudで使えるようにする役割を持ち、Sales Cloudのユーザーライセンスを1つ消費するユーザーはどれですか?",
+     "o": [
+      "Salesforceシステムユーザー",
+      "Marketing Cloud Connect APIユーザー",
+      "Marketing Cloud Connectユーザー",
+      "Marketing Cloud Engagementの管理者"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Salesforceシステムユーザー(旧称トラッキングユーザー)はCRM側のユーザーで、トラッキングデータをCRMで使えるようにし、ユーザーライセンスを消費します。Marketing Cloud Connect APIユーザーはMarketing Cloud Engagement側のユーザーで、役割が異なります。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_co_user_types_and_permissions.htm&type=5",
+     "x": "SalesforceシステムユーザーSales CloudやService Cloud側のユーザー(旧称トラッキングユーザー)。Marketing Cloud EngagementのトラッキングデータをCRMで使えるようにする。ユーザーライセンスを1つ消費する"
+    },
+    {
+     "q": "ある会社では、Sales Cloudの営業担当者がMarketing Cloud Connectでメールを送るとき、自分が所有するリードと取引先責任者だけを送信対象にしたいと考えています。管理者は何を設定すべきですか?",
+     "o": [
+      "アカウントの構成をScope by Userにする",
+      "マルチ組織を有効にする",
+      "送信分類をTransactionalにする",
+      "同期データソースをユーザーごとに作る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Scope by Userにすると、CRMのユーザーは自分が所有するレコードだけを見て送信できます。この設定は、Setupの Platform Tools、Apps、Salesforce Integrationからいつでも変更できます。マルチ組織や送信分類、同期データソースは、所有レコードによる制限とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_co_account_configuration_for_user_data_access.htm&type=5",
+     "x": "データアクセスの方式は「Scope by User」と「Scope by Userなし」から選びます。Scope by Userでは、CRMのユーザーは自分が所有するレコードだけを見て、送信できます。"
+    },
+    {
+     "q": "Sales Cloudの画面から、Marketing Cloud Connectでレポートに一斉送信します。レポートについて正しい説明はどれですか?(2つ選択)",
+     "o": [
+      "レポートにContact IDかLead IDの項目が必要",
+      "レポートはカスタムフォルダに保存しておく",
+      "結合レポートを宛先に指定できる",
+      "1回の送信で宛先に指定できるレポートは最大50件"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "レポートへの送信には、Contact IDかLead IDの項目が必要で、レポートは標準フォルダではなくカスタムフォルダに保存します。結合レポートには送れず、1回に指定できるレポートやキャンペーンは最大10件です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_co_send_to_campaigns_or_reports.htm&type=5",
+     "x": "レポートやキャンペーンへの送信では、1回に最大10件を宛先に指定できます。レポートにはContact IDかLead IDの項目が必要で、標準フォルダではなくカスタムフォルダに保存しておきます。結合レポートには送れません。"
+    }
+   ]
+  },
+  {
+   "id": "setup-home",
+   "no": "Ch2·6",
+   "title": "Setup と拡張機能",
+   "tag": "Setup",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"eager\"><b class=\"who\">コミットくん</b>なぞなぞだ。鍵の管理もする。来客の許可も出す。でも自分では1通もメールを送らない。これなーんだ。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>うーん…マンションの管理人さん?</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>惜しい。正解はSetupだ。キー管理、サポートのログイン許可、API連携の鍵。全部ここにある。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>じゃあ購読者の属性を作るのもSetup?</p><p class=\"tk rou\" data-f=\"think\"><b class=\"who\">クラウドちゃん</b>そこが落とし穴です。プロファイル属性とプリファレンス属性は、Email Studioで作ります。どこで設定するかは、試験でよく聞かれます。</p></div><p class=\"one\">Setupは、Marketing Cloud Engagementのアカウントを一か所で見て管理する場所です。アカウントの基本情報、ユーザー、ビジネスユニット、セキュリティ、API連携、各チャネルの設定がここに集まっています。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>マンションの管理人室です。住人の名簿や合鍵の管理、業者の出入りの許可、共用設備の設定はここで行います。ただし、各部屋の中の家具の配置(購読者の属性など)は、それぞれの部屋(各アプリ)で決めます。</p></div><h4>Setupで管理する主なもの</h4><div class=\"tw\"><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tr><td>Account Settings</td><td>アカウント名、アカウントID、メールの表示名と返信アドレス、タイムゾーン、郵送先住所、送信者認証ドメイン、ヘッダーとフッターなど、アカウントの基本情報</td></tr><tr><td>Business Units</td><td>ビジネスユニットの階層、ビジネスユニットごとのユーザーロール、購読者のフィルタ条件。EnterpriseとEnterprise 2.0のアカウントで使う</td></tr><tr><td>Key Management</td><td>データの暗号化と復号、メールの電子署名、SAMLのシングルサインオンに使うキー</td></tr><tr><td>Account Login Access</td><td>Salesforceサポートがアカウントにログインして、設定や調査をすることを許可する</td></tr></table></div><h4>Installed PackagesとAPI連携</h4><ul><li>SetupのQuick Findに「Installed Packages」と入力し、「Installed Packages」でパッケージを新規作成します。パッケージに「API Integration」のコンポーネントを追加すると、クライアントIDとクライアントシークレットが発行されます。</li><li>API Integrationの種類で「Server-to-Server」を選ぶと、外部システムが人の操作なしにAPIを呼び出す連携になります。</li><li>スコープ(Scope)で、Email、Data Extensions、Journeys、Automationsなど、連携が使える機能と操作(Read、Write、Sendなど)を選びます。</li><li>API連携の作成には「Installed Package | Administer」の権限が必要です。AdministratorとMarketing Cloud Administratorのロールには最初から付いています。</li></ul><h4>購読者の属性はどこで作るか</h4><ul><li>購読者のプロファイル属性とプリファレンス属性は、SetupではなくEmail Studioの「Subscribers」タブにある「Profile Management」「Preference Management」で作ります。</li><li>はい、いいえの2択の属性はプリファレンス属性に、それより複雑な情報はプロファイル属性にします。</li><li>Enterprise 2.0では、属性は最上位のビジネスユニットで作り、エンタープライズ全体で共有されます。子のビジネスユニットでは作れません。</li></ul><h4>Setupで設定する拡張機能</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>できること</th></tr></thead><tr><td>Mobile Studioの設定</td><td>MobileConnectのショートコード、キーワード、送信停止時間帯や、MobilePushのアプリ設定を、SetupでMobileConnectやMobilePushを検索して管理する</td></tr><tr><td>Event Notification Service</td><td>パスワードのリセット、開封、クリック、配信停止、オートメーションの開始やエラーなどのイベントを、自社のシステムに通知する</td></tr><tr><td>Web Analytics Connector</td><td>Google Analyticsなどのウェブ解析サービスで、Marketing Cloud Engagementからの送信をもとにした分析ができるようにする</td></tr></table></div><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>外部のシステムからAPIでデータを送りたいって言われたら、まずどこに行けばいい?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>SetupのInstalled Packagesです。パッケージを作ってAPI Integrationを追加し、必要なスコープだけを選びます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>API連携は、SetupのInstalled PackagesでパッケージにAPI Integrationを追加して作ります。人の操作がない連携はServer-to-Serverを選びます。</li><li>プロファイル属性とプリファレンス属性は、Email Studioの「Subscribers」タブで作ります。Enterprise 2.0では最上位のビジネスユニットだけで作れます。</li><li>郵送先住所やヘッダー、フッター、送信者認証ドメインは、Account Settingsで確認します。</li><li>Salesforceサポートに調査してもらうときは、Account Login Accessで許可します。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、社内の受注システムから夜間に自動でMarketing Cloud Engagementのデータエクステンションを更新したいと考えています。処理に人の操作は入りません。管理者は何を作成すべきですか?",
+     "o": [
+      "Installed PackagesでパッケージにAPI Integrationを追加し、Server-to-Serverの種類を選ぶ",
+      "Installed PackagesでWeb Appの種類のAPI Integrationを作り、リダイレクトURIを登録する",
+      "Marketing Cloud Connectで同期データソースを作成する",
+      "Account Login Accessを有効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "人の操作なしに外部システムがAPIを呼び出す連携は、Installed PackagesのAPI IntegrationでServer-to-Serverを選びます。Web Appはユーザーのログインを伴う連携です。同期データソースはSalesforceのデータを取り込む機能で、Account Login Accessはサポートのログイン許可です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.global_promotions_management_setup_mc_org_connection_connected_app.htm&type=5",
+     "x": "API Integrationの種類で「Server-to-Server」を選ぶと、外部システムが人の操作なしにAPIを呼び出す連携になります。"
+    },
+    {
+     "q": "管理者がInstalled Packagesで外部連携用のパッケージを作ります。連携先にはメールの送信とデータエクステンションの読み書きだけを許可したいと考えています。どこで制御しますか?",
+     "o": [
+      "API Integrationのスコープ(Scope)",
+      "送信分類",
+      "ビジネスユニットの購読者フィルタ",
+      "Security Settingsのセッションタイムアウト"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "API Integrationのスコープで、EmailやData Extensionsなどの機能と、Read、Write、Sendなどの操作を選び、連携が使える範囲を決めます。送信分類はメールの送信設定、購読者フィルタはビジネスユニットで見える購読者、セッションタイムアウトはログインの設定です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.global_promotions_management_setup_mc_org_connection_connected_app.htm&type=5",
+     "x": "スコープ(Scope)で、Email、Data Extensions、Journeys、Automationsなど、連携が使える機能と操作(Read、Write、Sendなど)を選びます。"
+    },
+    {
+     "q": "ある会社は、購読者が「ニュースレターを受け取る(はい、いいえ)」を選べる属性を追加したいと考えています。管理者はどこで、どの種類の属性を作るべきですか?",
+     "o": [
+      "Email Studioの「Subscribers」タブで、プリファレンス属性を作る",
+      "SetupのAccount Settingsで、プロファイル属性を作る",
+      "Email Studioの「Subscribers」タブで、プロファイル属性を作る",
+      "Contact Builderで、同期データエクステンションに項目を追加する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "はい、いいえの2択の属性はプリファレンス属性にし、Email Studioの「Subscribers」タブのPreference Managementで作ります。プロファイル属性はより複雑な情報向けで、属性の作成場所はSetupではありません。同期データエクステンションはSalesforceから同期されたデータです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_create_profile_pref_attributes.htm&type=5",
+     "x": "はい、いいえの2択の属性はプリファレンス属性に、それより複雑な情報はプロファイル属性にします。"
+    },
+    {
+     "q": "Enterprise 2.0アカウントの子ビジネスユニットの管理者が、新しいプロファイル属性を作ろうとしています。正しい説明はどれですか?",
+     "o": [
+      "属性は最上位のビジネスユニットで作り、エンタープライズ全体で共有される",
+      "子ビジネスユニットごとに独自の属性を作れる",
+      "属性はSetupのBusiness Unitsで作る",
+      "属性は作成したビジネスユニットの中だけで使える"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Enterprise 2.0では、プロファイル属性とプリファレンス属性は最上位のビジネスユニットで作り、エンタープライズ全体で共有されます。子のビジネスユニットでは作れません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_enterprise2_profile_pref_attributes.htm&type=5",
+     "x": "Enterprise 2.0では、属性は最上位のビジネスユニットで作り、エンタープライズ全体で共有されます。子のビジネスユニットでは作れません。"
+    },
+    {
+     "q": "Marketing Cloud Engagementの設定の不具合について、Salesforceサポートにアカウントの中を確認してもらうことになりました。管理者がSetupで行うべきことはどれですか?",
+     "o": [
+      "Account Login Accessを有効にする",
+      "サポート担当者用にAPIユーザーを作成する",
+      "Key ManagementでSAMLのキーを追加する",
+      "File LocationsでSFTPを認可する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Account Login Accessを有効にすると、Salesforceサポートがアカウントにログインして設定や調査を行えます。サポート用にユーザーを作る必要はありません。Key Managementは暗号化や署名、SSOのキー、File Locationsは外部のファイル置き場の設定です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_administration.htm&type=5",
+     "x": "Account Login AccessSalesforceサポートがアカウントにログインして、設定や調査をすることを許可する"
+    },
+    {
+     "q": "管理者は、メールのフッターに入る郵送先住所と、アカウントの送信者認証ドメインを確認したいと考えています。どこを見るべきですか?",
+     "o": [
+      "SetupのAccount Settings",
+      "SetupのSecurity Settings",
+      "Email StudioのProfile Management",
+      "Contact BuilderのData Sources"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Account Settingsには、郵送先住所、送信者認証ドメイン、ヘッダーとフッター、メールの表示名や返信アドレスなど、アカウントの基本情報があります。Security Settingsはパスワードやセッションの設定、Profile Managementは購読者の属性、Data Sourcesはデータの出どころの管理です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_view_account_settings.htm&type=5",
+     "x": "Account Settingsアカウント名、アカウントID、メールの表示名と返信アドレス、タイムゾーン、郵送先住所、送信者認証ドメイン、ヘッダーとフッターなど、アカウントの基本情報"
+    },
+    {
+     "q": "ある会社は、Marketing Cloud Engagementで配信停止やクリックが起きたときに、自社のシステムへすぐ通知を送りたいと考えています。管理者はSetupで何を設定すべきですか?",
+     "o": [
+      "Event Notification Service",
+      "Web Analytics Connector",
+      "BrandBuilder",
+      "Package Manager"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Event Notification Serviceは、開封、クリック、配信停止や、オートメーションの開始やエラーなどのイベントを自社のシステムに通知します。Web Analytics Connectorはウェブ解析サービスとの連携、BrandBuilderは画面の配色、Package Managerはビジネスユニット間で設定をまとめて展開する機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_feature_settings.htm&type=5",
+     "x": "Event Notification Serviceパスワードのリセット、開封、クリック、配信停止、オートメーションの開始やエラーなどのイベントを、自社のシステムに通知する"
+    }
+   ]
+  }
+ ]
+}

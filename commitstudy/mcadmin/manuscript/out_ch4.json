@@ -1,0 +1,406 @@
+{
+ "chapter": 4,
+ "chapter_title": "チャネルの管理",
+ "chapter_sub": "Email Studio、Mobile Studio、Advertising Studio、Journey Builder で、各チャネルを正しく設定して運用する方法を学びます。",
+ "sections": [
+  {
+   "id": "email",
+   "no": "Ch4·1",
+   "title": "Email Studio の設定",
+   "tag": "Email Studio",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>問題です。注文確認メールを、配信停止した人にも届けたい。どうしますか?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>配信停止した人には送れないよ!法律違反だもん。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>残念、不正解です。送信分類を「トランザクション」にすれば届きます。注文確認は取引の連絡なので、配信停止の対象外なんです。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>えっ、広告メールとは別扱いなんだ…。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>商用かトランザクションか。送信分類の型を間違えると、全部の挙動が変わる。</p></div><p class=\"one\">Email Studio は、メールを作って送る Marketing Cloud Engagement のアプリです。管理者は、正しい差出人から、決めたルールで、安全に届けるための設定を担当します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>郵便局の窓口です。差出人の身元確認(ドメイン検証)、封筒の種類(送信分類)、試し出し(テスト送信)、1時間あたりの発送量の上限(送信スロットリング)を決めておきます。</p></div><h4>差出人アドレスとドメインの検証</h4><ul><li>メールを送るには、From アドレスの送信ドメインが検証済み(Verified Domain)である必要があります。他人のドメインのなりすましを防ぐためです。</li><li>検証済みの From アドレスは、Setup の「From Address Management」で確認、追加、インポートできます。認証済みのドメインでないアドレスを追加すると、そのアドレスに確認メールが届きます。</li><li>ドメインを認証するには、Sender Authentication Package(SAP)またはプライベートドメインを使います。</li><li>SAP などで認証していないドメインは、「Domain Registration」でドメイン全体の所有を確認します。すると、そのドメインのアドレスは確認メールなしで検証済みになります。</li><li>送信者プロファイル(Sender Profile)は、受信者のメールソフトに表示される差出人名とアドレスを決める設定です。</li></ul><h4>送信分類(Send Classification)</h4><div class=\"tw\"><table><thead><tr><th>構成要素</th><th>決めること</th></tr></thead><tr><td>送信者プロファイル</td><td>From 名と From アドレス</td></tr><tr><td>配信プロファイル(Delivery Profile)</td><td>送信に使う IP アドレスと、ヘッダー、フッター(フッターには住所と配信停止リンクが入る)</td></tr><tr><td>CAN-SPAM 分類</td><td>商用(Commercial)か、トランザクション(Transactional)か</td></tr></table></div><ul><li>送信分類は、送信者プロファイル、配信プロファイル、CAN-SPAM 分類の3つを組み合わせた、使い回せる送信設定です。送信者プロファイルと配信プロファイルを先に作ってから作成します。</li><li>商用メールでは、配信停止リンクがあるかどうかがチェックされます。トランザクションメールではチェックされず、配信停止した購読者にも届きます。</li><li>トランザクションの送信分類で「Honor source and publication list level opt outs」を選ぶと、リスト単位の配信停止を守って送ります。</li><li>送信分類では、送信の優先度(Low、Normal、High)も選べます。</li></ul><h4>テスト送信と送信スロットリング</h4><ul><li>「Subscriber Preview and Test Send」で、特定の購読者に差し込んだ表示を確認し、自分の受信箱にテスト送信できます。</li><li>テスト送信も1通の送信として数えられ、購入した送信数の枠を消費します。</li><li>プレビュー中に購読者の属性を変えたり、テストメールから配信停止したりすると、その変更は実際の購読者に恒久的に反映されます。</li><li>送信スロットリング(Send Throttling)は、配信の時間帯(Delivery Window)と1時間あたりの上限数(Hourly Threshold)を決めて、少しずつ送る機能です。クリックが集中して Web サーバーが落ちるのを防ぎます。</li><li>終了時刻までに送り終わらないときは、翌日の同じ開始時刻から続きを送ります。</li><li>送信スロットリングは、Setup の「Email Optional Features」で有効にします。</li></ul><h4>Send Logging(送信ログ)</h4><ul><li>Send Logging は、送信時の値(ジョブや購読者の情報など)をデータエクステンションに記録する機能です。標準のトラッキングでは取れないデータを残せます。</li><li>送信ログ用のデータエクステンションは、Send Logging のテンプレートから作ります。メール用と SMS 用に、それぞれ1つずつ使えます。</li><li>送信に使うデータエクステンションの項目名と同じ名前の列を追加すると、その値も記録されます。</li><li>レポートに使うときは、Automation Studio のクエリアクティビティで送信ログを照会します。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>テスト送信なら何通送ってもタダだよね?</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>タダではない。テスト送信も送信数に数えられる。本番環境でテストを回すのと同じだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>送信分類は、送信者プロファイル、配信プロファイル、CAN-SPAM 分類の組み合わせです。</li><li>トランザクションの送信分類は、配信停止した人にも届きます。リスト単位の配信停止を守るかどうかはチェックボックスで決めます。</li><li>セール時のクリック集中によるサーバー負荷を防ぐなら、送信スロットリングです。</li><li>送信時の値をあとで分析したいなら、Send Logging です。</li><li>テスト送信も送信数に数えられます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、自社ドメインのアドレスを From アドレスとして使いたい。Sender Authentication Package は購入していない。そのドメインを使う多数の社員アドレスを、1件ずつ確認メールを送らずにまとめて検証したい。管理者は何をすべきですか?",
+     "o": [
+      "From Address Management の Domain Registration でドメインを登録する",
+      "各社員のアドレスを送信者プロファイルに直接入力する",
+      "配信プロファイルで専用 IP アドレスを選ぶ",
+      "Reply Mail Management を設定する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "SAP やプライベートドメインで認証していないドメインは、Domain Registration でドメイン全体の所有を確認すると、そのドメインのアドレスが確認メールなしで検証されます。送信者プロファイルに入力しただけでは検証されず、IP アドレスや Reply Mail Management はドメイン検証とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_domain_verification.htm&type=5",
+     "x": "SAP などで認証していないドメインは、「Domain Registration」でドメイン全体の所有を確認します。すると、そのドメインのアドレスは確認メールなしで検証済みになります。"
+    },
+    {
+     "q": "あるネットショップは、注文確認メールを、販促メールの配信を停止した顧客にも必ず届けたい。管理者は何をすべきですか?",
+     "o": [
+      "CAN-SPAM 分類が Transactional の送信分類を使う",
+      "CAN-SPAM 分類が Commercial の送信分類を使い、配信停止リンクを外す",
+      "送信スロットリングを有効にする",
+      "配信停止した顧客を自動除外リストから外す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "トランザクションの送信分類では配信停止リンクのチェックが行われず、配信停止した購読者にもメールが届きます。商用の送信分類は配信停止リンクが必須で、配信停止者には届きません。送信スロットリングは送る速さを調整する機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_create_send_classification.htm&type=5",
+     "x": "商用メールでは、配信停止リンクがあるかどうかがチェックされます。トランザクションメールではチェックされず、配信停止した購読者にも届きます。"
+    },
+    {
+     "q": "Email Studio の送信分類(Send Classification)を作るときに、組み合わせて指定するものはどれですか?(2つ選択)",
+     "o": [
+      "送信者プロファイル",
+      "配信プロファイル",
+      "送信スロットリングの時間帯",
+      "Send Logging のデータエクステンション"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "送信分類は、送信者プロファイル、配信プロファイル、CAN-SPAM 分類の3つでできています。送信スロットリングは送信時の配信設定や Setup で決めるもので、Send Logging のデータエクステンションも送信分類の要素ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_send_classifications.htm&type=5",
+     "x": "送信分類は、送信者プロファイル、配信プロファイル、CAN-SPAM 分類の3つを組み合わせた、使い回せる送信設定です。送信者プロファイルと配信プロファイルを先に作ってから作成します。"
+    },
+    {
+     "q": "ある小売企業は、セール告知メールを100万人に送った直後、クリックが集中して自社の Web サイトが落ちてしまった。次回は、送る量を時間ごとに抑えたい。管理者は何を使うべきですか?",
+     "o": [
+      "送信スロットリング(Delivery Window と Hourly Threshold)",
+      "送信優先度を Low にした送信分類",
+      "Send Logging",
+      "自動除外リスト"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "送信スロットリングは、配信の時間帯と1時間あたりの上限数を決めて少しずつ送り、クリック集中によるサーバーダウンを防ぐ機能です。送信優先度は Marketing Cloud 内での処理順を決めるもので、1時間あたりの量の上限にはなりません。Send Logging は記録、自動除外リストは送り先の除外の機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_configure_send_throttling.htm&type=5",
+     "x": "送信スロットリング(Send Throttling)は、配信の時間帯(Delivery Window)と1時間あたりの上限数(Hourly Threshold)を決めて、少しずつ送る機能です。クリックが集中して Web サーバーが落ちるのを防ぎます。"
+    },
+    {
+     "q": "あるマーケティングチームは、メールごとに差し込んだクーポンコードなど、送信した時点の値を記録してあとでレポートに使いたい。標準のトラッキングではこの値は取れない。管理者は何を設定すべきですか?",
+     "o": [
+      "Send Logging のテンプレートから送信ログ用のデータエクステンションを作る",
+      "トランザクションの送信分類を作る",
+      "Reply Mail Management を設定する",
+      "送信者プロファイルに AMPscript を入れる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Send Logging は、送信時の値をデータエクステンションに記録し、標準のトラッキングで取れないデータを残す機能です。送信ログ用のデータエクステンションは専用のテンプレートから作ります。送信分類、Reply Mail Management、送信者プロファイルは記録のための機能ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_send_logging.htm&type=5",
+     "x": "Send Logging は、送信時の値(ジョブや購読者の情報など)をデータエクステンションに記録する機能です。標準のトラッキングでは取れないデータを残せます。"
+    },
+    {
+     "q": "Email Studio のテスト送信について、正しい説明はどれですか?",
+     "o": [
+      "テスト送信も1通の送信として数えられ、購入した送信数の枠を消費する",
+      "テスト送信は送信数に数えられない",
+      "テスト送信では、購読者の配信停止は記録されない",
+      "テスト送信は、検証されていない From アドレスでも送れる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "テスト送信も送信として数えられ、購入した送信数の枠を消費します。また、テストメールから配信停止するとその変更は実際の購読者に恒久的に反映されるので、配信停止が記録されないというのも誤りです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_subscriber_preview_test_send.htm&type=5",
+     "x": "テスト送信も1通の送信として数えられ、購入した送信数の枠を消費します。"
+    }
+   ]
+  },
+  {
+   "id": "mobile",
+   "no": "Ch4·2",
+   "title": "Mobile Studio",
+   "tag": "Mobile Studio",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>なぞなぞだ。5けたか6けたしかないのに、一番たくさん運べる番号はなに?</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>えーと…郵便番号?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>惜しいですね。答えは SMS の「ショートコード」です。通信事業者の審査を通った短い番号で、大量送信に向いています。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>短いのに大量!じゃあ普通の電話番号みたいなのは?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>それがロングコードです。どちらにもキーワードを作って、購読者に送ってもらいます。</p></div><p class=\"one\">Mobile Studio は、スマートフォン向けのチャネルをまとめたものです。SMS を送る MobileConnect と、アプリのプッシュ通知を送る MobilePush が中心です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>MobileConnect は、店頭のポスターに「JOIN と送ってね」と書いて会員を集める SMS 会員制度です。MobilePush は、自社アプリを入れた人だけに届く館内放送です。</p></div><h4>MobileConnect のコードとキーワード</h4><div class=\"tw\"><table><thead><tr><th>種類</th><th>特徴</th></tr></thead><tr><td>ショートコード</td><td>5桁または6桁の番号。大量送信向けで、通信事業者の審査で承認される。米国では新規の準備に8〜12週間ほどかかる</td></tr><tr><td>ロングコード</td><td>通常の10桁の電話番号(米国の10DLC)。ブランドとキャンペーンの登録が必要で、送信速度は審査で決まる信頼スコアによる</td></tr></table></div><ul><li>キーワードは、購読者がコードに送る合言葉です(例: JOIN)。Setup の MobileConnect の「Administration」で、ショートコードかロングコードを選んで作ります。</li><li>キーワードは2〜25文字で、大文字と小文字を区別しません。YES、NO、Y、N、Maybe、Confirm は予約語のため使えません。</li></ul><h4>オプトイン(SMS の購読登録)</h4><div class=\"tw\"><table><thead><tr><th>方式</th><th>登録までの流れ</th></tr></thead><tr><td>シングルオプトイン</td><td>キーワードを1回送るだけで登録される</td></tr><tr><td>ダブルオプトイン</td><td>キーワードを送ったあと、確認メッセージに Y または YES と返信して登録される</td></tr><tr><td>年齢確認付きダブルオプトイン</td><td>確認の返信に加えて、年齢か生年月日を送り、最低年齢以上なら登録される</td></tr></table></div><ul><li>オプトインは「Mobile Opt-In」テンプレートで作ります。コードとキーワードの組み合わせ、返信メッセージ、1か月に送るメッセージ数などを設定します。</li><li>Web フォームやアプリから SMS に登録してもらう場合は、ダブルオプトインを使うのが業界団体(CTIA、MMA)のベストプラクティスです。</li></ul><h4>MobilePush</h4><ul><li>MobilePush は、自社アプリのユーザーにプッシュ通知やインボックスメッセージを送る機能です。ジオフェンスやビーコンを使った位置情報メッセージも送れます。</li><li>使い始める前に、アプリ開発者がアプリに MobilePush SDK を組み込む必要があります。</li><li>管理者は、Setup の MobilePush で「Create New App」からアプリを作り、iOS(APNs)や Android(Firebase)の送信用の資格情報を登録します。</li><li>iOS の APNs 証明書が期限切れになると、そのアプリではメッセージの作成も送信もできなくなります。Android への送信は影響を受けません。</li></ul><h4>送信ブラックアウト(Send Blockout)</h4><ul><li>送信ブラックアウトは、深夜など送信しない時間帯を決める設定です。MobileConnect と MobilePush のそれぞれで、Setup から設定します。</li><li>ブラックアウト中は、すぐに送ることも、ブラックアウト中に始まる送信を予約することもできません。</li><li>送信はブラックアウトの開始で止まりません。21時に始めて2時間かかる送信は、22時からのブラックアウトに入っても23時まで続きます。</li><li>MobileConnect のアプリで設定したブラックアウトは、API からの送信には効きません。API 側で別に指定します。</li><li>MobileConnect のアカウント単位のブラックアウトは、Journey Builder では連絡先が SMS アクティビティに着いた時点で適用されます。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>ブラックアウトって、始まったら送信がピタッと止まるんでしょ?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>止まりません。止めるのは「新しく始めること」だけです。長い送信は、終わりの時間を見積もって早めに始めましょう。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>ショートコードは大量、高速の送信向けですが、準備に何週間もかかります。</li><li>Web フォームやアプリからの SMS 登録は、ダブルオプトインにします。</li><li>YES や Y などは予約語で、キーワードにできません。</li><li>MobilePush を使うには、アプリへの SDK の組み込みが必須です。</li><li>送信ブラックアウトは送信の開始を止めるだけで、実行中の送信は止めません。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、Web サイトのフォームで携帯電話番号を集め、SMS のキャンペーン情報に登録してもらいたい。業界のベストプラクティスに沿うには、Mobile Opt-In の設定で何を選ぶべきですか?",
+     "o": [
+      "ダブルオプトイン",
+      "シングルオプトイン",
+      "Allow a single opt-in per mobile number だけを有効にする",
+      "オプトインを使わず、インポートした番号にすぐ送信する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Web フォームやアプリから SMS に登録する場合は、確認の返信(Y または YES)を求めるダブルオプトインを使うのが CTIA と MMA のベストプラクティスです。シングルオプトインはキーワードを1回送るだけで登録され、重複登録の防止設定だけでは本人確認になりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_moc_mobile_opt-in.htm&type=5",
+     "x": "Web フォームやアプリから SMS に登録してもらう場合は、ダブルオプトインを使うのが業界団体(CTIA、MMA)のベストプラクティスです。"
+    },
+    {
+     "q": "ある全米チェーンは、店頭ポスターで覚えやすい短い番号を案内し、大量の SMS を高速に送りたい。準備期間が数週間かかってもよい。どのコードを使うべきですか?",
+     "o": [
+      "ショートコード",
+      "ロングコード(10DLC)",
+      "送信者プロファイル",
+      "MobilePush のアプリ ID"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ショートコードは5桁または6桁の番号で、通信事業者の審査を受けて大量、高速の送信ができます。米国では新規の準備に8〜12週間ほどかかります。ロングコードは通常の10桁の番号で、送信速度は信頼スコアによります。送信者プロファイルはメールの設定です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.um_channel_sms_shortcode_us.htm&type=5",
+     "x": "ショートコード5桁または6桁の番号。大量送信向けで、通信事業者の審査で承認される。米国では新規の準備に8〜12週間ほどかかる"
+    },
+    {
+     "q": "ある会社は、購読者が寝ている時間帯(22時から翌朝8時)に、MobileConnect から SMS が送られないようにしたい。管理者は何を設定すべきですか?",
+     "o": [
+      "MobileConnect の送信ブラックアウト",
+      "Email Studio の送信スロットリング",
+      "Journey Builder の Wait By Duration",
+      "Send Logging"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "送信ブラックアウトは、深夜など送信しない時間帯を決める設定で、その時間帯の即時送信や送信開始の予約を防ぎます。送信スロットリングはメールの送信量を調整する機能で、Wait By Duration は個々のジャーニーの待機、Send Logging は記録の機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_moc_send_blockouts.htm&type=5",
+     "x": "送信ブラックアウトは、深夜など送信しない時間帯を決める設定です。MobileConnect と MobilePush のそれぞれで、Setup から設定します。"
+    },
+    {
+     "q": "ある会社は、自社のスマートフォンアプリのユーザーに Marketing Cloud Engagement からプッシュ通知を送りたい。MobilePush で送信できるようにするために、アプリ側で必要なことはどれですか?",
+     "o": [
+      "アプリ開発者がアプリに MobilePush SDK を組み込む",
+      "MobileConnect でキーワードを作る",
+      "Sender Authentication Package を購入する",
+      "アプリのユーザーをダブルオプトインで登録する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "MobilePush を使う前に、アプリ開発者がアプリに MobilePush SDK を組み込む必要があります。キーワードとダブルオプトインは SMS(MobileConnect)の仕組みで、SAP はメールのドメイン認証に使うものです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_mp_get_started.htm&type=5",
+     "x": "使い始める前に、アプリ開発者がアプリに MobilePush SDK を組み込む必要があります。"
+    },
+    {
+     "q": "ある会社では、MobilePush で iOS 向けのメッセージを作成できなくなった。Android 向けの送信は問題なく続いている。最も考えられる原因はどれですか?",
+     "o": [
+      "iOS の APNs 証明書が期限切れになっている",
+      "送信ブラックアウトが有効になっている",
+      "MobileConnect のキーワードが削除された",
+      "送信スロットリングの上限に達した"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "APNs 証明書が期限切れになると、そのアプリではメッセージの作成も送信もできなくなりますが、Android への送信は影響を受けません。送信ブラックアウトなら OS に関係なく止まり、キーワードは SMS、送信スロットリングはメールの機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_mp_provisioning_info.htm&type=5",
+     "x": "iOS の APNs 証明書が期限切れになると、そのアプリではメッセージの作成も送信もできなくなります。Android への送信は影響を受けません。"
+    },
+    {
+     "q": "MobileConnect でキーワードとして作成できないものはどれですか?(2つ選択)",
+     "o": [
+      "YES",
+      "Y",
+      "JOIN",
+      "SALE2026"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "YES、NO、Y、N、Maybe、Confirm は、ダブルオプトインなどで使う予約語のため、キーワードにできません。キーワードは2〜25文字で、JOIN や SALE2026 のような文字列は条件を満たします。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_moc_create_a_new_keyword.htm&type=5",
+     "x": "キーワードは2〜25文字で、大文字と小文字を区別しません。YES、NO、Y、N、Maybe、Confirm は予約語のため使えません。"
+    }
+   ]
+  },
+  {
+   "id": "advertising",
+   "no": "Ch4·3",
+   "title": "Advertising Studio",
+   "tag": "Advertising Studio",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>今日はわたしが説明する!Advertising Studio は、メールのリストを Facebook とかに送って、その人たちに広告を出す機能でしょ?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>だいたい合っています。正確には、名簿はハッシュ化してから広告ネットワークに送ります。中身はそのまま渡しません。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>あと、広告で集めたお客さんを Marketing Cloud に戻すのもあった気がする。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>それは Lead Capture だ。送るのがオーディエンス、受け取るのがリード。入力と出力だ。</p></div><p class=\"one\">Advertising Studio(現在のヘルプでは Marketing Cloud Advertising)は、Marketing Cloud Engagement の顧客データを広告に生かすアプリです。中心となる機能は Advertising Audiences と Lead Capture です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>会員名簿を、読めない形に変換してから広告会社に渡し、「この人たちに広告を出して」と頼むのが Advertising Audiences です。広告に付いた申込書の中身を、自動で自社の名簿に書き写すのが Lead Capture です。</p></div><h4>Advertising Audiences</h4><ul><li>Advertising Audiences は、データエクステンションや連絡先から作ったオーディエンスを広告ネットワークに送り、広告の配信対象にする機能です。</li><li>対応する広告ネットワークは、Facebook、Instagram、Google Ads、LinkedIn、X(Twitter)、Pinterest、Snapchat です。</li></ul><div class=\"tw\"><table><thead><tr><th>使いどころ</th><th>例</th></tr></thead><tr><td>既存顧客に届ける</td><td>購入者だけに向けた広告を出す</td></tr><tr><td>新規顧客を獲得する</td><td>優良顧客をシードオーディエンスにして、広告ネットワーク側で類似オーディエンス(ルックアライク)を作る</td></tr><tr><td>既存顧客を除外する</td><td>新規獲得キャンペーンの配信対象から、すでに顧客の人を外す</td></tr><tr><td>再エンゲージする</td><td>メールに反応しなくなった購読者に、広告で呼びかける</td></tr></table></div><h4>設定に必要なこと</h4><ol class=\"steps\"><li>広告を出したいネットワークで、広告アカウントを作る</li><li>「Administration」で広告ネットワークを選び、広告アカウントを追加して認証する</li><li>「Create Audience」でオーディエンスを作り、送り先の広告ネットワークと広告アカウントを選ぶ。Facebook の場合は利用規約に同意する</li><li>データエクステンションまたは連絡先から、照合に使う属性を選ぶ</li><li>有効化(Activate)する。件数が安定するまで24〜48時間かかる</li></ol><ul><li>オーディエンスは SHA-256 でハッシュ化されてから、API 接続を通じて広告ネットワークに送られます。</li><li>オーディエンスは、手動の「Refresh Now」か、スケジュールによる自動更新で最新にできます。</li><li>広告アカウントを削除すると、そのアカウントに関連するオーディエンスは更新されなくなります。</li><li>オーディエンスを削除できるのは管理者だけです。</li><li>Journey Builder でも、Advertising Audiences アクティビティを使って、ジャーニーの途中の連絡先を広告オーディエンスに加えられます。</li></ul><h4>Lead Capture</h4><ul><li>Lead Capture は、Facebook や Google のリード広告フォームで集めた見込み客を、データエクステンションか Sales Cloud のリードオブジェクトに自動で同期する機能です。</li><li>同期の設定は「リードキャプチャタスク」という単位で作ります。</li><li>事前に、データエクステンションを有効にしておくこと、ビジネス版の Facebook でページの管理者権限を持つこと、リード広告フォームを作っておくことが必要です。</li><li>Sales Cloud に送る場合は、フォームの質問をリードの項目に対応付けます。取り込んだリードを Sales Cloud のキャンペーンにひも付けることもできます。</li><li>リードフォームを変更したいときは、先にリードキャプチャタスクを削除します。すでに取り込んだリードは残ります。</li></ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>対応ネットワークは Facebook、Instagram、Google Ads、LinkedIn、X(Twitter)、Pinterest、Snapchat の7つです。</li><li>新規獲得なら類似オーディエンス、既存顧客を外すなら除外(抑制)の使い方です。</li><li>最初の設定は、Administration で広告アカウントを追加して認証することです。</li><li>データは SHA-256 でハッシュ化されて送られます。</li><li>Lead Capture は、Facebook と Google のリードを、データエクステンションか Sales Cloud のリードに取り込みます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、購入金額の大きい優良顧客に似た新しい見込み客に、Facebook で広告を出したい。Advertising Audiences をどのように使うべきですか?",
+     "o": [
+      "優良顧客のオーディエンスを作ってシードにし、Facebook 側で類似オーディエンスを作る",
+      "優良顧客のオーディエンスを作り、新規獲得キャンペーンから除外する",
+      "Lead Capture で優良顧客を Sales Cloud のリードとして取り込む",
+      "優良顧客にだけトランザクションメールを送る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Advertising Audiences では、既存顧客のオーディエンスをシードにして、広告ネットワーク側で類似オーディエンス(ルックアライク)を作り、新規顧客を獲得できます。除外は既存顧客を配信対象から外す使い方で、Lead Capture は広告から集めたリードを取り込む機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_ads_advertising_audiences.htm&type=5",
+     "x": "新規顧客を獲得する優良顧客をシードオーディエンスにして、広告ネットワーク側で類似オーディエンス(ルックアライク)を作る"
+    },
+    {
+     "q": "ある会社は、新規顧客獲得の広告キャンペーンで、すでに購入済みの顧客に広告費を使いたくない。Advertising Audiences をどのように使うべきですか?",
+     "o": [
+      "既存顧客のオーディエンスを作り、新規獲得キャンペーンの配信対象から除外する",
+      "既存顧客のオーディエンスを類似オーディエンスのシードにする",
+      "既存顧客を MobileConnect のキーワードから外す",
+      "既存顧客を自動除外リストに入れる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "既存顧客のオーディエンスを広告ネットワークに送り、新規獲得キャンペーンから除外(抑制)することで、無駄な広告費を防げます。類似オーディエンスのシードにすると、むしろ既存顧客に似た人へ広告が広がります。自動除外リストはメール送信の除外に使うものです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_ads_advertising_audiences.htm&type=5",
+     "x": "既存顧客を除外する新規獲得キャンペーンの配信対象から、すでに顧客の人を外す"
+    },
+    {
+     "q": "管理者は、Advertising Audiences を使って LinkedIn に初めてオーディエンスを送る準備をしている。LinkedIn で広告アカウントを作ったあと、Marketing Cloud Engagement で次に行うべきことはどれですか?",
+     "o": [
+      "Advertising Audiences の Administration で LinkedIn の広告アカウントを追加して認証する",
+      "Lead Capture でリードキャプチャタスクを作る",
+      "Email Studio で送信分類を作る",
+      "Journey Builder で Advertising Campaign アクティビティを有効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "オーディエンスを作る前に、Administration で広告ネットワークを選び、広告アカウントを追加して認証します。その後に Create Audience で送り先の広告アカウントを選べるようになります。Lead Capture や送信分類はオーディエンス送信の前提ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_ads_add_or_remove_ad_accounts.htm&type=5",
+     "x": "「Administration」で広告ネットワークを選び、広告アカウントを追加して認証する"
+    },
+    {
+     "q": "Advertising Audiences でオーディエンスを送ることができる広告ネットワークはどれですか?(2つ選択)",
+     "o": [
+      "Snapchat",
+      "Pinterest",
+      "TikTok",
+      "LINE 広告"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Advertising Audiences が対応する広告ネットワークは、Facebook、Instagram、Google Ads、LinkedIn、X(Twitter)、Pinterest、Snapchat です。TikTok と LINE 広告は、ヘルプに挙がっている対応ネットワークに含まれていません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_ads_advertising_audiences.htm&type=5",
+     "x": "対応する広告ネットワークは、Facebook、Instagram、Google Ads、LinkedIn、X(Twitter)、Pinterest、Snapchat です。"
+    },
+    {
+     "q": "ある会社は、Facebook のリード広告フォームで集めた見込み客を、自動で Sales Cloud のリードとして登録したい。管理者は何を使うべきですか?",
+     "o": [
+      "Marketing Cloud Advertising の Lead Capture",
+      "Advertising Audiences のオーディエンス更新",
+      "Journey Builder の API イベント",
+      "Email Studio の Send Logging"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Lead Capture は、Facebook や Google のリード広告フォームで集めたリードを、データエクステンションか Sales Cloud のリードオブジェクトに同期します。Advertising Audiences は顧客データを広告ネットワークへ送る機能で、向きが逆です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_ads_lead_capture.htm&type=5",
+     "x": "Lead Capture は、Facebook や Google のリード広告フォームで集めた見込み客を、データエクステンションか Sales Cloud のリードオブジェクトに自動で同期する機能です。"
+    },
+    {
+     "q": "ある会社の法務部門は、Advertising Audiences で顧客のメールアドレスを広告ネットワークに送るとき、どのように扱われるかを確認したい。正しい説明はどれですか?",
+     "o": [
+      "オーディエンスは SHA-256 でハッシュ化されてから広告ネットワークに送られる",
+      "メールアドレスは平文の CSV ファイルとして広告ネットワークに送られる",
+      "オーディエンスは Marketing Cloud Engagement 内にだけ保存され、広告ネットワークには送られない",
+      "広告ネットワークに送る前に、購読者全員にダブルオプトインの確認が送られる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "作成したオーディエンスは SHA-256 でハッシュ化され、確立済みの API 接続を通じて広告ネットワークに送られます。平文のファイルで送るわけではなく、広告ネットワークに送らなければ広告の配信対象にできません。ダブルオプトインは SMS の登録方式です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_ads_refresh_an_audience.htm&type=5",
+     "x": "オーディエンスは SHA-256 でハッシュ化されてから、API 接続を通じて広告ネットワークに送られます。"
+    }
+   ]
+  },
+  {
+   "id": "journey",
+   "no": "Ch4·4",
+   "title": "Journey Builder",
+   "tag": "Journey Builder",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>ジャーニーは、すごろくにたとえられます。スタート地点がエントリーソースです。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>じゃあ続けるね!マスに止まると、メールが届いたり SMS が来たりする。それがアクティビティ!</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>分かれ道は分岐。サイコロではなく、データや開封で決まる。if 文だ。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>上がりがゴールです。途中で「もう遊ばなくていい人」を外すのが終了条件です。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>同じ人が何回すごろくに参加できるかも決めるんだよね。それがエントリーモードか。</p></div><p class=\"one\">Journey Builder は、顧客のデータや行動に合わせて、メール、SMS、プッシュ通知などを順番に届ける「ジャーニー」を作るアプリです。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>すごろくです。スタート地点がエントリーソース、マスがアクティビティ、分かれ道が分岐、上がりがゴール、途中退場のルールが終了条件です。</p></div><h4>ジャーニーの種類</h4><div class=\"tw\"><table><thead><tr><th>種類</th><th>特徴</th></tr></thead><tr><td>マルチステップ</td><td>複数のチャネルと分岐を含む、一連のやり取りを作る</td></tr><tr><td>シングルセンド</td><td>1回だけ送るシンプルなジャーニー。対象者とメッセージを決めて、送信か予約をする</td></tr><tr><td>トランザクションセンド</td><td>顧客の行動をきっかけに1通を送る。Transactional API のエントリーソースを開発者なしで設定できる</td></tr></table></div><h4>エントリーソース</h4><ul><li>エントリーソースは、ジャーニーに入る顧客がどこから来るかを決めるものです。どのジャーニーにも必ず必要です。</li><li>データエクステンション: 送信可能なデータエクステンションの連絡先を、バッチでまとめて入れます。データエクステンションは Automation Studio で作成、更新できます。</li><li>API イベント: API が呼ばれたときに連絡先を入れます。入った連絡先は、指定したデータエクステンションに保存されます。</li><li>Salesforce データイベント: Sales Cloud や Service Cloud でレコードが作成、更新されたときに連絡先を入れます。</li><li>CloudPages フォーム送信イベント: CloudPages の Smart Capture フォームが送信されたときに連絡先を入れます。</li><li>有効化したジャーニーは、エントリーソースのデータエクステンションのスナップショットを使います。項目を追加したいときは、ジャーニーの新しいバージョンを作ります。</li></ul><h4>アクティビティ</h4><div class=\"tw\"><table><thead><tr><th>分類</th><th>主なアクティビティ</th></tr></thead><tr><td>メッセージ</td><td>メール、SMS、プッシュ通知、インボックス、アプリ内メッセージ</td></tr><tr><td>広告</td><td>Advertising Audiences、Advertising Campaign</td></tr><tr><td>フロー制御</td><td>決定分岐(データで分ける)、エンゲージメント分岐(開封やクリックで分ける)、ランダム分岐、結合、待機</td></tr><tr><td>顧客の更新</td><td>Update Contact(データエクステンションの値を書き換える)</td></tr><tr><td>Sales and Service Cloud</td><td>リード、取引先責任者、ケース、タスクなどのレコードを作成、更新する</td></tr></table></div><h4>コンタクトエントリーモード</h4><div class=\"tw\"><table><thead><tr><th>モード</th><th>動き</th><th>向いている例</th></tr></thead><tr><td>No re-entry</td><td>1回だけ入る。完了しても再び入らない</td><td>ウェルカムジャーニー</td></tr><tr><td>Re-entry at any time</td><td>ジャーニーの途中でも、何度でも入れる</td><td>購入のたびに送るフォロー</td></tr><tr><td>Re-entry only after exiting</td><td>出たあとなら再び入れる。同時に入れるのは1回分だけ</td><td>季節のキャンペーン、年1回の会員更新</td></tr></table></div><ul><li>同じ連絡先かどうかは、連絡先キー(Contact Key)で判断します。</li><li>No re-entry は、ジャーニーを有効化したあとは変更できません。また、テストモードでは使えません。</li></ul><h4>ゴールと終了条件</h4><ul><li>ゴールは、ジャーニーで促したい行動(購入など)の達成を測る基準です。達成した連絡先はゴールの統計に数えられ、設定によってはジャーニーから出ます。</li><li>終了条件(Exit Criteria)は、ジャーニーの目的に合わなくなった連絡先を外すためのフィルターです。外すだけで、ゴールの達成には数えません。</li><li>終了条件は、連絡先が待機アクティビティを終えるたびに評価されます。</li><li>ゴールと終了条件の両方があるときは、ゴールが先に処理されます。</li></ul><h4>Automation Studio との関係</h4><ul><li>Automation Studio は、データの取り込み、SQL クエリ、ファイル転送などの処理を、スケジュールやファイルの到着をきっかけに実行するアプリです。</li><li>ジャーニーに使うデータが複数のデータエクステンションに分かれているときは、Automation Studio の SQL Query Activity で1つのデータエクステンションにまとめてから、エントリーソースにします。</li><li>Automation Studio の Fire Event アクティビティを使うと、エントリーイベントのデータエクステンションにいる連絡先をジャーニーに入れられます。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>買った人を外したいとき、ゴールと終了条件のどっちを使えばいいの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>成果として数えたいならゴールです。数えずに外すだけなら終了条件です。両方あるときは、ゴールが先に処理されます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>ウェルカムは No re-entry、購入のたびは Re-entry at any time、年1回の更新は Re-entry only after exiting です。</li><li>ゴールは成果を測るもの、終了条件は外すものです。両方あればゴールが先です。</li><li>決定分岐はデータ、エンゲージメント分岐は開封やクリックで分けます。</li><li>有効化後にエントリーのデータエクステンションを変えても、実行中のジャーニーには反映されません。新しいバージョンを作ります。</li><li>データの準備は Automation Studio、顧客への段階的な働きかけは Journey Builder が担当します。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、新規会員に3通のウェルカムメールを送るジャーニーを作る。同じ会員が、二度とこのジャーニーに入らないようにしたい。どのコンタクトエントリーモードを選ぶべきですか?",
+     "o": [
+      "No re-entry",
+      "Re-entry at any time",
+      "Re-entry only after exiting",
+      "エントリーモードは設定せず、終了条件で制御する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "No re-entry を選ぶと、連絡先は1回だけジャーニーに入り、完了しても再び入りません。ウェルカムジャーニーの典型的な設定です。Re-entry at any time と Re-entry only after exiting は、どちらも再び入ることを許します。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_jb_journey_settings.htm&type=5",
+     "x": "No re-entry1回だけ入る。完了しても再び入らないウェルカムジャーニー"
+    },
+    {
+     "q": "ある会員制サービスは、毎年の会員更新の時期に案内ジャーニーを使う。会員は毎年このジャーニーに入れるが、同時に2回分のジャーニーを進むことはないようにしたい。どのコンタクトエントリーモードを選ぶべきですか?",
+     "o": [
+      "Re-entry only after exiting",
+      "Re-entry at any time",
+      "No re-entry",
+      "Wait Until Date を最初に置き、エントリーモードは既定のままにする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Re-entry only after exiting は、ジャーニーを出たあとなら再び入れますが、同時に入れるのは1回分だけです。年1回の会員更新や季節のキャンペーンに向いています。Re-entry at any time は途中でも何度でも入り、No re-entry は二度と入れません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_jb_choose_a_contact_entry_mode.htm&type=5",
+     "x": "Re-entry only after exiting出たあとなら再び入れる。同時に入れるのは1回分だけ季節のキャンペーン、年1回の会員更新"
+    },
+    {
+     "q": "ある会社のアップセルジャーニーでは、途中でサポートのクレームが登録された顧客には、以降のメッセージを送りたくない。この顧客をゴール達成として数えずに、ジャーニーから外したい。何を設定すべきですか?",
+     "o": [
+      "終了条件(Exit Criteria)",
+      "ゴール",
+      "ランダム分岐",
+      "Update Contact アクティビティ"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "終了条件は、ジャーニーの目的に合わなくなった連絡先を外すためのフィルターで、ゴール達成には数えません。ゴールは促したい行動の達成を測るもので、達成者は統計に数えられます。ランダム分岐と Update Contact は連絡先を外す機能ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_jb_exit_criteria.htm&type=5",
+     "x": "終了条件(Exit Criteria)は、ジャーニーの目的に合わなくなった連絡先を外すためのフィルターです。外すだけで、ゴールの達成には数えません。"
+    },
+    {
+     "q": "あるマーケターは、最初のメールを開封した人と開封しなかった人で、次に送るメッセージを変えたい。どのアクティビティを使うべきですか?",
+     "o": [
+      "エンゲージメント分岐",
+      "決定分岐",
+      "ランダム分岐",
+      "結合"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "エンゲージメント分岐は、開封やクリックなどの顧客の行動で連絡先の進む道を分けます。決定分岐は連絡先のデータの値で分け、ランダム分岐は無作為に分けます。結合は分かれた道を1つにまとめるアクティビティです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_jb_activities_reference.htm&type=5",
+     "x": "フロー制御決定分岐(データで分ける)、エンゲージメント分岐(開封やクリックで分ける)、ランダム分岐、結合、待機"
+    },
+    {
+     "q": "ある会社では、ジャーニーに使いたい顧客データが、購入履歴と会員情報の2つのデータエクステンションに分かれている。これを1つのエントリーソースにしたい。管理者は何をすべきですか?",
+     "o": [
+      "Automation Studio の SQL Query Activity で1つのデータエクステンションにまとめる",
+      "2つのデータエクステンションをそれぞれ同じジャーニーのエントリーソースに設定する",
+      "Update Contact アクティビティで、ジャーニーの中で2つを結合する",
+      "Send Logging のデータエクステンションにまとめる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ジャーニーのデータが複数のデータエクステンションにあるときは、Automation Studio の SQL Query Activity で1つのエントリー用データエクステンションを作るのが推奨です。Update Contact はデータエクステンションの値を書き換えるもので、Send Logging は送信時の値を記録する機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_jb_select_data_extension_for_entry.htm&type=5",
+     "x": "ジャーニーに使うデータが複数のデータエクステンションに分かれているときは、Automation Studio の SQL Query Activity で1つのデータエクステンションにまとめてから、エントリーソースにします。"
+    },
+    {
+     "q": "実行中のジャーニーで、エントリーソースのデータエクステンションに「会員ランク」の項目を追加した。しかし、メールの差し込みにこの項目が使えない。管理者はどうすべきですか?",
+     "o": [
+      "更新したデータエクステンションを使う、ジャーニーの新しいバージョンを作る",
+      "データエクステンションの項目をもう一度保存し直す",
+      "コンタクトエントリーモードを No re-entry に変える",
+      "終了条件に会員ランクを追加する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "有効化したジャーニーはエントリーソースのデータエクステンションのスナップショットを使うため、あとから追加した項目は実行中のジャーニーでは使えません。項目を使うには、ジャーニーの新しいバージョンを作ります。エントリーモードや終了条件を変えても解決しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_jb_entry_sources.htm&type=5",
+     "x": "有効化したジャーニーは、エントリーソースのデータエクステンションのスナップショットを使います。項目を追加したいときは、ジャーニーの新しいバージョンを作ります。"
+    }
+   ]
+  }
+ ]
+}

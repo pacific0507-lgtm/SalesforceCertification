@@ -1,0 +1,351 @@
+{
+ "chapter": 2,
+ "chapter_title": "セットアップ",
+ "chapter_sub": "アカウントとビジネスユニットの構造、ユーザーとロール、セキュリティ設定など、Marketing Cloud Engagement の土台を整える方法を学びます。",
+ "sections": [
+  {
+   "id": "account",
+   "no": "Ch2·1",
+   "title": "アカウントの構造",
+   "tag": "Account Structure",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\" data-f=\"wink\"><b class=\"who\">クラウドちゃん</b>なぞなぞです。1つの家に、親と子どもが何人も住んでいます。冷蔵庫(購読者)は1台だけ。子どもが勝手に開けられる棚は、親が決めます。これは何?</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>えー、シェアハウス?</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>ヒント。Marketing Cloud Engagement の話だ。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>あ、Enterprise 2.0 アカウント!親が親ビジネスユニットで、子どもが子ビジネスユニット!</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>正解です。棚を決める仕組みが購読者フィルターです。家全体がテナント、部屋番号にあたるのが MID ですね。</p></div><p class=\"one\">Marketing Cloud Engagement のアカウントは、最上位アカウントの下にビジネスユニットを階層で並べた構造です。データやコンテンツを、どの範囲で共有し、どこで分けるかを決めます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>本社と支店の関係です。顧客名簿は本社の金庫に1冊だけあり、支店は本社が許した範囲のページしか見られません。チラシのひな形は本社の共有棚に置き、各支店が使います。</p></div><h4>テナントと MID</h4><ul>\n<li>Enterprise 2.0 アカウントでは、最上位アカウントと、その下にあるすべてのビジネスユニットをまとめて1つのテナントと呼びます。</li>\n<li>Agency アカウントでは、最上位アカウントと、各クライアントアカウントがそれぞれ別のテナントです。Core アカウントは単一のアカウントが1つのテナントです。</li>\n<li>Core アカウント、Enterprise / Enterprise 2.0 の最上位アカウント、Agency アカウントと、その子アカウントには、それぞれを識別する MID(メンバーID)が付きます。1つのテナントに複数の MID が含まれることがあります。</li>\n<li>MID は、画面上のアカウント名をクリックすると確認できます。ステータスページでの稼働状況の確認、Web Collect の URL 設定、API のエンドポイント確認に使います。</li>\n<li>最上位アカウントは Enterprise ID(EID)を持ちます。</li>\n</ul><h4>ビジネスユニットの基本</h4><ul>\n<li>ビジネスユニットは、情報へのアクセスと共有を制御するための階層構造です。Enterprise と Enterprise 2.0 のアカウントで使えます。</li>\n<li>ビジネスユニットのメンバーのユーザーは、そのビジネスユニットで作成されたすべてのアイテムにアクセスできます。</li>\n<li>ビジネスユニットの構成は、業務プロセス、購読者の属性や行動データ、組織の運用体制など、ビジネスのニーズに合わせて決めます。</li>\n<li>作成できるビジネスユニットの数は、契約上の権利(エンタイトルメント)によって上限があります。</li>\n</ul><h4>構成の例(Enterprise 2.0)</h4><div class=\"tw\"><table><thead><tr><th>構成例</th><th>最上位のビジネスユニット</th><th>下位のビジネスユニット</th></tr></thead>\n<tr><td>分散型メッセージ</td><td>本部がクリエイティブ、購読者、配信スケジュールを持ち、テンプレートを作る</td><td>地域や店舗が、地域のメッセージや店舗の連絡先を追加する</td></tr>\n<tr><td>マルチブランド</td><td>企業ブランドのテンプレートを作る</td><td>各ブランドがブランド要素を加え、さらに下の部門や地域が内容と購読者リストを管理する</td></tr>\n<tr><td>マーケティングキャンペーン</td><td>マーケティング部門</td><td>個別のキャンペーンやイベント。各レベルで購読者のオプトインを管理する</td></tr>\n</table></div><h4>共有されるもの、分かれるもの</h4><ul>\n<li>Enterprise 2.0 では、どのビジネスユニットがインポートしても、購読者は親アカウントに保存されます。</li>\n<li>子ビジネスユニットがどの購読者にアクセスできるかは、ビジネスユニットごとに管理者が定義する購読者フィルター(Subscriber Filter)で決まります。フィルターは購読者の属性値で購読者を選びます。</li>\n<li>購読者フィルターを定義するユーザーは、親ビジネスユニットに所属し、購読者フィルターを定義する権限を持っている必要があります。</li>\n<li>配信停止の扱いは、ビジネスユニットのプロパティで「エンタープライズ内のすべてのビジネスユニットから配信停止」か「このビジネスユニットのみ配信停止」かを選びます。</li>\n<li>メール、テンプレート、ポートフォリオ、データエクステンション、コンテンツエリアは、共有アイテムフォルダーに置き、権限を設定すると、他のビジネスユニットのユーザーも使えます。</li>\n<li>共有データエクステンションは、「Shared Data Extensions」フォルダー(またはそのサブフォルダー)に置きます。ビジネスユニットごとに操作の許可/拒否と、共有の開始日、終了日を設定できます。</li>\n<li>AMPscript やクエリで共有データエクステンションを参照するときは、親レベルにあることを示す ENT. プレフィックスを付けます。</li>\n<li>抑制リスト(Suppression List)は、親ビジネスユニットから子ビジネスユニットへ共有できます。</li>\n</ul><h4>作成と削除</h4><ol class=\"steps\">\n<li>Setup の「Business Units」で「Create」をクリックする</li>\n<li>Properties セクションを入力する。外部キー(External Key)は空欄なら自動で生成される</li>\n<li>Physical Address(住所)セクションを入力する</li>\n<li>Unsubscribe Settings(配信停止の設定)セクションを入力して保存する</li>\n</ol><ul>\n<li>ビジネスユニットを削除する前に、そのビジネスユニットからすべてのユーザーを外します。削除は恒久的です。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>子ビジネスユニットで購読者をインポートしたら、子の中に保存されるんだよね?</p><p class=\"tk rou\" data-f=\"sweat\"><b class=\"who\">クラウドちゃん</b>いいえ。Enterprise 2.0 では、購読者はいつも親アカウントに保存されます。子が見える範囲を購読者フィルターで絞ります。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>データは1か所、ビューで絞る。データベースの設計と同じだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>Enterprise 2.0 の購読者は親アカウントに保存され、子ビジネスユニットのアクセス範囲は購読者フィルターで決まります。</li>\n<li>配信停止を「全ビジネスユニット」にするか「このビジネスユニットのみ」にするかは、ビジネスユニットのプロパティで選びます。</li>\n<li>他のビジネスユニットとコンテンツやデータエクステンションを共有するには、共有フォルダーに置いて権限を設定します。</li>\n<li>MID はアカウントやビジネスユニットを識別する番号で、API や Web Collect の設定、ステータス確認に使います。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "あるフランチャイズ企業では、本部がメールのテンプレートと購読者リストを管理し、各地域の店舗が地域向けのメッセージを追加して配信したいと考えています。最も適したアカウント構成はどれですか?",
+     "o": [
+      "Enterprise 2.0 アカウントで、本部を親ビジネスユニット、地域を子ビジネスユニットにする",
+      "店舗ごとに別々の Core アカウントを契約する",
+      "1つのビジネスユニットに全員を所属させ、フォルダーだけで分ける",
+      "Agency アカウントで、店舗をクライアントアカウントにする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Enterprise 2.0 のビジネスユニットは、階層構造でブランドを統制しつつ、各ユーザーに配信の仕組みを使わせるためのものです。本部が素材と購読者を持ち、地域が内容を加える「分散型メッセージ」の典型例です。別々の Core アカウントでは本部の購読者やテンプレートを共有できません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_enterprise_20_overview.htm&type=5",
+     "x": "ビジネスユニットは、情報へのアクセスと共有を制御するための階層構造です。Enterprise と Enterprise 2.0 のアカウントで使えます。"
+    },
+    {
+     "q": "ある会社は Enterprise 2.0 アカウントでブランドAとブランドBを別々のビジネスユニットで運用しています。ブランドAのメールで配信停止した人にも、ブランドBのメールは引き続き届けたいと考えています。管理者は何をすべきですか?",
+     "o": [
+      "ブランドAのビジネスユニットのプロパティで、配信停止を「このビジネスユニットのみ」に設定する",
+      "ブランドAのビジネスユニットのプロパティで、配信停止を「エンタープライズ内のすべてのビジネスユニット」に設定する",
+      "ブランドBに共有抑制リストを設定する",
+      "ブランドAのセキュリティ設定で配信停止の継承をオフにする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ビジネスユニットのプロパティでは、配信停止をエンタープライズ全体に適用するか、そのビジネスユニットだけに適用するかを選べます。他ブランドへの配信を続けたいなら「このビジネスユニットのみ」です。「すべてのビジネスユニット」を選ぶと、ブランドBにも届かなくなります。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_unsubscribe_settings.htm&type=5",
+     "x": "配信停止の扱いは、ビジネスユニットのプロパティで「エンタープライズ内のすべてのビジネスユニットから配信停止」か「このビジネスユニットのみ配信停止」かを選びます。"
+    },
+    {
+     "q": "Enterprise 2.0 アカウントで、子ビジネスユニットのユーザーが購読者をインポートしました。この購読者について正しい説明はどれですか?",
+     "o": [
+      "購読者は親アカウントに保存され、子ビジネスユニットからのアクセス範囲は購読者フィルターで決まる",
+      "購読者はインポートした子ビジネスユニットにだけ保存され、親からは見えない",
+      "購読者はすべてのビジネスユニットに個別にコピーされる",
+      "購読者は共有データエクステンションに自動で保存される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Enterprise 2.0 では、どのビジネスユニットがインポートしても、購読者は親アカウントに保存されます。子ビジネスユニットがアクセスできる購読者は、管理者が定義する購読者フィルターで決まります。子だけに保存されるわけでも、各ビジネスユニットにコピーされるわけでもありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_subscriber_filters.htm&type=5",
+     "x": "Enterprise 2.0 では、どのビジネスユニットがインポートしても、購読者は親アカウントに保存されます。"
+    },
+    {
+     "q": "ある会社は、ブランド共通のメールテンプレートを親ビジネスユニットで作り、すべての子ビジネスユニットのユーザーに使わせたいと考えています。管理者は何をすべきですか?",
+     "o": [
+      "テンプレートを共有アイテムフォルダーに置き、他のビジネスユニットからのアクセス権限を設定する",
+      "各子ビジネスユニットにテンプレートを手作業でコピーする",
+      "子ビジネスユニットのユーザー全員を親ビジネスユニットのメンバーにする",
+      "テンプレートを抑制リストとして共有する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "メールやテンプレートなどは、共有アイテムフォルダーに置いて権限を設定すると、他のビジネスユニットのユーザーも使えます。共有すると同じ実体へのアクセス権を与えるため、変更も共有されます。全員を親のメンバーにすると、不要なアイテムにまでアクセスできてしまいます。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_shared_items.htm&type=5",
+     "x": "メール、テンプレート、ポートフォリオ、データエクステンション、コンテンツエリアは、共有アイテムフォルダーに置き、権限を設定すると、他のビジネスユニットのユーザーも使えます。"
+    },
+    {
+     "q": "子ビジネスユニットの開発者が、親レベルにある共有データエクステンションを AMPscript で参照しようとしています。正しい方法はどれですか?",
+     "o": [
+      "データエクステンション名の前に ENT. プレフィックスを付ける",
+      "データエクステンション名の前に親の MID を付ける",
+      "データエクステンションの外部キーの前に SHARED. を付ける",
+      "共有データエクステンションは AMPscript から参照できない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "AMPscript やクエリで共有データエクステンションを参照するときは、親レベルにあることを示す ENT. プレフィックスを付けます。実際に使えるかどうかは、子ビジネスユニットに与えられた権限で制限されます。MID や SHARED. を付ける方法はありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_shared_data_extensions.htm&type=5",
+     "x": "AMPscript やクエリで共有データエクステンションを参照するときは、親レベルにあることを示す ENT. プレフィックスを付けます。"
+    },
+    {
+     "q": "管理者が Web Collect の URL を設定し、あわせて Salesforce のステータスページで自社インスタンスの稼働状況を確認したいと考えています。必要な情報と、その確認方法の組み合わせはどれですか?",
+     "o": [
+      "MID。画面上のアカウント名をクリックして確認する",
+      "EID。Setup の Security Settings で確認する",
+      "外部キー。Business Units の Properties で確認する",
+      "ユーザー名。Users の一覧で確認する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "MID(メンバーID)はアカウントやビジネスユニットを識別する値で、アカウント名をクリックすると確認できます。ステータスページでの検索、Web Collect の URL 設定、API エンドポイントの確認に使います。外部キーはビジネスユニットなどを API で識別する値で、この用途ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_determine_your_marketing_cloud_instance.htm&type=5",
+     "x": "MID は、画面上のアカウント名をクリックすると確認できます。ステータスページでの稼働状況の確認、Web Collect の URL 設定、API のエンドポイント確認に使います。"
+    },
+    {
+     "q": "ある会社は、使わなくなったビジネスユニットを削除したいと考えています。削除の前に管理者がすべきことはどれですか?",
+     "o": [
+      "そのビジネスユニットからすべてのユーザーを外す",
+      "そのビジネスユニットのセキュリティ設定を親から継承し直す",
+      "そのビジネスユニットの MID を無効にする",
+      "購読者フィルターを削除して、購読者を子に移す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ビジネスユニットを削除する前に、すべてのユーザーをそのビジネスユニットから外す必要があります。ユーザーの所属はユーザーレコードで変更できます。削除は恒久的なので、慎重に行います。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_delete_a_business_unit.htm&type=5",
+     "x": "ビジネスユニットを削除する前に、そのビジネスユニットからすべてのユーザーを外します。削除は恒久的です。"
+    }
+   ]
+  },
+  {
+   "id": "users",
+   "no": "Ch2·2",
+   "title": "ユーザー・ロール・権限",
+   "tag": "Users & Roles",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>ロールのことなら任せて!Marketing Cloud Viewer は、見るだけじゃなくてレポートも出せる係でしょ?</p><p class=\"tk rou\" data-f=\"sweat\"><b class=\"who\">クラウドちゃん</b>惜しいです。Viewer は活動を見るだけで、作成、送信、レポートはできません。一番制限の強いロールです。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>じゃあ、全員にロールを全部付けておけば困らないよね!</p><p class=\"tk pen\" data-f=\"sad\"><b class=\"who\">コミットくん</b>それはバグの温床だ。ロールが衝突して、逆に機能が使えなくなる。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>必要なロールだけを付けるのが基本です。足りない部分はカスタムロールで補います。</p></div><p class=\"one\">Marketing Cloud Engagement では、ロール(権限のまとまり)をユーザーやビジネスユニットに割り当てて、誰がどの機能を使えるかを決めます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>社員証の入館権限です。「閲覧フロアだけ」「制作フロアまで」「警備室まで」とカードごとに範囲を決めます。立入禁止の指定は、ほかのどのカードの許可よりも優先されます。</p></div><h4>ロール割り当ての基本</h4><ul>\n<li>各ユーザーには、Marketing Cloud の標準ロールを1つ、Email Studio の標準ロールを1つ割り当てられます。足りなければカスタムロールを作るか、ユーザーごとに個別の権限を付けます。</li>\n<li>すべてのロールを1人に割り当ててはいけません。ロール同士が衝突して、かえって機能が使えなくなります。</li>\n<li>Content Builder の権限は、Email Studio の権限とは別に割り当てます。</li>\n<li>権限には「許可」「拒否」「未設定」があります。明示的な拒否は、ほかのどの許可よりも優先されます。未設定の権限は、ほかのロールが許可しない限り拒否として扱われます。</li>\n</ul><h4>Marketing Cloud の標準ロール</h4><div class=\"tw\"><table><thead><tr><th>ロール</th><th>できること</th></tr></thead>\n<tr><td>Marketing Cloud Administrator(管理者)</td><td>ユーザーにロールを割り当て、チャネル、アプリ、ツールを管理する。主に Email Studio 以外の機能が対象</td></tr>\n<tr><td>Marketing Cloud Viewer(閲覧者)</td><td>アカウント内のクロスチャネルの活動を見るだけ。作成、送信、レポートはできない。最も制限の強いロール</td></tr>\n<tr><td>Marketing Cloud Channel Manager(チャネルマネージャー)</td><td>クロスチャネルのキャンペーンを作って実行し、特定のチャネルを管理する。ジャーニーやメッセージの作成、送信、監視とレポートができる</td></tr>\n<tr><td>Marketing Cloud Security Administrator(セキュリティ管理者)</td><td>セキュリティ設定を保守し、ユーザーの活動とアラートを管理する</td></tr>\n<tr><td>Marketing Cloud Content Editor/Publisher(コンテンツ編集者/公開者)</td><td>チャネルのアプリでメッセージを作って配信する。ジャーニーやメッセージを作成、送信できるが、多くのレポートは使えない</td></tr>\n</table></div><h4>Email Studio の標準ロール</h4><div class=\"tw\"><table><thead><tr><th>ロール</th><th>できること</th></tr></thead>\n<tr><td>Administrator</td><td>Setup、メール作成、データエクステンション作成を含む Email Studio の全機能</td></tr>\n<tr><td>Content Creator</td><td>すべてのコンテンツと共有フォルダー。データと管理機能は使えない</td></tr>\n<tr><td>Data Manager</td><td>メールのコンテンツ以外のすべて</td></tr>\n<tr><td>Analyst</td><td>トラッキング機能</td></tr>\n</table></div><h4>カスタムロールとビジネスユニット</h4><ul>\n<li>カスタムロールを作れるのは Engagement の管理者だけです。Setup の「Users」から「Roles」を開き、「Create」で名前、外部キー、説明を入れ、権限ごとに許可/拒否を選びます。最上位アカウントでもビジネスユニットでも使えます。</li>\n<li>ビジネスユニットの「Manage Roles」で、そのビジネスユニットの全ユーザーにロールを割り当てられます。「force inheritance」を選ぶと、子ビジネスユニットにも割り当てられます。</li>\n<li>ユーザーの「Manage Business Units」で、既定のビジネスユニット(Default Business Unit)と、追加でアクセスできるビジネスユニットを選びます。通常のユーザーはログイン時に既定のビジネスユニットが開き、ほかのビジネスユニットへは手動で切り替えます。</li>\n<li>API ユーザーの既定のビジネスユニットは、API リクエストが動く場所です。エンタープライズ(最上位)を既定にすると SOAP API ですべての子ビジネスユニットにアクセスできるため、範囲を絞りたいときは子ビジネスユニットを既定にします。</li>\n</ul><h4>ユーザーの作成と無効化</h4><ul>\n<li>ユーザー名は、すべての Marketing Cloud Engagement アカウントを通して一意である必要があります。</li>\n<li>「API User」を選んだユーザーは、パスワードが期限切れになりません。</li>\n<li>一時パスワードを設定すると、ユーザーは初回ログイン時に変更を求められます。</li>\n<li>新しいユーザーを作っても通知は自動で送られません。管理者がユーザー名と一時パスワードを本人に伝えます。</li>\n<li>管理者ユーザーを作るときは、「Add Users to Account」の権限を選びます。</li>\n<li>ユーザーを無効にするには、ユーザーの編集画面で「Enabled」のチェックを外します。ユーザーのレコードは残り、あとで再び有効にできます。</li>\n<li>無効にしても、そのユーザーが作ったオートメーションや送信は動き続けます。</li>\n<li>無効にしたユーザーがスケジュールしたレポートは実行されなくなり、画面にも表示されなくなります。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>退職した人のユーザー、消しちゃっていい?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>まずは無効化です。レコードが残り、その人が作ったオートメーションも動き続けます。ただし、その人がスケジュールしたレポートは止まります。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>アカウントは止めても、cron は止まらない。レポートだけは例外だ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>Viewer は見るだけ、Security Administrator はセキュリティ設定とユーザー活動の管理、と役割の違いを押さえます。</li>\n<li>明示的な拒否は、ほかのロールの許可より常に優先されます。</li>\n<li>API ユーザーの範囲は既定のビジネスユニットで決まります。エンタープライズを既定にすると全子ビジネスユニットに届きます。</li>\n<li>退職者は「Enabled」を外して無効化します。作成済みのオートメーションは動き続けます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、セキュリティ設定の保守と、ユーザーの活動やアラートの管理だけを担当する社員を置きたいと考えています。最も適した Marketing Cloud の標準ロールはどれですか?",
+     "o": [
+      "Marketing Cloud Security Administrator",
+      "Marketing Cloud Channel Manager",
+      "Marketing Cloud Content Editor/Publisher",
+      "Marketing Cloud Viewer"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Marketing Cloud Security Administrator は、セキュリティ設定の保守と、ユーザーの活動とアラートの管理を行うロールです。Channel Manager はキャンペーンの作成と実行、Content Editor/Publisher はメッセージの作成と配信が中心です。Viewer は見るだけです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_roles.htm&type=5",
+     "x": "Marketing Cloud Security Administrator(セキュリティ管理者)セキュリティ設定を保守し、ユーザーの活動とアラートを管理する"
+    },
+    {
+     "q": "経営層の数名に、アカウント内のクロスチャネルの活動を確認させたいと考えています。ただし、メッセージの作成や送信、レポートの実行はさせたくありません。管理者はどの標準ロールを割り当てるべきですか?",
+     "o": [
+      "Marketing Cloud Viewer",
+      "Marketing Cloud Content Editor/Publisher",
+      "Marketing Cloud Channel Manager",
+      "Email Studio の Analyst"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Marketing Cloud Viewer は、クロスチャネルの活動を見るだけのロールで、作成、送信、レポートにはアクセスできません。最も制限が強いロールです。Email Studio の Analyst はトラッキング機能を使うロールなので、レポートを避けたい要件に合いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_roles.htm&type=5",
+     "x": "Marketing Cloud Viewer(閲覧者)アカウント内のクロスチャネルの活動を見るだけ。作成、送信、レポートはできない。最も制限の強いロール"
+    },
+    {
+     "q": "あるユーザーには2つのロールが割り当てられています。ロールAはある権限を許可しており、ロールBは同じ権限を明示的に拒否しています。このユーザーの権限はどうなりますか?",
+     "o": [
+      "拒否される",
+      "許可される",
+      "あとから割り当てたロールの設定が使われる",
+      "未設定として扱われ、管理者の確認が必要になる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "明示的な拒否は、ほかのどの許可よりも優先されます。そのため、このユーザーはその権限を使えません。割り当ての順番で決まるわけではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_marketing_cloud_roles.htm&type=5",
+     "x": "権限には「許可」「拒否」「未設定」があります。明示的な拒否は、ほかのどの許可よりも優先されます。未設定の権限は、ほかのロールが許可しない限り拒否として扱われます。"
+    },
+    {
+     "q": "担当者が退職しました。その担当者が作ったオートメーションは今後も動かし続ける必要がありますが、本人がログインできないようにしたいと考えています。管理者は何をすべきですか?",
+     "o": [
+      "ユーザーの編集画面で「Enabled」のチェックを外して無効化する",
+      "ユーザーを削除し、オートメーションを作り直す",
+      "ユーザーのロールをすべて外し、パスワードはそのままにする",
+      "ユーザーを別のビジネスユニットに移動する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "「Enabled」を外すとユーザーは無効になり、ログインできなくなります。無効化してもユーザーのレコードは残り、そのユーザーが作ったオートメーションや送信は動き続けます。ただし、その人がスケジュールしたレポートは実行されなくなる点に注意します。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_disable_a_user.htm&type=5",
+     "x": "無効にしても、そのユーザーが作ったオートメーションや送信は動き続けます。"
+    },
+    {
+     "q": "外部システムとの連携用に、SOAP API を使う API ユーザーを作成しました。この API ユーザーには、特定の子ビジネスユニット1つだけを操作させたいと考えています。管理者は何をすべきですか?",
+     "o": [
+      "その子ビジネスユニットを、API ユーザーの既定のビジネスユニットにする",
+      "エンタープライズ(最上位)のビジネスユニットを、API ユーザーの既定のビジネスユニットにする",
+      "API ユーザーに Marketing Cloud Viewer ロールを割り当てる",
+      "Login IP Allowlist で、子ビジネスユニットの IP だけを許可する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "API ユーザーの既定のビジネスユニットは、API リクエストが動く場所です。エンタープライズを既定にすると、SOAP API ですべての子ビジネスユニットにアクセスできてしまいます。範囲を絞るには子ビジネスユニットを既定にします。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_manage_bu_users.htm&type=5",
+     "x": "API ユーザーの既定のビジネスユニットは、API リクエストが動く場所です。エンタープライズ(最上位)を既定にすると SOAP API ですべての子ビジネスユニットにアクセスできるため、範囲を絞りたいときは子ビジネスユニットを既定にします。"
+    },
+    {
+     "q": "管理者が Setup で新しいユーザーを作成します。正しい説明はどれですか?(2つ選択)",
+     "o": [
+      "作成しても通知は自動で送られないため、ユーザー名と一時パスワードを本人に伝える必要がある",
+      "「API User」を選ぶと、そのユーザーのパスワードは期限切れにならない",
+      "ユーザー名は、同じビジネスユニットの中で一意であればよい",
+      "作成と同時に、ログイン情報を記したメールが本人に自動送信される"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Marketing Cloud Engagement は、ユーザー作成時に通知を自動で送りません。管理者がユーザー名と一時パスワードを伝えます。「API User」を選ぶとパスワードが期限切れになりません。ユーザー名は、すべての Marketing Cloud Engagement アカウントを通して一意である必要があります。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_add_a_user.htm&type=5",
+     "x": "新しいユーザーを作っても通知は自動で送られません。管理者がユーザー名と一時パスワードを本人に伝えます。"
+    },
+    {
+     "q": "ある会社では、標準ロールのどれを割り当てても、ある担当者の業務に対して権限が多すぎたり少なすぎたりします。最も適切な対応はどれですか?",
+     "o": [
+      "Setup の「Users」から「Roles」を開き、必要な権限だけを許可したカスタムロールを作って割り当てる",
+      "すべての標準ロールを割り当てて、不足が出ないようにする",
+      "担当者を Marketing Cloud Administrator にして、必要な操作だけをするよう依頼する",
+      "担当者用に新しいビジネスユニットを作り、そこでは権限が不要になるようにする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "標準ロールで合わないときは、カスタムロールを作るか、個別に権限を付けます。カスタムロールは Engagement の管理者が Setup の「Users」から「Roles」で作り、権限ごとに許可/拒否を選びます。すべてのロールを付けると衝突して機能が使えなくなり、管理者ロールは最小権限の考え方に反します。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_create_custom_role.htm&type=5",
+     "x": "カスタムロールを作れるのは Engagement の管理者だけです。Setup の「Users」から「Roles」を開き、「Create」で名前、外部キー、説明を入れ、権限ごとに許可/拒否を選びます。最上位アカウントでもビジネスユニットでも使えます。"
+    }
+   ]
+  },
+  {
+   "id": "security",
+   "no": "Ch2·3",
+   "title": "セキュリティ設定",
+   "tag": "Security Settings",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>セキュリティって、パスワードを長くすれば終わりでしょ?</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>それは玄関の鍵だけ替えて、窓を全開にしている状態だ。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>窓って何よ!</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>たとえば IP 許可リストは「どこから入れるか」、MFA は「本人確認をもう1つ」、Audit Trail は「誰が何をしたかの記録」です。玄関以外にも守るところがあるんです。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>鍵と、入口と、防犯カメラか。…窓はどれ?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>セッションタイムアウトだ。席を立ったら自動で閉まる。</p></div><p class=\"one\">Security Settings は、ログイン、パスワード、ロックアウト、セッションの決まりをまとめて管理する画面です。MFA、SSO、IP 許可リスト、Audit Trail と組み合わせてアカウントを守ります。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>会社の入館管理です。社員証の暗証番号(パスワード)、顔認証の追加(MFA)、決まった入口からしか入れない仕組み(IP 許可リスト)、入退室の記録(Audit Trail)を重ねて使います。</p></div><h4>Security Settings の主な項目</h4><ul>\n<li>セキュリティ設定は、Setup の「Security」から「Security Settings」を開き、「Edit」で変更します。</li>\n<li>Session Timeout は、ブラウザーで開いたままの状態から自動でログアウトするまでの時間です。推奨値は20分です。</li>\n<li>Login Expires After Inactivity は、指定した日数ログインしなかったユーザーのログインを止めます。推奨は90日以下です。期限が切れたユーザーは、ログインもパスワードのリセットもできず、管理者がログイン情報をリセットします。</li>\n<li>Login Expires After Inactivity は、API ユーザーがいるアカウントには推奨されません。オンにすると、API ユーザーも期限切れを防ぐために画面からログインする必要があります。</li>\n<li>Invalid Logins Before Lockout は、パスワードを何回間違えるとロックされるかを決めます。推奨は3回です。ロックされたユーザーは、管理者がロックを解除するまでアクセスできません。</li>\n<li>Minimum Password Length はパスワードの最小文字数で、推奨は8文字以上です。Password Complexity は、必ず含める文字の種類を決めます。</li>\n<li>Enforce Password History は過去のパスワードの再利用を制限し、推奨は8以上です。User Passwords Expire In はパスワードの有効期間で、推奨は90日です。</li>\n<li>Send Password Change Confirmation Email をオンにすると、パスワード変更時に本人へ確認メールが届き、不審な操作に気づきやすくなります。</li>\n<li>Enforce Export Email Allowlist をオンにすると、データのエクスポートは許可リストにあるメールアドレスにだけ送られます。</li>\n<li>Enterprise / Enterprise 2.0 で新しく作ったビジネスユニットは、親アカウントのセキュリティ設定を継承します。子でいずれかのセキュリティ設定を変えると継承は終わり、元に戻せません。</li>\n</ul><h4>MFA と SSO</h4><ul>\n<li>多要素認証(MFA)は、ユーザー名とパスワードに加えて、もう1つの確認方法を求める仕組みです。ログイン体験の一部で、オフにはできません。</li>\n<li>使える確認方法は、Salesforce Authenticator、物理セキュリティキー、Touch ID や Windows Hello などのプラットフォーム認証、Google Authenticator などのワンタイムパスコード(TOTP)アプリです。</li>\n<li>このうち、物理セキュリティキーとプラットフォーム認証が、フィッシングに強い MFA(PR-MFA)です。</li>\n<li>Enterprise アカウントでは、MFA の有効化と設定変更は最上位アカウントで行います。ビジネスユニットは設定を見ることしかできません。</li>\n<li>シングルサインオン(SSO)は MFA と併用できません。SSO を使う組織では、SSO プロバイダー側の MFA を有効にします。</li>\n<li>ステップアップ認証では、セキュリティ設定の編集など重要な操作の前に、管理者が MFA で再認証を求められます。</li>\n<li>SSO は、SAML 2.0 に対応した外部の ID プロバイダー(IdP)でユーザーを認証する仕組みです。1つのアカウントで使える SAML キーは1つまでで、まとめてログアウトするシングルログアウト(SLO)にも対応させます。</li>\n</ul><h4>ログイン IP 許可リスト</h4><ul>\n<li>ログイン IP 許可リスト(Login IP Allowlist)は、既定ではオフです。オンにすると、画面からのログインと API の両方に適用されます。</li>\n<li>IP の範囲は、画面用と API 用に分けて設定でき、ビジネスユニット単位でもエンタープライズ単位でも定義できます。エンタープライズで定義した範囲は、各ビジネスユニットが継承します。</li>\n</ul><div class=\"tw\"><table><thead><tr><th>設定</th><th>動き</th></tr></thead>\n<tr><td>IP Allowlisting Disabled</td><td>どこからでもログインでき、IP によるログイン試行は記録されない</td></tr>\n<tr><td>Log Allowlist Violations(監視モード)</td><td>どこからでもログインできるが、許可リスト外からのログインがアクセスログに記録される</td></tr>\n<tr><td>Log Violations and Deny Access(ブロックモード)</td><td>許可リストの IP からしかログインできず、許可リスト外からの試行が記録される</td></tr>\n</table></div><ul>\n<li>ブロックモードにする前に、自分の IP アドレスが許可リストに入っているか確かめます。入れないままログアウトすると、ログインし直せません。</li>\n</ul><h4>Audit Trail</h4><ul>\n<li>Basic Audit Trail はすべてのアカウントで既定でオンで、30日分のデータを保持します。</li>\n<li>Advanced Audit Trail は有料のアドオンです。Basic の内容に加え、チャネル、サイト、分析、オートメーションに関する記録が取れ、60日分のデータを保持します。</li>\n<li>Basic Audit Trail には、エンタープライズレベルのログインとログアウト、アクセスに使われた IP アドレス、ユーザーや権限やロールの変更、パスワードの変更、インストール済みパッケージの変更などが記録されます。</li>\n<li>Audit Trail の記録は、Automation Studio の Audit Trail データ抽出アクティビティとファイル転送アクティビティで取り出すか、REST API で取得します。</li>\n<li>親ビジネスユニットは、自分とすべての子アカウントの監査イベントとセキュリティイベントを見られます。Audit Trail のデータは中部標準時(CST)で記録されます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>子ビジネスユニットのタイムアウトを1回変えたら、あとで親の設定を変えても子に反映されなくなったんだけど…</p><p class=\"tk rou\" data-f=\"sweat\"><b class=\"who\">クラウドちゃん</b>子で設定を変えた時点で、親からの継承が終わるからです。しかも継承は元に戻せません。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>fork したリポジトリは、upstream の更新を自動では取り込まない。そういうことだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>IP 許可リストは、まず監視モード(Log Allowlist Violations)で影響を確かめてから、ブロックモードに切り替えます。</li>\n<li>子ビジネスユニットでセキュリティ設定を変えると、親からの継承は終わり、元に戻せません。</li>\n<li>SSO と MFA は併用できません。SSO 利用時は IdP 側で MFA をかけます。</li>\n<li>Audit Trail は Automation Studio のデータ抽出か REST API で取得します。Basic は30日、Advanced は60日分を保持します。</li>\n<li>API ユーザーがいるアカウントでは、Login Expires After Inactivity に注意します。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、ログイン IP 許可リストを導入する予定です。いきなりログインをブロックする前に、どのユーザーが許可リスト外からログインしているかを把握したいと考えています。管理者はどの設定を選ぶべきですか?",
+     "o": [
+      "Log Allowlist Violations",
+      "Log Violations and Deny Access",
+      "IP Allowlisting Disabled",
+      "Enforce Export Email Allowlist"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Log Allowlist Violations(監視モード)では、ログインは制限されず、許可リスト外からのログインがアクセスログに記録されます。影響を確かめてからブロックモードに切り替えられます。Log Violations and Deny Access はすぐにブロックし、Disabled では記録も残りません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_enable_allowlisting.htm&type=5",
+     "x": "Log Allowlist Violations(監視モード)どこからでもログインできるが、許可リスト外からのログインがアクセスログに記録される"
+    },
+    {
+     "q": "Enterprise 2.0 アカウントの管理者が、子ビジネスユニットのセッションタイムアウトだけを変更しました。その後、親アカウントでパスワードポリシーを強化しましたが、子ビジネスユニットには反映されません。理由として正しいものはどれですか?",
+     "o": [
+      "子でセキュリティ設定を変えた時点で親からの継承が終わり、元に戻せないため",
+      "セキュリティ設定は、もともと親から子へ継承されないため",
+      "親の変更が子に反映されるまで24時間かかるため",
+      "子ビジネスユニットにステップアップ認証が設定されていないため"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "新しく作ったビジネスユニットは親のセキュリティ設定を継承しますが、子でいずれかの設定を変えると継承が終わります。その後は親の変更が子に反映されず、継承を元に戻すこともできません。もともと継承されない、という説明は誤りです。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_security_settings.htm&type=5",
+     "x": "Enterprise / Enterprise 2.0 で新しく作ったビジネスユニットは、親アカウントのセキュリティ設定を継承します。子でいずれかのセキュリティ設定を変えると継承は終わり、元に戻せません。"
+    },
+    {
+     "q": "ある会社は、長期間使われていないアカウントの悪用を防ぐため、Login Expires After Inactivity を90日でオンにしようとしています。このアカウントには、外部連携用の API ユーザーがいます。管理者が注意すべき点はどれですか?",
+     "o": [
+      "API ユーザーも期限切れを防ぐために、定期的に画面からログインする必要がある",
+      "API ユーザーはこの設定の対象外なので、影響はない",
+      "この設定をオンにすると、API ユーザーのパスワードが毎回リセットされる",
+      "この設定はビジネスユニット単位でしか使えない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Login Expires After Inactivity は、API ユーザーがいるアカウントには推奨されません。オンにすると、API ユーザーも期限切れを防ぐために画面からログインする必要があります。期限が切れると、ログインもパスワードのリセットもできなくなります。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_security_settings.htm&type=5",
+     "x": "Login Expires After Inactivity は、API ユーザーがいるアカウントには推奨されません。オンにすると、API ユーザーも期限切れを防ぐために画面からログインする必要があります。"
+    },
+    {
+     "q": "ある会社は、SAML 2.0 の ID プロバイダーを使って Marketing Cloud Engagement にシングルサインオンしています。セキュリティ部門から、多要素認証も必須にするよう求められました。管理者は何をすべきですか?",
+     "o": [
+      "SSO プロバイダー側の MFA サービスを、Engagement のユーザーに対して有効にする",
+      "Engagement の MFA を有効にし、SSO と併用する",
+      "SSO をやめ、IP 許可リストだけで保護する",
+      "ステップアップ認証を全ユーザーに適用する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Marketing Cloud Engagement の SSO は MFA と併用できません。SSO を使う組織では、SSO プロバイダー(IdP)側の MFA を Engagement のユーザーに対して有効にします。ステップアップ認証は、管理者が重要な操作をするときの再認証で、ログイン時の MFA の代わりにはなりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_mfa.htm&type=5",
+     "x": "シングルサインオン(SSO)は MFA と併用できません。SSO を使う組織では、SSO プロバイダー側の MFA を有効にします。"
+    },
+    {
+     "q": "監査担当者から、直近2週間にユーザーのロールや権限が変更された記録を提出するよう求められました。管理者はどの方法で記録を取得すべきですか?",
+     "o": [
+      "Audit Trail の記録を、Automation Studio のデータ抽出アクティビティか REST API で取得する",
+      "Security Settings の画面で変更履歴を表示する",
+      "Email Studio の Tracking から、ユーザーごとのレポートを出す",
+      "Login IP Allowlist のアクセスログを確認する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ユーザー、権限、ロールの変更は Audit Trail に記録されます。記録は Automation Studio の Audit Trail データ抽出アクティビティとファイル転送で取り出すか、REST API で取得します。アクセスログは IP とログインの記録で、ロール変更の記録ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_audit_trail.htm&type=5",
+     "x": "Audit Trail の記録は、Automation Studio の Audit Trail データ抽出アクティビティとファイル転送アクティビティで取り出すか、REST API で取得します。"
+    },
+    {
+     "q": "ある会社は、セキュリティ関連の基本的な記録に加え、オートメーションやチャネルに関する操作の記録も、30日より長く保持したいと考えています。最も適した対応はどれですか?",
+     "o": [
+      "Advanced Audit Trail のアドオンを導入する",
+      "Basic Audit Trail の保持期間を設定で延長する",
+      "Session Timeout を短くする",
+      "Enforce Password History の値を大きくする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Advanced Audit Trail は有料のアドオンで、Basic の内容に加えてチャネル、サイト、分析、オートメーションに関する記録が取れ、60日分を保持します。Basic Audit Trail の保持は30日です。ほかの選択肢は記録の保持とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_audit_trail.htm&type=5",
+     "x": "Advanced Audit Trail は有料のアドオンです。Basic の内容に加え、チャネル、サイト、分析、オートメーションに関する記録が取れ、60日分のデータを保持します。"
+    },
+    {
+     "q": "ある会社は、フィッシング攻撃に強い多要素認証の方法をユーザーに推奨したいと考えています。フィッシング耐性のある MFA(PR-MFA)に当たるものはどれですか?(2つ選択)",
+     "o": [
+      "YubiKey などの物理セキュリティキー",
+      "Touch ID や Windows Hello などのプラットフォーム認証",
+      "Google Authenticator などのワンタイムパスコードアプリ",
+      "Salesforce Authenticator のプッシュ通知"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Marketing Cloud Engagement の MFA 方法のうち、物理セキュリティキーとプラットフォーム認証がフィッシング耐性のある方法(PR-MFA)とされています。TOTP アプリや Salesforce Authenticator も使えますが、PR-MFA には含まれません。",
+     "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_mfa.htm&type=5",
+     "x": "このうち、物理セキュリティキーとプラットフォーム認証が、フィッシングに強い MFA(PR-MFA)です。"
+    }
+   ]
+  }
+ ]
+}
