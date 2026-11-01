@@ -72,7 +72,7 @@ function setTab(t){ST.tab=t;save();$$(".tabs [role=tab]").forEach(function(b){va
   $("#p-q").hidden=t!=="q";$("#p-g").hidden=t!=="g";if(t==="g")renderTerms()}
 
 /* 問題 */
-var CUR=null,SEL=[],DONE=false,RECENT=[];
+var CUR=null,SEL=[],DONE=false,RECENT=[],BACK=[];
 function subjList(){return ST.subj==="all"?SUBJ.map(function(s){return s.id}):[ST.subj]}
 function pool(){var out=[];subjList().forEach(function(id){(Q[id]||[]).forEach(function(q){if(ST.src==="all"||q.src===ST.src)out.push(q)})});return out}
 function isWrong(q){var h=HIST[q.subj][q.n];return h&&h.l==="x"}
@@ -100,12 +100,13 @@ function advance(){if(!CUR)return;if(ST.mode==="order"){var d=deck(),i=d.indexOf
 async function refreshQ(reset){
   var box=$("#qbox");box.innerHTML='<p class="bx-s">問題を読み込んでいます…</p>';
   await Promise.all(subjList().map(loadSubj));renderFilters();
-  if(reset||!CUR||deck().indexOf(CUR)<0){CUR=pick();SEL=[];DONE=false}
+  if(reset||!CUR||deck().indexOf(CUR)<0){CUR=pick();SEL=[];DONE=false;BACK=[]}
   renderQ();
 }
 function renderQ(){
   var box=$("#qbox");
   if(!CUR){box.innerHTML='<p class="bx-k">問題</p><p>'+(ST.mode==="review"?"今日の復習はありません。間違えた問題は、翌日以降にここへ戻ってきます。":ST.mode==="wrong"?"間違えた問題はありません。":ST.mode==="new"?"この範囲の問題は、すべて一度は解きました。":"この範囲に問題がありません。")+'</p>';return}
+  var PREV='<button type="button" class="bx-btn" id="tq-prev"'+(canPrev()?"":" disabled")+'>前へ</button>';
   var q=CUR,sj=SUBJ.filter(function(s){return s.id===q.subj})[0],multi=q.a.length>1,d=deck(),pos=d.indexOf(q);
   var h='<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span> 問'+q.d+(ST.mode==="order"?' <span class="tq-pos">('+(pos+1)+' / '+d.length+')</span>':'')+'<span>'+esc(q.title)+'</span></p>';
   h+='<p class="tq-q">'+esc(q.q)+'</p>';if(multi&&!DONE)h+='<p class="tq-need">'+q.a.length+'つ選んでください</p>';
@@ -115,16 +116,21 @@ function renderQ(){
     h+='<div class="tq-ban '+(ok?"ok":"ng")+'">'+(ok?"正解です":"不正解 — 正解は "+q.a.map(function(i){return "ABCDEFGH".charAt(i)}).join("・"))+'</div>';
     h+='<div class="tq-ex"><b>解説</b><p>'+esc(q.ex)+'</p></div>';
     h+='<p class="tq-links"><a class="bx-go" href="/'+q.subj+'/#f-'+esc(q.xs||q.sec)+'">テキストで確認する</a>'+(/^https?:/.test(q.u)?' <a class="bx-go" href="'+esc(q.u)+'" target="_blank" rel="noopener noreferrer">参照ページ ↗</a>':'')+'</p>';
-    h+='<div class="tq-act"><button type="button" class="bx-go pri" id="tq-next">次の問題へ</button></div>';
-  }else h+='<div class="tq-act"><button type="button" class="bx-btn" id="tq-skip">とばす</button><button type="button" class="bx-go pri" id="tq-check"'+(SEL.length?"":" disabled")+'>答え合わせ</button></div>';
-  h+='<p class="bx-s tq-key">キー操作: 1〜'+q.o.length+' で選ぶ、Enter で答え合わせ・次へ</p>';
+    h+='<div class="tq-act">'+PREV+'<button type="button" class="bx-go pri" id="tq-next">次の問題へ</button></div>';
+  }else h+='<div class="tq-act">'+PREV+'<button type="button" class="bx-btn" id="tq-skip">次へ</button><button type="button" class="bx-go pri" id="tq-check"'+(SEL.length?"":" disabled")+'>答え合わせ</button></div>';
+  h+='<p class="bx-s tq-key">キー操作: 1〜'+q.o.length+' で選ぶ、Enter で答え合わせ・次へ、← → で前へ・次へ</p>';
   box.innerHTML=h;
 }
 function choose(i){if(!CUR||DONE)return;var multi=CUR.a.length>1,k=SEL.indexOf(i);if(multi){if(k>=0)SEL.splice(k,1);else if(SEL.length<CUR.a.length)SEL.push(i)}else SEL=k>=0?[]:[i];renderQ()}
 function check(){if(!CUR||DONE||!SEL.length)return;if(CUR.a.length>1&&SEL.length!==CUR.a.length)return;DONE=true;var ok=SEL.length===CUR.a.length&&SEL.every(function(i){return CUR.a.indexOf(i)>=0});record(CUR,ok);renderQ();renderFilters()}
-function next(){advance();CUR=pick();SEL=[];DONE=false;renderFilters();renderQ();var b=$("#qbox");if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView({block:"start",behavior:"smooth"})}
-function bindQ(){var box=$("#qbox");box.addEventListener("click",function(e){var b=e.target.closest(".tq-b");if(b){choose(+b.dataset.i);return}if(e.target.closest("#tq-check"))check();else if(e.target.closest("#tq-next")||e.target.closest("#tq-skip"))next()});
-  document.addEventListener("keydown",function(e){if(ST.tab!=="q"||e.target.closest&&e.target.closest("input,textarea,select,#fclose,a"))return;if(/^[1-8]$/.test(e.key)&&CUR&&+e.key<=CUR.o.length){choose(+e.key-1);e.preventDefault()}else if(e.key==="Enter"){DONE?next():check();e.preventDefault()}})}
+function canPrev(){return ST.mode==="order"?deck().length>1:BACK.length>0}
+function prev(){if(!CUR)return;var t=null;
+  if(ST.mode==="order"){var d=deck(),i=d.indexOf(CUR);if(d.length>1)t=d[(i-1+d.length)%d.length];if(t)LS.set(posKey(),{s:t.subj,n:t.n})}
+  else{while(BACK.length&&!t){var b=BACK.pop();if(deck().indexOf(b)>=0)t=b}}
+  if(!t)return;CUR=t;SEL=[];DONE=false;renderFilters();renderQ();var x=$("#qbox");if(x&&x.getBoundingClientRect().top<0)x.scrollIntoView({block:"start",behavior:"smooth"})}
+function next(){if(CUR){BACK.push(CUR);if(BACK.length>100)BACK.shift()}advance();CUR=pick();SEL=[];DONE=false;renderFilters();renderQ();var b=$("#qbox");if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView({block:"start",behavior:"smooth"})}
+function bindQ(){var box=$("#qbox");box.addEventListener("click",function(e){var b=e.target.closest(".tq-b");if(b){choose(+b.dataset.i);return}if(e.target.closest("#tq-check"))check();else if(e.target.closest("#tq-next")||e.target.closest("#tq-skip"))next();else if(e.target.closest("#tq-prev"))prev()});
+  document.addEventListener("keydown",function(e){if(ST.tab!=="q"||e.target.closest&&e.target.closest("input,textarea,select,#fclose,a"))return;if(/^[1-8]$/.test(e.key)&&CUR&&+e.key<=CUR.o.length){choose(+e.key-1);e.preventDefault()}else if(e.key==="Enter"){DONE?next():check();e.preventDefault()}else if(e.key==="ArrowRight"){next();e.preventDefault()}else if(e.key==="ArrowLeft"){prev();e.preventDefault()}})}
 
 /* 用語カード */
 var TERMS={},TKN="cs-term-known-v1",KNOWN=LS.get(TKN,{}),TL=[],TI=0,FLIP=false;
