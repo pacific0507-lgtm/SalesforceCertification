@@ -85,3 +85,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `practice/patch_practice.py`: 社労士版と同じトレーニングのページを追加する。問題は各科目の4択をそのまま出す(出し方: 順番どおり・ランダム・今日の復習・間違えた問題・まだ解いていない)。カードは用語カード(数字カードはなし)
 - 用語カードのデータ: `d360/data/terms.json`(120枚)、`mcadmin/data/terms.json`(178枚)。公開時は `data/<科目>/terms.json`
 - 解いた結果は `ls-qpend-v1` に残り、科目の問題集を開いたときに回答履歴へ取り込む。学習の記録(act)にも数える
+
+- `patch_subj_time.py`: 学習の記録「科目ごとの進み具合」に科目ごとの累計の勉強時間を常に表示。PCで行が崩れていた不具合(クラス名 x の衝突)も修正
