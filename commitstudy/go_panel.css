@@ -1,0 +1,9 @@
+/* メニューバーの「ホーム」の移動パネル */
+.go-top{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 4px}
+.go-a{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 10px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font-weight:700;font-size:15px;text-decoration:none}
+.go-a svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.go-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.go-s{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-left:5px solid var(--gc,var(--accent));border-radius:10px;background:var(--surface);color:var(--ink);text-decoration:none;min-width:0}
+.go-s b{flex:none;font-size:15px;color:var(--gc,var(--accent))}
+.go-s small{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.go-s.cur{background:var(--bg);pointer-events:none;opacity:.75}
