@@ -10,7 +10,7 @@ def _():
         ("予測の精度", "Einstein Forecasting", []),
         ("リスク商談の発見", "Pipeline Inspection", ["Einstein Deal Insights"]),
         ("入力漏れの防止", "Agentforce", ["Pipeline Management"]),
-        ("確度の高い順に対応", "Einstein Scoring", ["Lead / Opportunity"]),
+        ("確度の高い順に", "Einstein Scoring", ["Lead / Opportunity"]),
         ("商談スキルの向上", "Agentforce", ["Sales Coach"]),
     ]
     y = 30
@@ -71,7 +71,7 @@ def _():
     f = Fig("faterritory", 288, "テリトリーモデルの状態の移り変わりと削除できる状態")
     f.box(10, 10, 130, 56, "gb", "計画中", ["新しいモデルの既定"])
     f.box(200, 10, 130, 56, "gbo", "有効", ["組織で1つだけ"])
-    f.box(200, 112, 110, 64, "gb", "アーカイブ済み", ["予測・目標が消える", "元に戻せない"])
+    f.box(200, 112, 110, 64, "gb", "アーカイブ済み", ["予測・目標が消滅", "元に戻せない"])
     f.box(10, 232, 300, 44, "gb", "削除", ["計画中・アーカイブ済みのみ"])
     f.arrow(142, 38, 197, 38, "a")
     f.text(170, 30, "有効化", "gta", "middle")
@@ -132,7 +132,6 @@ def _():
     f.box(190, 190, 140, 52, "gby", "既定の所有者", ["Default Lead Owner"])
     f.box(10, 270, 320, 56, "gba", "取引開始", ["取引先+取引先責任者+(任意)商談", "既存レコードの値は上書きしない"])
     f.arrow(162, 36, 187, 36)
-    f.text(175, 80, "", "gts")
     f.text(176, 28, "超過", "gtr", "middle")
     f.path([(260, 64), (260, 122), (163, 122)])
     f.text(252, 104, "回復後に登録", "gts", "end")
