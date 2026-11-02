@@ -1,0 +1,607 @@
+{
+ "chapter": 1,
+ "chapter_title": "セールスライフサイクル",
+ "chapter_sub": "Agentforce Sales の全体像から、営業プロセス、関連製品、テリトリー、売上予測、KPIの見える化までを学びます。",
+ "sections": [
+  {
+   "id": "lifecycle",
+   "no": "Ch1·1",
+   "title": "Agentforce Sales の全体像と、KPI・課題に合うソリューション選び",
+   "tag": "Sales Lifecycle",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>問題です。営業部長が「予測がいつも外れる」と困っています。何を勧めますか?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>はい!メールを自動で取り込む Einstein Activity Capture!</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>ブブー。それは入力の手間を減らす道具だ。予測のずれには直接効かない。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>予測の精度なら、売上予測と Einstein Forecasting です。過去の商談パターンから結果を予測して、リスクを教えてくれます。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>そっか、困りごとから機能を選ぶんだね。機能名から考えちゃダメなんだ。</p></div><p class=\"one\">Agentforce Sales(旧称 Sales Cloud)は、リードの獲得から商談、売上予測までを支える営業向けの製品です。コンサルタントは、お客様の課題とKPIに合う機能を組み合わせて提案します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>病院の診察です。いきなり薬を出すのではなく、まず症状(課題)と検査値(KPI)を確かめ、それに合う薬(機能)を選びます。</p></div><h4>主な機能と役割</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>主な役割</th></tr></thead>\n<tr><td>売上予測(Collaborative Forecasts)</td><td>商談の金額や数量を集計し、期間ごとの見込みを階層に沿ってまとめる</td></tr>\n<tr><td>Pipeline Inspection</td><td>パイプライン全体を1画面で見て、変化や要注意の商談を見つける</td></tr>\n<tr><td>Sales Territories(旧称 Enterprise Territory Management)</td><td>テリトリー単位で取引先と担当者を割り当て、アクセス権と売上予測を分ける</td></tr>\n<tr><td>Sales Engagement、Einstein Activity Capture</td><td>営業担当の連絡と活動記録を効率化する(Ch1·3で詳しく扱う)</td></tr>\n</table></div><h4>課題やKPIから選ぶ</h4><div class=\"tw\"><table><thead><tr><th>課題・KPI</th><th>候補になるソリューション</th></tr></thead>\n<tr><td>予測の精度を上げたい</td><td>売上予測と Einstein Forecasting。過去の商談パターンから売上の結果を予測し、予測のリスクを示す</td></tr>\n<tr><td>リスクのある商談を早く見つけたい</td><td>Pipeline Inspection と Einstein Deal Insights。商談スコア、メールのシグナル、通話録音、ケースのデータなどから商談の健全性を評価する</td></tr>\n<tr><td>商談の入力漏れを減らしたい</td><td>Agentforce Pipeline Management。最近のメモ、通話、メールを見て、項目の更新や会議後のフォローアップを提案する</td></tr>\n<tr><td>見込み客への対応を速く、漏れなくしたい</td><td>Sales Engagement のケイデンス、Agentforce Engagement(旧称 Agentforce Lead Nurturing)。リードの獲得と育成を自律的に行う</td></tr>\n<tr><td>確度の高いリードや商談から手をつけたい</td><td>Einstein Lead Scoring と Einstein Opportunity Scoring</td></tr>\n<tr><td>担当者の商談スキルを伸ばしたい</td><td>Agentforce Sales Coach。ロールプレイと個別のフィードバックで練習させる</td></tr>\n</table></div><h4>予測AI、生成AI、エージェント</h4><ul>\n<li>予測AIは、過去のパターンから点数や予測を出します。例は、商談ごとに1〜99のスコアを付ける Einstein Opportunity Scoring や、リードを採点する Einstein Lead Scoring です。</li>\n<li>生成AIは、Salesforce のデータを根拠(グラウンディング)にして文章を作ります。例は、取引先責任者やリードへの個別メールを下書きする Sales Emails です。</li>\n<li>営業向けの Agentforce エージェントには、Agentforce Prospecting(見込み先の調査と優先順位付け)、Agentforce Engagement、Agentforce Sales Management、Agentforce Sales Coach があります。</li>\n<li>Agentforce Prospecting、Engagement、Sales Management、Sales Coach などのAI機能は、使い方に応じて使用クレジットを消費します。導入の前に、ライセンスとクレジットの見込み量を確認します。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>エージェントって入れたら使い放題?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいえ。使い方に応じてクレジットを消費します。導入前にライセンスとクレジット量を営業担当と確認しましょう。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>Sales Cloud は現在 Agentforce Sales という名前です。画面や資料には旧名が残っていることがあります。</li>\n<li>「過去のデータから点数や予測を出す」のが予測AI、「データをもとに文章を作る」のが生成AIです。</li>\n<li>機能から考えず、課題やKPIから逆算して選びます。予測の精度なら Einstein Forecasting、商談のリスクなら Pipeline Inspection と Einstein Deal Insights です。</li>\n<li>AI機能はそれぞれライセンスと設定の要件が別です。エージェントはクレジットも消費します。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社の営業部長は、毎四半期の売上予測が実績と大きくずれることに悩んでいます。過去の商談パターンから売上の結果を予測し、予測のリスクを示してほしいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Einstein Forecasting",
+      "Einstein Activity Capture",
+      "Sales Engagement のケイデンス",
+      "Customizable Campaign Influence"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Forecasting は、過去の商談パターンをもとに売上の結果を予測し、予測のリスクを示します。Einstein Activity Capture は活動の記録を自動化するもので、予測の精度を直接上げる機能ではありません。ケイデンスやキャンペーンインフルエンスも目的が違います。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_pipe_visibility_ai_solutions.htm&type=5",
+     "x": "予測の精度を上げたい売上予測と Einstein Forecasting。過去の商談パターンから売上の結果を予測し、予測のリスクを示す"
+    },
+    {
+     "q": "ある会社では、営業担当が商談の項目を更新し忘れることが多く、パイプラインの数字が古いままです。最近のメモ、通話、メールを見て項目の更新を提案してくれる仕組みがほしいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Agentforce Pipeline Management",
+      "Agentforce Sales Coach",
+      "Einstein Lead Scoring",
+      "パス(Path)のガイダンス"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce Pipeline Management は、最近のメモ、通話、メールを確認し、商談の項目更新や会議後のフォローアップを提案します。Sales Coach はスキルの練習用、Lead Scoring はリードの優先順位付け、パスはフェーズごとの案内表示で、項目更新の提案はしません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_pipe_visibility_ai_solutions.htm&type=5",
+     "x": "商談の入力漏れを減らしたいAgentforce Pipeline Management。最近のメモ、通話、メールを見て、項目の更新や会議後のフォローアップを提案する"
+    },
+    {
+     "q": "次のうち、予測AIに分類される機能はどれですか?",
+     "o": [
+      "Einstein Opportunity Scoring",
+      "Sales Emails",
+      "Agentforce Sales Coach のロールプレイ",
+      "Agentforce Engagement の自動返信メール"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Opportunity Scoring は過去のパターンから商談ごとに1〜99のスコアを出す予測AIです。Sales Emails、Sales Coach、Engagement の返信メールは、データをもとに文章や会話を作る生成AIの機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_scoring_parent.htm&type=5",
+     "x": "予測AIは、過去のパターンから点数や予測を出します。例は、商談ごとに1〜99のスコアを付ける Einstein Opportunity Scoring や、リードを採点する Einstein Lead Scoring です。"
+    },
+    {
+     "q": "ある会社の営業本部長は、新人の営業担当に、価格交渉の場面を事前に練習させたいと考えています。担当者が話した内容に個別のフィードバックを返してほしいという要望です。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Agentforce Sales Coach",
+      "Agentforce Prospecting",
+      "Pipeline Inspection",
+      "Einstein Activity Capture"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce Sales Coach は、ロールプレイと個別のフィードバックで担当者の商談スキルを伸ばすエージェントです。Prospecting は見込み先の調査、Pipeline Inspection はパイプラインの点検、Einstein Activity Capture は活動の同期で、練習の相手にはなりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_agents_coach_discover.htm&type=5",
+     "x": "担当者の商談スキルを伸ばしたいAgentforce Sales Coach。ロールプレイと個別のフィードバックで練習させる"
+    },
+    {
+     "q": "ある会社の営業マネージャーは、失注しそうな商談を早めに見つけて対策したいと考えています。コンサルタントが推奨すべき組み合わせはどれですか?(2つ選択)",
+     "o": [
+      "Pipeline Inspection",
+      "Einstein Deal Insights",
+      "Web-to-Lead",
+      "Customizable Campaign Influence"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Pipeline Inspection でパイプライン全体の変化を確認し、Einstein Deal Insights で商談スコアやメールのシグナルなどから商談の健全性を評価します。Web-to-Lead はリードの取り込み、キャンペーンインフルエンスはマーケティング施策の貢献度の把握に使う機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_pipe_visibility_ai_solutions.htm&type=5",
+     "x": "リスクのある商談を早く見つけたいPipeline Inspection と Einstein Deal Insights。商談スコア、メールのシグナル、通話録音、ケースのデータなどから商談の健全性を評価する"
+    },
+    {
+     "q": "ある会社は Agentforce Prospecting と Agentforce Sales Management の導入を検討しています。導入前にコンサルタントが確認すべきことはどれですか?",
+     "o": [
+      "ライセンスの有無と、使い方に応じて消費される使用クレジットの見込み量",
+      "組織の既定のテリトリーモデルが計画中かどうか",
+      "Web-to-Lead の1日の上限を引き上げたかどうか",
+      "予測種別を5つ以上有効にしているかどうか"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "営業向けのAIエージェントは、使い方に応じて使用クレジットを消費します。導入前にライセンスとクレジットの見込み量を確認します。テリトリーモデルや Web-to-Lead、予測種別はエージェント導入の前提条件ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_cloud_agents.htm&type=5",
+     "x": "Agentforce Prospecting、Engagement、Sales Management、Sales Coach などのAI機能は、使い方に応じて使用クレジットを消費します。導入の前に、ライセンスとクレジットの見込み量を確認します。"
+    }
+   ]
+  },
+  {
+   "id": "process",
+   "no": "Ch1·2",
+   "title": "一般的な営業・マーケティングプロセスと導入の考慮点",
+   "tag": "Sales Process",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>リードを取引開始したら、リードが商談に変身するんでしょ?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>変身はしない。取引先責任者になり、取引先にひも付く。商談は「作る」と選んだときだけできる。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>じゃあ、毎日ウェブから千件くらいリードが来ても全部入る?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>入りません。Web-to-Lead は24時間で500件までです。超えた分はメールで知らされます。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>うわ、ツッコミが2連発…。流れと上限、セットで覚えるよ。</p></div><p class=\"one\">リードの獲得から商談、受注までの営業とマーケティングの流れを、Salesforce の標準の仕組みに当てはめることです。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>工場の生産ラインです。材料(リード)を受け入れ、担当者を決め、検品(選別)を通ったものだけを製品(商談)へ進めます。ラインの順番と、1日の受け入れ量の上限を最初に決めておきます。</p></div><h4>リードから受注までの流れ</h4><ol class=\"steps\">\n<li>Web-to-Lead などでリードを取り込む。Web-to-Lead で作れるリードは24時間で500件まで</li>\n<li>リード割り当てルールで所有者を決める。手動作成、Web-to-Lead、データインポートウィザードのどれで作られたリードにも適用できる</li>\n<li>条件を満たしたリードを取引開始する。リードは取引先責任者になり、既存または新規の取引先にひも付く。必要なら商談も同時に作る</li>\n<li>商談のフェーズを進め、受注か失注で閉じる</li>\n</ol><h4>押さえておく仕様</h4><ul>\n<li>1日の Web-to-Lead の上限を超えると、Web-to-Lead 設定で指定した「デフォルトのリード作成者」に、取り込めなかったリードの情報がメールで届きます。上限を増やしたいときはサポートに依頼します。</li>\n<li>割り当てルールは、種類ごとに同時に有効にできるのは1つだけです。ルールの中のルールエントリは、決めた順序で評価されます。</li>\n<li>営業プロセスは、商談の「フェーズ」の選択リスト値のうち、どれを使うかを決めたものです。営業プロセスをレコードタイプに割り当てると、事業ごとに別のフェーズを見せられます。</li>\n<li>同じ仕組みで、リードの「状況」の値を絞った「リードプロセス」も作れます。</li>\n<li>パス(Path)は、選択リスト値に沿ってステップを表示します。各ステップには、キー項目を最大5つと、成功のためのガイダンスを表示できます。</li>\n<li>Lightning Experience でリードを取引開始するときは、既存の商談も選べます。一致する商談は最大20件まで表示されます。</li>\n<li>取引開始すると、リードに添付されたファイルとメモは、ひも付けた取引先責任者、取引先、商談に引き継がれます。</li>\n</ul><h4>マーケティングの成果を測る</h4><ul>\n<li>キャンペーンインフルエンス(Customizable Campaign Influence)は、商談の売上にどのキャンペーンがどれだけ影響したかを割合で示します。</li>\n<li>標準の「主キャンペーンソース」モデルは、商談の「主キャンペーンソース」項目のキャンペーンに100%の影響を割り当てます。自動で関連付けるため、ユーザーは影響レコードを手動で追加できません。</li>\n<li>独自の配分にしたいときはカスタムモデルを作ります。ユーザーは商談の「キャンペーンインフルエンス」関連リストで割合を入力します。</li>\n</ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>Web-to-Lead は1日500件まで。超えた分の情報はデフォルトのリード作成者にメールで届きます。</li>\n<li>割り当てルールは、種類ごとに有効なのは1つだけです。</li>\n<li>事業ごとにフェーズを変えたいなら「営業プロセス+レコードタイプ」です。</li>\n<li>主キャンペーンソースモデルは、1つのキャンペーンに100%を割り当てます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社では、展示会の後に Web-to-Lead のフォームから1日700件ほどの申し込みが届く見込みです。コンサルタントは、標準の動作についてどう説明すべきですか?",
+     "o": [
+      "24時間で500件を超えた分は、デフォルトのリード作成者に情報がメールで届く。上限を増やすにはサポートに依頼する",
+      "500件を超えた分は、翌日に自動で取り込まれるので対応は不要",
+      "上限はないので、そのまま運用できる",
+      "500件を超えた分は、リードキューに自動で割り当てられる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Web-to-Lead で作れるリードは24時間で500件までです。超えた分は、Web-to-Lead 設定で指定したデフォルトのリード作成者にメールで届き、上限の引き上げはサポートに依頼します。上限がない、リードキューに入るといった説明は誤りです。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.faq_leads_what_if_my_company.htm&type=5",
+     "x": "1日の Web-to-Lead の上限を超えると、Web-to-Lead 設定で指定した「デフォルトのリード作成者」に、取り込めなかったリードの情報がメールで届きます。上限を増やしたいときはサポートに依頼します。"
+    },
+    {
+     "q": "ある会社は、新規販売と保守契約の更新で、商談のフェーズを別々にしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "2つの営業プロセスを作り、それぞれを商談のレコードタイプに割り当てる",
+      "フェーズの選択リストを2つ作り、ページレイアウトで切り替える",
+      "パスを2つ作り、フェーズの値をパスごとに追加する",
+      "リードプロセスを2つ作り、取引開始時に選ばせる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "営業プロセスは、商談の「フェーズ」の値のうちどれを使うかを決めたもので、レコードタイプに割り当てて使い分けます。フェーズの項目は1つで、パスは表示の仕組み、リードプロセスはリードの「状況」の値を絞るものです。",
+     "u": "https://help.salesforce.com/s/articleView?id=platform.customize_processes.htm&type=5",
+     "x": "営業プロセスは、商談の「フェーズ」の選択リスト値のうち、どれを使うかを決めたものです。営業プロセスをレコードタイプに割り当てると、事業ごとに別のフェーズを見せられます。"
+    },
+    {
+     "q": "ある会社の管理者は、データインポート用とウェブのリード用に、2つのリード割り当てルールを同時に有効にしたいと考えています。正しい説明はどれですか?",
+     "o": [
+      "リード割り当てルールは、同時に有効にできるのは1つだけ",
+      "2つまでなら同時に有効にできる",
+      "インポート用のルールは自動で無効化されるので問題ない",
+      "有効なルールの数に上限はない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "割り当てルールは、種類ごとに同時に有効にできるのは1つだけです。条件の違いは、1つのルールの中のルールエントリで表し、エントリは決めた順序で評価されます。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.customize_leadrules.htm&type=5",
+     "x": "割り当てルールは、種類ごとに同時に有効にできるのは1つだけです。ルールの中のルールエントリは、決めた順序で評価されます。"
+    },
+    {
+     "q": "ある会社は、商談のパスの各ステップで、担当者が必ず確認すべき項目を表示したいと考えています。1つのステップに表示できるキー項目は最大いくつですか?",
+     "o": [
+      "5つ",
+      "3つ",
+      "10個",
+      "20個"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "パスの各ステップには、キー項目を最大5つと、成功のためのガイダンスを表示できます。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.path_create.htm&type=5",
+     "x": "パス(Path)は、選択リスト値に沿ってステップを表示します。各ステップには、キー項目を最大5つと、成功のためのガイダンスを表示できます。"
+    },
+    {
+     "q": "ある会社のマーケティング部門は、Customizable Campaign Influence を検討しています。正しい説明はどれですか?(2つ選択)",
+     "o": [
+      "標準の主キャンペーンソースモデルは、主キャンペーンソース項目のキャンペーンに100%の影響を割り当てる",
+      "カスタムモデルでは、ユーザーが商談のキャンペーンインフルエンス関連リストで割合を入力できる",
+      "主キャンペーンソースモデルでは、ユーザーが影響レコードを手動で追加できる",
+      "カスタムモデルは、すべてのキャンペーンに同じ割合を自動で配分する"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "主キャンペーンソースモデルは100%を1つのキャンペーンに割り当て、自動で関連付けるため手動での追加はできません。独自の配分にしたいときはカスタムモデルを作り、関連リストで割合を入力します。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.campaigns_influence_customizable_understanding.htm&type=5",
+     "x": "標準の「主キャンペーンソース」モデルは、商談の「主キャンペーンソース」項目のキャンペーンに100%の影響を割り当てます。自動で関連付けるため、ユーザーは影響レコードを手動で追加できません。"
+    },
+    {
+     "q": "ある会社の営業担当は、リードに見積依頼のファイルを添付してから取引開始しています。取引開始後のファイルの扱いとして正しいものはどれですか?",
+     "o": [
+      "ひも付けた取引先責任者、取引先、商談に引き継がれる",
+      "リードに残り、取引開始後は見られなくなる",
+      "取引先にだけ引き継がれる",
+      "取引開始時に削除される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "リードを取引開始すると、添付されたファイルとメモは、ひも付けた取引先責任者、取引先、商談に引き継がれます。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.leads_convert.htm&type=5",
+     "x": "取引開始すると、リードに添付されたファイルとメモは、ひも付けた取引先責任者、取引先、商談に引き継がれます。"
+    }
+   ]
+  },
+  {
+   "id": "products",
+   "no": "Ch1·3",
+   "title": "関連製品の使い分け(Sales Engagement・Einstein Activity Capture/Inbox など)",
+   "tag": "Sales Productivity",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>今日はぼくが先に説明するね。Sales Engagement は「次はだれに電話するか」を並べてくれる係!</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいですね。では Einstein Activity Capture は?</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>えっと、メールと予定を勝手に Salesforce に記録してくれる係。Inbox は…メールを書くときの便利グッズ?</p><p class=\"tk pen\" data-f=\"smile\"><b class=\"who\">コミットくん</b>正解だ。手順を回す係、記録する係、書くのを助ける係。役割が重ならないように分けて提案する。</p></div><p class=\"one\">営業担当の毎日の作業を速くする関連製品です。役割が似ているので、どの課題に効くかで使い分けます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>料理店の厨房です。Sales Engagement は注文を順番に並べる伝票立て、Einstein Activity Capture は作ったものを自動で記録するレジ、Inbox は手早く盛り付けるための道具箱です。</p></div><h4>3つの製品の違い</h4><div class=\"tw\"><table><thead><tr><th>製品</th><th>何をするか</th><th>主な利用者</th></tr></thead>\n<tr><td>Sales Engagement(旧称 High Velocity Sales)</td><td>ケイデンスで電話やメールなどの手順を決め、ワークキューに優先順に並べる</td><td>インサイドセールス</td></tr>\n<tr><td>Einstein Activity Capture</td><td>Microsoft または Google のアカウントと同期し、メールと予定を関連レコードの活動タイムラインに自動で追加する</td><td>営業担当全般</td></tr>\n<tr><td>Inbox(Salesforce Inbox)</td><td>Outlook や Gmail の連携に、空き時間の挿入、メールの開封トラッキング、送信予約を追加する</td><td>メールでのやり取りが多い営業担当</td></tr>\n</table></div><h4>Sales Engagement</h4><ul>\n<li>ケイデンスは、メール、電話、会議の設定、テキストメッセージなどの手順を並べたものです。対象にはリード、取引先責任者、個人取引先を追加できます。</li>\n<li>営業担当はワークキューで、優先順に並んだメール、電話、ToDoをこなします。Einstein Lead Scoring を使っていれば、リードはスコア順に並びます。使っていなければアルファベット順です。</li>\n<li>Cadence Builder 2.0 は、ニュートラル、ポジティブ、ネガティブの3つのトラックを使い、相手の反応に応じて手順を切り替えます。</li>\n<li>Sales Engagement は、Performance と Unlimited Edition の Sales に含まれ、Professional と Enterprise Edition では追加費用で使えます。Einstein Activity Capture も含まれます。</li>\n</ul><h4>Einstein Activity Capture</h4><ul>\n<li>予定の同期方向は「Microsoft または Google から Salesforce」(推奨)、「Salesforce から Microsoft または Google」、「双方向」の3つです。双方向で競合したときは、Microsoft または Google 側の変更が優先されます。</li>\n<li>取引先責任者は、Salesforce を正しい情報源とし、Salesforce から外部のアカウントへ同期することが推奨されます。</li>\n<li>「Sync Email as Salesforce Activity」をオンにすると、メールはメールメッセージとToDoのレコードとして保存され、レポートやフローで使えます。Summer ’25 より前に設定した組織では、この方式への更新が推奨されます。</li>\n<li>社内ドメインなどを除外アドレスに登録すると、社員同士のメールを取り込まないようにできます。除外は保存後に入ってくるデータにだけ効き、取り込み済みのメールは消えません。</li>\n</ul><h4>Inbox</h4><ul>\n<li>Inbox のライセンスは、Sales Engagement と Sales Cloud Einstein に含まれるほか、単体でも購入できます。</li>\n</ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>決めた手順で多くの見込み客を追うなら Sales Engagement、活動の記録を自動化するなら Einstein Activity Capture、メールを書くときの便利機能なら Inbox です。</li>\n<li>予定の双方向同期で競合したら、外部のカレンダー側が優先されます。</li>\n<li>除外アドレスの設定は、すでに取り込んだデータを消しません。</li>\n<li>メールをレポートで分析したいなら「Sync Email as Salesforce Activity」をオンにします。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社のインサイドセールス部門は、新しいリードに対して「1日目に電話、3日目にメール」のような決まった手順で漏れなく連絡したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Sales Engagement のケイデンス",
+      "Einstein Activity Capture",
+      "リード割り当てルール",
+      "Customizable Campaign Influence"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Sales Engagement のケイデンスは、電話やメールなどの手順を並べ、ワークキューに優先順に表示します。Einstein Activity Capture は活動の記録、割り当てルールは所有者の決定、キャンペーンインフルエンスは施策の貢献度の把握に使います。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.high_velocity_sales_cadences.htm&type=5",
+     "x": "Sales Engagement(旧称 High Velocity Sales)ケイデンスで電話やメールなどの手順を決め、ワークキューに優先順に並べるインサイドセールス"
+    },
+    {
+     "q": "ある会社は Summer ’25 より前から Einstein Activity Capture を使っています。営業担当が送受信したメールをレポートやフローで使いたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "「Sync Email as Salesforce Activity」をオンにして、メールを活動データとして保存する",
+      "メールの同期方向を双方向に変える",
+      "Inbox のライセンスを追加する",
+      "Einstein Lead Scoring を有効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Sync Email as Salesforce Activity をオンにすると、メールはメールメッセージとToDoのレコードとして保存され、レポートやフローで使えます。古い方式のままでは活動タイムラインに表示されるだけです。同期方向やInbox、Lead Scoring は関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.aac_how_it_works.htm&type=5",
+     "x": "「Sync Email as Salesforce Activity」をオンにすると、メールはメールメッセージとToDoのレコードとして保存され、レポートやフローで使えます。Summer ’25 より前に設定した組織では、この方式への更新が推奨されます。"
+    },
+    {
+     "q": "ある会社は、Einstein Activity Capture で予定を双方向に同期する予定です。同じ予定が Salesforce と Google カレンダーの両方で同時に変更されたとき、どうなりますか?",
+     "o": [
+      "Google カレンダー側の変更が優先される",
+      "Salesforce 側の変更が優先される",
+      "新しいほうの変更が優先される",
+      "同期が止まり、管理者に通知される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "双方向の同期で競合したときは、Microsoft または Google 側の変更が優先されます。推奨される方向は、Microsoft または Google から Salesforce への同期です。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.aac_how_it_works.htm&type=5",
+     "x": "予定の同期方向は「Microsoft または Google から Salesforce」(推奨)、「Salesforce から Microsoft または Google」、「双方向」の3つです。双方向で競合したときは、Microsoft または Google 側の変更が優先されます。"
+    },
+    {
+     "q": "ある会社の営業担当は Gmail で顧客とやり取りしています。メールに自分の空き時間を挿入し、相手がメールを開いたかを知りたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Gmail 連携に Inbox の機能を追加する",
+      "Einstein Activity Capture の予定同期を有効にする",
+      "Sales Engagement のワークキューを使う",
+      "Web-to-Lead のフォームを作る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Inbox は、Outlook や Gmail の連携に、空き時間の挿入、開封トラッキング、送信予約を追加します。Einstein Activity Capture は同期、ワークキューは手順の実行、Web-to-Lead はリードの取り込みです。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sfo_vs_email_connect.htm&type=5",
+     "x": "Inbox(Salesforce Inbox)Outlook や Gmail の連携に、空き時間の挿入、メールの開封トラッキング、送信予約を追加するメールでのやり取りが多い営業担当"
+    },
+    {
+     "q": "ある会社は、社員同士のメールが顧客のレコードに記録されないようにしたいと考えています。Einstein Activity Capture の除外設定について正しい説明はどれですか?(2つ選択)",
+     "o": [
+      "社内ドメインを除外アドレスに登録すると、社員同士のメールを取り込まないようにできる",
+      "除外は保存後に入ってくるデータにだけ効き、取り込み済みのメールは消えない",
+      "除外を保存すると、過去に取り込んだ社内メールも自動で削除される",
+      "除外アドレスは営業担当ごとにしか設定できない"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "除外アドレスに社内ドメインを登録すると、社員同士のメールを取り込まないようにできます。ただし除外は保存後のデータにだけ効くため、取り込み済みのメールは残ります。組織全体の除外は管理者が設定できます。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.eac_exclude_emails_and_events_for_org.htm&type=5",
+     "x": "社内ドメインなどを除外アドレスに登録すると、社員同士のメールを取り込まないようにできます。除外は保存後に入ってくるデータにだけ効き、取り込み済みのメールは消えません。"
+    },
+    {
+     "q": "ある会社は Sales Engagement を導入しましたが、Einstein Lead Scoring は使っていません。ワークキューのリードはどの順に並びますか?",
+     "o": [
+      "アルファベット順",
+      "リードスコアの高い順",
+      "作成日の新しい順",
+      "所有者のロール順"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Lead Scoring を使っていれば、ワークキューのリードはスコア順に並びます。使っていない場合はアルファベット順です。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.hvs_user_intro.htm&type=5",
+     "x": "営業担当はワークキューで、優先順に並んだメール、電話、ToDoをこなします。Einstein Lead Scoring を使っていれば、リードはスコア順に並びます。使っていなければアルファベット順です。"
+    }
+   ]
+  },
+  {
+   "id": "territory",
+   "no": "Ch1·4",
+   "title": "Enterprise Territory Management",
+   "tag": "Sales Territories",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>なぞなぞだ。同時に1つしか有効にできず、引退したら二度と戻れないもの、なーんだ。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>うーん…プロ野球選手?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>惜しいですね。答えはテリトリーモデルです。有効なのは1つだけで、アーカイブしたら有効にも計画中にも戻せません。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>じゃあ新しい組織図を試すときは、計画中のモデルを別に作ればいいんだね。</p></div><p class=\"one\">取引先やリードを「テリトリー」という単位にまとめ、担当ユーザー、アクセス権、売上予測をテリトリーごとに管理する機能です。現在のヘルプでは Sales Territories(旧称 Enterprise Territory Management)と呼ばれます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>宅配便の配達エリアです。地域ごとにエリアを決め、担当ドライバーを割り当てます。新しいエリア分けは、まず紙の上(計画中)で試してから切り替えます。</p></div><h4>用語</h4><div class=\"tw\"><table><thead><tr><th>用語</th><th>意味</th></tr></thead>\n<tr><td>テリトリー種別(Territory Type)</td><td>テリトリーを特徴で分類するもの。すべてのテリトリーは1つの種別を持つ。モデルの階層には表示されない</td></tr>\n<tr><td>テリトリー種別の優先度</td><td>種別を選ぶときの目安になる独自の優先順位。001 を最高にするか最低にするかも自分で決める</td></tr>\n<tr><td>テリトリー</td><td>取引先、リード、担当する Salesforce ユーザーをまとめる単位</td></tr>\n<tr><td>テリトリーモデル</td><td>会社のテリトリー管理の仕組み一式。複数作って、割り当ての違いを比べられる</td></tr>\n<tr><td>テリトリー階層</td><td>モデルの構造。ここからテリトリーの作成、ルールの実行、モデルの有効化やアーカイブを行う</td></tr>\n</table></div><h4>モデルの状態</h4><div class=\"tw\"><table><thead><tr><th>状態</th><th>ポイント</th></tr></thead>\n<tr><td>計画中(Planning)</td><td>新しいモデルの既定の状態。有効化する前に、階層や割り当てを確かめられる</td></tr>\n<tr><td>有効(Active)</td><td>組織で同時に有効にできるのは1つだけ。テリトリーの売上予測は有効なモデルに基づく</td></tr>\n<tr><td>アーカイブ済み(Archived)</td><td>有効なモデルだけをアーカイブできる。アーカイブ後は、有効にも計画中にも戻せない</td></tr>\n</table></div><ul>\n<li>モデルをアーカイブすると、テリトリーの売上予測、予測種別、目標、調整が削除されます。その商談の「テリトリー」項目も空になります。</li>\n<li>有効なモデルは削除できません。削除できるのは、計画中かアーカイブ済みのモデルです。</li>\n</ul><h4>割り当てルール</h4><ul>\n<li>取引先の割り当てルールは、モデルが有効な状態のときに、取引先の作成や更新に合わせて動きます。</li>\n<li>1つのテリトリーに複数のルールがあるときは、取引先がすべてのルールに一致した場合だけ割り当てられます。</li>\n<li>同じ枝の中で複数のテリトリーのルールに一致したときは、一番下のテリトリーに割り当てられます。</li>\n<li>ルールで「子テリトリーに適用」を選ぶと、そのルールが子孫のテリトリーにも引き継がれます。</li>\n<li>ルールで選択リストの値を使うときは、表示ラベルではなく API 参照名を指定します。値のラベルを変えても、ルールが壊れません。</li>\n<li>郵便番号は数値ではなく英数字の項目です。比較は文字として行われるため、9 は 80000 より「大きい」と判定されます。</li>\n<li>商談へのテリトリー割り当てを自動化するには、テリトリー設定で「Filter-Based Opportunity Territory Assignment」を有効にし、Apex クラスを指定します。Salesforce が用意したコードを使う場合のクラス名は OppTerrAssignDefaultLogicFilter です。</li>\n</ul><h4>アクセス権</h4><ul>\n<li>テリトリー設定で、取引先、リード、商談の既定のアクセスレベルを決めます。取引先責任者とケースは、組織の共有設定の既定が非公開のときに設定できます。</li>\n<li>テリトリーのアクセスレベルは、階層の上の親テリトリーに引き継がれます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>ロール階層と何が違うの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>ロール階層は会社の組織図、テリトリーは担当エリアです。テリトリーでは、取引先を担当するユーザーにアクセス権を与えます。売上予測もテリトリー階層で集計できます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>有効にできるモデルは1つだけです。アーカイブしたら元に戻せません。</li>\n<li>アーカイブすると売上予測、予測種別、目標、調整が消えます。事前にスクリーンショットやレポートスナップショットで記録を残します。</li>\n<li>同じ枝で複数一致したら、一番下のテリトリーに割り当てられます。</li>\n<li>商談の自動割り当ては、Apex クラスを使うフィルターベースの割り当てです。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、来期に向けて新しい地域割りを検討しています。現在の担当割り当てに影響を与えずに、新しい階層と割り当てを確かめたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "新しいテリトリーモデルを計画中の状態で作り、割り当てを確かめてから有効化する",
+      "現在の有効なモデルをアーカイブしてから、新しいモデルを作る",
+      "2つ目のモデルを有効にして、両方を同時に動かす",
+      "現在の有効なモデルのテリトリー種別を直接書き換える"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "新しいモデルは計画中の状態で作られ、有効化する前に階層や割り当てを確かめられます。有効にできるモデルは1つだけで、アーカイブすると元に戻せないため、先にアーカイブするのは危険です。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.tm2_territory_model_state.htm&type=5",
+     "x": "計画中(Planning)新しいモデルの既定の状態。有効化する前に、階層や割り当てを確かめられる"
+    },
+    {
+     "q": "ある会社は、今使っているテリトリーモデルをアーカイブする予定です。コンサルタントが事前に伝えるべき影響はどれですか?",
+     "o": [
+      "テリトリーの売上予測、予測種別、目標、調整が削除される",
+      "アーカイブしたモデルは、いつでも有効に戻せる",
+      "取引先の所有者が自動で変更される",
+      "商談の「テリトリー」項目は値がそのまま残る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "モデルをアーカイブすると、テリトリーの売上予測、予測種別、目標、調整が削除され、商談の「テリトリー」項目も空になります。アーカイブ後は有効にも計画中にも戻せません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.tm2_territory_model_state.htm&type=5",
+     "x": "モデルをアーカイブすると、テリトリーの売上予測、予測種別、目標、調整が削除されます。その商談の「テリトリー」項目も空になります。"
+    },
+    {
+     "q": "ある会社のモデルでは、「西日本」テリトリーの下に「大阪」テリトリーがあります。ある取引先が、両方のテリトリーのすべてのルールに一致しました。この取引先はどこに割り当てられますか?",
+     "o": [
+      "大阪テリトリー",
+      "西日本テリトリー",
+      "西日本と大阪の両方",
+      "どちらにも割り当てられない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "同じ枝の中で複数のテリトリーのルールに一致したときは、一番下のテリトリーに割り当てられます。この例では子の大阪テリトリーです。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.tm2_how_assignment_rules_work.htm&type=5",
+     "x": "同じ枝の中で複数のテリトリーのルールに一致したときは、一番下のテリトリーに割り当てられます。"
+    },
+    {
+     "q": "ある会社は、商談に正しいテリトリーを自動で設定したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Filter-Based Opportunity Territory Assignment を有効にし、Apex クラスを指定する",
+      "取引先の割り当てルールに商談の条件を追加する",
+      "リード割り当てルールで商談の所有者を変える",
+      "テリトリー種別の優先度を設定する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "商談へのテリトリー割り当ての自動化は、フィルターベースの割り当てを有効にし、Apex クラスを指定して行います。取引先の割り当てルールは取引先用で、テリトリー種別の優先度は種別を選ぶための目安です。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.tm2_enable_ota.htm&type=5",
+     "x": "商談へのテリトリー割り当てを自動化するには、テリトリー設定で「Filter-Based Opportunity Territory Assignment」を有効にし、Apex クラスを指定します。Salesforce が用意したコードを使う場合のクラス名は OppTerrAssignDefaultLogicFilter です。"
+    },
+    {
+     "q": "削除できるテリトリーモデルの状態はどれですか?(2つ選択)",
+     "o": [
+      "計画中",
+      "アーカイブ済み",
+      "有効",
+      "どの状態でも削除できない"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "有効なモデルは削除できません。削除できるのは、計画中かアーカイブ済みのモデルです。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.tm2_maintain.htm&type=5",
+     "x": "有効なモデルは削除できません。削除できるのは、計画中かアーカイブ済みのモデルです。"
+    },
+    {
+     "q": "ある会社の管理者は、取引先の「業種」(選択リスト)を条件にしたテリトリーの割り当てルールを作ります。業種の表示ラベルは今後変わる可能性があります。コンサルタントはどう助言すべきですか?",
+     "o": [
+      "ルールには、選択リスト値の API 参照名を指定する",
+      "ルールには、表示ラベルをそのまま指定する",
+      "業種はルールに使えないので、手動で割り当てる",
+      "ラベルを変えるたびに、モデルをアーカイブして作り直す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "割り当てルールで選択リストの値を使うときは API 参照名を指定します。こうすると、表示ラベルを変えてもルールはそのまま動きます。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.tm2_how_assignment_rules_work.htm&type=5",
+     "x": "ルールで選択リストの値を使うときは、表示ラベルではなく API 参照名を指定します。値のラベルを変えても、ルールが壊れません。"
+    }
+   ]
+  },
+  {
+   "id": "forecast",
+   "no": "Ch1·5",
+   "title": "売上予測(Collaborative Forecasts)と Pipeline Inspection",
+   "tag": "Forecasting",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>コミットくん、売上予測と Pipeline Inspection って同じじゃないの?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>違う。売上予測は数字を階層で積み上げる集計関数。Pipeline Inspection は、その元になる商談を1件ずつ点検するデバッガーだ。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>デバッガー…?つまり、合計を見るのと、中身のおかしな商談を探すのの違いだね。</p><p class=\"tk pen\" data-f=\"smile\"><b class=\"who\">コミットくん</b>そうだ。どちらも商談のデータが正しくないと役に立たない。</p></div><p class=\"one\">売上予測(Collaborative Forecasts。現在のヘルプでは Pipeline Forecasting と表記)は、商談の金額や数量を集計し、予測階層に沿って期間ごとの見込みをまとめる機能です。Pipeline Inspection は、パイプラインを1つの画面で点検する機能です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>学校の成績表です。売上予測はクラスと学年の平均点を積み上げた表、Pipeline Inspection は、先週から急に点数が下がった生徒を見つけるための名簿です。</p></div><h4>売上予測の基本</h4><ul>\n<li>売上予測を使うユーザーには「Allow Forecasting」権限を与え、予測階層に入れます。予測階層のロールにユーザーを割り当てても、この権限が付きます。</li>\n<li>予測階層には、ロール階層をもとにした「ロールベース」と、テリトリー階層をもとにした「テリトリーベース」があります。</li>\n<li>標準の売上予測分類は、Pipeline、Best Case、Commit、Omitted、Closed です。Omitted は予測に含まれません。Lightning Experience では Most Likely も表示できます。</li>\n<li>商談の「フェーズ」の値が売上予測分類に対応しており、商談がどの分類に入るかが決まります。</li>\n</ul><h4>予測種別</h4><ul>\n<li>既定の予測種別は、商談オブジェクトの「金額」を、完了予定日で、ロール階層に沿って集計します。</li>\n<li>同時に有効にできる予測種別は最大4つです。それ以上必要なときはサポートに依頼します。</li>\n<li>予測種別のもとにできるオブジェクトは、商談、商談商品、商談分割、商談商品分割、商品スケジュール(Line Item Schedule)です。</li>\n<li>カスタム絞り込みの条件は3つまでで、AND だけが使えます。予測種別を有効にした後は編集できません。</li>\n<li>商品ファミリー別の予測では、商品ファミリーごとの目標は設定できますが、担当者ごとに1つの目標は設定できません。</li>\n</ul><h4>調整と目標</h4><ul>\n<li>調整は、ロールアップの元の値を変えずに、マネージャーや担当者の判断を上乗せするものです。マネージャーは、自分の予測と、予測階層で1つ下の部下の予測を調整できます。</li>\n<li>マネージャーと部下が同じ予測を調整したときは、マネージャーの調整だけが上にロールアップされます。</li>\n<li>予測種別が複数あるときは、調整も目標も種別ごとに別々に持ちます。</li>\n<li>目標(クォータ)は、ユーザーやテリトリーに割り当てる月または四半期の目標です。マネージャーの目標は自動では合計されず、手動でロールアップします。</li>\n<li>テリトリーの売上予測は、有効なテリトリーモデルでだけ使えます。1つの商談は、1つのテリトリーの予測にだけ集計されます。</li>\n</ul><h4>Pipeline Inspection</h4><ul>\n<li>Pipeline Inspection は、商談のリストビューから開きます。Enterprise、Performance、Unlimited Edition の Sales で使えます。</li>\n<li>直近7日間の、金額、完了予定日、売上予測分類、フェーズの変化が、赤と緑の文字と矢印で強調されます。「次のステップ」が7日以上更新されていない商談には赤い時計のアイコンが付きます。</li>\n<li>「Push Count」は、完了予定日が月をまたいで先送りされた回数を数えます。同じ月の中での変更は数えません。</li>\n<li>重要な商談として印を付けられるのは200件までです。印は付けた本人にだけ見えます。</li>\n<li>検索結果が2,000件以上になると、選んだ指標の合計とグラフが表示されません。</li>\n</ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>有効にできる予測種別は4つまでです。</li>\n<li>マネージャーが調整できるのは、自分と1つ下の部下の予測です。調整は元のロールアップの値を変えません。</li>\n<li>目標は手動でロールアップします。商品ファミリー別の予測では、担当者ごとに1つの目標は持てません。</li>\n<li>Pipeline Inspection の変化の強調は直近7日間です。月をまたぐ先送りは Push Count で数えます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、商談の金額、数量、商品ファミリー別、商談分割、商品スケジュールの5種類の予測を同時に使いたいと考えています。コンサルタントはどう説明すべきですか?",
+     "o": [
+      "同時に有効にできる予測種別は最大4つなので、5つ目が必要ならサポートに依頼する",
+      "予測種別は1つしか有効にできない",
+      "予測種別の数に上限はない",
+      "予測種別を5つ以上にするには、テリトリーモデルを有効にする必要がある"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "同時に有効にできる予測種別は最大4つで、それ以上必要なときはサポートに依頼します。テリトリーモデルの有無は、有効にできる予測種別の数とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.forecasts3_forecast_types_overview.htm&type=5",
+     "x": "同時に有効にできる予測種別は最大4つです。それ以上必要なときはサポートに依頼します。"
+    },
+    {
+     "q": "ある会社の営業本部長は、自分の予測画面から、2階層下の担当者の予測を直接調整したいと考えています。正しい説明はどれですか?",
+     "o": [
+      "マネージャーが調整できるのは、自分の予測と、予測階層で1つ下の部下の予測だけ",
+      "予測階層の下にいる全員の予測を直接調整できる",
+      "調整すると、商談の金額も自動で書き換わる",
+      "調整は担当者本人しかできない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "マネージャーは、自分の予測と、1つ下の部下の予測を調整できます。下の階層の調整は見ることはできます。調整はロールアップの元の値を変えず、商談の金額も変わりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.forecasts3_adjustments_overview.htm&type=5",
+     "x": "調整は、ロールアップの元の値を変えずに、マネージャーや担当者の判断を上乗せするものです。マネージャーは、自分の予測と、予測階層で1つ下の部下の予測を調整できます。"
+    },
+    {
+     "q": "ある会社の営業マネージャーは、完了予定日を何度も先送りしている商談を見つけたいと考えています。Pipeline Inspection で何を使うべきですか?",
+     "o": [
+      "Push Count 項目",
+      "Forecast Category の変化",
+      "重要な商談のブックマーク",
+      "Opportunity Score の Healthy 区分"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Push Count は、完了予定日が月をまたいで先送りされた回数を数えます。同じ月の中での変更は数えません。売上予測分類の変化やブックマークでは、先送りの回数は分かりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.pipeline_inspection_guidelines.htm&type=5",
+     "x": "「Push Count」は、完了予定日が月をまたいで先送りされた回数を数えます。同じ月の中での変更は数えません。"
+    },
+    {
+     "q": "ある会社は商品ファミリー別の予測を使っています。営業部長は、担当者ごとに商品ファミリーをまとめた1つの目標を設定したいと考えています。正しい説明はどれですか?",
+     "o": [
+      "商品ファミリーごとの目標は設定できるが、担当者ごとに1つの目標は設定できない",
+      "担当者ごとに1つの目標を設定すると、商品ファミリーごとに自動で分けられる",
+      "商品ファミリー別の予測では目標を使えない",
+      "マネージャーの目標は、部下の目標から自動で合計される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "商品ファミリー別の予測では、商品ファミリーごとの目標を担当者に設定します。担当者ごとに1つの目標は設定できません。また、マネージャーの目標は自動では合計されず、手動でロールアップします。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.forecasts3_forecast_types_overview.htm&type=5",
+     "x": "商品ファミリー別の予測では、商品ファミリーごとの目標は設定できますが、担当者ごとに1つの目標は設定できません。"
+    },
+    {
+     "q": "Pipeline Inspection が強調表示する内容として正しいものはどれですか?(2つ選択)",
+     "o": [
+      "直近7日間の、金額、完了予定日、売上予測分類、フェーズの変化",
+      "「次のステップ」が7日以上更新されていない商談",
+      "直近30日間に作成されたすべての商談",
+      "所有者が変わった取引先"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Pipeline Inspection は、直近7日間の金額、完了予定日、売上予測分類、フェーズの変化を赤と緑の文字と矢印で示します。「次のステップ」が7日以上更新されていない商談には赤い時計のアイコンが付きます。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.pipeline_inspection_managing_pipelines_overview.htm&type=5",
+     "x": "直近7日間の、金額、完了予定日、売上予測分類、フェーズの変化が、赤と緑の文字と矢印で強調されます。「次のステップ」が7日以上更新されていない商談には赤い時計のアイコンが付きます。"
+    },
+    {
+     "q": "ある会社では、見込みの薄い商談を売上予測の合計に含めたくないと考えています。フェーズを、どの売上予測分類に対応させるべきですか?",
+     "o": [
+      "Omitted",
+      "Pipeline",
+      "Best Case",
+      "Commit"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "標準の売上予測分類のうち、Omitted は予測に含まれません。Pipeline、Best Case、Commit は予測に含まれます。フェーズの値が分類に対応しているので、フェーズを Omitted に対応させます。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.forecasts3_definitions.htm&type=5",
+     "x": "標準の売上予測分類は、Pipeline、Best Case、Commit、Omitted、Closed です。Omitted は予測に含まれません。Lightning Experience では Most Likely も表示できます。"
+    }
+   ]
+  },
+  {
+   "id": "reports",
+   "no": "Ch1·6",
+   "title": "営業KPIをレポートとダッシュボードにする",
+   "tag": "Reports & Dashboards",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>KPIをダッシュボードにするのは、健康診断に似ています。レポートが検査、ダッシュボードが結果の一覧表です。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>じゃあ動的ダッシュボードは、自分の結果だけが載っている一覧表だね。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>続けると、履歴トレンドレポートは去年の結果との比較表だ。ただし保持されるのは過去3か月と当月だけだ。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>長く比べたいときは、レポートスナップショットで結果を貯めておけばいいんだね。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そのとおりです。どの道具を使うかは、見る人と期間で決めます。</p></div><p class=\"one\">営業のKPIとビジネスの成果を、レポートで数字にし、ダッシュボードでひと目で分かる形にすることです。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>車のメーターパネルです。速度や燃料のように大事な数字だけを並べ、運転する人(営業担当やマネージャー)がひと目で状況をつかめるようにします。</p></div><h4>レポートの形式</h4><div class=\"tw\"><table><thead><tr><th>形式</th><th>特徴</th></tr></thead>\n<tr><td>表形式(Tabular)</td><td>グループ化しない一覧</td></tr>\n<tr><td>サマリー形式(Summary)</td><td>行でグループ化し、グループごとの小計を出す</td></tr>\n<tr><td>マトリックス形式(Matrix)</td><td>行と列の両方でグループ化する</td></tr>\n<tr><td>結合形式(Joined)</td><td>複数のレポートをブロックとして並べる。ブロックは最大5つ</td></tr>\n</table></div><h4>押さえたい上限</h4><ul>\n<li>レポートに表示されるのは最大2,000行です。それ以上見たいときはエクスポートします。</li>\n<li>1つのレポートに置けるフィールド絞り込みは20個まで、バケット項目は5つまでです。1つのバケット項目に作れるバケットは20個までです。</li>\n<li>クロス条件は1つのレポートに3つまでで、それぞれ副条件を5つまで置けます。</li>\n<li>カスタムレポートタイプは、Enterprise Edition で300個、Unlimited と Performance Edition で2,000個まで作れます。</li>\n<li>1つのダッシュボードのウィジェットは最大25個です。そのうちグラフと表は最大20個です。ダッシュボードの絞り込みは5つまでです。</li>\n</ul><h4>だれの目線で見せるか</h4><ul>\n<li>静的なダッシュボードは、設定した実行ユーザーの権限でデータを表示します。実行ユーザーが管理者だと、見る人が本来見られないデータまで見えるおそれがあります。</li>\n<li>動的ダッシュボードは、ログインしているユーザーがアクセスできるデータだけを表示します。組織あたり、Enterprise Edition で5個、Unlimited と Performance Edition で10個まで作れます。</li>\n<li>動的ダッシュボードには登録(サブスクリプション)できません。</li>\n</ul><h4>変化を追う</h4><ul>\n<li>履歴トレンドレポートは、最大5つのスナップショット日付を比べられます。データは過去3か月と当月の分が保持されます。</li>\n<li>Pipeline Inspection で履歴トレンドを有効にすると、商談の履歴を最大12か月分保持できます。</li>\n<li>レポートスナップショットは、表形式またはサマリー形式のレポートの結果を、カスタムオブジェクトに定期的に保存します。1回に挿入できるのは2,000行までです。</li>\n</ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>地域×四半期のように2つの軸で見るならマトリックス形式です。</li>\n<li>見る人ごとに自分のデータだけ見せるなら動的ダッシュボードです。数には上限があります。</li>\n<li>短期の変化の比較は履歴トレンドレポート、長期の推移の蓄積はレポートスナップショットです。</li>\n<li>静的ダッシュボードの実行ユーザーに強い権限のユーザーを選ぶと、データが見えすぎることがあります。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社の営業本部は、マネージャーが同じダッシュボードを開いたとき、自分がアクセスできるチームのデータだけが表示されるようにしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "動的ダッシュボードを作る",
+      "マネージャーの人数分の静的ダッシュボードを作る",
+      "実行ユーザーをシステム管理者にした静的ダッシュボードを作る",
+      "レポートスナップショットを作る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "動的ダッシュボードは、ログインしているユーザーがアクセスできるデータだけを表示するので、1つのダッシュボードで済みます。人数分の静的ダッシュボードは管理が大変で、管理者を実行ユーザーにすると見えすぎてしまいます。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.dashboards_view_as_considerations.htm&type=5",
+     "x": "動的ダッシュボードは、ログインしているユーザーがアクセスできるデータだけを表示します。組織あたり、Enterprise Edition で5個、Unlimited と Performance Edition で10個まで作れます。"
+    },
+    {
+     "q": "ある会社の営業部長は、商談の金額を、行に地域、列に四半期を並べて集計したいと考えています。どのレポート形式を使うべきですか?",
+     "o": [
+      "マトリックス形式",
+      "表形式",
+      "サマリー形式",
+      "結合形式"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "マトリックス形式は、行と列の両方でグループ化できます。サマリー形式は行だけでグループ化し、表形式はグループ化しません。結合形式は複数のレポートをブロックとして並べる形式です。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.reports_changing_format.htm&type=5",
+     "x": "マトリックス形式(Matrix)行と列の両方でグループ化する"
+    },
+    {
+     "q": "ある会社の営業マネージャーは、毎週月曜日時点のパイプラインの金額とフェーズを比べ、ここ数週間の変化を見たいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "履歴トレンドレポート",
+      "結合形式のレポート",
+      "動的ダッシュボード",
+      "クロス条件付きのレポート"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "履歴トレンドレポートは、最大5つのスナップショット日付を比べられ、過去3か月と当月のデータが保持されます。結合形式、動的ダッシュボード、クロス条件では、日付ごとの値の変化を比べられません。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.reports_historical_concepts.htm&type=5",
+     "x": "履歴トレンドレポートは、最大5つのスナップショット日付を比べられます。データは過去3か月と当月の分が保持されます。"
+    },
+    {
+     "q": "ある会社では、営業部門の全員が見るダッシュボードの実行ユーザーに、システム管理者が設定されています。コンサルタントが指摘すべきリスクはどれですか?",
+     "o": [
+      "見る人が、本来アクセスできないデータまで見えるおそれがある",
+      "ダッシュボードが更新できなくなる",
+      "ダッシュボードの絞り込みが使えなくなる",
+      "動的ダッシュボードの上限を消費する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "静的なダッシュボードは、設定した実行ユーザーの権限でデータを表示します。実行ユーザーが管理者だと、見る人が本来見られないデータまで見えるおそれがあります。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.dashboards_view_as_considerations.htm&type=5",
+     "x": "静的なダッシュボードは、設定した実行ユーザーの権限でデータを表示します。実行ユーザーが管理者だと、見る人が本来見られないデータまで見えるおそれがあります。"
+    },
+    {
+     "q": "レポートとダッシュボードの上限として正しいものはどれですか?(2つ選択)",
+     "o": [
+      "レポートに表示されるのは最大2,000行",
+      "1つのダッシュボードのウィジェットは最大25個",
+      "1つのレポートのフィールド絞り込みは最大50個",
+      "1つのダッシュボードの絞り込みは最大10個"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "レポートに表示されるのは最大2,000行で、それ以上はエクスポートします。ダッシュボードのウィジェットは最大25個(グラフと表は最大20個)です。フィールド絞り込みは20個まで、ダッシュボードの絞り込みは5つまでです。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.rd_reports_dashboards_limits.htm&type=5",
+     "x": "レポートに表示されるのは最大2,000行です。それ以上見たいときはエクスポートします。"
+    },
+    {
+     "q": "ある会社の経営陣は、毎月末のパイプライン金額を記録し、2年分の推移を見たいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "レポートスナップショットで、レポートの結果をカスタムオブジェクトに毎月保存する",
+      "履歴トレンドレポートで2年分の日付を比べる",
+      "動的ダッシュボードを作る",
+      "結合形式のレポートで月ごとのブロックを24個作る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "レポートスナップショットは、レポートの結果をカスタムオブジェクトに定期的に保存するので、長期の推移を残せます。履歴トレンドレポートのデータは過去3か月と当月分だけで、結合形式のブロックは最大5つです。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.reports_historical_trending.htm&type=5",
+     "x": "レポートスナップショットは、表形式またはサマリー形式のレポートの結果を、カスタムオブジェクトに定期的に保存します。1回に挿入できるのは2,000行までです。"
+    }
+   ]
+  }
+ ]
+}
