@@ -8,4 +8,5 @@ python3 $C/patch_subj_time.py $T/p1.html $T/p2.html
 python3 $C/patch_fig_fix.py $T/p2.html $T/p3.html $D $T/d1.json
 python3 $C/figs_m/apply.py $T/d1.json $T/d2.json $M $T/m2.json $T/p3.html $T/p4.html
 python3 $C/patch_quiz_pos.py $T/p4.html $T/p5.html
-python3 $C/patch_sync_keys.py $T/p5.html $OUT
+python3 $C/patch_sync_keys.py $T/p5.html $T/p6.html
+python3 $C/patch_add_afsales.py $T/p6.html $OUT
