@@ -11,7 +11,9 @@ var pad=function(n){return (n<10?"0":"")+n},today=function(d){d=d||new Date;retu
 var addDays=function(n){var d=new Date;d.setDate(d.getDate()+n);return today(d)};
 var url=function(p){return window.famURL?window.famURL(p):p};
 var getJSON=function(p){return fetch(url(p)).then(function(r){return r.ok?r.json():[]}).catch(function(){return []})};
-var ST=Object.assign({subj:"all",src:"all",mode:"order",tab:"q",gsubj:"all",gonly:"all",gmode:"order"},LS.get("cs-practice-v1",{}));
+var ST=Object.assign({subj:"all",src:"all",flt:"all",ord:"order",tab:"q",gsubj:"all",gonly:"all",gmode:"order"},LS.get("cs-practice-v1",{}));
+/* 以前の「出し方」1つ(順番どおり/ランダム/今日の復習/間違えた/まだ)を、社労士版と同じ「絞り込み」と「出し方」に分ける */
+if(ST.mode){if(ST.mode==="order"||ST.mode==="random"){ST.ord=ST.mode;ST.flt="all"}else{ST.flt=ST.mode;ST.ord="order"}delete ST.mode}
 var save=function(){LS.set("cs-practice-v1",ST)};
 
 /* ---- クラウド ---- */
@@ -90,8 +92,8 @@ function pool(){var out=[];subjList().forEach(function(id){(Q[id]||[]).forEach(f
 function isWrong(q){var h=HIST[q.subj][q.n];return h&&h.l==="x"}
 function isNew(q){return !HIST[q.subj][q.n]}
 function isDue(q){var r=LS.get(REVK,{})[q.subj+":q"+q.n];return r&&r.due&&r.due<=today()}
-function deck(){var p=pool();if(ST.mode==="wrong")return p.filter(isWrong);if(ST.mode==="new")return p.filter(isNew);if(ST.mode==="review")return p.filter(isDue);return p}
-function posKey(){return "cs-practice-pos:"+ST.subj+":"+ST.src}
+function deck(){var p=pool();if(ST.flt==="wrong")return p.filter(isWrong);if(ST.flt==="new")return p.filter(isNew);if(ST.flt==="review")return p.filter(isDue);return p}
+function posKey(){return "cs-practice-pos:"+ST.subj+":"+ST.src+(ST.flt&&ST.flt!=="all"?":"+ST.flt:"")}
 function counts(){var p=pool();return {review:p.filter(isDue).length,wrong:p.filter(isWrong).length,"new":p.filter(isNew).length}}
 function renderFilters(){
   chips($("#f-subj"),subjItems(),ST.subj,function(v){ST.subj=v;save();refreshQ(true)});
@@ -100,15 +102,16 @@ function renderFilters(){
   var sl=Object.keys(srcs);$("#f-src-w").hidden=sl.length<2;
   chips($("#f-src"),[{v:"all",l:"すべて"}].concat(sl.map(function(k){return {v:k,l:SRCN[k]||k}})),ST.src,function(v){ST.src=v;save();refreshQ(true)});
   var c=counts();
-  chips($("#f-mode"),[{v:"order",l:"順番どおり"},{v:"random",l:"ランダム"},{v:"review",l:"今日の復習",n:c.review},{v:"wrong",l:"間違えた問題",n:c.wrong},{v:"new",l:"まだ解いていない",n:c["new"]}],ST.mode,function(v){ST.mode=v;save();refreshQ(true)});
+  chips($("#f-mode"),[{v:"all",l:"すべて"},{v:"review",l:"今日の復習",n:c.review},{v:"wrong",l:"間違えた問題",n:c.wrong},{v:"new",l:"まだ解いていない",n:c["new"]}],ST.flt,function(v){ST.flt=v;save();refreshQ(true)});
+  chips($("#f-ord"),[{v:"order",l:"順番に"},{v:"random",l:"ランダム"}],ST.ord,function(v){ST.ord=v;save();refreshQ(true)});
 }
 function pick(){
   var d=deck();if(!d.length)return null;
-  if(ST.mode==="random"){var c=d.filter(function(q){return RECENT.indexOf(q.subj+q.n)<0});if(!c.length)c=d;return c[Math.floor(Math.random()*c.length)]}
-  if(ST.mode==="order"){var pos=LS.get(posKey(),null),i=0;if(pos){var k=d.findIndex(function(q){return q.subj===pos.s&&q.n===pos.n});if(k>=0)i=k}return d[i]}
+  if(ST.ord==="random"){var c=d.filter(function(q){return RECENT.indexOf(q.subj+q.n)<0});if(!c.length)c=d;return c[Math.floor(Math.random()*c.length)]}
+  {var pos=LS.get(posKey(),null),i=0;if(pos){var k=d.findIndex(function(q){return q.subj===pos.s&&q.n===pos.n});if(k>=0)i=k}return d[i]}
   return d[0];
 }
-function advance(){if(!CUR)return;if(ST.mode==="order"){var d=deck(),i=d.indexOf(CUR),nx=d[(i+1)%d.length];if(nx)LS.set(posKey(),{s:nx.subj,n:nx.n})}RECENT.push(CUR.subj+CUR.n);if(RECENT.length>20)RECENT.shift()}
+function advance(){if(!CUR)return;if(ST.ord==="order"){var d=deck(),i=d.indexOf(CUR),nx=d[(i+1)%d.length];if(nx)LS.set(posKey(),{s:nx.subj,n:nx.n})}RECENT.push(CUR.subj+CUR.n);if(RECENT.length>20)RECENT.shift()}
 async function refreshQ(reset){
   var box=$("#qbox");box.innerHTML='<p class="bx-s">問題を読み込んでいます…</p>';
   await Promise.all(subjList().map(loadSubj));renderFilters();
@@ -117,10 +120,10 @@ async function refreshQ(reset){
 }
 function renderQ(){
   var box=$("#qbox");
-  if(!CUR){box.innerHTML='<p class="bx-k">問題</p><p>'+(ST.mode==="review"?"今日の復習はありません。間違えた問題は、翌日以降にここへ戻ってきます。":ST.mode==="wrong"?"間違えた問題はありません。":ST.mode==="new"?"この範囲の問題は、すべて一度は解きました。":"この範囲に問題がありません。")+'</p>';return}
+  if(!CUR){box.innerHTML='<p class="bx-k">問題</p><p>'+(ST.flt==="review"?"今日の復習はありません。間違えた問題は、翌日以降にここへ戻ってきます。":ST.flt==="wrong"?"間違えた問題はありません。":ST.flt==="new"?"この範囲の問題は、すべて一度は解きました。":"この範囲に問題がありません。")+'</p>';return}
   var PREV='<button type="button" class="bx-btn" id="tq-prev"'+(canPrev()?"":" disabled")+'>前へ</button>';
   var q=CUR,sj=SUBJ.filter(function(s){return s.id===q.subj})[0],multi=q.a.length>1,d=deck(),pos=d.indexOf(q);
-  var h='<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span> 問'+q.d+(ST.mode==="order"?' <span class="tq-pos">('+(pos+1)+' / '+d.length+')</span>':'')+'<span>'+esc(q.title)+'</span></p>';
+  var h='<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span> 問'+q.d+(ST.ord==="order"?' <span class="tq-pos">('+(pos+1)+' / '+d.length+')</span>':'')+'<span>'+esc(q.title)+'</span></p>';
   h+='<p class="tq-q">'+esc(q.q)+'</p>';if(multi&&!DONE)h+='<p class="tq-need">'+q.a.length+'つ選んでください</p>';
   h+='<div class="tq-o" role="group" aria-label="選択肢">'+q.o.map(function(o,i){var c="tq-b";if(DONE){if(q.a.indexOf(i)>=0)c+=" right";else if(SEL.indexOf(i)>=0)c+=" wrong";else c+=" dim"}else if(SEL.indexOf(i)>=0)c+=" sel";
     return '<button type="button" class="'+c+'" data-i="'+i+'"'+(DONE?" disabled":"")+'><b>'+"ABCDEFGH".charAt(i)+'</b><span>'+esc(o)+'</span></button>'}).join("")+'</div>';
@@ -135,9 +138,9 @@ function renderQ(){
 }
 function choose(i){if(!CUR||DONE)return;var multi=CUR.a.length>1,k=SEL.indexOf(i);if(multi){if(k>=0)SEL.splice(k,1);else if(SEL.length<CUR.a.length)SEL.push(i)}else SEL=k>=0?[]:[i];renderQ()}
 function check(){if(!CUR||DONE||!SEL.length)return;if(CUR.a.length>1&&SEL.length!==CUR.a.length)return;DONE=true;var ok=SEL.length===CUR.a.length&&SEL.every(function(i){return CUR.a.indexOf(i)>=0});record(CUR,ok);renderQ();renderFilters()}
-function canPrev(){return ST.mode==="order"?deck().length>1:BACK.length>0}
+function canPrev(){return ST.ord==="order"?deck().length>1:BACK.length>0}
 function prev(){if(!CUR)return;var t=null;
-  if(ST.mode==="order"){var d=deck(),i=d.indexOf(CUR);if(d.length>1)t=d[(i-1+d.length)%d.length];if(t)LS.set(posKey(),{s:t.subj,n:t.n})}
+  if(ST.ord==="order"){var d=deck(),i=d.indexOf(CUR);if(d.length>1)t=d[(i-1+d.length)%d.length];if(t)LS.set(posKey(),{s:t.subj,n:t.n})}
   else{while(BACK.length&&!t){var b=BACK.pop();if(deck().indexOf(b)>=0)t=b}}
   if(!t)return;CUR=t;SEL=[];DONE=false;renderFilters();renderQ();var x=$("#qbox");if(x&&x.getBoundingClientRect().top<0)x.scrollIntoView({block:"start",behavior:"smooth"})}
 function next(){if(CUR){BACK.push(CUR);if(BACK.length>100)BACK.shift()}advance();CUR=pick();SEL=[];DONE=false;renderFilters();renderQ();var b=$("#qbox");if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView({block:"start",behavior:"smooth"})}
@@ -156,7 +159,7 @@ async function renderTerms(rebuild){
   var todo=all.filter(function(c){return !KNOWN[tkey(c)]});
   chips($("#g-only"),[{v:"all",l:"すべて"},{v:"todo",l:"まだ覚えていないカード",n:todo.length}],ST.gonly,function(v){ST.gonly=v;save();TI=0;renderTerms(true)});
   $("#g-known").textContent="この範囲で覚えたカード "+(all.length-todo.length)+" / "+all.length+"枚";
-  chips($("#g-mode"),[{v:"order",l:"順番どおり"},{v:"random",l:"ランダム"}],ST.gmode,function(v){ST.gmode=v;save();TI=0;renderTerms(true)});
+  chips($("#g-mode"),[{v:"order",l:"順番に"},{v:"random",l:"ランダム"}],ST.gmode,function(v){ST.gmode=v;save();TI=0;renderTerms(true)});
   if(rebuild||!TL.built){TL=(ST.gonly==="todo"?todo:all).slice();TL.built=true;if(ST.gmode==="random")for(var i=TL.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=TL[i];TL[i]=TL[j];TL[j]=t}}
   drawCard();
 }

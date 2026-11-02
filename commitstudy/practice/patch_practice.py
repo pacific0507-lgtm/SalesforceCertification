@@ -1,5 +1,5 @@
 """トレーニング(/practice/)を追加するパッチ。社労士版の「1問トレーニング」と同じ画面構成で、
-  - 問題: 各科目の4択(複数選択も)をそのまま出す。出し方は「順番どおり」「ランダム」「今日の復習」「間違えた問題」「まだ解いていない」
+  - 問題: 各科目の4択(複数選択も)をそのまま出す。絞り込みは「すべて」「今日の復習」「間違えた問題」「まだ解いていない」、出し方は「順番に」「ランダム」(社労士版と同じ)
   - カード: 用語カード(data/<科目>/terms.json)。数字カードはなし
   - 解いた結果は、その場でアカウントの回答履歴(<科目>-quiz)と端末の回答履歴に書き込む。書き込めなかったときのために ls-qpend-v1 にも残し、
     科目の問題集を開いたときに取り込む(社労士版の takePend と同じ。取り込み済みの印で二重には数えない)
@@ -39,7 +39,8 @@ MARKUP = f'''
    <section id="p-q" role="tabpanel" aria-labelledby="t-q">
     <p class="flt-l">科目</p><div class="flt" id="f-subj"></div>
     <div id="f-src-w"><p class="flt-l">出典</p><div class="flt" id="f-src"></div></div>
-    <p class="flt-l">出し方</p><div class="flt" id="f-mode"></div>
+    <p class="flt-l">絞り込み</p><div class="flt" id="f-mode"></div>
+    <p class="flt-l">出し方</p><div class="flt" id="f-ord"></div>
     <div class="cw"><button type="button" class="upbtn" data-up title="大きく表示" aria-label="カードを大きく表示"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></button><article class="bx" id="qbox" aria-live="polite">{LD}</article></div>
    </section>
    <section id="p-g" role="tabpanel" aria-labelledby="t-g" hidden>
