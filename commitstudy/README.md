@@ -94,3 +94,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `figs_m/lib.py` 作図の部品(幅340、横スクロールなし)、`spec_A〜D.py` 各図、`preview.py` 確認用PNG、`apply.py` で chapters.json と差し替え
 
 - `patch_quiz_pos.py`: 問題集を開き直したとき、絞り込みを計算し直した並びの中で前回見ていた問題から再開する
+
+- `patch_sync_keys.py`: お便りの既読・更新情報の既読・用語カードの覚えた・トレーニングの復習予定などもアカウント(fam-ls)に同期
