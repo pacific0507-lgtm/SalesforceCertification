@@ -87,3 +87,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - 解いた結果は `ls-qpend-v1` に残り、科目の問題集を開いたときに回答履歴へ取り込む。学習の記録(act)にも数える
 
 - `patch_subj_time.py`: 学習の記録「科目ごとの進み具合」に科目ごとの累計の勉強時間を常に表示。PCで行が崩れていた不具合(クラス名 x の衝突)も修正
+
+- `patch_fig_fix.py`: スマホで図の説明の「問題 N」ボタンが横に伸びる不具合と、図の文字のはみ出し2か所を修正(d360 の chapters.json も更新)
