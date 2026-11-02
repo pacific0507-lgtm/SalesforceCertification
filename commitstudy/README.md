@@ -98,3 +98,6 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `patch_sync_keys.py`: お便りの既読・更新情報の既読・用語カードの覚えた・トレーニングの復習予定などもアカウント(fam-ls)に同期
 
 - `rebuild.sh`: トレーニング追加前の版から、これまでのパッチを順に当てて作り直す
+
+## 科目 Agentforce Sales コンサルタント(afsales)
+- `afsales_SPEC.md` 原稿の仕様、`afsales/manuscript/` 章ごとの原稿、`build_afsales.py` で data を組み立て、`figs_m/spec_E〜G.py` と `figs_m/apply_afsales.py` で図を入れる、`patch_add_afsales.py` で科目を登録。公開データは `afsales/data/`
