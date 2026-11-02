@@ -11,7 +11,7 @@ var pad=function(n){return (n<10?"0":"")+n},today=function(d){d=d||new Date;retu
 var addDays=function(n){var d=new Date;d.setDate(d.getDate()+n);return today(d)};
 var url=function(p){return window.famURL?window.famURL(p):p};
 var getJSON=function(p){return fetch(url(p)).then(function(r){return r.ok?r.json():[]}).catch(function(){return []})};
-var ST=Object.assign({subj:"all",src:"all",mode:"order",tab:"q",gsubj:"all",gonly:"all"},LS.get("cs-practice-v1",{}));
+var ST=Object.assign({subj:"all",src:"all",mode:"order",tab:"q",gsubj:"all",gonly:"all",gmode:"order"},LS.get("cs-practice-v1",{}));
 var save=function(){LS.set("cs-practice-v1",ST)};
 
 /* ---- クラウド ---- */
@@ -156,7 +156,8 @@ async function renderTerms(rebuild){
   var todo=all.filter(function(c){return !KNOWN[tkey(c)]});
   chips($("#g-only"),[{v:"all",l:"すべて"},{v:"todo",l:"まだ覚えていないカード",n:todo.length}],ST.gonly,function(v){ST.gonly=v;save();TI=0;renderTerms(true)});
   $("#g-known").textContent="この範囲で覚えたカード "+(all.length-todo.length)+" / "+all.length+"枚";
-  if(rebuild||!TL.length||TL.shuffled===undefined){TL=(ST.gonly==="todo"?todo:all).slice();TL.shuffled=false}
+  chips($("#g-mode"),[{v:"order",l:"順番どおり"},{v:"random",l:"ランダム"}],ST.gmode,function(v){ST.gmode=v;save();TI=0;renderTerms(true)});
+  if(rebuild||!TL.built){TL=(ST.gonly==="todo"?todo:all).slice();TL.built=true;if(ST.gmode==="random")for(var i=TL.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=TL[i];TL[i]=TL[j];TL[j]=t}}
   drawCard();
 }
 function drawCard(){
@@ -166,13 +167,12 @@ function drawCard(){
   fc.querySelector(".front").innerHTML='<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span><span>'+esc(c.title)+'</span></p><h3>'+esc(c.t)+'</h3><p class="hint">押すと説明が出ます</p>';
   fc.querySelector(".back").innerHTML='<p class="bx-k"><span>'+esc(c.t)+'</span></p><p class="tc-d">'+esc(c.d)+'</p><p class="tq-links"><a class="bx-go" href="/'+c.subj+'/#f-'+esc(c.s)+'">テキストで確認する</a></p><div class="gk"><button type="button" data-k="again">まだ</button><button type="button" data-k="known"'+(KNOWN[tkey(c)]?' aria-pressed="true"':"")+'>覚えた</button></div>';
   $("#g-pos").textContent=(TI+1)+" / "+TL.length;
-  var sb=$("#g-shuf");sb.textContent=TL.shuffled?"順番に戻す":"シャッフル";sb.setAttribute("aria-pressed",String(!!TL.shuffled));sb.title=TL.shuffled?"シャッフル中。押すと順番どおりに戻します":"カードの順番をシャッフルします";
 }
 function bindTerms(){
   var fc=$("#fc");fc.addEventListener("click",function(e){var k=e.target.closest(".gk button");if(k){e.stopPropagation();var c=TL[TI];if(k.dataset.k==="known")KNOWN[tkey(c)]=Date.now();else delete KNOWN[tkey(c)];LS.set(TKN,KNOWN);TI++;renderTerms(false);return}if(e.target.closest("a"))return;FLIP=!FLIP;fc.classList.toggle("on",FLIP)});
   fc.addEventListener("keydown",function(e){if(e.key===" "||e.key==="Enter"){e.preventDefault();FLIP=!FLIP;fc.classList.toggle("on",FLIP)}});
   $("#g-prev").onclick=function(){TI--;drawCard()};$("#g-next").onclick=function(){TI++;drawCard()};
-  $("#g-shuf").onclick=function(){if(TL.shuffled){renderTerms(true)}else{for(var i=TL.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=TL[i];TL[i]=TL[j];TL[j]=t}TL.shuffled=true;TI=0;drawCard()}};
+  $("#g-flip").onclick=function(){if(!TL.length)return;FLIP=!FLIP;fc.classList.toggle("on",FLIP)};
 }
 
 /* 大きく表示(社労士版と同じ): カード右上のボタンで画面いっぱいに。閉じるは右上の×・戻る・Esc */

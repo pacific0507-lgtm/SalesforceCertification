@@ -51,7 +51,6 @@ body.focus .tq-b{font-size:15.5px}
 .fc-nav{flex-wrap:nowrap}
 .fc-nav button{white-space:nowrap}
 #g-pos{white-space:nowrap;font-variant-numeric:tabular-nums}
-#g-shuf[aria-pressed="true"]{border-color:var(--brand);color:var(--brand)}
 /* 答える前は 前へ・答え合わせ(真ん中)・次へ */
 .tq-act:has(#tq-check){display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:10px}
 .tq-act:has(#tq-check)>*{margin:0;justify-content:center;text-align:center}

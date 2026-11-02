@@ -45,9 +45,10 @@ MARKUP = f'''
    <section id="p-g" role="tabpanel" aria-labelledby="t-g" hidden>
     <p class="flt-l">科目</p><div class="flt" id="g-subj"></div>
     <p class="flt-l">カード</p><div class="flt" id="g-only"></div>
+    <p class="flt-l">出し方</p><div class="flt" id="g-mode"></div>
     <p class="gknown" id="g-known"></p>
     <div class="cw"><button type="button" class="upbtn" data-up title="大きく表示" aria-label="カードを大きく表示"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></button><div class="flip"><div class="fc" id="fc" tabindex="0" role="button" aria-label="カードをめくる"><div class="front">{LD}</div><div class="back"></div></div></div></div>
-    <div class="fc-nav"><button type="button" class="bx-btn" id="g-prev">前へ</button><span id="g-pos"></span><button type="button" class="bx-btn" id="g-shuf">シャッフル</button><button type="button" class="bx-go pri" id="g-next">次へ</button></div>
+    <div class="fc-nav"><button type="button" class="bx-btn" id="g-prev">前へ</button><span id="g-pos"></span><button type="button" class="bx-btn" id="g-flip">めくる</button><button type="button" class="bx-go pri" id="g-next">次へ</button></div>
    </section>
   </div>
   <aside class="side">
