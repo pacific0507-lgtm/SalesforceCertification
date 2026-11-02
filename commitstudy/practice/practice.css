@@ -37,7 +37,7 @@
 .tq-h .tq-sj{margin-right:0}
 .tq-h>span:last-child:not(.tq-sj):not(.tq-pos){margin-left:auto;text-align:right}
 /* 大きく表示: 操作ボタンを画面の下に固定(社労士版と同じ) */
-body.focus #qbox .tq-act{position:fixed;z-index:62;left:max(16px,calc((100vw - 720px)/2));right:max(16px,calc((100vw - 720px)/2));bottom:calc(14px + env(safe-area-inset-bottom,0));margin:0;display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:10px}
+body.focus #qbox .tq-act{position:fixed;z-index:62;left:max(16px,calc((100vw - 720px)/2));right:max(16px,calc((100vw - 720px)/2));bottom:calc(14px + env(safe-area-inset-bottom,0));margin:0;display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:10px}
 body.focus #qbox .tq-act:has(#tq-next){grid-template-columns:1fr 2.5fr}
 body.focus #qbox .tq-act>*{display:flex;align-items:center;justify-content:center;min-height:56px;margin:0;border-radius:16px;text-align:center}
 body.focus #qbox .tq-act>.bx-btn{background:var(--paper)}
@@ -52,3 +52,7 @@ body.focus .tq-b{font-size:15.5px}
 .fc-nav button{white-space:nowrap}
 #g-pos{white-space:nowrap;font-variant-numeric:tabular-nums}
 #g-shuf[aria-pressed="true"]{border-color:var(--brand);color:var(--brand)}
+/* 答える前は 前へ・答え合わせ(真ん中)・次へ */
+.tq-act:has(#tq-check){display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:10px}
+.tq-act:has(#tq-check)>*{margin:0;justify-content:center;text-align:center}
+.tq-act:has(#tq-check) #tq-prev{margin:0}

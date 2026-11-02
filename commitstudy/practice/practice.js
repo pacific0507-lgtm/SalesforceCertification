@@ -129,7 +129,7 @@ function renderQ(){
     h+='<div class="tq-ex"><b>解説</b><p>'+esc(q.ex)+'</p></div>';
     h+='<p class="tq-links"><a class="bx-go" href="/'+q.subj+'/#f-'+esc(q.xs||q.sec)+'">テキストで確認する</a>'+(/^https?:/.test(q.u)?' <a class="bx-go" href="'+esc(q.u)+'" target="_blank" rel="noopener noreferrer">参照ページ ↗</a>':'')+'</p>';
     h+='<div class="tq-act">'+PREV+'<button type="button" class="bx-go pri" id="tq-next">次の問題へ</button></div>';
-  }else h+='<div class="tq-act">'+PREV+'<button type="button" class="bx-btn" id="tq-skip">次へ</button><button type="button" class="bx-go pri" id="tq-check"'+(SEL.length?"":" disabled")+'>答え合わせ</button></div>';
+  }else h+='<div class="tq-act">'+PREV+'<button type="button" class="bx-go pri" id="tq-check"'+(SEL.length?"":" disabled")+'>答え合わせ</button><button type="button" class="bx-btn" id="tq-skip">次へ</button></div>';
   h+='<p class="bx-s tq-key">キー操作: 1〜'+q.o.length+' で選ぶ、Enter で答え合わせ・次へ、← → で前へ・次へ</p>';
   box.innerHTML=h;
 }
