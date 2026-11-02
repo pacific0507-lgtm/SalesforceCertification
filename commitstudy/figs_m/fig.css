@@ -1,0 +1,29 @@
+body{margin:0;font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--surface)}
+body.light{--accent:#24345e;--accent-soft:#dee3f2;--shu:#b3362a;--shu-soft:#fbe8e4;--yama:#7d5800;--yama-soft:#faefcf;--ok:#17784a;--ok-soft:#dcf1e5;--muted:#58675f;--ink:#16211c;--bg:#eff3f1;--surface:#fff}
+body.dark{--accent:#90a6df;--accent-soft:#1c243b;--shu:#ff9c8c;--shu-soft:#3a1c17;--yama:#ebc86e;--yama-soft:#312810;--ok:#6fdc9f;--ok-soft:#133323;--muted:#9aaea4;--ink:#e5ede8;--bg:#0e1511;--surface:#161f1a}
+.col{max-width:720px;margin:0 auto;padding:16px 35px}
+@media (max-width:600px){.col{padding:16px 35px}}
+.fig{margin:18px 0}
+.fig svg{display:block;width:100%;height:auto;margin:0 auto;overflow:visible}
+.fig.m svg{max-width:520px}
+.fig figcaption{font-size:13px;color:var(--muted);text-align:center;margin-top:8px;line-height:1.65}
+.fig .gb{fill:var(--bg);stroke:var(--muted);stroke-width:1.2}
+.fig .gba{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.4}
+.fig .gbr{fill:var(--shu-soft);stroke:var(--shu);stroke-width:1.4}
+.fig .gby{fill:var(--yama-soft);stroke:var(--yama);stroke-width:1.4}
+.fig .gbo{fill:var(--ok-soft);stroke:var(--ok);stroke-width:1.4}
+.fig .gbd{fill:none;stroke:var(--muted);stroke-width:1.3;stroke-dasharray:5 4}
+.fig .gbrd{fill:none;stroke:var(--shu);stroke-width:1.4;stroke-dasharray:5 4}
+.fig .gt{fill:var(--ink);font-size:13px}
+.fig .gtb{fill:var(--ink);font-size:13px;font-weight:700}
+.fig .gts{fill:var(--muted);font-size:11.5px}
+.fig .gtm{fill:var(--muted);font-size:13px}
+.fig .gtr{fill:var(--shu);font-size:13px;font-weight:700}
+.fig .gta{fill:var(--accent);font-size:13px;font-weight:700}
+.fig .gto{fill:var(--ok);font-size:13px;font-weight:700}
+.fig .gl{stroke:var(--ink);stroke-width:1.6;fill:none}
+.fig .gla{stroke:var(--accent);stroke-width:2;fill:none}
+.fig .glr{stroke:var(--shu);stroke-width:2;fill:none}
+.fig .glo{stroke:var(--ok);stroke-width:2;fill:none}
+.fig .gld{stroke:var(--muted);stroke-width:1.6;fill:none;stroke-dasharray:5 4}
+.fig .mk_an{fill:var(--ink)}.fig .mk_aa{fill:var(--accent)}.fig .mk_ar{fill:var(--shu)}.fig .mk_ao{fill:var(--ok)}
