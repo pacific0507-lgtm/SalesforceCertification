@@ -92,3 +92,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 
 ## スマホ向けの図(figs_m/)
 - `figs_m/lib.py` 作図の部品(幅340、横スクロールなし)、`spec_A〜D.py` 各図、`preview.py` 確認用PNG、`apply.py` で chapters.json と差し替え
+
+- `patch_quiz_pos.py`: 問題集を開き直したとき、絞り込みを計算し直した並びの中で前回見ていた問題から再開する
