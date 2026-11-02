@@ -1,7 +1,9 @@
 """トレーニング(/practice/)を追加するパッチ。社労士版の「1問トレーニング」と同じ画面構成で、
   - 問題: 各科目の4択(複数選択も)をそのまま出す。出し方は「順番どおり」「ランダム」「今日の復習」「間違えた問題」「まだ解いていない」
   - カード: 用語カード(data/<科目>/terms.json)。数字カードはなし
-  - 解いた結果は ls-qpend-v1 に残し、科目の問題集を開いたときに回答履歴へ取り込む(社労士版の takePend と同じ)
+  - 解いた結果は、その場でアカウントの回答履歴(<科目>-quiz)と端末の回答履歴に書き込む。書き込めなかったときのために ls-qpend-v1 にも残し、
+    科目の問題集を開いたときに取り込む(社労士版の takePend と同じ。取り込み済みの印で二重には数えない)
+  - 科目のページは、画面に戻ったときにアカウントの回答履歴が新しければ読み直す
 使い方: python3 patch_practice.py <index.html> <出力> practice_extra.css   (同じフォルダの practice.js / practice.css も使う。practice_extra.css は社労士版トレーニングの CSS)
 """
 import json, os, sys
@@ -85,6 +87,15 @@ function takePend(bump){
   if(bump)saveQ();else try{localStorage.setItem(QK,JSON.stringify(S))}catch(e){}
   return true;
 }
+/* 画面に戻ったとき、アカウントの回答履歴がこの画面より新しければ読み直す(ほかの端末のトレーニングで解いた結果もすぐ出る) */
+var pullAt=0;
+function pullQ(){if(!qcloud||document.visibilityState!=="visible"||Date.now()-pullAt<3000)return;pullAt=Date.now();
+  qcloud.get().then(function(qs){var rem=null;try{rem=qs.exists&&qs.data().json?JSON.parse(qs.data().json):null}catch(e){}
+    if(!(rem&&rem.answers&&(rem.ts||0)>(S.ts||0)))return;
+    S=fresh(Object.assign({},qdef,rem));if(!S.answers.study)S.answers.study={};if(!S.answers.exam)S.answers.exam={};
+    try{localStorage.setItem(QK,JSON.stringify(S))}catch(e){}
+    takePend(true);buildDeck();renderAll();try{mountQx()}catch(e){}}).catch(function(){})}
+document.addEventListener("visibilitychange",pullQ);window.addEventListener("focus",pullQ);
 '''
 rep("S=fresh(S);\n", TAKE)
 rep("function applyQ(arr,state){\n  prepQ(arr);qState=state;\n", "function applyQ(arr,state){\n  prepQ(arr);qState=state;takePend(false);\n")

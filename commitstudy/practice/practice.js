@@ -52,7 +52,19 @@ function record(q,ok){
   var sec=Math.max(5,Math.min(120,Math.round((now-lastAt)/1000)));lastAt=now;
   var ak="sr-"+q.subj+"-act-v1",act=LS.get(ak,{ts:0,d:{}});if(!act.d)act.d={};var dd=act.d[today()]||(act.d[today()]={q:0,c:0,r:[],t:0});dd.q=(+dd.q||0)+1;if(ok)dd.c=(+dd.c||0)+1;dd.t=(+dd.t||0)+sec;act.ts=now;LS.set(ak,act);
   clearTimeout(actT);actT=setTimeout(function(){pushAct(q.subj)},2500);
+  pushQuiz(q.subj,q.n,key+"@"+now,ok,now);
   var m=LS.get("cs-train-today",{});if(m.date!==today())m={date:today(),n:0,c:0,combo:0};m.n++;if(ok){m.c++;m.combo++}else m.combo=0;LS.set("cs-train-today",m);renderMeter();
+}
+/* 問題集の回答履歴へ、その場で書き込む(端末に関係なく、どこで問題集を開いてもすぐ反映される)。
+   取り込み済みの印(pa)も付けるので、ls-qpend-v1 からの取り込み(takePend)と二重には数えない */
+function addHist(st,n,pk,ok,t){if(!st||typeof st!=="object")return false;if(!st.hist)st.hist={};if(!Array.isArray(st.pa))st.pa=[];if(st.pa.indexOf(pk)>=0)return false;
+  st.pa.push(pk);if(st.pa.length>1500)st.pa=st.pa.slice(-1500);var h=st.hist[n]||(st.hist[n]={n:0,c:0});h.n=(+h.n||0)+1;if(ok)h.c=(+h.c||0)+1;if(t>=(+h.t||0)){h.l=ok?"o":"x";h.t=t}st.ts=Math.max(Date.now(),(+st.ts||0)+1);return true}
+var quizQ=Promise.resolve();
+function pushQuiz(id,n,pk,ok,t){
+  try{var lk="sr-"+id+"-quiz-v1",loc=LS.get(lk,null);if(loc&&addHist(loc,n,pk,ok,t))LS.set(lk,loc)}catch(e){}
+  quizQ=quizQ.then(async function(){try{var cl=await cloud;if(!cl)return;var d=cdoc(cl,id+"-quiz"),sn=await d.get(),st=null;
+    if(!sn.exists)return;var v=sn.data();try{st=v&&v.json?JSON.parse(v.json):null}catch(e){st=null}if(!st||!st.answers)return;
+    if(addHist(st,n,pk,ok,t))await d.set({json:JSON.stringify(st),ts:st.ts})}catch(e){}});
 }
 async function pushAct(id){
   try{var cl=await cloud;if(!cl)return;var d=cdoc(cl,id+"-act"),s=await d.get(),rem=s.exists?s.data():{d:{}},loc=LS.get("sr-"+id+"-act-v1",{d:{}}),out={d:{},ts:Date.now()};
