@@ -1,0 +1,351 @@
+{
+ "chapter": 5,
+ "chapter_title": "予測AIと生成AI",
+ "chapter_sub": "リードや商談のスコアリングなどの予測AI、営業向けエージェントやメール生成などの生成AI、そして Einstein Trust Layer と信頼できるAIの原則を学びます。",
+ "sections": [
+  {
+   "id": "predictive",
+   "no": "Ch5·1",
+   "title": "予測AI(リードスコアリング・商談スコアリング・予測のインサイトなど)",
+   "tag": "Predictive AI",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>問題です。リードスコアが高いリードとは、どんなリードでしょう?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>わかった!担当者がたくさん電話したリード!</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>不正解だ。電話の回数ではない。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>過去に変換されたリードと、どれだけ似ているかです。Einstein は過去の成功パターンを学んで、点数を付けます。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>そっか、点数のルールを人が決めるんじゃなくて、AIが過去から学ぶんだね。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>教師データは過去の変換結果。だから件数が足りないと学べない。</p></div><p class=\"one\">予測AIは、過去のデータから「この先どうなりそうか」を数字で示すAIです。Agentforce Sales(旧 Sales Cloud)では、リード、商談、売上予測に予測の機能があります。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>天気予報です。過去の気圧や雲の動きのパターンから、明日の降水確率を出します。リードスコアは「変換の降水確率」、商談スコアは「成立の降水確率」のようなものです。</p></div><h4>予測AIの機能の早見表</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>予測するもの</th><th>表示される場所</th></tr></thead><tr><td>Einstein Lead Scoring</td><td>リードが変換されそうか</td><td>リードの Lead Score 項目、Einstein Score コンポーネント、リストビュー</td></tr><tr><td>Einstein Opportunity Scoring</td><td>商談が成立しそうか(1〜99)</td><td>商談レコード、リストビュー、売上予測、Pipeline Inspection</td></tr><tr><td>Einstein Deal Insights</td><td>商談の健全性とリスク</td><td>Pipeline Inspection のサイドパネル</td></tr><tr><td>Einstein Forecasting</td><td>期末にチームがいくら売り上げるか</td><td>売上予測の画面の予測列</td></tr></table></div><h4>Einstein Lead Scoring</h4><ul><li>Einstein Lead Scoring は、過去に取引開始(変換)されたリードのパターンを機械学習で分析し、いま優先すべきリードを予測します。点数を手で決めるルールベースの方式より、簡単で速く、正確とされます。</li><li>リードに「Lead Score」項目が追加されます。スコアが高いほど、過去に変換されたリードとの共通点が多いことを示します。</li><li>Einstein はリードデータを約10日ごとに再分析し、スコアを更新します。</li><li>データ要件は、直近200日に作成されたリードが1,000件以上あり、そのうち120件以上が取引先と取引先責任者に変換されていることです。この要件はセグメントごとに適用されます。</li><li>セグメントを作らずに全リードをまとめてスコアリングし、自社のデータが足りないときは、多くの Salesforce 顧客の匿名データで作ったグローバルモデルが使われます。データがたまると自社用のモデルを作り、結果の良いほうを使います。</li><li>国内のリードと海外のリードのように変換のパターンが違う場合は、セグメントを分けてスコアリングすると精度が上がります。セグメントは最大35個、1つのセグメントの項目フィルタは最大100個です。</li><li>Einstein がスコアリングに使える項目は、Sales Insights Integration User(Einstein が使う連携用ユーザー)がアクセスできる項目だけです。項目レベルセキュリティで隠れた項目は「含める項目」の一覧に出ません。</li><li>有効化してからスコアが付くまで、最大48時間かかります。有効化には「Customize Application」「Modify All Data」「View All Profiles」の権限が必要です。</li></ul><h4>Einstein Opportunity Scoring</h4><ul><li>Einstein Opportunity Scoring は、商談ごとに1〜99のスコアを付け、成立する可能性を示します。スコアは商談レコード、リストビュー、売上予測の画面に表示され、レポートや自動化にも使えます。</li><li>Einstein Opportunity Scoring は、Sales Cloud Einstein のライセンスがなくても使えます。対象の Enterprise、Performance、Unlimited Edition では追加費用なしで利用できます。</li><li>分析の材料は、過去にクローズした商談(成立と不成立の両方)の項目、履歴、活動と、関連する取引先の情報、商品、見積、価格表の情報です。</li><li>データ要件は、直近24か月に成立(Closed Won)の商談が200件以上、不成立(Closed Lost)の商談が200件以上あることです。どちらも期間が2日以上の商談に限ります。</li><li>勝率の計算には標準の「フェーズ」項目が使われます。フェーズの選択リスト値の名前を変えた場合は、Open、Closed/Won、Closed/Lost の正しい種別に対応づけておきます。</li><li>有効化してからスコアが出るまで約48時間かかります。作成から6時間たっていない商談や、クローズした商談にはスコアが表示されません。</li></ul><h4>商談のインサイトと売上予測の予測</h4><ul><li>Einstein Deal Insights は、Pipeline Inspection のサイドパネルの「Insights」タブに、商談の健全性に関する予測と、商談を前に進めるための推奨アクションを表示します。</li><li>インサイトの出どころは、Einstein Opportunity Scoring、商談に関連する直近30日のケース、Einstein Activity Capture のメールのインサイト(競合への言及、価格の話題)、Einstein Conversation Insights の通話の分析、購買側の担当者の情報などです。</li><li>Pipeline Inspection では、商談スコアが数値ではなく段階(ティア)で表示されます。段階が上下すると、赤や緑の矢印で変化が示されます。</li><li>Einstein Forecasting は、売上予測(Collaborative Forecasts)の画面に、マネージャーのチームごとの予測額(中央値)を表示します。予測の対象は、売上予測分類が Best Case と Commit の商談です。</li><li>Einstein Forecasting では、過去の商談データが少なくとも12か月分あることが推奨されます。データが足りないときや、予測の幅が大きすぎるときは、予測は表示されません。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>データが足りない会社は、予測AIを使えないの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>リードスコアと商談スコアは、自社のデータが足りないとき、多くの顧客の匿名データで作ったグローバルモデルを使います。ただしリードスコアでセグメントを作った場合は、セグメントごとに要件を満たす必要があります。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>まずは共通ライブラリで動かし、自前のモデルが育ったら良いほうを使う。合理的だ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>リードは「直近200日に1,000件作成、うち120件変換」、商談は「直近24か月に成立200件と不成立200件」です。数字の取り違えに注意します。</li><li>商談スコアは1〜99で、Sales Cloud Einstein のライセンスがなくても使えます。</li><li>スコアに使いたい項目が一覧に出ないときは、Sales Insights Integration User の項目レベルセキュリティを確認します。</li><li>変換パターンが違うリード群は、セグメントを分けてスコアリングします。</li><li>Pipeline Inspection の Deal Insights は、Einstein Activity Capture をつなぐと充実します。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社では、営業担当者がどのリードから連絡すべきか迷っています。マーケティング部門が手作業で点数のルールを作ってきましたが、保守が負担になっています。過去の変換実績から自動で優先度を示したい場合、コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Einstein Lead Scoring を有効にし、Lead Score 項目をリストビューに追加する",
+      "リード割り当てルールに点数の条件を追加する",
+      "Einstein Opportunity Scoring を有効にする",
+      "Sales Engagement のケイデンスで全リードに連絡する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Lead Scoring は、過去に変換されたリードのパターンを機械学習で分析し、優先すべきリードを予測します。手作業のルールを保守する必要がありません。Einstein Opportunity Scoring は商談の成立可能性を予測する機能で、リードには使いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_lead_insights.htm&type=5",
+     "x": "Einstein Lead Scoring は、過去に取引開始(変換)されたリードのパターンを機械学習で分析し、いま優先すべきリードを予測します。点数を手で決めるルールベースの方式より、簡単で速く、正確とされます。"
+    },
+    {
+     "q": "ある会社は直近200日に作成されたリードが600件しかありません。セグメントを作らず、全リードをまとめて Einstein Lead Scoring でスコアリングしようとしています。どうなりますか?",
+     "o": [
+      "自社のデータが足りないため、多くの顧客の匿名データで作ったグローバルモデルでスコアが付く",
+      "リードが1,000件たまるまで、Einstein Lead Scoring を有効にできない",
+      "変換済みのリードだけにスコアが付く",
+      "スコアの代わりに、割り当てルールの結果が表示される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "セグメントを作らず全リードをまとめてスコアリングし、自社データが足りないときは、グローバルモデルが使われます。データがたまると自社用のモデルを作り、結果の良いほうを使います。有効化そのものが禁止されるわけではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_lead_insights.htm&type=5",
+     "x": "セグメントを作らずに全リードをまとめてスコアリングし、自社のデータが足りないときは、多くの Salesforce 顧客の匿名データで作ったグローバルモデルが使われます。データがたまると自社用のモデルを作り、結果の良いほうを使います。"
+    },
+    {
+     "q": "あるグローバル企業では、国内のリードと海外のリードで、変換に至るまでのパターンが大きく違います。Einstein Lead Scoring の精度を高めるため、コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "国(Country)項目などを条件にリードのセグメントを分け、セグメントごとにスコアリングする",
+      "海外のリードを別の組織に移す",
+      "国の項目をモデルから除外する",
+      "リードのレコードタイプを1つに統一する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "変換パターンが違うリード群は、セグメントを分けると、それぞれのパターンに基づいた正確なスコアになります。セグメントは最大35個まで作れます。国の項目を除外すると、違いを捉える手がかりがかえって減ります。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_setup_enable_lead_insights.htm&type=5",
+     "x": "国内のリードと海外のリードのように変換のパターンが違う場合は、セグメントを分けてスコアリングすると精度が上がります。セグメントは最大35個、1つのセグメントの項目フィルタは最大100個です。"
+    },
+    {
+     "q": "管理者が Einstein Lead Scoring のカスタム設定で、モデルに含める項目を選ぼうとしています。ところが、自社で作ったカスタム項目「業種区分」が一覧に表示されません。最も可能性の高い原因はどれですか?",
+     "o": [
+      "Sales Insights Integration User に、その項目へのアクセス権がない",
+      "カスタム項目はスコアリングに使えない",
+      "管理者に「Modify All Data」権限がない",
+      "その項目がリードのページレイアウトに配置されていない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein が使える項目は、Sales Insights Integration User がアクセスできる項目です。項目レベルセキュリティで制限されていると、管理者自身には見えても一覧には出ません。カスタム項目自体はスコアリングに使えます。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_setup_enable_lead_insights.htm&type=5",
+     "x": "Einstein がスコアリングに使える項目は、Sales Insights Integration User(Einstein が使う連携用ユーザー)がアクセスできる項目だけです。項目レベルセキュリティで隠れた項目は「含める項目」の一覧に出ません。"
+    },
+    {
+     "q": "ある会社が Einstein Opportunity Scoring で自社データのモデルを作りたいと考えています。自社モデルのデータ要件として正しいものはどれですか?",
+     "o": [
+      "直近24か月に、成立と不成立の商談がそれぞれ200件以上(期間2日以上)ある",
+      "直近200日に、商談が1,000件以上作成されている",
+      "直近12か月に、成立した商談が120件以上ある",
+      "直近6か月に、すべての商談に活動が記録されている"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Opportunity Scoring の要件は、直近24か月に成立200件以上、不成立200件以上で、どちらも期間2日以上の商談です。「200日に1,000件」は Einstein Lead Scoring の要件で、取り違えやすい点です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_data_requirements.htm&type=5",
+     "x": "データ要件は、直近24か月に成立(Closed Won)の商談が200件以上、不成立(Closed Lost)の商談が200件以上あることです。どちらも期間が2日以上の商談に限ります。"
+    },
+    {
+     "q": "ある会社は商談のフェーズの選択リスト値を自社の言葉に変えました。その後、Einstein Opportunity Scoring のスコアが実態とずれているように見えます。コンサルタントがまず確認すべきことはどれですか?",
+     "o": [
+      "変更したフェーズの値が、Open、Closed/Won、Closed/Lost の正しい種別に対応づいているか",
+      "商談の確度(Probability)項目が非表示になっていないか",
+      "売上予測分類が Best Case に設定されているか",
+      "商談チームが有効になっているか"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Opportunity Scoring は標準のフェーズ項目から勝率を計算し、その勝率をスコアに使います。値の名前を変えたときに種別の対応がずれると、勝率とスコアがゆがみます。売上予測分類や商談チームはスコアの計算に直接は関係しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_setup_opportunity_scoring_considerations.htm&type=5",
+     "x": "勝率の計算には標準の「フェーズ」項目が使われます。フェーズの選択リスト値の名前を変えた場合は、Open、Closed/Won、Closed/Lost の正しい種別に対応づけておきます。"
+    },
+    {
+     "q": "営業マネージャーは、Pipeline Inspection で商談ごとのリスクを確認したいと考えています。とくに、顧客がメールで競合他社に触れたり、価格について質問したりした商談を見つけたいです。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Einstein Activity Capture を設定し、Einstein Deal Insights のメール関連のインサイトを使う",
+      "商談のレポートに「競合」カスタム項目を追加し、担当者に手入力させる",
+      "Einstein Forecasting を有効にする",
+      "リードの Einstein Score コンポーネントを商談ページに追加する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Deal Insights は Pipeline Inspection に商談の健全性のインサイトを表示します。Einstein Activity Capture のメール分析から、競合への言及や価格の話題のインサイトが出ます。Einstein Forecasting はチーム単位の予測額で、個々のメールの内容は示しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.pipeline_inspection_einstein_deal_insights.htm&type=5",
+     "x": "インサイトの出どころは、Einstein Opportunity Scoring、商談に関連する直近30日のケース、Einstein Activity Capture のメールのインサイト(競合への言及、価格の話題)、Einstein Conversation Insights の通話の分析、購買側の担当者の情報などです。"
+    }
+   ]
+  },
+  {
+   "id": "generative",
+   "no": "Ch5·2",
+   "title": "生成AI(Agentforce の営業向けエージェント・メール生成・通話の要約など)",
+   "tag": "Generative AI",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>生成AIってさ、営業の代わりに全部やってくれる魔法の社員でしょ?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>魔法ではない。役割ごとに分かれた専門の同僚だ。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>同僚?じゃあ、新人を育てる係もいるの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>います。新規の見込み客にメールするのが Agentforce Engagement、練習相手になるのが Agentforce Sales Coach です。担当者の手元では、メールの下書きや通話の要約も生成AIが手伝います。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>営業チームに、AIの同僚が何人か入るイメージだね!</p></div><p class=\"one\">生成AIは、メールや要約などの文章を新しく作るAIです。Agentforce Sales では、自律して動くエージェントと、担当者の作業を手伝う機能の2種類があります。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>営業部に来た派遣チームです。電話番とメール係(Agentforce Engagement)、練習相手のトレーナー(Sales Coach)、議事録係(通話の要約)、文案係(Sales Emails)がいます。どの係に何を任せるかを決めるのが、コンサルタントの仕事です。</p></div><h4>営業向けの生成AI機能の使い分け</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>種類</th><th>使う場面</th></tr></thead><tr><td>Agentforce Engagement</td><td>自律型エージェント</td><td>見込み客へのメールのアウトリーチ、返信対応、引き継ぎ</td></tr><tr><td>Agentforce Inbound Lead Generation</td><td>自律型エージェント</td><td>Web チャットでの質問対応、リード獲得、ミーティング設定</td></tr><tr><td>Agentforce Sales Coach</td><td>自律型エージェント</td><td>プレゼンへのフィードバック、商談のロールプレイ</td></tr><tr><td>Einstein Sales Emails</td><td>担当者を手伝う機能</td><td>個別の営業メールの下書き</td></tr><tr><td>ECI の通話の要約、Call Explorer</td><td>担当者を手伝う機能</td><td>通話の要約、次のステップ、通話への質問</td></tr></table></div><h4>Agentforce Engagement と Inbound Lead Generation</h4><ul><li>Agentforce Engagement(旧称 Agentforce Lead Nurturing)は、リード、取引先責任者、個人取引先を、メールで24時間ナーチャリング(育成)する自律型エージェントです。エージェントの一覧やアクション名には「Einstein Sales Development Rep」「Sales SDR」の表記も残っています。</li><li>主な仕事は、レコードの情報を使った初回のアウトリーチメール、返信がないときのフォローアップ(ナッジ)メール、自社の資料に基づく質問への回答、関心を示した見込み客の営業担当者への引き継ぎ(ミーティング予約)、オプトアウト依頼の処理です。</li><li>見込み客をエージェントに割り当てる方法は3つです。エージェント設定の割り当てルール、営業担当者やマネージャーが作る自動アクション(Automated Actions)、レコード詳細ページやリストビューの「Assign to Agent」アクションです。</li><li>エージェントに割り当てても、レコードの所有者は変わりません。エージェントは専用の Sales Engagement ケイデンスで、メールのアウトリーチを計画し、追跡します。</li><li>「Send as Seller」をオンにすると、エージェントはレコード所有者のメールアドレスと署名でメールを送ります。「Require Manual Approval」をオンにすると、送信前に人がメールを確認し、承認できます。</li><li>Web サイトのチャットなどで訪問者の質問に答え、リードを獲得し、営業とのミーティングを設定するのは、Agentforce Inbound Lead Generation のテンプレートです。</li></ul><h4>Agentforce Sales Coach</h4><ul><li>Agentforce Sales Coach は、生成AIと CRM データを使って、営業担当者のプレゼンにフィードバックしたり、顧客役になってロールプレイをしたりする自律型エージェントです。</li><li>既成のシナリオは商談のフェーズに対応しています。Qualification と Needs Analysis ではプレゼンへのフィードバックを、Proposal/Price Quote と Negotiation/Review ではエージェントが顧客役になるロールプレイを行います。</li><li>フィードバックは、練習の対象にしたレコードの CRM データと照らし合わせて作られます。Agentforce Data Library を使って、自社固有の外部データ(社内資料など)を参照させることもできます。</li></ul><h4>Einstein Sales Emails</h4><ul><li>Einstein Sales Emails は、取引先責任者やリードの名前や情報を取り込んで、営業メールの下書きを生成します。静的なメールテンプレートと違い、毎回その相手向けの文面を作ります。</li><li>Lightning Experience のメール作成画面のほか、Outlook と Gmail の連携からも使えます。「Draft with Einstein」をクリックし、既成のメール指示(紹介、フォローアップのナッジなど)か、自分で書いた指示を選びます。</li><li>管理者は Prompt Builder でカスタムのメール種別(プロンプトテンプレート)を作れます。ユーザーが自分で指示を入力できるかどうかも管理者が制御でき、既定ではオンです。</li><li>利用には「Einstein Sales Emails」権限セットが必要です。生成AIの出力は不正確な場合があるため、送信前に内容を確認します。</li></ul><h4>Einstein Conversation Insights の生成AI機能</h4><ul><li>Einstein Conversation Insights(ECI)の通話の要約は、音声通話とビデオ通話のレコードの「Summary」タブに自動で作られます。要約、顧客の印象、次のステップが含まれ、編集もできます。</li><li>生成的な会話インサイト(Generative Conversation Insights)では、検出したい話題を自然言語の指示で定義できます。有効にできるのは5つまでで、有効化の前に Call Explorer でテストすることが推奨されます。</li><li>Deal Recap は、クローズした商談の経緯を要約し、成立や不成立の理由をチームが理解するのに役立ちます。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>Agentforce Engagement に任せたら、リードの所有者はエージェントになっちゃう?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>なりません。所有者は営業担当者のままです。エージェントは専用のケイデンスでメールを送り、関心を示した人を担当者に引き継ぎます。</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>所有権は移さず、処理だけ委譲する。参照渡しのようなものだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>メールで見込み客を育てるのは Agentforce Engagement、Web チャットでリードを獲得するのは Agentforce Inbound Lead Generation です。</li><li>エージェントに割り当ててもレコードの所有者は変わりません。</li><li>担当者のアドレスで送るなら「Send as Seller」、送信前に人が確認するなら「Require Manual Approval」です。</li><li>営業担当者の練習(プレゼンへのフィードバック、ロールプレイ)は Agentforce Sales Coach です。</li><li>ECI の通話の要約には、要約、顧客の印象、次のステップが含まれます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社では、Web フォームから毎日多くのリードが入りますが、インサイドセールスの人数が足りず、初回の連絡が遅れています。リードに24時間メールで連絡し、質問に答え、関心のある人を営業担当者に引き継ぎたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Agentforce Engagement",
+      "Agentforce Sales Coach",
+      "Einstein Sales Emails",
+      "Einstein Lead Scoring"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce Engagement は、リードなどにメールで初回のアウトリーチやフォローアップを行い、質問に答え、関心のある見込み客を営業担当者に引き継ぐ自律型エージェントです。Einstein Sales Emails は担当者が自分で下書きを作る機能で、自律しては動きません。Einstein Lead Scoring は優先度を示すだけです。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_agent_sdr_intro.htm&type=5",
+     "x": "Agentforce Engagement(旧称 Agentforce Lead Nurturing)は、リード、取引先責任者、個人取引先を、メールで24時間ナーチャリング(育成)する自律型エージェントです。エージェントの一覧やアクション名には「Einstein Sales Development Rep」「Sales SDR」の表記も残っています。"
+    },
+    {
+     "q": "ある会社は、自社の Web サイトに来た訪問者とチャットで会話し、質問に答えてリードとして登録し、営業とのミーティングまで設定したいと考えています。どのエージェントテンプレートが最も適していますか?",
+     "o": [
+      "Agentforce Inbound Lead Generation",
+      "Agentforce Engagement",
+      "Agentforce Sales Coach",
+      "Agentforce Qualification"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Web チャットなどで訪問者に対応し、リードを獲得してミーティングを設定するのは Inbound Lead Generation です。Agentforce Engagement は既存の見込み客をメールで育てるテンプレートで、チャットでの獲得が主目的ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_agents_customer_engagement_parent.htm&type=5",
+     "x": "Web サイトのチャットなどで訪問者の質問に答え、リードを獲得し、営業とのミーティングを設定するのは、Agentforce Inbound Lead Generation のテンプレートです。"
+    },
+    {
+     "q": "営業部長は、リードを Agentforce Engagement のエージェントに割り当てると、リードの所有者がエージェントに変わり、担当者のレポートから消えてしまうのではないかと心配しています。コンサルタントはどう説明すべきですか?",
+     "o": [
+      "割り当ててもレコードの所有者は変わらず、エージェントは専用の Sales Engagement ケイデンスでアウトリーチを行う",
+      "所有者はエージェントのユーザーに変わるが、引き継ぎ時に元に戻る",
+      "所有者は、リードキューに自動で変わる",
+      "所有者を変えないためには、割り当てルールを使わずに手動で割り当てる必要がある"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "どの方法で割り当てても、レコードの所有者は変わりません。エージェントは専用の Sales Engagement ケイデンスにその見込み客を追加して、メールのアウトリーチを行います。割り当て方法によって所有者の扱いが変わることもありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_agent_sdr_intro.htm&type=5",
+     "x": "エージェントに割り当てても、レコードの所有者は変わりません。エージェントは専用の Sales Engagement ケイデンスで、メールのアウトリーチを計画し、追跡します。"
+    },
+    {
+     "q": "ある会社は Agentforce Engagement を導入します。見込み客には担当営業のメールアドレスと署名でメールを届けたいです。また、エージェントが作ったメールは送信前に担当者が確認したいと考えています。管理者がオンにすべき設定はどれですか?(2つ選択)",
+     "o": [
+      "Send as Seller",
+      "Require Manual Approval",
+      "Activity 360 Reporting",
+      "Einstein Activity Capture の共有設定で「すべてのユーザーと共有」"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Send as Seller をオンにすると、レコード所有者のメールアドレスと署名で送信します。Require Manual Approval をオンにすると、送信前に人が確認して承認できます。Activity 360 Reporting がオンだと Agentforce Engagement は動作しないため、逆効果です。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_agent_sdr_intro.htm&type=5",
+     "x": "「Send as Seller」をオンにすると、エージェントはレコード所有者のメールアドレスと署名でメールを送ります。「Require Manual Approval」をオンにすると、送信前に人がメールを確認し、承認できます。"
+    },
+    {
+     "q": "営業部門の育成担当者は、提案や価格交渉の段階に進んだ商談について、担当者が本番前に顧客との交渉を練習できるようにしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Agentforce Sales Coach のロールプレイを使う",
+      "Einstein Conversation Insights の Call Explorer を使う",
+      "Agentforce Engagement のナッジメールを使う",
+      "Einstein Opportunity Scoring の要因を確認させる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce Sales Coach は、Proposal/Price Quote や Negotiation/Review のフェーズの商談で、エージェントが顧客役になってロールプレイを行い、フィードバックを返します。Call Explorer は終わった通話に質問する機能で、練習相手にはなりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_agents_coach_discover.htm&type=5",
+     "x": "既成のシナリオは商談のフェーズに対応しています。Qualification と Needs Analysis ではプレゼンへのフィードバックを、Proposal/Price Quote と Negotiation/Review ではエージェントが顧客役になるロールプレイを行います。"
+    },
+    {
+     "q": "ある会社の営業担当者は Outlook で日々のメールを書いています。メールテンプレートでは文面が毎回同じになり、反応が悪いと感じています。相手のリードや取引先責任者の情報に合わせて、毎回違う下書きを作りたい場合、コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Einstein Sales Emails を設定し、「Draft with Einstein」で下書きを作る",
+      "差し込み項目を増やした Lightning メールテンプレートを作る",
+      "Agentforce Sales Coach にメールを評価させる",
+      "Einstein Activity Capture でメールを同期する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Sales Emails は、相手の情報を取り込んで、毎回その相手向けの下書きを生成します。Outlook と Gmail の連携からも使えます。差し込み項目を増やしても、テンプレートの文面は静的なままです。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.einstein_sales_emails_draft.htm&type=5",
+     "x": "Einstein Sales Emails は、取引先責任者やリードの名前や情報を取り込んで、営業メールの下書きを生成します。静的なメールテンプレートと違い、毎回その相手向けの文面を作ります。"
+    },
+    {
+     "q": "営業マネージャーは、担当者が顧客とのビデオ通話のあとに議事録を書く時間を減らしたいと考えています。通話の要約と次のステップを自動で記録したい場合、コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Einstein Conversation Insights の通話の要約(生成AI)を有効にする",
+      "Einstein Lead Scoring を有効にする",
+      "通話のあとに ToDo を自動作成するフローを作る",
+      "Pipeline Inspection の Alerts 列を追加する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ECI の通話の要約は、音声通話とビデオ通話のレコードの Summary タブに自動で作られ、要約、顧客の印象、次のステップを含みます。フローで ToDo を作っても、通話の内容は要約されません。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.eci_call_summaries.htm&type=5",
+     "x": "Einstein Conversation Insights(ECI)の通話の要約は、音声通話とビデオ通話のレコードの「Summary」タブに自動で作られます。要約、顧客の印象、次のステップが含まれ、編集もできます。"
+    }
+   ]
+  },
+  {
+   "id": "trust",
+   "no": "Ch5·3",
+   "title": "AIの倫理と信頼できるAIの原則(Einstein Trust Layer)",
+   "tag": "Einstein Trust Layer",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>なぞなぞ!AIに顧客の名前を見せずに、顧客の名前入りのメールを書かせる方法は?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>答えはデータマスキングです。名前を目印に置き換えてからLLMに送り、戻ってきた文章で元に戻します。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>えっ、即答!じゃあ、送ったデータをLLMの会社が勝手に学習に使ったら?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>それを防ぐのがゼロデータリテンションです。外部のLLMはデータを保存せず、学習にも使いません。どちらも Einstein Trust Layer の機能です。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>なぞなぞにならなかった…。でも安心した!</p></div><p class=\"one\">Einstein Trust Layer は、Salesforce プラットフォームに組み込まれた安全なAIの仕組みです。契約、セキュリティ技術、データとプライバシーの制御を組み合わせて、生成AIを使っても会社と顧客のデータを守ります。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>書類を外部の翻訳会社に出すときの手順です。出す前に個人名を黒塗りし(マスキング)、翻訳会社には控えを残させない契約を結び(ゼロデータリテンション)、戻った訳文に不適切な表現がないか検査し(有害性の検出)、やり取りを台帳に記録します(監査証跡)。</p></div><h4>Einstein Trust Layer の主な機能</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>内容</th></tr></thead><tr><td>ゼロデータリテンション(Zero Data Retention)</td><td>外部の LLM はデータを保存せず、学習にも使わない</td></tr><tr><td>動的グラウンディングとセキュアなデータ取得</td><td>レコードの関連情報をプロンプトに合わせて文脈を与える。ユーザーの権限の範囲で取得する</td></tr><tr><td>プロンプト防御(Prompt Defense)</td><td>システムポリシーとプロンプトインジェクションの検知で、ハルシネーションや有害な出力を減らす</td></tr><tr><td>データマスキング(Data Masking)</td><td>機密データを LLM に送る前にプレースホルダーに置き換え、応答で元に戻す</td></tr><tr><td>有害性の検出(Toxicity Detection)</td><td>プロンプトと応答の有害な内容を機械学習で検出し、スコアを付ける</td></tr><tr><td>監査とフィードバック(Audit Trail)</td><td>プロンプト、応答、信頼のシグナルを Data 360 に記録する</td></tr></table></div><h4>機能のくわしい動き</h4><ul><li>ゼロデータリテンションでは、Salesforce が外部の LLM プロバイダー(OpenAI など)と契約を結び、送ったデータを保存させず、モデルの学習や製品改善にも使わせません。</li><li>セキュアなデータ取得では、プロンプトを実行するユーザーの権限に基づいてデータを取り出します。ロールや項目レベルセキュリティなど、標準のアクセス制御はそのまま守られます。</li><li>データマスキングには2種類あります。パターンベースは、正規表現と機械学習で文中の機密データ(人名や会社名など)を見つけます。項目ベースは、Shield Platform Encryption やデータ分類が付いた項目のメタデータで判断します。</li><li>マスクする対象は、Einstein Trust Layer の設定で選べます。LLM から応答が戻ると、元のデータに戻して(デマスキングして)ユーザーに表示します。</li><li>有害性のスコアは、カテゴリごとと全体で0から1の値になり、1が最も有害です。スコアは監査証跡として Data 360 に保存されます。</li><li>監査証跡を見るには、Einstein 生成AIの監査とフィードバックのデータ収集と保存をオンにし、レポートパッケージをインストールします。データは Data 360 の既定のデータスペースに保存され、データストリームは1時間ごとに更新されます。</li></ul><h4>信頼できる生成AIの5つの原則</h4><ul><li>正確性(Accuracy): できる限り根拠や出典を示します。多くの用途で、エンドユーザーに共有する前に人が応答を確認することを推奨しています。</li><li>安全性(Safety): モデルの応答に含まれるバイアス、有害性、有害な内容を検出し、軽減します。</li><li>透明性(Transparency): データの出どころを尊重し、できる限りお客様のデータに基づいて応答します。ガイドラインによっては誠実性(Honesty)と表現されます。</li><li>能力の強化(Empowerment): AIは人の能力を高め、仕事をより効率的で意義のあるものにするためのものです。</li><li>持続可能性(Sustainability): 正確さを保ちながら適切なサイズのモデルを作り、炭素排出を減らします。</li></ul><h4>営業のAIで倫理を守る実践(Agentforce Engagement の例)</h4><ul><li>エージェントがAIであることを明確にするため、人間らしいAI名に、役割を示すAIタイトルを組み合わせます。たとえば「Ziggy, Digital Agent」のようにします。</li><li>AIが生成したメールであることを示すフッター(「This email was generated by AI.」など)は、編集できない形で付けられます。</li><li>Einstein Sales Emails などの生成結果は、不正確だったり有害だったりする場合があります。外部に送る前に人が確認し、送信する人が責任を持ちます。</li></ul><div class=\"co talk t2\"><p class=\"tk pen\"><b class=\"who\">コミットくん</b>マスキングはパターンと項目の2方式。項目ベースは既存のデータ分類を再利用する。設定の二重管理が要らない。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そのとおりです。Shield Platform Encryption やデータ分類を付けている項目は、プロンプトの差し込み項目に使ってもマスクされます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>外部の LLM にデータを保存させない、学習させないのはゼロデータリテンションです。</li><li>生成AIが参照するデータは、実行ユーザーの権限と項目レベルセキュリティの範囲に限られます。</li><li>マスキングと有害性スコアの記録は、Data 360 の監査証跡で確認します。使うにはデータ収集と保存をオンにします。</li><li>原則は正確性、安全性、透明性(誠実性)、能力の強化、持続可能性の5つです。人が出力を確認することは正確性の一部です。</li><li>顧客にAIであることを隠さないことが大切です。AIタイトルと、編集できないAIの開示フッターがその仕組みです。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社の法務部門は、商談の情報を含むプロンプトが外部の LLM に送られると、LLM の提供会社にデータが保存され、モデルの学習に使われるのではないかと心配しています。コンサルタントは Einstein Trust Layer のどの機能で説明すべきですか?",
+     "o": [
+      "ゼロデータリテンション",
+      "有害性の検出",
+      "プロンプト防御",
+      "動的グラウンディング"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ゼロデータリテンションでは、外部の LLM プロバイダーと契約を結び、データを保存させず、学習にも使わせません。有害性の検出は応答の有害な内容を見つける機能で、データの保存とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_layer.htm&type=5",
+     "x": "ゼロデータリテンションでは、Salesforce が外部の LLM プロバイダー(OpenAI など)と契約を結び、送ったデータを保存させず、モデルの学習や製品改善にも使わせません。"
+    },
+    {
+     "q": "ある会社では、営業担当者ごとに見られる取引先が共有ルールで制限されています。生成AIでメールを作るとき、担当者が見られない取引先の情報が文面に入るのではないかという懸念があります。コンサルタントはどう説明すべきですか?",
+     "o": [
+      "セキュアなデータ取得により、プロンプトを実行するユーザーの権限と項目レベルセキュリティの範囲でデータが取り出される",
+      "生成AIはシステム管理者の権限で動くため、事前にすべての共有ルールを無効にする必要がある",
+      "データマスキングにより、見られない取引先の名前だけが伏せ字になる",
+      "有害性の検出により、権限のない情報は自動で削除される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "動的グラウンディングのセキュアなデータ取得は、実行ユーザーの権限に基づいてデータを取得し、ロールや項目レベルセキュリティなどの標準の制御を守ります。データマスキングは外部の LLM に送る前に機密データを隠す機能で、アクセス権の制御とは目的が違います。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_layer.htm&type=5",
+     "x": "セキュアなデータ取得では、プロンプトを実行するユーザーの権限に基づいてデータを取り出します。ロールや項目レベルセキュリティなど、標準のアクセス制御はそのまま守られます。"
+    },
+    {
+     "q": "ある会社は、すでに Shield Platform Encryption とデータ分類を使って、機密性の高い項目に印を付けています。これらの項目がプロンプトに差し込まれたとき、LLM に送る前に隠したいと考えています。どの仕組みが該当しますか?",
+     "o": [
+      "項目ベースのデータマスキング",
+      "パターンベースのデータマスキング",
+      "ゼロデータリテンション",
+      "プロンプトインジェクションの検知"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "項目ベースのマスキングは、Shield Platform Encryption やデータ分類が付いた項目のメタデータで機密データを判断し、マスクします。パターンベースは正規表現や機械学習で文中のデータを見つける方式で、項目の印は使いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_mask_data.htm&type=5",
+     "x": "データマスキングには2種類あります。パターンベースは、正規表現と機械学習で文中の機密データ(人名や会社名など)を見つけます。項目ベースは、Shield Platform Encryption やデータ分類が付いた項目のメタデータで判断します。"
+    },
+    {
+     "q": "コンプライアンス担当者は、生成AIの利用状況を確認するため、外部の LLM に送られたマスク済みのプロンプトや、応答の有害性スコアを見たいと考えています。管理者がまず行うべきことはどれですか?",
+     "o": [
+      "Einstein 生成AIの監査とフィードバックのデータ収集と保存をオンにし、レポートパッケージをインストールする",
+      "項目履歴管理をすべての項目で有効にする",
+      "設定変更履歴(Setup Audit Trail)をダウンロードする",
+      "イベントモニタリングのログイン履歴を確認する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "生成AIの監査証跡は Data 360 に保存され、マスクされたプロンプトや有害性スコアを含みます。見るには、データ収集と保存をオンにし、レポートパッケージをインストールします。設定変更履歴は設定の変更を記録するもので、プロンプトは含みません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_audit_trail.htm&type=5",
+     "x": "監査証跡を見るには、Einstein 生成AIの監査とフィードバックのデータ収集と保存をオンにし、レポートパッケージをインストールします。データは Data 360 の既定のデータスペースに保存され、データストリームは1時間ごとに更新されます。"
+    },
+    {
+     "q": "Einstein Trust Layer の有害性の検出で、ある応答の全体スコアが 0.9 と記録されていました。このスコアの意味として正しいものはどれですか?",
+     "o": [
+      "0から1の範囲で1が最も有害なため、有害な内容である可能性が高い",
+      "0から1の範囲で1が最も安全なため、問題はない",
+      "100点満点のうち0.9点で、ほぼ無害である",
+      "マスクされたデータの割合が90%である"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "有害性のスコアはカテゴリごとと全体で0から1の値になり、1が最も有害です。スコアは監査証跡として Data 360 に保存されます。マスキングの割合を示す値ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_toxicity_detection.htm&type=5",
+     "x": "有害性のスコアは、カテゴリごとと全体で0から1の値になり、1が最も有害です。スコアは監査証跡として Data 360 に保存されます。"
+    },
+    {
+     "q": "ある会社は、生成AIが作った提案メールを担当者が確認せずにそのまま顧客に送る運用を考えています。Salesforce の信頼できる生成AIの原則のうち、人が応答を確認することを推奨しているのはどれですか?",
+     "o": [
+      "正確性(Accuracy)",
+      "持続可能性(Sustainability)",
+      "能力の強化(Empowerment)",
+      "安全性(Safety)"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "正確性の原則では、できる限り根拠や出典を示し、多くの用途でエンドユーザーに共有する前に人が応答を確認することを推奨しています。安全性はバイアスや有害性の検出と軽減を指す原則です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_overview.htm&type=5",
+     "x": "正確性(Accuracy): できる限り根拠や出典を示します。多くの用途で、エンドユーザーに共有する前に人が応答を確認することを推奨しています。"
+    },
+    {
+     "q": "ある会社は Agentforce Engagement を導入します。見込み客が、AIとやり取りしていることに気づかないまま人間だと誤解するのを防ぎたいと考えています。信頼できるAIの観点から適切な対応はどれですか?(2つ選択)",
+     "o": [
+      "人間らしいAI名に、「Digital Agent」のような役割を示すAIタイトルを組み合わせる",
+      "AIが生成したことを示す、編集できない開示フッターを残す",
+      "返信率を上げるため、エージェントのユーザー名を実在の営業担当者の名前にする",
+      "開示フッターを削除して、人が書いたメールに見せる"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "エージェントがAIであることを明確にするため、AI名と役割を示すAIタイトルを組み合わせます。また、AIが生成したことを示すフッターは編集できない形で付けられます。実在の人のように見せる対応は、透明性の考え方に反します。",
+     "u": "https://help.salesforce.com/s/articleView?id=sales.sales_agent_sdr_ethical_guidelines.htm&type=5",
+     "x": "エージェントがAIであることを明確にするため、人間らしいAI名に、役割を示すAIタイトルを組み合わせます。たとえば「Ziggy, Digital Agent」のようにします。"
+    }
+   ]
+  }
+ ]
+}
