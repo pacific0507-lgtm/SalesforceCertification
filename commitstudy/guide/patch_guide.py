@@ -68,7 +68,7 @@ MARKUP = f"""
   <p>読んで、解いて、記録に草を生やす。はじめての方は、ここから全体をつかんでください。画面の写真は iPhone で見たときのものです。</p>
  </header>
  <div id="groups" hidden></div>
- <nav class="gd-toc" aria-label="このページの目次"><a href="#g-screens">4つの画面</a><a href="#g-flow">学び方の流れ</a><a href="#g-text">テキスト</a><a href="#g-quiz">問題集</a><a href="#g-train">トレーニング</a><a href="#g-rec">学習の記録</a><a href="#g-save">記録の保存</a><a href="#g-comment">改善へのご協力</a></nav>
+ <nav class="gd-toc" aria-label="このページの目次"><a href="#g-screens">4つの画面</a><a href="#g-flow">学び方の流れ</a><a href="#g-text">テキスト</a><a href="#g-quiz">問題集</a><a href="#g-train">トレーニング</a><a href="#g-rec">学習の記録</a><a href="#g-save">記録の保存</a><a href="#g-app">アプリのように使う</a><a href="#g-comment">改善へのご協力</a></nav>
  <section class="bx gd" id="g-screens">{H("4つの画面")}
   <p>CommitStudy は、Salesforce などシステム系資格のテキストと問題集です。いまの科目は Data 360 コンサルタント、Marketing Cloud Administrator、Agentforce Sales コンサルタントの3つです。</p>
   {FIG["screens"]}
@@ -123,6 +123,28 @@ MARKUP = f"""
   {FIG["save"]}
   {SHOTS(("menu", "右上のメニュー。保存先とサイトマップ・表示の切り替え"))}
  </section>
+ <section class="bx gd" id="g-app">{H("アプリのように使う(ホーム画面に追加)")}
+  <p>ホーム画面にアイコンを置いておくと、アプリのようにワンタップで開けます。追加は、claude.ai にログインしたブラウザで行ってください(記録はそのアカウントに保存されます)。</p>
+  {FIG["homescreen"]}
+  <h3 class="gd-h3">iPhone(Safari)</h3>
+  <ol>
+   <li>このページを <b>Safari</b> で開きます。Claude アプリの中で開いている場合は、リンクをコピーして Safari に貼り付けて開いてください。</li>
+   <li>画面下(またはアドレスバー横)の<b>共有ボタン</b>(四角から上向きの矢印)を押します。見当たらないときは、アドレスバーの「…」から「共有」を選びます。</li>
+   <li>一覧を下へスクロールして<b>「ホーム画面に追加」</b>を押します。</li>
+   <li>名前を「CommitStudy」などに変えて、右上の<b>「追加」</b>を押します。</li>
+  </ol>
+  <h3 class="gd-h3">Android(Chrome)</h3>
+  <ol>
+   <li>このページを <b>Chrome</b> で開きます。</li>
+   <li>右上の<b>︙(メニュー)</b>を押します。</li>
+   <li><b>「ホーム画面に追加」</b>(機種によっては「アプリをインストール」)を押します。</li>
+   <li>名前を確かめて<b>「追加」</b>を押します。ホーム画面にアイコンができます。</li>
+  </ol>
+  <ul>
+   <li>ブラウザやOSのバージョンで、ボタンの場所や名前が少し違うことがあります。</li>
+   <li>アイコンの絵は claude.ai のものになり、好きな画像には変えられません。自分の画像にしたい場合は、iPhone の「ショートカット」アプリで「URLを開く」ショートカットを作り、ホーム画面に追加するときに写真を選ぶ方法があります。</li>
+  </ul>
+ </section>
  <section class="bx gd" id="g-comment">{H("改善へのご協力(コメントのお願い)")}
   <p>CommitStudy は、使う人の声をもとに毎日よくしています。読みにくい所、まちがい、ほしい機能などに気づいたら、<b>claude.ai のアーティファクトのコメント機能</b>で、その場所にコメントを残してください。</p>
   {FIG["comment"]}
@@ -150,6 +172,9 @@ GCSS = """
 .guide .fig{margin:6px 0}
 .guide .fig figcaption{font-size:13px;color:var(--sub);text-align:center;margin-top:8px;line-height:1.65}
 .gd-foot{text-align:center;margin:20px 0}
+.gd-h3{font-size:15.5px;margin:6px 0 0}
+.bx.gd ol{margin:0;padding-left:1.4em;font-size:15px;line-height:1.85}
+.bx.gd ol li{margin:0 0 6px}
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:4px 0}
 .shot{margin:0;text-align:center}
 .shot img{display:block;width:100%;max-width:270px;height:auto;margin:0 auto;border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 28px -16px rgba(0,0,0,.35);background:var(--paper)}
