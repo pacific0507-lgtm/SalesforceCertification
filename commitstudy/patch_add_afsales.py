@@ -11,7 +11,8 @@ def rep(old, new, count=1):
     n = s.count(old)
     if n != count: sys.exit(f"置換対象が {n} 件(期待 {count} 件): {old[:90]!r}")
     s = s.replace(old, new)
-ID, SHORT, TITLE, PAL, COLOR, NAME = "afsales", "AFSales", "Agentforce Sales コンサルタント", "teal", "#0b6e7c", "青緑"
+# 略称は「AF」と「Sales」の間に幅0の改行位置を入れ、狭い枠では2行に折り返す
+ID, SHORT, TITLE, PAL, COLOR, NAME = "afsales", "AF\u200bSales", "Agentforce Sales コンサルタント", "teal", "#0b6e7c", "青緑"
 
 # ---- FAMD.consts ----
 lines = s.split("\n"); l = lines[4]
@@ -55,4 +56,9 @@ rep('{id:"mcadmin",short:"MCA",title:"Marketing Cloud Administrator",color:"#b55
     '{id:"mcadmin",short:"MCA",title:"Marketing Cloud Administrator",color:"#b5560f"},{id:"' + ID + '",short:"' + SHORT + '",title:"' + TITLE + '",color:"' + COLOR + '"}')
 rep('if(id==="mcadmin")return "orig";', 'if(id==="mcadmin")return "orig";if(id==="' + ID + '")return /^オリジナル/.test(s)?"orig":"past";')
 rep('var SRCN={past:"過去問",th:"Trailhead",orig:"オリジナル"};', 'var SRCN={past:"過去問",th:"Trailhead",orig:"オリジナル"};', 1)
+# テキスト一覧の科目カードの略称は1行固定だったので、改行位置(幅0)で折り返せるようにする(D360・MCA は1語なので変わらない)
+def jesc(t): return json.dumps(t, ensure_ascii=False)[1:-1].replace("</", "<\\/")
+old = jesc("@media(max-width:600px){.tx .sh{font-size:18px!important")
+assert s.count(old) >= 1, "テキスト一覧の略称のCSSが見つからない"
+s = s.replace(jesc(".tx .sh{font-size:22px!important;white-space:nowrap;letter-spacing:-.03em}"), jesc(".tx .sh{font-size:22px!important;white-space:normal;overflow-wrap:normal;letter-spacing:-.03em}"))
 open(out, "w", encoding="utf-8").write(s); print("ok", n)
