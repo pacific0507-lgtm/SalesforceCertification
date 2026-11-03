@@ -1,0 +1,602 @@
+[
+ {
+  "label": "v2026-03-03",
+  "no": 19,
+  "qe": "Cloud Kicks needs to implement a group of campaigns that are related to a specific marketing initiative to report on success.What should a consultant recommend to meet the requirement?",
+  "oe": [
+   "Create a custom Campaign Purpose field.",
+   "Use the existing Parent Campaign field.",
+   "Create a custom Campaign Group object."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Cloud Kicks needs to group campaigns related to a specific marketing initiative to report on their collective success. The consultant should recommend using the existing Parent Campaign field to create a campaign hierarchy.Key Points:* Campaign Hierarchies: Salesforce allows users to relate campaigns using the Parent Campaign field, forming a hierarchy. This hierarchy can be up to five levels deep and include an unlimited number of sibling campaigns.* Grouping Campaigns: By designating a Parent Campaign (e.g., the marketing initiative), all related campaigns (child campaigns) can be linked under it.* Reporting Benefits: Salesforce provides roll-up summary fields for campaign hierarchies, such as Total Responses, Total Opportunities, and Total Won Opportunities. This enables reporting on the collective performance of all campaigns within the hierarchy.* Ease of Implementation: Using the existing Parent Campaign field requires no additional customization and leverages standard Salesforce functionality.Why Other Options Are Less Suitable:* A. Create a custom Campaign Purpose field: While adding a custom field might help categorize campaigns, it does not provide hierarchical relationships or roll-up reporting.* C. Create a custom Campaign Group object: This would require custom development and could complicate the reporting process, whereas standard functionality already exists to meet the requirement.Salesforce Sales Cloud References:* Campaign Hierarchies Overview: Salesforce Help - Set Up a Campaign Hierarchy* Reporting on Campaign Hierarchies: Salesforce Help - Campaign Reports* Benefits of Using Parent Campaign Field: Using the Parent Campaign field simplifies the organization of campaigns and enhances reporting capabilities without additional customization.By utilizing the existing Parent Campaign field, Cloud Kicks can effectively group related campaigns under a marketing initiative and report on their collective success."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 20,
+  "qe": "Northern Trail Outfitters has created a Complaints custom object related to Accounts. The organization-wide default has been set to Private. Only users within the Complaints Specialist public group should be able to view and edit any Complaint record.Which option should a consultant recommend to meet the requirements?",
+  "oe": [
+   "Use Apex managed sharing to grant record access to users In the Complaints Specialist public group.",
+   "Create a criteria-based sharing rule that grants Read/Write access to the Complaints Specialist public group.",
+   "Set the Complaints object's default visibility to allow only the users In the Complaints Specialist public group to access the records."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "To ensure that only the Complaints Specialist public group can view and edit Complaint records in a Private sharing model, creating a criteria-based sharing rule is appropriate. This rule can be configured to grant Read/Write access to users in the Complaints Specialist group for all records in the Complaints object. This approach meets the requirement of limiting access while providing the necessary permissions to the designated group.For more on sharing rules, refer to: Salesforce Sharing Rules Overview.Northern Trail Outfitters has a Complaints custom object related to Accounts with an organization-wide default (OWD) of Private. Only users in the Complaints Specialist public group should view and edit all Complaint records.Solution:* Criteria-Based Sharing Rule:* Purpose: Sharing rules open up record access beyond the OWD settings.* Implementation Steps:* Navigate to Setup > Sharing Settings.* Select the Complaints object and create a new Criteria-Based Sharing Rule.* Set the criteria to include all Complaint records (e.g., CreatedDate != null).* Share with the Complaints Specialist public group.* Set access level to Read/Write.* Advantages:* Scalability: Automatically includes all current and future Complaint records without manual intervention.* Security Compliance: Ensures only authorized users have access, adhering to the principle of least privilege.Why Other Options Are Less Suitable:* Option A: Apex managed sharing is more complex and requires custom development. Standard sharing rules suffice for this requirement.* Option C: It's not possible to set default visibility to only specific users via OWD settings; OWD applies universally and cannot target a public group.Salesforce Sales Cloud References:* Sharing Rules Overview: Salesforce Help - Sharing Rules* Creating Criteria-Based Sharing Rules: Salesforce Help - Create Sharing Rules* Public Groups: Salesforce Help - Create a Public GroupBy creating a criteria-based sharing rule, Northern Trail Outfitters ensures that only the Complaints Specialist public group has the necessary access to all Complaint records."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 21,
+  "qe": "Some of the large accounts at Northern Trail Outfitters have many contacts. Sales reps want to see how these contacts relate to each other and understand the reporting structure.Which feature should the consultant recommend to meet this requirement?",
+  "oe": [
+   "Contact Hierarchy",
+   "Contacts to Multiple Accounts",
+   "Contact Roles"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "The Contact Hierarchy feature in Salesforce Sales Cloud allows users to view and understand the relationships and reporting structures among contacts within the same account. This feature provides a visual representation of the hierarchy, enabling sales reps to quickly see how contacts are connected and who reports to whom within large accounts. This is particularly useful for large organizations where multiple contacts need to be managed, as it provides insight into key decision-makers and influencers in the account structure.For more information, refer to the Salesforce documentation on Contact Hierarchy."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 23,
+  "qe": "Sales reps at Cloud Kicks are responsible for creating leads manually and uploading leads. The marketing department has noticed that some leads are missing important information.Which functionality should the consultant apply to ensure that the main fields are populated?",
+  "oe": [
+   "Path with key fields",
+   "Required fields",
+   "Screen flows"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "To ensure that critical fields are populated when leads are created or uploaded, setting specific fields as required is the most effective approach. This ensures that sales reps must complete essential information, such as contact details or lead source, before a lead can be saved. Required fields help maintain data quality and completeness, reducing the likelihood of leads missing important information. This method is straightforward to implement and enforces data consistency across records in the Sales Cloud"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 24,
+  "qe": "Annual sales numbers change depending on renewal periods and new products. Sales managers at Universal Containers (UC) want to emphasize the importance of customer retention when prioritizing the pipeline and customer engagement for the sales team.Which metric should the consultant recommend to help UC emphasizethe importance of customer retention to the overall business strategy?",
+  "oe": [
+   "Annual Contract Value (ACV)",
+   "Total Pipeline Value",
+   "Customer Lifetime Value (CLV)"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Customer Lifetime Value (CLV) measures the total value a customer brings over the entire duration of their relationship with the company. Emphasizing CLV helps sales teams focus on customer retention and long- term relationship value, which aligns with Universal Containers' goal of prioritizing customer retention. By tracking CLV, sales managers can guide reps to prioritize engagement with high-value customers to boost long-term revenue.Annual Contract Value (ACV) and Total Pipeline Value focus more on short-term gains, which might not align as directly with customer retention and long-term strategy.Salesforce Documentation References:* Customer Lifetime Value in Salesforce* Using Metrics to Drive Retention"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 26,
+  "qe": "The Cloud Kicks sales team travels frequently and often needs to convert leads while away from the home office.What should a consultant recommend?",
+  "oe": [
+   "Enable Conversions for the Salesforce mobile app In Lead Conversion settings.",
+   "Create a Global Action to convert leads via the Salesforce mobile app.",
+   "Install an AppExchange package to convert leads via the Salesforce mobile app."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Creating a Global Action specifically for lead conversion enables sales reps to convert leads directly from the Salesforce mobile app. This approach provides a seamless experience that leverages native Salesforce functionality, without the need for additional installations or configurations. By setting up a Global Action, the consultant ensures that lead conversion is accessible on the go, which is ideal for Cloud Kicks' traveling sales team.While enabling conversions in Lead Conversion settings provides configuration options, it does not by itself create mobile access. AppExchange solutions are useful but often introduce additional overhead and are unnecessary when native Salesforce functionality meets the requirement.Salesforce Documentation References:* Salesforce Mobile App Global Actions* Lead Conversion on Mobile"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 28,
+  "qe": "Sales reps at Cloud Kicks (CK) often receive important customer emails they want to log as records related to Contacts in Salesforce. CK has Office 365, as well as a policy that prevents users from installing anything directly on their computers.Which solution should a consultant recommend to meet this requirement?",
+  "oe": [
+   "Einstein Activity Capture",
+   "Salesforce Inbox",
+   "Lightning Console for Sales"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Einstein Activity Capture automatically syncs emails and events between Salesforce and Office 365 without requiring any installation on users' devices, making it an ideal solution for Cloud Kicks, given their policy restrictions. By using Einstein Activity Capture, sales reps can have customer emails logged as records related to Contacts in Salesforce seamlessly. This tool works with cloud-based services like Office 365, syncing activities in real-time and storing them within Salesforce, thus keeping records updated without manual intervention.Salesforce Inbox, while offering similar capabilities, requires an add-in installation that might not align with CK's IT policy. Therefore, Einstein Activity Capture is the recommended solution for this scenario as it meets CK's requirements for automatic logging without violating any software installation policies.For more information on Einstein Activity Capture, you can refer to the Salesforce documentation: Einstein Activity Capture Overview."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 29,
+  "qe": "The leadership team at Cloud Kicks wants to improve the rate of user adoption of Sales Cloud.Which option should the consultant recommend?",
+  "oe": [
+   "Add Approval processes to enforce data standards.",
+   "Conduct a requirements workshop to gather user stories.",
+   "Use a collaboration tool to gather feedback from users."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Using a collaboration tool to gather feedback is an effective way to improve user adoption of Sales Cloud.Such tools allow users to share their experiences, voice concerns, and suggest improvements in real time. By actively involving users in the process and addressing their feedback, Cloud Kicks can enhance user engagement, identify and resolve adoption barriers, and ultimately increase satisfaction with Sales Cloud.Salesforce suggests utilizing collaboration tools like Chatter or third-party tools for ongoing feedback and communication, which supports continuous improvement and user-centric development practices."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 30,
+  "qe": "Northern Trail Outfitters (NTO) wants to start tracking orders accounts in Sales Cloud. NTO has hired a consultant to complete the project.What should the consultant take into account when implementing sales orders?",
+  "oe": [
+   "Contract Number is a required field on the Order page layout.",
+   "Order line items can be added or removed after an order is activated.",
+   "Orders can be activated for active and inactive contracts."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Northern Trail Outfitters (NTO) wants to start tracking orders in Sales Cloud and has hired a consultant for implementation.* Orders and Contracts Relationship:* Order Management: In Salesforce, orders are typically associated with contracts to represent agreed-upon terms between the company and the customer.* Required Fields: The Contract Number field becomes required on the Order page layout when certain conditions are met, such as when the order is related to a contract.* Implementation Considerations:* Ensure Data Integrity: Having the Contract Number as a required field helps maintain accurate records linking orders to their respective contracts.* Page Layout Configuration: The consultant must ensure that the Order page layout includes all necessary fields and that required fields are appropriately configured.* Why This Matters:* Legal and Compliance: Associating orders with contracts ensures that all orders are backed by legal agreements.* Process Alignment: Aligns the order tracking process with NTO's business practices and Salesforce's data model.Why Other Options Are Less Accurate:* Option B: Once an order is activated, order line items cannot be added or removed. This is to maintain the integrity of the order.* Option C: Orders can only be activated if the associated contract is active. Orders cannot be activated for inactive contracts.Salesforce Sales Cloud References:* Orders Overview: Salesforce Help - Orders* Activating Orders: Salesforce Help - Activate Orders* Required Fields on Orders: Documentation specifies that certain fields, like Contract Number, may be required depending on configuration.By acknowledging that Contract Number is a required field on the Order page layout, the consultant ensures that NTO's implementation of sales orders aligns with Salesforce best practices and data requirements."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 31,
+  "qe": "Universal Containers has implemented a lead qualification process that uses a lead scoring formula. Upon review, many of the converted leads with the highest scores had little interest in making a purchase.Which modification to the current lead qualification process should a consultant recommend?",
+  "oe": [
+   "Include a measure for the number of marketing touches.",
+   "Increase points for actions that Indicate Intent.",
+   "Evaluate each record against the target marketing persona."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "When leads with high scores do not convert as expected, it suggests that the scoring model may not effectively measure purchase intent. Adjusting the lead scoring formula to assign higher points for actions that indicate strong intent (such as downloading a whitepaper or requesting a demo) can improve the accuracy of the scoring process, ensuring that highly interested leads are prioritized.Including a measure of marketing touches or evaluating against personas could also help, but increasing points for high-intent actions directly addresses the issue of prioritizing leads based on purchase readiness.Salesforce Documentation References:* Lead Scoring Best Practices* Improving Lead Qualification"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 32,
+  "qe": "Cloud Kicks has recently set up Sales Cloud and wants to measure the health of an account by comparing the amount of emails that are exchanged in a month.What should the consultant recommend?",
+  "oe": [
+   "Salesforce Inbox",
+   "Activity Report",
+   "Einstein Activity Capture"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "To track and measure the health of an account by monitoring email exchanges, Einstein Activity Capture is the recommended tool. It automatically logs emails and meetings from a rep's email and calendar directly into Salesforce, providing insights into customer engagement without manual data entry.* Automatic Data Capture: Einstein Activity Capture captures email interactions in real-time, providing an accurate and ongoing measure of account activity levels.* Insights into Account Health: By analyzing the volume of interactions captured each month, Cloud Kicks can assess engagement levels and proactively manage account relationships.Option A (Salesforce Inbox) enhances email productivity but does not provide automated data capture for analysis, and Option B (Activity Report) requires manual logging of data for it to be effective. For more on Einstein Activity Capture, see Salesforce Einstein Activity Capture documentation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 34,
+  "qe": "Cloud Kicks has organization-wide defaults set to Private for Account.With the rollout of Opportunity Teams, what should a consultant consider?",
+  "oe": [
+   "Opportunity should be set to Public Read/Write first.",
+   "The Opportunity will be implicitly Write for the team.",
+   "The Opportunity's Account will be implicitly Read for the team."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "With Opportunity Teams, Salesforce provides implicit sharing of related records. When an Opportunity is shared with a team, members gain Read access to the associated Account, even if the Account is set to Private in organization-wide defaults. This implicit sharing allows team members to have the necessary context on the Account without changing broader Account access permissions."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 35,
+  "qe": "Cloud Kicks' (CK) global sales operations team has to export reports from Salesforce and manipulate them in Excel to convert regional deals to the correct currency conversion. CK wants to generate accurate reporting directly in Sales Cloud.After enabling Advanced Currency Management, what should the consultant do next?",
+  "oe": [
+   "Update currency values manually on a weekly basis.",
+   "Show deal values in a user's default currency.",
+   "Adjust currency conversion dynamically based on date range."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Enabling Advanced Currency Management in Salesforce allows Cloud Kicks to manage dated exchange rates, which are essential for accurate reporting on global sales in multiple currencies. This feature enables dynamic adjustment of currency conversions based on the date of the transaction, providing more precise financial reporting that reflects currency fluctuations over time.* Using Advanced Currency Management: This feature enables Salesforce to apply the correct exchange rate based on the close date of an opportunity, ensuring that financial reports in Salesforce accurately reflect historical and current exchange rates.* Accuracy in Global Reporting: With dynamic currency conversion adjustments, CK can eliminate the need to manually convert currencies, enhancing both the efficiency and accuracy of reporting.Option A (manual updates) would be inefficient and error-prone, and Option B (showing in user's default currency) does not address currency conversion for reporting purposes. More information on setting up currency management can be found in Salesforce Advanced Currency Management documentation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 36,
+  "qe": "Universal Containers (UC) recently implemented new Sales Cloud solutions. UC stakeholders believe that user adoption is best measured by the login rate.Which additional key metric should the consultant recommend?",
+  "oe": [
+   "Opportunities created in the last 30 days",
+   "Events synchronized in the last 30 days",
+   "Cases closed in the last 30 days"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "While login rate is an indicator of system usage, a better measure of adoption in Sales Cloud is the number of Opportunities created, as it reflects actual engagement with sales activities. Monitoring the number of Opportunities created in the last 30 days can show if users are actively utilizing Sales Cloud for core functions like managing potential sales.* Opportunity Creation as a Key Adoption Metric: Creating Opportunities indicates that sales reps are actively using the platform to track sales activities, which is a primary function of Sales Cloud.* Complementing Login Metrics: This metric goes beyond mere logins to show that users are performing valuable tasks within the system, offering a more comprehensive view of adoption.Option B (Events synchronized) and Option C (Cases closed) are not as directly tied to core sales activities in Sales Cloud. Salesforce highlights Opportunity management as a critical adoption metric, as noted in their Salesforce Adoption Guide."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 37,
+  "qe": "During end-to-end testing, users report that a key business process is missing a step.What should a consultant do first to resolve the issue?",
+  "oe": [
+   "Work with key stakeholders to determine if a change to the requirements is necessary to go-live,",
+   "Revise the test scripts and ask users to repeat the testing.",
+   "Change the solution to meet the needs of the users and update the training materials."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "When a missing step is identified during testing, the first step is to engage with key stakeholders to assess the impact and determine if modifying the requirements is essential before going live. This approach ensures that all parties understand the implications and can make informed decisions about project scope, timeline, and deliverables. Salesforce best practices recommend verifying requirement changes with stakeholders to avoid misalignment with business goals and expectations."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 38,
+  "qe": "Cloud Kicks currently supports three business lines within a single Salesforce instance: Running, Athleisure, and Celebrity Co- Branded. The VP of Athleisure controls a large budget and is often able to re-prioritize business stories and 'shadow projects' into releases ahead of other groups.This topic comes up frequently and often derails the monthly project management meeting. This limits the amount of time available to cover other critical topics.Which strategy should the consultant recommend to address these issues?",
+  "oe": [
+   "Create a weekly all-hands call, including business and technology resources, to review direction and priority of development.",
+   "Propose a monthly executive steering committee to manage budget, handle direction questions, and ensure development capacity is split equitably.",
+   "Divide the development team into three units/tracks to support each line of business Independently."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "The recurring issue faced by Cloud Kicks involves a power imbalance and frequent re-prioritization by the VP of Athleisure, which disrupts project management meetings and limits time for other priorities. Establishing a monthly executive steering committee can address these issues effectively.Here's why this is the best approach:Balanced Oversight and Governance: An executive steering committee brings together key decision-makers to review priorities, manage budget allocations, and ensure all business lines are fairly represented in development planning. This provides a formal structure to manage competing interests.Equitable Development Allocation: By involving multiple executives, the steering committee can objectively assess and allocate resources among business lines, helping to prevent one group from overshadowing others.This will help maintain balanced focus and avoid over-prioritizing certain projects.Strategic Decision-Making: With a recurring monthly meeting, the committee can focus on big-picture decisions, reducing the likelihood of frequent, ad hoc project adjustments that derail meetings and detract from strategic discussions.Option A (weekly all-hands call) may be too frequent and is not ideal for executive decision-making. Option C (dividing the development team) could lead to resource inefficiencies and reduce flexibility. The steering committee approach is a standard Salesforce-recommended best practice for managing cross-functional priorities and balancing strategic initiatives. For more on governance best practices, refer to Salesforce's guide on Governance Frameworks."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 39,
+  "qe": "An executive at Cloud Kicks (CK) has asked its admin to create a diagram showing the high-level processes within the business. CK plans to use the diagram to show the context of a new process within the overall business.What should the admin create to meet this requirement?",
+  "oe": [
+   "Capability Model",
+   "Value Stream Map",
+   "Detail Process Mapping"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "An executive at Cloud Kicks (CK) has requested a diagram that shows the high-level processes within the business to illustrate the context of a new process within the overall business framework. To meet this requirement, the admin should create a Capability Model.Key Points:* Capability Model Definition: A Capability Model is a high-level visual representation of an organization's abilities (capabilities) required to achieve its business objectives. It outlines what the organization does, without delving into how it does it.* Contextual Overview: By focusing on the capabilities, the model provides a strategic view that shows how various processes and functions interrelate within the business, making it ideal for showing the context of a new process within the overall business.* High-Level Visualization: Since the executive is interested in high-level processes, a Capability Model avoids unnecessary details and complexity, providing clarity and focus.* Alignment with Business Strategy: Capability Models help in aligning processes and systems with the business strategy, which is essential when introducing new processes.Why Other Options Are Less Suitable:* B. Value Stream Map: A Value Stream Map is used in lean methodologies to analyze and design the flow of materials and information required to bring a product or service to a consumer. It's more detailed and focuses on process improvement, not on providing a high-level business context.* C. Detail Process Mapping: This involves creating detailed step-by-step diagrams of processes. While useful for understanding specific workflows, it is too granular for the executive's request for a high- level diagram.Salesforce Sales Cloud References:* Business Process Mapping: While Salesforce does not provide direct tools for Capability Modeling, it emphasizes the importance of understanding business processes and capabilities during implementation.Refer to the Salesforce Business Process Mapping Guide for best practices.* Strategic Planning: Salesforce encourages organizations to align their Salesforce implementations with business capabilities and strategies to maximize value.By creating a Capability Model, the admin can provide CK's executive with a high-level diagram that effectively shows the context of the new process within the overall business operations."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 40,
+  "qe": "The sales director at Cloud Kicks wants to enable Person Accounts in its org. The sales director asked a consultant to evaluate the solution and present it to the sales team.What should the consultant consider when evaluating Person Accounts?",
+  "oe": [
+   "Enabling Person Accounts requires a Public Read/Write sharing model,",
+   "Enabling Person Accounts is irreversible.",
+   "Person Accounts must have at least two record types."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Person Accounts in Salesforce are a specialized account type that represents individual customers rather than businesses. A critical consideration is that enabling Person Accounts is irreversible; once activated, this setting cannot be turned off. Therefore, it's essential to carefully evaluate and understand the implications before enabling Person Accounts, as it permanently impacts data model configurations and potentially other features within the org.For more details on the considerations for enabling Person Accounts, see: Person Accounts Overview and Considerations."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 41,
+  "qe": "Cloud Kicks' (CK) VP of technology wants to start using Sales Cloud for all of the sales team's automation.CK migrated 70 million records from a legacy database to the data warehouse that will be synced with Sales Cloud. CK wants to search and cross-reference records with the original source database.What should a consultant recommend to meet this requirement?",
+  "oe": [
+   "Use the standard External ID field and map this to the source record ID value.",
+   "Use a custom field named External ID and map this to the Sales Cloud record value.",
+   "Use a custom External ID field and map this to the source record ID value."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "To facilitate record referencing and synchronization between Sales Cloud and an external database, the best practice is to use a custom External ID field. This field can be mapped directly to the unique record ID from the source database. External ID fields in Salesforce are specifically designed for integrating with external systems, allowing efficient data cross-referencing and deduplication.Using a custom External ID field ensures that the migrated records maintain a unique identifier that matches the original source, simplifying future synchronization and data management tasks. This setup is especially useful when dealing with large volumes of data, as in the case of Cloud Kicks, which has migrated 70 million records. This method is preferable over a standard External ID, as it offers flexibility in defining the exact field and data type to meet Cloud Kicks' specific requirements.References: Salesforce documentation on External ID fields and data management strategies supports the use of custom External ID fields for large-scale data integrations."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 42,
+  "qe": "Cloud Kicks (CK) has organization-wide defaults set to Public Read-Only for Opportunity. One of the Account Team roles at CK is Executive Sponsor. Account Team members with the Executive Sponsor role need Read/Write access to all child Opportunities.How should the consultant meet the requirement?",
+  "oe": [
+   "Create an Account sharing rule to grant Read/Write access to Opportunities.",
+   "Create an Opportunity sharing rule to grant Read/Write access to Opportunities.",
+   "Create a flow to grant Read/Write access to Opportunities."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "In Salesforce, organization-wide defaults (OWD) for the Opportunity object can be set to Public Read Only, meaning all users can view Opportunities, but only the record owner and users above them in the role hierarchy have edit access. When OWD is set to Public Read Only, additional access can be granted using sharing rules.For Cloud Kicks, the Account Team role of Executive Sponsor requires Read/Write access to Opportunities associated with the Accounts they sponsor. Since the OWD is set to Public Read Only, the most effective method to grant this access is through an Opportunity sharing rule. Sharing rules in Salesforce are specifically designed to extend access to users in roles, groups, or territories without altering the OWD settings. By creating an Opportunity sharing rule, Cloud Kicks can ensure that all Account Team members with the Executive Sponsor role gain Read/Write access to related Opportunities, regardless of ownership.An Account sharing rule would not work in this scenario because sharing rules for Accounts do not automatically extend to related Opportunities when OWD for Opportunities is Public Read Only.Additionally, creating a flow would not be as efficient or straightforward as using a sharing rule, which is Salesforce's recommended approach for managing access based on roles and relationships like Account Team roles"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 43,
+  "qe": "Cloud Kicks is implementing Sales Territories for its retail sales unit. The sales director is requesting a detailed roll-up forecast for territories.What should the consultant recommend?",
+  "oe": [
+   "Include the Forecast Manager field on the Account page layout.",
+   "Assign a Forecast Manager to each region.",
+   "Assign a role for each manager in the user role hierarchy."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "The Forecast Manager role is essential in Salesforce when working with Territory Forecasts. By assigning a Forecast Manager to each region, Salesforce can generate a roll-up forecast based on the territories managed within that region. The Forecast Manager oversees the forecasting process and can provide the sales director with the requested detailed roll-up forecast for each territory.Including the Forecast Manager field on the Account page layout or assigning roles in the user role hierarchy is useful for access control and organizational structure, but they do not directly impact the roll-up forecast functionality for territories. Assigning a Forecast Manager ensures accurate and hierarchical forecasting as per regional sales performance.Salesforce Documentation References:Set Up Collaborative Forecasts by TerritoryForecast Manager Role in Territory Management"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 44,
+  "qe": "The sales manager at Cloud Kicks has proposed that the consultant hold a discovery meeting with 250 employees who use Sales Cloud currently to gain information to improve adoption.Which approach should the consultant recommend to the sales manager to meet this goal efficiently?",
+  "oe": [
+   "Ask all employees to email their ideas and feedback to the consultant.",
+   "Send a survey to all employees asking for a list of desired changes.",
+   "Meet with a large group of employees to listen to their feedback."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "For gathering feedback efficiently from a large group of users (250 employees), sending a survey is the recommended approach. Here's why:* Scalability and Efficiency: A survey can quickly reach all employees and provide a structured way to collect a wide range of input without needing to organize a large-scale meeting. Surveys can include various question types to capture qualitative and quantitative data, making it easier to analyze responses.* Encouraging Participation: Surveys allow employees to provide feedback at their convenience and tend to be less intrusive than group meetings, which may be challenging to coordinate for a large number of users.* Data Analysis and Reporting: Using a survey tool enables the consultant to analyze and categorize responses, identifying trends or common themes in the feedback. This helps in prioritizing changes based on the collective input.* References: Salesforce offers survey capabilities that can be utilized directly within Sales Cloud or through integrated tools available on the AppExchange, making it easy to manage responses and view insights directly in Salesforce.In summary, sending a survey (Option B) is the most practical and efficient approach to gathering input from a large group of employees, allowing the consultant to collect comprehensive feedback that can inform strategies for improving Sales Cloud adoption."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 45,
+  "qe": "Cloud Kicks (CK) acquired a shoe distribution partner. The marketing and sales directors want to migrate the existing sales and marketing data into CK's Sales Cloud instance.Which aspect should the consultant consider first before proceeding with the data migration?",
+  "oe": [
+   "Number of marketing campaign licenses required for the migration",
+   "Role hierarchy and sharing rules set up prior to migration",
+   "Volume of customer, partner, and prospect data identified prior to migration"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Before beginning any data migration, it is crucial to assess the volume of data to be transferred, including customer, partner, and prospect information. This assessment helps determine the complexity and resources required for the migration process, as well as any potential impacts on system performance and storage limits.Additionally, understanding the data volume ensures that adequate preparations, such as data cleansing and mapping, can be completed prior to migration, which is key to a smooth and efficient transition.For more on data migration considerations, refer to: Salesforce Data Migration Planning."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 46,
+  "qe": "The Northern Trail Outfitters sales team has reported that many of the leads they receive are missing an email address or phone number.Which approach should a consultant recommend to address this issue?",
+  "oe": [
+   "Set default values for Phone and Email fields on the Lead object.",
+   "Make Phone and Email fields required on the Lead convert form.",
+   "Create a validation rule that requires a Phone and Email."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "To ensure that leads contain essential contact information, such as a phone number or email address, a validation rule can enforce these fields as required when creating a Lead. This approach ensures that incomplete leads are not saved, maintaining data quality.* Using Validation Rules for Data Completeness: Validation rules can specify that both Phone and Email fields must have values before a record can be saved. This prevents leads from being created with missing key contact information.* Improving Data Quality at Entry: By enforcing these fields, sales reps can work with complete data, increasing the likelihood of successful follow-up and conversion.Option A (setting default values) would not enforce field completion, and Option B (requiring on convert form) would not address the issue at the point of lead creation. For more guidance, see the Salesforce Validation Rules documentation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 47,
+  "qe": "A consultant is preparing to release an updated version of a sales process they have been working on for an existing Sales Cloud client.Which action should the consultant take first to ensure a smooth rollout for the sales team?",
+  "oe": [
+   "Conduct a series of informational sessions with the sales team to explain the benefits of the new sales process and address common questions in an online FAQ.",
+   "Implement a program to incentivize users and publicly reward early adopters to motivate others and create a sense of competition within the sales team.",
+   "Create a plan for implementation, drive awareness with the sales team, design training and coaching programs, update and document workflows, and measure success."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "To ensure a smooth rollout of an updated sales process, Salesforce best practices recommend a structured approach that includes planning, awareness, training, and continuous measurement. This option emphasizes a comprehensive strategy that covers all aspects necessary for successful change management. Starting with a detailed implementation plan, followed by creating awareness, designing relevant training and coaching programs, updating workflows, and establishing metrics for success, this approach addresses the holistic needs of the sales team. It helps in minimizing resistance to change and ensures the new process is effectively adopted.More details can be found in Salesforce's Change Management Documentation for implementation best practices."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 48,
+  "qe": "The Sales Cloud implementation at Cloud Kicks (CK) is now live.End user training is complete. IT stakeholders have signed off on the technical aspects of the project. The CK admin continues to call the consultant with questions about the sales process.What should the consultant do?",
+  "oe": [
+   "Suggest that CK purchase a support agreement.",
+   "Recommend that the admin attend Salesforce instructor-led training.",
+   "Conduct a knowledge transfer with the admin."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Since the Cloud Kicks admin continues to reach out with questions about the sales process, the consultant should facilitate a knowledge transfer session.Key Points:* Knowledge Transfer Importance: A knowledge transfer ensures the admin understands the configurations, customizations, and rationale behind the implemented sales processes.* Empowerment: By thoroughly educating the admin, they become more self-sufficient and capable of supporting end-users effectively.* Tailored Learning: The session can address specific questions and scenarios relevant to CK, providing immediate value.* Post-Implementation Support: Knowledge transfer is a critical component of a successful implementation, ensuring long-term sustainability.Salesforce Sales Cloud References:* Training and Adoption: Salesforce emphasizes the importance of training and knowledge sharing in its Adoption Best Practices.* Administrator Resources: Salesforce Administrator ResourcesWhy Options A and B are Incorrect:* Option A: Purchasing a support agreement may not provide the personalized assistance the admin needs and could incur unnecessary costs.* Option B: While formal training is beneficial, it may not address immediate concerns and is less personalized than a knowledge transfer session.Conducting a knowledge transfer with the admin addresses their questions directly and ensures they have the necessary understanding to manage the sales process effectively."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 49,
+  "qe": "Cloud Kicks (CK) has an external enterprise resource planning (ERP) system that stores product order information.CK wants to view those orders as a related list on the Account record in real time.Which best practice should the consultant recommend?",
+  "oe": [
+   "Create a Lightning component, Get the real-time product order Information from the ERP system using a REST integration. Add the component to the account page.",
+   "Create a custom product order information object. Run a nightly batch job to get details from the ERP system. Add the custom object as a related list on the Account.",
+   "Implement Salesforce Connect and an external object to get real-time product order information. Add the external object as a related list on the Account."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Salesforce Connect allows for real-time integration with external systems by creating external objects that act as virtual representations of external data within Salesforce. This is ideal for situations where data must be accessed in real-time, as with Cloud Kicks' ERP system and product order information. By using Salesforce Connect, CK can display external data directly in Salesforce as a related list on the Account without the need for nightly batch jobs or custom components.Creating a Lightning component for REST integration or using a custom object with a batch job are alternatives but do not offer the same seamless, real-time access that Salesforce Connect provides.Salesforce Documentation References:Salesforce Connect OverviewUsing External Objects in Salesforce"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 50,
+  "qe": "Cloud Kicks sales reps want to see all of the details on their current opportunities with a minimal amount of navigation or clicks to cycle through them.Which functionality should the consultant recommend?",
+  "oe": [
+   "Develop a new Sales Console app including opportunities.",
+   "Select the Split View option from the My Opportunities list view.",
+   "Create a dashboard with reports on My Opportunities."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "To allow sales reps to view all details of their current opportunities with minimal navigation, the consultant should recommend using the Split View option in Salesforce.Key Points:* Split View Feature: Split View enables users to see a list of records alongside the details of a selected record on the same screen. This allows for quick navigation between records without excessive clicking.* Efficiency in Navigation: Sales reps can click through the list of opportunities on the left pane, and the details of each selected opportunity will display on the right pane. This reduces the need to open each record in a new tab or window.* Minimal Clicks: With Split View, reps can cycle through their opportunities seamlessly, enhancing productivity and saving time.Salesforce Sales Cloud References:* Using Split View: Salesforce Help - Work with List Views Using Split View* Benefits of Split View: Split View is designed to help users process lists of records more efficiently by reducing navigation steps and keeping context while reviewing multiple records.By selecting the Split View option from the My Opportunities list view, sales reps at Cloud Kicks can efficiently access all the details of their current opportunities with minimal navigation or clicks."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 51,
+  "qe": "What should the consultant take into consideration when activating Orders?",
+  "oe": [
+   "Orders can be activated only if they include a Product.",
+   "New Products can be added to active orders.",
+   "Products can be removed from active reduction orders."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "In Salesforce Sales Cloud, an order can only be activated if it has at least one product associated with it. This requirement ensures that all active orders are tied to specific products, which is essential for order processing and fulfillment. Without products, the order would not have any items to fulfill, making it ineligible for activation. This rule helps enforce data integrity within the order management process.For more details, refer to Salesforce's documentation on Activating Orders."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 52,
+  "qe": "Cloud Kicks has a Web-to-Lead form on its website. Following an update to the form to add new picklist values, some leads are routing to the default lead owner.What should the consultant validate when troubleshooting the issue?",
+  "oe": [
+   "The picklist values are part of Lead assignment rule criteria.",
+   "A new web-to-lead form needs to be created to reflect the new picklist values.",
+   "Picklist values are included in only one rule entry."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "When troubleshooting leads routing to the default lead owner, the consultant should validate that the new picklist values are part of the Lead assignment rule criteria. Here's why:* Assignment Rule Logic: If the newly added picklist values are not included in the lead assignment rules, Salesforce will not recognize them for routing and will instead send leads to the default owner.Ensuring the criteria cover all picklist options is essential for correct routing.* Consistency with Web-to-Lead: The lead assignment rules must align with the Web-to-Lead form options. If the form contains new picklist values, these values must also be accounted for in the assignment criteria.* Salesforce Best Practices: Salesforce recommends regularly reviewing and updating assignment rules, especially after adding new fields or values that impact lead routing.* References: Salesforce documentation on Lead Management includes guidance on configuring and validating lead assignment rules.In summary, the consultant should validate that the new picklist values are included in the Lead assignment rule criteria (Option A) to ensure proper lead routing."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 53,
+  "qe": "Northern Trail Outfitters (NTO) finished implementing Sales Cloud for a mid-market sales team. Sales management wants to track data completeness.Which common metric should the consultant recommend that NTO use to measure core Sales Cloud data?",
+  "oe": [
+   "Record Count",
+   "User Adoption",
+   "Field Usage"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "When evaluating data completeness in Salesforce, measuring Field Usage is a key metric. This metric helps determine how thoroughly users are populating critical fields across records. By analyzing field usage, Northern Trail Outfitters (NTO) can ensure that important data fields like Account Information, Contact Details, and Lead Attributes are consistently filled, which supports accurate reporting and overall data quality.Field Usage directly impacts how well the team can leverage Sales Cloud for insights and decision-making, as incomplete data can hinder accurate analytics and reporting. Regular assessment of field usage is essential to maintain high data quality and maximize the effectiveness of Sales Cloud for sales management"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 54,
+  "qe": "The sales team at Cloud Kicks has been late meeting project deadlines and missed multiple meetings.What should the consultant recommend to the project manager?",
+  "oe": [
+   "Bring additional resources from the consulting firm to the project.",
+   "Confirm that the statement of work (SOW) Is realistic.",
+   "Revisit the communication plan and set up more frequent check-ins."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "If the sales team has been missing deadlines and meetings, it may indicate a need to revisit the communication plan and establish more frequent check-ins. Regular check-ins help keep the team aligned, address any challenges promptly, and reinforce accountability. A well-defined communication plan ensures that everyone stays informed about project status and expectations, which is essential for maintaining momentum and meeting deadlines.For best practices on project communication, refer to: Salesforce Project Management Communication."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 55,
+  "qe": "The Cloud Kicks sales team can create leads for both business and individual customers. Person Accounts have been enabled in its Salesforce org.What should the consultant do to convert a Lead into a Person Account?",
+  "oe": [
+   "Enable Contact Roles.",
+   "Leave the Company field blank.",
+   "Create an Apex trigger on the Lead object."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "When Person Accounts are enabled in a Salesforce organization, they allow users to represent individual customers without the need for an associated company. To convert a lead into a Person Account, the key step is to leave the \"Company\" field blank on the lead record. This signals Salesforce to convert the lead into a Person Account rather than a Business Account.Here's how it works:* Person Account Conversion Criteria: Salesforce uses the presence or absence of data in the Company field to determine whether to convert a lead into a Business Account (when Company is populated) or a Person Account (when Company is blank).* Streamlined Process: Leaving the Company field blank during lead entry ensures that the lead is treated as an individual, resulting in a Person Account upon conversion. No additional configurations or custom triggers are needed.* Person Account Use Cases: Person Accounts are especially useful for B2C scenarios where individual customers do not have a company affiliation, as they combine Account and Contact functionalities into a single record.Option A (Enable Contact Roles) and Option C (Create an Apex Trigger) are not necessary for this task, as Person Account conversion can be handled directly by Salesforce's standard lead conversion logic. For more details on converting leads to Person Accounts, refer to Salesforce's Person Accounts documentation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 56,
+  "qe": "The Cloud Kicks global sales team has asked for a simpler way to view and manage its opportunity pipeline.The team is often responsible for hundreds of deals at a time across multiple countries and currencies. The sales reps have suggested using the Kanban view.What is a consideration when using the Kanban view?",
+  "oe": [
+   "It can display up to 10 fields per card.",
+   "It can summarize records by Currency fields.",
+   "It can show roll-up summary fields for Currency fields."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "The Kanban view in Salesforce is a highly visual and interactive way for sales reps to manage their pipeline by organizing records into columns based on a selected picklist field. For teams handling opportunities across multiple countries and currencies, it's important to note that the Kanban view can summarize data by Currency fields. This makes it easier for reps to get an at-a-glance view of the monetary value associated with each stage in their pipeline, allowing for efficient prioritization and management of deals.For additional details on the Kanban view and its features, refer to Salesforce documentation: Kanban View Overview.When considering the use of the Kanban view for managing a large number of opportunities across multiple countries and currencies, the consultant should note that the Kanban view can summarize records by Currency fields, but there are considerations in multi-currency environments.Key Points:* Kanban View Overview:* The Kanban view displays records in columns based on a picklist field (e.g., Opportunity Stage).* It provides a visual summary of records, allowing users to drag and drop records between columns.* Summarizing by Currency Fields:* The Kanban view can display summary totals of a numeric or currency field at the top of each column.* In a multi-currency org, the summary amounts are displayed in the user's personal currency, which may affect the accuracy of totals when combining amounts in different currencies.* Considerations for Multi-Currency Orgs:* Currency Conversion: Totals may not accurately reflect the actual value due to currency conversion rates.* Data Accuracy: Users need to be aware that summarized currency amounts may be approximate.* User Experience:* Despite the currency considerations, the Kanban view remains a powerful tool for managing opportunities visually and efficiently.Why Other Options Are Less Suitable:* A. It can display up to 10 fields per card:* Kanban cards display limited information. By default, they show up to four fields, not ten.* C. It can show roll-up summary fields for Currency fields:* Roll-up summary fields are not displayed on Kanban cards. The Kanban view summarizes records based on a specified numeric or currency field, not roll-up summary fields.Salesforce Sales Cloud References:* Kanban View Overview: Salesforce Help - Work with Opportunities in the Kanban View* Multi-Currency Considerations: Salesforce Help - Considerations for Enabling Multiple Currencies* \"In the Kanban view, amounts are shown in your personal currency.\"* Customizing Kanban View: Users can select which currency field to summarize, but must be mindful of currency conversions.By understanding that the Kanban view can summarize records by Currency fields, but with considerations in a multi-currency context, the Cloud Kicks sales team can effectively use the Kanban view to manage their opportunity pipeline."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 57,
+  "qe": "Universal Containers is growing its international business.Domestic sales reps believe that the standard price book has too many records reflecting different currencies and country-specific product variations.What should the consultant recommend to improve usability for sales reps?",
+  "oe": [
+   "Update the product naming conventions to Include the currency In the product name.",
+   "Use separate product catalogs for domestic and international customers.",
+   "Use custom price books for domestic and International customers."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "To improve usability for sales reps and address concerns about the standard price book having too many entries, custom price books tailored for specific markets, such as domestic and international, can streamline the product selection process. Custom price books allow sales reps to view only relevant products and prices based on customer location, reducing complexity and enhancing usability.* Custom Price Books for Targeted Markets: By creating separate price books, Universal Containers can manage pricing variations by currency or product variations specific to each market, reducing clutter for sales reps.* Improved Efficiency in Sales Processes: Sales reps can select the appropriate price book for their customer's location, ensuring that only applicable products and prices are displayed, which simplifies product selection and pricing accuracy.Option A (updating product naming conventions) may not sufficiently address the issue, and Option B (separate product catalogs) would require managing multiple product datasets rather than simply filtering via price books. For more information, see the Salesforce Price Book documentation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 59,
+  "qe": "During the Deploy phase at Cloud Kicks, users are finding it difficult to navigate a new system which is contributing to low adoption.How should the consultant avoid this issue in the future?",
+  "oe": [
+   "Develop test scripts during the Plan phase.",
+   "Provide company-wide training throughout the project.",
+   "Conduct a beta review during the Validate phase."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "User adoption issues, like difficulty navigating a new system, can often be mitigated through ongoing, role- based training provided throughout the implementation project. Rather than waiting until deployment, offering training at different phases allows users to build familiarity with Salesforce gradually, enabling them to better understand and retain information. This approach, coupled with regular updates and support, ensures users are prepared and more comfortable with the new system by the time it goes live. Consistent training also reinforces the system's benefits and encourages users to engage with Salesforce more confidently and effectively, ultimately leading to higher adoption rates and better productivity in the long run.Salesforce recommends varied training methods, including hands-on sessions, webinars, and in-app guidance, which cater to different learning preferences and support user engagement at every project stage. Conducting company-wide training can ensure all stakeholders have the skills they need to succeed with the system from day one.References: Salesforce Trailhead emphasizes the importance of ongoing training and phased user engagement to boost adoption and ease the transition during a Salesforce implementation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 60,
+  "qe": "Sales reps at Universal Containers want to know when a customer or prospect contact opens an email the reps sent so they can follow up with the contact shortly afterward.Which tool should a consultant recommend to meet the requirement?",
+  "oe": [
+   "Salesforce Inbox",
+   "Enhanced Email",
+   "Einstein Activity Capture"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Salesforce Inbox provides email tracking capabilities, allowing sales reps to see when recipients open emails, click links, or reply. This real-time tracking enables reps to follow up promptly after a customer or prospect has interacted with an email, which aligns with Universal Containers' requirement for immediate insights on email engagement.* Real-Time Email Tracking: Salesforce Inbox offers insights into customer interactions, giving reps timely information on when emails are opened, which can help prioritize follow-up actions.* Integration with Sales Cloud: It integrates directly with Sales Cloud, enabling reps to manage customer interactions seamlessly from their inbox.Option B (Enhanced Email) and Option C (Einstein Activity Capture) lack direct email open tracking, which is specifically offered by Salesforce Inbox. More information on Salesforce Inbox can be found in Salesforce Inbox documentation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 61,
+  "qe": "Sales leadership at Universal Containers is concerned that sales reps are negotiating deals with contacts without the authority to make a decision, resulting is lost deals.What should the consultant recommend to resolve the issue?",
+  "oe": [
+   "Allow sales reps to mark the contact on each opportunity as ''Primary'' to indicate the decision maker.",
+   "Require sales reps to add the stakeholder as the decision make on each opportunity before the rep can progress the stage.",
+   "Enable Opportunity Teams so sales reps can track the decision maker for each opportunity."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "To avoid lost deals due to negotiating with non-decision makers, requiring sales reps to identify and designate a contact as the decision maker on each opportunity ensures that the appropriate stakeholders are involved.This approach enforces the validation of the decision maker role, which can help prevent deals from stalling or being lost due to lack of authority on the contact's part. Salesforce allows configuration of required fields or processes to make sure critical information is captured before advancing stages, helping align the sales process with effective decision-making structures.Refer to Salesforce's Opportunity Contact Roles documentation for further insights on managing contacts in opportunities."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 62,
+  "qe": "Cloud Kicks (CK) has recently rolled out Sales Cloud. CK uses an enterprise resource planning (ERP) system as its system of record for customer data. When an account has its first Closed Won opportunity, the ERP system should be updated immediately from the account and opportunity records.Which option should the consultant recommend to meet the requirement?",
+  "oe": [
+   "Script the ERP to call a Flow endpoint every 5 minutes to fetch newly won opportunities and their related accounts.",
+   "Implement Platform Events to publish Opportunity wins to the ERP, which will call back for opportunity and account Information.",
+   "Create an Accounts with Opportunities report filtered on Opportunities won today that the ERP can subscribe to."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "For real-time integration between Salesforce and the ERP system, Platform Events are well-suited as they enable Salesforce to publish an event immediately when an opportunity is marked as Closed Won. The ERP can then subscribe to these events and retrieve the necessary account and opportunity data.* Using Platform Events for Real-Time Updates: Platform Events facilitate an event-driven architecture where Salesforce can notify external systems instantly when specific changes occur, such as a Closed Won opportunity. This ensures that updates are transmitted to the ERP promptly.* Efficient Data Synchronization: With this approach, the ERP system can listen for these events and retrieve only the relevant records, reducing the need for frequent polling or scheduled jobs.Option A (scripting ERP to fetch data) relies on periodic polling, which may not meet real-time requirements, and Option C (report subscription) does not provide immediate updates. For more information, refer to the Salesforce Platform Events documentation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 63,
+  "qe": "During a discovery session at Cloud Kicks, a major topic is highlighted that is outside the current statement of work (SOW). The addition to the project scope is necessary but will be difficult to implement.How should the consultant proceed?",
+  "oe": [
+   "Create a change request for the new items.",
+   "Revise the timeline to accommodate the new Items.",
+   "Conduct another discovery session to define the new items."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "When a new requirement arises outside the original scope of the project, the best practice is to initiate a change request. This formal process evaluates the new requirement's impact on the project's scope, timeline, and budget. Creating a change request allows all stakeholders to review and agree on the scope expansion before implementation, ensuring transparency and proper resource allocation for the added items.For guidance on managing project scope changes, refer to: Salesforce Change Management Best Practices."
+ }
+]

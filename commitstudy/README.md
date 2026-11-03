@@ -101,3 +101,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 
 ## 科目 Agentforce Sales コンサルタント(afsales)
 - `afsales_SPEC.md` 原稿の仕様、`afsales/manuscript/` 章ごとの原稿、`build_afsales.py` で data を組み立て、`figs_m/spec_E〜G.py` と `figs_m/apply_afsales.py` で図を入れる、`patch_add_afsales.py` で科目を登録。公開データは `afsales/data/`
+
+- AF Sales の過去問: Notion の4ページ(230問)から重複を除いた160問を、公式情報で検証・翻訳して `afsales/pastq/out_*.json` に。`merge_adds.py` で関連知識の重複をまとめ、`add_pastq_afsales.py` で問題集と本文に追加

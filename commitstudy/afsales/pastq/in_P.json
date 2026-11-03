@@ -1,0 +1,602 @@
+[
+ {
+  "label": "v2026-08-04",
+  "no": 1,
+  "qe": "A consultant wants to visually show sales reps their pipeline by stage and allow drag-and-drop updates to Opportunity stage. What should the consultant recommend?",
+  "oe": [
+   "Kanban view",
+   "Related list only",
+   "Print report"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 2,
+  "qe": "Cloud Kicks has completed the discovery stage and leadership has aligned on the project's business goals. What should the consultant formalize with stakeholders before moving on to the next project stage?",
+  "oe": [
+   "Create user stories to present for prioritization.",
+   "Onboard team members to start development of the solution.",
+   "Define key metrics to identify how success will be measured."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 3,
+  "qe": "When emails sync by Einstein Activity Capture, how are the emails matched to Sales Cloud records?",
+  "oe": [
+   "Matching Is based on the standard Email field.",
+   "Matching is based on any Email field.",
+   "Matching is based on Full Name and standard Email field."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 4,
+  "qe": "The sales department at Cloud Kicks is growing quickly. New sales executives want to prioritize interacting with contacts who make or influence the decision to purchase Sales Cloud. What should the consultant recommend to document the decision-makers and influencers?",
+  "oe": [
+   "Update Primary Contact on all Opportunities.",
+   "Use Contact Roles on the Opportunity object.",
+   "Create @ report showing Contacts with executive job titles."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 5,
+  "qe": "At a kickoff meeting for a new project, a consultant starts gathering information to be used in the project implementation plan. They ask the participants to define what project success will look like. Which strategy is the consultant using?",
+  "oe": [
+   "Design Direction",
+   "Discovery",
+   "Challenge Framing"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 6,
+  "qe": "Cloud Kicks needs to associate some contacts with many accounts. Which solution should a consultant recommend to meet this requirement?",
+  "oe": [
+   "Use the Contact to Multiple Accounts feature.",
+   "Use the Contact Roles related list on Accounts.",
+   "Add multiple custom Account lookup fields on the Contact."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 7,
+  "qe": "Universal Containers (UC) deployed Sales Cloud 3 months ago to the North American sales teams. One of the reasons UC selected Sales Cloud is its mobile support which provides flexibility for sales reps. How should the consultant assure UC's management that Sales Cloud is being successfully adopted on mobile devices?",
+  "oe": [
+   "Report on the opportunity records created on a mobile device.",
+   "Download the Login History report and filter by device type.",
+   "Review the user profiles for mobile device permissions."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 8,
+  "qe": "Cloud Kicks (CK) recently implemented Einstein Opportunity Scoring in its production org. CK is using the Amount field in its Opportunity Scoring model. What will a user without access to the Amount field on the Opportunity object observe?",
+  "oe": [
+   "The Amount field will display an error in the contributing factors section.",
+   "The Opportunity Score field and the Amount field will be hidden for that user.",
+   "The Amount field will be hidden from the contributing factors section."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 9,
+  "qe": "Cloud Kicks wants to streamline the approval process and give sales managers more efficient ways to approve opportunities in a timely manner. Which strategy should the consultant recommend to improve Approval Processes?",
+  "oe": [
+   "Allow managers to approve or reject requests via an email.",
+   "Configure Einstein Opportunity Insights to approve requests.",
+   "Add a dashboard of pending approvals to the Chatter feed."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 10,
+  "qe": "Cloud Kicks wants to track and report on the percentage of leads that convert into opportunities, by lead source, over the past year. What should the consultant recommend?",
+  "oe": [
+   "A report on Leads grouped by Lead Source with conversion rate formulas, or a Lead Conversion dashboard",
+   "A single Chatter post per month",
+   "Manual spreadsheet tracking outside Salesforce"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 11,
+  "qe": "Cloud Kicks (CK) is adding hundreds of new accounts to Sales Cloud daily. CK uses an automated process to assign Account owners. If no assignment can be made for an account, it will be routed to a specific user who will manually review and re-assign it at a later date. This user may have thousands of account records assigned. Which solution should the consultant recommend when CK sets up the new account process?",
+  "oe": [
+   "Place the user in 4 separate role at the highest level! of the role hierarchy.",
+   "Assign the Modify All Data permission to the user.",
+   "Add the user to a separate role at the lowest level of the role hierarchy."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 12,
+  "qe": "Cloud Kicks wants an at-a-glance view combining sales pipeline, quota attainment, and activity metrics for executives. What should the consultant recommend?",
+  "oe": [
+   "A Lightning dashboard with multiple report components",
+   "A single detailed report",
+   "Individual emails per rep"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 13,
+  "qe": "Cloud Kicks wants to measure the effectiveness of multiple marketing campaigns that touch the same opportunity before it closes. What should the consultant recommend?",
+  "oe": [
+   "Campaign Influence",
+   "Lead Source field only",
+   "A single Primary Campaign Source field"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 14,
+  "qe": "Cloud Kicks has purchased a list of prospects and wants sales reps to contact and measure the return on investment (ROI) of the purchased list. Which solution should the consultant recommend?",
+  "oe": [
+   "Import the list as new Leads and update the Lead Source to \"Purchased Lead\".",
+   "Import the prospects as Contacts and assign them to Accounts.",
+   "Import the list as new Leads and map the Campaign during import."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 15,
+  "qe": "In a recent management meeting, the VP of sales voiced concern over the current economic environment. To better understand the effectiveness of its marketing efforts, the VP expressed a need to monitor and reduce churn going forward. Which strategy should a consultant recommend to address the VP's concern?",
+  "oe": [
+   "Create a year over year sales by Account report.",
+   "Create an average stage duration by Opportunity report.",
+   "Create a Historical Trending report."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 16,
+  "qe": "Cloud Kicks want to track the return on investment (ROI) of its marketing campaigns for trade shows and customer webinars. What should the consultant recommend?",
+  "oe": [
+   "Use the Primary Campaign Source field on the Opportunity object.",
+   "Enable Campaign Influence and add It to the Opportunity page layout.",
+   "Create a custom field on the Opportunity object to capture Campaign details."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 17,
+  "qe": "Each product engineer at Cloud Kicks supports a specific product line. There are five product lines. While sales reps sell all of the company's product lines, sales management wants the appropriate product engineer to be able to automatically view any new Opportunity for their particular product line with Read-Only rights. What should the consultant do to meet the requirement?",
+  "oe": [
+   "Enable Default Account Teams for each product line.",
+   "Enable Default Opportunity Teams for the Opportunity.",
+   "Create criteria-based opportunity sharing rules for each product line."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 18,
+  "qe": "Universal Containers is in the planning phase of its Sales Cloud implementation. In a recent discussion, the CEO expressed a desire to measure the return on investment (ROI) of its sales and marketing efforts by location. Which solution should the consultant recommend?",
+  "oe": [
+   "Track total opportunity pipeline by lead source and location.",
+   "Track total accounts created by lead source and location.",
+   "Track total cases submitted by lead source and location."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 19,
+  "qe": "Cloud Kicks manages prospects for lead generation in a marketing application. To ensure data quality, which prospects should the consultant migrate from the marketing application to lead records?",
+  "oe": [
+   "All prospects",
+   "Contacted prospects",
+   "Qualified prospects"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 20,
+  "qe": "The Cloud Kicks marketing team purchased a marketing automation tool and is implementing a lead qualification process. The sales director provided key attributes and activity history of the ideal lead. What should the consultant do to help marketing improve the process?",
+  "oe": [
+   "Create reports based on the sales metrics provided in the marketing automation tool and train marketing users to identify and qualify leads.",
+   "Develop the Lead score and grade in the marketing automation tool to automatically determine when a lead should become qualified.",
+   "Set up the marketing automation tool to send prospects to the sales director and ask sales reps to assist in the qualification process."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 21,
+  "qe": "Cloud Kicks needs product pricing to vary by customer segment (e.g., Enterprise vs. SMB) while using the same product catalog. What should the consultant recommend?",
+  "oe": [
+   "Multiple Price Books, one per segment",
+   "Editing the Standard Price Book only",
+   "Creating duplicate Product records per segment"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 22,
+  "qe": "The admin at Cloud Kicks recently implemented Sales Cloud and needs to understand the adoption of Lightning Sales Console. What should a consultant recommend to analyze adoption?",
+  "oe": [
+   "Run the Salesforce Optimizer.",
+   "Open the Lightning Usage App.",
+   "Create a custom report."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "v2026-08-04",
+  "no": 23,
+  "qe": "During the last requirements meeting, Cloud Kicks team members said they will be attending a conference next week. What should a consultant do in response to this news?",
+  "oe": [
+   "Use the downtime to develop User Acceptance Testing (UAT) scripts.",
+   "Update the project plan and communicate it to stakeholders.",
+   "Ask the client to sign off on requirements and start the Build phase."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 1,
+  "qe": "Cloud Kicks (CK) has implemented different sales stages across its varied product lines. CK wants to deploy Collaborative Forecasts to all sales users.What should a consultant consider when rolling out forecast?",
+  "oe": [
+   "Single Category or Cumulative Forecast Rollup should be defined.",
+   "Multiple Forecast Types must be created and activated.",
+   "Opportunity Splits must be enabled at the same time."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "When deploying Collaborative Forecasts with varied sales stages across product lines, creating and activating multiple Forecast Types is essential. Here's why:* Multiple Forecast Types for Different Product Lines: With different sales stages across product lines, each product line may require a unique forecast type to reflect its distinct stages. Salesforce allows the creation of multiple forecast types, which can be configured to cater to specific sales processes.* Accurate Forecasting: By setting up multiple forecast types, Cloud Kicks can ensure that forecasts align with the unique sales processes for each product line, enabling accurate and actionable forecasting.* Salesforce Best Practices: Salesforce recommends defining multiple forecast types when organizations have varied sales stages, as this allows for customized forecast management that aligns with business requirements.* References: Salesforce's documentation on Collaborative Forecasts outlines the process of configuring multiple forecast types and how to manage them.In summary, creating and activating multiple Forecast Types (Option B) is necessary to accurately roll out forecasts across varied product lines at Cloud Kicks."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 2,
+  "qe": "What is a key capability of Data Loader?",
+  "oe": [
+   "Prevents importing duplicate record data",
+   "Imports organization and configuration metadata",
+   "Runs one-time or scheduled data imports"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Data Loader is a versatile tool that enables users to import, export, update, delete, and manage large volumes of data within Salesforce. A key capability of Data Loader is its ability to handle both one-time and scheduled data imports. This feature is particularly useful for regularly scheduled data updates, such as daily imports of data from external systems or periodic data cleansing activities.Salesforce documentation confirms that Data Loader allows scheduling for regular imports or exports, making it an efficient tool for managing data over time. However, it does not include native features to prevent duplicates or import metadata, as it primarily focuses on data records."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 3,
+  "qe": "The project at Universal Containers is almost finished and now it is time to test the changes and updates that have been made before go-live.Partial and Full sandboxes are unavailable.Where should the consultant recommend testing be conducted?",
+  "oe": [
+   "Create a new Developer Edition org and populate it with data.",
+   "Create test accounts and opportunities in a new Trailhead Playground org.",
+   "Create a new Developer sandbox and populate it with data."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "When Full or Partial sandboxes are unavailable, creating a new Developer sandbox and populating it with data is the best option for testing. Here's why:* Sandbox Environment: Developer sandboxes allow for configuration and testing of customizations in an isolated environment. Although they do not contain data by default, data can be manually loaded for testing purposes.* Controlled Testing: Using a Developer sandbox ensures that configurations can be tested without impacting production, allowing the team to validate changes before go-live.* Salesforce Best Practices: Salesforce recommends using Developer sandboxes for configuration and testing when Full or Partial sandboxes are not available, as they still provide a controlled environment.* References: More information on Sandbox Types and Data Loading can be found in Salesforce documentation, explaining how to use Developer sandboxes effectively for testing.In summary, creating a new Developer sandbox and populating it with data (Option C) is the best way to conduct testing when other sandbox types are unavailable."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 4,
+  "qe": "Northern Trail Outfitters launched Salesforce for its EMEA subsidiary 3 months ago and wants to gain insight into usage.Which option should a consultant recommend to meet this requirement?",
+  "oe": [
+   "Create and subscribe to a custom report of active users by role.",
+   "Install the Salesforce Adoption Dashboard from AppExchange.",
+   "Analyze the Setup Audit Trail to determine the number of logins per day."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "For organizations like Northern Trail Outfitters looking to gain insight into user adoption, the Salesforce Adoption Dashboard from the AppExchange provides a comprehensive and customizable solution. This dashboard offers key metrics, such as login frequency, feature usage, and data quality indicators, allowing stakeholders to monitor and analyze how users are interacting with Salesforce.The dashboard offers visual insights into adoption trends and user behavior across different roles and regions, enabling administrators to identify areas where additional training or support might be needed. By tracking usage metrics, Northern Trail Outfitters can proactively address any challenges in user adoption and ensure that users are effectively leveraging Salesforce for their daily operations.References: Salesforce AppExchange offers various adoption dashboards that are pre-configured for tracking key metrics, making it easier for organizations to assess and enhance user engagement with the platform."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 5,
+  "qe": "Which prerequisite should the consultant consider before enabling Opportunity Splits?",
+  "oe": [
+   "Ensure open opportunities are owned by active users,",
+   "Enable Opportunity Teams and confirm the owner is a team member.",
+   "Add customized split types to opportunities."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Before enabling Opportunity Splits, it is necessary to enable Opportunity Teams and confirm that the opportunity owner is a team member. Here's why:* Requirement for Opportunity Splits: Opportunity Splits rely on Opportunity Teams to allocate credit across team members. Therefore, enabling Opportunity Teams is a prerequisite, ensuring that splits can be assigned to team members who contribute to the opportunity.* Ownership and Team Membership: The opportunity owner must be part of the Opportunity Team to ensure that they can be assigned a split and manage team member contributions accurately.* Salesforce Best Practices: Salesforce documentation on Opportunity Splits specifies that Opportunity Teams must be set up and members confirmed for split management to be operational.In summary, the consultant should enable Opportunity Teams and confirm the owner is a team member (Option B) before enabling Opportunity Splits."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 6,
+  "qe": "Sometimes, Universal Containers sales reps need to create contacts without accounts based on business processes.What should the consultant take into consideration?",
+  "oe": [
+   "Contacts are private and shared through sharing rules.",
+   "Contacts are private and shared through the role hierarchy.",
+   "Contacts are private and only the owner and admin can view them."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "In Salesforce, when contacts are created without being associated with an account, they are referred to as\"Private Contacts.\" Private Contacts are visible only to the record owner and system administrators, and they do not inherit sharing settings from accounts because they aren't linked to any. Since these contacts are not associated with accounts, they remain isolated from standard sharing rules or role hierarchies, emphasizing that only the owner and admin can view them.For further details, see: Salesforce Private Contacts."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 8,
+  "qe": "Cloud Kicks has recently hired a new inside sales team. Management wants to ensure that steps in the sales process are clear and adhered to by the team. Each step must have clear guidelines, support materials, and coaching tips.What should the consultant recommend to support the new sales team and management?",
+  "oe": [
+   "Create validation Rules on the Opportunity Stage field.",
+   "Create a flow paired to each of the Opportunity stages.",
+   "Create a Path on the Opportunity object."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "To guide the new sales team through the sales process, creating a Path on the Opportunity object is the best recommendation. Here's why:* Guidance for Each Stage: Salesforce Path allows for visualizing each stage of the sales process and provides customizable guidance, including key fields, support materials, and tips directly on the Opportunity record.* Enhanced User Experience: Path provides sales reps with specific coaching tips and resources tailored to each stage of the process, promoting adherence to the process and improving onboarding for new team members.* Salesforce Best Practices: Salesforce advocates using Path to reinforce process steps, making it ideal for organizations seeking to standardize and enforce process adherence.* References: More information can be found in Salesforce documentation on Path and Workspaces, which outlines the benefits of using Path for process guidance.In summary, creating a Path on the Opportunity object (Option C) provides Cloud Kicks with a structured way to guide the new sales team through each step of the sales process."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 9,
+  "qe": "Cloud Kicks wants to enable Person Accounts.What does the consultant need to do before enabling Person Accounts?",
+  "oe": [
+   "Disable access to Experience Cloud sites during the cutover.",
+   "Set default sharing of Account to Public Read/Write.",
+   "Create at least one Account record type."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Before enabling Person Accounts, Salesforce requires that at least one Account Record Type is created. This is because Person Accounts function as a hybrid of both Account and Contact objects, with specific configurations required to distinguish between business and person accounts. Without setting up a record type, Person Accounts cannot be enabled.Salesforce documentation states that enabling Person Accounts will impact data models and certain configurations within the system. Therefore, it's crucial to review these prerequisites carefully. Disabling access to Experience Cloud sites and modifying account sharing settings are not prerequisites specifically tied to enabling Person Accounts.Salesforce Documentation References:* Enable Person Accounts* Person Accounts Overview"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 10,
+  "qe": "Universal Containers is analyzing data to identify gaps, and wants to know which Accounts with open Opportunities are missing Contacts.What should a consultant recommend to build this report?",
+  "oe": [
+   "Reporting snapshot",
+   "Roll-up summary flied",
+   "Cross filter"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "To identify accounts with open opportunities that are missing contacts, using a cross filter in Salesforce reports is the most effective approach. Cross filters allow for filtering records based on related objects, such as showing Accounts with open Opportunities that lack associated Contacts. This method provides a clear and actionable report that highlights data gaps directly relevant to Universal Containers' analysis needs, enabling them to address these gaps more efficiently"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 11,
+  "qe": "Cloud Kicks uses Salesforce to manage business Accounts and Person Accounts. The sales director wants to associate Person Accounts to business Accounts and/or Contacts.Which approach should the consultant recommend to meet these requirements?",
+  "oe": [
+   "Use the Contacts to Multiple Accounts feature.",
+   "Create a junction object between Account and Contact.",
+   "Create a custom lookup from Account to Contact."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "To associate Person Accounts with Business Accounts and/or Contacts, using the Contacts to Multiple Accounts feature is the most appropriate recommendation. Here's why:* Flexible Relationships: This feature allows Person Accounts to be linked to multiple Business Accounts or Contacts, facilitating complex relationships between individual customers and businesses.* Standard Salesforce Functionality: The Contacts to Multiple Accounts feature is built into Salesforce and provides a straightforward way to manage associations between Person Accounts and Business Accounts without requiring custom objects or additional configurations.* Salesforce Best Practices: Salesforce supports this feature for organizations needing flexibility in relationship management, which is ideal for scenarios involving Person Accounts.* References: Detailed information on Contacts to Multiple Accounts and its use with Person Accounts can be found in Salesforce's documentation on account and contact relationships.In summary, using the Contacts to Multiple Accounts feature (Option A) is recommended to associate Person Accounts with Business Accounts and Contacts effectively in Cloud Kicks' Salesforce setup."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 12,
+  "qe": "A consultant is meeting with a new client to design a rollout strategy for its Sales Cloud implementation.What should the consultant do during the planning stage to ensure a successful implementation?",
+  "oe": [
+   "Identify which Salesforce features and functions to use.",
+   "Design a prototype of the suggested solution.",
+   "Define goals, metrics, project schedule, and sales processes."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "During the planning stage of a Sales Cloud implementation, defining goals, metrics, project schedules, and sales processes is critical for a successful rollout. This foundational step ensures that the implementation aligns with the client's business objectives and provides clear criteria for measuring success. Salesforce recommends that implementation planning includes establishing a timeline, setting achievable goals, and documenting existing and desired sales processes. These elements form the basis for effective project management and help in aligning the solution with the client's business needs.Identifying Salesforce features and designing a prototype are valuable steps, but they typically occur after establishing clear goals and requirements. Proper planning sets the stage for these subsequent tasks.Salesforce Documentation References:* Salesforce Implementation Best Practices* Sales Cloud Planning Guide"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 13,
+  "qe": "Cloud Kicks is running a campaign for the Shoe of the Month club. Sales management wants to use Campaign Influence features with Opportunities to attribute a percentage of success to Influential campaigns.Which feature will allow for revenue share with standard and custom attribution models?",
+  "oe": [
+   "Create a reporting snapshot for Campaign Influence.",
+   "Customizable Campaign Influence for reporting.",
+   "Create a formula field to track Campaign Influence."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "The Customizable Campaign Influence feature in Salesforce allows users to assign revenue attribution to campaigns that have influenced Opportunities. It supports both standard and custom attribution models, enabling users to define how much influence a campaign had on the Opportunity's success. This feature is ideal for assigning specific percentages of revenue to influential campaigns, which can then be reported and analyzed to understand their impact.Salesforce's documentation on Campaign Influence details how Customizable Campaign Influence supports complex attribution models and offers flexible reporting capabilities, making it the right choice for revenue sharing in scenarios like Cloud Kicks' campaign."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 14,
+  "qe": "The Discovery phase with Cloud Kicks (CK) has just ended.CK wants a visual way to see how the new business processes will work. CK's process is complex and requires multiple slides.What should the consultant create to provide this high-level view?",
+  "oe": [
+   "Value Stream Map",
+   "Universal Process Notation",
+   "Capability Model"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "After the Discovery phase, Cloud Kicks (CK) wants a visual representation of how the new complex business processes will work, requiring multiple slides. The consultant should create a diagram using Universal Process Notation (UPN).Key Points:* Universal Process Notation (UPN): UPN is a simple, user-friendly way to map business processes. It provides a standardized method to document complex processes in a clear and understandable format.* Visual Representation: UPN uses simple flowcharts and diagrams to represent processes, making it easier for stakeholders to visualize and understand complex workflows.* Scalability: UPN is suitable for representing both high-level overviews and detailed process steps, accommodating the complexity and multiple slides required by CK.* Communication Tool: By presenting the processes in UPN, the consultant can effectively communicate how the new processes will function within the organization.Why Other Options Are Less Suitable:* A. Value Stream Map: This method focuses on analyzing and improving the flow of materials and information required to bring a product or service to a consumer. It is more suited for process improvement rather than providing an overall visual representation of new processes.* C. Capability Model: A Capability Model provides a high-level view of what an organization does (its capabilities), not how processes work. It is less suitable for showing detailed or complex processes.Salesforce Sales Cloud References:* Business Process Mapping: While Salesforce does not prescribe a specific notation for process mapping, it emphasizes the importance of clear and effective communication of business processes during implementation.* Process Visualization Tools: Salesforce partners and consultants often use various process mapping techniques, including UPN, to document and communicate business processes.* Change Management: Effective documentation of processes is critical for user adoption and change management, as outlined in Salesforce's Change Management Best Practices.By creating diagrams using Universal Process Notation, the consultant can provide CK with a visual, comprehensive, and understandable representation of the new complex business processes."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 15,
+  "qe": "The sales director at Universal Containers wants to ensure that a custom field on the Lead object is excluded from Einstein Lead Scoring.How should the consultant meet the requirement?",
+  "oe": [
+   "Clear the custom field values on Lead records.",
+   "Omit the custom field from the Scoring Model.",
+   "Remove the custom field from Lead page layouts."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Einstein Lead Scoring in Salesforce allows admins to customize scoring models by including or excluding specific fields that contribute to the scoring algorithm. To ensure that a particular custom field on the Lead object is excluded from the scoring model, the consultant should omit the field from the Scoring Model configuration. This ensures that Einstein Lead Scoring will not consider that field when generating lead scores, which aligns with the sales director's request to exclude it from the scoring criteria.For more details on configuring Einstein Lead Scoring models, you can refer to the Salesforce documentation:Einstein Lead Scoring Setup."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 16,
+  "qe": "Universal Containers continues to see substantial growth year-over-year. Outside sales reps think their territories are too dense to cover adequately. Leadership has decided to modify the existing sales territories and hire additional staff to make the account allocations more manageable. Some states will change from one territory to two or more smaller territories. In these instances, accounts will need to be reassigned to new territories.Sales operations wants to review the territory account assignments and verify the accuracy before the changes are reflected in Sales Cloud.How should the consultant show sales operations what the data will look like after the change?",
+  "oe": [
+   "Develop reports and dashboards that compare the existing and new territories.",
+   "Run the updated assignment rules in the Planning State and view the accounts on the territory detail page.",
+   "Install the Territory Health Assessment app from AppExchange."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "In Salesforce Territory Management, the Planning State allows users to view and modify territory structures and assignment rules before implementing changes. By running the updated assignment rules in this state, Sales Operations can preview how accounts will be allocated within new territory structures. This Planning State feature is specifically designed to enable users to assess the impact of changes on account assignments, ensuring accuracy before activating the changes.Utilizing the Planning State is a best practice because it provides a detailed preview of account distributions, helping Sales Operations make informed decisions and validate territory assignments. Once satisfied, the model can then be published to reflect these changes in the active territory model without directly affecting the live data until ready. This approach provides a controlled environment to validate changes and ensures smooth transitions for complex territory adjustments"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 17,
+  "qe": "During the Discovery phase of a Sales Cloud implementation, which step should a consultant complete to prepare for a successful engagement?",
+  "oe": [
+   "Set project milestones.",
+   "Create the implementation plan",
+   "Define sales processes"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "In the Discovery phase of a Sales Cloud implementation, it is essential to define the sales processes that will be supported in Salesforce. This step involves understanding the specific stages and steps within the organization's sales cycle and ensures that Salesforce will be configured to align with these processes.Defining sales processes is foundational for creating a solution that meets business needs and is aligned with user expectations, as it impacts subsequent configuration, training, and adoption efforts."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 18,
+  "qe": "Sales managers at Cloud Kicks want to create a sales dashboard of key performance indicators (KPIs) to measure day-to- day operations.Which key metric should the consultant include in the dashboard?",
+  "oe": [
+   "Number of outbound calls made over a period of time",
+   "Number of updated opportunities",
+   "Number of marketing qualified leads (MQL)"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "For day-to-day operations, sales managers can benefit from tracking the number of outbound calls made, as this reflects sales activity levels and engagement with leads or customers. This metric is actionable and provides insight into the volume of sales efforts, which is useful for daily KPI tracking.* Outbound Calls as a Sales Activity Metric: Outbound calls are a direct measure of sales reps' efforts to reach out to leads and customers. This can help managers understand daily productivity and assess whether activity levels are aligned with sales goals.* Direct Impact on Sales Performance: A high number of outbound calls can correlate with increased opportunities and potential sales, making it a valuable metric for daily operations.Option B (number of updated opportunities) reflects opportunity management but may not directly correlate with daily activity, and Option C (MQLs) focuses more on marketing rather than sales activities. For guidance on creating sales dashboards, refer to Salesforce's Sales Analytics documentation."
+ }
+]

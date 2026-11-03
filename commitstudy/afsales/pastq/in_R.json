@@ -1,0 +1,602 @@
+[
+ {
+  "label": "v2026-03-03",
+  "no": 64,
+  "qe": "A consultant is initiating a Sales Cloud project for Cloud Kicks.Which essential action should the consultant prioritize to ensure successful implementation and adoption?",
+  "oe": [
+   "Design end user training plan.",
+   "Set project milestones and establish key performance indicators (KPIs).",
+   "Develop Quality Assurance (QA) testing scripts."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "For successful Sales Cloud implementation and adoption, establishing clear project milestones and defining KPIs is crucial. These elements provide a structured framework for measuring progress and ensuring that the project aligns with business objectives. By setting measurable KPIs, the consultant can track essential metrics like user adoption rates, data quality, and process efficiency, which are critical for gauging success and making data-driven adjustments as needed. This approach ensures that the implementation stays on track and that any issues can be addressed proactively"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 65,
+  "qe": "Universal Containers uses Sales Territories and is working with a consultant to reassign Accounts into new territories.Which attribute of Sales Territories should the consultant consider when developing the new territory model?",
+  "oe": [
+   "The system administrator profile is required to run territory planning reports.",
+   "A model must be activated in order to view reassigned accounts.",
+   "All Account assignment rules should be run when the model state is set to Planning."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "In Salesforce Sales Cloud, when working with Sales Territories, a territory model must be activated to view any reassigned accounts. This is because only an active territory model applies the defined territory account assignment rules to assign accounts. While a model is in the Planning state, it allows for setting up and testing, but changes are not applied to live data. Activation finalizes the model and makes the assignments visible and enforceable. This ensures that accounts are correctly reassigned based on the updated rules in the territory model.For further information, refer to Salesforce documentation on Activating Territory Models."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 66,
+  "qe": "Cloud Kicks wants to help its sales reps identify stalled opportunities in a single view.Which solution should the consultant recommend to meet the requirement?",
+  "oe": [
+   "Create a Lightning Web Component.",
+   "Use Deal Insights In Pipeline Inspection",
+   "Create a screen flow."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Pipeline Inspection with Deal Insights offers a visual way to identify stalled opportunities and provides actionable insights directly within the Sales Cloud. This tool highlights opportunities that haven't progressed in a set amount of time, making it easy for sales reps to identify and act on these opportunities in a single view.While custom Lightning Web Components or screen flows could potentially be built to identify stalled opportunities, using Deal Insights in Pipeline Inspection is a more efficient and native Salesforce solution designed specifically for this purpose.Salesforce Documentation References:* Pipeline Inspection and Deal Insights* Identifying Stalled Opportunities with Deal Insights"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 67,
+  "qe": "Cloud Kicks (CK) is planning to use Person Accounts to maintain information on its retail customers. CK likes to track connections among customers to capture household relationships, referrals, and so on. One customer can have many relationships.What should a consultant consider when implementing Person Accounts and supporting many relationships between customers in Salesforce?",
+  "oe": [
+   "Use Contact for retail customers and use Accounts to maintain relationships.",
+   "Enable Contacts to Multiple Accounts to create indirect relationship between two or more Person Accounts.",
+   "Create a custom field to establish relationships and create hierarchies among Person Accounts."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "When using Person Accounts in Salesforce, the \"Contacts to Multiple Accounts\" feature allows for creating connections between Person Accounts, effectively enabling the tracking of indirect relationships such as household relationships and referrals. This feature facilitates linking a single contact (or Person Account) to multiple accounts, which can represent different relationship types. It is particularly suited for Cloud Kicks' need to capture various types of customer relationships, making it more flexible and scalable for relationship tracking among retail customers.Refer to the Salesforce documentation on Contacts to Multiple Accounts for more information on using this feature with Person Accounts."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 68,
+  "qe": "A consultant for Universal Containers is preparing to migrate the company's legacy CRM to Sales Cloud. The admin for the previous system is enthusiastic about Sales Cloud and driving the objectives of the implementation, but end users have expressed dissatisfaction about moving to a new platform.How should the consultant determine and validate their approach with end users?",
+  "oe": [
+   "Enlist the help of a champion to ensure that Sales Cloud is meeting end user needs.",
+   "Interview top-level executives to understand the Sales Cloud key performance indicators (KPIs) for end users.",
+   "Conduct a technical review of Sales Cloud with developers to evaluate solutions for end users."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "To improve end-user adoption and address concerns regarding the new Sales Cloud platform, it's effective to enlist the help of a champion. A champion is someone within the organization who can advocate for the system, bridge the gap between end users and the project team, and help align the solution with user needs.* Role of a Champion: Champions can provide valuable insights into end-user needs and help drive enthusiasm and acceptance among users by demonstrating the benefits of Sales Cloud.* Encouraging User Buy-In: By having someone who understands the system and user concerns, the consultant can adjust the implementation approach based on user feedback, improving adoption and satisfaction.Option B (interviewing top-level executives) might miss the specific concerns of end users, and Option C (technical review with developers) focuses on technical aspects rather than user experience and adoption. For more information, refer to Salesforce's User Adoption Strategies."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 69,
+  "qe": "Cloud Kicks has a Public Read Only Opportunity sharing model. A sales rep noticed they can edit some opportunities associated with accounts they own, but are unable to edit other opportunities associated with accounts they own.Which reason explains the sales rep's experience?",
+  "oe": [
+   "Some opportunities associated with these accounts are owned by other users.",
+   "Sharing rules for Opportunities are set to a public group for managers.",
+   "The user is a member of an Account Team with Read/Write access on Opportunities."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Cloud Kicks has a Public Read Only sharing model for Opportunities. A sales rep can edit some opportunities associated with accounts they own but cannot edit others.* Account Teams:* Definition: Account Teams allow multiple users to have access to an account and its related records, such as opportunities, cases, and contacts.* Access Levels: Team members can have varying levels of access (Read Only, Read/Write) to the account and related records.* Scenario Analysis:* Editable Opportunities: The sales rep can edit opportunities where they are a member of the Account Team with Read/Write access on Opportunities.* Non-Editable Opportunities: For opportunities where they are not on the Account Team or have Read Only access, they cannot edit those opportunities, even if they own the account.Why Other Options Are Less Suitable:* Option A: Ownership of the account does not grant edit access to all related opportunities if the opportunities are owned by other users and sharing settings are restrictive.* Option B: Sharing rules for managers would not directly impact a sales rep's ability to edit opportunities unless they are part of that public group, which isn't indicated in the scenario.Salesforce Sales Cloud References:* Account Teams Overview: Salesforce Help - Account Teams* Setting Up Account Teams: Salesforce Help - Set Up Account Teams* Opportunity Access via Account Teams: Salesforce Help - Grant Access Using Account Teams By being a member of an Account Team with Read/Write access on Opportunities, the sales rep gains the ability to edit certain opportunities associated with accounts they own."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 70,
+  "qe": "Universal Containers has been using Sales Cloud for the last 5 years to manage leads, accounts, contacts, and opportunities.The SVP of sales recently attended a conference and learned about Sales Cloud Einstein features. The SVP is very interested in Einstein Lead Scoring and Einstein Deal Insights. The SVP hired a consultant to create an implementation immediately.Which step should the consultant take first?",
+  "oe": [
+   "Run the Einstein Readiness Assessor in a sandbox.",
+   "Enable Einstein Activity Capture In a developer org.",
+   "Enable both Einstein features In production."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Before implementing Einstein features such as Einstein Lead Scoring and Einstein Deal Insights, it is essential to run the Einstein Readiness Assessor. This tool evaluates the Salesforce org's data to determine whether it meets the requirements for these Einstein features, ensuring that they will provide accurate and actionable insights.* Assessing Data Readiness: The Einstein Readiness Assessor checks if the data quality and quantity are sufficient for Einstein's AI-driven insights, which is crucial for accurate scoring and predictions.* Informed Implementation Planning: Running the readiness assessment in a sandbox allows the consultant to understand any adjustments needed before enabling the features in production.Option B (enabling Einstein Activity Capture in a developer org) and Option C (enabling both features in production) should be done only after confirming readiness. For more information, see the Einstein Readiness Assessor documentation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 71,
+  "qe": "Cloud Kicks has 300,000 account records and 16 million invoices in a custom object with a master-detail relationship to the Account. End users have stated that each account record takes a long time to display.What should the consultant do to reduce the amount of time it takes to load pages and increase adoption?",
+  "oe": [
+   "Convert the Invoice master-detail into a lookup relationship and tell the users it Is a required field.",
+   "Move the invoice related list to a separate tab on the record page and communicate the change to users.",
+   "Enable indexing on all visible fields on the Invoice related Iist and create a training plan for the users."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "With Cloud Kicks having a large number of Account records and a substantial volume of Invoice records linked via a master-detail relationship, page load performance can be affected when a large related list is displayed. Moving the Invoice related list to a separate tab on the Account record page can help alleviate this issue by reducing the initial data load required when viewing the Account record.* Optimizing Page Layouts for Performance: By placing the related list on a separate tab, Salesforce loads the tab's contents only when accessed, rather than at the initial page load. This can significantly improve page performance, especially with large data volumes.* User Experience and Adoption: Communicating this change ensures that users understand where to find the Invoice information while benefiting from faster page load times.Option A (converting to a lookup relationship) could alter the data model and existing functionality, and Option C (indexing) may not address initial page load performance directly. Salesforce recommends using custom page layouts and tabs to manage large related lists as part of performance optimization best practices, detailed in Salesforce Large Data Volume Considerations."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 72,
+  "qe": "The Cloud Kicks IT team has noticed that there are many duplicate Person Accounts and wants to merge them.What should the consultant explain to the team about merging Person Accounts?",
+  "oe": [
+   "They can be merged with contact records.",
+   "They can be merged with any type of Account.",
+   "They can be merged with other Person Accounts."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "In Salesforce, Person Accounts are designed to represent individual customers rather than businesses. When it comes to managing duplicates, Person Accounts can only be merged with other Person Accounts. This is because Person Accounts have a unique structure that combines attributes of both Accounts and Contacts into a single record, making them incompatible for merging with standard Business Accounts or Contact records directly.Here's a breakdown:* Merge Process for Person Accounts: Salesforce provides a native merging feature specifically for Person Accounts. This process allows duplicate Person Accounts to be combined, with the primary account retaining essential data while duplicates are consolidated.* Limitations: Person Accounts cannot be merged with standard Business Accounts or standalone Contacts due to differences in record structure and usage.For further guidance on merging Person Accounts, Salesforce provides instructions in the Merging Accounts documentation, which outlines how to use the merge feature specifically for Person Accounts."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 73,
+  "qe": "Sales reps at Cloud Kicks (CK) need to see the Opportunity amount with the Account's discount field. CK sales reps are located in different regions and use different currencies. A consultant creates a custom formula field on the Opportunity.Which currency will the custom formula use for its value if the opportunity and account records have different currencies?",
+  "oe": [
+   "Opportunity currency",
+   "User currency",
+   "Corporate currency"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "In Salesforce, when a custom formula field is created on an Opportunity, the formula uses the Opportunity's currency for calculations. This is particularly important in organizations using multiple currencies, as it ensures that calculations remain consistent with the record on which the formula is defined. Therefore, the formula field will display the value in the Opportunity's currency, regardless of the Account's currency.Salesforce Documentation References:* Multi-Currency and Formula Fields* Formula Fields and Currency Considerations"
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 74,
+  "qe": "How can a consultant determine which capabilities of a Sales Cloud implementation are required during the Discovery phase?",
+  "oe": [
+   "Demo Sales Cloud to end users.",
+   "Establish KPIs for end users.",
+   "Observe end users."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "During the Discovery phase, observing end users in their natural work environment provides invaluable insights into their workflows, pain points, and needs. This approach helps consultants understand the context in which users operate, informing more tailored recommendations and configurations for the Sales Cloud implementation. Observing users can reveal specific requirements that might not surface through interviews alone, making it a foundational method for accurately determining the necessary capabilities for the implementation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 75,
+  "qe": "A custom lead qualification process was implemented at Universal Containers over a year ago. The process has been underutilized by sales reps. A consultant suggested that the reason why adoption of the process by sales reps is poor is due to a lack of executive sponsorship.Why is executive sponsor involvement so important for success?",
+  "oe": [
+   "Executive sponsors support the system after launch.",
+   "Executive sponsors are champions of the project.",
+   "Executive sponsors ensure there Is a workable solution."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Executive sponsorship is critical to the success of a project because these leaders champion the project and drive adoption within the organization. An executive sponsor advocates for the initiative, communicates its importance, and supports change management efforts. Their involvement helps align the project with strategic objectives, ensures necessary resources, and reinforces the value of the new process or system to the sales team, which can significantly improve user adoption.For more on the importance of executive sponsorship, refer to: Salesforce Change Management Strategies."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 76,
+  "qe": "Cloud Kicks noticed its data quality has degraded since its initial Sales Cloud implementation and is working with a consultant to develop a data management plan. The consultant suggested some best practices for creating, processing, and maintaining data.Which functional area can be improved by using third-party data enrichment tools?",
+  "oe": [
+   "Monitoring changes and updates",
+   "Owning roles and records",
+   "Enforcing validation rules"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "To address data quality concerns, third-party data enrichment tools are particularly effective for improving the functional area of monitoring changes and updates. These tools can continuously validate, update, and enhance data, which is essential for maintaining data quality over time. Here's how they fit into Cloud Kicks' data management plan:* Data Enrichment: Third-party tools can enhance Salesforce data by verifying and appending missing information, identifying inaccuracies, and ensuring data is up-to-date. This is especially useful for maintaining contact and account records in dynamic environments where data changes frequently.* Monitoring and Automation: Many data enrichment tools provide features that automatically monitor data changes and updates. They can flag inconsistencies, correct outdated information, and maintain a high level of data accuracy and completeness, addressing one of the critical areas of data quality degradation.* Salesforce Best Practices: Salesforce recommends using data enrichment tools as part of a comprehensive data management strategy. These tools help monitor and enhance data quality by integrating external sources, which ensures Salesforce data remains current and reliable.* References: Salesforce provides guidance on data management best practices, which includes using third-party tools for data enrichment and monitoring. These are highlighted in resources such as Salesforce's Trailhead modules on Data Quality and Data Management, as well as in Salesforce documentation.In summary, third-party data enrichment tools are ideal for monitoring changes and updates (Option A) in Salesforce, helping Cloud Kicks maintain accurate and high-quality data throughout the Sales Cloud implementation."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 77,
+  "qe": "During the requirements gathering workshops at Cloud Kicks, the project team and subject matter experts bring up new ideas to incorporate into the current project.Which best practice should the consultant use to refocus the meeting and stay on topic?",
+  "oe": [
+   "Remind the team of the purpose and scope of this project.",
+   "Incorporate the new ideas into the solution design.",
+   "Invite only the subject matter experts to subsequent workshops."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "During requirements gathering workshops, it's common for new ideas to surface. However, to maintain focus and stay on topic, it is essential to remind the team of the project's purpose and scope. This practice ensures that the project remains on track and within scope, reducing the risk of scope creep. Redirecting the conversation back to the agreed-upon project objectives helps the team prioritize the current requirements while acknowledging that new ideas can be explored in future phases.For more on best practices for managing workshops and requirements gathering, see: Salesforce Project Management Best Practices."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 78,
+  "qe": "Cloud Kicks is restructuring its sales teams to align with its product lines. Each sales rep will focus only on the accounts they've been assigned.Sales reps will run specific product upsell processes.Which action should the consultant take to support a successful sales team transition?",
+  "oe": [
+   "Meet with territory sales leadership to design territory assignment rules.",
+   "Meet with sales reps to review products they are assigned and implement Opportunity Teams.",
+   "Meet with executive sales leadership to understand the requirements for record sharing."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "To support the transition to product-line-based sales teams, the consultant should meet with territory sales leadership to design territory assignment rules. Here's why:* Territory Management: Salesforce's Territory Management functionality allows organizations to define rules that assign accounts to specific sales reps based on criteria like product lines. By meeting with leadership, the consultant can ensure that territory assignments align with CK's restructuring goals.* Alignment with Sales Strategy: Territory assignment rules can be customized to focus sales reps on the specific accounts they are responsible for, ensuring the reps only see and work on the accounts within their designated territory.* Salesforce Best Practices: Engaging with territory leadership ensures that territory assignment rules align with business strategies, helping facilitate a smooth transition and effective realignment of sales teams.* References: More details can be found in Salesforce documentation on Enterprise Territory Management, which explains how to create and manage territory assignments effectively.In summary, meeting with territory sales leadership to design territory assignment rules (Option A) will enable a successful sales team transition by aligning with Cloud Kicks' new sales structure."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 79,
+  "qe": "Universal Containers is planning to migrate two million account records and 10 million contact records from its existing legacy CRM application to Sales Cloud.Which solution should the consultant recommend?",
+  "oe": [
+   "Third-party tool",
+   "Data Loader",
+   "Data Import Wizard"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "For migrating large volumes of data, such as two million accounts and ten million contacts, a third-party tool is recommended. Here's why:* Scalability and Performance: Third-party ETL (Extract, Transform, Load) tools are optimized for handling large data migrations and can better manage the complexities and scale of Cloud Kicks' data migration requirements than standard Salesforce tools.* Data Quality and Transformation: These tools provide advanced capabilities for data cleansing, deduplication, and transformation, ensuring high data quality during migration.* Salesforce Best Practices: For large data sets, Salesforce advises using ETL tools that are specifically built to handle bulk data operations, as they offer better error handling, logging, and performance for large-scale migrations.* References: Salesforce documentation on Data Migration Best Practices outlines the benefits of using ETL tools for significant data migrations and recommends exploring AppExchange for compatible solutions.In summary, a third-party tool (Option A) is the best solution for migrating extensive data volumes efficiently and reliably."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 80,
+  "qe": "A sales rep owns an opportunity and can view the associated account, but is unable to view contacts on that account.What should the consultant recommend to allow Account owners to selectively share an Account's Contacts with Opportunity owners?",
+  "oe": [
+   "Add Opportunity owners to the Opportunity Team and configure Contact sharing.",
+   "Add Opportunity owners to the Account Team and configure Contact sharing.",
+   "Transfer Contact ownership from themselves to the Opportunity owner."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "To allow account owners to selectively share contacts with opportunity owners, adding Opportunity owners to the Account Team and configuring Contact sharing is the recommended approach. Here's why:* Account Team Access and Sharing: By adding the opportunity owner to the Account Team, the account owner can control access and selectively share related records, such as Contacts. Configuring Contact sharing settings allows the account owner to determine which contacts should be visible to opportunity owners.* Granular Sharing Controls: Using Account Teams with Contact sharing settings provides the necessary flexibility to control access at a more detailed level, ensuring that opportunity owners can see relevant contacts as needed.* Salesforce Best Practices: Salesforce recommends using Account Teams to manage record-level access for related records, providing targeted access to essential information.In summary, adding Opportunity owners to the Account Team and configuring Contact sharing (Option B) is the best solution to allow selective sharing of contacts associated with accounts."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 81,
+  "qe": "The marketing team is using a separate platform for managing prospects and wants to hand off qualified prospects to the sales team.How should the consultant meet this requirement?",
+  "oe": [
+   "Recommend an integration with the marketing platform that creates leads in Sales Cloud.",
+   "Create users for the marketing team so they can enter leads directly into Sales Cloud.",
+   "Recommend an integration with the marketing platform to Sales Cloud that generates tasks with lead information."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "To facilitate the handoff of qualified prospects from the marketing platform to the sales team, integrating the marketing platform with Sales Cloud to create leads is the recommended approach. Here's why:* Streamlined Lead Handoff: By integrating the two platforms, qualified prospects can be automatically converted into leads in Sales Cloud. This ensures a seamless transition from marketing to sales without manual entry, reducing errors and improving efficiency.* Real-Time Data Transfer: Integration allows for real-time transfer of qualified leads, ensuring that the sales team receives up-to-date lead information as soon as prospects meet the criteria set by marketing.* Salesforce Best Practices: Salesforce recommends using integration tools to connect marketing platforms to Sales Cloud for an automated lead handoff. This approach helps maintain data accuracy and supports timely follow-ups by the sales team.* References: More details on Salesforce Integration and Lead Management can be found in Salesforce documentation, which covers best practices for marketing and sales alignment.In summary, recommending an integration with the marketing platform that creates leads in Sales Cloud (Option A) is the most efficient and scalable solution for transferring qualified prospects to the sales team."
+ },
+ {
+  "label": "v2026-03-03",
+  "no": 82,
+  "qe": "Universal Containers (UC) notices a large increase in leads created overnight which exceed the daily limits.Upon examination, the leads appear tobe created by bots. UC uses a standard Web-to-Lead form without safeguards in place to limit spam on forms.What should the consultant recommend as the first line of defense before republishing the form?",
+  "oe": [
+   "Use a custom Web-to-Lead alternative with built-in protection.",
+   "Use an AppExchange package with custom Web-to-Lead handling.",
+   "Select Require reCAPTCHA Verification in Web-to-Lead settings."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "The first line of defense against spam bots in Web-to-Lead forms is enabling reCAPTCHA. Salesforce provides a built-in option for reCAPTCHA verification, which helps prevent automated submissions by requiring users to complete a reCAPTCHA challenge before submitting the form. This is a quick and effective solution for reducing spam without the need for custom coding or third-party solutions."
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 1,
+  "qe": "Cloud Kicks (CK) has been losing market share to competitors over the past year. CK management is planning next year's budget and has allocated more money for in-person meetings with its existing partners because CK thinks it will reduce churn. Which option should a consultant recommend that CK use to track the spending increase for onsite visits?",
+  "oe": [
+   "Report on accounts with and without onsite activities.",
+   "Report on opportunities with and without onsite activities.",
+   "Report on the activity type that corresponds to an onsite visit."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 2,
+  "qe": "A consultant received feedback that various sales teams are providing inconsistent updates to leadership about the progress of deals. What should the consultant recommend for aligning processes and providing more reliable information about the pipeline to leadership?",
+  "oe": [
+   "Customize Sales Path.",
+   "Enable Sales Forecasting.",
+   "Create a Sales Engagement report."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 3,
+  "qe": "Cloud Kicks maintains products and price books on an external platform due to the high frequency of product pricing changes. Sales managers want to monitor pipeline by sales rep and track team revenue to goal in Sales Cloud. What should the consultant do to meet the requirement?",
+  "oe": [
+   "Use Opportunities and enable Forecasts.",
+   "Implement Opportunity Teams and Opportunity Splits.",
+   "Create reports on closed Opportunities."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 4,
+  "qe": "Cloud Kicks wants to set up contacts and accounts, where contacts can be associated to multiple accounts. Which configuration allows for this setup?",
+  "oe": [
+   "Create a custom object between the Account object and Contact object.",
+   "Set up lookup fields on the Contact object for multiple accounts.",
+   "Enable users to relate a contact to multiple accounts in Setup."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 8,
+  "qe": "The VP of sales at Cloud Kicks wants to provide options to sales reps for changing account or contract details for a created order. Which condition should the consultant consider to meet this requirement?",
+  "oe": [
+   "The order must be associated with an active contract.",
+   "The currency associated with the order can be different from the contract.",
+   "The order associated with the account is in draft status."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 9,
+  "qe": "Cloud Kicks wants product engineers to collaborate directly on specific opportunities by being added as team members with defined roles and access levels. What should the consultant recommend?",
+  "oe": [
+   "Chatter Groups",
+   "Public Groups",
+   "Opportunity Teams"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 12,
+  "qe": "When addressing challenges within Cloud Kicks' Sales Cloud project, which approach should a consultant prioritize to extend declarative development effectively?",
+  "oe": [
+   "Opt for custom development, weighing long-term scalability and maintenance against quick solutions.",
+   "Prioritize standard Salesforce features to manage costs while ensuring project success.",
+   "Assess project requirements to decide if custom development or third-party apps are needed, considering budget and resources."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 14,
+  "qe": "Cloud Kicks (CK) is developing its organizational change management (OCM) and rollout strategy. The consultant has emphasized the value of leveraging the experiences of partners and customers within the Salesforce ecosystem. Which resource should the consultant recommend to help CK reach its goal?",
+  "oe": [
+   "End user feedback",
+   "Trailblazer Community",
+   "Salesforce Premier Success"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 15,
+  "qe": "A consultant is scoping a new Sales Cloud implementation and needs to determine data volumes, integrations, and user roles before configuring the org. Which phase does this activity belong to?",
+  "oe": [
+   "Discovery/Planning phase",
+   "Post-go-live support",
+   "User Acceptance Testing (UAT)"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 16,
+  "qe": "Universal Containers (UC) has an Account Hierarchy of customer accounts, with parent accounts representing corporate headquarters and child accounts representing franchises. The VP of sales believes that many franchises are missing from UC's Sales Cloud org because sales reps are unaware of them. What should the consultant recommend to fill in the missing franchises?",
+  "oe": [
+   "Implement a data enrichment package from AppExchange.",
+   "Utilize Sales Engagement to add an External ID to the data.",
+   "Download the Data Quality Analysis Dashboard from AppExchange."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 18,
+  "qe": "Cloud Kicks (CK) is starting to plan its first Salesforce Release. CK would like to put together a comprehensive preview of the release to communicate the upcoming changes and new features to the leadership team, stakeholders, and end users. CK has asked a consultant for guidance.Which option should the consultant recommend?",
+  "oe": [
+   "Release in a Box",
+   "Release Matrix",
+   "Release Notes"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 19,
+  "qe": "It is a priority at Cloud Kicks to implement logic and automation to qualify top leads. The company has captured significant data points on converted leads and won opportunities. What should the consultant do first to ensure a best practices implementation?",
+  "oe": [
+   "Review converted lead data with sales and marketing to understand the interaction patterns that led to conversion.",
+   "Identify a recommended base Lead score, evaluate the results, and adjust the score accordingly.",
+   "Configure a qualification screen flow to help sales reps quickly determine which leads are most important."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 20,
+  "qe": "A consultant is helping Cloud Kicks decide between Professional, Enterprise, and Unlimited Edition for their Sales Cloud rollout, given the need for custom objects, API access, and sandboxes. What should the consultant recommend considering?",
+  "oe": [
+   "Edition feature limits (API access, custom objects, sandboxes) against business requirements",
+   "Choosing the cheapest edition regardless of needs",
+   "Only considering the number of user licenses"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 23,
+  "qe": "Cloud Kicks wants sales reps to see product recommendations and next-best-action suggestions based on historical opportunity data using AI. What should the consultant recommend?",
+  "oe": [
+   "Static dashboards",
+   "A custom report",
+   "Einstein Opportunity Scoring and Einstein Recommendations"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 24,
+  "qe": "The sales director at Cloud Kicks wants to prevent users from viewing each other's Opportunities but wants them to check to see that the Account already exists prior to creating a new Account.Which organization-wide default should the consultant recommend?",
+  "oe": [
+   "Set Account to Public Read Only and set Opportunity to Private.",
+   "Set Account to Public Read Only and use & criteria-based sharing rule on Opportunity.",
+   "Set Account and Opportunity to Public Read Only."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 25,
+  "qe": "Cloud Kicks (CK) has hired a consultant to help enhance its current Salesforce implementation.What should the consultant do first to help CK meet its business requirements?",
+  "oe": [
+   "Design the architecture.",
+   "Define the solution.",
+   "Conduct discovery sessions."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 26,
+  "qe": "Universal Containers recently implemented Sales Cloud. Stakeholders want insights into how logging interactions with customers impacts the number of won sales deals. Which report should the consultant create to meet the requirement?",
+  "oe": [
+   "Closed Won Opportunities by the sales team",
+   "Closed Won Opportunities by Account",
+   "Closed Won Opportunities with Activities"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 28,
+  "qe": "The sales team at Cloud Kicks needs to track the number of retail locations for each of its leads.Once the lead is converted, the sales team wants to see the number of retail locations related to their customers. The service team also wants to view this information. What should the consultant do to meet this requirement?",
+  "oe": [
+   "Create a custom object related to the Account and Lead objects to store the retail locations.",
+   "Add roll-up summary fields to calculate the number of retail locations related to the Account and Lead objects.",
+   "Map the custom field from the Lead object to the custom field on the Account object during lead conversion."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 29,
+  "qe": "Northern Trail Outfitters had issues with its last two Salesforce deployments, both of which caused system downtimes that exceeded planned estimates. The CIO asked a consultant to develop a Risk Register to identify and mitigate these types of issues with future deployments.The CIO asked the consultant to log the two previously known issues as a starting point for the register. In which Risk category do these system downtime issues fall?",
+  "oe": [
+   "Operational Risk",
+   "Technical Risk",
+   "Compliance Risk"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 31,
+  "qe": "Cloud Kicks (CK) wants to implement sharing rules. Which consideration should the consultant explain to CK?",
+  "oe": [
+   "Sharing rules can expand access beyond the organization-wide default levels.",
+   "When a sharing rule is deleted, the sharing access created by that rule must be manually removed.",
+   "Sharing rules apply only to new records that meet the definition of the source data set."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": ""
+ },
+ {
+  "label": "Sales-Con-201",
+  "no": 32,
+  "qe": "A small company has hired a consultant to plan its Sales Cloud implementation. The company wants to get up and running with Sales Cloud right away. The deadline has yet to be established and the requirements still need to be defined. Which project management methodology should a consultant recommend to ensure the implementation is successful?",
+  "oe": [
+   "Waterfall",
+   "Agile",
+   "Kanban"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": ""
+ }
+]
