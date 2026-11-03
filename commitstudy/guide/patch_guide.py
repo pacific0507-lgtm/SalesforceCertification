@@ -1,6 +1,6 @@
 """使い方ページ(/guide/)と、ホームの紹介文の切り替え・はじめての人への案内を追加する。
   - ホームの紹介文(.hero .lead)を、開くたびに複数のパターンから選んで表示(前回と同じものは避ける)
-  - 使い方ページを開いたことがない人には、紹介文の下に「はじめての方へ: 使い方を見る」を出す(×で閉じられる)
+  - 使い方ページを一度も開いたことがない人には、紹介文の下に「はじめての方へ: 使い方を見る」を出し続ける(使い方ページを開くと消える)
   - メニューのサイトマップに「使い方」を追加
   - 使い方ページ: 機能と使い方を図入りで説明し、改善のためのコメントのお願いを書く
 使い方: python3 patch_guide.py <index.html> <出力>   (同じフォルダの spec_guide.py と ../figs_m/lib.py を使う)
@@ -37,8 +37,7 @@ function csHomeExtra(){try{
     lead.textContent=L[i];try{localStorage.setItem("cs-lead-last",String(i))}catch(e){}}
   var seen=null;try{seen=localStorage.getItem("cs-guide-seen")}catch(e){}
   if(lead&&!seen&&!document.getElementById("guide-cta")){var a=document.createElement("div");a.className="guide-cta";a.id="guide-cta";
-    a.innerHTML='<a href="/guide/"><b>はじめての方へ</b><span>使い方を見る</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><button type="button" aria-label="案内を閉じる">×</button>';
-    a.querySelector("button").onclick=function(){try{localStorage.setItem("cs-guide-seen",String(Date.now()))}catch(e){}a.remove()};
+    a.innerHTML='<a href="/guide/"><b>はじめての方へ</b><span>使い方を見る</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>';
     lead.after(a)}
 }catch(e){}}
 '''.replace("__LEADS__", json.dumps(LEADS, ensure_ascii=False))
