@@ -1,0 +1,25 @@
+const open=require('./shoot.js');const O=process.argv[2];
+(async()=>{const {b,p}=await open();
+const shot=async(n,opt={})=>{await p.waitForTimeout(500);await p.screenshot({path:O+'/'+n+'.png',...opt});console.log('shot',n)};
+await p.addInitScript(()=>{addEventListener('DOMContentLoaded',()=>{const st=document.createElement('style');st.textContent='html{scroll-behavior:auto!important}';document.head.appendChild(st)})});
+await p.go('/');await p.evaluate(()=>scrollTo(0,0));await shot('home');
+await p.evaluate(()=>{const h=[...document.querySelectorAll('h2')].find(x=>/きょうの一歩/.test(x.textContent));h&&h.scrollIntoView({block:'start'});scrollBy(0,-80)});await shot('home2');
+await p.go('/texts/');await p.evaluate(()=>{document.querySelector('#groups').scrollIntoView({block:'start'});scrollBy(0,-80)});await shot('texts');
+await p.go('/d360/');await p.evaluate(()=>localStorage.setItem('sr-d360-view','text'));await p.go('/d360/#f-stream',5500);
+await p.evaluate(()=>{const e=document.getElementById('f-stream');e.scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('text');
+await p.evaluate(()=>{const f=document.querySelector('#f-stream figure');f.scrollIntoView({block:'center'})});await shot('text_fig');
+// マーカーのボタン: 本文の一部を選択
+await p.evaluate(()=>{const li=document.querySelector('#f-stream .co.memo li')||document.querySelector('#f-stream li');li.scrollIntoView({block:'center'});const r=document.createRange();const t=li.firstChild;r.setStart(t,0);r.setEnd(t,Math.min(18,t.length));const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event('selectionchange'));li.dispatchEvent(new MouseEvent('mouseup',{bubbles:true}))});await p.waitForTimeout(600);await shot('text_sel');
+await p.evaluate(()=>getSelection().removeAllRanges());
+await p.evaluate(()=>{const d=document.querySelector('#f-stream .done-row');d.scrollIntoView({block:'center'})});await shot('text_end');
+await p.go('/d360/#quiz',5500);await p.evaluate(()=>scrollTo(0,0));await shot('quiz');
+await p.evaluate(()=>{const e=[...document.querySelectorAll('[data-act="mopt"]')].find(x=>x.offsetParent);e.click();const c=[...document.querySelectorAll('[data-act="check"]')].find(x=>x.offsetParent);c.click()});await p.waitForTimeout(700);
+await p.evaluate(()=>{const e=document.querySelector('.banner')||document.querySelector('#qtext');e&&e.scrollIntoView({block:'start'});scrollBy(0,-90)});await shot('quiz_ans');
+await p.go('/practice/');await p.evaluate(()=>{document.querySelector('.tabs').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('train');
+await p.click('#t-g');await p.waitForTimeout(700);await p.evaluate(()=>{document.querySelector('.tabs').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('cards');
+await p.click('#t-q');await p.waitForTimeout(400);await p.click('#p-q [data-up]');await p.waitForTimeout(600);await shot('train_full');
+await p.keyboard.press('Escape');
+await p.go('/record/');await p.evaluate(()=>scrollTo(0,0));await shot('record');
+await p.evaluate(()=>{document.querySelector('#subj').closest('.bx').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('record2');
+await p.go('/');await p.evaluate(()=>document.getElementById('menu-btn').click());await p.waitForTimeout(600);await shot('menu');
+console.log(p.errs);await b.close()})();

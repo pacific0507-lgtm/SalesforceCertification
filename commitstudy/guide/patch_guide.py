@@ -56,56 +56,72 @@ lines = s.split("\n"); l = lines[4]
 j = l.index("window.FAMD=") + len("window.FAMD="); F, end = json.JSONDecoder().raw_decode(l[j:])
 F["pages"]["home"]["css"] += HOME_CSS
 H = lambda t: f"<h2>{t}</h2>"
-MARKUP = f'''
+def SHOT(n, cap, alt=None):
+    return (f'<figure class="shot"><img src="brand/guide/{n}.webp" width="270" height="540" loading="lazy" alt="{alt or cap}">'
+            f'<figcaption>{cap}</figcaption></figure>')
+def SHOTS(*xs): return '<div class="shots">' + "".join(SHOT(*x) for x in xs) + '</div>'
+MARKUP = f"""
 <main class="wrap guide">
  <header class="ph">
   <p class="eyebrow">使い方</p>
   <h1>CommitStudy の使い方</h1>
-  <p>読んで、解いて、記録に草を生やす。はじめての方は、ここから全体をつかんでください。</p>
+  <p>読んで、解いて、記録に草を生やす。はじめての方は、ここから全体をつかんでください。画面の写真は iPhone で見たときのものです。</p>
  </header>
  <div id="groups" hidden></div>
  <nav class="gd-toc" aria-label="このページの目次"><a href="#g-screens">4つの画面</a><a href="#g-flow">学び方の流れ</a><a href="#g-text">テキスト</a><a href="#g-quiz">問題集</a><a href="#g-train">トレーニング</a><a href="#g-rec">学習の記録</a><a href="#g-save">記録の保存</a><a href="#g-comment">改善へのご協力</a></nav>
  <section class="bx gd" id="g-screens">{H("4つの画面")}
   <p>CommitStudy は、Salesforce などシステム系資格のテキストと問題集です。いまの科目は Data 360 コンサルタント、Marketing Cloud Administrator、Agentforce Sales コンサルタントの3つです。</p>
   {FIG["screens"]}
+  {SHOTS(("home", "ホーム。下のタブで4つの画面を行き来します"), ("texts", "テキスト一覧。科目を選んで「読みはじめる」か「続きから」"))}
  </section>
  <section class="bx gd" id="g-flow">{H("学び方の流れ")}
   {FIG["flow"]}
   <ul><li>1節読むか1問解いた日に、学習の記録にスタンプ(草)が付きます。</li><li>迷ったら「テキスト」から科目を選び、「読みはじめる」を押してください。前回の続きはホームの「前回の続き」からも開けます。</li></ul>
  </section>
  <section class="bx gd" id="g-text">{H("テキスト")}
+  {SHOTS(("text", "各項目は、キャラの掛け合いから始まります"), ("text_fig", "図と本文。「問題 N」の印は、その箇所が問われた問題"))}
   <ul>
-   <li><b>キャラの掛け合い</b>: 各項目の最初に、クラウドちゃん(先生)・コミットくん(ロボット)・まなびん(学習者)の会話があります。</li>
+   <li><b>キャラの掛け合い</b>: クラウドちゃん(先生)・コミットくん(ロボット)・まなびん(学習者)の会話で、要点をつかみます。</li>
+   <li><b>問題へ</b>: 本文の「問題 N」の印を押すと、その箇所が問われた問題が出ます。</li>
+  </ul>
+  {SHOTS(("text_sel", "文字を選ぶと、マーカーの色とメモのボタンが出ます"), ("text_end", "項目の末尾。「理解した」と「問題に挑戦する」"))}
+  <ul>
    <li><b>マーカー・メモ</b>: 本文の文字を選ぶと、マーカー・メモ・質問のボタンが出ます。引いたマーカーは「ノート」にまとまり、「暗記シート」で隠して覚えられます。</li>
+   <li><b>理解した・問題</b>: 項目の末尾で「理解した」を押すと目次に印が付きます。「問題に挑戦する」から、その項目の問題を解けます。</li>
    <li><b>AI先生</b>: 各項目の末尾の「AI先生に質問する」で、その項目の本文をふまえて答えてもらえます。</li>
-   <li><b>問題へ</b>: 項目の末尾の「この項目の練習問題」から、その項目の問題を解けます。本文の「問題 N」の印を押すと、その箇所の問題が出ます。</li>
-   <li><b>しおり・理解した</b>: ☆でしおり、末尾の「理解した」で理解済みの印を付けられます。目次に印が出ます。</li>
+   <li><b>メニュー</b>: 上のメニューで、問題集への切り替え・目次・しおり・ノート・検索ができます。☆でしおりを付けられます。</li>
    <li><b>表示設定</b>: テキストの「表示設定」で配色や文字の大きさを、画面右上のメニューでライト/ダークの表示を変えられます。</li>
   </ul>
  </section>
  <section class="bx gd" id="g-quiz">{H("問題集")}
+  {SHOTS(("quiz", "問題集。選択肢を選んで「答え合わせ」"), ("quiz_ans", "答え合わせのあと。解説・回答履歴・根拠のページ"))}
   <ul>
    <li>4択(一部は2つ選ぶ問題)です。答え合わせのあと、解説と「テキストの該当箇所で復習する」が出ます。</li>
-   <li>絞り込みで、Chapter・項目・出典(過去問/オリジナルなど)・状態(未回答・要復習・しおり)を選べます。</li>
+   <li>上のメニューの「絞込」で、Chapter・項目・出典(過去問/オリジナルなど)・状態(未回答・要復習・しおり)を選べます。</li>
    <li>過去問は、英語の原文も表示できます。解説の下でも AI先生に質問できます。</li>
    <li>開き直すと、前回見ていた問題から再開します。</li>
   </ul>
  </section>
  <section class="bx gd" id="g-train">{H("トレーニング")}
+  {SHOTS(("train", "問題。科目・出典・絞り込み・出し方を選んで1問ずつ"), ("cards", "用語カード。押すと裏の説明が出ます"))}
   <ul>
    <li><b>問題</b>: 全科目の問題を1問ずつ解けます。絞り込み(すべて・今日の復習・間違えた問題・まだ解いていない)と、出し方(順番に・ランダム)を選べます。</li>
-   <li><b>用語カード</b>: 表に用語、裏に説明。押すとめくれます。「覚えた」を付けたカードは、「まだ覚えていないカード」の絞り込みで外せます。</li>
-   <li>カード右上のボタンで全画面になります。解いた結果は、すぐに問題集の回答履歴と学習の記録に入ります。</li>
+   <li><b>用語カード</b>: 表に用語、裏に説明。「覚えた」を付けたカードは、「まだ覚えていないカード」の絞り込みで外せます。</li>
   </ul>
+  {SHOTS(("train_full", "カード右上のボタンで全画面に。下の「前へ・答え合わせ・次へ」で進みます"))}
+  <ul><li>解いた結果は、すぐに問題集の回答履歴と学習の記録に入ります。「今日のトレーニング」に、今日解いた数が出ます。</li></ul>
  </section>
  <section class="bx gd" id="g-rec">{H("学習の記録")}
+  {SHOTS(("record", "学習の記録。連続日数・勉強時間と、スタンプのカレンダー"), ("record2", "科目ごとの進み具合と累計の勉強時間。押すとくわしい記録"))}
   <ul>
-   <li>カレンダーの草、勉強した時間、この2週間に解いた問題、科目ごとの進み具合(累計の勉強時間つき)を見られます。</li>
-   <li>バッジ・称号・キャラからのお便り(週に1回)もあります。科目の行を押すと、くわしい記録が開きます。</li>
+   <li>カレンダーの草、勉強した時間、この2週間に解いた問題、科目ごとの進み具合を見られます。</li>
+   <li>バッジ・称号のほか、週に1回キャラからお便りが届きます(ホームに表示)。</li>
   </ul>
+  {SHOTS(("home2", "ホームの「きょうの一歩」。お便りと前回の続き"))}
  </section>
  <section class="bx gd" id="g-save">{H("記録の保存")}
   {FIG["save"]}
+  {SHOTS(("menu", "右上のメニュー。保存先とサイトマップ・表示の切り替え"))}
  </section>
  <section class="bx gd" id="g-comment">{H("改善へのご協力(コメントのお願い)")}
   <p>CommitStudy は、使う人の声をもとに毎日よくしています。読みにくい所、まちがい、ほしい機能などに気づいたら、<b>claude.ai のアーティファクトのコメント機能</b>で、その場所にコメントを残してください。</p>
@@ -118,7 +134,7 @@ MARKUP = f'''
  </section>
  <p class="gd-foot"><a class="bx-go pri" href="/texts/">科目を選んではじめる</a></p>
 </main>
-'''
+"""
 FIGCSS = open(os.path.join(here, "..", "figs_m", "fig.css"), encoding="utf-8").read().split("\n")
 FIGCSS = "\n".join(x for x in FIGCSS if x.startswith(".fig") and not x.startswith(".fig figcaption")) 
 GCSS = """
@@ -134,6 +150,10 @@ GCSS = """
 .guide .fig{margin:6px 0}
 .guide .fig figcaption{font-size:13px;color:var(--sub);text-align:center;margin-top:8px;line-height:1.65}
 .gd-foot{text-align:center;margin:20px 0}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:4px 0}
+.shot{margin:0;text-align:center}
+.shot img{display:block;width:100%;max-width:270px;height:auto;margin:0 auto;border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 28px -16px rgba(0,0,0,.35);background:var(--paper)}
+.shot figcaption{font-size:12.5px;color:var(--sub);line-height:1.6;margin-top:8px}
 """ + FIGCSS + "\n.guide .fig.m svg{max-width:440px}\n"
 F["pages"]["guide"] = {"title": "使い方", "bodyPage": "guide", "css": F["pages"]["texts"]["css"] + GCSS, "markup": MARKUP}
 lines[4] = l[:j] + json.dumps(F, ensure_ascii=False).replace("</", "<\\/") + l[j+end:]
