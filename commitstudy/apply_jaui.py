@@ -1,5 +1,5 @@
-"""本文・問題・用語カードに英語のまま書いていた機能名などを、公式の日本語UIの名称にそろえる(科目 afsales)。
-使い方: python3 apply_jaui.py <glossary.json> <data/afsales> <出力フォルダ>
+"""本文・問題・用語カードに英語のまま書いていた機能名などを、公式の日本語UIの名称にそろえる(科目ごと)。
+使い方: python3 apply_jaui.py <glossary.json> <data/<科目>> <出力フォルダ> [--figs=spec_E.py,spec_F.py,...]
   - 置き換えるのは日本語の文だけ(本文の文字、問題の q/o/ex/x、用語カードの t/d)。英語の原文(qe/oe)と、見出しの英語タグ(.tag)、図(svg)は変えない
     (図は figs_m/spec_*.py を直して作り直す)
   - 「日本語名(英語名)」と併記していたところは「日本語名(英語名)」のまま残す
@@ -72,16 +72,17 @@ qtext = {r["id"]: r["data"]["q"] for r in Q}
 for r in R:
     n = r["n"]; k = f"q{n:04d}"
     if k in qtext: r["text"] = qtext[k]
-S = L("sections.json")
+S = L("sections.json") if os.path.exists(os.path.join(src, "sections.json")) else []
 for s in S: s["title"] = conv(s["title"])
 for n, obj in (("chapters.json", CH), ("questions.json", Q), ("terms.json", T), ("sections.json", S), ("qrows.json", R)):
     json.dump(obj, open(os.path.join(dst, n), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 print("置き換え", sum(cnt.values()), "か所 /", len(cnt), "語 / 該当箇所の不一致", bad)
 for en, n in sorted(cnt.items(), key=lambda x: -x[1]): print(f"  {n:4d}  {en} → {EN2JA[en]}")
-# 図の元(figs_m/spec_E〜G.py)の文字列にも同じ置き換えを当てる(--figs を付けたとき)
-if "--figs" in sys.argv:
+# 図の元(figs_m/spec_*.py)の文字列にも同じ置き換えを当てる(--figs=… を付けたとき)
+FIGS = [a.split("=", 1)[1].split(",") for a in sys.argv if a.startswith("--figs=")]
+if FIGS:
     here = os.path.dirname(os.path.abspath(__file__))
-    for n in ("spec_E.py", "spec_F.py", "spec_G.py"):
+    for n in FIGS[0]:
         p = os.path.join(here, "figs_m", n); t = open(p, encoding="utf-8").read()
         t2 = re.sub(r'"([^"\n]*)"', lambda m: '"' + conv(m.group(1)) + '"', t)
         if t2 != t: open(p, "w", encoding="utf-8").write(t2); print("図の元を更新:", n)
