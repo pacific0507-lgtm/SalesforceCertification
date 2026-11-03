@@ -1,0 +1,1033 @@
+{
+ "replace": [
+  {
+   "en": "Einstein Activity Capture",
+   "ja": "Einstein 活動キャプチャ",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/gmail_integration/gmail_integration_unit_2",
+   "note": "Keeps 'Einstein' in English; Trailhead ja shows 'Einstein Activity Capture (Einstein 活動キャプチャ)'"
+  },
+  {
+   "en": "Pipeline Inspection",
+   "ja": "パイプラインインスペクション",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/revenue-intelligence-setup/set-up-pipeline-inspection"
+  },
+  {
+   "en": "Einstein Opportunity Scoring",
+   "ja": "Einstein 商談スコアリング",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/revenue-intelligence-setup/set-up-pipeline-inspection"
+  },
+  {
+   "en": "Einstein Lead Scoring",
+   "ja": "Einstein リードスコアリング",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/get-to-know-the-console-and-cadences"
+  },
+  {
+   "en": "Lead Scoring",
+   "ja": "リードスコアリング",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/get-to-know-the-console-and-cadences",
+   "note": "Replace only after 'Einstein Lead Scoring'"
+  },
+  {
+   "en": "Opportunity Score",
+   "ja": "商談スコア",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/work-your-opportunities"
+  },
+  {
+   "en": "Einstein Forecasting",
+   "ja": "Einstein 売上予測",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/introduction-to-revenue-intelligence-for-sales-cloud/get-started-with-revenue-intelligence"
+  },
+  {
+   "en": "Einstein Conversation Insights",
+   "ja": "Einstein 会話インサイト",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-conversation-insights-for-sales-quick-look/get-to-know-einstein-conversation-insights-for-sales",
+   "note": "Renamed 会話インテリジェンス (CI) from Spring 2026; the page shows both names"
+  },
+  {
+   "en": "Collaborative Forecasts",
+   "ja": "コラボレーション売上予測",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce"
+  },
+  {
+   "en": "Enterprise Territory Management",
+   "ja": "エンタープライズテリトリー管理",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-territories-and-forecasting/manage-territories-and-crush-your-sales-goals",
+   "note": "Former name; current name 営業テリトリー ('Salesforce 営業テリトリー (旧称: エンタープライズテリトリー管理)')"
+  },
+  {
+   "en": "Sales Territories",
+   "ja": "営業テリトリー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-territories-and-forecasting/manage-territories-and-crush-your-sales-goals"
+  },
+  {
+   "en": "Territory Type",
+   "ja": "テリトリー種別",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-maps-territory-planning/create-an-optimal-territory-alignment"
+  },
+  {
+   "en": "Contacts to Multiple Accounts",
+   "ja": "取引先責任者-to-複数取引先",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_migration_whatsnew/lex_migration_whatsnew_crm",
+   "note": "Also in sales_admin_maximize_productivity_unit_1 and Metadata API AccountSettings ja"
+  },
+  {
+   "en": "Web-to-Lead",
+   "ja": "Web-to-リード",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/create-and-convert-leads-lightning"
+  },
+  {
+   "en": "Lead Conversion",
+   "ja": "リードの取引開始",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/create-and-convert-leads-lightning",
+   "note": "Convert = 取引の開始; dialog name is [リードの取引の開始] (Metadata API LeadConvertSettings ja)"
+  },
+  {
+   "en": "Opportunity Splits",
+   "ja": "商談分割",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/sell-as-a-team-and-split-the-credit",
+   "note": "'Edit Opportunity Splits (商談分割を編集)'"
+  },
+  {
+   "en": "Opportunity Team",
+   "ja": "商談チーム",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-team-collaboration/sell-as-a-team"
+  },
+  {
+   "en": "Account Team",
+   "ja": "取引先チーム",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-team-collaboration/sell-as-a-team"
+  },
+  {
+   "en": "Opportunity Line Item",
+   "ja": "商談商品",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/business_process_automation/approvals",
+   "note": "UI label 商談商品 (API reference calls it 商談品目)"
+  },
+  {
+   "en": "Price Book",
+   "ja": "価格表",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/manage-products-prices-quotes-orders/control-access-price-books-products",
+   "note": "'Price Books (価格表)'"
+  },
+  {
+   "en": "In-App Guidance",
+   "ja": "アプリケーション内ガイダンス",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/user-engagement/create-in-app-prompts",
+   "note": "'[In-App Guidance (アプリケーション内ガイダンス)]'"
+  },
+  {
+   "en": "Duplicate Rule",
+   "ja": "重複ルール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_1"
+  },
+  {
+   "en": "Matching Rule",
+   "ja": "一致ルール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_1"
+  },
+  {
+   "en": "Validation Rule",
+   "ja": "入力規則",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/customize-a-salesforce-object/create-validation-rules-1"
+  },
+  {
+   "en": "Data Import Wizard",
+   "ja": "データインポートウィザード",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_implementation_data_management/lex_implementation_data_import"
+  },
+  {
+   "en": "Data Loader",
+   "ja": "データローダー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_implementation_data_management/lex_implementation_data_import",
+   "note": "Note the long vowel: データローダー"
+  },
+  {
+   "en": "Setup Audit Trail",
+   "ja": "設定変更履歴",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data_security/data_security_overview",
+   "note": "'View Setup Audit Trail (設定変更履歴の参照)' in data_security_records"
+  },
+  {
+   "en": "Login History",
+   "ja": "ログイン履歴",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data_security/data_security_overview"
+  },
+  {
+   "en": "Grant Access Using Hierarchies",
+   "ja": "階層を使用したアクセス許可",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data_security/data_security_records"
+  },
+  {
+   "en": "Modify All Data",
+   "ja": "すべてのデータの編集",
+   "source": "https://developer.salesforce.com/docs/atlas.ja-jp.securityImplGuide.meta/securityImplGuide/users_profiles_view_all_mod_all.htm",
+   "note": "Permission name; often written with 「」"
+  },
+  {
+   "en": "View All Data",
+   "ja": "すべてのデータの参照",
+   "source": "https://developer.salesforce.com/docs/atlas.ja-jp.securityImplGuide.meta/securityImplGuide/users_profiles_view_all_mod_all.htm",
+   "note": "Permission name"
+  },
+  {
+   "en": "Customize Application",
+   "ja": "アプリケーションのカスタマイズ",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/user-engagement/create-in-app-prompts",
+   "note": "Permission name"
+  },
+  {
+   "en": "Minimum Access - Salesforce",
+   "ja": "最小アクセス - Salesforce",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data_security/data_security_objects",
+   "note": "Profile name"
+  },
+  {
+   "en": "Defer Sharing Calculations",
+   "ja": "共有の適用を延期",
+   "source": "https://developer.salesforce.com/docs/atlas.ja-jp.salesforce_large_data_volumes_bp.meta/salesforce_large_data_volumes_bp/ldv_deployments_techniques_deferred_sharing_calculation.htm",
+   "note": "Permission is 「共有の適用を延期」; the feature is called 共有適用の延期"
+  },
+  {
+   "en": "External ID",
+   "ja": "外部 ID",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/design-your-data-model",
+   "note": "'[External ID (外部 ID)]'"
+  },
+  {
+   "en": "Person Accounts",
+   "ja": "個人取引先",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/campaign_basics/campaigns_basics_unit_3"
+  },
+  {
+   "en": "Contact Hierarchy",
+   "ja": "取引先責任者の階層",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_migration_whatsnew/lex_migration_whatsnew_crm",
+   "note": "Section title 取引先および取引先責任者の階層"
+  },
+  {
+   "en": "Contact Roles",
+   "ja": "取引先責任者の役割",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/work-your-opportunities",
+   "note": "'Add Contact Roles (取引先責任者の役割を追加)'"
+  },
+  {
+   "en": "Customizable Campaign Influence",
+   "ja": "カスタマイズ可能なキャンペーンインフルエンス",
+   "source": "https://developer.salesforce.com/docs/atlas.ja-jp.object_reference.meta/object_reference/sforce_api_objects_campaigninfluence.htm"
+  },
+  {
+   "en": "Campaign Influence",
+   "ja": "キャンペーンインフルエンス",
+   "source": "https://developer.salesforce.com/docs/atlas.ja-jp.object_reference.meta/object_reference/sforce_api_objects_campaigninfluence.htm",
+   "note": "Replace only after 'Customizable Campaign Influence'"
+  },
+  {
+   "en": "Parent Campaign",
+   "ja": "親キャンペーン",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/campaign_basics/campaigns_basics_unit_2"
+  },
+  {
+   "en": "Cumulative Forecast Rollups",
+   "ja": "累積売上予測積み上げ集計",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce"
+  },
+  {
+   "en": "Forecast Category",
+   "ja": "売上予測分類",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/introduction-to-revenue-intelligence-for-sales-cloud/check-performance-with-revenue-insights"
+  },
+  {
+   "en": "Forecast Type",
+   "ja": "売上予測種別",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce",
+   "note": "'Create a Forecast Type (売上予測種別を作成)'"
+  },
+  {
+   "en": "Forecast Quotas",
+   "ja": "売上予測目標",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/view-and-set-sales-forecasts"
+  },
+  {
+   "en": "Forecast Manager",
+   "ja": "売上予測マネージャー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce"
+  },
+  {
+   "en": "Allow Forecasting",
+   "ja": "売上予測を許可",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce",
+   "note": "Permission name"
+  },
+  {
+   "en": "Historical Trending",
+   "ja": "履歴トレンド",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/revenue-intelligence-setup/set-up-revenue-insights"
+  },
+  {
+   "en": "Advanced Currency Management",
+   "ja": "高度な通貨管理",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/point_click_business_logic/roll_up_summary_fields"
+  },
+  {
+   "en": "Sales Path",
+   "ja": "セールスパス",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/quickstart-lightning-experience-sales/qs-lex-sales-4",
+   "note": "'セールスパス (スクリーンリーダーの場合は [Path (パス)]'"
+  },
+  {
+   "en": "Path",
+   "ja": "パス",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/visualize-success-with-path-and-kanban",
+   "note": "The record-page component is shown as セールスパス (qs-lex-sales-4)"
+  },
+  {
+   "en": "Summarize By",
+   "ja": "集計基準",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/visualize-success-with-path-and-kanban",
+   "note": "Kanban setting"
+  },
+  {
+   "en": "Tabular",
+   "ja": "表形式",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_implementation_reports_dashboards/lex_implementation_reports_dashboards_report_formats",
+   "note": "Report format"
+  },
+  {
+   "en": "Reports & Dashboards",
+   "ja": "レポートとダッシュボード",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_implementation_basics/lex_implementation_basics_explore"
+  },
+  {
+   "en": "Access Granted By",
+   "ja": "アクセス権付与者",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_implementation_user_setup_mgmt/lex_implementation_user_setup_mgmt_adding_users-hoc"
+  },
+  {
+   "en": "View Summary",
+   "ja": "概要を表示",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data_security/data_security_objects",
+   "note": "Button on the user detail page"
+  },
+  {
+   "en": "Manage Members",
+   "ja": "メンバーの管理",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_implementation_chatter/lex_implementation_chatter_groups",
+   "note": "Button label"
+  },
+  {
+   "en": "Freeze",
+   "ja": "凍結",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data_security/data_security_org",
+   "note": "User button"
+  },
+  {
+   "en": "Lightning Usage App",
+   "ja": "Lightning 利用状況アプリケーション",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-experience-performance-optimization/measure-lightning-experience-performance-and-experience-page-time-ept"
+  },
+  {
+   "en": "Lightning Usage",
+   "ja": "Lightning 利用状況",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-experience-performance-optimization/measure-lightning-experience-performance-and-experience-page-time-ept",
+   "note": "Replace only after 'Lightning Usage App'"
+  },
+  {
+   "en": "Lightning Console for Sales",
+   "ja": "Lightning セールスコンソール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/create-and-convert-leads-lightning",
+   "note": "Same product as 'Lightning Sales Console'"
+  },
+  {
+   "en": "Lightning Sales Console",
+   "ja": "Lightning セールスコンソール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/create-and-convert-leads-lightning"
+  },
+  {
+   "en": "Sales Console",
+   "ja": "セールスコンソール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/user-engagement/create-in-app-prompts",
+   "note": "Replace only after the 'Lightning ...' forms"
+  },
+  {
+   "en": "Split View",
+   "ja": "分割ビュー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/get-to-know-the-console-and-cadences"
+  },
+  {
+   "en": "Enhanced Email",
+   "ja": "拡張メール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales_admin_maximize_productivity/sales_admin_maximize_productivity_unit_2"
+  },
+  {
+   "en": "Change Set",
+   "ja": "変更セット",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/org-development-model/plan-for-changes-to-your-org2"
+  },
+  {
+   "en": "Call Explorer",
+   "ja": "通話エクスプローラー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-copilot-sales-actions-for-sellers-quick-look/maximize-sales-performance-with-einstein-copilot-actions",
+   "note": "'[Call Explorer (通話エクスプローラー)]' action"
+  },
+  {
+   "en": "Prompt Builder",
+   "ja": "プロンプトビルダー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-studio-quick-look/get-to-know-prompt-studio"
+  },
+  {
+   "en": "Data Masking",
+   "ja": "データマスキング",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer",
+   "note": "Einstein Trust Layer feature"
+  },
+  {
+   "en": "Zero Data Retention",
+   "ja": "データ保持ゼロ",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer",
+   "note": "Word order is データ保持ゼロ"
+  },
+  {
+   "en": "Agentforce Data Library",
+   "ja": "Agentforce データライブラリ",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/enable-trusted-agents-with-data-cloud"
+  },
+  {
+   "en": "Automated Actions",
+   "ja": "自動アクション",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/create-and-convert-leads-lightning",
+   "note": "'Turn on automated actions (自動アクションの有効化)'; confirm the source unit fits your context"
+  }
+ ],
+ "keep": [
+  {
+   "en": "Salesforce",
+   "reason": "Product name, stays English"
+  },
+  {
+   "en": "Sales Cloud",
+   "reason": "Product name, stays English"
+  },
+  {
+   "en": "Service Cloud",
+   "reason": "Product name"
+  },
+  {
+   "en": "Experience Cloud",
+   "reason": "Product name"
+  },
+  {
+   "en": "Sandbox",
+   "reason": "Trailhead ja writes 'Sandbox'"
+  },
+  {
+   "en": "Full Sandbox",
+   "reason": "Trailhead ja keeps 'Full Sandbox' (org-development-model, essential-habits-for-salesforce-admins)"
+  },
+  {
+   "en": "Partial Copy Sandbox",
+   "reason": "Trailhead ja keeps 'Partial Copy Sandbox' (essential-habits-for-salesforce-admins)"
+  },
+  {
+   "en": "Partial Copy",
+   "reason": "Sandbox type, stays English"
+  },
+  {
+   "en": "Developer Sandbox",
+   "reason": "Trailhead ja keeps 'Developer Sandbox' (org-development-model/plan-for-changes-to-your-org2)"
+  },
+  {
+   "en": "Developer Pro Sandbox",
+   "reason": "Trailhead ja keeps 'Developer Pro Sandbox'"
+  },
+  {
+   "en": "Developer Pro",
+   "reason": "Sandbox type, English"
+  },
+  {
+   "en": "Full / Developer (bare)",
+   "reason": "Fragments of sandbox/edition names; do not replace on their own"
+  },
+  {
+   "en": "Kanban",
+   "reason": "Trailhead ja keeps 'Kanban' ('Kanban ビュー', 'Kanban Settings (Kanban 設定)')"
+  },
+  {
+   "en": "Sales Engagement",
+   "reason": "Trailhead ja keeps English"
+  },
+  {
+   "en": "High Velocity Sales",
+   "reason": "Trailhead ja keeps English"
+  },
+  {
+   "en": "Lightning Sync",
+   "reason": "Trailhead ja keeps English"
+  },
+  {
+   "en": "Salesforce Inbox / Inbox",
+   "reason": "Trailhead ja keeps 'Inbox' ([Salesforce Inbox] page, 'Inbox を使用できるユーザー')"
+  },
+  {
+   "en": "Salesforce Optimizer / Optimizer",
+   "reason": "Trailhead ja keeps English"
+  },
+  {
+   "en": "Einstein Trust Layer",
+   "reason": "Trailhead ja keeps 'Einstein Trust Layer' (the-einstein-trust-layer)"
+  },
+  {
+   "en": "Sales Cloud Einstein",
+   "reason": "Trailhead ja keeps English"
+  },
+  {
+   "en": "Shield Platform Encryption",
+   "reason": "Security guide ja title keeps 'Shield Platform Encryption'"
+  },
+  {
+   "en": "Salesforce Connect",
+   "reason": "Product name"
+  },
+  {
+   "en": "Bulk API / Bulk API 2.0 / SOAP API / REST / API",
+   "reason": "API names"
+  },
+  {
+   "en": "DevOps Center",
+   "reason": "Trailhead ja keeps English"
+  },
+  {
+   "en": "Data 360",
+   "reason": "Trailhead ja keeps 'Data 360'"
+  },
+  {
+   "en": "Salesforce Meetings",
+   "reason": "Trailhead ja keeps English"
+  },
+  {
+   "en": "Lightning Experience / Lightning / Salesforce Classic / Classic",
+   "reason": "UI names, English"
+  },
+  {
+   "en": "Chatter",
+   "reason": "English"
+  },
+  {
+   "en": "ToDo",
+   "reason": "Already the Japanese UI label (ToDo)"
+  },
+  {
+   "en": "Apex / Batch Apex / InvocableMethod / SOQL / OppTerrAssignDefaultLogicFilter / ForecastingQuota",
+   "reason": "Code/API identifiers"
+  },
+  {
+   "en": "AppExchange / Trailhead / Trailhead Playground / Trailblazer Community / Trailmix",
+   "reason": "Brand names, English"
+  },
+  {
+   "en": "Agentforce / Agentforce Sales / Agentforce Sales Coach / Agentforce Engagement / Agentforce Prospecting / Agentforce Inbound Lead Generation / Agentforce Pipeline Management / Agentforce Lead Nurturing / Agentforce Sales Management / Agentforce Qualification / Sales Coach / Einstein Sales Development Rep / Sales SDR",
+   "reason": "Agentforce product names, English"
+  },
+  {
+   "en": "Einstein",
+   "reason": "Brand, English"
+  },
+  {
+   "en": "Unlimited / Enterprise / Professional / Performance / Developer Edition (and '... Edition')",
+   "reason": "Edition names stay English (e.g. 'Sales Cloud Unlimited Edition' in sales-forecasting/view-and-set-sales-forecasts)"
+  },
+  {
+   "en": "Salesforce Mobile App Plus / Salesforce CPQ / Salesforce Premier Success / Premier Success / Salesforce CLI / Database.com / Sales Cloud for Slack / Readiness Assessor / Einstein Readiness Assessor / Release in a Box / Data Quality Analysis Dashboards / Salesforce Adoption Dashboard(s)",
+   "reason": "Product/package names, English"
+  },
+  {
+   "en": "Slack / GitHub / Bitbucket / Outlook / Gmail / Google / Microsoft / Office 365 / Excel / Windows / OpenAI",
+   "reason": "Third-party products"
+  },
+  {
+   "en": "Cloud Kicks / Universal Containers / Northern Trail Outfitters / NTO / Ziggy / Athleisure / Celebrity Co-Branded",
+   "reason": "Fictional company/example names"
+  },
+  {
+   "en": "API / KPI / LLM / ERP / ROI / UAT / CSV / CRM / URL / PDF / SOW / ALM / LDV / ECI / OWD / UPN / MQL / CLV / ACV / CEO / CIO / SVP / SMB / SME / ETL / OCM / FAQ / APAC / EMEA / BANT / SMART / INVEST",
+   "reason": "Generic acronyms"
+  },
+  {
+   "en": "Ch1-Ch5 / Chapter 1-5 / Chapter headings (Campaigns & Leads, Opportunities & Teams, Quotes & Currency, Security Model, Extend & Productivity, Scalability & LDV, Discovery & Requirements, Release & Deployment, ...)",
+   "reason": "Document structure, not UI"
+  },
+  {
+   "en": "Summer '25 / Winter '21",
+   "reason": "Release names stay English"
+  },
+  {
+   "en": "Generative AI / Predictive AI / Digital Agent / Insights / Engagement / Performance / Pipeline (generic) / Planning / Sales / Email / Web / Setup (generic)",
+   "reason": "General terms or fragments, not specific UI labels. Note: Setup = 設定 and Email = メール in Trailhead ja if a translation is wanted"
+  },
+  {
+   "en": "Value Stream Map / Universal Process Notation / Capability Model / As-Is / To-Be / Risk Register / Operational/Technical/Compliance Risk / Center of Excellence / Train-the-trainer / Quick wins / Big bets / Low-hanging fruit / Money pits / Acceptance Criteria / Plan / Initiate / Execute / Monitor and Control / Close / Prepare / Conduct / Confirm / Independent / Negotiable / Valuable / Estimable / Small / Testable / Accuracy / Safety / Honesty / Empowerment / Sustainability / Transparency / Design Direction / Challenge Framing",
+   "reason": "Methodology/consulting terms, not Salesforce UI"
+  },
+  {
+   "en": "This email was generated by AI",
+   "reason": "Quoted English output text; leave unless the source string is known"
+  },
+  {
+   "en": "Complaints / Complaint / Complaints Specialist / Healthy / True / AND / Running / Win / Won / Lost / Open / Draft / From / Set / Map / Personal / Unique / User / Report / Monitoring / Validate / Deploy / Release Notes",
+   "reason": "Bare words or fragments; check case by case (Trailhead ja: Open=進行中/オープン, Report=レポート, User=ユーザー, Monitoring=監視)"
+  }
+ ],
+ "unconfirmed": [
+  {
+   "en": "Lead Settings",
+   "guess": "リードの設定",
+   "why": "No ja Help page fetchable (JS-rendered); not found in Trailhead ja corpus"
+  },
+  {
+   "en": "Default Lead Owner",
+   "guess": "デフォルトのリード所有者",
+   "why": "Not found; a 2018 Salesforce Japan seminar PDF says 'デフォルト所有者' (Classic), current label unverified"
+  },
+  {
+   "en": "Default Lead Creator",
+   "guess": "デフォルトのリード作成者",
+   "why": "Not found"
+  },
+  {
+   "en": "Map Lead Fields",
+   "guess": "リード項目の対応付け",
+   "why": "Not found; the Metadata API ja uses '対応付け' generically"
+  },
+  {
+   "en": "Keep Opportunity Team",
+   "guess": "商談チームを維持",
+   "why": "Not found"
+  },
+  {
+   "en": "Keep account team",
+   "guess": "取引先チームを維持",
+   "why": "Not found"
+  },
+  {
+   "en": "Retain Edit Rights for Previous Owner",
+   "guess": "以前の所有者の編集権限を保持",
+   "why": "Not found"
+  },
+  {
+   "en": "View and Edit Converted Leads",
+   "guess": "取引開始済みリードの参照・編集",
+   "why": "Not found"
+  },
+  {
+   "en": "Convert Leads",
+   "guess": "リードの取引開始",
+   "why": "Permission label not confirmed (the feature term リードの取引開始 is)"
+  },
+  {
+   "en": "Require reCAPTCHA Verification",
+   "guess": "reCAPTCHA 検証を必須にする",
+   "why": "Not found"
+  },
+  {
+   "en": "Responses in Campaign",
+   "guess": "キャンペーンの反応",
+   "why": "Not found"
+  },
+  {
+   "en": "Add Default Team",
+   "guess": "デフォルトチームを追加",
+   "why": "Not found"
+  },
+  {
+   "en": "Opportunity Contact Roles",
+   "guess": "商談取引先責任者の役割",
+   "why": "Not found in this form (only 取引先責任者の役割 / 主商談取引先責任者)"
+  },
+  {
+   "en": "Account Contact Relationship",
+   "guess": "取引先責任者と取引先のリレーション",
+   "why": "The object reference only describes it; UI label not confirmed"
+  },
+  {
+   "en": "Sales Process",
+   "guess": "セールスプロセス",
+   "why": "Trailhead ja uses セールスプロセス (40x) and 営業プロセス (5x) generically; Setup label not confirmed"
+  },
+  {
+   "en": "Line Item Schedule",
+   "guess": "商品スケジュール",
+   "why": "Only the report type '商談分割と商品分割が関連する商談商品スケジュール' was seen"
+  },
+  {
+   "en": "Delegated Administration",
+   "guess": "代理管理",
+   "why": "Security guide ja uses '代理管理者'; feature label not confirmed"
+  },
+  {
+   "en": "Large Data Volumes",
+   "guess": "大量のデータ",
+   "why": "The ja LDV guide title uses '大量のデータ'; not a UI label"
+  },
+  {
+   "en": "Duplicate Jobs",
+   "guess": "重複ジョブ",
+   "why": "Not found"
+  },
+  {
+   "en": "Alert / Allow / Block",
+   "guess": "アラート / 許可 / ブロック",
+   "why": "Duplicate-rule action values; generic matches only"
+  },
+  {
+   "en": "Basic Data Import",
+   "guess": "基本データインポート",
+   "why": "Not found"
+  },
+  {
+   "en": "Activity 360 Reporting",
+   "guess": "活動 360 レポート",
+   "why": "Not found"
+  },
+  {
+   "en": "Sync Email as Salesforce Activity",
+   "guess": "メールを Salesforce 活動として同期",
+   "why": "Not found"
+  },
+  {
+   "en": "Send as Seller",
+   "guess": "販売者として送信",
+   "why": "Agentforce SDR setting; not found"
+  },
+  {
+   "en": "Require Manual Approval",
+   "guess": "手動承認を必須にする",
+   "why": "Not found"
+  },
+  {
+   "en": "Assign to Agent",
+   "guess": "エージェントに割り当て",
+   "why": "Not found"
+  },
+  {
+   "en": "Sales Insights Integration User",
+   "guess": "Sales Insights インテグレーションユーザー",
+   "why": "Only 'Integration User (インテグレーションユーザー)' seen"
+  },
+  {
+   "en": "Filter-Based Opportunity Territory Assignment",
+   "guess": "フィルターベースの商談テリトリー割り当て",
+   "why": "Not found"
+  },
+  {
+   "en": "Manage Territories",
+   "guess": "テリトリーを管理",
+   "why": "Permission; not found"
+  },
+  {
+   "en": "Territory Health Assessment",
+   "guess": "テリトリーヘルスアセスメント",
+   "why": "Not found"
+  },
+  {
+   "en": "Run Opportunity Filter",
+   "guess": "商談フィルターを実行",
+   "why": "Not found"
+  },
+  {
+   "en": "Einstein Deal Insights / Deal Insights",
+   "guess": "Einstein 取引インサイト",
+   "why": "Not found"
+  },
+  {
+   "en": "Einstein Opportunity Insights",
+   "guess": "Einstein 商談インサイト",
+   "why": "Not found"
+  },
+  {
+   "en": "Einstein Sales Emails / Sales Emails",
+   "guess": "Einstein 営業メール",
+   "why": "Not found in ja corpus"
+  },
+  {
+   "en": "Draft with Einstein",
+   "guess": "Einstein で下書き",
+   "why": "Not found"
+  },
+  {
+   "en": "Toxicity Detection",
+   "guess": "有害性検出",
+   "why": "Trailhead ja shows both '有害検出' and '応答の有害性'; exact label unclear"
+  },
+  {
+   "en": "Prompt Defense",
+   "guess": "プロンプト防御",
+   "why": "Not found"
+  },
+  {
+   "en": "Audit Trail",
+   "guess": "監査証跡",
+   "why": "Trust Layer audit trail; '監査証跡' not found (Setup Audit Trail = 設定変更履歴 is confirmed)"
+  },
+  {
+   "en": "Generative Conversation Insights",
+   "guess": "生成会話インサイト",
+   "why": "Not found"
+  },
+  {
+   "en": "Deal Recap",
+   "guess": "取引の要約",
+   "why": "Not found"
+  },
+  {
+   "en": "Lead Score",
+   "guess": "リードスコア",
+   "why": "Field label not confirmed (only リードスコアリング)"
+  },
+  {
+   "en": "Einstein Score",
+   "guess": "Einstein スコア",
+   "why": "Not confirmed"
+  },
+  {
+   "en": "Prospecting",
+   "guess": "見込み",
+   "why": "Stage value inconsistent in Trailhead ja: 'Prospecting (見込み)' vs '(見込み客)'; also 'プロスペクティング'"
+  },
+  {
+   "en": "Proposal / Price Quote",
+   "guess": "提案書/見積書の作成",
+   "why": "Only one Trailhead project shows 'Proposal/Price Quote (提案書/見積書の作成)'; may be org-specific"
+  },
+  {
+   "en": "Negotiation / Review",
+   "guess": "交渉/レビュー",
+   "why": "Stage value not found"
+  },
+  {
+   "en": "Decision Maker / Executive Sponsor",
+   "guess": "意思決定者 / エグゼクティブスポンサー",
+   "why": "Contact role values not found"
+  },
+  {
+   "en": "Purchased Lead",
+   "guess": "購入リスト",
+   "why": "Lead source value not found"
+  },
+  {
+   "en": "Omitted",
+   "guess": "除外",
+   "why": "Forecast category value not found"
+  },
+  {
+   "en": "Closed",
+   "guess": "完了",
+   "why": "Forecast category 「完了」 is confirmed in sales-forecasting/configure-sales-forecasting-in-salesforce, but bare 'Closed' is ambiguous (also クローズ済み); replace case by case"
+  },
+  {
+   "en": "Pipeline",
+   "guess": "パイプライン",
+   "why": "Confirmed as a forecast category (パイプライン), but the bare word is usually generic"
+  },
+  {
+   "en": "Best Case Forecast / Commit Forecast",
+   "guess": "最善達成予測 / 達成予測",
+   "why": "The category names are confirmed; these combined forms are not UI labels"
+  },
+  {
+   "en": "Pipeline Forecasting / Pipeline Inspection Forecasting / Forecast Summary / Sales Forecasting",
+   "guess": "—",
+   "why": "Not specific UI labels; not found"
+  },
+  {
+   "en": "Summary (report format)",
+   "guess": "サマリー形式",
+   "why": "Confirmed in lex_implementation_reports_dashboards_report_formats, but 'Summary' is ambiguous (概要 elsewhere)"
+  },
+  {
+   "en": "Joined",
+   "guess": "結合",
+   "why": "Report format name not confirmed"
+  },
+  {
+   "en": "Email-to-Salesforce",
+   "guess": "Email to Salesforce",
+   "why": "Not found"
+  },
+  {
+   "en": "Email Approval Response / Download AppExchange Packages / Manage Billing / Author Apex / View All Profiles / Enable Conversions for Salesforce Mobile",
+   "guess": "—",
+   "why": "Permission/setting labels not found"
+  },
+  {
+   "en": "Advanced Setup",
+   "guess": "高度な設定",
+   "why": "Generic match only"
+  },
+  {
+   "en": "Field Usage",
+   "guess": "項目の使用状況",
+   "why": "Not found"
+  },
+  {
+   "en": "Login Subtype",
+   "guess": "ログインサブタイプ",
+   "why": "Not found"
+  },
+  {
+   "en": "New Quote",
+   "guess": "新規見積",
+   "why": "Not found"
+  },
+  {
+   "en": "Reports To",
+   "guess": "上司",
+   "why": "Not confirmed ('This Role Reports To' = このロールの上位ロール)"
+  },
+  {
+   "en": "Campaign Purpose / Campaign Group",
+   "guess": "—",
+   "why": "Probably custom fields; not found"
+  },
+  {
+   "en": "Contract Number",
+   "guess": "契約番号",
+   "why": "Not found"
+  },
+  {
+   "en": "Country",
+   "guess": "国",
+   "why": "Not found as a label"
+  },
+  {
+   "en": "Probability",
+   "guess": "確度",
+   "why": "Not confirmed as a field label"
+  },
+  {
+   "en": "Company",
+   "guess": "会社",
+   "why": "Pair 'Company (会社)' was seen but in a non-lead context"
+  },
+  {
+   "en": "Einstein Recommendations",
+   "guess": "Einstein おすすめ",
+   "why": "Not found"
+  },
+  {
+   "en": "Cadence Builder 2.0",
+   "guess": "ケイデンスビルダー 2.0",
+   "why": "Only a truncated 'ケイデンスビ…' was seen"
+  },
+  {
+   "en": "Opportunity Teams & Teams (chapter heading)",
+   "guess": "—",
+   "why": "Heading"
+  }
+ ],
+ "dropped": [
+  {
+   "en": "Products",
+   "ja": "商品",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/manage-products-prices-quotes-orders/control-access-price-books-products",
+   "note": "Product object (商品). Do not replace in chapter headings unless intended",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Order",
+   "ja": "注文",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/manage-products-prices-quotes-orders",
+   "note": "Order object (注文). Bare word, so check each occurrence",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Open Pipeline",
+   "ja": "進行中のパイプライン",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Best Case",
+   "ja": "最善達成予測",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/introduction-to-revenue-intelligence-for-sales-cloud/check-performance-with-revenue-insights",
+   "note": "Forecast category",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Most Likely",
+   "ja": "可能性が最も高い",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce",
+   "note": "Forecast category",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Commit",
+   "ja": "達成予測",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/introduction-to-revenue-intelligence-for-sales-cloud/check-performance-with-revenue-insights",
+   "note": "Forecast category only; check each occurrence (Git 'commit' is コミット)",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Closed Won",
+   "ja": "商談成立",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/quickstart-lightning-experience-sales/qs-lex-sales-4",
+   "note": "Stage value '[Closed Won (商談成立)]'",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Closed Lost",
+   "ja": "不成立",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/customize-a-salesforce-object/picklists-field-dependencies",
+   "note": "Stage value 'Closed Lost (不成立)'",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Qualification",
+   "ja": "評価",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_implementation_reports_dashboards/lex_implementation_reports_dashboards_filter_your_report",
+   "note": "Stage value '[Qualification (評価)]'",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Needs Analysis",
+   "ja": "ニーズ分析",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/work-your-opportunities",
+   "note": "Stage value",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Cumulative",
+   "ja": "累積",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce",
+   "note": "Forecast rollup option / '[Cumulative (累積)]' view; replace only after 'Cumulative Forecast Rollups'",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Single Category",
+   "ja": "単一分類",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-forecasting/configure-sales-forecasting-in-salesforce",
+   "note": "The full rollup name is 単一売上予測分類積み上げ集計",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Matrix",
+   "ja": "マトリックス形式",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_implementation_reports_dashboards/lex_implementation_reports_dashboards_report_formats",
+   "note": "Report format",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  },
+  {
+   "en": "Cadence",
+   "ja": "ケイデンス",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/quick-cadences-for-sales-teams/create-a-quick-cadence",
+   "note": "'New Cadence (新規ケイデンス)'; inside 'Cadence Builder 2.0' (unconfirmed) replace only if intended",
+   "reason": "単独の語・ほかの英語の値と並ぶため、英語のままにそろえる"
+  }
+ ],
+ "protect": [
+  "Keep Opportunity Team",
+  "Retain Edit Rights for Previous Owner",
+  "Cadence Builder",
+  "Release Matrix",
+  "Agentforce Qualification",
+  "Keep account team"
+ ]
+}

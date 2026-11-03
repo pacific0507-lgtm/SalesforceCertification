@@ -8,11 +8,13 @@
 """
 import html, json, os, re, sys
 gp, src, dst = sys.argv[1:4]
-G = json.load(open(gp, encoding="utf-8"))["replace"]
+GJ = json.load(open(gp, encoding="utf-8")); G = GJ["replace"]
+PROTECT = GJ.get("protect", [])
 G = sorted(G, key=lambda r: -len(r["en"]))
 os.makedirs(dst, exist_ok=True)
 def rx(en): return re.compile(r"(?<![A-Za-z0-9])" + re.escape(en) + r"(?![A-Za-z0-9])")
 RX = [(rx(r["en"]), r["en"], r["ja"]) for r in G]
+EN2JA = {r["en"]: r["ja"] for r in G}
 cnt = {}
 def conv(t):
     if not t: return t
@@ -22,10 +24,17 @@ def conv(t):
         k = f"\u0000{len(keep)}\u0000"; keep[k] = m.group(0); return k
     for r, en, ja in RX:
         t = re.sub(r"[((]" + re.escape(en) + r"[))]", protect, t)
+    # 公式の日本語名を確かめられなかった設定名など(「…」で囲んだ英語)と、置き換え対象を含む長い名前は、そのまま残す
+    t = re.sub(r"「([^」]*[A-Za-z][^」]*)」", lambda m: m.group(0) if m.group(1) in EN2JA else protect(m), t)
+    for w in PROTECT: t = re.sub(re.escape(w) + r"[A-Za-z0-9. ]*", protect, t)
     for r, en, ja in RX:
         t, n = r.subn(ja, t)
         if n: cnt[en] = cnt.get(en, 0) + n
     for k, v in keep.items(): t = t.replace(k, v)
+    # 「英語名(日本語名)」と書いていたところは「日本語名(英語名)」に
+    for r, en, ja in RX: t = t.replace(ja + "(" + ja + ")", ja + "(" + en + ")").replace(ja + "(" + ja + ")", ja + "(" + en + ")")
+    # 表記ゆれ: 公式の表記「データローダー」にそろえる
+    t = re.sub(r"データローダ(?!ー)", "データローダー", t)
     return t
 L = lambda n: json.load(open(os.path.join(src, n), encoding="utf-8"))
 CH, Q, T = L("chapters.json"), L("questions.json"), L("terms.json")
@@ -74,5 +83,5 @@ if "--figs" in sys.argv:
     here = os.path.dirname(os.path.abspath(__file__))
     for n in ("spec_E.py", "spec_F.py", "spec_G.py"):
         p = os.path.join(here, "figs_m", n); t = open(p, encoding="utf-8").read()
-        t2 = re.sub(r'"([^"\\n]*)"', lambda m: '"' + conv(m.group(1)) + '"', t)
+        t2 = re.sub(r'"([^"\n]*)"', lambda m: '"' + conv(m.group(1)) + '"', t)
         if t2 != t: open(p, "w", encoding="utf-8").write(t2); print("図の元を更新:", n)

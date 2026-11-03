@@ -3,29 +3,30 @@ from lib import Fig, fig
 
 @fig("lifecycle")
 def _():
-    f = Fig("falifecycle", 300, "課題やKPIから逆算してソリューションを選ぶ対応表")
+    f = Fig("falifecycle", 316, "課題やKPIから逆算してソリューションを選ぶ対応表")
     f.text(71, 20, "課題・KPI", "gts", "middle")
     f.text(245, 20, "ソリューション", "gts", "middle")
     rows = [
-        ("予測の精度", "Einstein Forecasting", []),
-        ("リスク商談の発見", "Pipeline Inspection", ["Einstein Deal Insights"]),
+        ("予測の精度", "Einstein 売上予測", []),
+        ("リスク商談の発見", "パイプライン", ["インスペクション", "Einstein Deal Insights"]),
         ("入力漏れの防止", "Agentforce", ["Pipeline Management"]),
-        ("確度の高い順に", "Einstein Scoring", ["Lead / Opportunity"]),
+        ("確度の高い順に", "Einstein Scoring", ["リード / 商談"]),
         ("商談スキルの向上", "Agentforce", ["Sales Coach"]),
     ]
     y = 30
     for l, r, sub in rows:
-        f.box(10, y, 122, 44, "gb", l)
-        f.box(160, y, 170, 44, "gba", r, sub)
-        f.arrow(134, y + 22, 157, y + 22, "a")
-        y += 53
+        h = 60 if len(sub) > 1 else 44
+        f.box(10, y, 122, h, "gb", l)
+        f.box(160, y, 170, h, "gba", r, sub)
+        f.arrow(134, y + h / 2, 157, y + h / 2, "a")
+        y += h + 9
     return f.svg("機能から考えず、お客様の課題とKPIから逆算して機能を選びます。")
 
 
 @fig("process")
 def _():
     f = Fig("faprocess", 262, "リードの取り込みから商談の受注・失注までの流れ")
-    f.box(10, 10, 140, 56, "gb", "Web-to-Lead", ["24時間で500件まで"])
+    f.box(10, 10, 140, 56, "gb", "Web-to-リード", ["24時間で500件まで"])
     f.box(190, 10, 140, 56, "gba", "割り当てルール", ["有効は種類ごとに1つ"])
     f.box(190, 100, 140, 64, "gba", "取引開始", ["取引先責任者+取引先", "商談も同時に作成可"])
     f.box(10, 100, 140, 64, "gba", "商談", ["フェーズを進める"])
@@ -46,7 +47,7 @@ def _():
     f = Fig("faproducts", 330, "課題ごとの関連製品の使い分けと、予定の同期方向")
     rows = [
         ("決めた手順で追う", ["多くの見込み客を"], "Sales Engagement", ["ケイデンス・ワークキュー"]),
-        ("活動の記録を自動化", ["メール・予定"], "Einstein", ["Activity Capture"]),
+        ("活動の記録を自動化", ["メール・予定"], "Einstein", ["活動キャプチャ"]),
         ("メール作成の便利機能", ["Outlook・Gmail"], "Inbox", ["空き時間・開封・送信予約"]),
     ]
     y = 10
@@ -56,14 +57,14 @@ def _():
         f.arrow(152, y + 25, 177, y + 25, "a")
         y += 60
     f.frame(10, 194, 320, 126)
-    f.text(22, 214, "予定の同期(Einstein Activity Capture)", "gts")
+    f.text(22, 214, "予定の同期(Einstein 活動キャプチャ)", "gts")
     f.box(22, 226, 110, 50, "gb", "Salesforce")
     f.box(196, 226, 122, 50, "gby", "外部カレンダー", ["Microsoft・Google"])
     f.arrow(194, 240, 135, 240, "a")
     f.text(164, 233, "推奨", "gta", "middle")
     f.arrow(134, 264, 193, 264)
     f.text(170, 302, "双方向で競合したら外部側が優先", "gtr", "middle")
-    return f.svg("手順で追うなら Sales Engagement、自動記録なら Einstein Activity Capture、メールの便利機能なら Inbox です。双方向同期の競合は外部側が勝ちます。")
+    return f.svg("手順で追うなら Sales Engagement、自動記録なら Einstein 活動キャプチャ、メールの便利機能なら Inbox です。双方向同期の競合は外部側が勝ちます。")
 
 
 @fig("territory")
@@ -124,8 +125,8 @@ def _():
 
 @fig("leads")
 def _():
-    f = Fig("faleads", 336, "Web-to-Leadから割り当て、取引開始までの流れ")
-    f.box(10, 10, 150, 52, "gb", "Web-to-Lead", ["24時間で500件まで"])
+    f = Fig("faleads", 336, "Web-to-リードから割り当て、取引開始までの流れ")
+    f.box(10, 10, 150, 52, "gb", "Web-to-リード", ["24時間で500件まで"])
     f.box(190, 10, 140, 52, "gby", "保留キュー", ["合計50,000件まで"])
     f.box(10, 96, 150, 52, "gba", "割り当てルール", ["エントリを順に評価"])
     f.box(10, 190, 150, 52, "gbo", "ユーザー/キュー", ["エントリの割り当て先"])
@@ -208,7 +209,7 @@ def _():
 
 @fig("extend")
 def _():
-    f = Fig("faextend", 300, "まず宣言型ツール、足りなければApex。メール記録はEinstein Activity Captureへ")
+    f = Fig("faextend", 300, "まず宣言型ツール、足りなければApex。メール記録はEinstein 活動キャプチャへ")
     f.box(10, 10, 320, 40, "gba", "まず標準機能・宣言型ツール")
     f.box(10, 84, 150, 64, "gbo", "フロー", ["単純〜中程度", "通知・予定日の処理"])
     f.box(180, 84, 150, 64, "gby", "Apex", ["大量・複雑な処理", "トランザクション制御"])
@@ -218,7 +219,7 @@ def _():
     f.path([(255, 150), (255, 166), (110, 166), (110, 151)], "a")
     f.text(170, 186, "@InvocableMethod で Apex アクションに", "gta", "middle")
     f.box(10, 214, 118, 64, "gbr", "Lightning Sync", ["2027年に提供終了"])
-    f.box(170, 214, 160, 64, "gbo", "Einstein", ["Activity Capture", "メールを自動で記録"])
+    f.box(170, 214, 160, 64, "gbo", "Einstein", ["活動キャプチャ", "メールを自動で記録"])
     f.arrow(130, 246, 167, 246, "a")
     f.text(149, 238, "移行", "gts", "middle")
-    return f.svg("まず標準機能とフローで考え、足りない部分は @InvocableMethod の Apex アクションで補います。Lightning Sync からは Einstein Activity Capture へ移行します。")
+    return f.svg("まず標準機能とフローで考え、足りない部分は @InvocableMethod の Apex アクションで補います。Lightning Sync からは Einstein 活動キャプチャ へ移行します。")

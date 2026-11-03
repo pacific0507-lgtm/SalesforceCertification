@@ -105,3 +105,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - AF Sales の過去問: Notion の4ページ(230問)から重複を除いた160問を、公式情報で検証・翻訳して `afsales/pastq/out_*.json` に。`merge_adds.py` で関連知識の重複をまとめ、`add_pastq_afsales.py` で問題集と本文に追加
 
 - `patch_ask_form.py`: AI先生の質問欄の送信ボタンを入力欄の右に並べる
+
+- `apply_jaui.py` + `afsales/jaui/glossary.json`: 英語のままの機能名を、公式の日本語UIの名称(日本語版 Trailhead などで確認)にそろえる。確かめられなかった名称(unconfirmed)は英語のまま

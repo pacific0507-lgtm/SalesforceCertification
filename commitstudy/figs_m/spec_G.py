@@ -73,7 +73,7 @@ def _():
     f.text(10, 254, "そのほかの管理", "gta")
     rows = [("期間限定の権限", "有効期限付き割り当て", "権限セット・グループ"),
             ("配下ユーザー管理", "委任管理", "Delegated Administration"),
-            ("権限の出どころ", "View Summary", "Access Granted By")]
+            ("権限の出どころ", "概要を表示", "アクセス権付与者")]
     for i, (q, t, s) in enumerate(rows):
         y = 264 + i * 46
         f.box(10, y, 130, 40, "gb", q)
