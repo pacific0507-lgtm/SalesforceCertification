@@ -29,14 +29,14 @@ s = "\n".join(lines)
 # ---- エンジンの CFG ----
 CFG = {
  "key": "sr-" + ID, "quizKey": "sr-" + ID + "-quiz-v1", "legacyPrefs": None,
- "srcs": [{"k": "orig", "label": "オリジナル問題(公式ヘルプにもとづく)"}],
+ "srcs": [{"k": "past", "label": "過去問"}, {"k": "orig", "label": "オリジナル問題(公式ヘルプにもとづく)", "re": "^オリジナル"}],
  "cx": ["セールスライフサイクル", "コンサルティングと導入戦略", "実践", "データ管理", "予測AIと生成AI"], "cxLabel": "出題範囲",
  "pal": PAL,
  "aiRole": "あなたは、Salesforce Certified Agentforce Sales Consultant(旧 Sales Cloud Consultant)認定試験の学習を手伝う講師です。相手は初学者です。下の【テキスト】を主な根拠に、日本語で答えてください。",
  "aiqRole": "あなたはSalesforce Certified Agentforce Sales Consultant 認定試験の問題作成者です。",
  "sub": "Agentforce Sales コンサルタント(旧 Sales Cloud コンサルタント)認定試験の学習テキストと問題集です。読みながら、わからないところをその場でAI先生に質問できます。本文の文字を選ぶとマーカーを引けて、自分用のメモも残せます。各項目の末尾から、その項目の問題にも進めます。",
  "h1": "Agentforce Sales コンサルタント",
- "qfoot": "問題は、試験の出題範囲と Salesforce 公式ヘルプをもとに作ったオリジナル問題です。根拠にした公式ページを各問題に付けています。画面や仕様はリリースで変わるため、最新の公式情報で確認してください。",
+ "qfoot": "問題は、過去問(解答を公式情報で検証し、必要なものは修正済み)と、試験の出題範囲と Salesforce 公式ヘルプをもとに作ったオリジナル問題です。根拠にした公式ページを各問題に付けています。画面や仕様はリリースで変わるため、最新の公式情報で確認してください。",
 }
 rep(',S={mcadmin:', ',S={' + ID + ':' + json.dumps(CFG, ensure_ascii=False) + ',mcadmin:')
 
@@ -53,5 +53,6 @@ rep('{"id":"mcadmin","short":"MCA","title":"Marketing Cloud Administrator","colo
 # トレーニング
 rep('{id:"mcadmin",short:"MCA",title:"Marketing Cloud Administrator",color:"#b5560f"}',
     '{id:"mcadmin",short:"MCA",title:"Marketing Cloud Administrator",color:"#b5560f"},{id:"' + ID + '",short:"' + SHORT + '",title:"' + TITLE + '",color:"' + COLOR + '"}')
-rep('if(id==="mcadmin")return "orig";', 'if(id==="mcadmin"||id==="' + ID + '")return "orig";')
+rep('if(id==="mcadmin")return "orig";', 'if(id==="mcadmin")return "orig";if(id==="' + ID + '")return /^オリジナル/.test(s)?"orig":"past";')
+rep('var SRCN={past:"過去問",th:"Trailhead",orig:"オリジナル"};', 'var SRCN={past:"過去問",th:"Trailhead",orig:"オリジナル"};', 1)
 open(out, "w", encoding="utf-8").write(s); print("ok", n)
