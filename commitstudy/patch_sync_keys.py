@@ -12,7 +12,7 @@ import sys
 src, out = sys.argv[1:3]
 s = open(src, encoding="utf-8").read()
 old = "var W=[`ls-badges-v1`,`ls-goro-known-v1`,`ls-goro-pos-v1`,`ls-stamps-seen`]"
-new = "var W=[`ls-badges-v1`,`ls-goro-known-v1`,`ls-goro-pos-v1`,`ls-stamps-seen`,`ls-letter-v1`,`ls-letters-v1`,`ls-news-seen-v2`,`cs-term-known-v1`,`cs-review-v1`,`cs-practice-v1`]"
+new = "var W=[`ls-badges-v1`,`ls-goro-known-v1`,`ls-goro-pos-v1`,`ls-stamps-seen`,`ls-letter-v1`,`ls-letters-v1`,`ls-news-seen-v2`,`cs-term-known-v1`,`cs-review-v1`,`cs-practice-v1`,`cs-train-today`]"
 n = s.count(old)
 if n != 1: sys.exit(f"置換対象が {n} 件")
 s = s.replace(old, new)

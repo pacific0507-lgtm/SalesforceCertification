@@ -52,7 +52,7 @@ function record(q,ok){
   var h=HIST[q.subj][q.n]||(HIST[q.subj][q.n]={n:0,c:0});h.n++;if(ok)h.c++;h.l=ok?"o":"x";h.t=now;
   var rv=LS.get(REVK,{}),r=rv[key]||{step:-1};if(ok){r.step=Math.min(r.step+1,STEPS.length-1);r.due=addDays(STEPS[r.step])}else{r.step=-1;r.due=addDays(1)}rv[key]=r;LS.set(REVK,rv);
   var sec=Math.max(5,Math.min(120,Math.round((now-lastAt)/1000)));lastAt=now;
-  var ak="sr-"+q.subj+"-act-v1",act=LS.get(ak,{ts:0,d:{}});if(!act.d)act.d={};var dd=act.d[today()]||(act.d[today()]={q:0,c:0,r:[],t:0});dd.q=(+dd.q||0)+1;if(ok)dd.c=(+dd.c||0)+1;dd.t=(+dd.t||0)+sec;act.ts=now;LS.set(ak,act);
+  var ak="sr-"+q.subj+"-act-v1",act=LS.get(ak,{ts:0,d:{}});if(!act.d)act.d={};var dd=act.d[today()]||(act.d[today()]={q:0,c:0,r:[],t:0});var ca=CLOUD_ACT[q.subj];if(ca){dd.q=Math.max(+dd.q||0,+ca.q||0);dd.c=Math.max(+dd.c||0,+ca.c||0);dd.t=Math.max(+dd.t||0,+ca.t||0)}dd.q=(+dd.q||0)+1;if(ok)dd.c=(+dd.c||0)+1;dd.t=(+dd.t||0)+sec;act.ts=now;LS.set(ak,act);
   clearTimeout(actT);actT=setTimeout(function(){pushAct(q.subj)},2500);
   pushQuiz(q.subj,q.n,key+"@"+now,ok,now);
   var m=LS.get("cs-train-today",{});if(m.date!==today())m={date:today(),n:0,c:0,combo:0};m.n++;if(ok){m.c++;m.combo++}else m.combo=0;LS.set("cs-train-today",m);renderMeter();
@@ -79,7 +79,12 @@ document.addEventListener("visibilitychange",function(){if(document.visibilitySt
 function chips(box,items,cur,cb){box.innerHTML=items.map(function(it){return '<button type="button" data-v="'+esc(it.v)+'" aria-pressed="'+(it.v===cur)+'">'+esc(it.l)+(it.n!=null?'<small>'+it.n+'</small>':"")+'</button>'}).join("");
   box.onclick=function(e){var b=e.target.closest("button[data-v]");if(b)cb(b.dataset.v)}}
 function subjItems(){return [{v:"all",l:"すべて"}].concat(SUBJ.map(function(s){return {v:s.id,l:s.short}}))}
-function renderMeter(){var m=LS.get("cs-train-today",{});if(m.date!==today())m={n:0,c:0,combo:0};$("#m-n").textContent=m.n||0;$("#m-c").textContent=m.c||0;$("#m-combo").textContent=m.combo||0;
+/* 今日のトレーニングの「解いた・正解」は、学習の記録(科目ごとの act。端末の記録とアカウントの記録の多い方)から数える。
+   問題集で解いた分も入り、アプリを開き直しても・ほかの端末で解いても消えない。連続正解だけはこの画面の記録 */
+var CLOUD_ACT={};
+async function loadCloudAct(){try{var cl=await cloud;if(!cl)return;await Promise.all(SUBJ.map(async function(s){try{var sn=await cdoc(cl,s.id+"-act").get();if(sn.exists){var d=sn.data();CLOUD_ACT[s.id]=(d&&d.d&&d.d[today()])||null}}catch(e){}}));renderMeter()}catch(e){}}
+function todayTotals(){var n=0,c=0;SUBJ.forEach(function(s){var l=(LS.get("sr-"+s.id+"-act-v1",{}).d||{})[today()]||{},r=CLOUD_ACT[s.id]||{};n+=Math.max(+l.q||0,+r.q||0);c+=Math.max(+l.c||0,+r.c||0)});return {n:n,c:c}}
+function renderMeter(){var m=LS.get("cs-train-today",{});if(m.date!==today())m={n:0,c:0,combo:0};var tt=todayTotals();m.n=Math.max(tt.n,m.n||0);m.c=Math.max(tt.c,m.c||0);$("#m-n").textContent=m.n||0;$("#m-c").textContent=m.c||0;$("#m-combo").textContent=m.combo||0;
   var mi=$("#mini");if(mi)mi.textContent="今日 "+(m.n||0)+"問・正解 "+(m.c||0)+"・連続正解 "+(m.combo||0);
   $("#m-say").innerHTML='<p class="bx-s">'+(m.n?(m.combo>=5?"連続正解 "+m.combo+"問。その調子です。":"今日は "+m.n+" 問解きました。"):"1問からどうぞ。解いた数は学習の記録にも数えます。")+'</p>'}
 function setTab(t){ST.tab=t;save();$$(".tabs [role=tab]").forEach(function(b){var on=b.id==="t-"+t;b.setAttribute("aria-selected",String(on));if(on){var p=$(".tabs .pill");if(p){p.style.width=b.offsetWidth+"px";p.style.transform="translateX("+b.offsetLeft+"px)"}}});
@@ -192,7 +197,7 @@ function bindFocus(){
 }
 function init(){
   $$(".tabs [role=tab]").forEach(function(b){b.onclick=function(){setTab(b.id.slice(2))}});
-  bindQ();bindTerms();bindFocus();renderMeter();
+  bindQ();bindTerms();bindFocus();renderMeter();loadCloudAct();
   if(location.hash==="#terms")ST.tab="g";
   setTab(ST.tab==="g"?"g":"q");requestAnimationFrame(function(){setTab(ST.tab)});
   refreshQ(true);
