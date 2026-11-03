@@ -11,7 +11,7 @@ def rep(old, new, count=1):
     n = s.count(old)
     if n != count: sys.exit(f"置換対象が {n} 件(期待 {count} 件): {old[:90]!r}")
     s = s.replace(old, new)
-ID, SHORT, TITLE, PAL, COLOR, NAME = "afsales", "AFS", "Agentforce Sales コンサルタント", "teal", "#0b6e7c", "青緑"
+ID, SHORT, TITLE, PAL, COLOR, NAME = "afsales", "AFSales", "Agentforce Sales コンサルタント", "teal", "#0b6e7c", "青緑"
 
 # ---- FAMD.consts ----
 lines = s.split("\n"); l = lines[4]
