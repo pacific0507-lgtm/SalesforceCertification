@@ -108,3 +108,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 
 - `apply_jaui.py` + `afsales/jaui/glossary.json`: 英語のままの機能名を、公式の日本語UIの名称(日本語版 Trailhead などで確認)にそろえる。確かめられなかった名称(unconfirmed)は英語のまま
 - Data 360 も同じ手順で `d360/jaui/glossary.json` を適用(公開データは `d360/data/`)
+
+- `patch_news.py`: 更新情報(ホームの新着・更新情報ページ)に更新を追加
