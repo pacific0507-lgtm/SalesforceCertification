@@ -110,3 +110,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - Data 360 も同じ手順で `d360/jaui/glossary.json` を適用(公開データは `d360/data/`)
 
 - `patch_news.py`: 更新情報(ホームの新着・更新情報ページ)に更新を追加
+
+- `guide/patch_guide.py` + `guide/spec_guide.py`: 使い方ページ(/guide/、図入り・コメントのお願い)、ホームの紹介文を8パターンから切り替え、使い方を見ていない人への案内、メニューに「使い方」

@@ -12,3 +12,4 @@ python3 $C/patch_sync_keys.py $T/p5.html $T/p6.html
 python3 $C/patch_add_afsales.py $T/p6.html $OUT
 python3 $C/patch_ask_form.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_news.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
+python3 $C/guide/patch_guide.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
