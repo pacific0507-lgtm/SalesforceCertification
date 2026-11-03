@@ -1,0 +1,622 @@
+{
+ "replace": [
+  {
+   "en": "Data Cloud Activation Specialist",
+   "ja": "Data Cloud 有効化スペシャリスト",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/set-up-customer-360-audiences",
+   "note": "Standard permission set label (table in unit)"
+  },
+  {
+   "en": "Data Cloud Activation Manager",
+   "ja": "Data Cloud 有効化マネージャー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/set-up-customer-360-audiences",
+   "note": "Standard permission set label"
+  },
+  {
+   "en": "Data Cloud Architect",
+   "ja": "Data Cloud アーキテクト",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/set-up-customer-360-audiences",
+   "note": "Standard permission set label"
+  },
+  {
+   "en": "Data Cloud User",
+   "ja": "Data Cloud ユーザー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/set-up-customer-360-audiences",
+   "note": "Standard permission set label"
+  },
+  {
+   "en": "Data Cloud Setup",
+   "ja": "Data Cloud 設定",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/set-up-customer-360-audiences",
+   "note": "'[Data Cloud Setup (Data Cloud 設定)]'"
+  },
+  {
+   "en": "Data Lake Object",
+   "ja": "データレイクオブジェクト",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/implement-data-cloud-for-agentforce",
+   "note": "Also seen as 'データレークオブジェクト' in tab label ([Data Lake Objects (データレークオブジェクト)], get-to-know-customer-360-audiences); 'データレイク' is the majority spelling (11 vs 5)"
+  },
+  {
+   "en": "Data Model Object",
+   "ja": "データモデルオブジェクト",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-data-model-for-customer-data-platform/get-to-know-data-model-objects"
+  },
+  {
+   "en": "Data Stream",
+   "ja": "データストリーム",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/get-to-know-customer-360-audiences",
+   "note": "'[Data Streams (データストリーム)]' tab"
+  },
+  {
+   "en": "Unified Individual DMO",
+   "ja": "統合個人 DMO",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments"
+  },
+  {
+   "en": "Unified Individual",
+   "ja": "統合個人",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/consider-data-implications-for-segmentation",
+   "note": "'Unified individual (統合個人)'; replace after 'Unified Individual DMO'/'Unified Individual ID'"
+  },
+  {
+   "en": "Unified Link Individual",
+   "ja": "統合リンク個人",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/get-to-know-unified-profiles",
+   "note": "DMO table lists 統合リンク個人"
+  },
+  {
+   "en": "Individual DMO",
+   "ja": "個人 DMO",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/get-to-know-unified-profiles",
+   "note": "'個人 DMO'; also '統合リンク個人 DMO'. Apply after 'Unified Individual DMO'"
+  },
+  {
+   "en": "Individual ID",
+   "ja": "個人 ID",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/map-required-objects",
+   "note": "Field label '個人 ID (プライマリキー)'; apply after 'Unified Individual ID'"
+  },
+  {
+   "en": "Party Identification",
+   "ja": "関係者 ID",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-data-model-for-customer-data-platform/get-to-know-data-model-objects",
+   "note": "DMO label in table '関係者 ID'; map-required-objects also says '関係者 ID オブジェクト'"
+  },
+  {
+   "en": "Contact Point Email",
+   "ja": "連絡先メール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-data-model-for-customer-data-platform/get-to-know-data-model-objects",
+   "note": "'Contact Point Email (連絡先メール)' also in https://trailhead.salesforce.com/ja/content/learn/projects/connect-data-cloud-to-copilot-and-prompt-builder/bring-external-data-into-the-contact-page-layout"
+  },
+  {
+   "en": "Contact Point Phone",
+   "ja": "連絡先電話",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/streaming-data-transforms-quick-look/get-started-with-streaming-data-transforms-in-data-cloud",
+   "note": "'Contact Point Phone (連絡先電話)' x2 in this unit; DMO tables in get-to-know-data-model-objects / map-required-objects use '連絡先電話番号' — both official, pick one consistently"
+  },
+  {
+   "en": "Contact Point Address",
+   "ja": "連絡先住所",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-data-model-for-customer-data-platform/get-to-know-data-model-objects"
+  },
+  {
+   "en": "Sales Order DMO",
+   "ja": "販売注文 DMO",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-data-platform-insights-using-sql/review-sql-examples",
+   "note": "'販売注文 DMO で探します'"
+  },
+  {
+   "en": "Sales Order",
+   "ja": "販売注文",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-data-model-for-customer-data-platform/get-to-know-data-model-objects",
+   "note": "DMO label 販売注文; apply after 'Sales Order DMO'"
+  },
+  {
+   "en": "Identity Resolution",
+   "ja": "ID 解決",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/get-to-know-customer-360-audiences",
+   "note": "'[Identity Resolutions (ID 解決)]' tab"
+  },
+  {
+   "en": "Match Rule",
+   "ja": "一致ルール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules"
+  },
+  {
+   "en": "Reconciliation Rule",
+   "ja": "調整ルール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules"
+  },
+  {
+   "en": "Fuzzy Name and Normalized Email",
+   "ja": "あいまいな名前と標準化されたメール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/connect-data-cloud-to-copilot-and-prompt-builder/bring-external-data-into-the-contact-page-layout",
+   "note": "Default match rule label in ja project"
+  },
+  {
+   "en": "Most Frequent",
+   "ja": "最も頻繁",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules",
+   "note": "Reconciliation rule; ja unit '[最も頻繁] ルール'"
+  },
+  {
+   "en": "Source Sequence",
+   "ja": "取得元の順序",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules",
+   "note": "Reconciliation rule; EN unit 'Source Sequence rule' ↔ ja '[取得元の順序] ルール'"
+  },
+  {
+   "en": "Last Updated",
+   "ja": "最終更新日",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules",
+   "note": "Reconciliation rule 'Last Updated (最終更新日)'"
+  },
+  {
+   "en": "Consolidation Rate",
+   "ja": "統合率",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/configure-identity-resolution-rules"
+  },
+  {
+   "en": "Process History",
+   "ja": "処理履歴",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/configure-identity-resolution-rules",
+   "note": "'[処理履歴]'"
+  },
+  {
+   "en": "Profile Explorer",
+   "ja": "プロファイルエクスプローラー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/get-to-know-customer-360-audiences"
+  },
+  {
+   "en": "Data Explorer",
+   "ja": "データエクスプローラー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/get-to-know-customer-360-audiences"
+  },
+  {
+   "en": "Calculated Insight",
+   "ja": "計算済みインサイト",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-for-admins/get-to-know-customer-360-audiences",
+   "note": "'[Calculated Insights (計算済みインサイト)]'"
+  },
+  {
+   "en": "Streaming Insight",
+   "ja": "ストリーミングインサイト",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-data-platform-insights-using-sql/review-sql-examples"
+  },
+  {
+   "en": "Visual Insights Builder",
+   "ja": "ビジュアルインサイトビルダー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/visual-insights-builder-in-customer-data-platform/enhance-your-insight-with-the-builder",
+   "note": "Help link title in ja unit; the tool is usually called 'インサイトビルダー' ('Insights Builder in Data 360 (Data 360 のインサイトビルダー)', https://trailhead.salesforce.com/ja/content/learn/modules/customer-data-platform-insights/create-insights-in-customer-data-platform)"
+  },
+  {
+   "en": "Segment On",
+   "ja": "セグメント対象",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments",
+   "note": "'[Segment On (セグメント対象)]'"
+  },
+  {
+   "en": "Rapid Publish",
+   "ja": "高速公開",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/consider-data-implications-for-segmentation",
+   "note": "EN unit 'Rapid Publish' ↔ ja '高速公開' (also '高速セグメント公開' for 'Rapid Segment Publish')"
+  },
+  {
+   "en": "Last Number of Days",
+   "ja": "最後の日数",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments",
+   "note": "Date operator; EN 'Last Number Of Days' ↔ ja '最後の日数' (operator list and example '最後の日数 | 30')"
+  },
+  {
+   "en": "Is Equal To",
+   "ja": "次の値と等しい",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments",
+   "note": "Segment operator"
+  },
+  {
+   "en": "Activation Target",
+   "ja": "有効化対象",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/navigate-customer-360-audiences-segmentation-",
+   "note": "'[Activation Targets (有効化対象)]'; apply before 'Activation'"
+  },
+  {
+   "en": "Data Action",
+   "ja": "データアクション",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-data-platform-insights/use-insights-in-customer-data-platform",
+   "note": "Also 'データアクション対象' for Data Action Target(s)"
+  },
+  {
+   "en": "Data Space",
+   "ja": "データスペース",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-spaces-in-data-cloud-quick-look/explore-data-space-functionality"
+  },
+  {
+   "en": "Full Refresh",
+   "ja": "完全更新",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/connect-data-cloud-to-copilot-and-prompt-builder/bring-external-data-into-the-contact-page-layout",
+   "note": "Data stream refresh option '[Full Refres(h) (完全更新)]'"
+  },
+  {
+   "en": "Batch Data Transform",
+   "ja": "一括処理データ変換",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/batch-data-transforms-in-data-cloud-quick-look/get-started-with-batch-data-transforms-in-data-360"
+  },
+  {
+   "en": "Streaming Data Transform",
+   "ja": "ストリーミングデータ変換",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/streaming-data-transforms-quick-look/get-started-with-streaming-data-transforms-in-data-cloud"
+  },
+  {
+   "en": "Data Transform",
+   "ja": "データ変換",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/streaming-data-transforms-quick-look/get-started-with-streaming-data-transforms-in-data-cloud",
+   "note": "Apply after Batch/Streaming Data Transform"
+  },
+  {
+   "en": "Zero Copy Data Federation",
+   "ja": "ゼロコピーデータ統合",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/explore-data-cloud-and-agentforce",
+   "note": "Help title 'Zero Copy Data Federation (ゼロコピーデータ統合)'"
+  },
+  {
+   "en": "Data Graph",
+   "ja": "データグラフ",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/enable-trusted-agents-with-data-cloud"
+  },
+  {
+   "en": "Search Index",
+   "ja": "検索インデックス",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/unstructured-data-in-data-cloud/create-a-search-index-configuration"
+  },
+  {
+   "en": "Vector Search",
+   "ja": "ベクトル検索",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/unstructured-data-in-data-cloud/create-a-search-index-configuration"
+  },
+  {
+   "en": "Data Kit",
+   "ja": "データキット",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/packaging-and-data-kits-in-salesforce-cdp/create-and-package-a-data-kit"
+  },
+  {
+   "en": "AI Models",
+   "ja": "AI モデル",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-experiences/learn-how-data-cloud-works",
+   "note": "'AI モデル (旧称 Einstein Studio)'"
+  },
+  {
+   "en": "Profile",
+   "ja": "プロファイル",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments",
+   "note": "RISKY bare word: DMO category '[Profile (プロファイル)]'. Only for the category (e.g. 'ProfileまたはEngagementのDMO'); not inside 'Profile API', 'Profile DMO' names, or Salesforce user profiles already in Japanese"
+  },
+  {
+   "en": "Engagement",
+   "ja": "エンゲージメント",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments",
+   "note": "RISKY bare word: DMO category '[Engagement (エンゲージメント)]'. Never inside 'Marketing Cloud Engagement', 'MC Engagement', 'Agentforce Marketing Engagement'"
+  },
+  {
+   "en": "Other",
+   "ja": "「その他」",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments",
+   "note": "RISKY bare word: DMO category '[Other (その他)]'; also '[Object Category (オブジェクトカテゴリ)] で [Other (その他)]' (https://trailhead.salesforce.com/ja/content/learn/modules/batch-data-transforms-in-data-cloud-quick-look/get-started-with-batch-data-transforms-in-data-360). Category use only 文中で「その他の」と紛れないよう「」付きで表記"
+  }
+ ],
+ "keep": [
+  {
+   "en": "Data 360 / Data Cloud / Salesforce Data 360 / Salesforce Data Cloud",
+   "reason": "Product name; Trailhead ja keeps English"
+  },
+  {
+   "en": "Data Cloud One",
+   "reason": "Trailhead ja keeps \"Data Cloud One\" (https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/enable-trusted-agents-with-data-cloud)"
+  },
+  {
+   "en": "Einstein Studio",
+   "reason": "Old product name; Trailhead ja writes \"AI モデル (旧称 Einstein Studio)\" — keep inside 旧称 phrasing"
+  },
+  {
+   "en": "Customer 360 / Customer 360 data model",
+   "reason": "Trailhead ja: \"Customer 360 データモデル\""
+  },
+  {
+   "en": "Marketing Cloud / Marketing Cloud Engagement / MC Engagement / Marketing Cloud Personalization / Einstein Personalization / Personalization / B2C Commerce / Commerce Cloud / Sales Cloud / Service Cloud / Loyalty Management / Tableau / Tableau Next / Tableau Semantics / MuleSoft / Hyperforce / Agentforce / AgentExchange / AppExchange / Slack / Trailhead",
+   "reason": "Product names stay English"
+  },
+  {
+   "en": "Journey Builder / Email Studio / Automation Studio / MobileConnect / MobilePush / CloudPages / CloudPage / Flow Builder",
+   "reason": "Marketing Cloud / platform tool names stay English (Trailhead ja: \"Flow Builder でリアルタイム予測\", https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-experiences/learn-how-data-cloud-works)"
+  },
+  {
+   "en": "Web SDK / Mobile SDK / Interaction SDK / SDK",
+   "reason": "Trailhead ja: \"Salesforce Interaction SDK\", \"ストリーミングインサイトは Web SDK...\""
+  },
+  {
+   "en": "Consent API / Profile API / REST API / Marketing Cloud Connect API / ConsentApiUpdate",
+   "reason": "API names stay English"
+  },
+  {
+   "en": "DMO / DLO / UDMO / API / SQL / CSV / JSON / PII / CRM / CRM ID / KPI / ROI / RFM / LTV / TTL / RAG / BYOM / GDPR / SFTP / SKU / IAM / JWT / IdP / ETL / DWH / MDM / ABAC / RBAC / RLS / VPN / SaaS / IoT / CIO / AMER / EMEA / APAC / E164 / E.164 / IDFA / AAID / PGP / GMT / SMS / URL / PDF",
+   "reason": "Acronyms"
+  },
+  {
+   "en": "SELECT / FROM / WHERE / GROUP BY / ORDER BY / CASE WHEN / SUM / AVG / COUNT / CONCAT / COALESCE / CAST / CONVERT / RANK / DISTINCT / PROPER / TRY / AS ... / NULL / AND / True / False",
+   "reason": "SQL keywords/functions and literals"
+  },
+  {
+   "en": "Snowflake / Databricks / Amazon S3 / Amazon Redshift / Redshift / Google BigQuery / BigQuery / Google Cloud Storage / Microsoft Azure Storage / Azure Blob Storage / Amazon SageMaker / AWS SageMaker / Vertex AI / Iceberg / Parquet / DBT / WhatsApp / Meta / Google / Stack Exchange",
+   "reason": "Third-party products"
+  },
+  {
+   "en": "Northern Trail Outfitters / NTO / Cumulus Financial / Cloud Kicks / Samantha / Sam / San Jose / Track My Run / Luxury Retailers / Platinum Loyalty / High Investment Balance (Customers) / Fund Name / Fund Type / Mutual Fund / Multiple Investments / Financial Data / Credit Card Number / Net Profit / Order Description / Secondary Product Code / PrimaryProductCategory / Customer Email / Preferred Name / Jacket / SHOES / LNW / HNW / Asset Health Score / Collective Core Audience",
+   "reason": "Example company/person/field names and values"
+  },
+  {
+   "en": "SalesOrder / GoodsProduct / PhoneNumber / SubscriberKey / ShouldForget / DataObjectDataChgEvent / Individual.Id / GrandTotalAmount / SoldToCustomerId",
+   "reason": "API/developer names; stay English"
+  },
+  {
+   "en": "Phone / Date / Datetime / DateTime / Email",
+   "reason": "Data types (Phone型 etc.) as written in Data 360 field type picker; leave English in \"Phone型\" context"
+  },
+  {
+   "en": "Ch1-Ch7 / Chapter 1-7 / Q2 / Q7 / Q10 / Fig / NO FILE FOUND",
+   "reason": "Document structure"
+  },
+  {
+   "en": "Dev Hub / Sandbox / Enterprise Edition / Apex / Lightning Web",
+   "reason": "Platform names stay English (Trailhead ja: Sandbox, Apex)"
+  },
+  {
+   "en": "Party (subject area)",
+   "reason": "Text uses \"Partyサブジェクトエリア\"; ja Trailhead calls the subject area \"関係者\" (https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-data-model-for-customer-data-platform/get-to-know-data-model-objects) — optional replace \"Party\" → \"関係者\" only in that phrase"
+  },
+  {
+   "en": "Individual / Individuals (bare)",
+   "reason": "Ja DMO label is 個人 (https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-data-model-for-customer-data-platform/get-to-know-data-model-objects), but bare \"Individual\" also appears in English quotes/API names; replace only in phrases like \"個人(Individual)\" deliberately, not globally"
+  },
+  {
+   "en": "Order / Sales / Marketing / Customer / Web / Name / Model / Lake / Only / Full / Refresh / Ingest / Complete / Ready / New / Active / Admin / Member / Organization / Transaction / Tax / Color / City / Credit / Card / Number / Sum / Average / Count",
+   "reason": "Bare words / fragments; check case by case (e.g. \"B2C CommerceのOrderバンドル\" is a bundle name)"
+  }
+ ],
+ "unconfirmed": [
+  {
+   "en": "Data Cloud Admin",
+   "guess": "Data Cloud 管理者",
+   "why": "Ja Trailhead standard permission set table lists only アーキテクト/有効化マネージャー/有効化スペシャリスト/ユーザー; Admin label not found"
+  },
+  {
+   "en": "Data Cloud Marketing Manager / Data Cloud Marketing Specialist / Data Cloud for Marketing Specialist / Marketing Specialist / Marketing Manager",
+   "guess": "Data Cloud マーケティングマネージャー / マーケティングスペシャリスト",
+   "why": "Older permission set labels; not found in ja sources"
+  },
+  {
+   "en": "Data Cloud Data Aware Specialist / Data Cloud for Marketing Data Aware Specialist",
+   "guess": "Data Cloud データアウェアスペシャリスト",
+   "why": "Permission set label not found (only the role word データアウェアスペシャリスト)"
+  },
+  {
+   "en": "Data Cloud Data Space Management",
+   "guess": "Data Cloud データスペース管理",
+   "why": "Not found"
+  },
+  {
+   "en": "Platform Integration User",
+   "guess": "",
+   "why": "Not found in ja sources"
+  },
+  {
+   "en": "Source Priority",
+   "guess": "取得元の順序",
+   "why": "EN UI now shows \"Source Priority\" (EN project unify-your-data); ja Trailhead only has 取得元の順序 for Source Sequence. Likely same rule, unverified"
+  },
+  {
+   "en": "Most Occurring",
+   "guess": "最も頻繁",
+   "why": "Probably same as Most Frequent; not found"
+  },
+  {
+   "en": "Match on Blank",
+   "guess": "",
+   "why": "Not found"
+  },
+  {
+   "en": "Fuzzy Name and Normalized Phone / Fuzzy Name and Normalized Address",
+   "guess": "あいまいな名前と標準化された電話番号 / 住所",
+   "why": "Only the Email variant was found"
+  },
+  {
+   "en": "Unified Contact Point / Unified Contact",
+   "guess": "統合連絡先",
+   "why": "Not found in ja sources"
+  },
+  {
+   "en": "Unified Individual Link",
+   "guess": "統合リンク個人",
+   "why": "Not an exact label; verified label is Unified Link Individual (統合リンク個人)"
+  },
+  {
+   "en": "Identification Name",
+   "guess": "",
+   "why": "Party Identification field label not found"
+  },
+  {
+   "en": "Ingestion API",
+   "guess": "取り込み API",
+   "why": "Ja Trailhead once says \"取得 API および Salesforce Interaction SDK\" (https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-experiences/learn-how-data-cloud-works); Japanese Help naming not retrieved; ambiguous"
+  },
+  {
+   "en": "Data Share / Data Shares",
+   "guess": "データ共有",
+   "why": "Not found as a Data 360 feature label in ja sources"
+  },
+  {
+   "en": "Refresh Mode / Incremental / Upsert",
+   "guess": "更新モード / 増分 / アップサート",
+   "why": "Data stream refresh-mode labels not found in ja sources (only Full Refresh = 完全更新)"
+  },
+  {
+   "en": "Event Time",
+   "guess": "イベント時間",
+   "why": "Ja sources only in English pages"
+  },
+  {
+   "en": "Publish History",
+   "guess": "公開履歴",
+   "why": "Not found"
+  },
+  {
+   "en": "Segment Intelligence / Segment Time Zone / Segmentation Operators",
+   "guess": "セグメントインテリジェンス / セグメントのタイムゾーン / セグメント演算子",
+   "why": "Not found (Help title \"Segment Operators in Data 360 (Data 360 のセグメント演算子)\" exists in https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments — usable for \"Segment Operators\" only)"
+  },
+  {
+   "en": "Ignore Empty Value / Value suggestion / Suggested Values",
+   "guess": "",
+   "why": "Not found"
+  },
+  {
+   "en": "Data Rights Subject Request",
+   "guess": "",
+   "why": "Not found"
+  },
+  {
+   "en": "Data Cloud Marketplace",
+   "guess": "",
+   "why": "Not found"
+  },
+  {
+   "en": "Copy Field Enrichment / Data Set Creation / Root Level",
+   "guess": "コピー項目強化 / ...",
+   "why": "data-cloud-enrichments module is English-only in ja Trailhead"
+  },
+  {
+   "en": "Fully Qualified Key",
+   "guess": "完全修飾キー",
+   "why": "Only English pages"
+  },
+  {
+   "en": "Internal Organization / Global Account / Membership / Sales Product",
+   "guess": "",
+   "why": "DMO labels not found"
+  },
+  {
+   "en": "Communication Capping",
+   "guess": "",
+   "why": "Not found"
+  },
+  {
+   "en": "Cloud Information Model",
+   "guess": "",
+   "why": "Not found in ja text body"
+  },
+  {
+   "en": "Data Consolidation / Data Cloud Segments / Core Audience / Business Priority / Omni Supervisor / Field Service Intelligence / Flow Orchestration / Bring Your Own Model / Inspector / Suggest Tags / Confidential",
+   "guess": "",
+   "why": "Not verified"
+  }
+ ],
+ "dropped": [
+  {
+   "en": "Data Aware Specialist",
+   "ja": "データアウェアスペシャリスト",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/consider-data-implications-for-segmentation",
+   "note": "Role name in running text ('データアウェアスペシャリストと協力'). Do NOT apply inside 'Data Cloud Data Aware Specialist' / 'Data Cloud for Marketing Data Aware Specialist' (permission set labels, unconfirmed)",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Contact Point",
+   "ja": "連絡先",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules",
+   "note": "Generic 'contact point' objects = 連絡先 (メール、アプリケーション、電話番号、住所). Apply only after the longer Contact Point Email/Phone/Address entries",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Exact Normalized",
+   "ja": "標準化",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules",
+   "note": "Match method list in ja unit: 完全 / あいまい / 標準化 (EN unit: Exact / Fuzzy / Normalized). UI label 'Exact Normalized' ↔ ja '標準化' inferred from that list; apply before 'Exact'",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Exact",
+   "ja": "完全",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules",
+   "note": "RISKY bare word: match method only ('完全 : 完全一致に基づいて照合')",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Fuzzy",
+   "ja": "あいまい",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-and-identity-in-salesforce-cdp/select-identity-resolution-match-rules",
+   "note": "RISKY bare word: match method only; apply after 'Fuzzy Name and Normalized ...'",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "At Least",
+   "ja": "以上",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/create-filtered-segments",
+   "note": "RISKY: count operator only ('件数 | 以上 | 6' = EN 'Count | At Least | 6')",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Activation",
+   "ja": "有効化",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/navigate-customer-360-audiences-segmentation-",
+   "note": "'[Activations (有効化)]'. Not inside 'Data Cloud Activation Specialist/Manager' (separate entries)",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Segment",
+   "ja": "セグメント",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-360-audiences-segmentation/navigate-customer-360-audiences-segmentation-",
+   "note": "RISKY bare word: '[セグメント] (5) タブ'. Apply last; skip inside 'Segment On', 'Segment Intelligence', 'Segment Time Zone', help titles",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Enrichment",
+   "ja": "強化",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-experiences/see-data-cloud-in-action",
+   "note": "'Data Enrichment (強化)'; RISKY bare; 'Copy Field Enrichment' etc. unconfirmed",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Account",
+   "ja": "取引先",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/manage-products-prices-quotes-orders/control-access-price-books-products",
+   "note": "Bare word; standard object. Apply after 'Global Account' etc.; not inside 'Account Engagement'",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Contact",
+   "ja": "取引先責任者",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/quick-start-create-a-sales-email-prompt-template/get-started-with-sales-email-prompt-templates",
+   "note": "Bare word; standard object. Apply after all 'Contact Point ...' entries",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Case",
+   "ja": "ケース",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_case_manage",
+   "note": "Bare word; skip SQL 'CASE' / 'CASE WHEN' (case-sensitive match)",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  },
+  {
+   "en": "Flow",
+   "ja": "フロー",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/projects/connect-data-cloud-to-copilot-and-prompt-builder/enhance-copilot-to-act-on-data-with-conversational-language",
+   "note": "Apply only to standalone 'Flow'; keep 'Flow Builder' (Trailhead ja writes Flow Builder in English)",
+   "reason": "単独の語・推定・ほかの英語の値と並ぶため英語のまま"
+  }
+ ],
+ "protect": [
+  "Marketing Cloud Engagement",
+  "MC Engagement",
+  "Profile API",
+  "Engagement Studio",
+  "Flow Builder",
+  "Engagement Frequency"
+ ]
+}
