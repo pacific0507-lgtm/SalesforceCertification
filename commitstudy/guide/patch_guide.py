@@ -73,6 +73,7 @@ MARKUP = f"""
   <p>CommitStudy は、Salesforce などシステム系資格のテキストと問題集です。いまの科目は Data 360 コンサルタント、Marketing Cloud Administrator、Agentforce Sales コンサルタントの3つです。</p>
   {FIG["screens"]}
   {SHOTS(("home", "ホーム。下のタブで4つの画面を行き来します"), ("texts", "テキスト一覧。科目を選んで「読みはじめる」か「続きから」"))}
+  <ul><li>テキスト一覧の右上の「並べ替え・合格の印」を押すと、↑↓で科目の並びを変えたり、合格した科目に「合格」の印を付けたりできます。並びと印はアカウントに保存されます。</li></ul>
  </section>
  <section class="bx gd" id="g-flow">{H("学び方の流れ")}
   {FIG["flow"]}

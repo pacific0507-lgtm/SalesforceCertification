@@ -16,3 +16,4 @@ python3 $C/guide/patch_guide.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_rotate_keep.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_badge_toast.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_home_wait.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
+python3 $C/patch_texts_order.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
