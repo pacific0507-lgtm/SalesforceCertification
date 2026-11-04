@@ -52,7 +52,7 @@ CSS = """
 .garden .gd-empty{font-size:12px;fill:var(--sub)}
 .gd-st{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:8px 0 0}
 .gd-st b{font-size:16px}.gd-st small{color:var(--sub);font-size:12.5px}
-#bx-garden{grid-column:1/-1}
+#bx-garden,#bx-rank{grid-column:1/-1}
 #bx-garden .bx-go{margin-top:8px;font-size:13px;padding:7px 14px;align-self:flex-start}
 .gd-now{display:flex;flex-direction:column;gap:2px;margin:10px 0 6px}.gd-now b{font-size:18px}.gd-now span{color:var(--sub);font-size:13px}
 .gd-prog .l{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub)}
