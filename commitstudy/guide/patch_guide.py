@@ -70,7 +70,7 @@ MARKUP = f"""
  <div id="groups" hidden></div>
  <nav class="gd-toc" aria-label="このページの目次"><a href="#g-screens">4つの画面</a><a href="#g-flow">学び方の流れ</a><a href="#g-text">テキスト</a><a href="#g-quiz">問題集</a><a href="#g-train">トレーニング</a><a href="#g-rec">学習の記録</a><a href="#g-save">記録の保存</a><a href="#g-app">アプリのように使う</a><a href="#g-comment">改善へのご協力</a></nav>
  <section class="bx gd" id="g-screens">{H("4つの画面")}
-  <p>CommitStudy は、Salesforce などシステム系資格のテキストと問題集です。いまの科目は Data 360 コンサルタント、Marketing Cloud Administrator、Agentforce Sales コンサルタントの3つです。</p>
+  <p>CommitStudy は、Salesforce などシステム系資格のテキストと問題集です。いまの科目は Data 360 コンサルタント、Marketing Cloud Administrator、Agentforce Sales コンサルタント、Agentforce スペシャリストの4つです。</p>
   {FIG["screens"]}
   {SHOTS(("home", "ホーム。下のタブで4つの画面を行き来します"), ("texts", "テキスト一覧。科目を選んで「読みはじめる」か「続きから」"))}
   <ul><li>テキスト一覧の右上の「並べ替え・合格の印」を押すと、↑↓で科目の並びを変えたり、合格した科目に「合格」の印を付けたりできます。並びと印はアカウントに保存されます。</li></ul>
