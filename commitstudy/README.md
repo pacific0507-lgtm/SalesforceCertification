@@ -124,3 +124,7 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `patch_grass.py`: 学習の記録とホームのスタンプを、日付ごとに変わる草のイラスト(8種類+まれに四つ葉)に
 
 - `patch_garden.py`: 草の庭(ホームのカードと、学習の記録の詳しい表示)。合格の札は科目名の後ろに表示
+
+## 科目 Agentforce スペシャリスト(afspec)
+- `afspec_SPEC.md` 原稿の仕様(問題は3択)、`afspec/manuscript/out_ch1〜6.json` 章ごとの原稿、`build_afspec.py` で data を組み立て、`figs_m/spec_H.py`(2〜6章)・`spec_I.py`(1章)と `figs_m/apply_afspec.py` で図を入れる。用語カードは `afspec/data/terms.json`。`patch_add_afspec.py` で科目を登録(rebuild.sh の最後)。公開データは `afspec/data/`
+- 作り直し: `python3 build_afspec.py afspec/manuscript <out> && python3 figs_m/apply_afspec.py <out>/chapters.json <out>/chapters.json && cp afspec/data/terms.json <out>/`
