@@ -120,3 +120,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `patch_home_wait.py`: ホームのお便り・更新情報の帯・使い方の案内の既読を、アカウントの記録を読み終えてから判定
 
 - `patch_texts_order.py`: テキスト一覧の科目の並べ替えと合格の印(ユーザーごと、アカウントに同期)
+
+- `patch_grass.py`: 学習の記録とホームのスタンプを、日付ごとに変わる草のイラスト(8種類+まれに四つ葉)に
