@@ -19,6 +19,7 @@ await p.evaluate(()=>{const d=document.querySelector('#f-stream .done-row');d.sc
 await p.go('/d360/#quiz',5500);await p.evaluate(()=>scrollTo(0,120));await shot('quiz',['[data-act="mopt"] ~~ [data-act="check"]']);
 await p.evaluate(()=>{const e=[...document.querySelectorAll('[data-act="mopt"]')].find(x=>x.offsetParent);e.click();const c=[...document.querySelectorAll('[data-act="check"]')].find(x=>x.offsetParent);c.click()});await p.waitForTimeout(700);
 await p.evaluate(()=>{const e=document.querySelector('.banner')||document.querySelector('#qtext');e&&e.scrollIntoView({block:'start'});scrollBy(0,-90)});await shot('quiz_ans',['.exp']);
+await p.evaluate(()=>scrollTo(0,0));await p.click('[data-tc-tab="c"]');await p.waitForTimeout(800);await p.evaluate(()=>scrollTo(0,0));await shot('quiz_cards',['#tcTabs','#tcGo']);await p.click('[data-tc-tab="q"]');await p.waitForTimeout(500);
 await p.go('/practice/');await p.evaluate(()=>{document.querySelector('.tabs').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('train',['#f-subj ~~ #f-ord']);
 await p.click('#t-g');await p.waitForTimeout(700);await p.evaluate(()=>{document.querySelector('.tabs').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('cards',['#fc']);
 await p.click('#t-q');await p.waitForTimeout(400);await p.click('#p-q [data-up]');await p.waitForTimeout(600);await shot('train_full',['.tq-act']);
