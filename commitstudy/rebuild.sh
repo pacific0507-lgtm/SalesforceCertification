@@ -18,3 +18,4 @@ python3 $C/patch_badge_toast.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_home_wait.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_texts_order.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_grass.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
+python3 $C/patch_garden.py $OUT $OUT.tmp && mv $OUT.tmp $OUT

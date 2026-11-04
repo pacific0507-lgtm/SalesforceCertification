@@ -25,8 +25,9 @@ var CS_GRASS=(function(){
    /* たんぽぽ */ bl("M19.5 31V18h1v13z",D)+bl("M20 28c-3-1-7-1-9-4 3 0 6 1 9 4z",G)+bl("M20 27c3-1 7-2 9-5-3 0-6 2-9 5z",L)+'<g fill="#f6c21c">'+[0,30,60,90,120,150,180,210,240,270,300,330].map(function(a){return '<ellipse cx="20" cy="9.5" rx="1.3" ry="4" transform="rotate('+a+' 20 14)"/>'}).join("")+'</g><circle cx="20" cy="14" r="2.4" fill="#e8a40c"/>',
    /* ススキ */ bl("M16 31c0-8 1-15 4-21 0 7-1 14-2 21z",L)+bl("M22 31c0-7 2-13 6-18-1 6-3 12-4 18z")+'<path d="M20 10c2 0 4 1 5 3M27 13c1 1 2 3 2 5" stroke="#d6b77a" stroke-width="2.4" stroke-linecap="round" fill="none"/>'
   ].concat([/* 四つ葉(まれ) */ bl("M19.5 31V21h1v10z",D)+'<g fill="#3f9d4a"><circle cx="16.5" cy="13.5" r="4"/><circle cx="23.5" cy="13.5" r="4"/><circle cx="16.5" cy="20.5" r="4"/><circle cx="23.5" cy="20.5" r="4"/></g><g fill="#78c257"><circle cx="16.5" cy="13.5" r="2"/><circle cx="23.5" cy="13.5" r="2"/><circle cx="16.5" cy="20.5" r="2"/><circle cx="23.5" cy="20.5" r="2"/></g>'])})();
-function csGrass(day){var h=0,t=String(day||"");for(var i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))>>>0;h=(h^(h>>>7))>>>0;
-  var k=h%23===0?8:h%8;return '<svg class="grass" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" class="gs-bg"/><path d="M6 31h28" stroke="#8fbf6a" stroke-width="1.4" stroke-linecap="round"/>'+CS_GRASS[k]+'</svg>'}
+function csGrassHash(day){var h=0,t=String(day||"");for(var i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))>>>0;return (h^(h>>>7))>>>0}
+function csGrassKind(day){var h=csGrassHash(day);return h%23===0?8:h%8}
+function csGrass(day){var k=csGrassKind(day);return '<svg class="grass" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" class="gs-bg"/><path d="M6 31h28" stroke="#8fbf6a" stroke-width="1.4" stroke-linecap="round"/>'+CS_GRASS[k]+'</svg>'}
 '''
 rep("FAMP.home=function(){", JS + "\nFAMP.home=function(){")
 STAMP = '<span>`+(o?`<img src="brand/raf-face.webp" alt="" width="40" height="40">`:``)+`</span>'

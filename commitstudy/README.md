@@ -122,3 +122,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `patch_texts_order.py`: テキスト一覧の科目の並べ替えと合格の印(ユーザーごと、アカウントに同期)
 
 - `patch_grass.py`: 学習の記録とホームのスタンプを、日付ごとに変わる草のイラスト(8種類+まれに四つ葉)に
+
+- `patch_garden.py`: 草の庭(ホームのカードと、学習の記録の詳しい表示)。合格の札は科目名の後ろに表示

@@ -25,7 +25,7 @@ function csTextsExtra(){var n=0;(function wait(){var list=document.querySelector
     cards().forEach(function(c,i,all){var id=c.dataset.id,box=c.querySelector(".tx-ed");
       if(!box){box=document.createElement("div");box.className="tx-ed";c.appendChild(box)}
       c.classList.toggle("passed",!!P[id]);
-      var b=c.querySelector(".pass-b");if(P[id]&&!b){b=document.createElement("span");b.className="pass-b";b.textContent="合格";c.appendChild(b)}else if(!P[id]&&b)b.remove();
+      var b=c.querySelector(".pass-b");if(P[id]&&!b){b=document.createElement("span");b.className="pass-b";b.textContent="合格";var tt=c.querySelector(".tt");(tt||c).appendChild(b)}else if(!P[id]&&b)b.remove();
       box.innerHTML=ed?'<button type="button" data-mv="-1"'+(i===0?" disabled":"")+' aria-label="上へ">↑</button><button type="button" data-mv="1"'+(i===all.length-1?" disabled":"")+' aria-label="下へ">↓</button><button type="button" class="pz" data-pass aria-pressed="'+(!!P[id])+'">'+(P[id]?"合格済み":"合格した")+'</button>':""})}
   if(!document.getElementById("tx-edbtn")){var bar=document.createElement("div");bar.className="tx-edbar";
     bar.innerHTML='<button type="button" id="tx-edbtn" aria-pressed="false">並べ替え・合格の印</button>';list.parentElement.insertBefore(bar,list);
@@ -51,7 +51,7 @@ CSS = """
 .tx-ed .pz{padding:0 14px}
 .tx-ed .pz[aria-pressed=true]{background:var(--sun);border-color:var(--sun);color:#2b1900}
 .tx.passed{border-color:var(--sun)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--sun) 55%,transparent)}
-.pass-b{position:absolute;top:10px;right:12px;font-size:12px;font-weight:800;color:#2b1900;background:var(--sun);border-radius:999px;padding:2px 10px;letter-spacing:.06em}
+.pass-b{display:inline-block;vertical-align:2px;margin-left:8px;font-size:11.5px;font-weight:800;line-height:1.6;color:#2b1900;background:var(--sun);border-radius:999px;padding:0 9px;letter-spacing:.06em;white-space:nowrap}
 """
 lines = s.split("\n"); l = lines[4]
 j = l.index("window.FAMD=") + len("window.FAMD="); F, end = json.JSONDecoder().raw_decode(l[j:])
