@@ -1,0 +1,221 @@
+{
+ "chapter": 4,
+ "chapter_title": "テスト・デプロイ・保守",
+ "chapter_sub": "Testing Center でエージェントを大量にテストし、Sandbox からバージョンを確定して本番へ移し、改善を続ける流れを学びます。",
+ "sections": [
+  {
+   "id": "testing",
+   "no": "Ch4·1",
+   "title": "Agentforce Testing Center とテストの考え方",
+   "tag": "Testing Center",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\" data-f=\"wink\"><b class=\"who\">クラウドちゃん</b>問題です。昨日テストで合格したエージェントに、今日まったく同じ質問をしました。答えは必ず同じになるでしょうか?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>同じ質問なら同じ答え!プログラムってそういうものでしょ?</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>残念、不正解だ。LLMは毎回少しずつ違う文を作る。乱数のシードが固定されていない関数に近い。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>これを「非決定的」と言います。だから1回の会話で安心せず、たくさんの場面をまとめて試します。そのための道具がTesting Centerです。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>1回うまくいっただけで本番に出したら危ないんだ…。</p></div><p class=\"one\">Agentforce Testing Center(テストセンター)は、エージェントに多数のテストケースを一括で投げ、回答や選んだサブエージェント、アクションを自動で評価する機能です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>新人スタッフの研修です。先輩が横で1件ずつ見守るのがAgentforce Builderのプレビュー、想定問答集100問を一斉に解かせて採点するのがTesting Centerです。</p></div><h4>2段階のテスト</h4><div class=\"tw\"><table><thead><tr><th>道具</th><th>使いどころ</th></tr></thead><tr><td>Agentforce Builderのプレビュー(Simulate)</td><td>データを書き込まずに会話の振る舞いを確かめる。設定の小さな調整をすぐ確認したいとき</td></tr><tr><td>Agentforce Builderのプレビュー(Live Test)</td><td>アクションを本物のデータで最後まで実行する。レコードが本当に更新されるか確かめたいとき</td></tr><tr><td>Testing Center</td><td>多数の発話を一括で実行し、自動で採点する。公開前や変更後の回帰テストに使う</td></tr></table></div><ul><li>AIエージェントは非決定的(同じ入力でも出力が変わりうる)なので、幅広いシナリオでテストすることが欠かせないと、公式ヘルプは説明しています。</li><li>2026年4月から、トピックはサブエージェント(Subagent)と呼ばれるようになりました。機能に変更はありません。旧 Agent Builder は Agentforce Builder です。</li></ul><h4>テストの作り方(Setup のテストセンター)</h4><ol class=\"steps\"><li>設定で「Testing Center」を開き、「New Test」でテスト名とテスト対象のエージェントを選ぶ</li><li>テスト条件を決める。会話履歴(Include conversation history)とコンテキスト変数(Include context variables)をCSVテンプレートの列として追加できる</li><li>テストデータを用意する。AIで生成するか、自分のCSVをアップロードする</li><li>評価(Evaluations)を選び、「Save & Run」で実行する</li></ol><h4>テストデータの3つの用意のしかた</h4><div class=\"tw\"><table><thead><tr><th>方法</th><th>内容</th><th>件数の上限</th></tr></thead><tr><td>サブエージェントとアクションから生成</td><td>AIが発話を作り、意図どおりのサブエージェントやアクションが動くかを確かめる</td><td>最大100件</td></tr><tr><td>ナレッジから生成</td><td>Agentforce Data Library の記事やファイルから、質問と回答の形のテストを作る</td><td>最大100件</td></tr><tr><td>CSVをアップロード</td><td>自社の業務ロジックに合わせた独自のシナリオを使う</td><td>1ファイル最大1,000件</td></tr></table></div><ul><li>コンテキスト変数は、ログイン中のユーザーや対象のケースなど、会話の開始時点の状態を再現します。省くと、本番のユーザーとは違う回答になったり、テストが失敗したりします。</li></ul><h4>評価(Evaluations)</h4><div class=\"tw\"><table><thead><tr><th>評価</th><th>何を見るか</th></tr></thead><tr><td>Response Evaluation(既定)</td><td>LLMの審査役(LLM as a Judge)が、期待する回答と実際の回答を比べて採点する</td></tr><tr><td>Subagent Assertion(既定。旧 Topic Assertion)</td><td>発話に対して正しいサブエージェントが選ばれたか</td></tr><tr><td>Action Assertion(既定)</td><td>正しいアクションを、必要なものを漏れなく選んだか</td></tr><tr><td>Completeness / Coherence / Conciseness</td><td>情報の網羅、自然な文章か(JSONなどの生データのままでないか)、簡潔さ</td></tr><tr><td>Latency / Instruction Adherence</td><td>実行時間(ミリ秒)、サブエージェントの指示にどれだけ従ったか</td></tr></table></div><ul><li>Subagent Assertion と Action Assertion は1(合格)か0(不合格)で採点されます。品質の評価(Completeness など)は0〜5で採点され、3以上が合格です。基準が合わないときは、独自の基準を持つカスタムスコアラーを追加します。</li><li>「期待する回答(Expected Response)」の列には、エージェントに言ってほしい回答そのものを書きます。「注文番号に触れて丁寧に答えること」のような指示を書くと、採点が不正確になります。</li><li>不合格の発話はAgentforce Builderで手動で再テストし、推論の流れを確認してから、サブエージェントの指示、アクション、ナレッジを直します。</li></ul><h4>使う前の注意</h4><ul><li>テスト中のエージェントはCRMのデータを変更することがあります。そのため、Testing Center は Sandbox で使うよう公式に案内されています。</li><li>Summer ’26 から、Testing Center でのテストは従量課金の対象外になり、Einstein Requests や Flex Credits を消費しません。ただし Data 360 へのクエリは引き続き課金対象です。</li></ul><div class=\"co talk t2\"><p class=\"tk pen\"><b class=\"who\">コミットくん</b>コードを書く派には Agentforce DX がある。CLIの <code>agent test run</code> でテストを実行し、CI(継続的インテグレーション)に組み込める。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>画面のテストセンターと同じことを、コマンドで行うイメージです。変更のたびに自動でテストが走るので、回帰を早く見つけられます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>手早く1件ずつ見るならBuilderのプレビュー、大量に一括で評価するならTesting Centerです。</li><li>既定の評価は Response Evaluation、Subagent(旧 Topic)Assertion、Action Assertion の3つです。</li><li>AI生成は最大100件、CSVアップロードは1ファイル最大1,000件です。</li><li>テストは実データを変更しうるので、Sandbox で行います。</li><li>Simulate はデータを書き込まず、Live Test は実際にアクションを実行します。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、Agentforce Service Agent の公開前に、注文状況の問い合わせなど数百パターンの発話でエージェントの回答をまとめて評価したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Agentforce Builder のプレビューで1件ずつ会話する",
+      "Agentforce Testing Center でバッチテストを作成する",
+      "Prompt Builder でプロンプトテンプレートをプレビューする"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "多数の発話を一括で実行し、自動で採点するのは Testing Center の役割です。Builder のプレビューは1会話ずつの手動確認向けで、数百件の評価には向きません。Prompt Builder のプレビューはテンプレート単体の確認で、エージェント全体の振る舞いは評価できません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+     "x": "Testing Center多数の発話を一括で実行し、自動で採点する。公開前や変更後の回帰テストに使う"
+    },
+    {
+     "q": "管理者は、自社独自の業務シナリオ1,000件をテストケースとして Testing Center に取り込みたいと考えています。最も適切な方法はどれですか?",
+     "o": [
+      "サブエージェントとアクションからAIでテストを生成する",
+      "ナレッジから質問と回答の形のテストを生成する",
+      "テストケースをCSVファイルにまとめてアップロードする"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "独自のシナリオを使うときはCSVをアップロードします。1ファイルで最大1,000件まで実行できます。AIによる生成はどちらの方法も最大100件で、自社で用意した1,000件のシナリオをそのまま使うことはできません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center_upload.htm&type=5",
+     "x": "CSVをアップロード自社の業務ロジックに合わせた独自のシナリオを使う1ファイル最大1,000件"
+    },
+    {
+     "q": "テスト結果で、ある発話について Subagent Assertion のスコアが0になりました。これは何を意味しますか?",
+     "o": [
+      "エージェントが想定と異なるサブエージェントを選んだ",
+      "回答の文章が冗長で簡潔さに欠けていた",
+      "アクションの実行に時間がかかりすぎた"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Subagent Assertion(旧 Topic Assertion)は、発話に対して正しいサブエージェントが選ばれたかを判定します。冗長さは Conciseness、実行時間は Latency で測る別の評価です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center_use_test_results.htm&type=5",
+     "x": "Subagent Assertion(既定。旧 Topic Assertion)発話に対して正しいサブエージェントが選ばれたか"
+    },
+    {
+     "q": "ある管理者は、Testing Center のCSVの「期待する回答」列に「注文番号に触れて、丁寧に答えること」と書きました。その結果、採点が不正確になりました。どう直すべきですか?",
+     "o": [
+      "期待する回答の列を空欄にして、Coherence の評価だけを使う",
+      "期待する回答の列に、エージェントに返してほしい回答そのものを書く",
+      "期待する回答の列の指示を、サブエージェントの指示にもそのまま書き写す"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "期待する回答には、エージェントに返してほしい回答そのものを書きます。回答への指示を書くのはよくある誤りで、採点が不正確になると公式に説明されています。サブエージェントの指示に書き写しても、採点の基準となる列は直りません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center_evaluations.htm&type=5",
+     "x": "「期待する回答(Expected Response)」の列には、エージェントに言ってほしい回答そのものを書きます。「注文番号に触れて丁寧に答えること」のような指示を書くと、採点が不正確になります。"
+    },
+    {
+     "q": "品質の評価(Completeness など)の合否について正しい説明はどれですか?",
+     "o": [
+      "0〜5で採点され、3以上が合格になる",
+      "1(合格)か0(不合格)の2値で採点される",
+      "High、Low、Uncertain の3段階で採点される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "品質の評価は0〜5で採点され、3以上が合格です。1か0の2値は Subagent Assertion と Action Assertion の採点方法です。High、Low、Uncertain はエージェントテストの Instruction Adherence で使われる表し方です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center_use_test_results.htm&type=5",
+     "x": "Subagent Assertion と Action Assertion は1(合格)か0(不合格)で採点されます。品質の評価(Completeness など)は0〜5で採点され、3以上が合格です。基準が合わないときは、独自の基準を持つカスタムスコアラーを追加します。"
+    },
+    {
+     "q": "ある会社は、ケースを作成するアクションを持つエージェントのテストを計画しています。テストで実際のCRMデータが変わることを避けたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "本番組織で Testing Center を実行し、あとでレコードを削除する",
+      "Sandbox で Testing Center を実行する",
+      "Agentforce Builder のプレビューを Live Test モードで実行する"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "テスト中のエージェントはCRMデータを変更することがあるため、Testing Center は Sandbox で使うよう案内されています。本番で実行して後から消すのは危険です。Live Test はアクションを実際に実行してデータを変更するモードなので、目的に反します。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+     "x": "テスト中のエージェントはCRMのデータを変更することがあります。そのため、Testing Center は Sandbox で使うよう公式に案内されています。"
+    },
+    {
+     "q": "管理者は、ログイン中の顧客の検証状態によって回答が変わるエージェントを、Testing Center で本番に近い条件でテストしたいと考えています。何を設定すべきですか?",
+     "o": [
+      "テスト条件でコンテキスト変数を含め、各テストケースに値を入れる",
+      "評価に Latency を追加する",
+      "ナレッジからテストケースを生成する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "コンテキスト変数は、会話開始時点の状態(ログインユーザーや対象ケースなど)を再現します。値を省くと本番と違う回答になったり、失敗したりします。Latency は実行時間を測るだけで、ナレッジからの生成は質問と回答の形のテストを作る方法です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center_test_conditions.htm&type=5",
+     "x": "コンテキスト変数は、ログイン中のユーザーや対象のケースなど、会話の開始時点の状態を再現します。省くと、本番のユーザーとは違う回答になったり、テストが失敗したりします。"
+    }
+   ]
+  },
+  {
+   "id": "deploy",
+   "no": "Ch4·2",
+   "title": "開発・デプロイ・保守",
+   "tag": "Deploy & Versions",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>今日はわたしが先生役!エージェントは、まず下書き(ドラフト)で作って、保存しながら直すの。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>できたら「Commit Version」で確定。そしたら有効化して公開!どう?</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>git の commit と同じだな。確定したスナップショットは、もう書き換えられない。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>完璧です。1つ足すと、確定後に直したいときは「New Draft」で新しいバージョンを作ります。有効にできるのは、1つのエージェントにつき1バージョンだけです。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>確定したら直せないって、先に知っておいてよかった…。</p></div><p class=\"one\">エージェントは、Sandbox で作ってテストし、バージョンを確定(コミット)してから本番に移して有効化します。公開後もテストと見直しを繰り返して改善します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>料理のレシピ改良です。試作キッチン(Sandbox)で試し、合格したレシピを印刷して確定(コミット)します。お店で出すのはいつも1つのレシピだけで、改良版は新しい紙に書きます。</p></div><h4>バージョンのライフサイクル</h4><ol class=\"steps\"><li>エージェントや新しいバージョンを作ると、編集できる下書き(ドラフト)ができる。ドラフトのままでは有効化できない</li><li>保存しながら変更し、プレビューでテストする</li><li>「Commit Version」でコミットする。バージョンのスナップショットがメタデータに保存され、以後そのバージョンは変更できない</li><li>コミットしたバージョンを有効化(Activate)して、顧客や従業員に公開する</li><li>さらに直すときは、コミット済みのバージョンから「New Draft」で新しいドラフトを作る。名前の末尾には次の連番が付く(例: My Agent - 3 から My Agent - 4)</li></ol><ul><li>ドラフトを作ると、システムメッセージ、サブエージェント、アクション、変数などの資産が複製され、バージョンごとに独立した資産を持ちます。</li><li>サブエージェントやアクション単体のバージョン管理はできません。カスタムのサブエージェントやアクションへの変更は、割り当てたエージェントとバージョンにだけ反映されます。</li><li>「Compare versions」で2つのバージョンを比べ、変更を1つずつ、またはまとめて取り込めます。</li></ul><h4>有効化と無効化</h4><ul><li>有効にできるのは、1つのエージェントにつき1バージョンだけです。別のバージョンを有効化すると、今のバージョンは自動で無効になります。</li><li>同時に有効にできるエージェントは最大100です。</li><li>無効化すると、進行中の会話は中断されます。ユーザーへの通知はなく、エージェントはシステムエラーのメッセージを返します。</li><li>旧来のBuilder(Legacy Builder)では、変更するにはエージェントを無効にする必要があります。本番の有効なバージョンを止めずに直すには、別のバージョンを作って作業します。</li></ul><h4>Sandbox での開発と本番への移行</h4><div class=\"tw\"><table><thead><tr><th>場面</th><th>押さえる点</th></tr></thead><tr><td>メタデータでの移行(API v67以前)</td><td>Bot、BotVersion、GenAiPlannerBundle(サブエージェントとアクションの入れ物)、GenAiPlugin(サブエージェント)、GenAiFunction(アクション)などを取得してリリースする。アクションが使う Apex、フロー、プロンプトテンプレートも手で含める</td></tr><tr><td>メタデータでの移行(API v68以降)</td><td>Winter ’27 からの AiAgentDefinition と AiAgentDefinitionVersion を使うと、Salesforce CLI がエージェントと依存関係をまとめて取得する。移行元と移行先の両方が v68 であることが条件</td></tr><tr><td>Data 360 の Sandbox</td><td>メタデータだけが複製され、データはコピーされない(Partial Copy や Full Copy でも同じ)。接続の認証情報も複製されないので、Sandbox で設定し直す</td></tr><tr><td>Agentforce Data Library</td><td>すべての種類の Sandbox で使える。ただし Sandbox での変更を本番にリリースすることはできない。ファイル型のライブラリは、ファイルを再アップロードする</td></tr></table></div><ul><li>MCPツールのアクションを持つエージェントは移行できますが、MCPサーバーの登録情報は含まれません。移行先でサーバーを登録し、アクションを置き換えます。</li></ul><h4>継続的な改善</h4><ul><li>変更のたびにBuilderで手動テストし、Testing Center で回帰テストを流します。不合格の傾向は、指示があいまい、文脈が足りない、設定の誤りなどの手がかりになります。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>Data Library を Sandbox で直して、本番にリリースすればいいよね?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そこがひっかけです。Data Library の Sandbox での変更を本番にリリースすることはサポートされていません。Sandbox では試すだけです。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>しかも Data 360 の Sandbox はメタデータだけ。データは空っぽから始まる。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>コミットしないと有効化できません。コミットしたバージョンは編集できず、直すには New Draft を作ります。</li><li>有効なのは1エージェントにつき1バージョンです。新しいバージョンを有効化すると、古いほうは自動で無効になります。</li><li>無効化すると進行中の会話は中断され、ユーザーには通知されません。</li><li>API v67 以前の移行では Bot、BotVersion、GenAiPlannerBundle などに加え、Apex、フロー、プロンプトテンプレートも含めます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある管理者は、ドラフトのエージェントを完成させ、すぐに顧客に公開しようとしましたが、有効化できませんでした。まず何をすべきですか?",
+     "o": [
+      "エージェントのバージョンをコミットする",
+      "新しいドラフトを作成する",
+      "エージェントを無効化してから保存する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ドラフトのままでは有効化できず、まずコミットが必要です。New Draft はコミット済みのバージョンから作るもので、ここでは順番が逆です。無効化しても、ドラフトを有効化できるようにはなりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_lifecycle.htm&type=5",
+     "x": "エージェントや新しいバージョンを作ると、編集できる下書き(ドラフト)ができる。ドラフトのままでは有効化できない"
+    },
+    {
+     "q": "ある会社では、本番で有効なエージェントのバージョン3をコミット済みです。サブエージェントの指示を直したいと考えています。正しい手順はどれですか?",
+     "o": [
+      "バージョン3を直接編集して保存する",
+      "バージョン3から「New Draft」で新しいバージョンを作り、編集する",
+      "エージェントを削除して作り直す"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "コミットしたバージョンは変更できないので、そこから New Draft で新しいドラフト(この例ではバージョン4)を作って編集します。削除したエージェントは復元できないため、作り直しは不要なうえ危険です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_draft.htm&type=5",
+     "x": "さらに直すときは、コミット済みのバージョンから「New Draft」で新しいドラフトを作る。名前の末尾には次の連番が付く(例: My Agent - 3 から My Agent - 4)"
+    },
+    {
+     "q": "バージョン2が有効なエージェントで、管理者がバージョン3を有効化しました。どうなりますか?",
+     "o": [
+      "バージョン2とバージョン3が両方有効になり、ユーザーごとに振り分けられる",
+      "バージョン2は自動で無効になり、バージョン3だけが有効になる",
+      "バージョン2を手動で無効化するまで、エラーで有効化できない"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "有効にできるのは1つのエージェントにつき1バージョンだけです。別のバージョンを有効化すると、今のバージョンは自動で無効になります。複数バージョンの同時有効や振り分けの仕組みはなく、手動で先に無効化する必要もありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_setup_activate_deactivate.htm&type=5",
+     "x": "有効にできるのは、1つのエージェントにつき1バージョンだけです。別のバージョンを有効化すると、今のバージョンは自動で無効になります。"
+    },
+    {
+     "q": "業務時間中にエージェントを無効化した場合の動作として正しいものはどれですか?",
+     "o": [
+      "進行中の会話は終わるまで続き、新しい会話だけが止まる",
+      "進行中の会話は中断され、ユーザーには通知されない",
+      "進行中の会話は自動で人間のエージェントに転送される"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "無効化すると進行中の会話は中断され、ユーザーへの通知はありません。エージェントはシステムエラーのメッセージを返します。会話が最後まで続くことも、自動で人に転送されることもありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_setup_activate_deactivate.htm&type=5",
+     "x": "無効化すると、進行中の会話は中断されます。ユーザーへの通知はなく、エージェントはシステムエラーのメッセージを返します。"
+    },
+    {
+     "q": "ある会社は、Sandbox(Summer '26、API v67)で作ったエージェントを本番に移します。アクションはフローと Apex を使います。コンサルタントは何に注意すべきですか?",
+     "o": [
+      "Bot、BotVersion、GenAiPlannerBundle などに加え、アクションが使うフローと Apex も移行対象に含める",
+      "AiAgentDefinitionVersion だけを取得すれば、依存関係はすべて自動で含まれる",
+      "エージェントはメタデータで移せないので、本番で手作業で作り直す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "API v67 以前の型では、Bot、BotVersion、GenAiPlannerBundle などに加えて、アクションが使う Apex、フロー、プロンプトテンプレートを手で含める必要があります。依存関係を自動で取得する AiAgentDefinitionVersion は API v68(Winter '27)以降で、両方の組織が v68 であることが条件です。",
+     "u": "https://help.salesforce.com/s/articleView?id=release-notes.rn_agentforce_metadata.htm&release=264&type=5",
+     "x": "メタデータでの移行(API v67以前)Bot、BotVersion、GenAiPlannerBundle(サブエージェントとアクションの入れ物)、GenAiPlugin(サブエージェント)、GenAiFunction(アクション)などを取得してリリースする。アクションが使う Apex、フロー、プロンプトテンプレートも手で含める"
+    },
+    {
+     "q": "ある会社は Full Copy Sandbox に Data 360 をプロビジョニングし、Agentforce Data Library を使うエージェントをテストしようとしています。正しい説明はどれですか?",
+     "o": [
+      "Full Copy Sandbox なので、本番の Data 360 のデータもすべて複製される",
+      "Data 360 の Sandbox にはメタデータだけが複製され、データはコピーされない",
+      "Data 360 は Full Copy Sandbox ではプロビジョニングできない"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Data 360 の Sandbox にはメタデータだけが複製され、Partial Copy や Full Copy でもデータはコピーされません。接続の認証情報も複製されないので、Sandbox で設定し直します。Data Library 自体はすべての種類の Sandbox で使えます。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_sandbox.htm&type=5",
+     "x": "Data 360 の Sandboxメタデータだけが複製され、データはコピーされない(Partial Copy や Full Copy でも同じ)。接続の認証情報も複製されないので、Sandbox で設定し直す"
+    },
+    {
+     "q": "管理者は、エージェントのバージョン4で試した指示の改善のうち、一部だけをバージョン5に取り込みたいと考えています。どの機能を使うべきですか?",
+     "o": [
+      "Compare versions で比較し、変更を個別に取り込む",
+      "Testing Center でバージョン4のテストを再実行する",
+      "バージョン4を有効化してからバージョン5を削除する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Compare versions では2つのバージョンを比べ、変更を1つずつ、またはまとめて取り込めます。Testing Center は評価の道具で、変更を移す機能はありません。削除したバージョンは復元できないため、3つ目の方法は危険です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_compare.htm&type=5",
+     "x": "「Compare versions」で2つのバージョンを比べ、変更を1つずつ、またはまとめて取り込めます。"
+    }
+   ]
+  }
+ ]
+}
