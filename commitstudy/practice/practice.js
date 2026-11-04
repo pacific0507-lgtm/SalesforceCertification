@@ -177,7 +177,7 @@ function drawCard(){
   $("#g-pos").textContent=(TI+1)+" / "+TL.length;
 }
 function bindTerms(){
-  var fc=$("#fc");fc.addEventListener("click",function(e){var k=e.target.closest(".gk button");if(k){e.stopPropagation();var c=TL[TI];if(k.dataset.k==="known")KNOWN[tkey(c)]=Date.now();else delete KNOWN[tkey(c)];LS.set(TKN,KNOWN);TI++;renderTerms(false);return}if(e.target.closest("a"))return;FLIP=!FLIP;fc.classList.toggle("on",FLIP)});
+  var fc=$("#fc");fc.addEventListener("click",function(e){var k=e.target.closest(".gk button");if(k){e.stopPropagation();var c=TL[TI];if(k.dataset.k==="known")KNOWN[tkey(c)]=Date.now();else delete KNOWN[tkey(c)];LS.set(TKN,KNOWN);TI++;renderTerms(false);return}var a=e.target.closest("a");if(a){var c0=TL[TI];try{if(c0)sessionStorage.setItem("cs-term-jump",JSON.stringify({subj:c0.subj,s:c0.s,t:c0.t,ts:Date.now()}))}catch(x){}return}FLIP=!FLIP;fc.classList.toggle("on",FLIP)});
   fc.addEventListener("keydown",function(e){if(e.key===" "||e.key==="Enter"){e.preventDefault();FLIP=!FLIP;fc.classList.toggle("on",FLIP)}});
   $("#g-prev").onclick=function(){TI--;drawCard()};$("#g-next").onclick=function(){TI++;drawCard()};
   $("#g-flip").onclick=function(){if(!TL.length)return;FLIP=!FLIP;fc.classList.toggle("on",FLIP)};

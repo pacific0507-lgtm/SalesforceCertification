@@ -2,7 +2,7 @@
   - 切り替えは問題の画面の一番上・中央。状態は科目ごとに保存(cs-tc-<科目>)
   - 用語カードにすると、メニューの「絞込」は用語カード用(Chapter・項目・状態・ランダム)に、
     「問題一覧」(スマホはメニュー、PC は左の一覧)は用語カードの一覧に切り替わる
-  - カードは押すと裏返る。「まだ」「覚えた」、前へ・次へ、「テキストの該当箇所で確認する」(本文の項目へ移る)
+  - カードは押すと裏返る。「まだ」「覚えた」、前へ・次へ、「テキストの該当箇所で確認する」(本文でその語句が出てくる箇所へ。見つからなければ項目の先頭へ)
   - 覚えたかどうかは、トレーニングの用語カードと同じ cs-term-known-v1(アカウントに同期)
 使い方: python3 patch_qv_terms.py <index.html> <出力>
 """
@@ -66,6 +66,27 @@ function tcMove(d){if(!TCL.length)return;TC.i=(TC.i+d+TCL.length)%TCL.length;tcS
 function tcFlip(){if(!TCL.length)return;TCFLIP=!TCFLIP;byId("tcCard").classList.toggle("on",TCFLIP)}
 function tcMark(known){var c=TCL[TC.i];if(!c)return;var K=tcKnown();if(known)K[tcKey(c)]=Date.now();else delete K[tcKey(c)];try{localStorage.setItem(TCK,JSON.stringify(K))}catch(e){}
   if(TC.st!=="all"){tcBuild(false).then(tcRender)}else tcMove(1)}
+/* 用語の語句がある箇所(本文の段落・箇条書き・表)を探す。見つからなければ null(呼び出し側で項目へ) */
+function tcCands(t){var out=[],add=function(x){x=String(x||"").trim();if(x.length>=2&&out.indexOf(x)<0)out.push(x)};add(t);
+  var m=/^(.*?)[(（]([^()（）]+)[)）]\s*$/.exec(t);if(m){add(m[1]);m[2].split(/[、,・/]|旧称?\s*|→/).forEach(add)}
+  t.split(/\s*(?:と|・|\/|／|、)\s*/).forEach(function(x){add(x.replace(/[(（].*$/,""))});
+  out.sort(function(a,b){return b.length-a.length});
+  /* 見つからないときの予備: 「の」などで区切った語(長い順) */
+  var sub=[];t.replace(/[「」『』]/g,"").replace(/[(（][^()（）]*[)）]/g," ").split(/の|を|が|と|・|\s+/).forEach(function(x){x=x.trim();if(x.length>=3&&out.indexOf(x)<0&&sub.indexOf(x)<0)sub.push(x)});
+  return out.concat(sub.sort(function(a,b){return b.length-a.length}))}
+function tcTermRange(sec,t){var root=byId("f-"+sec);if(!root)return null;var cs=tcCands(t);
+  var nodes=[],w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentElement;if(!p||!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;if(p.closest("figure,svg,button,.qx-b,.done-row,h3,script,style"))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT}});
+  while(w.nextNode())nodes.push(w.currentNode);
+  for(var i=0;i<cs.length;i++){var c=cs[i],lc=c.toLowerCase();
+    /* 会話(たとえ話)より本文を優先 */
+    for(var pass=0;pass<2;pass++)for(var j=0;j<nodes.length;j++){var n=nodes[j],inTalk=!!n.parentElement.closest(".co.talk");if(pass===0&&inTalk||pass===1&&!inTalk)continue;
+      var k=n.nodeValue.toLowerCase().indexOf(lc);if(k>=0){var r=document.createRange();r.setStart(n,k);r.setEnd(n,k+c.length);return r}}}
+  return null}
+function tcShowTerm(c){var r=tcTermRange(c.s,c.t);if(!r)return false;hold(1200);
+  var b=r.getBoundingClientRect(),top=window.scrollY+b.top-Math.max(90,window.innerHeight*0.3);window.scrollTo(0,Math.max(0,top));
+  try{if(window.CSS&&CSS.highlights&&window.Highlight){CSS.highlights.set("qx",new Highlight(r));clearTimeout(qxT);qxT=setTimeout(function(){CSS.highlights.delete("qx")},4500)}}catch(e){}
+  var bl=qxBlock(r);if(bl){bl.classList.remove("qx-flash");void bl.offsetWidth;bl.classList.add("qx-flash");setTimeout(function(){bl.classList.remove("qx-flash")},2700)}
+  return true}
 function tcInit(){var qi=byId("qv-in");if(!qi||byId("tcTabs"))return;try{var sv=tcLS("cs-tc-"+TCID,null);if(sv)for(var k in TC)if(k in sv)TC[k]=sv[k]}catch(e){}
   var st=document.createElement("style");st.textContent=TCCSS;document.head.appendChild(st);
   var tb=document.createElement("div");tb.className="fmt-tabs tc-tabs";tb.id="tcTabs";tb.setAttribute("role","tablist");tb.setAttribute("aria-label","問題と用語カードの切り替え");tb.hidden=true;qi.insertBefore(tb,qi.firstChild);
@@ -86,13 +107,15 @@ function tcInit(){var qi=byId("qv-in");if(!qi||byId("tcTabs"))return;try{var sv=
   byId("tcCard").addEventListener("click",tcFlip);
   byId("tcPrev").onclick=function(){tcMove(-1)};byId("tcNext").onclick=function(){tcMove(1)};
   byId("tcAct").querySelector(".tc-mid").addEventListener("click",function(e){var b=e.target.closest("button[data-k]");if(b)tcMark(b.dataset.k==="known")});
-  byId("tcGo").onclick=function(){var c=TCL[TC.i];if(c){closeP();goText(c.s)}};
+  byId("tcGo").onclick=function(){var c=TCL[TC.i];if(!c)return;closeP();setView("text");setTimeout(function(){if(!tcShowTerm(c))jump("f-"+c.s)},60)};
   window.addEventListener("keydown",function(e){if(!TC.on||view!=="quiz"||curP||e.metaKey||e.ctrlKey||e.altKey||e.target.closest&&e.target.closest("input,textarea,select,[contenteditable]"))return;
     var k=e.key;if(k===" "||k==="Enter"){if(e.target.closest&&e.target.closest("button,a")&&e.target.id!=="tcCard")return;tcFlip()}else if(k==="ArrowRight")tcMove(1);else if(k==="ArrowLeft")tcMove(-1);else if(k==="k"||k==="K")tcMark(true);else if(/^[1-9]$/.test(k)){}else return;e.preventDefault();e.stopImmediatePropagation()},true);
   var _gq=goQuiz;goQuiz=function(sec){tcSet(false);return _gq.apply(this,arguments)};
   var _jt=jumpTo;jumpTo=function(id){if(TC.on)tcSet(false);return _jt.apply(this,arguments)};
   document.body.classList.toggle("tc-on",TC.on);tcTabs();if(TC.on){var _o=TC.on;TC.on=false;tcSet(_o)}
-  if(location.hash==="#terms"){tcSet(true);if(view!=="quiz")setView("quiz")}}
+  if(location.hash==="#terms"){tcSet(true);if(view!=="quiz")setView("quiz")}
+  /* トレーニングの用語カードから来たとき: その語句の箇所へ */
+  try{var jp=JSON.parse(sessionStorage.getItem("cs-term-jump")||"null");if(jp&&jp.subj===TCID&&Date.now()-jp.ts<60000){sessionStorage.removeItem("cs-term-jump");var tries=0;(function tj(){if(view==="text"&&tcShowTerm(jp))return;if(++tries<40)setTimeout(tj,200)})()}}catch(e){}}
 var TCCSS='/*用語カード(問題集)*/\n.tc-tabs{margin:0 auto 14px;max-width:420px}\n.tc-tabs button{display:flex;align-items:center;justify-content:center;gap:6px}\n.tc-tabs button small{font-size:12px;font-weight:600;opacity:.8}\n.tc-tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-ink)}\n'+
  '#tcv,#tcSet,#tcCells,#tcCells2{display:none}\nbody.tc-on #tcv,body.tc-on #tcSet,body.tc-on #tcCells,body.tc-on #tcCells2{display:block}\nbody.tc-on .q-flt,body.tc-on #fmtTabs,body.tc-on #selv,body.tc-on #qv-in>.tbrow,body.tc-on #card,body.tc-on #actions,body.tc-on #qtext,body.tc-on #hint,body.tc-on #subj-qfoot,body.tc-on #cells,body.tc-on #qcells,body.tc-on #p-list .legend{display:none!important}\n'+
  '.tc-sum{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:13px;color:var(--muted);margin:0 0 10px}\n.tc-kn{font-weight:700;color:var(--ok)}\n'+
@@ -103,6 +126,7 @@ var TCCSS='/*用語カード(問題集)*/\n.tc-tabs{margin:0 auto 14px;max-width
  '.tc-pos{text-align:center;font-size:13px;color:var(--muted);margin:10px 0 0}\n.tc-links{text-align:center;margin:12px 0 0}\n.tc-go{font:inherit;font-weight:700;font-size:14px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:999px;padding:8px 16px;cursor:pointer}\n.tc-go[hidden]{display:none}\n#tcv .hint{text-align:center;margin-top:14px}\n'+
  '#tcCells .cell.dim,#tcCells2 .cell.dim{opacity:.4}\n#tcCells .gl-bar u,#tcCells2 .gl-bar u{display:none}\n@media(max-width:520px){.tc-act button{padding:8px 11px;font-size:13.5px}.tc-f h3{font-size:20px}}\n';
 setTimeout(tcInit,0);
+window.__tcDbg={load:tcLoad,range:tcTermRange,render:tcRender,st:function(){return {TC:TC,TCL:TCL}}};
 '''
 rep("function gridOut(h){", JS + "function gridOut(h){")
 # 一覧の描き直しのたびに、用語カードの一覧も最新に(問題の一覧は隠れたまま)
