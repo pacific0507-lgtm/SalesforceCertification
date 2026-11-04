@@ -24,3 +24,4 @@ python3 $C/patch_subj_order_all.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_texts_tags.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_qv_terms.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_hero_grass.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
+python3 $C/patch_no_reduced_motion.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
