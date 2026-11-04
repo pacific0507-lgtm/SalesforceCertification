@@ -125,6 +125,7 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 
 - `patch_garden.py`: 草の庭(ホームのカードと、学習の記録の詳しい表示)。合格の札は科目名の後ろに表示
 - `patch_subj_order_all.py`: テキスト一覧で並べ替えた科目の順(cs-subj-order)を、メニュー・ホーム・トレーニング・学習の記録・移動パネルなど全体に反映(`csOrd` / `csOrdCmp` / `csFirstSubj`)
+- `patch_texts_tags.py` + `make_catalog.py`: テキスト一覧のカードに収録内容(過去問・Trailhead・オリジナルの問題数、用語カード枚数)のタグ。数は `catalog.json`(公開先 data/catalog.json)。問題や用語を足したら `python3 make_catalog.py <data> catalog.json` で作り直して公開
 
 ## 科目 Agentforce スペシャリスト(afspec)
 - `afspec_SPEC.md` 原稿の仕様(問題は3択)、`afspec/manuscript/out_ch1〜6.json` 章ごとの原稿、`build_afspec.py` で data を組み立て、`figs_m/spec_H.py`(2〜6章)・`spec_I.py`(1章)と `figs_m/apply_afspec.py` で図を入れる。用語カードは `afspec/data/terms.json`。`patch_add_afspec.py` で科目を登録(rebuild.sh の最後)。公開データは `afspec/data/`
