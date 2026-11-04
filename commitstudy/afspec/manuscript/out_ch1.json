@@ -1,0 +1,565 @@
+{
+ "chapter": 1,
+ "chapter_title": "AIエージェント",
+ "chapter_sub": "Agentforce のエージェントの仕組みと Atlas 推論エンジン、Agentforce Builder でのサブエージェント(旧トピック)・指示・アクションの作り方、標準のエージェントタイプとチャネルへの展開を学びます。",
+ "sections": [
+  {
+   "id": "agents",
+   "no": "Ch1·1",
+   "title": "エージェントとは: Agentforce の全体像",
+   "tag": "Agentforce Agents",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"eager\"><b class=\"who\">コミットくん</b>なぞなぞだ。CRMのデータを読み、次の手を自分で考え、フローまで動かす。でもSalesforceにはログインできない。なんだ?</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>ログインできない…?入社手続き中の新人さん?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>正解はAIエージェントです。顧客向けのエージェントはエージェントユーザーという専用のユーザーで動きますが、その資格情報ではログインできません。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>だから「ログインできない」なんだ。ちゃんと仕事はするのに。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>中身はサブエージェントとアクションだ。ルーターと関数の組み合わせに近い。</p></div><p class=\"one\">Agentforce のエージェントは、業務データにもとづいて自律的にタスクを進める、会話型のAIアシスタントです。決めた用途とガードレールの範囲で、次の一手を自分で判断します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>頼れる派遣スタッフです。担当業務の一覧(サブエージェント)、使ってよい道具(アクション)、業務マニュアル(指示)を渡すと、その範囲の中で自分で考えて動きます。人の確認を挟むことも、挟まないこともできます。</p></div><h4>エージェントの構成要素</h4><div class=\"tw\"><table><thead><tr><th>要素</th><th>役割</th></tr></thead>\n<tr><td>サブエージェント(旧称 トピック)</td><td>エージェントができる「1つの仕事」。指示とアクションをまとめて持つ</td></tr>\n<tr><td>アクション</td><td>情報を取得したり、タスクを実行したりする手段。標準アクションとカスタムアクションがある</td></tr>\n<tr><td>データ</td><td>CRMデータ、ナレッジ記事、ファイル、Webなど。Agentforce データライブラリなどでグラウンディングする</td></tr>\n<tr><td>接続とチャネル</td><td>エージェントを届ける先(メッセージング、Slackなど)と、その設定</td></tr>\n<tr><td>推論エンジン</td><td>会話をサブエージェントへ振り分け、LLMと推論して次の手を決める</td></tr>\n<tr><td>LLM(大規模言語モデル)</td><td>推論、ユーザーとの会話、アクションの実行に使う</td></tr>\n</table></div><h4>Atlas 推論エンジン</h4><ul>\n<li>Atlas 推論エンジンはグラフ型の推論エンジンです。ノード、変数、遷移を持つフローチャートのように、決まった道筋をたどります。</li>\n<li>Agent Script(エージェントを作るための言語)で、全体の業務の流れと会話の柔軟さを分けます。決定的なルールとLLMの推論を同じエンジンで組み合わせることを、ハイブリッド推論と呼びます。</li>\n<li>アクションを実行すると、結果を確かめてから、次のアクションを実行するか、ユーザーに質問するか、回答するかを決めます。この推論ループは最大7回まで続きます。</li>\n<li>Agentforce Service エージェントは、回答を送る前に最終応答の検証を行います。データにもとづく回答か、範囲と指示に沿っているか、幻覚やプロンプトインジェクションのおそれがないかを確かめ、不合格なら回答を作り直します。</li>\n</ul><h4>会話の特徴</h4><ul>\n<li>エージェントは一般に、1つの発話につき1つの意図を扱います。複数の依頼は、メッセージを分けてもらいます。</li>\n<li>会話は、過去のセッションにもとづいて個別化されません。</li>\n<li>エージェントを無効化すると、進行中の会話は中断されます。ユーザーには通知されません。</li>\n</ul><h4>主な制限値</h4><div class=\"tw\"><table><thead><tr><th>項目</th><th>値</th></tr></thead>\n<tr><td>組織内のエージェント数</td><td>最大100(Einstein ボットも数に含む)</td></tr>\n<tr><td>推奨のアクション数</td><td>1つのサブエージェントに10個まで</td></tr>\n<tr><td>推奨のサブエージェント数</td><td>1つのエージェントに10個まで</td></tr>\n<tr><td>アクションのタイムアウト</td><td>60秒</td></tr>\n<tr><td>推論エンジン要求のタイムアウト</td><td>30秒</td></tr>\n<tr><td>アクション出力の上限</td><td>65,000文字を超えると切り捨て</td></tr>\n</table></div><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>エージェントって、Government Cloud の組織でも使える?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいえ、Government Cloud では使えません。また、新しいエージェントを作る前に、組織のエージェント数の上限(100)も確認しておきましょう。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>2026年4月から「トピック」は「サブエージェント」に、「Topic Selector」は「Agent Router」に名前が変わりました。機能は変わっていません。</li>\n<li>Atlas 推論エンジンは、決定的なロジックとLLMの推論を組み合わせたハイブリッド推論を行います。</li>\n<li>推奨はサブエージェントあたり10アクション、エージェントあたり10サブエージェントまでです。</li>\n<li>アクションは60秒、推論エンジンの要求は30秒でタイムアウトします。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社の管理者は、1つのエージェントに15個のサブエージェントを作り、それぞれに20個のアクションを割り当てる計画です。性能の観点から、コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "1つのサブエージェントのアクションを10個まで、1つのエージェントのサブエージェントを10個までに整理する",
+      "すべてのアクションを1つのサブエージェントにまとめ、サブエージェントを1つにする",
+      "アクション数に制限はないため、計画どおりに作成する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "公式の推奨は、1つのサブエージェントに10アクションまで、1つのエージェントに10サブエージェントまでです。1つのサブエージェントに全部を集めると、推奨の上限を大きく超えます。制限がないという選択肢も誤りです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_considerations.htm&type=5",
+     "x": "推奨のアクション数1つのサブエージェントに10個まで"
+    },
+    {
+     "q": "Atlas 推論エンジンの説明として、正しいものはどれですか?",
+     "o": [
+      "決まった道筋をたどるグラフ型の推論エンジンで、ルールとLLMの推論を組み合わせる",
+      "LLMへのプロンプトだけで動き、決定的なロジックは扱わない推論エンジン",
+      "ダイアログとルールだけで動き、LLMを使わない Einstein ボットの実行エンジン"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Atlas はノード、変数、遷移を持つフローチャートのようなグラフ型の推論エンジンです。Agent Script で決定的なロジックとLLMの推論を組み合わせるハイブリッド推論を行います。プロンプトだけの方式や、LLMを使わないボットとは違います。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_reasoning_engine.htm&type=5",
+     "x": "Atlas 推論エンジンはグラフ型の推論エンジンです。ノード、変数、遷移を持つフローチャートのように、決まった道筋をたどります。"
+    },
+    {
+     "q": "ある会社は、顧客向けの Agentforce Service エージェントが、根拠のない内容を回答しないか心配しています。エージェントが回答を送る直前に行う処理はどれですか?",
+     "o": [
+      "Prompt Builder でテンプレートを再プレビューする",
+      "最終応答の検証を行い、不合格なら回答を作り直す",
+      "回答をいったん人の担当者に送って承認を待つ"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Service エージェントは、回答がデータにもとづくか、範囲と指示に沿うか、幻覚やプロンプトインジェクションのおそれがないかを検証し、不合格なら作り直します。Prompt Builder のプレビューは実行時の処理ではありません。人の承認を毎回待つ仕組みも標準の動きではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_reasoning_engine.htm&type=5",
+     "x": "Agentforce Service エージェントは、回答を送る前に最終応答の検証を行います。データにもとづく回答か、範囲と指示に沿っているか、幻覚やプロンプトインジェクションのおそれがないかを確かめ、不合格なら回答を作り直します。"
+    },
+    {
+     "q": "管理者が最新のドキュメントで「サブエージェント」という用語を見かけました。これは以前、何と呼ばれていた要素ですか?",
+     "o": [
+      "アクション",
+      "トピック",
+      "エージェントテンプレート"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "2026年4月から、エージェントの「トピック」は「サブエージェント」に名前が変わりました。機能は変わっていません。アクションやテンプレートは別の要素で、改名の対象ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_glossary.htm&type=5",
+     "x": "2026年4月から「トピック」は「サブエージェント」に、「Topic Selector」は「Agent Router」に名前が変わりました。機能は変わっていません。"
+    },
+    {
+     "q": "ある会社のカスタムアクションは、外部システムの処理を待つため、実行に約90秒かかります。エージェントからこのアクションを呼ぶと、どうなりますか?",
+     "o": [
+      "30秒で推論エンジンが再試行する",
+      "60秒でアクションがタイムアウトする",
+      "処理が終わるまで待ち続ける"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "エージェントのアクションは60秒でタイムアウトします。30秒は推論エンジンの要求のタイムアウトで、アクションの値ではありません。時間がかかる処理は、待ち続けるのではなく設計を見直す必要があります。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_considerations.htm&type=5",
+     "x": "アクションのタイムアウト60秒"
+    },
+    {
+     "q": "ある会社では、顧客が1つのメッセージで「注文状況を調べて、ついでに配送先も変えて」と頼むことがよくあります。エージェントの動きとして、正しい理解はどれですか?",
+     "o": [
+      "エージェントは一般に1つの発話で1つの意図を扱うため、依頼を分けてもらうのが確実",
+      "エージェントは1つの発話の中の意図をいくつでも並行して処理する",
+      "過去のセッションの履歴から、2つ目の依頼を自動で補う"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "エージェントは一般に、1つの発話につき1つの意図を扱います。複数の依頼は、メッセージを分けてもらうのが確実です。会話は過去のセッションにもとづいて個別化されないため、履歴から補うこともありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_considerations.htm&type=5",
+     "x": "エージェントは一般に、1つの発話につき1つの意図を扱います。複数の依頼は、メッセージを分けてもらいます。"
+    }
+   ]
+  },
+  {
+   "id": "builder",
+   "no": "Ch1·2",
+   "title": "Agentforce Builder とエージェントの構成",
+   "tag": "Agentforce Builder",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>予習してきたよ!Agentforce Builder は Agentforce Studio というアプリの中にあって、Canvas と Script の2つの画面を切り替えられるんだよね。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>そのとおりです。どちらで編集しても、設定は同じものです。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>で、できあがったら「Save」を押せば公開完了!</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>惜しい。Save は下書きの保存だ。「Commit Version」でコミットしてから有効化する。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>git みたいに、コミットしないと本番に出せないのか…。</p></div><p class=\"one\">Agentforce Builder(旧称 Agent Builder)は、エージェントを作り、カスタマイズし、テストする画面です。Agentforce Studio アプリの中にあり、自然言語の指示とプログラムのロジックを組み合わせてエージェントを作れます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>文書ソフトの「下書き」と「確定版」です。確定版は書き換えられないので、直したいときは確定版をコピーして新しい下書きを作ります。お客さまに見せるのは、いつも確定版のどれか1つです。</p></div><h4>画面の主な部品</h4><div class=\"tw\"><table><thead><tr><th>部品</th><th>役割</th></tr></thead>\n<tr><td>Explorer</td><td>サブエージェント、アクション、変数、接続、データなど、エージェントの中身を一覧する</td></tr>\n<tr><td>Canvas</td><td>自然言語で編集するビュー。ロジックの追加や、リソースを選ぶショートカットがある</td></tr>\n<tr><td>Script</td><td>Agent Script のコードで編集するビュー。Canvas と設定は常に一致する</td></tr>\n<tr><td>Preview</td><td>発話を入力してテストし、どのサブエージェントやアクションが選ばれたかを確認する</td></tr>\n<tr><td>Agentforce アシスタンス</td><td>Agentforce に質問したり、構築やデバッグを手伝ってもらったりする</td></tr>\n<tr><td>Console</td><td>構文エラーや想定外の値など、エラーと警告を表示する。クリックすると該当の行が開く</td></tr>\n</table></div><h4>バージョンの流れ</h4><ol class=\"steps\">\n<li>下書き(Draft)の状態で編集し、「Save」で保存する</li>\n<li>「Commit Version」でバージョンをコミットする。コミットした版は組織のメタデータとして保存され、以後は変更できない</li>\n<li>コミットした版を有効化(Activate)して、顧客や従業員が使えるようにする</li>\n<li>変更したいときは、コミット済みの版から「New Draft」で新しい下書きを作る。名前の末尾には次の番号が付く(例: My Agent - 3 から My Agent - 4)</li>\n</ol><h4>押さえておく点</h4><ul>\n<li>1つのエージェントで有効にできるバージョンは、同時に1つだけです。</li>\n<li>下書きを作ると、サブエージェント、アクション、変数、システムメッセージなどが複製され、各バージョンが自分の資産を持ちます。</li>\n<li>サブエージェントやアクション単体のバージョン管理はできません。</li>\n<li>Agent Script では、if-else の条件、変数の設定と比較、サブエージェントやアクションを順番につなぐ処理を定義できます。</li>\n<li>旧ビルダー(legacy builder)で作ったエージェントも Agentforce Studio の一覧に表示されますが、開くのは旧ビルダーです。</li>\n<li>Agentforce Builder を使うには「Manage AI Agents」権限が必要です。この権限があると、組織のすべてのエージェントを管理できます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>本番で動いているバージョンを、その場で直しちゃだめ?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>コミット済みの版は変更できません。新しい下書きで直してテストし、コミットしてから有効化します。有効な版は1つだけなので、新しい版に切り替わります。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>編集できるのは下書きだけです。コミットした版は変更できません。</li>\n<li>有効化するには、先にバージョンをコミットしておく必要があります。</li>\n<li>Canvas ビューと Script ビューは同じ設定を表示します。どちらで編集しても内容は一致します。</li>\n<li>Agentforce Studio は、エージェントを構築、テスト、監視する中心のアプリです。既定ではアプリケーションランチャーから使えます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社では、有効化済みのエージェントの指示を一部修正したいと考えています。Agentforce Builder で管理者が最初に行うべきことは何ですか?",
+     "o": [
+      "有効なバージョンを直接編集して「Save」をクリックする",
+      "コミット済みのバージョンから「New Draft」で新しい下書きを作る",
+      "エージェントを削除して、同じ名前で作り直す"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "コミット済みの版は変更できないため、そこから新しい下書きを作って編集します。有効な版を直接編集することはできません。削除して作り直すと、それまでの版や設定を失うため不適切です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_draft.htm&type=5",
+     "x": "変更したいときは、コミット済みの版から「New Draft」で新しい下書きを作る。名前の末尾には次の番号が付く(例: My Agent - 3 から My Agent - 4)"
+    },
+    {
+     "q": "Agentforce Builder で作ったエージェントを有効化する前に、必ず行う必要があることはどれですか?",
+     "o": [
+      "バージョンをコミットする",
+      "Script ビューで1回以上保存する",
+      "Agentforce Data Library を作成する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "エージェントの版を有効化するには、先にコミットしておく必要があります。Script ビューでの保存は必須ではなく、Canvas でも同じ設定を編集できます。データライブラリはグラウンディング用で、有効化の条件ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_commit.htm&type=5",
+     "x": "有効化するには、先にバージョンをコミットしておく必要があります。"
+    },
+    {
+     "q": "ある開発者は、変数の値によって分岐し、決まった順番でアクションを実行させたいと考えています。Agentforce Builder で何を使うべきですか?",
+     "o": [
+      "Agent Script で if-else の条件と処理の順番を定義する",
+      "エージェントの説明欄に「必ずこの順番で」と書く",
+      "Prompt Builder で新しいプロンプトテンプレートを作る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agent Script では、if-else の条件、変数の設定と比較、アクションやサブエージェントを順番につなぐ処理を定義できます。説明欄の文章はLLMの解釈に任されるため、確実な順番の保証になりません。プロンプトテンプレートは文章の生成用です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_tour.htm&type=5",
+     "x": "Agent Script では、if-else の条件、変数の設定と比較、サブエージェントやアクションを順番につなぐ処理を定義できます。"
+    },
+    {
+     "q": "ある管理者は、テスト用の発話を入力して、エージェントがどのサブエージェントとアクションを選んだかを確認したいと考えています。Agentforce Builder のどこを使いますか?",
+     "o": [
+      "Console",
+      "Preview",
+      "Explorer"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Preview では発話を入力してテストし、選ばれたサブエージェントや推論の内容を確認できます。Console はエラーや警告の表示、Explorer はエージェントの中身の一覧に使います。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_tour.htm&type=5",
+     "x": "Preview発話を入力してテストし、どのサブエージェントやアクションが選ばれたかを確認する"
+    },
+    {
+     "q": "ある会社は、1つのエージェントで「バージョン3」と「バージョン4」を同時に有効にし、顧客ごとに使い分けたいと考えています。この計画について正しいものはどれですか?",
+     "o": [
+      "1つのエージェントで同時に有効にできるバージョンは1つだけなので、この計画は実現できない",
+      "最大2つまでのバージョンを同時に有効にできる",
+      "コミットしなければ、何個でも同時に有効にできる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "1つのエージェントで同時に有効にできるバージョンは1つだけです。2つまで有効にできるという制限はありません。また、有効化には事前のコミットが必要です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_draft.htm&type=5",
+     "x": "1つのエージェントで有効にできるバージョンは、同時に1つだけです。"
+    },
+    {
+     "q": "ある管理者が Script ビューでエージェントを編集したあと、構文エラーがどこにあるかを見つけたいと考えています。何を使うべきですか?",
+     "o": [
+      "Console",
+      "Agentforce アシスタンス",
+      "Canvas"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Console は構文エラーや想定外の値などのエラーと警告を表示し、クリックすると問題の行を開きます。Agentforce アシスタンスは構築やデバッグの相談相手で、エラー一覧の場所ではありません。Canvas は自然言語で編集するビューです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_tour.htm&type=5",
+     "x": "Console構文エラーや想定外の値など、エラーと警告を表示する。クリックすると該当の行が開く"
+    }
+   ]
+  },
+  {
+   "id": "topics",
+   "no": "Ch1·3",
+   "title": "トピックと指示(インストラクション)",
+   "tag": "Subagents & Instructions",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\" data-f=\"wink\"><b class=\"who\">クラウドちゃん</b>問題です。「返金は購入から30日以内に限る」という絶対のルールがあります。どこに書くのが正解でしょう?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>簡単!サブエージェントの指示に「30日を過ぎたら返金しない」って書く!</p><p class=\"tk rou\" data-f=\"sad\"><b class=\"who\">クラウドちゃん</b>残念。指示はLLMが解釈するので、毎回同じ結果になるとは限りません。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>必ず守るルールは、フローなどのアクションに組み込む。条件分岐はコードに書け、だ。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>「お願い」じゃなくて「仕組み」で守らせるんだね。</p></div><p class=\"one\">サブエージェント(旧称 トピック)は、エージェントができる「1つの仕事」です。会話の進め方を決める指示(インストラクション)と、仕事に使うアクションをまとめて持ちます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>会社の「担当窓口」です。名前と説明は窓口の看板、指示は担当者向けのマニュアル、アクションは窓口に置いた道具です。看板があいまいだと、お客さまは違う窓口に並んでしまいます。</p></div><h4>サブエージェントの部品</h4><div class=\"tw\"><table><thead><tr><th>部品</th><th>内容</th></tr></thead>\n<tr><td>名前と説明</td><td>名前は2〜3語の分かりやすい言葉。説明は1〜3文で、どんな依頼をこのサブエージェントに振り分けるかを書く</td></tr>\n<tr><td>指示(推論の指示)</td><td>会話の進め方を決めるガイドライン。Agent Script のロジックと、自然言語のプロンプトを組み合わせる</td></tr>\n<tr><td>推論で使えるアクション</td><td>LLMが推論中に選べるアクション。別のサブエージェントへの遷移、変数の設定、エスカレーションなどのユーティリティも含む</td></tr>\n<tr><td>アクション定義</td><td>サブエージェントに割り当てたアクションの一覧。入力、出力、参照先の機能を持ち、Script ビューで見える</td></tr>\n</table></div><h4>振り分け(サブエージェントの分類)</h4><ul>\n<li>エージェントを作ると、Agent Router(旧称 Topic Selector)という特別なサブエージェントが追加され、すべての会話の開始地点になります。</li>\n<li>エージェントは、直近の会話履歴と、すべてのサブエージェントの名前と説明を比べて、最も合うものを選びます。</li>\n<li>フィルター(「Make this action available when:」)と変数を使うと、本人確認が済んだ顧客にだけ特定のサブエージェントを使わせることができます。</li>\n<li>旧ビルダーのサブエージェントは、名前、分類の説明(Classification Description)、範囲(Scope)、指示、アクションでできています。範囲には「あなたの仕事は…」「…してはいけない」と、できることとできないことを書きます。</li>\n</ul><h4>指示を書くコツ</h4><ul>\n<li>指示はLLMが解釈するため、結果が毎回同じとは限りません。複雑な計算、機密情報の処理、決まった順序が必要な処理など、必ず守る業務ロジックはアクション(フローなど)に組み込みます。</li>\n<li>「いつ」「何を」するかを具体的に書きます。使ってほしいアクションの名前を入れ、「必ず(always)」のような明確な言葉を使うと、安定して実行されます。</li>\n<li>サブエージェントの名前と説明は、ほかのサブエージェントと重ならないようにします。重なると、誤ったサブエージェントが選ばれやすくなります。</li>\n<li>サブエージェントとアクションの指示は、英語のみサポートされます。ほかの言語で書くと、推論エンジンが期待どおりに動かないことがあります。</li>\n<li>指示の各欄には最大131,072文字まで書けますが、短く簡潔な指示のほうが性能は良くなります。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>「v1_CustomerInfo」って名前、だめなの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>「v1」の意味がエージェントに伝わらず、何をする仕事かもあいまいです。「Account_Management」のように、利用者が使う言葉で具体的に付けます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>変数名と同じだ。意味のある名前を付けろ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>必ず守るルールは、指示ではなくアクションのロジックで実装します。</li>\n<li>誤ったサブエージェントが選ばれるときは、名前と説明を具体的にし、ほかとの重なりをなくします。</li>\n<li>Agent Router は既定の開始サブエージェントで、ほかのサブエージェントと同じように編集できます。</li>\n<li>名前に「v1」のような内部用の記号や、「Help」のような広すぎる言葉は使いません。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、「購入から30日を過ぎた注文は返金しない」というルールを、エージェントに必ず守らせたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "サブエージェントの指示に「30日を過ぎたら返金しない」と書く",
+      "返金の条件を判定するフローを作り、カスタムアクションとして使う",
+      "エージェントの説明に返金ポリシーを書き足す"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "指示はLLMが解釈するため、結果が毎回同じとは限りません。必ず守る業務ロジックは、フローなどのアクションに組み込むのが公式の推奨です。説明欄に書いても、指示と同じく確実には守られません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_topics.htm&type=5",
+     "x": "指示はLLMが解釈するため、結果が毎回同じとは限りません。複雑な計算、機密情報の処理、決まった順序が必要な処理など、必ず守る業務ロジックはアクション(フローなど)に組み込みます。"
+    },
+    {
+     "q": "あるエージェントは、注文に関する質問を、ときどき請求のサブエージェントに振り分けてしまいます。最初に見直すべき点はどれですか?",
+     "o": [
+      "各サブエージェントの名前と説明を具体的にし、ほかとの重なりをなくす",
+      "請求のサブエージェントのアクションを増やす",
+      "推論エンジンのタイムアウトを延ばす"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "エージェントは、サブエージェントの名前と説明を会話と比べて振り分け先を選びます。名前と説明が重なっていると、誤ったサブエージェントが選ばれやすくなります。アクションの数やタイムアウトは、振り分けの精度とは関係しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_troubleshoot.htm&type=5",
+     "x": "サブエージェントの名前と説明は、ほかのサブエージェントと重ならないようにします。重なると、誤ったサブエージェントが選ばれやすくなります。"
+    },
+    {
+     "q": "ある会社は、本人確認が済んだ顧客だけが「Order Management」サブエージェントを使えるようにしたいと考えています。Agentforce Builder で何を使うべきですか?",
+     "o": [
+      "Agent Router の推論アクションに、変数を条件にしたフィルターを設定する",
+      "Order Management の説明に「本人確認済みの顧客のみ」と書く",
+      "Order Management のアクションをすべて削除する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agent Router では、変数を使ったフィルターで、条件を満たすときだけサブエージェントへの遷移を使わせることができます。説明に書くだけではLLMの解釈に任され、確実ではありません。アクションを削除すると、本人確認済みの顧客も使えなくなります。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_topics_routing.htm&type=5",
+     "x": "フィルター(「Make this action available when:」)と変数を使うと、本人確認が済んだ顧客にだけ特定のサブエージェントを使わせることができます。"
+    },
+    {
+     "q": "Agentforce Builder でエージェントを作ると自動で追加され、会話の開始地点としてサブエージェントを選ぶ特別なサブエージェントは何ですか?",
+     "o": [
+      "Escalation",
+      "Agent Router",
+      "General FAQ"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Agent Router(旧称 Topic Selector)が既定の開始サブエージェントで、最も合うサブエージェントを選びます。Escalation は人への引き継ぎ、General FAQ はよくある質問への回答を担うサブエージェントです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_topics_routing.htm&type=5",
+     "x": "エージェントを作ると、Agent Router(旧称 Topic Selector)という特別なサブエージェントが追加され、すべての会話の開始地点になります。"
+    },
+    {
+     "q": "日本の会社が、サブエージェントの指示をすべて日本語で書こうとしています。コンサルタントが伝えるべき注意点はどれですか?",
+     "o": [
+      "指示は日本語でのみ書く必要がある",
+      "指示は英語のみサポートされ、ほかの言語では期待どおりに動かないことがある",
+      "指示の言語はエージェントの言語設定に合わせて自動翻訳される"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "サブエージェントとアクションの指示は英語のみサポートされます。ほかの言語で書くと、推論エンジンが期待どおりに動かないことがあります。言語設定はLLMが生成するメッセージに適用され、指示を自動翻訳するものではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_considerations.htm&type=5",
+     "x": "サブエージェントとアクションの指示は、英語のみサポートされます。ほかの言語で書くと、推論エンジンが期待どおりに動かないことがあります。"
+    },
+    {
+     "q": "旧ビルダーのサブエージェントで、「あなたの仕事はパスワードの再設定だけです。アカウント情報は変更できません」のように、できることとできないことを書く欄はどれですか?",
+     "o": [
+      "分類の説明(Classification Description)",
+      "範囲(Scope)",
+      "名前"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "範囲(Scope)は、サブエージェントが選ばれたあとに、何ができて何ができないかの境界を伝える欄です。分類の説明は、どんな依頼をこのサブエージェントに振り分けるかを書く欄です。名前は2〜3語で仕事を表します。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_topics.htm&type=5",
+     "x": "旧ビルダーのサブエージェントは、名前、分類の説明(Classification Description)、範囲(Scope)、指示、アクションでできています。範囲には「あなたの仕事は…」「…してはいけない」と、できることとできないことを書きます。"
+    }
+   ]
+  },
+  {
+   "id": "actions",
+   "no": "Ch1·4",
+   "title": "アクション(標準アクション・フロー・Apex・プロンプトテンプレート)",
+   "tag": "Agent Actions",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>アクションって、エージェントが踊る振り付けのこと?</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>違う。エージェントの「手足」だ。データを取りに行き、仕事を片付ける。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>標準アクションは最初から用意されたものです。カスタムアクションは、フロー、Apex、プロンプトテンプレートなどを呼び出して自分で作ります。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>じゃあ、どんなフローでも呼び出せるの?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>選べるのは自動起動フローだ。型も大事だ。プリミティブ型しか受け取れない。</p></div><p class=\"one\">アクションは、エージェントが Salesforce で情報を取得したり、タスクを実行したりする手段です。最初から用意された標準アクションと、自社の業務に合わせて作るカスタムアクションがあります。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>料理人の調理器具です。包丁やなべ(標準アクション)は最初から厨房にあります。店の名物料理には、専用の型(カスタムアクション)を自分で用意します。どの器具を使うかは、レシピ(指示)を見て料理人が決めます。</p></div><h4>カスタムアクションで呼び出せるもの</h4><div class=\"tw\"><table><thead><tr><th>参照アクションの種類</th><th>使いどころ</th></tr></thead>\n<tr><td>フロー(自動起動フロー)</td><td>レコードの更新など、ノーコードで組んだ処理を実行する</td></tr>\n<tr><td>Apex(呼び出し可能メソッド、REST Apex クラス)</td><td>独自のビジネスロジックを実行する</td></tr>\n<tr><td>プロンプトテンプレート</td><td>LLMで回答や文章を生成する</td></tr>\n<tr><td>外部サービス、MuleSoft API</td><td>外部システムのAPIを呼び出して、データを取得する</td></tr>\n</table></div><h4>入力と出力の設定</h4><div class=\"tw\"><table><thead><tr><th>設定</th><th>内容</th></tr></thead>\n<tr><td>Collect data from user</td><td>この入力をユーザーから聞き取る</td></tr>\n<tr><td>Require input</td><td>この入力がないとアクションを実行しない</td></tr>\n<tr><td>Include in agent context</td><td>出力を会話履歴に加え、推論で使えるようにする</td></tr>\n<tr><td>Show in conversation</td><td>出力を応答に含めて表示する。すべての出力でオフなら、LLMが出力を要約して応答する</td></tr>\n<tr><td>Require user confirmation</td><td>レコードを変更する前に、ユーザーに確認を求める</td></tr>\n</table></div><h4>押さえておく点</h4><ul>\n<li>Agentforce Builder のエージェント内で作ったアクションは、そのエージェントとバージョンだけで使えます。複数のエージェントで使うなら、アセットライブラリ(Setup の「Agentforce Assets」)で作ります。</li>\n<li>アセットライブラリでアクションを変えても、エージェントに追加済みのコピーには反映されません。反映するには、更新したアクションを追加し直します。</li>\n<li>カスタムアクションの権限は、参照先の機能に従います。フローなら、そのフローの権限、項目レベルセキュリティ、共有設定に従い、少なくとも「Run Flows」権限が必要です。</li>\n<li>フローや Apex を参照するカスタムアクションは、プリミティブ型のデータだけを扱えます。選択リスト、通貨、コレクションのリソースを含むフローは使えません。</li>\n<li>プロンプトテンプレートを参照するカスタムアクションは、Salesforce が管理する任意のモデルを使えます。出力はテキスト型です。</li>\n<li>標準アクションの参照先(上書き可能なフローやプロンプトテンプレート)は編集できます。入力や出力を足したり減らしたりするときは、カスタムアクションを作って標準アクションと置き換えます。</li>\n<li>推論の前に必ず実行したいアクションは推論の指示に、LLMに選ばせたいアクションは推論で使えるアクションに入れます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>標準アクションの中身を変えたいときは、どうするの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>参照先のフローやプロンプトテンプレートを編集できます。変更は自動で反映されます。ただし入力や出力の数を変えるなら、カスタムアクションを作って置き換えます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>標準アクションの例: Answer Questions with Knowledge は、Agentforce データライブラリのデータにもとづいて質問に答えます。</li>\n<li>レコードを変更するアクションには「Require user confirmation」を検討します。</li>\n<li>出力を推論に使うのは「Include in agent context」、応答にそのまま出すのは「Show in conversation」です。</li>\n<li>必要な権限: カスタムアクションの作成は Manage AI Agents、プロンプトテンプレートの作成は Prompt Template Manager、フローの作成は Manage Flow です。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、ケースの状態を更新するアクションをエージェントに持たせます。誤った更新を防ぐため、レコードを変える前に顧客の同意を得たいと考えています。どの設定を使うべきですか?",
+     "o": [
+      "Require input",
+      "Require user confirmation",
+      "Show in conversation"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "「Require user confirmation」は、レコードを変更する前にユーザーに確認を求める設定です。Require input は入力が必須かどうか、Show in conversation は出力を応答に表示するかどうかの設定です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_actions_custom.htm&type=5",
+     "x": "Require user confirmationレコードを変更する前に、ユーザーに確認を求める"
+    },
+    {
+     "q": "ある会社は、同じ「配送状況の確認」アクションを3つのエージェントで使いたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "アセットライブラリ(Agentforce Assets)でカスタムアクションを作り、各エージェントに追加する",
+      "1つのエージェント内でアクションを作れば、ほかのエージェントにも自動で共有される",
+      "エージェントごとに Apex クラスを3つ作る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "アセットライブラリで作ったアクションは、複数のエージェントやバージョンに追加できます。エージェント内で作ったアクションは、そのエージェントとバージョンでしか使えません。Apex を3つ作る必要はありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_actions_custom.htm&type=5",
+     "x": "Agentforce Builder のエージェント内で作ったアクションは、そのエージェントとバージョンだけで使えます。複数のエージェントで使うなら、アセットライブラリ(Setup の「Agentforce Assets」)で作ります。"
+    },
+    {
+     "q": "ある管理者は、入力に選択リスト型の変数を持つフローを、カスタムアクションの参照先に選ぼうとしています。この計画について正しいものはどれですか?",
+     "o": [
+      "フローや Apex を参照するカスタムアクションはプリミティブ型だけを扱えるため、このフローは使えない",
+      "選択リストは自動でテキストに変換されるため、そのまま使える",
+      "画面フローに作り直せば使える"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "フローや Apex を参照するカスタムアクションは、プリミティブ型のデータだけをサポートします。選択リスト、通貨、コレクションを含むフローは参照先にできません。自動変換の仕組みはなく、参照できるフローは自動起動フローです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_considerations.htm&type=5",
+     "x": "フローや Apex を参照するカスタムアクションは、プリミティブ型のデータだけを扱えます。選択リスト、通貨、コレクションのリソースを含むフローは使えません。"
+    },
+    {
+     "q": "ノーコードでレコードを更新する処理をエージェントのカスタムアクションにしたいとき、参照先として選べるフローの種類はどれですか?",
+     "o": [
+      "画面フロー",
+      "自動起動フロー",
+      "レコードトリガーフロー"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "カスタムアクションが呼び出せるのは自動起動フロー(autolaunched flow)です。画面フローやレコードトリガーフローは、エージェントのアクションの参照先として挙げられていません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_actions_custom.htm&type=5",
+     "x": "フロー(自動起動フロー)レコードの更新など、ノーコードで組んだ処理を実行する"
+    },
+    {
+     "q": "ある会社は、標準アクションの参照先のプロンプトテンプレートに、新しい入力を1つ追加したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "標準アクションの入力欄に、直接新しい入力を追加する",
+      "入力を追加した参照先を使うカスタムアクションを作り、標準アクションと置き換える",
+      "変更は自動で反映されるため、プロンプトテンプレートだけを編集すればよい"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "参照先の中身の変更は自動で反映されますが、入力や出力を足したり減らしたりする場合は、カスタムアクションを作って標準アクションと置き換える必要があります。標準アクションに直接入力を足すことはできません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_actions_edit_reference.htm&type=5",
+     "x": "標準アクションの参照先(上書き可能なフローやプロンプトテンプレート)は編集できます。入力や出力を足したり減らしたりするときは、カスタムアクションを作って標準アクションと置き換えます。"
+    },
+    {
+     "q": "あるカスタムアクションは、顧客の会員ランクを出力します。エージェントにはこの値を推論で使ってほしいものの、顧客には表示したくありません。どの設定を組み合わせるべきですか?",
+     "o": [
+      "「Include in agent context」をオンにし、「Show in conversation」をオフにする",
+      "「Show in conversation」をオンにし、「Include in agent context」をオフにする",
+      "「Collect data from user」をオンにする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "「Include in agent context」をオンにすると、出力が会話履歴に加わり推論で使えます。「Show in conversation」をオフにすれば、出力はそのまま表示されません。Collect data from user は入力をユーザーから聞き取る設定です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_actions_custom.htm&type=5",
+     "x": "Include in agent context出力を会話履歴に加え、推論で使えるようにする"
+    }
+   ]
+  },
+  {
+   "id": "stdagents",
+   "no": "Ch1·5",
+   "title": "標準のエージェントと使い分け",
+   "tag": "Agent Types",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>エージェントタイプ、テンプレート…言葉が多すぎて混乱する!</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>かみ砕きますね。タイプは「職種」、テンプレートは職種ごとの「研修パッケージ」です。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>職種が Service なら、お客さんを相手にする仕事?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そうです。Service エージェントは顧客向けのチャネル、Employee エージェントは社内向けのチャネルに配置します。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>タイプが親で、テンプレートが子だ。継承関係だな。</p></div><p class=\"one\">エージェントタイプは、似た機能と制約を持つエージェントの大きな分類です。タイプによって、必要な権限と、配置できるチャネルが決まります。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>会社の「職種」です。受付係(Service)は来客の対応、社内ヘルプデスク(Employee)は社員の手伝いをします。職種ごとに、入れる部屋(チャネル)と持たされる鍵(権限)が違います。</p></div><h4>主なエージェントタイプ</h4><div class=\"tw\"><table><thead><tr><th>タイプ</th><th>役割</th></tr></thead>\n<tr><td>Agentforce Service エージェント</td><td>顧客のよくある問い合わせに対応し、複雑な案件はエスカレーションする</td></tr>\n<tr><td>Agentforce Employee エージェント</td><td>従業員に社内の知識を提供し、タスクを実行して業務を効率化する</td></tr>\n<tr><td>Lead Nurturing(旧称 SDR)</td><td>リードに個別のコンテンツで働きかけ、質問に答え、商談を設定する。Sales のヘルプでは Agentforce Engagement という新しい名前で案内されている</td></tr>\n<tr><td>Sales Coach</td><td>営業担当者の売り込みやロールプレイに、商談フェーズに合ったフィードバックを返す</td></tr>\n<tr><td>Service Assistant</td><td>サービス担当者に、ケースの要約と解決までの手順を示す</td></tr>\n<tr><td>Setup with Agentforce</td><td>管理者の設定作業を手伝う。自動で作られ、Agentforce Builder には表示されない</td></tr>\n</table></div><h4>Service と Employee の違い</h4><div class=\"tw\"><table><thead><tr><th>項目</th><th>Service エージェント</th><th>Employee エージェント</th></tr></thead>\n<tr><td>主な利用者</td><td>社外の顧客、パートナー</td><td>社内の従業員</td></tr>\n<tr><td>主なチャネル</td><td>拡張メッセージングチャネル(Enhanced Chat v1、v2 など)</td><td>Lightning Experience、Salesforce モバイルアプリ、Slack、Enhanced Web Chat v1(Experience Cloud サイトのみ)</td></tr>\n<tr><td>実行ユーザー</td><td>エージェントユーザー(EinsteinServiceAgent User)。資格情報によるユーザー確認を使うと、ログイン中のサイトユーザー</td><td>ログイン中のユーザー</td></tr>\n</table></div><h4>押さえておく点</h4><ul>\n<li>エージェントテンプレートはエージェントタイプの子です。1つのタイプには多くのテンプレートが属せますが、1つのテンプレートが属するタイプは1つだけです。</li>\n<li>Service エージェントがエージェントユーザーで動くとき、コンテキスト変数(<code>MessagingSession.ContactId</code> など)は顧客が誰かを伝えるだけで、データアクセスは制御しません。追加の設定がないと、顧客はエージェントユーザーが見られるすべてのレコードにアクセスできるため、自分で制限します。</li>\n<li>エージェントユーザーの資格情報では Salesforce にログインできません。エージェントユーザーを表示や編集できるのは、管理者権限を持つユーザーだけです。</li>\n<li>Agentforce Service エージェントは、標準サブエージェントの General CRM と Single Record Summary、標準アクションの Query Records、Summarize Record、Draft or Revise Email、Update Record Fields などをサポートしていません。</li>\n<li>Agentforce (Default) は、2025年6月17日以降は新機能が追加されず、新しい環境では使えません。Agentforce Employee エージェントへの移行が推奨されています。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>Service エージェントの権限は、とりあえず全部付けておけば安心?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>逆です。顧客はエージェントユーザーが見られるものに触れられます。仕事に必要な権限だけを与えましょう。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>社外の顧客対応は Service、社内の従業員の支援は Employee です。</li>\n<li>Employee エージェントは、ログイン中のユーザーのプロファイル、権限、共有ルールに従って動きます。</li>\n<li>Service エージェントは既定でエージェントユーザーとして動くため、顧客が見られる範囲を自分で制限します。</li>\n<li>Agentforce (Default) を使っている組織は、Agentforce Employee エージェントへ移行します。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、Webサイトのチャットで、顧客からの注文状況の問い合わせに自動で答え、難しい案件は人に引き継ぎたいと考えています。どのエージェントタイプを使うべきですか?",
+     "o": [
+      "Agentforce Employee エージェント",
+      "Agentforce Service エージェント",
+      "Service Assistant"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "顧客のよくある問い合わせに対応し、複雑な案件をエスカレーションするのは Service エージェントです。Employee エージェントは社内の従業員向けです。Service Assistant はサービス担当者を手伝うもので、顧客と直接会話しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_setup_explore_types.htm&type=5",
+     "x": "Agentforce Service エージェント顧客のよくある問い合わせに対応し、複雑な案件はエスカレーションする"
+    },
+    {
+     "q": "ある会社は、Slack に Employee エージェントを配置します。営業担当者が、自分に共有されていない商談の情報を見られないか心配しています。正しい理解はどれですか?",
+     "o": [
+      "Employee エージェントはログイン中のユーザーの権限と共有ルールに従うため、見られない情報は返されない",
+      "Employee エージェントは専用のエージェントユーザーで動くため、全員が同じ情報を見られる",
+      "Slack では Salesforce の共有ルールが適用されない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Employee エージェントは、ログイン中のユーザーのプロファイル、権限、共有ルールに従って動きます。専用のエージェントユーザーで動くのは Service エージェントです。Slack でも、ユーザーの Salesforce の権限とアクセス制御が守られます。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_execution_data.htm&type=5",
+     "x": "Employee エージェントは、ログイン中のユーザーのプロファイル、権限、共有ルールに従って動きます。"
+    },
+    {
+     "q": "ある会社の Service エージェントは、エージェントユーザーで動き、<code>MessagingSession.ContactId</code> で顧客を特定しています。セキュリティの観点で、コンサルタントが指摘すべき点はどれですか?",
+     "o": [
+      "コンテキスト変数がデータアクセスを自動で顧客本人の範囲に制限する",
+      "コンテキスト変数は顧客を特定するだけでアクセスは制御しないため、見られる範囲を自分で制限する必要がある",
+      "エージェントユーザーの資格情報で顧客がログインできるため、パスワードを定期的に変える"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "コンテキスト変数は顧客が誰かを伝えるだけで、データアクセスは制御しません。追加の設定をしないと、顧客はエージェントユーザーが見られるすべてのレコードにアクセスできます。エージェントユーザーの資格情報ではログインできません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_execution_data.htm&type=5",
+     "x": "Service エージェントがエージェントユーザーで動くとき、コンテキスト変数(MessagingSession.ContactId など)は顧客が誰かを伝えるだけで、データアクセスは制御しません。追加の設定がないと、顧客はエージェントユーザーが見られるすべてのレコードにアクセスできるため、自分で制限します。"
+    },
+    {
+     "q": "ある会社は、従業員向けに Agentforce (Default) エージェントを使っています。今後も新機能を使い続けるために、コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Agentforce Employee エージェントへ移行する",
+      "Agentforce (Default) をもう1つ作成する",
+      "Agentforce Service エージェントに切り替えて Lightning Experience に配置する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce (Default) は2025年6月17日以降、新機能が追加されません。Agentforce Employee エージェントへの移行が推奨されています。Agentforce (Default) は1つしか作れず、Service エージェントは顧客向けのタイプです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.migrate_agentforce_default_to_aea.htm&type=5",
+     "x": "Agentforce (Default) は、2025年6月17日以降は新機能が追加されず、新しい環境では使えません。Agentforce Employee エージェントへの移行が推奨されています。"
+    },
+    {
+     "q": "ある管理者は、顧客向けの Service エージェントに、標準アクションの Summarize Record を追加しようとしています。この計画について正しいものはどれですか?",
+     "o": [
+      "Summarize Record は Service エージェントでサポートされていない",
+      "Summarize Record は Service エージェント専用の標準アクションである",
+      "追加すると、顧客との会話の要約が自動で作られる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce Service エージェントは、Summarize Record、Query Records、Draft or Revise Email、Update Record Fields などの標準アクションをサポートしていません。Service エージェント専用という説明や、会話の要約を自動で作るという説明は誤りです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_considerations.htm&type=5",
+     "x": "Agentforce Service エージェントは、標準サブエージェントの General CRM と Single Record Summary、標準アクションの Query Records、Summarize Record、Draft or Revise Email、Update Record Fields などをサポートしていません。"
+    },
+    {
+     "q": "エージェントタイプとエージェントテンプレートの関係として、正しいものはどれですか?",
+     "o": [
+      "1つのテンプレートは複数のタイプに属せる",
+      "タイプが親、テンプレートが子で、1つのテンプレートが属するタイプは1つだけ",
+      "テンプレートが親、タイプが子で、権限はテンプレートだけで決まる"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "エージェントテンプレートはエージェントタイプの子です。1つのタイプには多くのテンプレートが属せますが、1つのテンプレートが属するタイプは1つだけです。権限やチャネルはタイプで決まり、テンプレートの権限も加わります。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_glossary.htm&type=5",
+     "x": "エージェントテンプレートはエージェントタイプの子です。1つのタイプには多くのテンプレートが属せますが、1つのテンプレートが属するタイプは1つだけです。"
+    }
+   ]
+  },
+  {
+   "id": "channels",
+   "no": "Ch1·6",
+   "title": "チャネルへの展開(Messaging・Experience Cloud・Slack など)",
+   "tag": "Channels",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>たとえ話のリレーで説明しましょう。チャネルは「お店の売り場」です。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>じゃあ接続(Connection)は、売り場ごとの「接客ルール」!Slack なら気軽に、電話ならていねいに。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>Omni-Channel フローは「案内係」だ。入口からエージェントへ、エージェントから人の担当者へ運ぶ。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>で、エスカレーションは「店長を呼んでください」だね。</p><p class=\"tk rou\" data-f=\"wink\"><b class=\"who\">クラウドちゃん</b>完璧です。その引き継ぎを担当するのが Escalation サブエージェントです。</p></div><p class=\"one\">チャネルは、エージェントを配置するメッセージング基盤、アプリ、画面です。接続(Connection)と Omni-Channel フローで、会話の届け方と受け渡しを設定します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>番組の多局放送です。1つの番組を作れば、局ごとに字幕や尺を合わせて流せます。接続を使えば、エージェントを1回作るだけで、チャネルごとに合った応答の形で届けられます。</p></div><h4>主なチャネル</h4><div class=\"tw\"><table><thead><tr><th>チャネル</th><th>ポイント</th></tr></thead>\n<tr><td>Lightning Experience と Salesforce モバイルアプリ</td><td>Employee エージェント向け。有効化すると、アクセス権を持つユーザーの Agentforce パネルに表示される</td></tr>\n<tr><td>Slack</td><td>Employee エージェント向け。Agentforce Builder で Slack の接続を追加し、Slack 側でエージェントをインストールする</td></tr>\n<tr><td>Enhanced Chat v2</td><td>最新のメッセージング画面。カスタム Lightning タイプやトークンのストリーミングに対応する。現在は Service エージェントのみ</td></tr>\n<tr><td>Enhanced Chat v1(旧称 Messaging In-App and Web)</td><td>設定の自由度が高い。事前チャットフォームやチャット後アンケートが必要なときに使う。Service と Employee の両方に対応する</td></tr>\n<tr><td>その他の拡張メッセージング</td><td>WhatsApp、Facebook Messenger、Apple Messages for Business、SMS、LINE、Bring Your Own Channel など</td></tr>\n<tr><td>サービスメール</td><td>Service エージェントが、顧客のメールに自律的に返信する。回答はデータライブラリにもとづく</td></tr>\n</table></div><h4>Experience Cloud サイトへの展開</h4><ul>\n<li>Service エージェントは、Enhanced Chat で Experience Cloud サイトに配置できます。資格情報によるユーザー確認を有効にすると、ログイン中のサイトユーザーの権限で動きます。</li>\n<li>Employee エージェントは、Experience Cloud サイトの Enhanced Web Chat v1 で使えます。このとき Escalation サブエージェントで、Omni-Channel フローに設定した担当者やキューへ転送できます。</li>\n</ul><h4>Omni-Channel フローとエスカレーション</h4><ul>\n<li>メッセージングやメールにつなぐエージェントは、少なくとも1つずつの受信用と送信用の Omni-Channel フローを持ちます。フローは「Route Work」アクションで会話を振り分けます。</li>\n<li>受信用フローは、チャネルからエージェントへ会話を運びます。1つのエージェントに複数の受信用フローをつなげますが、1つの受信用フローにつなげるエージェントは1つだけです。</li>\n<li>エスカレーションは Escalation サブエージェントが行います。このサブエージェントがないと、エージェントはエスカレーションできません。</li>\n<li>Lightning Experience の Agentforce パネルや Salesforce モバイルアプリの Employee エージェントは、転送をサポートしていません。</li>\n<li>Agentforce Builder の中ではエスカレーションをテストできません。メッセージングセッションがないためです。有効化して、接続済みのチャネルで試します。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>Slack の Employee エージェントって、誰の権限で動くの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Slack で話しているユーザーの、Salesforce のライセンス、権限、アクセス制御に従います。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>接続(Connection)には、画像、ボタン、リンクなどの応答の形を決める適応型応答形式と、Omni-Channel フローなどの設定が入っています。</li>\n<li>Enhanced Chat v2 は現在 Service エージェントのみ、v1 は Service と Employee の両方に対応します。同じWebサイトで v1 と v2 を混在させないことが推奨されています。</li>\n<li>1つの受信用 Omni-Channel フローにつなげるエージェントは1つだけです。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、Webサイトに Service エージェントのチャットを置きます。事前チャットフォームとチャット後アンケートが必須の要件です。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Enhanced Chat v1",
+      "Enhanced Chat v2",
+      "Agentforce パネル"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "事前チャットフォームやチャット後アンケートなど、設定の自由度が必要な場合は Enhanced Chat v1 が推奨されます。v2 は最新の画面とカスタム Lightning タイプが特長です。Agentforce パネルは従業員向けの Lightning Experience の画面です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_enhanced_chat_channel.htm&type=5",
+     "x": "Enhanced Chat v1(旧称 Messaging In-App and Web)設定の自由度が高い。事前チャットフォームやチャット後アンケートが必要なときに使う。Service と Employee の両方に対応する"
+    },
+    {
+     "q": "ある管理者は、WhatsApp からの会話を1つの受信用 Omni-Channel フローで、2つの Service エージェントに同時につなぎたいと考えています。この計画について正しいものはどれですか?",
+     "o": [
+      "1つの受信用フローにつなげるエージェントは1つだけなので、この構成はできない",
+      "受信用フローには最大2つのエージェントをつなげる",
+      "受信用フローは不要で、送信用フローだけで振り分ける"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "1つのエージェントに複数の受信用フローはつなげますが、1つの受信用フローにつなげるエージェントは1つだけです。送信用フローは、エージェントから担当者やキューなどへ会話を運ぶためのもので、チャネルからの受け付けには使いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_parent_deploy.htm&type=5",
+     "x": "受信用フローは、チャネルからエージェントへ会話を運びます。1つのエージェントに複数の受信用フローをつなげますが、1つの受信用フローにつなげるエージェントは1つだけです。"
+    },
+    {
+     "q": "ある管理者は、Agentforce Builder のプレビューで「担当者につないで」と入力しましたが、転送が起きませんでした。エスカレーションを確かめるには、どうすべきですか?",
+     "o": [
+      "エージェントを有効化し、接続済みのチャネルで会話して試す",
+      "Escalation サブエージェントを削除してから再度プレビューする",
+      "プレビューの言語設定を英語に変える"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce Builder の中にはメッセージングセッションがないため、エスカレーションはテストできません。有効化して、接続済みのチャネルで試します。Escalation サブエージェントがないとエスカレーション自体ができず、言語設定は関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_escalation.htm&type=5",
+     "x": "Agentforce Builder の中ではエスカレーションをテストできません。メッセージングセッションがないためです。有効化して、接続済みのチャネルで試します。"
+    },
+    {
+     "q": "ある会社は、Lightning Experience の Agentforce パネルで使う Employee エージェントから、人の担当者へ会話を転送したいと考えています。正しい理解はどれですか?",
+     "o": [
+      "Agentforce パネルの Employee エージェントは転送をサポートしていない",
+      "Escalation サブエージェントを追加すれば、パネルから担当者へ転送できる",
+      "送信用の Omni-Channel フローを有効化すれば、自動で転送される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Lightning Experience の Agentforce パネルや Salesforce モバイルアプリの Employee エージェントは、転送をサポートしていません。Employee エージェントで転送できるのは、Experience Cloud サイトの Enhanced Web Chat v1 に配置した場合です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_escalation.htm&type=5",
+     "x": "Lightning Experience の Agentforce パネルや Salesforce モバイルアプリの Employee エージェントは、転送をサポートしていません。"
+    },
+    {
+     "q": "ある会社は、社内の Slack で Employee エージェントを使えるようにしたいと考えています。Salesforce と Slack を接続したあと、何をすべきですか?",
+     "o": [
+      "Agentforce Builder でエージェントに Slack の接続を追加し、アクセス権を与えて有効化し、Slack 側でエージェントをインストールする",
+      "Enhanced Chat v2 の展開を作成し、Slack のチャンネルに埋め込む",
+      "受信用の Omni-Channel フローを作成し、Slack をキューに設定する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Slack への配置では、Agentforce Builder でエージェントに Slack の接続を追加し、ユーザーにアクセス権を与えて有効化し、Slack 側でエージェントをインストールします。Enhanced Chat や受信用の Omni-Channel フローは、顧客向けのメッセージングで使うものです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_deploy_emp_slack.htm&type=5",
+     "x": "SlackEmployee エージェント向け。Agentforce Builder で Slack の接続を追加し、Slack 側でエージェントをインストールする"
+    },
+    {
+     "q": "ある会社は、同じエージェントを Facebook Messenger と Webチャットに展開し、それぞれでボタンやリンクなどの適した形で応答させたいと考えています。この役割を担うものはどれですか?",
+     "o": [
+      "接続(Connection)と、その適応型応答形式",
+      "エージェントテンプレート",
+      "Agent Router のフィルター"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "接続には、画像、ボタン、リンクなどの応答の形を決める適応型応答形式と、Omni-Channel フローなどの設定が入っています。エージェントを1回作るだけで、チャネルに合った形で応答できます。テンプレートや Agent Router は応答の形を決めるものではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_parent_deploy.htm&type=5",
+     "x": "接続(Connection)には、画像、ボタン、リンクなどの応答の形を決める適応型応答形式と、Omni-Channel フローなどの設定が入っています。"
+    }
+   ]
+  }
+ ]
+}
