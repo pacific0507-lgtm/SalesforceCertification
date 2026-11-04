@@ -1,0 +1,379 @@
+{
+ "chapter": 2,
+ "chapter_title": "プロンプトエンジニアリング",
+ "chapter_sub": "Prompt Builder でプロンプトテンプレートを作り、データでグラウンディングし、テストして、使うモデルを選ぶまでを学びます。",
+ "sections": [
+  {
+   "id": "promptbuilder",
+   "no": "Ch2·1",
+   "title": "Prompt Builder とプロンプトテンプレートの種類",
+   "tag": "Prompt Builder",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>問題です。商品とキャンペーンのデータから、ニュースレターを作りたい。どの種類のプロンプトテンプレートを使いますか?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>うーん、項目生成!…いや、営業メールかな?</p><p class=\"tk rou\" data-f=\"wink\"><b class=\"who\">クラウドちゃん</b>残念、どちらも違います。入力のオブジェクトを自分で決められるのはフレックスです。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>項目生成は、オブジェクト1つと項目1つを受け取る関数。フレックスは、引数を最大5つまで自由に定義できる関数だ。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>関数のたとえはよく分からないけど、「型にはまらないならフレックス」は覚えた!</p></div><p class=\"one\">Prompt Builder は、LLM(大規模言語モデル)に渡す指示文を「プロンプトテンプレート」として作り、CRM のデータを差し込んで、テストし、管理する Setup の機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>差し込み印刷のひな形です。宛名欄だけ空けた案内状を1枚作っておけば、顧客ごとに名前や会社名が入った手紙を何通でも作れます。Prompt Builder では、その手紙の文章を書くのが LLM です。</p></div><h4>主なテンプレートの種類</h4><div class=\"tw\"><table><thead><tr><th>種類</th><th>作るもの</th><th>使われる場所</th></tr></thead>\n<tr><td>営業メール(Sales Email)</td><td>取引先責任者やリード宛ての、レコードのデータにもとづく個別のメール</td><td>Lightning Experience のメール作成画面</td></tr>\n<tr><td>項目生成(Field Generation)</td><td>レコードの項目に入れる要約や説明文</td><td>Lightning レコードページの項目。ボタンを押すと生成される</td></tr>\n<tr><td>フレックス(Flex)</td><td>ほかの種類でカバーできない任意の用途の内容。入力(リソース)を自分で定義する</td><td>フロー、Apex、REST API、エージェントのアクションなど</td></tr>\n<tr><td>レコード要約(Record Summary)</td><td>レコード全体を見渡すための要約</td><td>標準の呼び出し可能アクション「Summarize Record」とエージェントの同名アクション</td></tr>\n<tr><td>ナレッジ回答(Knowledge Answers)</td><td>エージェントがナレッジを使って質問に答える方法のカスタマイズ</td><td>エージェントのアクション「Answer Questions with Knowledge」</td></tr>\n</table></div><ul>\n<li>このほかにも、ケースの要約(Case Summary)、作業の要約(Work Summary)、レコードの優先順位付け(Record Prioritization)など、製品ごとの種類があります。</li>\n</ul><h4>種類ごとの仕様</h4><ul>\n<li>フレックステンプレートのリソース(入力)は最大5つまで追加でき、それぞれを必須にするかどうかを選べます。</li>\n<li>項目生成テンプレートが扱えるオブジェクトは1つだけです。複数のオブジェクトを使いたいときは、フレックステンプレートを作ります。</li>\n<li>項目生成テンプレートを Lightning レコードページに置くには、動的フォーム(Dynamic Forms)を有効にする必要があります。</li>\n<li>営業メールテンプレートを作るには、Setup で Sales Emails をオンにし、ユーザーに権限セットを割り当てます。</li>\n<li>テンプレートは、Salesforce Platform のどこからでも呼び出し可能なアクション(invocable action)として、または Connect REST API や Connect in Apex から呼び出せます。</li>\n</ul><h4>権限とバージョン</h4><ul>\n<li>テンプレートを作成、管理する管理者には「Prompt Template Manager」権限セットを割り当てます。</li>\n<li>生成AIの機能でテンプレートを実行するだけのユーザーには「Prompt Template User」権限セットを割り当てます。</li>\n<li>作ったテンプレートは、既定ではユーザーに公開されません。「有効化(Activate)」したバージョンだけが使われます。</li>\n<li>有効にできるのは、1つのテンプレートにつき同時に1バージョンだけです。どのバージョンも有効でなければ、そのテンプレートはユーザーから使えません。</li>\n<li>一度でも有効にしたバージョンは、無効化したあとも変更できません。直したいときは「新しいバージョンとして保存(Save as a New Version)」を使います。</li>\n<li>バージョンは1つのテンプレートにつき最大50個、テンプレート本文は最大128,000文字です。</li>\n<li>標準テンプレートは、「別名で保存(Save As)」でカスタムテンプレートを作るか、上書き可能なものは上書き用のバージョンを作ってカスタマイズします。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>有効にしたバージョンを、ちょっとだけ直したいんだけど…。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>一度でも有効にしたバージョンは変更できません。新しいバージョンとして保存して、直してから有効化します。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>リリース済みのタグは書き換えない。新しいコミットを積むのと同じだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>入力のオブジェクトを自由に決めたい、複数のオブジェクトを使いたいときはフレックスです。</li>\n<li>項目生成テンプレートをレコードページで使うには、動的フォームが必要です。</li>\n<li>作る人は Prompt Template Manager、使うだけの人は Prompt Template User の権限セットです。</li>\n<li>有効なバージョンは1つだけです。有効にしたことがあるバージョンは編集できません。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、商品とキャンペーンの2つのオブジェクトのデータを使って、顧客向けのニュースレターの文面を生成したいと考えています。コンサルタントはどの種類のプロンプトテンプレートを推奨すべきですか?",
+     "o": [
+      "フレックス(Flex)",
+      "項目生成(Field Generation)",
+      "営業メール(Sales Email)"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "フレックステンプレートは、ほかの種類でカバーできない用途に使い、入力(リソース)を自分で最大5つまで定義できます。項目生成は1つのオブジェクトの項目を埋める用途、営業メールは取引先責任者やリード宛てのメール用で、2つのオブジェクトを自由に組み合わせる用途には向きません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_create_flex_prompt_template.htm",
+     "x": "フレックス(Flex)ほかの種類でカバーできない任意の用途の内容。入力(リソース)を自分で定義するフロー、Apex、REST API、エージェントのアクションなど"
+    },
+    {
+     "q": "管理者は、取引先のオープンなケースの要約を項目に入れる項目生成プロンプトテンプレートを作りました。このテンプレートを取引先の Lightning レコードページで使えるようにするには、何が必要ですか?",
+     "o": [
+      "Experience Cloud サイトを作成する",
+      "Data 360 のデータストリームを作成する",
+      "レコードページで動的フォームを有効にする"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "項目生成テンプレートを Lightning レコードページに追加するには、動的フォーム(Dynamic Forms)を有効にする必要があります。Experience Cloud サイトや Data 360 のデータストリームは、項目生成テンプレートをページに置くための前提条件ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_create_field_gen_prompt_template.htm",
+     "x": "項目生成テンプレートを Lightning レコードページに置くには、動的フォーム(Dynamic Forms)を有効にする必要があります。"
+    },
+    {
+     "q": "管理者は、以前に有効化し、その後に無効化したプロンプトテンプレートのバージョン1の文言を修正しようとしましたが、編集できませんでした。どうすべきですか?",
+     "o": [
+      "バージョン1をもう一度有効化してから編集する",
+      "「新しいバージョンとして保存」で新しいバージョンを作り、そこで修正する",
+      "Prompt Template User 権限セットを自分に割り当てる"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "一度でも有効にしたバージョンは、無効化したあとも変更できません。修正するには、新しいバージョンとして保存して、そのバージョンを編集します。再度有効化しても編集はできず、Prompt Template User は実行のための権限セットです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_use_multiple_versions.htm",
+     "x": "一度でも有効にしたバージョンは、無効化したあとも変更できません。直したいときは「新しいバージョンとして保存(Save as a New Version)」を使います。"
+    },
+    {
+     "q": "ある会社では、営業担当者がプロンプトテンプレートを使って生成AIの機能を実行できるようにしたいが、テンプレートの作成や編集はさせたくありません。コンサルタントはどの権限セットを推奨すべきですか?",
+     "o": [
+      "Prompt Template User",
+      "Prompt Template Manager",
+      "Data Cloud Admin"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "テンプレートを実行するだけのユーザーには Prompt Template User 権限セットを割り当てます。Prompt Template Manager はテンプレートの作成と管理をする管理者向けで、Data Cloud Admin は Data 360 の管理用です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_enable.htm",
+     "x": "生成AIの機能でテンプレートを実行するだけのユーザーには「Prompt Template User」権限セットを割り当てます。"
+    },
+    {
+     "q": "フレックスプロンプトテンプレートに追加できるリソース(入力)は、最大でいくつですか?",
+     "o": [
+      "3つ",
+      "5つ",
+      "10個"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "フレックステンプレートには最大5つのリソースを追加でき、それぞれを必須にするかを選べます。3つや10個という制限ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_create_flex_prompt_template.htm",
+     "x": "フレックステンプレートのリソース(入力)は最大5つまで追加でき、それぞれを必須にするかどうかを選べます。"
+    },
+    {
+     "q": "エージェントの標準アクション「Summarize Record」は、要約を生成するときにどの種類のプロンプトテンプレートを使いますか?",
+     "o": [
+      "項目生成(Field Generation)",
+      "フレックス(Flex)",
+      "レコード要約(Record Summary)"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Summarize Record は、レコード要約(Record Summary)タイプのプロンプトテンプレートを使って要約を生成します。項目生成はレコードの項目を埋めるため、フレックスは任意の用途のための種類で、このアクションが使う種類ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+     "x": "レコード要約(Record Summary)レコード全体を見渡すための要約標準の呼び出し可能アクション「Summarize Record」とエージェントの同名アクション"
+    }
+   ]
+  },
+  {
+   "id": "grounding",
+   "no": "Ch2·2",
+   "title": "グラウンディング(差し込み項目・関連リスト・フロー・Apex・Data 360)",
+   "tag": "Grounding",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>グラウンディングって、外出禁止のこと?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>それは英語のスラングだ。ここでは、LLM の足を地面につけるという意味だ。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>そうです。テンプレートに CRM の実データを差し込んで、LLM が事実にもとづいて答えられるようにすることです。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>じゃあ、項目を1個差し込めば、もう地に足がつくんだね。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>項目だけではありません。関連リスト、フロー、Apex、Data 360 も材料にできます。どの材料で何を取るかが、試験に出ます。</p></div><p class=\"one\">グラウンディングは、プロンプトに組織の正確で最新のデータを加えて、LLM に文脈を与えることです。Prompt Template Workspace の「Insert Resource」ボタンから、差し込み項目として追加します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>新人に手紙の代筆を頼むとき、顧客の名刺、取引の履歴、過去のやりとりのメモを一緒に渡すようなものです。資料なしで頼むと、それらしい作り話が返ってくるかもしれません。</p></div><h4>グラウンディングの材料</h4><div class=\"tw\"><table><thead><tr><th>リソース</th><th>取れるもの</th><th>主な注意点</th></tr></thead>\n<tr><td>レコードの差し込み項目</td><td>関連付けたオブジェクト、現在のユーザー、現在の組織の項目</td><td>テンプレートには {!$Input:Account.Name} のような形で入り、実行時に実際の値に置き換わる</td></tr>\n<tr><td>関連リスト</td><td>親レコードの関連リストのデータ。JSON 形式で渡される</td><td>項目は、実行ユーザーの親オブジェクトのページレイアウトにもとづく。レコードレベルのフィルタはかからない</td></tr>\n<tr><td>フロー</td><td>テンプレートトリガー型プロンプトフローが作るテキスト</td><td>フローの「Add Prompt Instructions」要素で、テンプレートに差し込む指示を作る</td></tr>\n<tr><td>Apex</td><td>SOQL や外部 API の結果、整形した JSON、プログラムによる絞り込み</td><td>InvocableMethod を付けたメソッドが必要。出力は Prompt という名前の文字列</td></tr>\n<tr><td>Data 360</td><td>DMO(データモデルオブジェクト)のデータや、検索インデックスを使うリトリーバーの結果</td><td>DMO は、Data 360 のエンリッチメントで取引先責任者やリードとの関係を作ってから使う</td></tr>\n</table></div><h4>制限と注意点</h4><ul>\n<li>差し込み項目は1つのテンプレートで最大50個です。そのうち、フロー、Apex、関連リストの差し込み項目は、それぞれ最大5個です。</li>\n<li>フローの入力はすべて必須として扱われ、テンプレートの入力に含まれている必要があります。Apex の入力は、必須(required)の指定がない限り任意です。</li>\n<li>関連リストを設定しても、ユーザーのページレイアウトにその関連リストがない、または関連オブジェクトの参照権限がない場合は、関連リストのデータは LLM に送られません。</li>\n<li>活動(Activities)の関連リストや、User と Organization の関連リストは、グラウンディングに使えません。</li>\n<li>関連リストのファイルは Salesforce Files だけが対象です。Classic の添付ファイル(Attachment)は使えないので、先に Salesforce Files に変換します。</li>\n<li>Apex メソッドの入力は Request クラスのリストで、データが入るのはリストの最初の要素だけです。</li>\n<li>グラウンディングに使っているフローや Apex の入力の形を変えると、そのテンプレートは動かなくなり、新しいバージョンも保存できなくなります。</li>\n<li>実行時、差し込むデータへのアクセスは、テンプレートを実行するユーザーの権限で決まります。</li>\n</ul><h4>Data 360 のリトリーバーで RAG</h4><ul>\n<li>リトリーバーは、Data 360 にインデックス化されたナレッジから関連情報を探してテンプレートに返します。作る場所は AI Models(旧 Einstein Studio)です。</li>\n<li>テンプレートで使えるのは、個別リトリーバー、アンサンブルリトリーバー(複数のリトリーバーの結果をまとめ、関連度で並べ直す)、Agentforce Data Library で作られる Web リトリーバーです。</li>\n<li>リトリーバーの検索テキストは255文字までで、使えるのはグローバル変数とプロンプトの入力だけです。関連リスト、フロー、Apex の値は使えません。</li>\n<li>「出力項目」と「結果の数」を指定しないと、リトリーバーを作ったときの設定値が使われます。</li>\n<li>プレフィルターを使うと、国や製品などの条件で検索の範囲を絞れます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>外部のシステムから在庫数を取ってきてプロンプトに入れたいときは?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>外部 API を呼べる Apex の差し込み項目が向いています。レコードの項目や関連リストでは、組織の外のデータは取れません。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>外部 API や複雑な絞り込みは Apex、ノーコードで加工したいならフロー(テンプレートトリガー型プロンプトフロー)です。</li>\n<li>関連リストは、実行ユーザーのページレイアウトと権限で、送られるデータが決まります。</li>\n<li>フロー、Apex、関連リストの差し込み項目は、それぞれ最大5個です。</li>\n<li>リトリーバーの検索テキストに使えるのは、グローバル変数とプロンプトの入力だけです。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、営業メールのプロンプトテンプレートに、外部の在庫管理システムの API から取得した最新の在庫数を含めたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "関連リストの差し込み項目",
+      "InvocableMethod を持つ Apex クラスの差し込み項目",
+      "レコードの差し込み項目"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Apex の差し込み項目は、SOQL や外部 API の結果をプロンプトに返せます。レコードの差し込み項目や関連リストは組織内のレコードのデータを差し込むもので、外部 API は呼べません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_apex.htm",
+     "x": "ApexSOQL や外部 API の結果、整形した JSON、プログラムによる絞り込みInvocableMethod を付けたメソッドが必要。出力は Prompt という名前の文字列"
+    },
+    {
+     "q": "管理者は、取引先の「商談」関連リストでグラウンディングするテンプレートを作りました。あるユーザーが実行すると、商談のデータが応答に反映されません。このユーザーのページレイアウトには商談の関連リストがありません。考えられる理由はどれですか?",
+     "o": [
+      "関連リストはユーザーのページレイアウトにないと、そのデータが LLM に送られないため",
+      "関連リストは Data 360 が有効な組織でしか使えないため",
+      "関連リストの差し込み項目は、営業メールテンプレートでしか使えないため"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "関連リストを設定していても、ユーザーのページレイアウトにその関連リストがない、または関連オブジェクトの参照権限がない場合、関連リストのデータは LLM に送られません。Data 360 の有効化やテンプレートの種類は、この現象の理由ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_related_list.htm",
+     "x": "関連リストを設定しても、ユーザーのページレイアウトにその関連リストがない、または関連オブジェクトの参照権限がない場合は、関連リストのデータは LLM に送られません。"
+    },
+    {
+     "q": "あるユーザーが Salesforce Classic の「メモ & 添付ファイル」からアップロードしたファイルが、関連リストでグラウンディングしたプロンプトの解決結果に出てきません。管理者はまず何をすべきですか?",
+     "o": [
+      "ファイルサイズの上限を引き上げるようサポートに依頼する",
+      "テンプレートを営業メールの種類で作り直す",
+      "そのファイルを Salesforce Files に変換して、もう一度プレビューする"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Prompt Builder が関連リストで扱えるのは Salesforce Files だけで、Classic の添付ファイル(Attachment)は使えません。ファイルが出てこないときは Salesforce Files に変換してプレビューし直します。ファイルサイズやテンプレートの種類が原因ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_related_list.htm",
+     "x": "関連リストのファイルは Salesforce Files だけが対象です。Classic の添付ファイル(Attachment)は使えないので、先に Salesforce Files に変換します。"
+    },
+    {
+     "q": "プロンプトテンプレートに追加したリトリーバーの「検索テキスト」に使えるものはどれですか?",
+     "o": [
+      "グローバル変数とプロンプトの入力",
+      "フローの差し込み項目",
+      "関連リストの差し込み項目"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "リトリーバーの検索テキストは255文字までで、使えるのはグローバル変数とプロンプトの入力だけです。関連リスト、フロー、Apex など、ほかのソースの値は使えません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_rag_about.htm",
+     "x": "リトリーバーの検索テキストは255文字までで、使えるのはグローバル変数とプロンプトの入力だけです。関連リスト、フロー、Apex の値は使えません。"
+    },
+    {
+     "q": "管理者は、取引先責任者の近くで開かれる会社のイベント一覧をフローで作り、プロンプトテンプレートに差し込みたいと考えています。テンプレートに渡す指示を作るために、フローで使う要素はどれですか?",
+     "o": [
+      "Transform 要素",
+      "Add Prompt Instructions 要素",
+      "Get Records 要素だけ"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "テンプレートトリガー型プロンプトフローでは、Add Prompt Instructions 要素で、テンプレートに差し込む指示(テキスト)を作ります。Transform や Get Records はデータの加工や取得に使えますが、それだけではテンプレートに指示は渡りません。",
+     "u": "https://help.salesforce.com/s/articleView?id=platform.flow_ref_elements_add_prompt.htm",
+     "x": "フローテンプレートトリガー型プロンプトフローが作るテキストフローの「Add Prompt Instructions」要素で、テンプレートに差し込む指示を作る"
+    },
+    {
+     "q": "1つのプロンプトテンプレートで使えるフローの差し込み項目は、最大でいくつですか?",
+     "o": [
+      "5個",
+      "10個",
+      "50個"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "フロー、Apex、関連リストの差し込み項目は、それぞれ最大5個です。50個は、テンプレート全体の差し込み項目の上限です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_limits.htm",
+     "x": "差し込み項目は1つのテンプレートで最大50個です。そのうち、フロー、Apex、関連リストの差し込み項目は、それぞれ最大5個です。"
+    }
+   ]
+  },
+  {
+   "id": "promptbp",
+   "no": "Ch2·3",
+   "title": "プロンプトのベストプラクティスとテスト",
+   "tag": "Prompt Best Practices",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>今日はぼくが説明するね!いいプロンプトのコツは、とにかく長く、難しい言葉で書くこと!</p><p class=\"tk rou\" data-f=\"think\"><b class=\"who\">クラウドちゃん</b>うーん、公式のベストプラクティスは逆です。簡潔で分かりやすく、専門用語は避けます。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>じゃあ、「あなたは営業担当者です」って役を決めるのは?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>それは正解です。役割と目標を書き、指示は「Instructions:」の行のあとに三重引用符で囲みます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>文字列リテラルの区切りと同じだ。文脈と命令を分けて読ませる。</p></div><p class=\"one\">よいプロンプトテンプレートは、役割、目標、データ、指示、ガイドライン、言語、文体などの材料を必要なだけ組み合わせて作り、プレビューで何度もテストしてから有効化します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>料理のレシピです。材料(データ)、手順(指示)、盛り付けの注意(文体とトーン)がそろっていれば、誰が作っても同じ味になります。レシピも、試食しながら少しずつ直していきます。</p></div><h4>テンプレートの材料</h4><div class=\"tw\"><table><thead><tr><th>材料</th><th>書く内容</th></tr></thead>\n<tr><td>参加者(Participants)</td><td>応答を送る人と受け取る人。差し込み項目を使って書ける</td></tr>\n<tr><td>設定(Setting)</td><td>通信チャネルやコンテンツの種類。テンプレートの種類で決まる(項目生成ならレコードの項目)</td></tr>\n<tr><td>目標(Goal)</td><td>応答で達成したいこと。ユーザーの状況や好みも考える</td></tr>\n<tr><td>関係(Relationships)</td><td>参加者どうしの関係と、応答と参加者の関係</td></tr>\n<tr><td>指示(Instructions)</td><td>生成してほしい内容と、含めるべきこと。三重引用符で囲む</td></tr>\n<tr><td>ガイドライン(Guidelines)</td><td>ハルシネーション(もっともらしい誤り)の可能性を減らすために、守らせるルール</td></tr>\n<tr><td>言語、文体とトーン</td><td>応答の言語と、文体やトーンの指定</td></tr>\n</table></div><ul>\n<li>すべての材料が、どのテンプレートにも必要なわけではありません。</li>\n</ul><h4>書き方のベストプラクティス</h4><ul>\n<li>簡潔で分かりやすく書きます。業界用語や技術用語を避け、自然な言葉を使います。</li>\n<li>LLM に、営業担当者やサポート担当者などの役割を演じさせ、その人物の目標を定義します。</li>\n<li>文脈と指示を区別させるため、別の行に「Instructions:」と書き、指示を三重引用符(\"\"\")で囲みます。</li>\n<li>「顧客に送るメッセージだけを生成する」のように、期待する種類の内容だけを生成するよう直接指示します。内容を作る過程の説明が返ってくるのを防ぎます。</li>\n<li>文体を1つに決めて守ります。語の選び方、強調語、絵文字、句読点で文体が決まり、一貫した応答につながります。</li>\n<li>例のプロンプトテンプレートライブラリ(Example Prompt Template Library)のテンプレートから始めて、自社向けに直すのも手です。</li>\n</ul><h4>テストのしかた</h4><ul>\n<li>「Preview Settings」で入力のレコードを選んでプレビューします。解決(Resolution)の表示は既定でオンで、差し込み項目が実際の値に置き換わったプロンプトを確認できます。</li>\n<li>プレビューのたびに、テンプレートを変えていなくても LLM は新しい応答を生成します。一貫性を確かめるため、1つのレコードで複数回生成して比べます。</li>\n<li>応答は、関連性、目標の達成、文体とトーン、事実の正確さ、一貫性、有害性(Toxicity)、偏り(Bias)の観点で評価します。</li>\n<li>Prompt Builder でのテストは一度に1つの入力です。多数の入力でまとめて評価するには、Agentforce Studio のテストセンター(ベータ)で、CSV のテストケースをアップロードして一括テストします。</li>\n<li>一括テストでは、一貫性、完全性、事実性、指示の順守などを確かめるスコアラーを選んで、応答を評価します。</li>\n<li>バージョンを分けて、グラウンディングのデータ、LLM、本文の組み合わせを比べます。</li>\n<li>名前項目がない、または名前項目が暗号化されたオブジェクトのレコードは、プレビューのテストレコードに選べません。</li>\n</ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>指示は「Instructions:」の行のあとに三重引用符で囲み、文脈と分けます。</li>\n<li>役割を与える、期待する内容だけを生成させる、文体をそろえる、の3つがよく問われます。</li>\n<li>同じテンプレートでも応答は毎回変わるので、複数回生成して一貫性を確かめます。</li>\n<li>多数の入力でのテストは、テストセンターに CSV を読み込む一括テストです。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "管理者がプレビューすると、LLM がメール本文ではなく「このメールは次のように作成しました」という作成過程の説明を返すことがあります。コンサルタントはテンプレートにどのような変更を推奨すべきですか?",
+     "o": [
+      "温度(Temperature)を最大値の2に上げる",
+      "「顧客に送るメッセージだけを生成する」のように、期待する内容だけを生成するよう直接指示する",
+      "指示の部分を削除して、差し込み項目だけにする"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "期待する種類の内容だけを生成するよう直接指示すると、作成過程の説明ではなく内容そのものが返りやすくなります。温度を上げると応答はよりランダムになり、指示を削除すると何を生成すべきかが伝わりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+     "x": "「顧客に送るメッセージだけを生成する」のように、期待する種類の内容だけを生成するよう直接指示します。内容を作る過程の説明が返ってくるのを防ぎます。"
+    },
+    {
+     "q": "プロンプトテンプレートで、LLM が背景の情報(文脈)と実行すべき指示を区別しやすくするために推奨される書き方はどれですか?",
+     "o": [
+      "指示をすべて大文字で書く",
+      "指示を差し込み項目の中に入れる",
+      "別の行に「Instructions:」と書き、指示を三重引用符で囲む"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "公式のベストプラクティスでは、別の行に「Instructions:」と書き、指示を三重引用符(\"\"\")で囲んで、文脈と指示を区別させます。大文字にしたり差し込み項目に入れたりする方法は推奨されていません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+     "x": "文脈と指示を区別させるため、別の行に「Instructions:」と書き、指示を三重引用符(\"\"\")で囲みます。"
+    },
+    {
+     "q": "ある会社は、新しく作った項目生成テンプレートが毎回安定した品質の応答を返すかを確かめたいと考えています。Prompt Builder でのテストとして適切なものはどれですか?",
+     "o": [
+      "同じレコードで複数回応答を生成し、結果を比べる",
+      "1回プレビューして問題がなければ有効化する",
+      "解決(Resolution)の表示をオフにしてから1回だけ生成する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "プレビューのたびに、テンプレートを変えていなくても LLM は新しい応答を生成します。一貫性を確かめるには、1つのレコードで複数回生成して比べます。1回だけの確認では、ばらつきが分かりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_preview_response.htm",
+     "x": "プレビューのたびに、テンプレートを変えていなくても LLM は新しい応答を生成します。一貫性を確かめるため、1つのレコードで複数回生成して比べます。"
+    },
+    {
+     "q": "ある会社は、プロンプトテンプレートの新しいバージョンを、200件の異なる入力でまとめて評価してから公開したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Prompt Builder のプレビューで200回レコードを切り替えて確認する",
+      "テストセンターで、CSV のテストケースを読み込む一括テストを実行する",
+      "Setup 監査証跡でテンプレートの変更履歴を確認する"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "Prompt Builder のテストは一度に1つの入力です。多数の入力でまとめて評価するには、Agentforce Studio のテストセンターで CSV のテストケースをアップロードし、スコアラーを選んで一括テストします。なお、テンプレートの作成や更新は Setup 監査証跡には記録されません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_studio_testing_center_prompt_templates.htm",
+     "x": "Prompt Builder でのテストは一度に1つの入力です。多数の入力でまとめて評価するには、Agentforce Studio のテストセンター(ベータ)で、CSV のテストケースをアップロードして一括テストします。"
+    },
+    {
+     "q": "プロンプトテンプレートの材料(Ingredients)のうち、ハルシネーションの可能性を減らすために、LLM に守らせるルールを示すものはどれですか?",
+     "o": [
+      "参加者(Participants)",
+      "設定(Setting)",
+      "ガイドライン(Guidelines)"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "ガイドラインは、ハルシネーションの可能性を減らすために、モデルが守るべきルールを与える材料です。参加者は応答を送る人と受け取る人、設定は通信チャネルやコンテンツの種類を示します。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_template_ingredients.htm",
+     "x": "ガイドライン(Guidelines)ハルシネーション(もっともらしい誤り)の可能性を減らすために、守らせるルール"
+    },
+    {
+     "q": "管理者がプロンプトテンプレートをプレビューしようとすると、あるカスタムオブジェクトのレコードがテストレコードの選択肢に出てきません。このオブジェクトの名前項目は暗号化されています。最も考えられる理由はどれですか?",
+     "o": [
+      "名前項目が暗号化されたオブジェクトのレコードはプレビューに使えないため",
+      "カスタムオブジェクトは Prompt Builder でサポートされないため",
+      "テンプレートがまだ有効化されていないため"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "名前項目がない、または名前項目が暗号化されたオブジェクトのレコードは、プレビューのテストレコードに選べません。カスタムオブジェクトそのものはサポートされ、プレビューは有効化の前にも行えます。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_limitations.htm",
+     "x": "名前項目がない、または名前項目が暗号化されたオブジェクトのレコードは、プレビューのテストレコードに選べません。"
+    }
+   ]
+  },
+  {
+   "id": "models",
+   "no": "Ch2·4",
+   "title": "モデルの選択(Einstein Studio/Model Builder・BYOLLM)",
+   "tag": "Model Selection",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\"><b class=\"who\">コミットくん</b>モデルの選択は、同じコードを動かす実行環境を選ぶのに似ている。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>じゃあ、ぼくは料理でたとえる!Salesforce 管理のモデルはお店の定食、BYOLLM は自分の食材の持ち込み!</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>いいですね。持ち込みの食材を登録して、味付けの設定を決める台所が AI Models(旧 Einstein Studio)です。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>味付けは温度だ。低くすれば毎回同じ味、高くすれば日替わりになる。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>自分で台所に立つ日が来るとは…。</p></div><p class=\"one\">プロンプトテンプレートで使う LLM は、テンプレートのバージョンごとに選べます。使えるモデルの追加や、温度などの設定は、AI Models(旧 Einstein Studio)で行います。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>社用車の手配です。会社が用意した車(Salesforce 管理のモデル)をすぐ使うこともできますし、自分の車(BYOLLM)を登録して使うこともできます。どちらの車でも、会社の安全ルール(Einstein Trust Layer)に沿って走ります。</p></div><h4>使えるモデルの種類</h4><div class=\"tw\"><table><thead><tr><th>種類</th><th>内容</th></tr></thead>\n<tr><td>Salesforce 管理のモデル</td><td>既定で有効になっていて、すぐ使えるモデル。OpenAI、Azure OpenAI、Amazon Bedrock、Vertex AI(Google)などのモデルがある</td></tr>\n<tr><td>BYOLLM(独自の LLM の持ち込み)</td><td>自社のアカウントの基盤モデルを AI Models に追加して使う。対応するプロバイダーは Amazon Bedrock、Azure OpenAI、OpenAI、Vertex AI(Google)</td></tr>\n<tr><td>LLM Open Connector</td><td>上のプロバイダー以外のモデルや、自社でホストするモデルをつなぐ方法。URL が /chat/completions で終わらない場合は、自動で付け足される</td></tr>\n</table></div><h4>AI Models での設定</h4><ul>\n<li>AI Models は、Data 360 で生成AIと予測AIのモデルを扱う場所です。2026年4月に Einstein Studio から改名されました。モデルを作る機能は AI Model Builder(旧 Einstein Studio Model Builder)と呼ばれます。</li>\n<li>基盤モデル(Foundation Model)を追加すると、外部のモデルプロバイダーと Salesforce の間にエンドポイントの接続ができます。接続には、プロバイダーのダッシュボードで確認できる URL と認証情報が必要です。</li>\n<li>基盤モデルを追加するには、組織で Einstein 生成AI が有効になっている必要があります。</li>\n<li>基盤モデルから用途ごとの「モデル設定(Model Configuration)」を作り、Model Playground でプロンプトを試してから本番で使います。</li>\n<li>温度(Temperature)は0から2の値で、低いほど一貫した応答、高いほどランダムな応答になります。</li>\n<li>Frequency Penalty は同じ語の繰り返しを抑え、Presence Penalty はまだ使っていない語の使用を促します。どちらも -2.0 から 2.0 の値です。</li>\n<li>すでにプロンプトで使われているモデル設定を編集すると、そのプロンプトの動きに影響します。その場合は、新しいモデルを作ります。</li>\n<li>管理者は、AI Models でモデル設定を非表示にして、Prompt Builder で選べないようにできます。Setup では、モデルプロバイダーごとに使用を止めることもできます。</li>\n</ul><h4>Prompt Builder とエージェントでの選び方</h4><ul>\n<li>Prompt Builder の LLM 設定には、標準(Prompt Builder に含まれるもの)とカスタム(BYOLLM で持ち込んだもの)があります。標準の設定を変更すると、カスタムとして保存されます。</li>\n<li>テンプレートのバージョンごとに、別のモデル設定を持てます。実際に使われるのは、有効化したバージョンのモデルだけです。</li>\n<li>非表示にされたモデルを使うテンプレートは、そのまま動き続けます。ただし、使えるモデルへの置き換えが推奨されます。</li>\n<li>エージェントの推論に使うモデルは、Setup の「Einstein Audit, Analytics, and Monitoring Setup」で選ぶモデルオプション(推奨は Salesforce Default、ほかに AWS-Hosted と Google Gemini)で決まり、すべてのエージェントに適用されます。</li>\n<li>エージェントのモデルオプションが限られていても、プロンプトテンプレート、Apex、Models API を使うカスタムアクションなら、Salesforce 管理のモデルや BYO のモデルを参照できます。</li>\n<li>大量の応答は、プロンプトテンプレートのバッチ処理で非同期に生成できます。フローでは「Prompt Template (Batch Generation)」アクションを使い、モデルは「Batch Supported: Yes」のものを選ぶと最も速く処理されます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>社内で微調整した LLM が Azure OpenAI にあるんだけど、使える?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>使えます。AI Models で BYOLLM として基盤モデルを追加し、モデル設定を作れば、Prompt Builder のテンプレートで選べます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>Einstein Studio の現在の名前は AI Models です。BYOLLM も、リトリーバーの作成も、ここで行います。</li>\n<li>BYOLLM の対応プロバイダーは Amazon Bedrock、Azure OpenAI、OpenAI、Vertex AI です。それ以外は LLM Open Connector です。</li>\n<li>応答を安定させたいときは、温度を下げます。</li>\n<li>使われるモデルは、有効化したバージョンのモデルです。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、自社のデータで微調整した LLM を自社の Azure OpenAI アカウントで運用しており、それを Prompt Builder のテンプレートで使いたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "AI Models で BYOLLM として基盤モデルを追加し、モデル設定を作る",
+      "Agentforce のモデルオプションを AWS-Hosted に切り替える",
+      "テンプレート本文に Azure OpenAI の API キーを書き込む"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "BYOLLM では、Azure OpenAI などの自社アカウントの基盤モデルを AI Models に追加し、モデル設定を作って Prompt Builder で使えます。AWS-Hosted はエージェントの推論に使う Salesforce 管理のモデルオプションで、API キーをテンプレートに書くのは正しい方法ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_foundation_models_create.htm",
+     "x": "BYOLLM(独自の LLM の持ち込み)自社のアカウントの基盤モデルを AI Models に追加して使う。対応するプロバイダーは Amazon Bedrock、Azure OpenAI、OpenAI、Vertex AI(Google)"
+    },
+    {
+     "q": "ある会社は、自社のデータセンターでホストしている独自の言語モデルを Salesforce の生成AIの機能で使いたいと考えています。このモデルは BYOLLM の対応プロバイダーのものではありません。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Salesforce 管理のモデルの一覧に追加するよう依頼する",
+      "LLM Open Connector を使って接続する",
+      "Einstein Search の Web リトリーバーとして登録する"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "LLM Open Connector を使うと、主要クラウドでホストされるモデルや自社でホストするモデルなど、任意の言語モデルを接続できます。Salesforce 管理のモデルは Salesforce が用意するもので、Web リトリーバーはグラウンディングのための検索の仕組みです。",
+     "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_foundation_models_create.htm",
+     "x": "LLM Open Connector上のプロバイダー以外のモデルや、自社でホストするモデルをつなぐ方法。URL が /chat/completions で終わらない場合は、自動で付け足される"
+    },
+    {
+     "q": "ある会社では、モデル設定を使ったプロンプトの応答が毎回大きく変わってしまうため、より一貫した応答にしたいと考えています。AI Models のモデル設定で、どの変更を推奨すべきですか?",
+     "o": [
+      "Presence Penalty を上げる",
+      "温度(Temperature)を上げる",
+      "温度(Temperature)を下げる"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "温度は0から2の値で、低いほど一貫した応答、高いほどランダムな応答になります。Presence Penalty を上げると、まだ使っていない語が使われやすくなり、一貫性を高める設定ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_foundation_models_configure.htm",
+     "x": "温度(Temperature)は0から2の値で、低いほど一貫した応答、高いほどランダムな応答になります。"
+    },
+    {
+     "q": "あるプロンプトテンプレートには、GPT のモデルを使うバージョン1(有効)と、Claude のモデルを使うバージョン2(無効)があります。ユーザーがこのテンプレートを実行すると、どのモデルが使われますか?",
+     "o": [
+      "バージョン1のモデル",
+      "バージョン2のモデル",
+      "組織の既定のモデル"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "テンプレートのバージョンごとに別のモデル設定を持てますが、使われるのは有効化したバージョンのモデルだけです。無効なバージョン2のモデルや、組織の既定のモデルは使われません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_changing_llm_configurations.htm",
+     "x": "テンプレートのバージョンごとに、別のモデル設定を持てます。実際に使われるのは、有効化したバージョンのモデルだけです。"
+    },
+    {
+     "q": "ある会社の管理者は、特定の LLM のモデル設定を、テンプレートを作る人が Prompt Builder で選べないようにしたいと考えています。最も適切な方法はどれですか?",
+     "o": [
+      "Prompt Template Manager 権限セットを外す",
+      "AI Models でそのモデル設定を非表示にする",
+      "テンプレートをすべて無効化する"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "AI Models でモデル設定を非表示にすると、Prompt Builder で選べなくなります。権限セットを外すとテンプレート自体を作れなくなり、テンプレートの無効化はモデルの選択とは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_large_language_model_support.htm",
+     "x": "管理者は、AI Models でモデル設定を非表示にして、Prompt Builder で選べないようにできます。Setup では、モデルプロバイダーごとに使用を止めることもできます。"
+    },
+    {
+     "q": "Prompt Builder でカスタムの LLM 設定を作ったり、リトリーバーを作ったりする機能 Einstein Studio の、現在の公式名はどれですか?",
+     "o": [
+      "AI Models",
+      "Agentforce Studio",
+      "Model Playground"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "2026年4月に、Einstein Studio は AI Models に改名されました。Agentforce Studio はエージェントやテストセンターなどを扱う別の名前で、Model Playground は AI Models の中でモデル設定を試す画面です。",
+     "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_use_ai_models.htm",
+     "x": "AI Models は、Data 360 で生成AIと予測AIのモデルを扱う場所です。2026年4月に Einstein Studio から改名されました。モデルを作る機能は AI Model Builder(旧 Einstein Studio Model Builder)と呼ばれます。"
+    }
+   ]
+  }
+ ]
+}

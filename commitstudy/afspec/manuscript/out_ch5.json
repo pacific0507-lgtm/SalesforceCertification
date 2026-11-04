@@ -13,12 +13,12 @@
     {
      "q": "ある保険会社は、Agentforce に送る顧客データが、外部のLLM提供元のモデルの学習に使われたり、提供元に保存されたりすることを心配しています。Einstein Trust Layer のどの仕組みがこの懸念に応えますか?",
      "o": [
-      "ゼロデータ保持(Zero Data Retention)",
       "動的グラウンディングと安全なデータ取得",
+      "ゼロデータ保持(Zero Data Retention)",
       "プロンプト防御(Prompt Defense)"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "ゼロデータ保持のポリシーにより、外部のLLM提供元はデータを保持せず、学習にも使わず、応答を返したあとに削除します。動的グラウンディングはユーザーの権限の範囲でデータを差し込む仕組みで、プロンプト防御はシステムポリシーで有害な出力を減らす仕組みです。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_arch.htm&type=5",
@@ -27,12 +27,12 @@
     {
      "q": "管理者は「Einstein Trust Layer」ページでデータマスキングを有効にしました。しかし、Agentforce Service エージェントとの会話では、氏名などが置き換えられないままLLMに送られています。最も適切な説明はどれですか?",
      "o": [
-      "エージェントでは、LLMのデータマスキングは無効になっている",
       "項目ベースのマスキングには、エージェントユーザーにShield Platform Encryptionのライセンスが必要",
-      "データマスキングはSandboxでだけ有効になる"
+      "データマスキングはSandboxでだけ有効になる",
+      "エージェントでは、LLMのデータマスキングは無効になっている"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "エージェントでは、パターンベースも項目ベースも、LLMのデータマスキングは無効です。回答に必要な文脈まで隠れて精度が落ちるのを防ぐためです。エージェントユーザーのライセンスやSandboxかどうかは、この挙動とは関係ありません。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.agent_trust_data_masking.htm&type=5",
@@ -55,12 +55,12 @@
     {
      "q": "営業担当者がプロンプトテンプレートを実行すると、取引先のデータがグラウンディングされます。このとき、差し込まれるデータの範囲を決めるのは誰のアクセス権ですか?",
      "o": [
-      "プロンプトを実行するユーザー",
       "プロンプトテンプレートを作成したユーザー",
-      "Einstein を有効にしたシステム管理者"
+      "Einstein を有効にしたシステム管理者",
+      "プロンプトを実行するユーザー"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "安全なデータ取得により、グラウンディングはプロンプトを実行するユーザーの権限と項目レベルセキュリティの範囲で行われます。実行時に決まるので「動的」グラウンディングと呼ばれます。テンプレートの作成者や管理者の権限は使われません。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_arch.htm&type=5",
@@ -69,12 +69,12 @@
     {
      "q": "Einstein Trust Layer の処理のうち、LLMが作った応答がCRMアプリに戻る「応答の旅(Response Journey)」で行われるものはどれですか?",
      "o": [
-      "有害性の検出とデマスキング",
       "安全なデータ取得とグラウンディング",
+      "有害性の検出とデマスキング",
       "データマスキングとプロンプト防御"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "応答の旅では、有害性の検出、マスクしたデータを元に戻すデマスキング、監査とフィードバックの記録が行われます。安全なデータ取得、グラウンディング、データマスキング、プロンプト防御は、LLMに送る前の「プロンプトの旅」で行われます。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_arch2.htm&type=5",
@@ -106,12 +106,12 @@
     {
      "q": "あるサービス部門は、本番の Agentforce Service エージェントでエラー率が急に上がったとき、すぐに担当者へ知らせが届くようにしたいと考えています。どの機能を使うべきですか?",
      "o": [
-      "Agent Health Monitoring",
       "Agent Analytics の Usage タブ",
-      "Agent Optimization のインテントのクラスタリング"
+      "Agent Optimization のインテントのクラスタリング",
+      "Agent Health Monitoring"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "Agent Health Monitoring は、エラー率や応答の遅れがしきい値を超えると、ほぼリアルタイムでメール通知します。Agent Analytics は傾向を見るためのダッシュボードで、通知の仕組みではありません。インテントのクラスタリングは週1回の処理で、急な異常の検知には使えません。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.agentforce_observability_observe_phase_tools.htm&type=5",
@@ -120,12 +120,12 @@
     {
      "q": "1時間前に終わったセッションで、エージェントが誤ったアクションを実行しました。管理者は Agent Optimization を開きましたが、処理済みセッションの一覧にそのセッションがありません。今すぐ原因を調べるには、どうすべきですか?",
      "o": [
-      "そのセッションの Trace タブで、手順ごとの状態とエラーを確認する",
       "Data 360 にデータが届くまで24時間待つ",
+      "そのセッションの Trace タブで、手順ごとの状態とエラーを確認する",
       "Omni Supervisor の「Agentforce」タブでセッションを再生する"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "処理済みセッション(インテントや品質スコア付き)は、セッション終了から4〜5時間後に見られます。Trace タブは未処理のセッションでもすぐに使えるため、急ぎのデバッグは Trace から始めます。Omni Supervisor は音声の通話をリアルタイムで見るための画面で、過去のセッションの調査には使いません。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.agentforce_observability_observe_phase_tools.htm&type=5",
@@ -134,12 +134,12 @@
     {
      "q": "管理者は、生成AIの監査とフィードバックのデータ収集をオンにしたいと考えています。設定のどこで操作しますか?",
      "o": [
-      "Einstein Audit, Analytics, and Monitoring Setup",
       "Einstein Trust Layer",
+      "Einstein Audit, Analytics, and Monitoring Setup",
       "Agentforce Builder の Agent Access ページ"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "監査とフィードバックは、設定の「Einstein Audit, Analytics, and Monitoring Setup」ページでオンにし、保存先のデータスペースを選びます。「Einstein Trust Layer」ページはデータマスキングや有害性検出の設定、Agent Access ページはエージェントユーザーの権限を確認する場所です。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_feedback_enable.htm&type=5",
@@ -148,12 +148,12 @@
     {
      "q": "監査とフィードバックのデータ収集をオンにした直後、レポートにデータが表示されません。データの表示について正しい説明はどれですか?",
      "o": [
-      "24時間以内に Data 360 に表示され、その後は1時間ごとに更新される",
       "収集したデータは翌週の定期処理で一括して表示される",
-      "Salesforce の30日間の保存期間が過ぎてから表示される"
+      "Salesforce の30日間の保存期間が過ぎてから表示される",
+      "24時間以内に Data 360 に表示され、その後は1時間ごとに更新される"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "収集したデータは24時間以内に Data 360 に表示され、その後は1時間ごとに更新されます。30日間は、Salesforce がコンプライアンスのために保存する期間で、表示までの待ち時間ではありません。週1回の処理は、Agent Optimization のインテントのクラスタリングの話です。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_feedback_enable.htm&type=5",
@@ -171,12 +171,12 @@
     {
      "q": "ある会社は、ログインしていない一般のお客さまが使う Web チャットに Agentforce Service エージェントを公開します。資格情報ベースのユーザー確認は使いません。このエージェントがどのレコードを読めるかは、何によって決まりますか?",
      "o": [
-      "エージェントユーザー(EinsteinServiceAgent User)のプロファイル、権限、項目レベルセキュリティ、共有ルール",
       "チャットしているお客さまの取引先責任者レコードの共有設定",
-      "エージェントを有効化したシステム管理者の権限"
+      "エージェントを有効化したシステム管理者の権限",
+      "エージェントユーザー(EinsteinServiceAgent User)のプロファイル、権限、項目レベルセキュリティ、共有ルール"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "利用者のユーザーレコードがない場合、Service エージェントは専用のエージェントユーザーとして動き、そのユーザーのプロファイル、権限、項目レベルセキュリティ、共有ルールでアクセスが決まります。お客さまの取引先責任者は識別に使えても、アクセスは制御しません。管理者の権限で動くことはありません。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.agent_execution_data.htm&type=5",
@@ -199,12 +199,12 @@
     {
      "q": "Agentforce Service エージェントに、注文状況を調べるカスタムアクションを追加します。お客さまが、ほかの人の注文を見られないようにする必要があります。コンサルタントは何を推奨すべきですか?",
      "o": [
-      "本人確認後のIDを VerifiedCustomerId 変数に入れ、アクションの照会をそのIDで絞り込む",
       "MessagingSession.ContactId のコンテキスト変数があるので、追加の対策は不要",
+      "本人確認後のIDを VerifiedCustomerId 変数に入れ、アクションの照会をそのIDで絞り込む",
       "エージェントユーザーに「すべてのデータの参照」権限を与える"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "コンテキスト変数はお客さまが誰かを伝えるだけで、データアクセスは制御しません。本人確認後のIDを VerifiedCustomerId に保存し、フローや Apex の照会やフィルタで、その人のレコードだけに絞ります。「すべてのデータの参照」を与えるのは、最小権限の原則に反します。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.agent_user.htm&type=5",
@@ -213,12 +213,12 @@
     {
      "q": "エージェントの応答に、自社のサポートサイトへのリンクを入れたいのですが、お客さまの画面では「URL_Redacted」と表示されてしまいます。管理者は何をすべきですか?",
      "o": [
-      "そのサイトのURLを信頼済みURL(Trusted URLs)に追加する",
       "プロンプトの有害性検出をオフにする",
-      "エージェントユーザーに Prompt Template Manager 権限セットを割り当てる"
+      "エージェントユーザーに Prompt Template Manager 権限セットを割り当てる",
+      "そのサイトのURLを信頼済みURL(Trusted URLs)に追加する"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "Agentforce は信頼済みURLの許可リストを適用し、未登録のURLを「URL_Redacted」に置き換えます。使いたいURLは信頼済みURLに追加します。有害性検出や Prompt Template Manager 権限セットは、URLの置き換えとは関係ありません。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_trust.htm&type=5",
@@ -227,12 +227,12 @@
     {
      "q": "あるユーザーは、エージェントのアクションで使うプロンプトテンプレートを Prompt Builder で新しく作りたいのですが、作成できません。このユーザーに割り当てるべき権限セットはどれですか?",
      "o": [
-      "Prompt Template Manager",
       "Prompt Template User",
+      "Prompt Template Manager",
       "Data Cloud User"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "プロンプトテンプレートの作成と管理には Prompt Template Manager 権限セットが必要です。Prompt Template User はテンプレートを実行するための権限セットで、作成はできません。Data Cloud User は Data 360 を使うための権限セットです。",
      "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_enable.htm&type=5",
