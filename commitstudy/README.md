@@ -114,3 +114,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `guide/patch_guide.py` + `guide/spec_guide.py`: 使い方ページ(/guide/、図入り・コメントのお願い)、ホームの紹介文を8パターンから切り替え、使い方を見ていない人への案内、メニューに「使い方」
 
 - `patch_rotate_keep.py`: スマホを縦⇔横に回しても、画面上端の本文が同じ位置に来るようにする
+
+- `patch_badge_toast.py`: バッジ獲得のお知らせを、アカウントの記録を読み終えてから、新しく獲得したものだけに
