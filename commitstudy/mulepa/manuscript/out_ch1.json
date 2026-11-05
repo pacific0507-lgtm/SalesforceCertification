@@ -1,0 +1,334 @@
+{
+ "chapter": 1,
+ "chapter_title": "アプリケーションネットワークの基本",
+ "chapter_sub": "アプリケーションネットワークと API 主導の接続の考え方、System・Process・Experience の3層、再利用を広める C4E を学びます。",
+ "sections": [
+  {
+   "id": "appnet",
+   "no": "Ch1·1",
+   "title": "アプリケーションネットワークと API 主導の接続",
+   "tag": "Application Network",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>まなびんさん、問題です。システムが10個あって、全部を1対1で直接つなぐと、つなぎ方は何本になるでしょう。</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>えーと…10本?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>45本だ。10×9÷2。組み合わせ爆発だ。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そうです。これがポイントツーポイント連携のつらいところです。再利用できる API を部品にして網のようにつなぐのが、アプリケーションネットワークです。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>45本!1本ずつ作り直すなんて無理だよ…。</p></div><p class=\"one\">アプリケーション、データ、デバイスを、再利用できる API でつないだ網がアプリケーションネットワークです。その API を役割ごとの層に整理してつなぐ考え方を、API 主導の接続と呼びます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>家電と電源タップです。家電ごとに壁へ専用の配線を引くと、買い替えのたびに工事が必要です。決まった形のコンセント(API)をそろえておけば、新しい家電は差し込むだけで使えます。</p></div><h4>アプリケーションネットワークとは</h4><ul>\n<li>アプリケーションネットワークは、アプリケーション、データ、デバイスをつなぐ枠組みです。つなぎ方は、再利用でき、拡張でき、統制がとれていることが前提です。</li>\n<li>部品になるのは API です。API は標準化された再利用できる部品なので、新しいシステムのたびに連携を作り直す必要がありません。</li>\n<li>API は一度設計すれば、複数のプロジェクトやチームで使えます。API が増えるほど、その価値が多くのプロジェクトに広がります(ネットワーク効果)。</li>\n</ul><h4>解決できる課題</h4><div class=\"tw\"><table><thead><tr><th>課題</th><th>内容</th></tr></thead>\n<tr><td>データのサイロ</td><td>システムや部署が別々に動き、協力の壁ができる</td></tr>\n<tr><td>高い連携コスト</td><td>新しいシステムごとに専用の連携を作ると、費用も時間もかかる</td></tr>\n<tr><td>柔軟性のなさ</td><td>新しい業務の要求や技術への対応が遅く、手間がかかる</td></tr>\n</table></div><h4>アプリケーションネットワークの主な利点</h4><div class=\"tw\"><table><thead><tr><th>利点</th><th>内容</th></tr></thead>\n<tr><td>再利用性</td><td>一度設計した API を、複数のプロジェクトやチームで使える</td></tr>\n<tr><td>拡張性</td><td>新しいシステムやアプリケーションを、ネットワークに無理なく追加できる</td></tr>\n<tr><td>ガバナンス</td><td>IT 部門が全体を見渡したまま、各チームはセルフサービスで素早く開発できる</td></tr>\n</table></div><h4>ポイントツーポイントから API 主導の接続へ</h4><ul>\n<li>ポイントツーポイント(point-to-point)連携は、システム同士を1対1で直接つなぐ方式です。Trailhead の例の空港(Mule United Airport)は、以前はこの方式と定期的なバッチ更新で情報をやり取りしていて、リアルタイムの更新に必要な柔軟性と速さが足りませんでした。</li>\n<li>この空港には3つの航空会社があり、データの出し方が REST API、SOAP の Web サービス、MySQL データベースとバラバラでした。標準化した API でつなぐことで、乗客にリアルタイムの運航情報を出せるようになりました。</li>\n<li>API 主導の接続(API-led connectivity)は、API を3つの層に分けて整理する考え方です。それぞれの層に、はっきりした役割があります。公式ドキュメントの日本語版では「API 主導の接続性」とも訳されています。</li>\n<li>API 主導の接続の利点として、再利用、俊敏性(アジリティ)、セルフサービス、セキュリティとガバナンスの4つが挙げられています。</li>\n<li>セルフサービスとは、各チームの開発者が自分で API を見つけて使えることです。中央 IT への依存が減ります。</li>\n<li>セキュリティとガバナンスとは、API を保護し監視できるように作ることです。IT 部門は全体の可視性と管理を保てます。</li>\n</ul><h4>アプリケーションネットワークを見る道具</h4><ul>\n<li>API Visualizer(旧 Anypoint Visualizer)は、アプリケーションネットワーク全体をリアルタイムのグラフで表示します。API、Mule アプリケーション、それらが呼び出す外部システムまで含まれ、事前の設定は要りません。</li>\n<li>グラフのつながりは、直近7日間に発生したトラフィックをもとに描かれます。</li>\n<li>冗長なポイントツーポイント接続を見つけて、新しい Process API の要件を考えるといった使い方が、公式のユースケースとして紹介されています。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>アプリケーションネットワークって、全体はどうやって見るの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>API Visualizer を使います。実際の通信から、つながりを自動で描いてくれます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>手書きの構成図は古くなる。通信から描いた図は古くならない。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>アプリケーションネットワークの3つの利点は、再利用性、拡張性、ガバナンスです。</li>\n<li>ポイントツーポイント連携は、つなぐたびに専用の連携を作ることになり、コストと柔軟性の問題を生みます。</li>\n<li>API 主導の接続の利点は、再利用、俊敏性、セルフサービス、セキュリティとガバナンスです。</li>\n<li>ネットワークの実際のつながり(依存関係)を確かめるなら API Visualizer です。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある製造業の会社は、新しいシステムを導入するたびに専用の連携を一から作っており、費用と時間がかさんでいます。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "新しいシステムごとに、必要な相手とのポイントツーポイント連携を追加する",
+      "再利用できる API を部品にしたアプリケーションネットワークを作り、新しいシステムは既存の API につなぐ",
+      "すべてのシステムのデータを夜間バッチで1つのデータベースに複製する",
+      "連携の数を減らすため、新しいシステムの導入を一時的に止める"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "新しいシステムごとに専用の連携を作ることが、高い連携コストの原因です。再利用できる API でつなぐアプリケーションネットワークなら、作り直しが減ります。ポイントツーポイントの追加は問題を悪化させ、バッチ複製はリアルタイム性と柔軟性に欠けます。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/discover-application-networks",
+     "x": "高い連携コスト新しいシステムごとに専用の連携を作ると、費用も時間もかかる"
+    },
+    {
+     "q": "アプリケーションネットワークの説明として、最も適切なものはどれですか?",
+     "o": [
+      "社内の全システムを1台のサーバーに集約するための仕組み",
+      "Anypoint Platform の利用者アカウントをまとめた組織の階層",
+      "Mule アプリケーションを動かすためのネットワーク機器の構成",
+      "アプリケーション、データ、デバイスを、再利用でき拡張でき統制のとれた形でつなぐ枠組み"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "アプリケーションネットワークは、アプリケーション、データ、デバイスをつなぐ枠組みで、再利用性、拡張性、統制が前提です。サーバー集約や組織の階層、ネットワーク機器の話ではありません。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/discover-application-networks",
+     "x": "アプリケーションネットワークは、アプリケーション、データ、デバイスをつなぐ枠組みです。つなぎ方は、再利用でき、拡張でき、統制がとれていることが前提です。"
+    },
+    {
+     "q": "ある金融機関は、各チームに素早く開発してほしい一方で、IT 部門が API 全体を見渡せる状態も保ちたいと考えています。これはアプリケーションネットワークのどの利点に当たりますか?",
+     "o": [
+      "ガバナンス",
+      "拡張性",
+      "再利用性",
+      "冗長性"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "IT 部門が統制を保ちながら、チームがセルフサービスで素早く開発できることは、ガバナンスの利点です。拡張性は新しいシステムを無理なく追加できること、再利用性は一度設計した API を複数で使えることです。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/discover-application-networks",
+     "x": "ガバナンスIT 部門が全体を見渡したまま、各チームはセルフサービスで素早く開発できる"
+    },
+    {
+     "q": "ある空港には3つの航空会社があり、運航データを REST API、SOAP の Web サービス、MySQL データベースで別々に提供しています。乗客にリアルタイムの運航情報を出したいとき、アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "各航空会社と画面の間に、1対1の専用連携をそれぞれ作る",
+      "定期的なバッチ更新の間隔を短くして、データを画面に反映する",
+      "各データ源を標準化した API でつなぎ、アプリケーションネットワークとして再利用する",
+      "すべての航空会社に、同じデータベース製品へ移行してもらう"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Trailhead の空港の例では、バラバラな技術のデータ源を標準化した API でつなぎ、リアルタイムの運航情報を実現しています。1対1の専用連携やバッチ更新は、以前の柔軟性に欠けるやり方です。全社に同じ製品を使わせるのは現実的ではありません。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/discover-application-networks",
+     "x": "この空港には3つの航空会社があり、データの出し方が REST API、SOAP の Web サービス、MySQL データベースとバラバラでした。標準化した API でつなぐことで、乗客にリアルタイムの運航情報を出せるようになりました。"
+    },
+    {
+     "q": "サイト信頼性エンジニアは、Salesforce への冗長なポイントツーポイント接続を見つけ、新しい Process API の要件を考えたいと考えています。どのツールを使うべきですか?",
+     "o": [
+      "Anypoint Exchange の資産カタログ",
+      "API Manager の API インスタンス一覧",
+      "API Visualizer のアーキテクチャ視覚化",
+      "Design Center の API デザイナー"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "API Visualizer は、実際の通信をもとにアプリケーションネットワークのつながりをグラフで表示するので、冗長な接続を見つけられます。Exchange は資産のカタログ、API Manager は API の管理、Design Center は API の設計に使うツールです。",
+     "u": "https://docs.mulesoft.com/visualizer/",
+     "x": "冗長なポイントツーポイント接続を見つけて、新しい Process API の要件を考えるといった使い方が、公式のユースケースとして紹介されています。"
+    },
+    {
+     "q": "API Visualizer のグラフで、ノード間のつながりは何をもとに描かれますか?",
+     "o": [
+      "直近7日間に発生したトラフィック",
+      "直近30日間のデプロイ履歴",
+      "Anypoint Exchange に登録された依存関係",
+      "Design Center で設計した API 仕様"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "API Visualizer のつながりは、直近7日間にアプリケーションや API の間で発生したトラフィックをもとに描かれます。デプロイ履歴や Exchange の依存関係、API 仕様から描くわけではありません。",
+     "u": "https://docs.mulesoft.com/visualizer/",
+     "x": "グラフのつながりは、直近7日間に発生したトラフィックをもとに描かれます。"
+    },
+    {
+     "q": "ある会社では、開発者が API を使いたいとき、毎回中央 IT 部門に依頼しないと見つけられません。API 主導の接続のどの利点を生かして、この状態を改善できますか?",
+     "o": [
+      "俊敏性",
+      "キャッシュ",
+      "高可用性",
+      "セルフサービス"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "セルフサービスは、各チームの開発者が自分で API を見つけて使えるようにすることで、中央 IT への依存を減らします。俊敏性は変化に素早く対応できること、キャッシュや高可用性は API 主導の接続の利点として挙げられているものではありません。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+     "x": "セルフサービスとは、各チームの開発者が自分で API を見つけて使えることです。中央 IT への依存が減ります。"
+    }
+   ]
+  },
+  {
+   "id": "layers",
+   "no": "Ch1·2",
+   "title": "System・Process・Experience API の3層",
+   "tag": "API-led Layers",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>3層って、レストランで考えたらいいのかな。System API は倉庫の係!</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいですね。倉庫から食材(データ)を出す係です。倉庫そのもの(基幹システム)は荒らさせません。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>Process API は厨房だ。いくつもの食材を組み合わせて、料理(業務ロジック)にする。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>じゃあ Experience API はウェイター。お客さん(画面やデバイス)に合わせて盛り付けて出す!</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そのとおりです。同じ料理を、店内でも持ち帰りでも出せる。これが再利用です。</p></div><p class=\"one\">API 主導の接続では、API を System API、Process API、Experience API の3層に分けます。System は基幹システムの近く、Experience は利用者の近く、Process はその間で業務の処理を組み立てます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>レストランの分業です。倉庫係(System)は食材を出すだけ、厨房(Process)はそれを料理にし、ウェイター(Experience)はお客さんに合わせて出します。メニューが増えても、倉庫係を増やす必要はありません。</p></div><h4>3つの層</h4><div class=\"tw\"><table><thead><tr><th>層</th><th>役割</th><th>例</th></tr></thead>\n<tr><td>System API</td><td>データベース、ERP、CRM などの基幹システムに直接つながり、閉じ込められていたデータを公開する。基幹システムを混乱から守る</td><td>Salesforce の顧客データを、CRM の動作に影響を与えずにほかのアプリから使えるようにする</td></tr>\n<tr><td>Process API</td><td>複数の System API やほかの Process API のデータを組み合わせ、再利用できる業務ロジックにする。変換、集約、補強を担う</td><td>Salesforce の顧客データと EC サイトの注文データをまとめ、1つのレポート用のビューにする</td></tr>\n<tr><td>Experience API</td><td>特定の画面やデバイスに合った形式でデータを届ける</td><td>モバイルアプリに、注文の追跡と配送状況をリアルタイムに渡す</td></tr>\n</table></div><h4>空港の例で見る3層</h4><ul>\n<li>System API は、空港の CRM、予約の基盤、在庫データベースといった基幹システムの前に置かれます。</li>\n<li>Process API は、顧客データ、運航スケジュール、リアルタイムの在庫をまとめます。</li>\n<li>Experience API は、空港のキオスク、モバイルアプリ、Web ブラウザ向けです。乗客にはモバイル向けのデータを、空港スタッフには Web のダッシュボードを届けます。</li>\n</ul><h4>公式ドキュメントが示す層の作り方</h4><ul>\n<li>MuleSoft Accelerators は API 主導の接続に沿っていて、特に System API で高い再利用性を実現しています。複数のユースケースで共有される System API もあります。</li>\n<li>Process 層では、再利用できる共通データモデル(canonical data model)を使い、層の間のやり取りを単純にします。</li>\n<li>API 主導の接続に従いつつも、API は外部のアプリやシステムとすっきり連携するために必要な所にだけ作ります。</li>\n<li>Experience API の用途は、外部の利用者のためのデータ変換、認証の仲介、サービスの絞り込みです。</li>\n<li>外部アプリに似た機能を出すときは、チャネルごとに Experience API を作るより、1つの Experience API で複数のチャネルを支えられないか検討します。</li>\n<li>変換、検証、集約のどれもしないのに、素通りさせるだけの Process API(パススルーの中継)を挟むのは避けます。</li>\n<li>Salesforce のようにモダンな API を持ち、共通データモデルとの対応づけが少ないバックエンドなら、専用の System API を作らず、Process 層から直接呼ぶ選択肢もあります。</li>\n</ul><h4>層の分類を確かめる</h4><ul>\n<li>API Visualizer では、グラフのノードをレイヤーに割り当てられます。レイヤーを見れば、API が正しく分類され、API 主導の接続の原則に沿っているかをすばやく判断できます。</li>\n<li>レイヤーは、アプリケーションのプロパティ <code>anypoint.platform.visualizer.layer=&lt;name&gt;</code> で自動的に割り当てられます。Runtime Manager の画面、CI/CD(Maven)、API のどれでデプロイするときにも設定できます。</li>\n<li>このプロパティはサーバーのプロパティではなく、アプリケーションのプロパティです。指定したレイヤーがなければ自動で作られます。プロパティで割り当てたノードは、API Visualizer の画面からレイヤーを変更できません。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>じゃあ、どの API にも3層をそろえるべき?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいえ。公式のガイドは、必要な所にだけ API を作るよう勧めています。何もしない中継の層は省きます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>何もしないラッパー関数は、消してよい。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>System は基幹システムに近い層、Experience は画面やデバイスに近い層、Process はその間で業務ロジックを組み立てる層です。</li>\n<li>再利用性が特に高いのは System API です。</li>\n<li>Experience API は、外部の利用者向けのデータ変換、認証の仲介、サービスの絞り込みを受け持ちます。チャネルごとに作る前に、共通化を考えます。</li>\n<li>変換、検証、集約をしない素通りの層は作りません。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある小売業の会社は、ERP の在庫データを複数の新しいアプリから使えるようにしたいと考えています。ERP の動作には影響を与えたくありません。API 主導の接続では、まずどの層の API を用意すべきですか?",
+     "o": [
+      "Process API",
+      "System API",
+      "Experience API",
+      "Proxy API"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "基幹システムに直接つながり、システムを守りながらデータを公開するのは System API です。Process API はデータを組み合わせて業務ロジックにする層、Experience API は画面やデバイスに合わせる層です。Proxy API は3層の名前ではありません。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+     "x": "System APIデータベース、ERP、CRM などの基幹システムに直接つながり、閉じ込められていたデータを公開する。基幹システムを混乱から守るSalesforce の顧客データを、CRM の動作に影響を与えずにほかのアプリから使えるようにする"
+    },
+    {
+     "q": "ある会社は、CRM の顧客データと EC サイトの注文データを組み合わせ、複数のチームが使える1つのビューにしたいと考えています。どの層の API で実装すべきですか?",
+     "o": [
+      "Process API",
+      "System API",
+      "Experience API",
+      "Event API"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "複数の System API などのデータを組み合わせ、変換、集約、補強して再利用できる業務ロジックにするのが Process API です。System API は個々の基幹システムへの入口、Experience API は特定の画面向けの層です。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+     "x": "Process API複数の System API やほかの Process API のデータを組み合わせ、再利用できる業務ロジックにする。変換、集約、補強を担うSalesforce の顧客データと EC サイトの注文データをまとめ、1つのレポート用のビューにする"
+    },
+    {
+     "q": "あるアパレル企業は、モバイルアプリの画面に合わせた形で、注文の追跡と配送状況を届けたいと考えています。この要件を受け持つのはどの層の API ですか?",
+     "o": [
+      "System API",
+      "Process API",
+      "Experience API",
+      "Backend API"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "特定の画面やデバイスに合った形式でデータを届けるのは Experience API です。System API は基幹システムの近く、Process API は業務ロジックの組み立てを担当します。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+     "x": "Experience API特定の画面やデバイスに合った形式でデータを届けるモバイルアプリに、注文の追跡と配送状況をリアルタイムに渡す"
+    },
+    {
+     "q": "MuleSoft の公式ドキュメント(MuleSoft Accelerators)で、特に高い再利用性を実現するとされている層はどれですか?",
+     "o": [
+      "Experience API",
+      "Process API",
+      "3層すべてで同じ",
+      "System API"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "MuleSoft Accelerators は API 主導の接続に沿っていて、特に System API で高い再利用性を実現しており、複数のユースケースで共有される System API もあると説明されています。Experience API と Process API について、このような説明はありません。",
+     "u": "https://docs.mulesoft.com/accelerators-home/simplifying-assets",
+     "x": "MuleSoft Accelerators は API 主導の接続に沿っていて、特に System API で高い再利用性を実現しています。複数のユースケースで共有される System API もあります。"
+    },
+    {
+     "q": "ある会社の設計では、Experience API が Process API を呼び、その Process API は何の変換、検証、集約もせずに System API をそのまま呼んでいます。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "すべての層に同じ API ポリシーを適用して性能を上げる",
+      "素通りさせるだけの Process API の中継を挟まないようにする",
+      "Process API を2つに分けて処理を分散させる",
+      "System API を Experience API に統合する"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "公式のガイドは、変換、検証、集約のどれも必要ないのに中継だけをする Process API を挟むことを避けています。呼び出しの段数が増えるだけで、メッセージ数が増えるためです。ポリシーの追加や分割は問題の解決になりません。",
+     "u": "https://docs.mulesoft.com/accelerators-home/simplifying-assets",
+     "x": "変換、検証、集約のどれもしないのに、素通りさせるだけの Process API(パススルーの中継)を挟むのは避けます。"
+    },
+    {
+     "q": "ある会社は、Web、モバイル、パートナー向けに、ほぼ同じ機能を外部へ提供しようとしています。チームはチャネルごとに Experience API を1つずつ作る計画です。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "チャネルごとに Experience API と System API の両方を作る",
+      "1つの Experience API で複数のチャネルを支えられないか検討する",
+      "Experience API をやめ、外部アプリから System API を直接公開する",
+      "チャネルごとに別のビジネスグループを作って管理する"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "公式のガイドは、外部アプリに似た機能を提供するときは、チャネルごとに作るより1つの Experience API で複数チャネルを支えることを検討するよう勧めています。System API を外部へ直接出すと、Experience API が担う変換や認証の仲介が失われます。",
+     "u": "https://docs.mulesoft.com/accelerators-home/simplifying-assets",
+     "x": "外部アプリに似た機能を出すときは、チャネルごとに Experience API を作るより、1つの Experience API で複数のチャネルを支えられないか検討します。"
+    },
+    {
+     "q": "ある会社は、CI/CD でデプロイする Mule アプリケーションを、API Visualizer の Experience、Process、System のレイヤーへ自動で振り分けたいと考えています。どうすべきですか?",
+     "o": [
+      "アプリケーションのプロパティ anypoint.platform.visualizer.layer にレイヤー名を設定する",
+      "Mule のサーバーのプロパティにレイヤー名を設定する",
+      "Anypoint Exchange のアセットにレイヤー名のタグを付ける",
+      "API Manager の API インスタンスにレイヤー名のラベルを付ける"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "anypoint.platform.visualizer.layer はアプリケーションのプロパティで、Runtime Manager、CI/CD(Maven)、API のどれでデプロイするときにも設定できます。サーバーのプロパティではありません。Exchange のタグや API Manager のラベルでは、Visualizer のレイヤーは決まりません。",
+     "u": "https://docs.mulesoft.com/visualizer/layers",
+     "x": "レイヤーは、アプリケーションのプロパティ anypoint.platform.visualizer.layer=<name> で自動的に割り当てられます。Runtime Manager の画面、CI/CD(Maven)、API のどれでデプロイするときにも設定できます。"
+    }
+   ]
+  },
+  {
+   "id": "c4e",
+   "no": "Ch1·3",
+   "title": "C4E(Center for Enablement)と再利用",
+   "tag": "C4E",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>なぞなぞだ。みんなが自分で作れるように、作り方と部品を配る組織は何か。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>料理教室!…じゃなくて、MuleSoft の話だよね?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そうです。答えは C4E、Center for Enablement です。ベストプラクティスや再利用できる資産を広めて、各チームが自分で進められるようにします。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>COE(センター・オブ・エクセレンス)とは違うの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>C4E は、従来の COE の考え方を改良したものです。セルフサービスと組み合わせ可能な API の時代に生まれました。</p></div><p class=\"one\">C4E(Center for Enablement)は、組織の API とインテグレーションの取り組みを支える社内チームです。ベストプラクティス、再利用、セルフサービスを広めて、各チームが自分で成果を出せるようにします。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>町の図書館です。本(API やテンプレート)を集めて整理し、探し方を教えます。読んで使うのは、利用者それぞれです。よく借りられる本が分かれば、次にそろえる本も決められます。</p></div><h4>C4E とは</h4><ul>\n<li>C4E は、インテグレーションの取り組みを支えるための社内チームです。実証済みのやり方を共有し、助言し、ほかのチームが Anypoint Platform をうまく使えるよう手助けします。</li>\n<li>正式なチームでも、頼れる専門家の小さなグループでもかまいません。</li>\n<li>C4E は、従来の COE(Center of Excellence)の考え方を改良したものです。セルフサービスと組み合わせ可能(コンポーザブル)な API によって柔軟性が高まった時代に生まれました。</li>\n<li>C4E は、新しいガバナンスのモデルを可能にします。</li>\n<li>C4E は、ベストプラクティスを広めることで、API の採用と再利用を組織全体に広げる手助けをします。</li>\n</ul><h4>MuleSoft Catalyst の中の C4E</h4><ul>\n<li>MuleSoft Catalyst は、MuleSoft の導入の方法論です。3つの柱は、ビジネス成果の特定、組織のイネーブルメント(実現力づくり)、テクノロジーの提供です。</li>\n<li>柱は6つのパス(プレイブック)に分かれます。ビジネス成果、Anypoint Platform、プロジェクト、C4E、社内サポート、トレーニングです。</li>\n<li>C4E は、組織のイネーブルメントの柱に入ります。</li>\n<li>C4E のプレイブックは、ベストプラクティス、再利用、セルフサービスを通じて、組織が成果を最大化できるようにするものです。</li>\n</ul><h4>再利用の土台になる Anypoint Exchange</h4><ul>\n<li>Anypoint Exchange は、再利用可能なアセットの選定されたカタログです。組織内でアセットをカタログ化(パブリッシュ)、共有、検索、学習、再利用できます。</li>\n<li>Trailhead の例では、C4E が API やテンプレートを Exchange にパブリッシュし、開発者が承認済みのアセットを見つけられるようにしています。</li>\n<li>REST API をパブリッシュすると、ドキュメント、対話型のコンソール、モックサービスを備えた API ポータルが自動で作られます。ポータルは社内向けの非公開にも、外部向けの公開にもできます。</li>\n<li>公開ポータルへのアセットの追加と削除は、Exchange 管理者(Exchange Administrator)の権限を持つユーザーが行います。この権限は Access Management で付与します。</li>\n</ul><h4>再利用を測る指標</h4><ul>\n<li>Exchange の使用状況とエンゲージメントの指標(Usage and Engagement Metrics)は、アセットの消費と利用者の関わりを把握し、カタログ全体での再利用を進めるためのものです。</li>\n</ul><div class=\"tw\"><table><thead><tr><th>指標</th><th>内容</th></tr></thead>\n<tr><td>ダウンロード(Downloads)</td><td>Exchange からダウンロードされた回数</td></tr>\n<tr><td>API Designer からのインポート</td><td>API Designer に取り込まれた回数</td></tr>\n<tr><td>Anypoint Studio からのインポート</td><td>Anypoint Studio に取り込まれた回数</td></tr>\n<tr><td>依存アセット(Dependents)</td><td>そのバージョンに依存しているアセットの数</td></tr>\n<tr><td>契約(Contracts)</td><td>承認済みの契約の数</td></tr>\n<tr><td>エンゲージメントスコア(Engagement score)</td><td>利用状況をまとめて表す複合的な指標</td></tr>\n</table></div><ul>\n<li>対象は、API 仕様フラグメントと REST API のアセットです。</li>\n<li>管理者向けのダッシュボードは、消費イベントの多い上位50件のアセットを、直近7日、30日、90日のどれかの期間で表示します。既定は直近7日で、CSV に書き出せます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>再利用されてるかどうかって、どうやって分かるの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Exchange の使用状況とエンゲージメントの指標で、ダウンロード数、インポート数、依存アセットの数などを確かめられます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>計測できないものは、改善できない。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>C4E のキーワードは、ベストプラクティス、再利用、セルフサービスです。</li>\n<li>C4E は、従来の COE の考え方を改良したものです。</li>\n<li>C4E は、MuleSoft Catalyst の組織のイネーブルメントの柱に入ります。</li>\n<li>再利用の土台は Anypoint Exchange です。C4E は承認済みのアセットを Exchange にパブリッシュします。</li>\n<li>再利用の度合いは、Exchange の使用状況とエンゲージメントの指標で確かめられます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社では、事業部ごとに API の作り方がバラバラで、同じような API が何度も作られています。会社は、ベストプラクティスと再利用を組織全体に広めたいと考えています。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "中央 IT 部門がすべての API の開発を引き受ける",
+      "事業部ごとに独自の開発標準を作らせる",
+      "C4E(Center for Enablement)を立ち上げ、実証済みのやり方の共有と助言を行う",
+      "すべての API の開発を外部の委託先に任せる"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "C4E は、インテグレーションの取り組みを支える社内チームで、実証済みのやり方を共有し、ほかのチームが Anypoint Platform をうまく使えるよう助けます。中央 IT がすべてを作る方式はセルフサービスの考え方に反し、事業部ごとの独自標準では再利用が進みません。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/anypoint-platform-basics/navigate-anypoint-platform",
+     "x": "C4E は、インテグレーションの取り組みを支えるための社内チームです。実証済みのやり方を共有し、助言し、ほかのチームが Anypoint Platform をうまく使えるよう手助けします。"
+    },
+    {
+     "q": "C4E と、従来の COE(Center of Excellence)の関係として、最も適切なものはどれですか?",
+     "o": [
+      "C4E は COE を監査するための上位の組織である",
+      "C4E は COE と同じものを、MuleSoft が別の名前で呼んでいるだけである",
+      "C4E は COE を廃止し、IT 部門をなくすための考え方である",
+      "C4E は COE の考え方を改良したもので、セルフサービスと組み合わせ可能な API の時代に生まれた"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "Trailhead では、C4E は従来の COE の考え方を改良したものと説明されています。セルフサービスと組み合わせ可能な API で柔軟性が高まった時代に生まれ、新しいガバナンスのモデルを可能にします。監査組織や単なる別名ではありません。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-for-partners/streamline-your-integration-projects",
+     "x": "C4E は、従来の COE(Center of Excellence)の考え方を改良したものです。セルフサービスと組み合わせ可能(コンポーザブル)な API によって柔軟性が高まった時代に生まれました。"
+    },
+    {
+     "q": "ある会社の C4E は、承認済みの API やテンプレートを、各チームの開発者が自分で見つけて使えるようにしたいと考えています。C4E は何をすべきですか?",
+     "o": [
+      "承認済みのアセットを Anypoint Exchange にパブリッシュする",
+      "アセットを Runtime Manager にデプロイして一覧を共有する",
+      "API Manager にすべての API を登録して、開発者に閲覧権限を与える",
+      "アセットを Anypoint MQ のキューで各チームに配布する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Anypoint Exchange は再利用可能なアセットのカタログで、Trailhead の例でも C4E が API やテンプレートを Exchange にパブリッシュし、開発者が承認済みのアセットを見つけられるようにしています。Runtime Manager はアプリケーションの実行管理、API Manager は API の管理、Anypoint MQ はメッセージングのサービスです。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/anypoint-platform-basics/explore-anypoint-exchange",
+     "x": "Trailhead の例では、C4E が API やテンプレートを Exchange にパブリッシュし、開発者が承認済みのアセットを見つけられるようにしています。"
+    },
+    {
+     "q": "ある会社の C4E は、Exchange の REST API アセットがどのくらい再利用されているかを、ダウンロード数、インポート数、依存アセットの数で把握したいと考えています。何を使うべきですか?",
+     "o": [
+      "Anypoint Monitoring の組み込みダッシュボード",
+      "API Visualizer のトラブルシューティング視覚化",
+      "Runtime Manager のアプリケーションログ",
+      "Anypoint Exchange の使用状況とエンゲージメントの指標"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "Exchange の使用状況とエンゲージメントの指標は、ダウンロード数、API Designer や Anypoint Studio からのインポート数、依存アセット、契約の数などで、アセットの消費と再利用を測ります。Anypoint Monitoring や API Visualizer、Runtime Manager は、実行中のアプリケーションの状態を見るためのものです。",
+     "u": "https://docs.mulesoft.com/exchange/usage-and-engagement-metrics",
+     "x": "Exchange の使用状況とエンゲージメントの指標(Usage and Engagement Metrics)は、アセットの消費と利用者の関わりを把握し、カタログ全体での再利用を進めるためのものです。"
+    },
+    {
+     "q": "Anypoint Exchange の「使用状況とエンゲージメントの指標」の管理者向けダッシュボードについて、正しい説明はどれですか?",
+     "o": [
+      "すべてのアセットを、直近1年分の期間で表示する",
+      "消費イベントの多い上位50件のアセットを、直近7日、30日、90日の期間で表示し、既定は直近7日である",
+      "Mule アプリケーションの CPU とメモリの使用率を表示する",
+      "上位10件のアセットだけを、直近24時間の期間で表示する"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "ダッシュボードは、消費イベントの多い上位50件のアセットを、直近7日、30日、90日から選んだ期間で表示し、既定は直近7日です。CSV への書き出しもできます。CPU やメモリの使用率は、Exchange の指標ではありません。",
+     "u": "https://docs.mulesoft.com/exchange/asset-usage-and-engagement-metrics-dashboard",
+     "x": "管理者向けのダッシュボードは、消費イベントの多い上位50件のアセットを、直近7日、30日、90日のどれかの期間で表示します。既定は直近7日で、CSV に書き出せます。"
+    },
+    {
+     "q": "MuleSoft Catalyst の方法論で、C4E が入るのはどの柱ですか?",
+     "o": [
+      "ビジネス成果の特定",
+      "テクノロジーの提供",
+      "組織のイネーブルメント",
+      "社内サポート"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "MuleSoft Catalyst の3つの柱は、ビジネス成果の特定、組織のイネーブルメント、テクノロジーの提供で、C4E は組織のイネーブルメントの柱に入ります。社内サポートは柱ではなく、6つのパスの1つです。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/mulesoft-catalyst-for-partners/streamline-your-integration-projects",
+     "x": "C4E は、組織のイネーブルメントの柱に入ります。"
+    }
+   ]
+  }
+ ]
+}

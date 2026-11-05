@@ -1,0 +1,334 @@
+{
+ "chapter": 4,
+ "chapter_title": "API 実装の設計",
+ "chapter_sub": "Mule アプリケーションと APIkit で API を実装し、Anypoint MQ による非同期連携と、エラー処理・再試行・冪等性・キャッシュで信頼性を高める設計を学びます。",
+ "sections": [
+  {
+   "id": "impl",
+   "no": "Ch4·1",
+   "title": "API 実装の設計(Mule アプリケーション・APIkit・ドメインモデル)",
+   "tag": "APIkit & Mule Apps",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>なぞなぞだ。仕様書を渡すと、骨組みだけ作って中身はモックにしておく者はだれだ。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>えーと…Design Center?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>惜しいです。Design Center は仕様を書く場所です。仕様から Mule アプリケーションのひな形を作るのは APIkit です。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>あ、APIkit!じゃあ、ひな形の中身は自分で書くんだね。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そうです。それと、データの形をそろえる正規データモデルも、この章の大事な話です。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>骨組みは自動生成、ビジネスロジックは手書き。scaffold コマンドと同じだ。</p></div>\n<p class=\"one\">API の実装は、Mule アプリケーションのフローで組み立てます。APIkit を使うと、API 仕様から入口のフローとリソースごとのフローが自動で作られます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>家の建築です。設計図(API 仕様)を渡すと、APIkit が柱と部屋割り(フロー)まで建ててくれます。内装(ビジネスロジック)は自分で仕上げます。部屋の寸法の単位(データモデル)を家族全員でそろえておくと、家具の買い直し(データ変換)が減ります。</p></div>\n<h4>Mule アプリケーションの部品</h4><ul>\n<li>Mule イベントは、Mule メッセージ(ペイロードと属性)と、変数の2つでできています。</li>\n<li>Mule イベントは不変(immutable)です。変更するたびに、新しいインスタンスが作られます。</li>\n<li>フロー(Flow)は、HTTP リスナーなどのイベントソースを持てます。サブフロー(Subflow)はイベントソースを持ちません。</li>\n<li>エラー処理はフローごとに持てます。サブフローには、エラー処理のスコープがありません。</li>\n<li>処理のまとまりごとにエラー処理を分けたいときは、別のフローに切り出して Flow Reference で呼ぶか、Try スコープで囲みます。</li>\n</ul>\n<h4>APIkit が生成するもの</h4><ul>\n<li>APIkit は、API 仕様から Mule アプリケーションのひな形を作る(スキャフォールディングする)ツールキットです。REST(RAML、OAS)のほか、SOAP、OData、AsyncAPI、gRPC、GraphQL 用のモジュールがあります。</li>\n</ul><div class=\"tw\"><table><thead><tr><th>生成物</th><th>中身</th></tr></thead>\n<tr><td>メインフロー</td><td>HTTP リスナー(ソース)、APIkit Router、エラーハンドラー</td></tr>\n<tr><td>コンソールフロー</td><td>HTTP リスナー、APIkit Console、エラーハンドラー</td></tr>\n<tr><td>リソースごとのフロー</td><td>操作・リソース・コンテンツタイプの組み合わせごとに1つ。ソースはなく、中身はあとで置き換えるモック実装</td></tr>\n</table></div><ul>\n<li>APIkit Router は、要求を対応するフローへ振り分けます。その際、要求のペイロード、ヘッダー、クエリパラメーター、URI パラメーターを仕様と照らして検証します。</li>\n<li>APIkit Router は、認証の強制などセキュリティの検証はしません。それは、要求が Router に届く前に、API ゲートウェイのポリシーが行います。</li>\n<li>不正な要求には bad request の応答が、対応するフローがないリソースには not implemented の応答が、既定の値で返ります。</li>\n</ul>\n<h4>APIkit のエラーと HTTP ステータス</h4><div class=\"tw\"><table><thead><tr><th>ステータス</th><th>エラー型</th><th>既定のメッセージ</th></tr></thead>\n<tr><td>400</td><td>APIKIT:BAD_REQUEST</td><td>Bad request</td></tr>\n<tr><td>404</td><td>APIKIT:NOT_FOUND</td><td>Resource not found</td></tr>\n<tr><td>405</td><td>APIKIT:METHOD_NOT_ALLOWED</td><td>Method not allowed</td></tr>\n<tr><td>406</td><td>APIKIT:NOT_ACCEPTABLE</td><td>Not acceptable</td></tr>\n<tr><td>415</td><td>APIKIT:UNSUPPORTED_MEDIA_TYPE</td><td>Unsupported media type</td></tr>\n<tr><td>501</td><td>APIKIT:NOT_IMPLEMENTED</td><td>Not implemented</td></tr>\n</table></div>\n<h4>ドメインモデル(正規データモデル)</h4><ul>\n<li>API 仕様で、包括的な正規データモデル(canonical data model)を使うと、インターフェースの再利用性と柔軟性が高まります。Experience、Process、System の各層の間で必要なデータ変換も減らせます。</li>\n<li>同じエンティティを API ごとにバラバラに定義すると、もろく複雑なデータ変換が生まれ、時間とともに保守が難しくなります。</li>\n<li>MuleSoft Accelerators は、正規モデルとして Cloud Information Model(CIM)を使います。アプリケーションに依存しないデータモデルで、Process API と System API に共通のモデルを公開します。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>Router が仕様どおりかチェックするなら、認証もしてくれる?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいえ。認証などのセキュリティは、Router の手前で API Manager のポリシーが受け持ちます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>入力チェックとアクセス制御は、別のレイヤーだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>APIkit のメインフローは、HTTP リスナー、APIkit Router、エラーハンドラーでできています。リソースごとのフローにはソースがありません。</li>\n<li>APIkit Router は入力を検証しますが、認証などのセキュリティは検証しません。セキュリティは API ポリシーで守ります。</li>\n<li>フローがないリソースは 501(APIKIT:NOT_IMPLEMENTED)、不正な要求は 400(APIKIT:BAD_REQUEST)です。</li>\n<li>サブフローにはイベントソースもエラー処理もありません。エラー処理を分けたいなら、フローか Try スコープを使います。</li>\n<li>API ごとにデータの定義がバラバラだと変換がもろくなります。正規データモデル(例: CIM)で共通化します。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、APIkit でスキャフォールディングした REST API を公開する予定です。開発者は「APIkit Router が仕様を検証するので、クライアントの認証も Router に任せられる」と考えています。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "APIkit Console のフローに認証処理を追加する",
+      "API Manager で API にポリシー(例: クライアント ID の強制)を適用し、Router に届く前に認証する",
+      "リソースごとのフローに Flow Reference で認証のサブフローを追加すれば、追加の設定は不要と説明する",
+      "APIkit Router の設定で認証の検証を有効にする"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "APIkit Router はペイロードやヘッダーなどを検証しますが、認証の強制などのセキュリティ検証はしません。それは、要求が Router に届く前に API ゲートウェイのポリシーが行います。Router や Console に認証を任せる設定はありません。",
+     "u": "https://docs.mulesoft.com/apikit/latest/apikit-4-scaffolding-reference",
+     "x": "APIkit Router は、認証の強制などセキュリティの検証はしません。それは、要求が Router に届く前に、API ゲートウェイのポリシーが行います。"
+    },
+    {
+     "q": "APIkit で生成した API に、仕様にないコンテンツタイプで要求が送られました。スキャフォールディングで生成されたエラー処理では、どの HTTP ステータスが返りますか?",
+     "o": [
+      "400",
+      "415",
+      "406",
+      "501"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "コンテンツタイプがサポートされないときは APIKIT:UNSUPPORTED_MEDIA_TYPE で 415 が返ります。406(NOT_ACCEPTABLE)はクライアントが受け入れられる応答を返せないとき、400 は不正な要求、501 は実装されていないリソースです。",
+     "u": "https://docs.mulesoft.com/apikit/latest/apikit-error-handling-reference",
+     "x": "415APIKIT:UNSUPPORTED_MEDIA_TYPEUnsupported media type"
+    },
+    {
+     "q": "あるチームは API 仕様に新しいリソースを追加し、Mule アプリケーションを再デプロイしましたが、そのリソース用のフローはまだ作っていません。このリソースを呼ぶと、APIkit Router は既定でどの応答を返しますか?",
+     "o": [
+      "bad request の応答",
+      "resource not found の応答",
+      "method not allowed の応答",
+      "not implemented の応答"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "対応するフローがない API リソースへの要求には、APIkit Router が既定で not implemented(501)の応答を返します。bad request は要求が不正なとき、not found はリソースそのものが仕様にないとき、method not allowed は許可されていないメソッドのときです。",
+     "u": "https://docs.mulesoft.com/apikit/latest/apikit-4-scaffolding-reference",
+     "x": "不正な要求には bad request の応答が、対応するフローがないリソースには not implemented の応答が、既定の値で返ります。"
+    },
+    {
+     "q": "ある Mule アプリケーションでは、HTTP 用のエラー処理を持つ親フローから、JMS を使う処理を呼び出しています。JMS の処理には、JMS 専用のエラー処理を付けて、ほかのフローからも再利用したいと考えています。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "JMS の処理を別のフローに切り出し、Flow Reference で呼び出して、そのフローにエラー処理を付ける",
+      "JMS の処理をサブフローに切り出し、サブフローにエラーハンドラーを付ける",
+      "JMS の処理を Async スコープで囲み、メインフローのエラー処理を継承させる",
+      "JMS の処理を Cache スコープで囲む"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "エラー処理はフローごとに持てますが、サブフローにはエラー処理のスコープがありません。別のフローに切り出して Flow Reference で呼べば、再利用しつつ専用のエラー処理を持てます。Async スコープはメインフローのエラー処理を継承せず、Cache スコープはエラー処理の仕組みではありません。",
+     "u": "https://docs.mulesoft.com/mule-runtime/latest/about-flows",
+     "x": "エラー処理はフローごとに持てます。サブフローには、エラー処理のスコープがありません。"
+    },
+    {
+     "q": "Mule イベントを構成する2つのオブジェクトの組み合わせとして、正しいものはどれですか?",
+     "o": [
+      "属性と Object Store のエントリ",
+      "ペイロードとエラーオブジェクト",
+      "HTTP ヘッダーと APIkit の設定",
+      "Mule メッセージ(ペイロードと属性)と変数"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "Mule イベントは、ペイロードと属性を持つ Mule メッセージと、変数の2つでできています。エラーや Object Store のエントリ、APIkit の設定は Mule イベントの構成要素ではありません。",
+     "u": "https://docs.mulesoft.com/mule-runtime/latest/about-mule-event",
+     "x": "Mule イベントは、Mule メッセージ(ペイロードと属性)と、変数の2つでできています。"
+    },
+    {
+     "q": "ある会社では、Customer の定義が API ごとに少しずつ違い、各層の間のデータ変換が複雑で壊れやすくなっています。アーキテクトは、API 仕様の設計で何を推奨すべきですか?",
+     "o": [
+      "各 API が自分の都合で Customer を定義し、変換は Experience API ですべて吸収する",
+      "データ変換を Cache スコープに入れて高速化する",
+      "共通の正規データモデル(例: Cloud Information Model)を API 仕様で使い、エンティティの定義をそろえる",
+      "System API をやめて、Experience API から直接バックエンドを呼ぶ"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "公式ドキュメントでは、同じエンティティを API ごとにバラバラに定義すると、もろく複雑なデータ変換が生まれ保守が難しくなると説明しています。包括的な正規データモデルを使うと再利用性が上がり、層の間の変換も減ります。キャッシュは変換の複雑さを解決しません。",
+     "u": "https://docs.mulesoft.com/accelerators-cim/latest/",
+     "x": "同じエンティティを API ごとにバラバラに定義すると、もろく複雑なデータ変換が生まれ、時間とともに保守が難しくなります。"
+    },
+    {
+     "q": "APIkit で REST API 仕様からスキャフォールディングしたとき、リソースごとに生成されるフローの説明として正しいものはどれですか?",
+     "o": [
+      "リソースごとに HTTP リスナーをソースとして持つ",
+      "サブフローとして作られ、呼び出し元のエラー処理を継承する",
+      "操作・リソース・コンテンツタイプの組み合わせごとに作られ、ソースはなく、中身はモック実装になる",
+      "それぞれに APIkit Router と APIkit Console が入る"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "リソースごとのフローは、操作・リソース・コンテンツタイプの組み合わせごとに1つずつ作られ、ソースを持たず、中身はあとで置き換えるモック実装です。HTTP リスナーと Router を持つのはメインフロー、APIkit Console を持つのはコンソールフローです。",
+     "u": "https://docs.mulesoft.com/apikit/latest/apikit-4-scaffolding-reference",
+     "x": "リソースごとのフロー操作・リソース・コンテンツタイプの組み合わせごとに1つ。ソースはなく、中身はあとで置き換えるモック実装"
+    }
+   ]
+  },
+  {
+   "id": "events",
+   "no": "Ch4·2",
+   "title": "イベント駆動と非同期(Anypoint MQ など)",
+   "tag": "Anypoint MQ",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>非同期って、ぼくのたとえだと「置き配」かな。受け取る人がいなくても荷物を置いていける。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいですね。続けると、置き場所がキュー、置き場所が複数の家に配る仕組みがメッセージエクスチェンジです。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>さらに続ける。届けられない荷物を集める倉庫が、デッドレターキューだ。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>順番どおりに届けてほしいときは?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>FIFO キューを使います。ただし、速さやエクスチェンジとの組み合わせに制限があります。</p></div>\n<p class=\"one\">Anypoint MQ は、アプリケーション間で非同期にデータをやり取りするための、マルチテナントのクラウド型メッセージキューサービスです。送る側と受ける側が同時に動いていなくても連携できます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>宅配便の営業所です。送り主は営業所(キュー)に荷物を預ければ、相手の在宅を待たずに帰れます。受取人は都合のよいときに取りに行きます。何度届けても受け取られない荷物は、保管庫(デッドレターキュー)に回ります。</p></div>\n<h4>非同期の部品</h4><div class=\"tw\"><table><thead><tr><th>部品</th><th>特徴</th></tr></thead>\n<tr><td>Anypoint MQ</td><td>マルチテナントのクラウド型メッセージキュー。アプリケーション間の非同期連携に使う</td></tr>\n<tr><td>VM コネクタ(VM Connector)</td><td>アプリ内やアプリ間の非同期キュー。一時(transient)キューと永続(persistent)キューがある</td></tr>\n<tr><td>Async スコープ</td><td>フローの中で処理を分岐させ、結果を待たずにメインフローを進める(ファイヤアンドフォゲット)</td></tr>\n</table></div><ul>\n<li>Async スコープの処理結果は、メインフローでは使えません。メインフローのエラー処理も継承しないので、中のエラーは Try スコープで扱います。</li>\n<li>VM コネクタの永続キューは、CloudHub 2.0 と Runtime Fabric では使えません。CloudHub(1.0)では、Runtime Manager の「Persistent queues」にチェックを入れると永続キューになります。</li>\n<li>CloudHub 2.0 で永続的なメッセージの保管が必要なときは、Anypoint MQ を使います。</li>\n</ul>\n<h4>Anypoint MQ のキューの種類</h4><div class=\"tw\"><table><thead><tr><th>種類</th><th>順序</th><th>配信の信頼性など</th></tr></thead>\n<tr><td>標準キュー</td><td>順序は保証しない</td><td>少なくとも1回(at least once)。メッセージエクスチェンジにバインドできる</td></tr>\n<tr><td>FIFO キュー</td><td>メッセージグループの中では入れた順に取り出せる</td><td>正確に1回(exactly once)。メッセージエクスチェンジにはバインドできない</td></tr>\n</table></div><ul>\n<li>メッセージエクスチェンジ(message exchange)は、1つのメッセージを複数のキューへ送る仕組みです。1つのエクスチェンジにバインドできるキューは最大 450 個です。</li>\n<li>1つのメッセージの大きさは最大 10 MB です。キューに入れられるメッセージの数に上限はありません。</li>\n<li>メッセージ TTL(存続期間)の最大は2週間です。肯定応答タイムアウト(Acknowledgment Timeout)の最大は12時間、配信遅延の最大は15分です。</li>\n<li>FIFO キューは 300 TPS までです(10件ずつまとめて読み書きすると最大 3,000 メッセージ/秒)。メッセージグループごとのインフライトメッセージは最大10件です。</li>\n<li>デッドレターキュー(DLQ)は、配信できなかったメッセージを受け取るキューです。元のキューと同じ種類(標準または FIFO)、同じリージョン、同じ環境でなければなりません。再ルーティング前の配信試行回数の既定は10回(1〜1000回)です。</li>\n<li>FIFO キューに DLQ を割り当てると、メッセージグループ内の順序は保証されなくなります。順序を厳密に守る必要があるなら、FIFO キューに DLQ を割り当てません。</li>\n</ul>\n<h4>確認応答(ACK)のモード</h4><div class=\"tw\"><table><thead><tr><th>モード</th><th>動き</th></tr></thead>\n<tr><td>IMMEDIATE</td><td>受け取った時点で、処理の前に確認応答する。処理中にエラーが起きても再配信されない</td></tr>\n<tr><td>AUTO</td><td>フローが正常に終わったときだけ自動で確認応答する。エラーのときは NACK になり、キューに戻って再配信される</td></tr>\n<tr><td>MANUAL</td><td>アプリのロジックが ackToken を使って ACK / NACK を行う</td></tr>\n</table></div><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>IMMEDIATE が一番速そう。全部それでいいんじゃない?</p><p class=\"tk rou\" data-f=\"sweat\"><b class=\"who\">クラウドちゃん</b>処理の前に確認応答するので、途中で失敗するとメッセージは戻りません。失いたくないなら AUTO か MANUAL です。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>順序と重複なしが必要なら FIFO キュー、1つのイベントを複数の受け手に配るなら標準キュー+メッセージエクスチェンジです。FIFO キューはエクスチェンジにバインドできません。</li>\n<li>メッセージは最大 10 MB、TTL は最大2週間です。</li>\n<li>DLQ は元のキューと同じ種類・リージョン・環境が条件で、再ルーティング前の配信試行回数の既定は10回です。</li>\n<li>VM コネクタの永続キューは CloudHub 2.0 と Runtime Fabric では使えません。CloudHub 2.0 では Anypoint MQ を使います。</li>\n<li>メッセージを失いたくないときは、IMMEDIATE ではなく AUTO または MANUAL の確認応答にします。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、口座の入出金イベントを Anypoint MQ で処理します。イベントは入った順に処理し、同じイベントが二重に処理されてはいけません。アーキテクトはどのキューを推奨すべきですか?",
+     "o": [
+      "VM コネクタの一時キュー",
+      "FIFO キュー",
+      "標準キュー",
+      "メッセージエクスチェンジにバインドした標準キュー"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "FIFO キューはメッセージグループの中で入れた順に取り出せ、正確に1回の配信を提供します。標準キューは順序を保証せず、配信は少なくとも1回です。VM の一時キューは、システムが落ちると信頼できません。",
+     "u": "https://docs.mulesoft.com/mq/mq-queues",
+     "x": "FIFO キューメッセージグループの中では入れた順に取り出せる正確に1回(exactly once)。メッセージエクスチェンジにはバインドできない"
+    },
+    {
+     "q": "ある小売企業では、受注イベントが発生するたびに、請求・出荷・ポイントの3つのアプリケーションがそれぞれ同じイベントを受け取る必要があります。Anypoint MQ でアーキテクトは何を推奨すべきですか?",
+     "o": [
+      "メッセージエクスチェンジを作り、3つの標準キューをバインドしてイベントを発行する",
+      "3つの FIFO キューをメッセージエクスチェンジにバインドする",
+      "デッドレターキューに送り、3つのアプリケーションで読み取る",
+      "1つの FIFO キューに送り、3つのアプリケーションで同じキューを購読する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "メッセージエクスチェンジは、1つのメッセージを複数のキューへ送る仕組みで、標準キューをバインドできます。1つのキューを複数で購読すると、1つのメッセージは1つの受け手にしか届きません。FIFO キューはエクスチェンジにバインドできず、DLQ は配信できなかったメッセージ用です。",
+     "u": "https://docs.mulesoft.com/mq/mq-queues",
+     "x": "メッセージエクスチェンジ(message exchange)は、1つのメッセージを複数のキューへ送る仕組みです。1つのエクスチェンジにバインドできるキューは最大 450 個です。"
+    },
+    {
+     "q": "ある会社は、CloudHub(1.0)で VM コネクタの永続キューを使っているアプリケーションを CloudHub 2.0 に移行します。移行後も、処理待ちのメッセージを永続的に保管したいと考えています。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "Async スコープで処理を非同期にする",
+      "CloudHub 2.0 の Runtime Manager で「Persistent queues」にチェックを入れる",
+      "Anypoint MQ のキューに置き換える",
+      "VM コネクタの一時キューに切り替える"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "VM コネクタの永続キューは CloudHub 2.0 と Runtime Fabric では使えません。CloudHub 2.0 では、永続的なメッセージの保管に Anypoint MQ を使います。「Persistent queues」のチェックは CloudHub(1.0)の機能です。一時キューは落ちると信頼できず、Async スコープはメッセージを保管しません。",
+     "u": "https://docs.mulesoft.com/vm-connector/latest/",
+     "x": "VM コネクタの永続キューは、CloudHub 2.0 と Runtime Fabric では使えません。CloudHub(1.0)では、Runtime Manager の「Persistent queues」にチェックを入れると永続キューになります。"
+    },
+    {
+     "q": "ある Mule アプリケーションは Anypoint MQ の Subscriber でメッセージを受け取り、データベースに書き込みます。書き込みが失敗したときは、メッセージを失わずに再配信させたいと考えています。アーキテクトはどの確認応答モードを推奨すべきですか?",
+     "o": [
+      "IMMEDIATE",
+      "AUTO",
+      "確認応答タイムアウトを0秒にした IMMEDIATE",
+      "ackToken を使わない MANUAL"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "AUTO はフローが正常に終わったときだけ確認応答し、エラーのときは NACK になってメッセージがキューに戻ります。IMMEDIATE は処理の前に確認応答するため、失敗してもメッセージは再配信されません。MANUAL は ackToken を使って ACK / NACK するモードなので、ackToken を使わないと成り立ちません。",
+     "u": "https://docs.mulesoft.com/anypoint-mq-connector/latest/anypoint-mq-ack",
+     "x": "AUTOフローが正常に終わったときだけ自動で確認応答する。エラーのときは NACK になり、キューに戻って再配信される"
+    },
+    {
+     "q": "Anypoint MQ のキューに送る1つのメッセージの大きさの上限はどれですか?",
+     "o": [
+      "50 MB",
+      "上限はない",
+      "10 MB",
+      "1 MB"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Anypoint MQ では、キューの1つのメッセージの大きさは最大 10 MB です。上限がないのは、キューに入れられるメッセージの数のほうです。",
+     "u": "https://docs.mulesoft.com/mq/",
+     "x": "1つのメッセージの大きさは最大 10 MB です。キューに入れられるメッセージの数に上限はありません。"
+    },
+    {
+     "q": "ある会社は、在庫の増減メッセージを Anypoint MQ の FIFO キューで処理しています。順序の厳守が最優先で、処理できないメッセージは後で調べたいので、FIFO のデッドレターキューを割り当てる案が出ています。アーキテクトはどう助言すべきですか?",
+     "o": [
+      "DLQ の代わりにメッセージエクスチェンジにバインドして処理できないメッセージを集める",
+      "FIFO キューには DLQ を割り当てられないので、標準キューを DLQ にする",
+      "DLQ を割り当てるとメッセージグループ内の順序は保証されなくなるので、順序を厳密に守るなら FIFO キューに DLQ を割り当てない",
+      "DLQ を割り当てても順序は保証されるので、そのまま割り当ててよい"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "FIFO キューに FIFO の DLQ を割り当てることはできますが、メッセージが DLQ に移ると、Anypoint MQ はメッセージグループ内の順序を保証できなくなります。標準キューを FIFO キューの DLQ にはできず、FIFO キューはエクスチェンジにバインドできません。",
+     "u": "https://docs.mulesoft.com/mq/mq-queues",
+     "x": "FIFO キューに DLQ を割り当てると、メッセージグループ内の順序は保証されなくなります。順序を厳密に守る必要があるなら、FIFO キューに DLQ を割り当てません。"
+    }
+   ]
+  },
+  {
+   "id": "resilience",
+   "no": "Ch4·3",
+   "title": "信頼性の設計(エラー処理・再試行・冪等性・キャッシュ・Object Store)",
+   "tag": "Reliability",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>エラーが出たら、とりあえず On Error Continue で全部握りつぶせば平和だよね!</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>それは catch して何もしない try 文だ。バグが静かに増える。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>On Error Continue は呼び出し元に成功として返します。失敗を伝えるべきときは On Error Propagate です。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>じゃあ、失敗したら成功するまで何回でも送り直す!</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>再試行するなら、二重処理を防ぐ冪等性もセットで考えます。</p></div>\n<p class=\"one\">失敗は起きるものとして、エラー処理、再試行、冪等性(何度処理しても結果が同じになる性質)、キャッシュを組み合わせ、メッセージを失わず、二重にも処理しない設計にします。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>ネット通販の注文ボタンです。通信が切れたら送り直します(再試行)。でも、注文番号を見て「この注文はもう受けた」と判断できないと、同じ商品が2つ届きます(冪等性)。よく見られる商品ページは、毎回作らずに作り置きを見せます(キャッシュ)。</p></div>\n<h4>エラー処理</h4><div class=\"tw\"><table><thead><tr><th>On-Error コンポーネント</th><th>動き</th></tr></thead>\n<tr><td>On Error Propagate</td><td>処理したうえでエラーを上位に伝える。オーナー(フローや Try スコープ)は失敗扱いになり、オーナーが扱うトランザクションはロールバックされる</td></tr>\n<tr><td>On Error Continue</td><td>処理の結果をオーナーの結果として使い、成功したものとして扱う。オーナーが扱うトランザクションはコミットされる</td></tr>\n</table></div><ul>\n<li>Try スコープは、エラーが起きやすい処理だけを囲み、その部分に専用のエラー処理を付けます。</li>\n<li>エラー処理を何も設定しないときの既定の動きは、On Error Propagate と同じです。</li>\n</ul>\n<h4>再試行の仕組み</h4><div class=\"tw\"><table><thead><tr><th>仕組み</th><th>要点</th></tr></thead>\n<tr><td>Until Successful スコープ</td><td>中の処理が成功するまで再試行する。再試行の間隔(millisBetweenRetries)の既定は 60000 ミリ秒(1分)。使い切ると MULE:RETRY_EXHAUSTED</td></tr>\n<tr><td>再接続戦略(Reconnection Strategy)</td><td>コネクタの接続が失敗したときに使う。既定は None(すぐエラー)。Standard は既定で 2000 ミリ秒間隔・2回、Forever は再接続を続ける</td></tr>\n<tr><td>再配信ポリシー(Redelivery Policy)</td><td>同じメッセージが何度も失敗するのを止める。Max Redelivery Count の既定は5。超えると MULE:REDELIVERY_EXHAUSTED</td></tr>\n</table></div><ul>\n<li>Until Successful は同期で動き、失敗した処理を含めて、スコープ内の処理をすべて再試行します。毎回、スコープに入る前と同じ変数の値から始まります。</li>\n</ul>\n<h4>冪等性</h4><ul>\n<li>Idempotent Message Validator は、メッセージの一意の ID を調べ、すでに処理した ID のメッセージをそれ以上流しません。重複したときのエラー型は MULE:DUPLICATE_MESSAGE です。</li>\n<li>ID の式(idExpression)の既定は #[correlationId] です。クエリパラメーターの値や、ペイロードのハッシュ値(Crypto::hashWith など)も ID に使えます。</li>\n<li>処理済みの ID はオブジェクトストアに保存します。既定のストアは永続ではなく、エントリの TTL は5分です。グローバルなオブジェクトストアや、専用(プライベート)のオブジェクトストアも指定できます。</li>\n</ul>\n<h4>キャッシュ</h4><ul>\n<li>Cache スコープは、よく呼ばれる処理の応答を保存して再利用します。既定では、メモリ内のオブジェクトストア(InMemoryObjectStore)に保存します。</li>\n<li>キャッシュのキーは、既定ではペイロードの SHA256 ダイジェストから作ります。キーの式(Key Expression)で独自のキーにもできます。</li>\n<li>Cache スコープがキャッシュするのは反復可能なストリームだけです。1回しか読めない反復不可能なストリームはキャッシュしません。</li>\n</ul>\n<h4>Object Store v2</h4><ul>\n<li>Object Store v2 は、CloudHub のアプリケーションがデータや状態を保存できるサービスです。エントリ数に上限はなく、値は Base64 エンコード後で最大 10 MB です。</li>\n<li>Object Store v2 の静的な TTL の最大(兼既定)は 2592000 秒(30日)です。Mule 4.2.1 以降の既定はローリング TTL で、30日の最後の7日間にアクセスされると30日延長されます。</li>\n<li>Object Store v2 の無料の利用は、1つのアプリケーションあたり 10 TPS までです。プレミアムアドオンでは最大 100 TPS です。</li>\n</ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>呼び出し元に成功として返すなら On Error Continue、失敗を上位に伝えるなら On Error Propagate です。</li>\n<li>一時的な障害への再試行は Until Successful(使い切ると MULE:RETRY_EXHAUSTED)、何度も失敗するメッセージを止めるのは再配信ポリシー(MULE:REDELIVERY_EXHAUSTED)です。</li>\n<li>重複の排除は Idempotent Message Validator で、ID の既定は #[correlationId]、重複時は MULE:DUPLICATE_MESSAGE です。</li>\n<li>Cache スコープは反復可能なストリームだけをキャッシュします。既定の保存先はメモリ内のオブジェクトストアです。</li>\n<li>Object Store v2 は値が最大 10 MB、静的 TTL は最大30日、無料は 10 TPS/アプリケーションです。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある決済 API では、クライアントがタイムアウト後に同じ支払い要求を送り直すことがあり、二重決済が起きています。要求には一意の支払い ID が入っています。アーキテクトは Mule アプリケーションで何を推奨すべきですか?",
+     "o": [
+      "On Error Continue で重複のエラーを成功として返す",
+      "Cache スコープで決済処理を囲む",
+      "Until Successful スコープで決済処理を囲む",
+      "Idempotent Message Validator で支払い ID を ID の式に指定し、処理済みの ID を弾く"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "Idempotent Message Validator は、メッセージの一意の ID を調べて、すでに処理した ID のメッセージを流しません(MULE:DUPLICATE_MESSAGE)。Until Successful は再試行の仕組みで、重複を防ぎません。Cache スコープはペイロードからキーを作って応答を再利用する仕組みで、重複処理の防止を目的にしたものではありません。",
+     "u": "https://docs.mulesoft.com/mule-runtime/latest/idempotent-message-validator",
+     "x": "Idempotent Message Validator は、メッセージの一意の ID を調べ、すでに処理した ID のメッセージをそれ以上流しません。重複したときのエラー型は MULE:DUPLICATE_MESSAGE です。"
+    },
+    {
+     "q": "ある Process API では、補足情報を取る呼び出しが失敗しても、呼び出し元には既定値を入れた正常な応答を返したいと考えています。アーキテクトは、その呼び出しを囲む Try スコープにどの On-Error コンポーネントを推奨すべきですか?",
+     "o": [
+      "On Error Continue",
+      "Raise Error",
+      "Until Successful",
+      "On Error Propagate"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "On Error Continue は、処理の結果をオーナーの結果として使い、成功したものとして扱います。On Error Propagate はエラーを上位に伝えるので、オーナーは失敗扱いになります。Raise Error はエラーを起こす部品、Until Successful は再試行のスコープです。",
+     "u": "https://docs.mulesoft.com/mule-runtime/latest/on-error-scope-concept",
+     "x": "On Error Continue処理の結果をオーナーの結果として使い、成功したものとして扱う。オーナーが扱うトランザクションはコミットされる"
+    },
+    {
+     "q": "ある会社の Mule アプリケーションは、ときどき一時的に使えなくなる外部の FTP サーバーへファイルを書き込みます。数回まで、間隔をあけて自動で書き込みをやり直したいと考えています。アーキテクトは何を推奨すべきですか?また、再試行を使い切ったときのエラー型はどれですか?",
+     "o": [
+      "Until Successful スコープで書き込みを囲む。使い切ると MULE:RETRY_EXHAUSTED",
+      "Async スコープで書き込みを囲む。使い切ると MULE:RETRY_EXHAUSTED",
+      "Until Successful スコープで書き込みを囲む。使い切ると MULE:REDELIVERY_EXHAUSTED",
+      "Idempotent Message Validator を置く。使い切ると MULE:DUPLICATE_MESSAGE"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Until Successful スコープは中の処理が成功するまで再試行し、最大回数に達すると MULE:RETRY_EXHAUSTED を出します。間隔(millisBetweenRetries)の既定は 60000 ミリ秒です。MULE:REDELIVERY_EXHAUSTED は再配信ポリシーのエラー、MULE:DUPLICATE_MESSAGE は重複検出のエラーです。",
+     "u": "https://docs.mulesoft.com/mule-runtime/latest/until-successful-scope",
+     "x": "Until Successful スコープ中の処理が成功するまで再試行する。再試行の間隔(millisBetweenRetries)の既定は 60000 ミリ秒(1分)。使い切ると MULE:RETRY_EXHAUSTED"
+    },
+    {
+     "q": "あるアプリケーションは、メッセージソースが受け取ったメッセージのうち、壊れたデータを含むものが何度も失敗し、そのたびに受け直されて処理を圧迫しています。一定回数失敗したメッセージは、エラーとして別に扱いたいと考えています。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "Cache スコープで処理を囲む",
+      "Until Successful スコープの再試行間隔を長くする",
+      "メッセージソースに再配信ポリシーを設定し、Max Redelivery Count を超えたら MULE:REDELIVERY_EXHAUSTED を処理する",
+      "再接続戦略を Forever にする"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "再配信ポリシーは、同じメッセージが失敗を繰り返したときに回数を数え、Max Redelivery Count(既定は5)を超えると MULE:REDELIVERY_EXHAUSTED を出します。再接続戦略は接続の失敗への対策で、データの壊れたメッセージには効きません。Until Successful を延ばしても、壊れたデータは成功しません。",
+     "u": "https://docs.mulesoft.com/mule-runtime/latest/redelivery-policy",
+     "x": "再配信ポリシー(Redelivery Policy)同じメッセージが何度も失敗するのを止める。Max Redelivery Count の既定は5。超えると MULE:REDELIVERY_EXHAUSTED"
+    },
+    {
+     "q": "ある開発者は、遅いバックエンドへの商品カタログの照会を Cache スコープで囲みましたが、応答がまったくキャッシュされません。照会の結果は、反復不可能なストリームとして返っています。原因として最も適切なものはどれですか?",
+     "o": [
+      "Cache スコープは変数を含む Mule イベント全体しか保存できないため",
+      "Cache スコープのキーは HTTP ヘッダーからしか作れないため",
+      "Cache スコープは反復可能なストリームだけをキャッシュし、反復不可能なストリームはキャッシュしないため",
+      "Cache スコープは Object Store v2 にしか保存できないため"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Cache スコープがキャッシュするのは反復可能なストリームだけで、1回しか読めない反復不可能なストリームはキャッシュしません。保存するのはメッセージ(ペイロードと属性)だけで、既定のストアはメモリ内のオブジェクトストアです。キーは既定でペイロードの SHA256 ダイジェストから作ります。",
+     "u": "https://docs.mulesoft.com/mule-runtime/latest/cache-scope",
+     "x": "Cache スコープがキャッシュするのは反復可能なストリームだけです。1回しか読めない反復不可能なストリームはキャッシュしません。"
+    },
+    {
+     "q": "ある会社は、CloudHub のアプリケーションで Object Store v2 を使い、1件あたり最大 8 MB の JSON を保存する計画です。アーキテクトが注意すべき点として正しいものはどれですか?",
+     "o": [
+      "Object Store v2 は TTL を設定できず、データは永久に残る",
+      "Object Store v2 はエントリ数が1万件までなので、件数を見積もる必要がある",
+      "値の上限は 100 MB なので、問題はない",
+      "値の上限は Base64 エンコード後で 10 MB なので、8 MB の JSON はエンコード後に上限を超える可能性がある"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "Object Store v2 の値は、Base64 エンコード後で最大 10 MB です。公式ドキュメントでは、7.5 MB のペイロードが Base64 では 10.24 MB になる例を示しています。エントリ数に上限はなく、静的な TTL の最大は30日です。",
+     "u": "https://docs.mulesoft.com/object-store/",
+     "x": "Object Store v2 は、CloudHub のアプリケーションがデータや状態を保存できるサービスです。エントリ数に上限はなく、値は Base64 エンコード後で最大 10 MB です。"
+    },
+    {
+     "q": "Idempotent Message Validator にオブジェクトストアを指定しなかった場合の、既定の動きとして正しいものはどれですか?",
+     "o": [
+      "Mule が作る永続ではないオブジェクトストアに、処理済みの ID を TTL 5分で保存する",
+      "Object Store v2 に、処理済みの ID を30日保存する",
+      "処理済みの ID は保存せず、同じ ID が来ても通す",
+      "Anypoint MQ の FIFO キューの重複排除を使う"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "既定では Object Store Manager が作るオブジェクトストアを使い、それは永続ではなく、エントリの TTL は5分です。長く確実に重複を防ぎたいなら、グローバルなオブジェクトストアや専用のオブジェクトストアを指定します。FIFO キューの重複排除は Anypoint MQ の機能です。",
+     "u": "https://docs.mulesoft.com/mule-runtime/latest/idempotent-message-validator",
+     "x": "処理済みの ID はオブジェクトストアに保存します。既定のストアは永続ではなく、エントリの TTL は5分です。グローバルなオブジェクトストアや、専用(プライベート)のオブジェクトストアも指定できます。"
+    }
+   ]
+  }
+ ]
+}
