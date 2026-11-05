@@ -1,7 +1,7 @@
 {
  "chapter": 7,
  "chapter_title": "非機能要件と監視",
- "chapter_sub": "可用性・スケーラビリティ・性能・セキュリティをどう満たすかと、Anypoint Monitoring、アラート、Anypoint Visualizer による監視を学びます。",
+ "chapter_sub": "可用性・スケーラビリティ・性能・セキュリティをどう満たすかと、Anypoint Monitoring、アラート、API Visualizer による監視を学びます。",
  "sections": [
   {
    "id": "nfr",
@@ -120,16 +120,16 @@
   {
    "id": "monitoring",
    "no": "Ch7·2",
-   "title": "Anypoint Monitoring・API 分析・アラート・Anypoint Visualizer",
+   "title": "Anypoint Monitoring・API 分析・アラート・API Visualizer",
    "tag": "Monitoring & Visualizer",
-   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>なぞなぞだ。「メールで知らせる」「グラフで見せる」「地図で描く」。3つの道具は何だ?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>分かった!全部 Anypoint Monitoring!</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>半分正解です。メールはアラート、グラフはダッシュボードで、どちらも Anypoint Monitoring です。地図は Anypoint Visualizer です。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>地図だけ別の製品なんだ。じゃあ、デプロイ失敗のメールは?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>それは Runtime Manager のアラートです。アラートが2系統あるのが、この項目の落とし穴ですよ。</p></div>\n<p class=\"one\">Anypoint Monitoring は、Mule アプリケーションと API の指標、ログ、アラートをまとめて扱う監視の道具です。Anypoint Visualizer は、アプリケーションネットワークのつながりを図で見せる道具です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>病院の検査です。ダッシュボードは心電図のモニター、ログはカルテ、アラートはナースコールです。Anypoint Visualizer は、どの臓器がどこにつながっているかを描いた人体図です。</p></div>\n<h4>監視を始める準備(デプロイ先ごと)</h4>\n<ul>\n<li>CloudHub 2.0 と Runtime Fabric では、Anypoint Monitoring は既定で使えます。準備は要りません。</li>\n<li>CloudHub(1.0)では、Mule アプリケーションごとに Anypoint Monitoring を有効にします。新しくデプロイするアプリケーションを自動で監視する設定もあります(Anypoint Integration Advanced パッケージと Titanium では既定で有効)。この設定は、すでにデプロイ済みのアプリケーションにはさかのぼって効きません。</li>\n<li>ハイブリッド(顧客ホストの Mule を Runtime Manager で管理する形)では、サーバーに Anypoint Monitoring エージェントをインストールします。Runtime Manager で管理していないスタンドアロンの Mule は対象外です。</li>\n<li>指標は1分ごとに集められて集計されます。いちばん細かい粒度は1分です。</li>\n</ul>\n<h4>ダッシュボードと API 分析</h4>\n<ul>\n<li>アプリケーションの組み込みダッシュボード(Built-in dashboards)は設定不要で、概要、リクエスト、エラー、JVM(CPU、ヒープ、スレッド数など)、インフラストラクチャのページがあります。フロー別とコネクター別のページは Advanced と Titanium だけです。</li>\n<li>API の組み込みダッシュボードは、API の自動検出(Autodiscovery)を有効にした管理対象の API で使えます。リクエスト量、失敗、4xx と 5xx のエラー数、ポリシー違反、平均応答時間などを見られます。</li>\n<li>API 分析の「クライアントアプリケーション」ページでは、クライアント ID 別、クライアント IP 別、場所別のリクエスト数を見られます。このページのデータは直近1時間分に限られます。</li>\n<li>API の詳しい指標(enhanced API metrics)は、どのサブスクリプションでも30日間保持されます。</li>\n<li>ログ検索は、Starter では1つのアプリケーション内だけ、Advanced と Titanium では複数のアプリケーションをまたいで行えます。ログポイント(コードを変えずにログ出力を足す機能)も Advanced と Titanium です。</li>\n</ul>\n<h4>アラート</h4>\n<div class=\"tw\"><table><thead><tr><th>種類</th><th>主な対象</th><th>例</th></tr></thead>\n<tr><td>Anypoint Monitoring のアラート</td><td>API、Mule アプリケーション、サーバーの指標</td><td>平均応答時間、応答コード、ポリシー違反</td></tr>\n<tr><td>Runtime Manager のアラート</td><td>インフラストラクチャとアプリケーションのライフサイクル</td><td>デプロイの完了、ワーカーの異常、サーバーの切断</td></tr>\n</table></div>\n<ul>\n<li>Anypoint Monitoring のアラートは、指定した受信者にメールで通知します。件名と本文には、重大度や値などの変数を入れられます。</li>\n<li>条件は「指標が、しきい値より上(または下、以上、以下、等しい)の状態が、直近 N 分間ずっと続いたら」です。たとえば「10分連続で4より上」なら、10分のうち9分だけ超えても発火しません。</li>\n<li>Mule アプリケーションのアラートには、メッセージ数、メッセージのエラー数、平均応答時間、CPU 使用率、メモリ使用率、スレッド数を使えます。最後の3つは CloudHub と Runtime Fabric のアプリケーションだけです。</li>\n<li>API のアラートには、リクエスト総数、平均応答時間、応答コード(1つのアラートに最大10個)、ポリシー違反を使えます。</li>\n<li>Runtime Manager のアラートは別の仕組みです。デプロイの完了(成功・失敗)、ワーカーの異常、サーバーの切断や削除など、インフラストラクチャとアプリケーションのライフサイクルの出来事を通知します。Anypoint Monitoring のアラートページには表示されず、履歴は30日間保持されます。</li>\n</ul>\n<h4>API Functional Monitoring</h4>\n<ul>\n<li>API Functional Monitoring は、API のエンドポイントを決めたスケジュールでテストする機能です。テストはパブリックロケーション(他社と共有する実行場所)かプライベートロケーションから実行します。</li>\n</ul>\n<h4>Anypoint Visualizer</h4>\n<ul>\n<li>Anypoint Visualizer は、現在のドキュメントでは API Visualizer(旧称 Anypoint Visualizer)と呼ばれています。API、Mule アプリケーション、その先のサードパーティーのシステムのつながりを、アプリケーションネットワークの図として表示します。</li>\n<li>図は事前の設定なしで自動的に更新されます。つながりの線は、過去7日間に実際に通信があったものです。複数のワーカーで動くアプリケーションは、別々のノードとして表示されます。</li>\n<li>ノードをレイヤーに割り当てると、API が API 主導の接続の分類どおりに並んでいるかを確かめられます。デプロイ時にアプリケーションプロパティ anypoint.platform.visualizer.layer にレイヤー名を入れて指定でき、存在しないレイヤー名なら自動で作られます。プロパティで決めたレイヤーは画面から変えられません。</li>\n<li>トラブルシューティングビューでは、ノードごとに平均応答時間、平均スループット、失敗率、平均 CPU 使用率、平均メモリ使用率を表示します。ノードから Anypoint Monitoring のログやダッシュボードに移動できます。</li>\n<li>ポリシービューでは、ポリシーを選ぶと、そのポリシーがまったく適用されていない API、一部だけ適用されている API、すべて適用されている API を見分けられます。</li>\n</ul>\n<div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>オンプレのサーバーのアプリが、ダッシュボードに出てこないんだけど…。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>ハイブリッドでは、サーバーに Anypoint Monitoring エージェントを入れる必要があります。CloudHub 2.0 と Runtime Fabric なら何もしなくても見えます。</p></div>\n<div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>ハイブリッドはエージェントのインストール、CloudHub(1.0)はアプリケーションごとの有効化、CloudHub 2.0 と Runtime Fabric は準備不要です。</li>\n<li>API ダッシュボードには、API の自動検出が必要です。クライアント別の利用状況は「クライアントアプリケーション」ページで見ます。</li>\n<li>指標のしきい値で知らせるのは Anypoint Monitoring のアラート、デプロイやワーカーの出来事を知らせるのは Runtime Manager のアラートです。</li>\n<li>アラートは「N 分連続で」条件を満たしたときだけ発火します。</li>\n<li>API 主導の接続の層を図で確かめるなら、Anypoint Visualizer のレイヤーを使います。</li>\n</ul></div>",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>なぞなぞだ。「メールで知らせる」「グラフで見せる」「地図で描く」。3つの道具は何だ?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>分かった!全部 Anypoint Monitoring!</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>半分正解です。メールはアラート、グラフはダッシュボードで、どちらも Anypoint Monitoring です。地図は API Visualizer(旧 Anypoint Visualizer) です。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>地図だけ別の製品なんだ。じゃあ、デプロイ失敗のメールは?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>それは Runtime Manager のアラートです。アラートが2系統あるのが、この項目の落とし穴ですよ。</p></div>\n<p class=\"one\">Anypoint Monitoring は、Mule アプリケーションと API の指標、ログ、アラートをまとめて扱う監視の道具です。API Visualizer は、アプリケーションネットワークのつながりを図で見せる道具です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>病院の検査です。ダッシュボードは心電図のモニター、ログはカルテ、アラートはナースコールです。API Visualizer は、どの臓器がどこにつながっているかを描いた人体図です。</p></div>\n<h4>監視を始める準備(デプロイ先ごと)</h4>\n<ul>\n<li>CloudHub 2.0 と Runtime Fabric では、Anypoint Monitoring は既定で使えます。準備は要りません。</li>\n<li>CloudHub(1.0)では、Mule アプリケーションごとに Anypoint Monitoring を有効にします。新しくデプロイするアプリケーションを自動で監視する設定もあります(Anypoint Integration Advanced パッケージと Titanium では既定で有効)。この設定は、すでにデプロイ済みのアプリケーションにはさかのぼって効きません。</li>\n<li>ハイブリッド(顧客ホストの Mule を Runtime Manager で管理する形)では、サーバーに Anypoint Monitoring エージェントをインストールします。Runtime Manager で管理していないスタンドアロンの Mule は対象外です。</li>\n<li>指標は1分ごとに集められて集計されます。いちばん細かい粒度は1分です。</li>\n</ul>\n<h4>ダッシュボードと API 分析</h4>\n<ul>\n<li>アプリケーションの組み込みダッシュボード(Built-in dashboards)は設定不要で、概要、リクエスト、エラー、JVM(CPU、ヒープ、スレッド数など)、インフラストラクチャのページがあります。フロー別とコネクター別のページは Advanced と Titanium だけです。</li>\n<li>API の組み込みダッシュボードは、API の自動検出(Autodiscovery)を有効にした管理対象の API で使えます。リクエスト量、失敗、4xx と 5xx のエラー数、ポリシー違反、平均応答時間などを見られます。</li>\n<li>API 分析の「クライアントアプリケーション」ページでは、クライアント ID 別、クライアント IP 別、場所別のリクエスト数を見られます。このページのデータは直近1時間分に限られます。</li>\n<li>API の詳しい指標(enhanced API metrics)は、どのサブスクリプションでも30日間保持されます。</li>\n<li>ログ検索は、Starter では1つのアプリケーション内だけ、Advanced と Titanium では複数のアプリケーションをまたいで行えます。ログポイント(コードを変えずにログ出力を足す機能)も Advanced と Titanium です。</li>\n</ul>\n<h4>アラート</h4>\n<div class=\"tw\"><table><thead><tr><th>種類</th><th>主な対象</th><th>例</th></tr></thead>\n<tr><td>Anypoint Monitoring のアラート</td><td>API、Mule アプリケーション、サーバーの指標</td><td>平均応答時間、応答コード、ポリシー違反</td></tr>\n<tr><td>Runtime Manager のアラート</td><td>インフラストラクチャとアプリケーションのライフサイクル</td><td>デプロイの完了、ワーカーの異常、サーバーの切断</td></tr>\n</table></div>\n<ul>\n<li>Anypoint Monitoring のアラートは、指定した受信者にメールで通知します。件名と本文には、重大度や値などの変数を入れられます。</li>\n<li>条件は「指標が、しきい値より上(または下、以上、以下、等しい)の状態が、直近 N 分間ずっと続いたら」です。たとえば「10分連続で4より上」なら、10分のうち9分だけ超えても発火しません。</li>\n<li>Mule アプリケーションのアラートには、メッセージ数、メッセージのエラー数、平均応答時間、CPU 使用率、メモリ使用率、スレッド数を使えます。最後の3つは CloudHub と Runtime Fabric のアプリケーションだけです。</li>\n<li>API のアラートには、リクエスト総数、平均応答時間、応答コード(1つのアラートに最大10個)、ポリシー違反を使えます。</li>\n<li>Runtime Manager のアラートは別の仕組みです。デプロイの完了(成功・失敗)、ワーカーの異常、サーバーの切断や削除など、インフラストラクチャとアプリケーションのライフサイクルの出来事を通知します。Anypoint Monitoring のアラートページには表示されず、履歴は30日間保持されます。</li>\n</ul>\n<h4>API Functional Monitoring</h4>\n<ul>\n<li>API Functional Monitoring は、API のエンドポイントを決めたスケジュールでテストする機能です。テストはパブリックロケーション(他社と共有する実行場所)かプライベートロケーションから実行します。</li>\n</ul>\n<h4>API Visualizer</h4>\n<ul>\n<li>API Visualizer は、API、Mule アプリケーション、その先のサードパーティーのシステムのつながりを、アプリケーションネットワークの図として表示します。</li>\n<li>図は事前の設定なしで自動的に更新されます。つながりの線は、過去7日間に実際に通信があったものです。複数のワーカーで動くアプリケーションは、別々のノードとして表示されます。</li>\n<li>ノードをレイヤーに割り当てると、API が API 主導の接続の分類どおりに並んでいるかを確かめられます。デプロイ時にアプリケーションプロパティ anypoint.platform.visualizer.layer にレイヤー名を入れて指定でき、存在しないレイヤー名なら自動で作られます。プロパティで決めたレイヤーは画面から変えられません。</li>\n<li>トラブルシューティングビューでは、ノードごとに平均応答時間、平均スループット、失敗率、平均 CPU 使用率、平均メモリ使用率を表示します。ノードから Anypoint Monitoring のログやダッシュボードに移動できます。</li>\n<li>ポリシービューでは、ポリシーを選ぶと、そのポリシーがまったく適用されていない API、一部だけ適用されている API、すべて適用されている API を見分けられます。</li>\n</ul>\n<div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>オンプレのサーバーのアプリが、ダッシュボードに出てこないんだけど…。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>ハイブリッドでは、サーバーに Anypoint Monitoring エージェントを入れる必要があります。CloudHub 2.0 と Runtime Fabric なら何もしなくても見えます。</p></div>\n<div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>ハイブリッドはエージェントのインストール、CloudHub(1.0)はアプリケーションごとの有効化、CloudHub 2.0 と Runtime Fabric は準備不要です。</li>\n<li>API ダッシュボードには、API の自動検出が必要です。クライアント別の利用状況は「クライアントアプリケーション」ページで見ます。</li>\n<li>指標のしきい値で知らせるのは Anypoint Monitoring のアラート、デプロイやワーカーの出来事を知らせるのは Runtime Manager のアラートです。</li>\n<li>アラートは「N 分連続で」条件を満たしたときだけ発火します。</li>\n<li>API 主導の接続の層を図で確かめるなら、API Visualizer のレイヤーを使います。</li>\n</ul></div>",
    "questions": [
     {
      "q": "ある会社は、自社データセンターの Mule サーバーを Runtime Manager に登録し(ハイブリッド)、アプリケーションを動かしています。しかし Anypoint Monitoring の組み込みダッシュボードに、これらのアプリケーションの指標が出てきません。アーキテクトはまず何をすべきですか?",
      "o": [
       "サーバーに Anypoint Monitoring エージェントをインストールする",
       "アプリケーションを CloudHub 2.0 へ移行しないと監視できないと伝える",
-      "Anypoint Visualizer のレイヤーを設定する",
+      "API Visualizer のレイヤーを設定する",
       "API Manager で自動検出を設定し直す"
      ],
      "a": [
@@ -145,7 +145,7 @@
       "アプリケーションの組み込みダッシュボードの JVM ページ",
       "API の組み込みダッシュボードのクライアントアプリケーションページ",
       "Runtime Manager のアラート履歴",
-      "Anypoint Visualizer のアーキテクチャビュー"
+      "API Visualizer のアーキテクチャビュー"
      ],
      "a": [
       1
@@ -175,7 +175,7 @@
       "Anypoint Monitoring で応答コードのアラートを作る",
       "Runtime Manager のアラートを設定する",
       "API Functional Monitoring でスケジュールを作る",
-      "Anypoint Visualizer のトラブルシューティングビューを常に開いておく"
+      "API Visualizer のトラブルシューティングビューを常に開いておく"
      ],
      "a": [
       1
@@ -187,7 +187,7 @@
     {
      "q": "ある会社の C4E は、アプリケーションネットワークの図で、各アプリケーションが Experience / Process / System のどの層にあるかを一目で確かめたいと考えています。CI/CD でのデプロイ時に自動で決まるようにしたいです。アーキテクトは何を推奨すべきですか?",
      "o": [
-      "Anypoint Visualizer のレイヤーを、アプリケーションプロパティ anypoint.platform.visualizer.layer で指定する",
+      "API Visualizer のレイヤーを、アプリケーションプロパティ anypoint.platform.visualizer.layer で指定する",
       "Anypoint Exchange でアセットにカテゴリーを付ける",
       "Anypoint Monitoring のカスタムダッシュボードで層ごとのグラフを作る",
       "API Manager で API にラベルを付ける"
@@ -195,14 +195,14 @@
      "a": [
       0
      ],
-     "ex": "Anypoint Visualizer では、ノードをレイヤーに割り当てて API 主導の接続の分類どおりかを確かめられます。デプロイ時のアプリケーションプロパティ anypoint.platform.visualizer.layer で指定でき、CI/CD からも設定できます。Exchange のカテゴリーや API Manager のラベルは Visualizer の図の層には反映されません。",
+     "ex": "API Visualizer では、ノードをレイヤーに割り当てて API 主導の接続の分類どおりかを確かめられます。デプロイ時のアプリケーションプロパティ anypoint.platform.visualizer.layer で指定でき、CI/CD からも設定できます。Exchange のカテゴリーや API Manager のラベルは Visualizer の図の層には反映されません。",
      "u": "https://docs.mulesoft.com/visualizer/layers",
      "x": "ノードをレイヤーに割り当てると、API が API 主導の接続の分類どおりに並んでいるかを確かめられます。デプロイ時にアプリケーションプロパティ anypoint.platform.visualizer.layer にレイヤー名を入れて指定でき、存在しないレイヤー名なら自動で作られます。プロパティで決めたレイヤーは画面から変えられません。"
     },
     {
      "q": "あるセキュリティ担当者は、組織内の API のうち、特定のポリシーがまったく適用されていない API を、図の上で素早く見つけたいと考えています。アーキテクトはどの機能を推奨すべきですか?",
      "o": [
-      "Anypoint Visualizer のポリシービュー",
+      "API Visualizer のポリシービュー",
       "Anypoint Monitoring のログ検索",
       "Runtime Manager のアラート",
       "API Functional Monitoring"
@@ -210,7 +210,7 @@
      "a": [
       0
      ],
-     "ex": "Anypoint Visualizer のポリシービューでは、ポリシーを選ぶと、まったく適用されていない API、一部だけの API、すべて適用されている API を見分けられます。ログ検索やアラートは、ポリシーの適用状況を図で示す機能ではありません。",
+     "ex": "API Visualizer のポリシービューでは、ポリシーを選ぶと、まったく適用されていない API、一部だけの API、すべて適用されている API を見分けられます。ログ検索やアラートは、ポリシーの適用状況を図で示す機能ではありません。",
      "u": "https://docs.mulesoft.com/visualizer/",
      "x": "ポリシービューでは、ポリシーを選ぶと、そのポリシーがまったく適用されていない API、一部だけ適用されている API、すべて適用されている API を見分けられます。"
     },
@@ -219,7 +219,7 @@
      "o": [
       "Anypoint Monitoring のカスタムダッシュボード",
       "API Functional Monitoring",
-      "Anypoint Visualizer のトラブルシューティングビュー",
+      "API Visualizer のトラブルシューティングビュー",
       "Runtime Manager のアラート"
      ],
      "a": [

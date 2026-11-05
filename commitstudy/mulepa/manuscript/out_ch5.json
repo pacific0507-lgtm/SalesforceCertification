@@ -31,12 +31,12 @@
       "CloudHub 2.0 の共有スペース",
       "Runtime Fabric",
       "ハイブリッドのサーバーグループ",
-      "Anypoint Flex Gateway のみでの運用"
+      "Omni Gateway のみでの運用"
      ],
      "a": [
       1
      ],
-     "ex": "Runtime Fabric は顧客が管理する Kubernetes(EKS、AKS、GKE など)の上で動き、アプリごとに別の Mule ランタイムで分離し、複数レプリカでのフェイルオーバーができます。CloudHub 2.0 は MuleSoft が管理するクラウドで、自社の AKS は使えません。Flex Gateway は API ゲートウェイで、Mule アプリの実行環境ではありません。",
+     "ex": "Runtime Fabric は顧客が管理する Kubernetes(EKS、AKS、GKE など)の上で動き、アプリごとに別の Mule ランタイムで分離し、複数レプリカでのフェイルオーバーができます。CloudHub 2.0 は MuleSoft が管理するクラウドで、自社の AKS は使えません。Omni Gateway は API ゲートウェイで、Mule アプリの実行環境ではありません。",
      "u": "https://docs.mulesoft.com/runtime-fabric/latest/",
      "x": "Runtime Fabric は、アプリごとに別々の Mule ランタイムサーバーを動かして分離します。複数レプリカでの水平スケールと、自動フェイルオーバーもできます。"
     },
@@ -174,7 +174,7 @@
      "o": [
       "CloudHub 2.0 のプライベートスペース",
       "Runtime Fabric のイングレスコントローラー",
-      "Anypoint Flex Gateway",
+      "Omni Gateway",
       "Anypoint VPC"
      ],
      "a": [

@@ -88,15 +88,15 @@
     {
      "q": "ある開発者は、Exchange にある共通のデータ型フラグメントを取り込みながら新しい API 仕様を書きたいと考えています。API Designer のどの使い方が適していますか?",
      "o": [
-      "Flex Gateway の設定ファイルに型を書く",
+      "Omni Gateway の設定ファイルに型を書く",
       "テキストエディターで仕様を書き、Exchange のフラグメントを取り込む",
       "ビジュアル API エディターだけで仕様を完成させる",
-      "Anypoint Visualizer で API の関係図を描いて仕様にする"
+      "API Visualizer で API の関係図を描いて仕様にする"
      ],
      "a": [
       1
      ],
-     "ex": "テキストエディターでは Exchange の RAML フラグメントを取り込めます。ビジュアル API エディターは RAML フラグメントを含める必要がない場合向けです。Flex Gateway や Anypoint Visualizer は仕様を書く道具ではありません。",
+     "ex": "テキストエディターでは Exchange の RAML フラグメントを取り込めます。ビジュアル API エディターは RAML フラグメントを含める必要がない場合向けです。Omni Gateway や API Visualizer は仕様を書く道具ではありません。",
      "u": "https://docs.mulesoft.com/design-center/design-designing-api-specs-fragments",
      "x": "テキストエディターでは、Exchange にある RAML フラグメント(セキュリティスキーマやデータ型など)を取り込めます。Exchange のルールセットを適用して、ガバナンスへの準拠も検証できます。"
     },
