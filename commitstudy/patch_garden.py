@@ -39,6 +39,10 @@ function csGardenDetail(days){try{var el=document.getElementById("garden-detail"
   el.innerHTML=h}catch(e){}}
 '''
 rep("FAMP.home=function(){", JS + "\nFAMP.home=function(){")
+# ホームの「草の庭をくわしく見る」で、学習の記録の草の庭まで移る(リンクは /record/#garden-d)
+rep("FAMP.record=function(){", "FAMP.record=function(){if(location.hash===\"#garden-d\"){var gdN=0;(function gdGo(){var el=document.getElementById(\"garden-d\"),d=document.getElementById(\"garden-detail\");"
+    "if(!el||!d||!d.children.length){if(gdN++<40)setTimeout(gdGo,150);return}el.classList.remove(\"rv\");el.classList.add(\"in\");"
+    "var h=document.querySelector(\"header.hd,.hd\"),off=(h?h.getBoundingClientRect().height:60)+12;window.scrollTo(0,el.getBoundingClientRect().top+scrollY-off)})()}")
 rep("Kt(Z(`#bx-rank`,e),s)", "Kt(Z(`#bx-rank`,e),s),csGarden(Z(`#bx-garden`,e),s)", 2)
 rep("let[f,p]=je(t);$(`#cal-say`)", "csGardenDetail(e.days);let[f,p]=je(t);$(`#cal-say`)")
 CSS = """
