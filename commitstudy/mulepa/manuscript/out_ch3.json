@@ -1,0 +1,319 @@
+{
+ "chapter": 3,
+ "chapter_title": "API の設計と共有",
+ "chapter_sub": "Design Center で API 仕様を書いてモックで試し、Anypoint Exchange で共有して、バージョンを計画的に管理する方法を学びます。",
+ "sections": [
+  {
+   "id": "spec",
+   "no": "Ch3·1",
+   "title": "API 仕様(RAML・OAS)と Design Center・モックサービス",
+   "tag": "API Specs & Mocking",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>なぞなぞだ。中身はまだ空っぽなのに、呼ぶとちゃんと返事をするものは何だ。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>え、留守番電話?</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>惜しい。答えはモックサービスだ。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>API 仕様に書いた例を返してくれるので、実装がなくても使う側は試せます。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>仕様が先、実装があと。だから API の「設計」の章なんだね。</p></div>\n<p class=\"one\">API 仕様は、API の入口と出口を決める契約書です。Design Center の API Designer で RAML や OAS で書き、モックサービスで実装前に動きを試します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>家を建てる前の設計図と模型です。設計図(仕様)を見せ、模型(モック)で住む人に確かめてもらえば、工事(実装)のやり直しが減ります。</p></div><h4>API Designer で書ける仕様</h4><div class=\"tw\"><table><thead><tr><th>言語</th><th>バージョン</th><th>用途</th></tr></thead>\n<tr><td>RAML(RESTful API Modeling Language)</td><td>0.8 / 1.0</td><td>REST API の仕様。API フラグメントも RAML 0.8 / 1.0 で作れる</td></tr>\n<tr><td>OAS(OpenAPI Specification)</td><td>2.0 / 3.0</td><td>REST API の仕様。JSON または YAML で書ける</td></tr>\n<tr><td>AsyncAPI</td><td>2.0 / 2.6</td><td>非同期(イベント駆動)の API の仕様。JSON または YAML で書ける</td></tr>\n</table></div><h4>テキストエディターとビジュアルエディター</h4><ul>\n<li>テキストエディターでは、RAML 0.8、RAML 1.0、OAS 2.0、OAS 3.0、AsyncAPI 2.0、AsyncAPI 2.6 で仕様を直接書けます。</li>\n<li>テキストエディターでは、Exchange にある RAML フラグメント(セキュリティスキーマやデータ型など)を取り込めます。Exchange のルールセットを適用して、ガバナンスへの準拠も検証できます。</li>\n<li>ビジュアル API エディター(visual API editor)は、フォームに入力して RAML 1.0 または OAS 2.0 / 3.0(JSON)の仕様のひな形を作ります。RAML フラグメントを含める必要がない場合に向いています。</li>\n</ul><h4>API フラグメントと再利用</h4><ul>\n<li>API フラグメント(API fragment)は、バージョンと識別子を持つものの、それ自体は完全な仕様ではない文書です。</li>\n<li>RAML のフラグメントの種類は、トレイト(Trait)、リソースタイプ(Resource Type)、ライブラリ(Library)、型(Type)、ユーザードキュメント(User Documentation)、例(Example)、アノテーション型(Annotation Type)、セキュリティスキーム(Security Scheme)です。</li>\n<li>Exchange のフラグメントやルールセットは、Exchange 依存関係(Exchange dependencies)としてプロジェクトに追加します。依存関係は Exchange を参照しているので、プロジェクトの中では直接編集できません。</li>\n<li>フラグメントは、まずローカルで取り込んで動きを確かめてから Exchange に公開すると、複製せずに再利用できます。</li>\n</ul><h4>モックサービス</h4><ul>\n<li>モックサービス(mocking service)は、仕様に定義したステータスコードと例(example)のペイロードを返して、API の動きをまねる機能です。実装する前に API を試せます。</li>\n<li>仕様にエンドポイントを追加すると、API Designer がテスト用のリンクを自動で作ります。前提は、エンドポイントが1つ以上あり、各エンドポイントにメソッドが1つ以上あることです。</li>\n<li>内部 URL を呼ぶには、リクエストに認可ヘッダーが必要です。Anypoint Platform の外の人と共有するときは、Mocking Service Configuration で Make Public をオンにして公開 URL を作ります。</li>\n<li>公開 URL を無効にすると、その URL は使えなくなります。再び有効にすると、別の URL が作られます。公開リンクには有効期限も設定できます。</li>\n</ul><h4>動作ヘッダー(behavioral headers)</h4><p>モックサービスへのリクエストにヘッダーを付けると、遅延やエラーなどの場面をまねできます。</p><div class=\"tw\"><table><thead><tr><th>ヘッダー</th><th>働き</th></tr></thead>\n<tr><td>MS2-Delay</td><td>応答までの遅延をミリ秒で指定する(固定値または min-max の範囲)。タイムアウトの再現に使う</td></tr>\n<tr><td>MS2-Error-Rate</td><td>エラー応答を返す確率を 0〜1 の小数で指定する</td></tr>\n<tr><td>MS2-Error-Level</td><td>エラーの範囲を REQUEST_ONLY(4XX)、SERVER_ONLY(5XX)、ALL(両方。既定)から選ぶ</td></tr>\n<tr><td>MS2-Status-Code</td><td>返すステータスコードを、指定したものだけに絞る</td></tr>\n<tr><td>MS2-Randomize</td><td>true にすると、例がない応答にランダムなペイロードを作る</td></tr>\n</table></div><ul>\n<li>動作ヘッダーを付けない場合、定義されたステータスコードのうち最も小さいものが返ります。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>エラーをわざと返せるなら、呼ぶ側のエラー処理も先に試せるね。</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>テストでいうスタブだ。本番の前に失敗の練習ができる。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>API Designer の対応言語は、RAML 0.8 / 1.0、OAS 2.0 / 3.0、AsyncAPI 2.0 / 2.6 です。イベント駆動の API なら AsyncAPI です。</li>\n<li>共通のデータ型やセキュリティスキームは、API フラグメントとして Exchange に公開し、依存関係として再利用します。</li>\n<li>社外の人にモックを試してもらうなら、Make Public で公開 URL を作ります。</li>\n<li>タイムアウトは MS2-Delay、エラーの頻度は MS2-Error-Rate、4XX / 5XX の範囲は MS2-Error-Level で再現します。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、新しい Process API の実装が始まる前に、利用側のモバイルチームに API の呼び出し方を試してもらいたいと考えています。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "Anypoint Monitoring のダッシュボードで応答の形を確認してもらう",
+      "API Designer で仕様を作り、モックサービスで仕様の例を返させて試してもらう",
+      "API Manager でプロキシを作り、レート制限ポリシーを適用して試してもらう",
+      "空の Mule アプリケーションを CloudHub 2.0 にデプロイして試してもらう"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "モックサービスは、仕様に定義したステータスコードと例のペイロードを返すので、実装前に API を試せます。空のアプリケーションやプロキシは呼び出し先の実装が必要で、Anypoint Monitoring は動いている API を監視する機能です。",
+     "u": "https://docs.mulesoft.com/design-center/design-mocking-service",
+     "x": "モックサービス(mocking service)は、仕様に定義したステータスコードと例(example)のペイロードを返して、API の動きをまねる機能です。実装する前に API を試せます。"
+    },
+    {
+     "q": "ある会社は、Anypoint Platform のアカウントを持たない取引先の開発者にも、設計中の API のモックを試してもらいたいと考えています。何をすべきですか?",
+     "o": [
+      "Mocking Service Configuration で Make Public をオンにし、公開 URL を共有する",
+      "取引先の開発者に Exchange Contributors の権限を与える",
+      "仕様を Exchange に公開し、Request access ボタンを表示する",
+      "モックサービスの内部 URL を共有し、ヘッダーなしで呼んでもらう"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "内部 URL は認可ヘッダーが必要なので、Anypoint Platform の外の人と共有するには Make Public で公開 URL を作ります。権限の付与はアカウントが前提で、Request access ボタンは API Manager の API インスタンスへのアクセス申請のためのものです。",
+     "u": "https://docs.mulesoft.com/design-center/design-mocking-service",
+     "x": "内部 URL を呼ぶには、リクエストに認可ヘッダーが必要です。Anypoint Platform の外の人と共有するときは、Mocking Service Configuration で Make Public をオンにして公開 URL を作ります。"
+    },
+    {
+     "q": "ある開発チームは、API 利用側のアプリケーションが、応答の遅いバックエンドのタイムアウトを正しく扱えるかを、実装前にモックサービスで確かめたいと考えています。どの動作ヘッダーを使うべきですか?",
+     "o": [
+      "MS2-Randomize",
+      "MS2-Status-Code",
+      "MS2-Example",
+      "MS2-Delay"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "MS2-Delay は応答までの遅延をミリ秒で指定でき、タイムアウトの再現に使えます。MS2-Randomize はランダムなペイロード、MS2-Example は例の選択、MS2-Status-Code は返すステータスコードの絞り込みで、遅延は作れません。",
+     "u": "https://docs.mulesoft.com/design-center/apid-behavioral-headers",
+     "x": "MS2-Delay応答までの遅延をミリ秒で指定する(固定値または min-max の範囲)。タイムアウトの再現に使う"
+    },
+    {
+     "q": "ある会社では、複数の API 仕様で同じ顧客のデータ型と OAuth のセキュリティスキームを、それぞれコピーして書いています。変更のたびに全部を直す手間をなくすため、アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "各 API の API Manager で同じ SLA 層を作る",
+      "データ型とセキュリティスキームを RAML の API フラグメントとして Exchange に公開し、各仕様の依存関係として使う",
+      "共通部分を Mule アプリケーションのグローバル設定にまとめる",
+      "1つの大きな API 仕様にすべての API をまとめる"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "RAML には型(Type)やセキュリティスキーム(Security Scheme)などのフラグメントがあり、Exchange に公開して依存関係として再利用できます。Mule アプリケーションの設定や SLA 層は仕様の再利用とは関係がなく、1つの仕様にまとめると API ごとの独立性が失われます。",
+     "u": "https://docs.mulesoft.com/design-center/design-create-publish-api-fragment",
+     "x": "RAML のフラグメントの種類は、トレイト(Trait)、リソースタイプ(Resource Type)、ライブラリ(Library)、型(Type)、ユーザードキュメント(User Documentation)、例(Example)、アノテーション型(Annotation Type)、セキュリティスキーム(Security Scheme)です。"
+    },
+    {
+     "q": "ある会社は、Anypoint MQ のキューに流れる注文イベントの仕様を、REST API と同じように API Designer で設計して共有したいと考えています。どの仕様言語を選ぶべきですか?",
+     "o": [
+      "AsyncAPI",
+      "WSDL",
+      "OAS 2.0",
+      "RAML 0.8"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "AsyncAPI は非同期(イベント駆動)の API のための仕様で、API Designer は AsyncAPI 2.0 / 2.6 に対応しています。RAML と OAS は REST API の仕様で、WSDL は SOAP API の仕様です。",
+     "u": "https://docs.mulesoft.com/design-center/design-create-publish-api-specs",
+     "x": "AsyncAPI2.0 / 2.6非同期(イベント駆動)の API の仕様。JSON または YAML で書ける"
+    },
+    {
+     "q": "ある開発者は、Exchange にある共通のデータ型フラグメントを取り込みながら新しい API 仕様を書きたいと考えています。API Designer のどの使い方が適していますか?",
+     "o": [
+      "Flex Gateway の設定ファイルに型を書く",
+      "テキストエディターで仕様を書き、Exchange のフラグメントを取り込む",
+      "ビジュアル API エディターだけで仕様を完成させる",
+      "Anypoint Visualizer で API の関係図を描いて仕様にする"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "テキストエディターでは Exchange の RAML フラグメントを取り込めます。ビジュアル API エディターは RAML フラグメントを含める必要がない場合向けです。Flex Gateway や Anypoint Visualizer は仕様を書く道具ではありません。",
+     "u": "https://docs.mulesoft.com/design-center/design-designing-api-specs-fragments",
+     "x": "テキストエディターでは、Exchange にある RAML フラグメント(セキュリティスキーマやデータ型など)を取り込めます。Exchange のルールセットを適用して、ガバナンスへの準拠も検証できます。"
+    },
+    {
+     "q": "ある会社は、利用側アプリケーションのエラー処理を試すため、モックサービスが一定の割合で 5XX エラーだけを返すようにしたいと考えています。どの組み合わせを使うべきですか?",
+     "o": [
+      "MS2-Randomize と MS2-Error-Level(ALL)",
+      "MS2-Error-Rate と MS2-Error-Level(SERVER_ONLY)",
+      "MS2-Example と MS2-Error-Level(REQUEST_ONLY)",
+      "MS2-Delay と MS2-Randomize"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "MS2-Error-Rate でエラーを返す確率を 0〜1 で決め、MS2-Error-Level を SERVER_ONLY にすると 5XX に絞れます。REQUEST_ONLY は 4XX、ALL は両方で、MS2-Delay や MS2-Randomize はエラーの頻度を決めません。",
+     "u": "https://docs.mulesoft.com/design-center/apid-behavioral-headers",
+     "x": "MS2-Error-Levelエラーの範囲を REQUEST_ONLY(4XX)、SERVER_ONLY(5XX)、ALL(両方。既定)から選ぶ"
+    }
+   ]
+  },
+  {
+   "id": "exchange",
+   "no": "Ch3·2",
+   "title": "Anypoint Exchange での共有と再利用",
+   "tag": "Anypoint Exchange",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>Exchange ってあれでしょ、社内のアプリストア!作ったものを並べて、みんなで使い回す場所。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>その説明でほぼ合っています。公式には「再利用できるアセットのキュレーションされたカタログ」です。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>でも並べたら終わりじゃないよね。作りかけと完成品が混ざったら困るし。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そのためにライフサイクル状態があります。開発中、安定、非推奨の3つです。</p><p class=\"tk pen\" data-f=\"eager\"><b class=\"who\">コミットくん</b>ブランチで言えば、開発中は feature、安定は main のタグだ。タグは上書きしない。</p></div>\n<p class=\"one\">Anypoint Exchange は、API 仕様やフラグメント、コネクタなどを登録して探し、再利用するためのカタログです。アセットのバージョンごとにライフサイクル状態を持ちます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>社内の図書館です。本(アセット)には版があり、執筆中の原稿は貸し出しません。古い版には「旧版」のラベルを貼ります。一般公開の閲覧室(公開ポータル)もあります。</p></div><h4>アセットの種類と見え方</h4><ul>\n<li>Exchange で扱えるアセットには、REST API、SOAP API、HTTP API、AsyncAPI の仕様、API フラグメント、コネクタ、Mule アプリケーション、サンプル(example)、テンプレート、ポリシー、カスタムアセットなどがあります。</li>\n<li>REST API のアセットは、RAML(.raml)または OAS(OAS 2.0 / 3.0 の .yaml か .json)のファイルで作ります。HTTP API のアセットはファイルが不要で、API Manager で定義したエンドポイントを表します。</li>\n<li>Provided by MuleSoft 以外の組織が公開したアセットは非公開で、その組織の外からは見えません。</li>\n</ul><h4>ライフサイクル状態(lifecycle state)</h4><div class=\"tw\"><table><thead><tr><th>状態</th><th>特徴</th></tr></thead>\n<tr><td>開発(development)</td><td>設計と開発をくり返す段階。同じ GAV(groupId、assetId、version)で再公開すると上書きされる。削除は常に完全削除(hard delete)。公開ポータルには表示されず、Anypoint Studio や API Manager からは使われない</td></tr>\n<tr><td>安定(stable)</td><td>利用できる状態で、作成時の既定。再公開や上書きはできない。公開から7日以内の削除は完全削除だが、7日を過ぎると論理削除(soft delete)になり、同じ名前や GAV を再利用できない</td></tr>\n<tr><td>非推奨(deprecated)</td><td>安定とほぼ同じで、status が非推奨を示す点だけが違う。非推奨にすると、そのバージョンを目立たなくできる</td></tr>\n</table></div><ul>\n<li>状態の移行は、development から stable、stable から deprecated、deprecated から stable の3つだけです。</li>\n<li>development のアセットが development の別のアセットに依存していると、stable に昇格できません。先に依存先を stable にします。stable のアセットは、development のアセットを依存関係に追加できません。</li>\n<li>deprecated にできるのは管理者だけです。Exchange Contributors が変更できるのは development と stable だけです。</li>\n</ul><h4>Exchange の権限</h4><div class=\"tw\"><table><thead><tr><th>権限</th><th>できること</th></tr></thead>\n<tr><td>Exchange Viewers</td><td>ビジネスグループ内の全アセットを表示、ダウンロードできる</td></tr>\n<tr><td>Exchange Contributors</td><td>表示、ダウンロード、アセットの作成、ポータルの説明の編集ができる</td></tr>\n<tr><td>Exchange Administrators</td><td>Contributors の操作に加えて、共有、非推奨化、削除ができる</td></tr>\n<tr><td>Exchange Creator</td><td>新しいアセットを作れる。変更できるのは自分が作ったアセットだけ(作ると Asset Administrator が自動で付く)</td></tr>\n</table></div><h4>公開ポータルと共有</h4><ul>\n<li>Exchange 公開ポータル(public portal)は、インターネット上の誰でもログインなしで見られます。組織外の開発者に REST、SOAP、HTTP の API を見せるためのもので、以前の開発者ポータル(developer portals)の後継です。</li>\n<li>アセットの共有(Share)で公開ポータルに追加すると、REST(RAML / OAS)、SOAP、HTTP、AsyncAPI のアセットを公開できます。</li>\n<li>公開ポータルに Request access ボタンを表示するには、API Manager で API インスタンスを作り、API instances で公開(public)に設定します。インスタンスが非公開なら、ボタンはログインしたユーザーにだけ表示されます。</li>\n<li>共有では、特定のユーザー、組織の全員、指定した外部組織の全員に、アセットへのアクセス権を与えられます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>stable を消して、同じ番号で出し直せばいいと思ってた。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>7日を過ぎると論理削除なので、同じ GAV は使えません。新しいバージョンを出します。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>development は上書きできる、stable は上書きできない、が基本です。Studio や API Manager は development を使いません。</li>\n<li>状態の移行は development から stable、stable と deprecated の行き来だけです。</li>\n<li>依存先が development のままだと、stable に昇格できません。</li>\n<li>組織外の開発者に API を見せるなら公開ポータル、アクセス申請を受けるなら API インスタンスを public にして Request access を出します。</li>\n<li>ほかの人のアセットは変えさせずに作成だけ許すなら Exchange Creator です。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある API チームは、仕様を何度も直しながら Exchange に公開し、同じバージョン番号のまま中身を差し替えたいと考えています。どのライフサイクル状態で公開すべきですか?",
+     "o": [
+      "stable",
+      "development",
+      "deprecated",
+      "published"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "development の状態では、同じ GAV で再公開するとファイルや依存関係が上書きされます。stable は上書きできず、deprecated は stable とほぼ同じです。published は Exchange の内部で stable を指す言葉です。",
+     "u": "https://docs.mulesoft.com/exchange/lifecycle",
+     "x": "開発(development)設計と開発をくり返す段階。同じ GAV(groupId、assetId、version)で再公開すると上書きされる。削除は常に完全削除(hard delete)。公開ポータルには表示されず、Anypoint Studio や API Manager からは使われない"
+    },
+    {
+     "q": "ある会社は、全チームの開発者が Exchange に新しいアセットを公開できるようにしたいが、他人が作ったアセットは変更させたくないと考えています。どの権限を与えるべきですか?",
+     "o": [
+      "Exchange Contributors",
+      "Exchange Administrators",
+      "Exchange Viewers",
+      "Exchange Creator"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "Exchange Creator は新しいアセットを作れ、変更できるのは自分が作ったアセットだけです。Contributors と Administrators はビジネスグループ内の全アセットに対して操作でき、Viewers は作成できません。",
+     "u": "https://docs.mulesoft.com/exchange/to-set-permissions",
+     "x": "Exchange Creator新しいアセットを作れる。変更できるのは自分が作ったアセットだけ(作ると Asset Administrator が自動で付く)"
+    },
+    {
+     "q": "ある会社は、Anypoint Platform にログインしない社外の開発者にも、公開している REST API のドキュメントを見せたいと考えています。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "モックサービスの内部 URL を共有する",
+      "社外の開発者を自組織のビジネスグループに招待する",
+      "アセットを Exchange 公開ポータルに追加する",
+      "アセットを development の状態で公開する"
+     ],
+     "a": [
+      2
+     ],
+     "ex": "Exchange 公開ポータルはインターネット上の誰でもログインなしで見られます。招待はアカウントとログインが前提で、development のアセットは公開ポータルに表示されません。モックの内部 URL は認可ヘッダーが必要です。",
+     "u": "https://docs.mulesoft.com/exchange/about-portals",
+     "x": "Exchange 公開ポータル(public portal)は、インターネット上の誰でもログインなしで見られます。組織外の開発者に REST、SOAP、HTTP の API を見せるためのもので、以前の開発者ポータル(developer portals)の後継です。"
+    },
+    {
+     "q": "ある開発者が、development の状態の API 仕様を stable に昇格しようとしたところ、拒否されました。この仕様は development の状態のデータ型フラグメントに依存しています。どうすべきですか?",
+     "o": [
+      "先に依存先のフラグメントを stable に昇格してから、仕様を昇格する",
+      "仕様をいったん deprecated にしてから stable に戻す",
+      "Exchange Viewers の権限を追加する",
+      "フラグメントを削除し、同じ GAV で stable として作り直す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "development のアセットが development の別のアセットに依存していると stable に昇格できず、先に依存先を stable にする必要があります。development から deprecated への移行はなく、Viewers の権限は昇格に関係ありません。",
+     "u": "https://docs.mulesoft.com/exchange/lifecycle",
+     "x": "development のアセットが development の別のアセットに依存していると、stable に昇格できません。先に依存先を stable にします。stable のアセットは、development のアセットを依存関係に追加できません。"
+    },
+    {
+     "q": "ある会社は、30日前に stable で公開した API アセットのバージョン 1.2.0 に誤りを見つけ、削除して同じ 1.2.0 で公開し直したいと考えています。どうなりますか?",
+     "o": [
+      "7日を過ぎているので論理削除になり、1.2.0 は再利用できない。新しいバージョンで公開する",
+      "stable のまま同じ GAV で再公開すれば上書きできる",
+      "完全削除になるので、すぐに 1.2.0 で公開し直せる",
+      "deprecated にすれば同じ GAV で上書きできる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "stable のバージョンは、公開から7日を過ぎて削除すると論理削除になり、同じ GAV を再利用できません。stable は上書きできず、deprecated も stable と同様に上書きできません。",
+     "u": "https://docs.mulesoft.com/exchange/lifecycle",
+     "x": "安定(stable)利用できる状態で、作成時の既定。再公開や上書きはできない。公開から7日以内の削除は完全削除だが、7日を過ぎると論理削除(soft delete)になり、同じ名前や GAV を再利用できない"
+    },
+    {
+     "q": "Exchange Contributors の権限を持つ開発者が、古くなった API アセットのバージョンを deprecated にしようとしましたが、選べませんでした。理由として正しいものはどれですか?",
+     "o": [
+      "アセットに API インスタンスがないと deprecated にできないため",
+      "deprecated への変更は管理者だけができ、Contributors は development と stable にしか変えられないため",
+      "Exchange Viewers の権限もあわせて必要なため",
+      "deprecated は API Manager でしか設定できないため"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "ライフサイクル状態を deprecated にできるのは管理者だけで、Contributors は development と stable への変更だけができます。API Manager や API インスタンスの有無は関係なく、Viewers は表示とダウンロードだけの権限です。",
+     "u": "https://docs.mulesoft.com/exchange/lifecycle",
+     "x": "deprecated にできるのは管理者だけです。Exchange Contributors が変更できるのは development と stable だけです。"
+    }
+   ]
+  },
+  {
+   "id": "versioning",
+   "no": "Ch3·3",
+   "title": "API のバージョン管理と変更の扱い",
+   "tag": "API Versioning",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>ある会社の API が v1 から v2 になりました。旧版を使っているアプリはどうなるでしょう。</p><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>全部こわれる……?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>こわさないために v1 を残す。URL にメジャー番号を入れておけば、呼ぶ側が選べる。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>そうです。逆に、項目を1つ足すだけなら v2 にする必要はありません。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>上げるか上げないかの線引きが、試験に出るところだね。</p></div>\n<p class=\"one\">Exchange の API アセットには、アセットバージョンと API バージョンの2つの番号があります。後方互換を壊す変更のときだけメジャーを上げ、利用者が旧版から計画的に移れるようにします。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>家電の型番と取扱説明書の版です。説明書の誤字を直すだけなら版の小さな更新ですみます。コンセントの形が変わるなら、別の型番(メジャー)として売り、古い型番もしばらく修理を続けます。</p></div><h4>2つのバージョン番号</h4><div class=\"tw\"><table><thead><tr><th>番号</th><th>意味</th></tr></thead>\n<tr><td>アセットバージョン(Version)</td><td>Exchange のアセットの版。セマンティックバージョニング(例: 2.4.6)で付ける。ビルドメタデータは使えない</td></tr>\n<tr><td>API バージョン(API version)</td><td>利用者に見える API 仕様そのものの版(例: v1)。RAML、OAS、SOAP では仕様の中に書かれる</td></tr>\n</table></div><ul>\n<li>アセットバージョンが 2.4.6 なら、メジャーは 2.x.x、マイナーは 2.4.x、パッチは 2.4.6 です。</li>\n<li>1つの API バージョンに複数のアセットバージョンを公開できますが、メジャー番号はそろえます。v1 に 1.0.0、1.0.1、1.1.1 を公開するのは正しく、v1 が 1.0.0 で v2 が 1.0.1 という組み合わせは認められません。</li>\n<li>既存の REST API で新しい API バージョンを公開すると、Exchange はアセットバージョンのメジャー部分を上げることを求めます。</li>\n<li>API Designer から公開するとき、仕様に version がなければ API version を入力します(既定は v1)。仕様に version があれば、公開の画面では変更できません。</li>\n<li>公開済みの stable で使った番号は、アセットバージョンとして再利用できません。development で使った番号は再利用できます。</li>\n<li>HTTP API のアセットには、メジャーバージョンの変更しかありません。</li>\n</ul><h4>どの番号を上げるか</h4><div class=\"tw\"><table><thead><tr><th>上げる番号</th><th>変更の種類</th></tr></thead>\n<tr><td>メジャー</td><td>利用者側のインターフェースの変更が必要な構造の変更(例: 必須の引数の追加)</td></tr>\n<tr><td>マイナー</td><td>利用者が何も変えなくてよい後方互換の変更(例: 任意の要素の追加)</td></tr>\n<tr><td>パッチ</td><td>後方互換のバグ修正や、ドキュメントの更新</td></tr>\n</table></div><h4>メジャーが必要な変更、不要な変更</h4><ul>\n<li>新しいメジャーバージョンが必要な変更は、エンドポイントの削除、操作の効果や応答の型の変更、必須の引数の追加、既存の要素の削除や変更、必須の要素の追加、表現形式の削除、権限の制限です。</li>\n<li>新しいメジャーバージョンが不要な変更は、新しい操作の追加、任意の要素の追加、派生した型の追加、新しい表現形式の追加、権限の緩和です。</li>\n<li>応答時間や可用性などのサービス品質(QoS)に影響する変更や、応答の項目が返す値の範囲(ドメイン)が変わる変更も、新しいメジャーバージョンを検討します。</li>\n</ul><h4>URL の付け方と API Manager での扱い</h4><ul>\n<li>API のバージョンは URL に含め、利用者が呼ぶ版を選べるようにします。v を付けた単純な番号(v1、v2)にし、v1.2 のようなドット表記は避け、URL にはメジャーバージョンだけを入れます。</li>\n<li>API Manager の API インスタンスのアセットバージョンは、同じメジャーの中(マイナーとパッチ)でだけ上げ下げできます。別のメジャーにするには、新しい API インスタンスを作ります。</li>\n<li>Exchange に新しいバージョンを公開したら、API Manager の API インスタンスで Change API specification からアセットバージョンを更新します。</li>\n<li>バージョン管理の戦略には、数か月にわたる非推奨化の予定と、変更を十分に説明する最新のドキュメントを含めます。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>API Manager のインスタンスで 1.3.0 から 2.0.0 に上げればいいんでしょ?</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>それはできない。メジャーが変わるなら、新しい API インスタンスだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>後方互換を壊す変更(必須の引数の追加、エンドポイントの削除など)はメジャー、任意の要素の追加はマイナー、バグ修正やドキュメント更新はパッチです。</li>\n<li>1つの API バージョン(v1)に対応するアセットバージョンは、メジャー番号がそろいます(1.x.x)。</li>\n<li>API Manager の API インスタンスは同じメジャーの中でだけアセットバージョンを変えられます。メジャーが変わるなら新しい API インスタンスです。</li>\n<li>URL にはメジャーだけを v1 のように入れ、v1.2 のようなドット表記は避けます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、公開済みの Customer API(v1、アセットバージョン 1.2.0)の応答に、任意の項目 loyaltyTier を追加します。既存の利用者は何も変えずに使い続けられます。アセットバージョンはどうすべきですか?",
+     "o": [
+      "パッチを上げて 1.2.1 にする",
+      "メジャーを上げて 2.0.0 にし、API バージョンを v2 にする",
+      "番号を変えずに stable の 1.2.0 を上書きする",
+      "マイナーを上げて 1.3.0 にする"
+     ],
+     "a": [
+      3
+     ],
+     "ex": "利用者が何も変えなくてよい後方互換の変更(任意の要素の追加)はマイナーを上げます。メジャーは後方互換を壊すとき、パッチはバグ修正やドキュメント更新のときです。stable のバージョンは上書きできません。",
+     "u": "https://docs.mulesoft.com/exchange/to-change-raml-version",
+     "x": "マイナー利用者が何も変えなくてよい後方互換の変更(例: 任意の要素の追加)"
+    },
+    {
+     "q": "ある会社は、Order API の注文作成の操作に、新しい必須の引数を追加することにしました。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "新しいメジャーバージョン(API バージョン v2、アセットバージョン 2.0.0)として公開し、v1 も残す",
+      "パッチを上げ、ドキュメントで必須になったことを知らせる",
+      "既存の v1 の stable バージョンを同じ番号で上書きする",
+      "マイナーを上げて既存の利用者にそのまま使わせる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "必須の引数の追加は後方互換を壊すので、新しいメジャーバージョンが必要です。マイナーやパッチは後方互換の変更のためのもので、stable のバージョンは上書きできません。",
+     "u": "https://docs.mulesoft.com/exchange/to-change-raml-version",
+     "x": "新しいメジャーバージョンが必要な変更は、エンドポイントの削除、操作の効果や応答の型の変更、必須の引数の追加、既存の要素の削除や変更、必須の要素の追加、表現形式の削除、権限の制限です。"
+    },
+    {
+     "q": "API Manager で管理している API インスタンスは、アセットバージョン 1.4.0 を使っています。Exchange に 2.0.0 が公開されたので、これに切り替えたいと考えています。どうすべきですか?",
+     "o": [
+      "2.0.0 を使う新しい API インスタンスを作る",
+      "API インスタンスを削除せずに Runtime Manager からアプリケーションを再デプロイする",
+      "既存の API インスタンスで Change API specification から 2.0.0 を選ぶ",
+      "Exchange で 1.4.0 を deprecated にすると自動で 2.0.0 に切り替わる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "API インスタンスのアセットバージョンは、同じメジャーの中(マイナーとパッチ)でしか変えられません。別のメジャーには新しい API インスタンスが必要です。deprecated にしても自動で切り替わることはありません。",
+     "u": "https://docs.mulesoft.com/api-manager/latest/manage-versions-instances-concept",
+     "x": "API Manager の API インスタンスのアセットバージョンは、同じメジャーの中(マイナーとパッチ)でだけ上げ下げできます。別のメジャーにするには、新しい API インスタンスを作ります。"
+    },
+    {
+     "q": "ある会社は、利用者が呼び出す API の版を選べるように、URL にバージョンを入れることにしました。公式の命名ルールに合っているものはどれですか?",
+     "o": [
+      "/v2/customers",
+      "/v2.1/customers",
+      "/customers?build=2.1.3+20240101",
+      "/version-2.1.3/customers"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "URL にはメジャーバージョンだけを、v を付けた単純な番号で入れます。v2.1 のようなドット表記は避け、マイナーやパッチ、ビルドの情報は URL に入れません。",
+     "u": "https://docs.mulesoft.com/exchange/to-change-raml-version",
+     "x": "API のバージョンは URL に含め、利用者が呼ぶ版を選べるようにします。v を付けた単純な番号(v1、v2)にし、v1.2 のようなドット表記は避け、URL にはメジャーバージョンだけを入れます。"
+    },
+    {
+     "q": "Exchange の REST API アセットで、API バージョンとアセットバージョンの組み合わせとして認められないものはどれですか?",
+     "o": [
+      "v2 に 2.0.2",
+      "v2 に 1.0.1",
+      "v3 に 3.1.0",
+      "v1 に 1.1.1"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "1つの API バージョンに対応するアセットバージョンは、メジャー番号がそろっている必要があります。v2 に 1.0.1 はメジャーが合わないので認められません。ほかの3つはメジャーが一致しています。",
+     "u": "https://docs.mulesoft.com/exchange/to-change-raml-version",
+     "x": "1つの API バージョンに複数のアセットバージョンを公開できますが、メジャー番号はそろえます。v1 に 1.0.0、1.0.1、1.1.1 を公開するのは正しく、v1 が 1.0.0 で v2 が 1.0.1 という組み合わせは認められません。"
+    },
+    {
+     "q": "ある会社は、Product API の項目や操作は変えずに、応答時間と可用性が大きく変わる新しいバックエンドに切り替えます。公式のベストプラクティスに照らして、アーキテクトは何を検討すべきですか?",
+     "o": [
+      "項目が変わらないので、パッチを上げるだけでよい",
+      "サービス品質(QoS)に影響する変更として、新しいメジャーバージョンを検討する",
+      "API バージョンを v1.1 にして URL に入れる",
+      "Exchange のアセットを development に戻して上書きする"
+     ],
+     "a": [
+      1
+     ],
+     "ex": "応答時間や可用性などサービス品質に影響する変更は、後方互換でない可能性があり、新しいメジャーバージョンを検討します。stable のアセットを development に戻す移行はなく、URL のドット表記は避けます。",
+     "u": "https://docs.mulesoft.com/exchange/to-change-raml-version",
+     "x": "応答時間や可用性などのサービス品質(QoS)に影響する変更や、応答の項目が返す値の範囲(ドメイン)が変わる変更も、新しいメジャーバージョンを検討します。"
+    }
+   ]
+  }
+ ]
+}
