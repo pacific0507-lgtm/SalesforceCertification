@@ -129,6 +129,7 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `patch_qv_terms.py`: 問題集の一番上に「問題 / 用語カード」の切り替え。用語カード時は「絞込」「一覧」も用語カード用に。覚えた状態はトレーニングと共通(cs-term-known-v1)、切り替えは科目ごと(cs-tc-<科目>)
 - `patch_hero_grass.py`: ホームの見出しの背景で草がゆっくり生える(SVG の葉を時間差で伸ばし、そよがせる。草は見出しの高さまで。「草」の字の上にも)
 - `patch_qact_last.py`: 最後の問題で「結果を見る」が「答え合わせ」に重なるのを直す(スマホ幅では2段に)
+- `patch_stats_fix.py`: 問題集「その他」の成績の札が縦に伸びるのを直す(「前回まで」は次の行に)
 - `patch_no_reduced_motion.py`: 端末の「視差効果を減らす」(prefers-reduced-motion)で動きを止める指定をすべて外す(ユーザーの希望。rebuild.sh の最後近くに置く)
 
 ## 科目 Agentforce スペシャリスト(afspec)
