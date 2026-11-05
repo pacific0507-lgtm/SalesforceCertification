@@ -20,6 +20,7 @@ python3 $C/patch_texts_order.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_grass.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_garden.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_add_afspec.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
+python3 $C/patch_add_mulepa.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_subj_order_all.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_texts_tags.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
 python3 $C/patch_qv_terms.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
