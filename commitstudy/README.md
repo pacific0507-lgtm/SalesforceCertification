@@ -132,6 +132,10 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `patch_stats_fix.py`: 問題集「その他」の成績の札が縦に伸びるのを直す(「前回まで」は次の行に)
 - `patch_no_reduced_motion.py`: 端末の「視差効果を減らす」(prefers-reduced-motion)で動きを止める指定をすべて外す(ユーザーの希望。rebuild.sh の最後近くに置く)
 
+## 科目 MuleSoft Platform Architect(mulepa)
+- `mulepa_SPEC.md` 原稿の仕様(問題は4択)、`mulepa/manuscript/out_ch1〜7.json`、`build_mulepa.py` で data を組み立て、`figs_m/spec_J.py`(1〜4章)・`spec_K.py`(5〜7章)と `figs_m/apply_mulepa.py` で図を入れる。用語カードは `mulepa/data/terms.json`。`patch_add_mulepa.py` で科目を登録(rebuild.sh で patch_add_afspec の直後)。公開データは `mulepa/data/`
+- 作り直し: `python3 build_mulepa.py mulepa/manuscript <out> && python3 figs_m/apply_mulepa.py <out>/chapters.json <out>/chapters.json && cp mulepa/data/terms.json <out>/`
+
 ## 科目 Agentforce スペシャリスト(afspec)
 - `afspec_SPEC.md` 原稿の仕様(問題は3択)、`afspec/manuscript/out_ch1〜6.json` 章ごとの原稿、`build_afspec.py` で data を組み立て、`figs_m/spec_H.py`(2〜6章)・`spec_I.py`(1章)と `figs_m/apply_afspec.py` で図を入れる。用語カードは `afspec/data/terms.json`。`patch_add_afspec.py` で科目を登録(rebuild.sh の最後)。公開データは `afspec/data/`
 - 作り直し: `python3 build_afspec.py afspec/manuscript <out> && python3 figs_m/apply_afspec.py <out>/chapters.json <out>/chapters.json && cp afspec/data/terms.json <out>/`
