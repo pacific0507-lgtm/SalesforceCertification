@@ -1,0 +1,349 @@
+{
+ "chapter": 6,
+ "chapter_title": "API のガバナンス",
+ "chapter_sub": "API Manager とゲートウェイで API を管理し、ポリシー、SLA 層、契約、API Governance で守りと統制をかける方法を学びます。",
+ "sections": [
+  {
+   "id": "apimgr",
+   "no": "Ch6·1",
+   "title": "API Manager と API インスタンス(自動検出・プロキシ・Flex Gateway)",
+   "tag": "API Manager",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>なぞなぞだ。アプリの中に住んでいて、本部と連絡を取り合い、指令を受け取る。設定する属性はたった2つ。なーんだ。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>えー、アプリの中のスパイ?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>惜しいです。答えは自動検出(Autodiscovery)の要素です。apiId と flowRef の2つで、どの API インスタンスとどのフローを結ぶかを決めます。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>本部が API Manager で、指令がポリシーってことか!</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>そうだ。指令が変わっても、アプリの再デプロイはいらない。ホットリロードだ。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>アプリの前に別のアプリを立てて守るのがプロキシです。この2つと Omni Gateway の違いを整理しましょう。</p></div><p class=\"one\">API Manager は、API インスタンスにポリシーを適用し、分析データを集め、クライアントアプリケーションとの契約を管理する Anypoint Platform のコンポーネントです。API インスタンスは、ゲートウェイ上にデプロイされた API の1つの構成を表します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>ビルの受付です。仕事をするのは奥のオフィス(API の実装)ですが、入館証を確かめたり、混雑時に入場を絞ったりするのは受付(ゲートウェイ)です。受付のルール集は、本社(API Manager)がまとめて配ります。</p></div><h4>API インスタンスの追加方法</h4><div class=\"tw\"><table><thead><tr><th>方法</th><th>内容</th></tr></thead>\n<tr><td>新しい API を追加(Add new API)</td><td>新しいインスタンスを作る。ダウンストリーム(呼び出す側)とアップストリーム(実装側)の設定を自分で行う</td></tr>\n<tr><td>別の環境から昇格(Promote API from environment)</td><td>Sandbox など別の環境のインスタンスを、今の環境へ持ってくる</td></tr>\n<tr><td>ZIP からインポート(Import API from zip file)</td><td>別の Anypoint Platform からエクスポートしたインスタンスを取り込む</td></tr>\n</table></div><ul>\n<li>昇格すると、インスタンスのラベルは同じままですが、API インスタンス ID は変わります。昇格先で動かすアプリは、API インスタンス ID と、環境ごとに異なるクライアント ID・シークレットを更新します。</li>\n<li>インスタンスの資産バージョンは、同じメジャーバージョンの中でだけ変更できます。メジャーバージョンを変えるときは、新しい API インスタンスを作ります。</li>\n</ul><h4>Mule Gateway の2つの管理方法</h4><div class=\"tw\"><table><thead><tr><th>プロキシの種類</th><th>使う場面</th></tr></thead>\n<tr><td>既存アプリケーションに接続(basic endpoint)</td><td>Mule アプリに自動検出を設定し、アプリ自身がポリシーを適用する</td></tr>\n<tr><td>プロキシアプリケーションをデプロイ(Deploy a proxy application)</td><td>自動検出を設定していない Mule アプリや、Mule 以外のアプリの前に API プロキシを置いて守る</td></tr>\n</table></div><ul>\n<li>自動検出(API Autodiscovery)は、デプロイ済みの Mule アプリを API Manager と結び付け、ポリシーのダウンロードと分析データの生成をできるようにします。</li>\n<li>設定は api-gateway:autodiscovery 要素で行います。apiId に API Manager が割り当てた API ID を、flowRef に対象のフロー名を指定します。</li>\n<li>flowRef で指すフローは HTTP Listener を使う必要があります。HTTP を下で使う別のコネクターでは、ポリシーは適用されません。</li>\n<li>Mule ランタイムは、Anypoint Platform の資格情報を設定した状態で起動する必要があります。推奨は、環境のクライアント ID とシークレットです。</li>\n<li>1つの Mule アプリケーションに結び付けられる API インスタンスは1つだけです。同じインスタンスを指す自動検出要素を複数置くことはできません。</li>\n<li>自動検出では、Exchange の資産と API Manager のインスタンスが同じビジネスグループに属している必要があります。子のビジネスグループのインスタンスが親の資産を参照すると、見えていても失敗します。</li>\n<li>プロキシのデプロイ先は、CloudHub 2.0、CloudHub、Hybrid、Self-managed Server、Runtime Fabric から選びます。プロキシの既定のサイズは、CloudHub 2.0 では 0.1 vCore、CloudHub(1.0)では 0.1 vCore・メモリー 500 MB です。</li>\n</ul><h4>ゲートキーパー</h4><ul>\n<li>ゲートキーパー(Gatekeeper)は、再起動や再デプロイの直後、ポリシーがすべて適用されるまで API をブロックし、503 を返します。ポリシーが効いていないすき間に、不要なトラフィックが入るのを防ぎます。</li>\n<li>設定値は strict、flexible、disabled の3つです。Mule 4.1.0 以降の既定は flexible で、コントロールプレーンとの接続が切れてもローカルのキャッシュでポリシーを適用します。</li>\n</ul><h4>Omni Gateway(旧 Flex Gateway)</h4><ul>\n<li>Omni Gateway(旧 Flex Gateway)は、Envoy をベースにした軽量で高速な API ゲートウェイです。Mule 以外の API やマイクロサービスも、どこで動いていても管理・保護できます。</li>\n<li>Managed(CloudHub 2.0 か Runtime Fabric 上で MuleSoft が運用)と Self-Managed(Docker、Kubernetes、Linux などに自分でインストール)の2種類があります。</li>\n<li>1つのゲートウェイで最大 1,000 個のバックエンド API を扱えます。高可用性のためには、複数のゲートウェイ(Self-Managed ではレプリカ)を並べて動かします。</li>\n</ul><div class=\"tw\"><table><thead><tr><th>モード</th><th>ポリシーの適用</th><th>向いている場面</th></tr></thead>\n<tr><td>接続モード(Connected Mode)</td><td>API Manager の画面から</td><td>コントロールプレーンにつないで、UI で集中管理・監視したいとき</td></tr>\n<tr><td>ローカルモード(Local Mode)</td><td>ローカルの宣言型の設定ファイルで</td><td>コントロールプレーンからほぼ切り離して運用し、CI/CD パイプラインに組み込みたいとき</td></tr>\n</table></div><ul>\n<li>ローカルモードでも、登録と使用量メトリクスの送信のためにはコントロールプレーンに接続します。完全なエアギャップ(切り離し)ではありません。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>ゲートウェイが多すぎて、こんがらがってきた…</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Mule アプリを守るなら自動検出かプロキシ(Mule Gateway)、Mule 以外も含めて軽く速く守るなら Omni Gateway、と分けて覚えましょう。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>旧名は Flex Gateway だ。資料によって名前が違っても、同じものだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>自動検出の要素は apiId と flowRef の2つです。対象のフローには HTTP Listener が必要です。</li>\n<li>Mule 以外の実装や、自動検出を設定していない実装は、プロキシアプリケーションをデプロイして守ります。</li>\n<li>昇格すると API インスタンス ID が変わります。クライアントの資格情報も環境ごとに別です。</li>\n<li>Omni Gateway(旧 Flex Gateway)のローカルモードは、宣言型の設定ファイルでポリシーを適用し、CI/CD に向きます。</li>\n<li>ゲートキーパーは、ポリシーの適用が終わるまで 503 で API をブロックします。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、Node.js で作られた既存の REST API を Anypoint Platform で管理したいと考えています。実装のコードは変更できませんが、API Manager からクライアント ID の強制ポリシーを適用したいです。Mule Gateway を使う場合、アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "API Manager で「プロキシアプリケーションをデプロイ」を選び、Node.js の API の前に API プロキシを置く",
+      "Node.js のアプリに api-gateway:autodiscovery 要素を追加する",
+      "API Manager で「既存アプリケーションに接続(basic endpoint)」を選ぶ",
+      "Runtime Manager で Node.js のアプリにアラートを設定する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "自動検出を設定できない Mule 以外の実装は、プロキシアプリケーションを前に置いて守ります。自動検出の要素や basic endpoint は、Mule アプリ自身に自動検出を設定する場合の方法です。アラートではポリシーは適用されません。",
+     "u": "https://docs.mulesoft.com/api-manager/latest/create-instance-task-mule",
+     "x": "プロキシアプリケーションをデプロイ(Deploy a proxy application)自動検出を設定していない Mule アプリや、Mule 以外のアプリの前に API プロキシを置いて守る"
+    },
+    {
+     "q": "Mule 4 アプリケーションを API Manager の API インスタンスと結び付けるため、自動検出(API Autodiscovery)の要素を設定します。この要素に指定する2つの属性はどれですか?",
+     "o": [
+      "apiId と flowRef",
+      "clientId と clientSecret",
+      "apiName と apiVersion",
+      "environmentId と flowName"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "api-gateway:autodiscovery 要素には、API Manager が割り当てた API ID を apiId に、対象のフローを flowRef に指定します。クライアント ID とシークレットはランタイムを起動するときの資格情報で、この要素の属性ではありません。",
+     "u": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4",
+     "x": "設定は api-gateway:autodiscovery 要素で行います。apiId に API Manager が割り当てた API ID を、flowRef に対象のフロー名を指定します。"
+    },
+    {
+     "q": "ある開発者は、自動検出を設定した Mule アプリをデプロイしました。flowRef で指したフローは HTTP Listener ではなく、HTTP を下で使う別のコネクターで始まっています。API Manager で適用したポリシーが効きません。最も可能性の高い原因はどれですか?",
+     "o": [
+      "自動検出で参照するフローは HTTP Listener を使う必要がある",
+      "ポリシーを適用した後に Mule ランタイムを再起動していない",
+      "プロキシのサイズが 0.1 vCore で足りない",
+      "SLA 層が定義されていない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "自動検出で参照するフローは HTTP Listener を使う必要があり、HTTP を下で使う別のコネクターではポリシーが適用されません。ポリシーの変更は再起動なしで反映されます。vCore のサイズや SLA 層は、この問題とは関係ありません。",
+     "u": "https://docs.mulesoft.com/mule-gateway/mule-gateway-config-autodiscovery-mule4",
+     "x": "flowRef で指すフローは HTTP Listener を使う必要があります。HTTP を下で使う別のコネクターでは、ポリシーは適用されません。"
+    },
+    {
+     "q": "ある会社は、Sandbox 環境の API インスタンスを API Manager の「別の環境から昇格」で本番環境へ移しました。本番の環境では、このインスタンスに結び付ける Mule アプリと、それを呼ぶクライアントが動いています。アーキテクトが注意すべき点はどれですか?",
+     "o": [
+      "API インスタンス ID が変わるので、アプリの API インスタンス ID と、環境ごとに異なるクライアント ID・シークレットを更新する",
+      "昇格すると API インスタンス ID も資格情報も引き継がれるので、何も変更しなくてよい",
+      "昇格するとインスタンスのラベルが変わるので、Exchange の資産名を変更する",
+      "昇格すると、本番環境で動いているアプリが自動で再デプロイされる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "昇格してもラベルは同じですが、API インスタンス ID は変わります。クライアント ID とシークレットも環境ごとに別なので、更新が必要です。昇格が影響するのは API の定義だけで、デプロイ済みのアプリが自動で再デプロイされることはありません。",
+     "u": "https://docs.mulesoft.com/api-manager/latest/promote-api-task",
+     "x": "昇格すると、インスタンスのラベルは同じままですが、API インスタンス ID は変わります。昇格先で動かすアプリは、API インスタンス ID と、環境ごとに異なるクライアント ID・シークレットを更新します。"
+    },
+    {
+     "q": "ある会社は、Kubernetes 上のマイクロサービスを Omni Gateway(旧 Flex Gateway)で守りたいと考えています。ポリシーは Git で管理する設定ファイルに書き、CI/CD パイプラインから適用したいです。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "Self-Managed の Omni Gateway をローカルモードで動かし、宣言型の設定ファイルでポリシーを適用する",
+      "Self-Managed の Omni Gateway を接続モードで動かし、API Manager の画面でポリシーを適用する",
+      "各マイクロサービスに自動検出の要素を追加する",
+      "CloudHub(1.0)にプロキシアプリケーションをデプロイする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ローカルモードでは、ローカルに置いた宣言型の設定ファイルでポリシーを適用するので、CI/CD に組み込みやすくなります。接続モードは API Manager の画面で管理する方法です。自動検出は Mule アプリのための仕組みです。",
+     "u": "https://docs.mulesoft.com/gateway/latest/",
+     "x": "ローカルモード(Local Mode)ローカルの宣言型の設定ファイルでコントロールプレーンからほぼ切り離して運用し、CI/CD パイプラインに組み込みたいとき"
+    },
+    {
+     "q": "ある運用チームは、Mule アプリを再デプロイした直後の短い間、API が 503 Service Unavailable を返すことに気づきました。その後は正常に動きます。この動きを説明しているのはどれですか?",
+     "o": [
+      "ゲートキーパーが、ポリシーがすべて適用されるまで API をブロックしている",
+      "Spike Control ポリシーが、リクエストを待ち行列に入れている",
+      "Rate Limiting ポリシーの上限に達している",
+      "IP Allowlist ポリシーがリクエストを拒否している"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ゲートキーパーは、再起動や再デプロイの直後、ポリシーの適用が終わるまで API をブロックして 503 を返します。Rate Limiting や Spike Control の上限超過は 429、IP Allowlist の拒否は 403 です。",
+     "u": "https://docs.mulesoft.com/mule-gateway/mule-gateway-gatekeeper",
+     "x": "ゲートキーパー(Gatekeeper)は、再起動や再デプロイの直後、ポリシーがすべて適用されるまで API をブロックし、503 を返します。ポリシーが効いていないすき間に、不要なトラフィックが入るのを防ぎます。"
+    },
+    {
+     "q": "ある会社では、API 仕様を親のビジネスグループの Exchange に公開しています。子のビジネスグループの API Manager でその資産を使ってインスタンスを作り、Mule アプリに自動検出を設定しましたが、結び付けに失敗します。資産は子のビジネスグループからも見えています。原因として正しいのはどれですか?",
+     "o": [
+      "自動検出では、Exchange の資産と API Manager のインスタンスが同じビジネスグループに属している必要がある",
+      "自動検出は、本番環境の API インスタンスでしか使えない",
+      "子のビジネスグループでは、自動検出の代わりに必ず Omni Gateway を使う必要がある",
+      "Exchange の資産が RAML ではなく OAS で書かれている"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "自動検出では、Exchange の資産と API Manager のインスタンスが同じビジネスグループに属している必要があります。子のインスタンスが親の資産を参照すると、資産が見えていても失敗します。環境の種類や仕様の言語は原因ではありません。",
+     "u": "https://docs.mulesoft.com/api-manager/latest/latest-overview-concept",
+     "x": "自動検出では、Exchange の資産と API Manager のインスタンスが同じビジネスグループに属している必要があります。子のビジネスグループのインスタンスが親の資産を参照すると、見えていても失敗します。"
+    }
+   ]
+  },
+  {
+   "id": "policies",
+   "no": "Ch6·2",
+   "title": "API ポリシー(クライアント ID の強制・レート制限と SLA 層・OAuth 2.0・JWT・IP 許可リスト)",
+   "tag": "API Policies",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>問題です。お客さまのアプリごとに「1日1万回まで」「1日10万回まで」と上限を変えたいとき、使うポリシーはどれでしょう。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>簡単!Rate Limiting!</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>ブブー。それだと全員で1つの枠を分け合う。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>正解は Rate Limiting: SLA-based です。SLA 層ごとに上限を決め、契約したクライアントごとに数えます。</p><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>「SLA」の3文字を見落としてた…</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>共有のカウンターか、クライアントごとのカウンターか。そこが分かれ目だ。</p></div><p class=\"one\">ポリシーは、API のコードを変えずに、セキュリティ、流量の制御、SLA などのルールを API インスタンスに適用する仕組みです。API Manager で設定すると、ゲートウェイがダウンロードして適用します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>遊園地の入場ゲートです。チケットの確認(クライアント ID の強制)、1時間あたりの入場数の上限(レート制限)、年間パスの種類ごとの枠(SLA 層)、行列を少しずつ流す係員(スパイク制御)が並んでいます。</p></div><h4>主なポリシー</h4><div class=\"tw\"><table><thead><tr><th>ポリシー</th><th>何をするか</th><th>拒否するときの主な状態コード</th></tr></thead>\n<tr><td>Client ID Enforcement(クライアント ID の強制)</td><td>承認済みの契約を持つクライアントアプリケーションだけを通す</td><td>401</td></tr>\n<tr><td>Rate Limiting(レート制限)</td><td>一定時間内のリクエスト数に上限を設ける。数えるのは API 全体か、識別子で分けたグループごと</td><td>429</td></tr>\n<tr><td>Rate Limiting: SLA-based(SLA ベースのレート制限)</td><td>SLA 層で決めた上限を、契約したクライアントごとに数える</td><td>429</td></tr>\n<tr><td>Spike Control(スパイク制御)</td><td>急な増加をならす。枠がないリクエストは待たせて再試行し、それでも枠がなければ拒否する</td><td>429</td></tr>\n<tr><td>JWT Validation(JWT 検証)</td><td>JWT の署名とクレーム(有効期限、audience など)を検証する</td><td>400、401</td></tr>\n<tr><td>OpenID Connect OAuth 2.0 Token Enforcement など</td><td>OAuth 2.0 のアクセストークンを認可サーバーで検証する。トークンを発行はしない</td><td>401、403</td></tr>\n<tr><td>IP Allowlist(IP 許可リスト)</td><td>指定した IP アドレスや範囲からのリクエストだけを通す</td><td>403</td></tr>\n</table></div><h4>クライアント ID の強制</h4><ul>\n<li>クライアント ID とクライアントシークレットは、クライアントアプリケーションを Anypoint Platform に登録したときに発行されます。</li>\n<li>既定では、client_id と client_secret の2つのヘッダーから資格情報を読み取ります。クエリパラメーターでも受け取れますが、ヘッダーのほうが安全です。</li>\n<li>Rate Limiting: SLA-based、JWT Validation、OAuth 2.0 系のトークン強制ポリシーも、内部でクライアントの資格情報(契約)を確認します。</li>\n</ul><h4>レート制限、SLA、スパイク制御</h4><ul>\n<li>Rate Limiting は固定ウィンドウ方式で数えます。上限に達すると、そのウィンドウが終わるまで 429 を返し、リクエストはバックエンドに届きません。</li>\n<li>識別子(Identifier)に DataWeave 式(例: #[attributes.method])を指定すると、グループごとに別の枠で数えます。</li>\n<li>Rate Limiting: SLA-based を使うには、先にクライアントアプリケーションと API の契約が必要です。契約のないクライアントのリクエストはすべて拒否されます。</li>\n<li>「分散(Distributed)」を有効にすると、枠を全ノードで共有します。Mule ランタイムの場合、共有されるのは HA クラスターで動かしているときだけです。</li>\n<li>Spike Control はクォータ(割り当て量)を強制しません。上限を守らせるには、Rate Limiting か Rate Limiting: SLA-based を使います。</li>\n</ul><h4>トークンと IP</h4><ul>\n<li>JWT Validation の署名鍵は、テキストで直接入れるか、JWKS の URL から取得します。JWKS をキャッシュする時間の既定は 60 分です。</li>\n<li>JWT Validation が検証するのは JWS 形式の JWT です。JWE(暗号化された JWT)は検証しません。</li>\n<li>Omni Gateway の OAuth 2.0 Token Introspection ポリシーは、Okta などサードパーティの IdP のイントロスペクションエンドポイントでトークンを確認します。IdP を Anypoint Platform に登録する必要はありません。</li>\n<li>クライアントがプロキシやロードバランサーを経由するときは、IP Allowlist の IP 式で X-Forwarded-For ヘッダーを参照し、元のクライアントの IP で判定します。</li>\n</ul><h4>自動ポリシーと実行順</h4><ul>\n<li>自動ポリシー(Automated Policies)は、環境で動くすべての API に同じポリシーを自動で適用します。同じ種類の API 個別のポリシーより優先されます。</li>\n<li>API 個別のポリシーの実行順は API Manager で並べ替えられます。ただし、自動ポリシーより先に実行させることはできません。</li>\n<li>ポリシーを追加・変更しても、プロキシアプリの再デプロイやランタイムの再起動は不要です。ゲートウェイが変更をダウンロードして適用します。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>スパイク制御とレート制限、どっちも「多すぎたら止める」じゃないの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>スパイク制御は、急な波をならしてバックエンドを守るものです。上限を約束どおり守らせるのはレート制限です。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>スパイク制御はバッファー、レート制限は割り当て量。役割が違う。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>アプリごとに上限を変えるなら SLA 層と Rate Limiting: SLA-based、API 全体の上限なら Rate Limiting です。</li>\n<li>Spike Control は波をならすだけで、クォータは強制しません。</li>\n<li>承認済みの契約がないと、Client ID Enforcement も Rate Limiting: SLA-based も通りません。</li>\n<li>ロードバランサー越しに元の IP で判定するなら、X-Forwarded-For を IP 式で参照します。</li>\n<li>環境内のすべての API に共通のポリシーは、自動ポリシーで適用します。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、取引先向けの API を公開します。取引先ごとに契約の内容が違い、ある取引先は1日 10,000 件、別の取引先は1日 100,000 件まで呼べるようにしたいです。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "SLA 層を定義し、Rate Limiting: SLA-based ポリシーを適用する",
+      "Rate Limiting ポリシーを適用し、上限を 100,000 件にする",
+      "Spike Control ポリシーを適用する",
+      "IP Allowlist ポリシーで取引先ごとに IP を登録する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Rate Limiting: SLA-based は、SLA 層で決めた上限を契約したクライアントごとに数えるので、取引先ごとに上限を変えられます。Rate Limiting は API 全体などで1つの枠を数えます。Spike Control はクォータを強制せず、IP Allowlist は流量を制御しません。",
+     "u": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla",
+     "x": "Rate Limiting: SLA-based(SLA ベースのレート制限)SLA 層で決めた上限を、契約したクライアントごとに数える429"
+    },
+    {
+     "q": "あるバックエンドシステムは、短い時間にリクエストが集中すると不安定になります。一時的な集中のときは、すぐに拒否するのではなく、少し待たせてから処理したいです。アーキテクトはどのポリシーを推奨すべきですか?",
+     "o": [
+      "Spike Control",
+      "Rate Limiting",
+      "Client ID Enforcement",
+      "JWT Validation"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Spike Control は急な増加をならし、枠がないリクエストを待たせて再試行します。Rate Limiting はウィンドウ内の上限に達するとすぐ 429 で拒否します。Client ID Enforcement と JWT Validation は認証のためのポリシーです。",
+     "u": "https://docs.mulesoft.com/mule-gateway/policies-included-spike-control",
+     "x": "Spike Control(スパイク制御)急な増加をならす。枠がないリクエストは待たせて再試行し、それでも枠がなければ拒否する429"
+    },
+    {
+     "q": "ある会社は、Exchange でアクセスをリクエストし、承認されたクライアントアプリケーションだけに API を使わせたいと考えています。ユーザーの認証基盤はまだありません。最も簡単に実現できるポリシーはどれですか?",
+     "o": [
+      "Client ID Enforcement",
+      "IP Allowlist",
+      "Spike Control",
+      "Header Injection"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Client ID Enforcement は、承認済みの契約を持つクライアントアプリケーションのリクエストだけを通します。IP Allowlist は送信元の IP で判定するので、アプリの契約は確認しません。Spike Control は流量の制御、Header Injection はヘッダーを追加するポリシーです。",
+     "u": "https://docs.mulesoft.com/mule-gateway/policies-included-client-id-enforcement",
+     "x": "Client ID Enforcement(クライアント ID の強制)承認済みの契約を持つクライアントアプリケーションだけを通す401"
+    },
+    {
+     "q": "ある API には IP Allowlist ポリシーが適用されています。クライアントはロードバランサーを経由して接続しており、許可したはずのクライアントのリクエストまで 403 で拒否されます。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "IP 式で X-Forwarded-For ヘッダーを参照し、元のクライアントの IP で判定する",
+      "IP Allowlist を IP Blocklist に置き換える",
+      "Spike Control を追加して、拒否されたリクエストを再試行させる",
+      "ロードバランサーの IP を SLA 層に登録する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ロードバランサーを経由すると、リクエストの IP はロードバランサーのものになります。IP 式で X-Forwarded-For ヘッダーを参照すれば、元のクライアントの IP で判定できます。Blocklist への置き換えや再試行では原因は解決せず、SLA 層は IP を扱いません。",
+     "u": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist",
+     "x": "クライアントがプロキシやロードバランサーを経由するときは、IP Allowlist の IP 式で X-Forwarded-For ヘッダーを参照し、元のクライアントの IP で判定します。"
+    },
+    {
+     "q": "ある会社の IdP は、JWT の署名鍵を定期的に入れ替え、公開鍵を JWKS で公開しています。JWT Validation ポリシーで、鍵を入れ替えるたびにポリシーを直さずに済むようにしたいです。どう設定すべきですか?",
+     "o": [
+      "JWT Key Origin に JWKS を選び、JWKS の URL を指定する",
+      "JWT Signing Method に None を選ぶ",
+      "JWT Key に、今の公開鍵をテキストで入力する",
+      "Skip Client ID Validation を有効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "JWKS の URL を指定すると、ポリシーが鍵を取得してキャッシュし、期限が切れると取り直します(既定は 60 分)。テキストで鍵を入れると、入れ替えのたびに設定の変更が必要です。None は署名を検証しない設定で、Skip Client ID Validation は契約の確認を省く設定です。",
+     "u": "https://docs.mulesoft.com/mule-gateway/policies-included-jwt-validation",
+     "x": "JWT Validation の署名鍵は、テキストで直接入れるか、JWKS の URL から取得します。JWKS をキャッシュする時間の既定は 60 分です。"
+    },
+    {
+     "q": "あるセキュリティチームは、本番環境で動くすべての Mule 4 の API に、同じ IP Allowlist ポリシーを必ず適用したいと考えています。新しい API を追加したときに、担当者が設定を忘れる心配をなくしたいです。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "自動ポリシー(Automated Policies)として IP Allowlist を設定する",
+      "API ごとに IP Allowlist を適用し、ポリシーの実行順を先頭にする",
+      "API Governance のガバナンスプロファイルに IP Allowlist を追加する",
+      "SLA 層に IP アドレスの条件を設定する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "自動ポリシーは、環境で動くすべての API に同じポリシーを自動で適用し、同じ種類の API 個別のポリシーより優先されます。API ごとの適用では設定漏れが起こり得ます。ガバナンスプロファイルは検証するだけでポリシーは適用せず、SLA 層は IP を扱いません。",
+     "u": "https://docs.mulesoft.com/mule-gateway/policies-automated-overview",
+     "x": "自動ポリシー(Automated Policies)は、環境で動くすべての API に同じポリシーを自動で適用します。同じ種類の API 個別のポリシーより優先されます。"
+    },
+    {
+     "q": "ある会社は、Mule ランタイムを2ノードで動かし、Rate Limiting ポリシーで「10 秒に 3 件」と設定しました。ノード全体で合わせて 3 件にしたいのに、実際には合計で 6 件まで通ります。考えられる原因はどれですか?",
+     "o": [
+      "ランタイムが HA クラスターではない、または「分散(Distributed)」が有効でないため、ノードごとに枠を数えている",
+      "Rate Limiting は固定ウィンドウではなく、スライディングウィンドウで数えるため",
+      "SLA 層が定義されていないため、上限が2倍になる",
+      "ゲートキーパーが flexible のため、上限が緩くなる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "「分散」を有効にすると枠を全ノードで共有しますが、Mule ランタイムでは HA クラスターで動かしているときだけ共有されます。そうでなければノードごとに 3 件ずつ数えます。Rate Limiting は固定ウィンドウ方式で、SLA 層やゲートキーパーは上限の数え方に関係しません。",
+     "u": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting",
+     "x": "「分散(Distributed)」を有効にすると、枠を全ノードで共有します。Mule ランタイムの場合、共有されるのは HA クラスターで動かしているときだけです。"
+    },
+    {
+     "q": "ある API には Rate Limiting: SLA-based ポリシーが適用されています。ある開発者は、正しい形式のクライアント ID を送っているのに、すべてのリクエストが拒否されます。開発者のアプリはまだ Exchange でアクセスをリクエストしていません。原因として正しいのはどれですか?",
+     "o": [
+      "クライアントアプリケーションと API の契約がないため、すべて拒否される",
+      "SLA ベースのポリシーは、クライアントシークレットを必ず必要とするため",
+      "SLA ベースのポリシーは、Mule 以外の API にしか適用できないため",
+      "ゲートキーパーが disabled になっているため"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Rate Limiting: SLA-based は契約ごとに枠を数えるので、契約のないクライアントのリクエストはすべて拒否されます。クライアントシークレットは設定により省略できます。Mule 以外専用という制約はなく、ゲートキーパーの設定もこの動きとは関係ありません。",
+     "u": "https://docs.mulesoft.com/mule-gateway/policies-included-rate-limiting-sla",
+     "x": "Rate Limiting: SLA-based を使うには、先にクライアントアプリケーションと API の契約が必要です。契約のないクライアントのリクエストはすべて拒否されます。"
+    }
+   ]
+  },
+  {
+   "id": "governance",
+   "no": "Ch6·3",
+   "title": "API Governance とクライアントアプリケーション・契約",
+   "tag": "API Governance",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>今日はわたしが説明するね!Exchange で「アクセスをリクエスト」すると、クライアントアプリができて、API との契約が結ばれる。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>そのとおりです。SLA 層が手動承認なら、API の持ち主が API Manager で承認するまで待ちます。</p><p class=\"tk pote\"><b class=\"who\">まなびん</b>で、API Governance は、ポリシーを全部の API に配る機能!</p><p class=\"tk pen\" data-f=\"sweat\"><b class=\"who\">コミットくん</b>惜しい。ガバナンスプロファイルは検証するだけだ。ポリシーは適用しない。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>ルールセットに照らして準拠しているかを調べ、結果を見せて、持ち主に知らせるのが API Governance の役目です。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>配るのは自動ポリシー、チェックするのがガバナンス。覚えた!</p></div><p class=\"one\">クライアントアプリケーションは API を呼ぶ側のアプリで、契約によって API インスタンスを使えるようになります。API Governance は、API がルールセット(社内の標準)に準拠しているかを続けて検証する Anypoint Platform のコンポーネントです。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>会員制のジムです。入会の申し込み(アクセスのリクエスト)で会員証(クライアント ID とシークレット)をもらい、プラン(SLA 層)で使える回数が決まります。API Governance は、施設が安全基準を満たしているかを定期的に見回る監査員です。</p></div><h4>クライアントアプリケーションと契約</h4><ul>\n<li>クライアントアプリケーションは、Exchange で API インスタンスへのアクセスをリクエストして登録します。インスタンスの所有者が承認すると、契約(Contract)ができます。</li>\n<li>クライアント ID とクライアントシークレットは、クライアントアプリケーションの登録時に自動で作られます。</li>\n<li>1つのインスタンスと1つのアプリケーションの間に存在できる契約は、いつでも1つだけです。</li>\n<li>SLA 層が定義されていなければ、アクセスのリクエストは自動で承認されます。</li>\n<li>手動承認の SLA 層では、API Manager のインスタンスの「契約(Contracts)」で承認または拒否します。開発者が希望した層とは別の SLA 層を適用することもできます。</li>\n<li>標準のクライアントプロバイダーは Anypoint Platform 自身です。環境ごとに、OpenAM や PingFederate などの外部のクライアントプロバイダー(IdP)を使うこともできます。</li>\n</ul><h4>SLA 層</h4><ul>\n<li>SLA 層(SLA Tier)には、名前、上限、承認の方法(自動または手動)を設定します。SLA 層を強制するには、SLA ベースのポリシーを適用します。</li>\n<li>1つの層に複数の上限を設定できます。たとえば gold 層で「毎秒 100 件」と「1日 10,000 件」を同時にかけられます。</li>\n<li>承認済みのアプリがある層を編集すると、そのアプリにはすぐに新しい条件が適用されます。</li>\n<li>アプリが割り当てられている層は削除できません。先に層を非推奨(Deprecate)にし、新しい層へ移ってもらってから削除します。</li>\n</ul><h4>API Governance の流れ</h4><ol class=\"steps\">\n<li>Exchange で API にタグとカテゴリーを付け、統制する API を見分けられるようにする</li>\n<li>ガバナンスプロファイルを作り、どのルールセットをどの API に適用するかを決める。最初は下書き(Draft)で試す</li>\n<li>Governance コンソールで準拠状況を監視する</li>\n<li>設計時は Design Center や Exchange で、デプロイ時は API Manager のガバナンスレポートで、準拠していない点を直す</li>\n</ol><ul>\n<li>ルールセットは、MuleSoft が Exchange で提供しています(Anypoint API Best Practices、OpenAPI Best Practices、Authentication Security Best Practices、Mule API Management Best Practices など)。自社の標準に合わせたカスタムルールセットも作れます。</li>\n<li>ガバナンスプロファイルは API を検証するだけで、ポリシーの適用や強制はしません。</li>\n<li>プロファイルでフィルター条件を選ばないと、Exchange のすべての API にルールセットが適用されます。</li>\n<li>下書きのプロファイルでは通知が自動で無効になり、結果は下書きの画面の中だけに表示されます。有効(Active)にすると、結果が Anypoint Platform 全体に表示されます。</li>\n<li>準拠状況は、準拠(Conformant)、非準拠(Not Conformant)、未検証(Not Validated)で示されます。</li>\n<li>準拠しなくなった API について、API の発行者(API Publisher)、API の連絡先(API Contact)、指定したメールアドレスに通知メールを送れます。</li>\n<li>Anypoint CLI のコマンドを使うと、CI/CD パイプラインの中でガバナンスを自動化できます。</li>\n<li>API Manager では、インスタンスに必要なポリシーが欠けていないか、TLS コンテキストがあるかなどを、インスタンスの準拠状況として確認できます。</li>\n<li>プロファイルを作成・編集・削除できるのは、Governance Administrator の権限を持つユーザーと組織管理者だけです。</li>\n</ul><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>契約は、1つのインスタンスと1つのアプリの間に1つだけです。</li>\n<li>SLA 層がなければ自動承認です。手動承認の層は、API Manager の「契約」で承認します。</li>\n<li>ガバナンスプロファイルは検証だけです。ポリシーを一律に適用するのは自動ポリシーです。</li>\n<li>新しいプロファイルは下書きで影響範囲を試してから、有効にします。</li>\n<li>アプリが割り当てられた SLA 層は、非推奨にして移行してもらってから削除します。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は、すべての REST API が社内の設計標準と OWASP 対策に沿っているかを継続的に確認し、外れたときは API の発行者にメールで知らせたいと考えています。ポリシーの適用は求めていません。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "API Governance でルールセットを選んだガバナンスプロファイルを作り、通知を有効にする",
+      "API Manager の自動ポリシーで、すべての API に同じポリシーを適用する",
+      "Anypoint Monitoring のアラートを API ごとに設定する",
+      "Exchange の資産に SLA 層を定義する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "API Governance は、ガバナンスプロファイルで選んだルールセットに照らして API を検証し、準拠しなくなったときに通知を送れます。自動ポリシーは実行時のポリシーを適用する仕組みで、標準への準拠は検証しません。アラートや SLA 層も設計標準の検証には使いません。",
+     "u": "https://docs.mulesoft.com/api-governance/create-profiles",
+     "x": "ガバナンスプロファイルを作り、どのルールセットをどの API に適用するかを決める。最初は下書き(Draft)で試す"
+    },
+    {
+     "q": "あるガバナンス担当者は、新しいルールセットを使ったプロファイルが、どの API にどれくらい影響するかを確かめたいと考えています。その間、API の持ち主に通知が届いたり、結果が Anypoint Platform 全体に表示されたりしないようにしたいです。どうすべきですか?",
+     "o": [
+      "プロファイルを下書き(Draft)として保存して結果を確認し、問題がなければ有効にする",
+      "プロファイルを有効(Active)として保存し、通知だけを無効にする",
+      "フィルター条件を何も指定せずにプロファイルを保存する",
+      "ルールセットを Exchange から削除してから、プロファイルを作る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "下書きのプロファイルでは通知が自動で無効になり、結果は下書きの画面の中だけに表示されます。有効にすると、通知を切っても結果は Anypoint Platform 全体に表示されます。フィルター条件がないと、すべての API が対象になってしまいます。",
+     "u": "https://docs.mulesoft.com/api-governance/monitor-api-conformance",
+     "x": "下書きのプロファイルでは通知が自動で無効になり、結果は下書きの画面の中だけに表示されます。有効(Active)にすると、結果が Anypoint Platform 全体に表示されます。"
+    },
+    {
+     "q": "ある担当者が、フィルター条件を何も選ばずにガバナンスプロファイルを有効にしました。このプロファイルのルールセットは、どの API に適用されますか?",
+     "o": [
+      "Exchange のすべての API",
+      "API Manager にインスタンスがある API だけ",
+      "本番環境にデプロイされた API だけ",
+      "どの API にも適用されない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "フィルター条件を選ばないと、プロファイルは Exchange のすべての API にルールセットを適用します。インスタンスの有無や環境の種類で絞り込むには、API インスタンスのフィルターを指定する必要があります。",
+     "u": "https://docs.mulesoft.com/api-governance/create-profiles",
+     "x": "プロファイルでフィルター条件を選ばないと、Exchange のすべての API にルールセットが適用されます。"
+    },
+    {
+     "q": "ある API の SLA 層は手動承認に設定されています。取引先の開発者が Exchange でアクセスをリクエストしました。API の所有者は、どこでこのリクエストを承認しますか?",
+     "o": [
+      "API Manager で、その API インスタンスの「契約(Contracts)」を開いて承認する",
+      "Runtime Manager で、アプリケーションの設定を開いて承認する",
+      "Access Management で、開発者にロールを付ける",
+      "API Governance の Governance コンソールで承認する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "手動承認の SLA 層へのリクエストは、API Manager のインスタンスの「契約」で承認または拒否します。Runtime Manager や Access Management では契約を扱いません。Governance コンソールは準拠状況の検証と監視のための画面です。",
+     "u": "https://docs.mulesoft.com/api-manager/latest/manage-client-apps-latest-task",
+     "x": "手動承認の SLA 層では、API Manager のインスタンスの「契約(Contracts)」で承認または拒否します。開発者が希望した層とは別の SLA 層を適用することもできます。"
+    },
+    {
+     "q": "ある会社は、古い silver の SLA 層をやめたいと考えています。この層には、すでに複数のクライアントアプリケーションが割り当てられています。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "新しい層を作って silver を非推奨にし、アプリに新しい層へ移ってもらってから silver を削除する",
+      "silver の層をすぐに削除する。割り当てられたアプリは自動で別の層へ移る",
+      "silver の上限を 0 件に変更して、そのまま残す",
+      "API インスタンスを削除して作り直す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "アプリが割り当てられている層は削除できません。新しい層を作って古い層を非推奨にし、アプリが移ってから削除します。層を編集すると承認済みのアプリにすぐ影響するので、上限を 0 にするのは利用者に迷惑をかけます。インスタンスを作り直す必要はありません。",
+     "u": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers",
+     "x": "アプリが割り当てられている層は削除できません。先に層を非推奨(Deprecate)にし、新しい層へ移ってもらってから削除します。"
+    },
+    {
+     "q": "ある会社は、gold の SLA 層の利用者に1日 10,000 件まで呼ばせたいと考えています。同時に、短い時間に集中して API に負担をかけないよう、毎秒 100 件も超えさせたくありません。アーキテクトは何を推奨すべきですか?",
+     "o": [
+      "gold 層に「毎秒 100 件」と「1日 10,000 件」の2つの上限を設定する",
+      "gold 層を2つ作り、利用者に両方の契約を結ばせる",
+      "毎秒の上限は SLA 層では設定できないので、API Governance のルールセットで制限する",
+      "gold 層を自動承認にして、上限は設定しない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "1つの SLA 層には複数の上限を設定できるので、毎秒の上限と1日の上限を同時にかけられます。1つのインスタンスとアプリの間の契約は1つだけなので、2つの層を契約させることはできません。API Governance は実行時のリクエスト数を制限しません。",
+     "u": "https://docs.mulesoft.com/api-manager/latest/defining-sla-tiers",
+     "x": "1つの層に複数の上限を設定できます。たとえば gold 層で「毎秒 100 件」と「1日 10,000 件」を同時にかけられます。"
+    }
+   ]
+  }
+ ]
+}
