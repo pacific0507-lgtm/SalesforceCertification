@@ -97,18 +97,26 @@ function pool(){var out=[];subjList().forEach(function(id){(Q[id]||[]).forEach(f
 function isWrong(q){var h=HIST[q.subj][q.n];return h&&h.l==="x"}
 function isNew(q){return !HIST[q.subj][q.n]}
 function isDue(q){var r=LS.get(REVK,{})[q.subj+":q"+q.n];return r&&r.due&&r.due<=today()}
-function deck(){var p=pool();if(ST.flt==="wrong")return p.filter(isWrong);if(ST.flt==="new")return p.filter(isNew);if(ST.flt==="review")return p.filter(isDue);return p}
+function liveDeck(){var p=pool();if(ST.flt==="wrong")return p.filter(isWrong);if(ST.flt==="new")return p.filter(isNew);if(ST.flt==="review")return p.filter(isDue);return p}
+/* 絞り込み中の並びは、絞り込み・出し方などを自分で変えるまで固定する(解いて条件から外れても分母は変えず、前へで戻れる) */
+var SNAP=null,SNK="cs-practice-snap";
+function snapKey(){return ST.subj+"|"+ST.src+"|"+ST.flt}
+function resetSnap(){SNAP=null;LS.set(SNK,null)}
+function deck(){if(ST.flt==="all")return liveDeck();var k=snapKey();if(SNAP&&SNAP.k===k)return SNAP.list;
+  var sv=LS.get(SNK,null),p=pool();
+  if(sv&&sv.k===k&&Array.isArray(sv.ids)){var m={};p.forEach(function(q){m[q.subj+":"+q.n]=q});var l=sv.ids.map(function(id){return m[id]}).filter(Boolean);if(l.length){SNAP={k:k,list:l};return l}}
+  SNAP={k:k,list:liveDeck()};LS.set(SNK,{k:k,ids:SNAP.list.map(function(q){return q.subj+":"+q.n})});return SNAP.list}
 function posKey(){return "cs-practice-pos:"+ST.subj+":"+ST.src+(ST.flt&&ST.flt!=="all"?":"+ST.flt:"")}
 function counts(){var p=pool();return {review:p.filter(isDue).length,wrong:p.filter(isWrong).length,"new":p.filter(isNew).length}}
 function renderFilters(){
-  chips($("#f-subj"),subjItems(),ST.subj,function(v){ST.subj=v;save();refreshQ(true)});
+  chips($("#f-subj"),subjItems(),ST.subj,function(v){ST.subj=v;save();resetSnap();refreshQ(true)});
   var srcs={};subjList().forEach(function(id){(Q[id]||[]).forEach(function(q){srcs[q.src]=1})});
   if(ST.src!=="all"&&!srcs[ST.src])ST.src="all";
   var sl=Object.keys(srcs);$("#f-src-w").hidden=sl.length<2;
-  chips($("#f-src"),[{v:"all",l:"すべて"}].concat(sl.map(function(k){return {v:k,l:SRCN[k]||k}})),ST.src,function(v){ST.src=v;save();refreshQ(true)});
+  chips($("#f-src"),[{v:"all",l:"すべて"}].concat(sl.map(function(k){return {v:k,l:SRCN[k]||k}})),ST.src,function(v){ST.src=v;save();resetSnap();refreshQ(true)});
   var c=counts();
-  chips($("#f-mode"),[{v:"all",l:"すべて"},{v:"review",l:"今日の復習",n:c.review},{v:"wrong",l:"間違えた問題",n:c.wrong},{v:"new",l:"まだ解いていない",n:c["new"]}],ST.flt,function(v){ST.flt=v;save();refreshQ(true)});
-  chips($("#f-ord"),[{v:"order",l:"順番に"},{v:"random",l:"ランダム"}],ST.ord,function(v){ST.ord=v;save();refreshQ(true)});
+  chips($("#f-mode"),[{v:"all",l:"すべて"},{v:"review",l:"今日の復習",n:c.review},{v:"wrong",l:"間違えた問題",n:c.wrong},{v:"new",l:"まだ解いていない",n:c["new"]}],ST.flt,function(v){ST.flt=v;save();resetSnap();refreshQ(true)});
+  chips($("#f-ord"),[{v:"order",l:"順番に"},{v:"random",l:"ランダム"}],ST.ord,function(v){ST.ord=v;save();resetSnap();refreshQ(true)});
 }
 function pick(){
   var d=deck();if(!d.length)return null;
