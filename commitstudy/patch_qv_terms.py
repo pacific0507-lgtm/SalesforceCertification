@@ -51,7 +51,7 @@ function tcRender(){if(!TC.on)return;tcLoad().then(function(all){var K=tcKnown()
   var cd=byId("tcCard"),pos=byId("tcPos");TCFLIP=false;if(cd.classList.contains("on")){cd.classList.add("nt");cd.classList.remove("on");void cd.offsetWidth;cd.classList.remove("nt")}
   if(!TCL.length){cd.innerHTML='<div class="tc-f"><p class="tc-empty">'+(TC.st==="todo"&&base.length?"この範囲のカードは、すべて「覚えた」になっています。":"この絞り込みのカードはありません。")+'</p></div>';pos.textContent="";byId("tcGo").hidden=true;byId("tcAct").hidden=true}
   else{var c=TCL[TC.i],m=!!K[tcKey(c)];
-    cd.innerHTML='<div class="tc-f"><p class="tc-sec"><b>'+esc(dk(c.s))+'</b>'+esc(TITLES[c.s]||"")+(m?'<span class="tc-ok">覚えた</span>':"")+'</p><h3>'+esc(c.t)+'</h3><p class="tc-hint">押すと説明が出ます</p></div><div class="tc-b"><p class="tc-t">'+esc(c.t)+'</p><p class="tc-d">'+esc(c.d)+'</p></div>';
+    cd.innerHTML='<div class="tc-f"><p class="tc-sec"><b>'+esc(dk(c.s))+'</b>'+esc(TITLES[c.s]||"")+(m?'<span class="tc-ok">覚えた</span>':"")+'</p><h3>'+esc(c.t)+'</h3></div><div class="tc-b"><p class="tc-t">'+esc(c.t)+'</p><p class="tc-d">'+esc(c.d)+'</p></div>';
     pos.textContent=(TC.i+1)+" / "+TCL.length;byId("tcGo").hidden=false;byId("tcAct").hidden=false;
     var kb=$('#tcAct [data-k="known"]');if(kb)kb.setAttribute("aria-pressed",String(m))}
   tcGrid(all,K)})}

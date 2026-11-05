@@ -172,7 +172,7 @@ function drawCard(){
   var fc=$("#fc");FLIP=false;fc.classList.remove("on");
   if(!TL.length){fc.querySelector(".front").innerHTML='<p>'+(ST.gonly==="todo"?"この範囲のカードは、すべて「覚えた」になっています。":"カードがありません。")+'</p>';fc.querySelector(".back").innerHTML="";$("#g-pos").textContent="";return}
   if(TI>=TL.length)TI=0;if(TI<0)TI=TL.length-1;var c=TL[TI],sj=SUBJ.filter(function(s){return s.id===c.subj})[0];
-  fc.querySelector(".front").innerHTML='<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span><span>'+esc(c.title)+'</span></p><h3>'+esc(c.t)+'</h3><p class="hint">押すと説明が出ます</p>';
+  fc.querySelector(".front").innerHTML='<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span><span>'+esc(c.title)+'</span></p><h3>'+esc(c.t)+'</h3>';
   fc.querySelector(".back").innerHTML='<p class="bx-k"><span>'+esc(c.t)+'</span></p><p class="tc-d">'+esc(c.d)+'</p><p class="tq-links"><a class="bx-go" href="/'+c.subj+'/#f-'+esc(c.s)+'">テキストで確認する</a></p><div class="gk"><button type="button" data-k="again">まだ</button><button type="button" data-k="known"'+(KNOWN[tkey(c)]?' aria-pressed="true"':"")+'>覚えた</button></div>';
   $("#g-pos").textContent=(TI+1)+" / "+TL.length;
 }
