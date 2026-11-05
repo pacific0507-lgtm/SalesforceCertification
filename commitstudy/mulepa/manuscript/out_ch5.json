@@ -8,7 +8,7 @@
    "no": "Ch5·1",
    "title": "デプロイ先の選択(CloudHub 2.0・Runtime Fabric・顧客ホスト・ハイブリッド)",
    "tag": "Deployment Options",
-   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>なぞなぞだ。家主が全部面倒を見る家と、自分で建てて鍵だけ預ける家。Mule の住まいはどっちだ。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>えっ、どっちも?CloudHub が全部お任せのほうで…自分で建てるのはオンプレミス?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>半分正解です。自分で建てる側には、ハイブリッド、Runtime Fabric、PCE の3つがあります。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>3つも!違いがわからなくなりそう。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>鍵を見てください。ハイブリッドと Runtime Fabric は、管理の鍵(コントロールプレーン)を MuleSoft のクラウドに預けます。PCE は管理機能ごと自社で持ちます。</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>実行するのはどこか、管理するのはどこか。2つの変数で分岐する if 文だ。</p></div>\n<p class=\"one\">Mule アプリを実際に動かす場所(ランタイムプレーン)は、MuleSoft が運用するクラウド(CloudHub 2.0、CloudHub)と、顧客が用意するインフラ(ハイブリッド、Runtime Fabric、PCE)から選びます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>住まい選びです。CloudHub 2.0 は家具付きのサービスアパートで、修繕も管理会社がします。ハイブリッドは自分の持ち家ですが、管理だけ管理会社のアプリで見ます。PCE は管理事務所ごと自分の敷地に置く形です。</p></div><h4>5つのデプロイ先</h4><div class=\"tw\"><table><thead><tr><th>デプロイ先</th><th>概要</th><th>ランタイムをホストするのは</th></tr></thead>\n<tr><td>CloudHub 2.0</td><td>フルマネージドでコンテナ型の iPaaS。API や連携を軽量コンテナとして動かす</td><td>MuleSoft</td></tr>\n<tr><td>CloudHub(CloudHub 1.0)</td><td>サーバー機能を備えた iPaaS。契約に応じて、アプリに割り当てるリソースを決める</td><td>MuleSoft</td></tr>\n<tr><td>ハイブリッド(Hybrid)</td><td>Runtime Manager のクラウドコンソールから自社の Mule サーバーへデプロイし、管理する</td><td>顧客</td></tr>\n<tr><td>Runtime Fabric</td><td>顧客が作成・管理する Kubernetes クラスターに Mule アプリと API プロキシをデプロイする</td><td>顧客</td></tr>\n<tr><td>Anypoint Platform Private Cloud Edition(PCE)</td><td>Anypoint Platform の管理機能をコンテナ化した配布。オンプレミスか自社のプライベートクラウドでホストする</td><td>顧客(管理機能ごと)</td></tr>\n</table></div><h4>ハイブリッド(顧客ホストの Mule サーバー)</h4><ul>\n<li>ハイブリッドでは、まず Mule サーバーを Runtime Manager エージェント(Runtime Manager agent)で登録します。次に必要ならサーバーグループかクラスターに追加し、最後にサーバー、サーバーグループ、クラスターのどれかへデプロイします。</li>\n<li>サーバーグループでは、各ノードのアプリのインスタンスは完全に独立しています。クラスターでは、ノードどうしがお互いを認識し、情報を共有して状態を同期します。</li>\n<li>サーバーグループやクラスターに入れるサーバーは、すべて同じ Mule ランタイムのバージョンと、同じ Runtime Manager エージェントのバージョンにそろえます。</li>\n<li>既定では、クラウド(コントロールプレーン)に送られるのは、エージェントが送るメタデータだけです。アプリケーションのデータは公開されません。</li>\n<li>エージェントは、まず Runtime Manager へ外向きの HTTPS 接続を行い、そこから全二重の WebSocket 接続を確立します。接続が切れても、統計情報はバッファーされ、再接続後に送られます。</li>\n<li>オンプレミスでは、フローを持たないドメインプロジェクトに共通のグローバル設定を置き、同じサーバー上の複数のアプリで共有できます。</li>\n</ul><h4>Runtime Fabric</h4><ul>\n<li>Runtime Fabric は、EKS、AKS、GKE などのマネージド Kubernetes サービスや、Red Hat OpenShift などのディストリビューションの上で動きます。</li>\n<li>Runtime Fabric は、アプリごとに別々の Mule ランタイムサーバーを動かして分離します。複数レプリカでの水平スケールと、自動フェイルオーバーもできます。</li>\n<li>同じリソースの上で、複数のバージョンの Mule ランタイムを動かせます。</li>\n<li>Runtime Fabric では、ロードバランシングとイングレス(外からの入口)は顧客側の管理です。CloudHub のような既定のエンドポイントは用意されません。</li>\n</ul><h4>選び方の目安</h4><ul>\n<li>インフラの管理を MuleSoft に任せ、コンテナで動かしたい場合は、CloudHub 2.0 が候補です。</li>\n<li>厳しい規制やコンプライアンス要件でクラウドの利用が制限される場合は、PCE でアプリをオンプレミスにデプロイ・ホストできます。</li>\n<li>Kubernetes クラスターを運用する知見があり、自社が管理するインフラでコンテナとして動かしたい場合は、Runtime Fabric が候補です。</li>\n<li>既存の自社サーバーで Mule を動かしつつ、管理はクラウドの Runtime Manager で行いたい場合は、ハイブリッドが候補です。</li>\n<li>Anypoint Studio や Anypoint Code Builder の中の組み込みテストサーバーは本番用ではありません。本番は Runtime Manager が対応するデプロイ先を使います。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>ハイブリッドって、うちの業務データがクラウドに流れちゃわない?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>既定で送られるのはメタデータだけです。アプリのデータは送られません。試験でもよく聞かれます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>agent は外向きに接続する。inbound のポートを開ける話ではない。</p></div>\n<div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>CloudHub 2.0 と CloudHub は MuleSoft がランタイムをホストします。ハイブリッド、Runtime Fabric、PCE は顧客がホストします。</li>\n<li>管理機能(コントロールプレーン)まで自社でホストするのは PCE だけです。</li>\n<li>ハイブリッドの手順は、エージェントでサーバー登録、サーバーグループかクラスターに追加、デプロイ、の順です。</li>\n<li>クラスターはノード間で情報を共有します。サーバーグループは共有しません。</li>\n<li>Runtime Fabric のイングレスとロードバランシングは顧客の責任です。</li>\n</ul></div>",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>なぞなぞだ。家主が全部面倒を見る家と、自分で建てて鍵だけ預ける家。Mule の住まいはどっちだ。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>えっ、どっちも?CloudHub が全部お任せのほうで…自分で建てるのはオンプレミス?</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>半分正解です。自分で建てる側には、ハイブリッド、Runtime Fabric、PCE の3つがあります。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>3つも!違いがわからなくなりそう。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>鍵を見てください。ハイブリッドと Runtime Fabric は、管理の鍵(コントロールプレーン)を MuleSoft のクラウドに預けます。PCE は管理機能ごと自社で持ちます。</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>実行するのはどこか、管理するのはどこか。2つの変数で分岐する if 文だ。</p></div>\n<p class=\"one\">Mule アプリを実際に動かす場所(ランタイムプレーン)は、MuleSoft が運用するクラウド(CloudHub 2.0、CloudHub)と、顧客が用意するインフラ(ハイブリッド、Runtime Fabric、PCE)から選びます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>住まい選びです。CloudHub 2.0 は家具付きのサービスアパートで、修繕も管理会社がします。ハイブリッドは自分の持ち家ですが、管理だけ管理会社のアプリで見ます。PCE は管理事務所ごと自分の敷地に置く形です。</p></div><h4>5つのデプロイ先</h4><div class=\"tw\"><table><thead><tr><th>デプロイ先</th><th>概要</th><th>ランタイムをホストするのは</th></tr></thead>\n<tr><td>CloudHub 2.0</td><td>フルマネージドでコンテナ型の iPaaS。API や連携を軽量コンテナとして動かす</td><td>MuleSoft</td></tr>\n<tr><td>CloudHub(CloudHub 1.0)</td><td>サーバー機能を備えた iPaaS。契約に応じて、アプリに割り当てるリソースを決める</td><td>MuleSoft</td></tr>\n<tr><td>ハイブリッド(Hybrid)</td><td>Runtime Manager のクラウドコンソールから自社の Mule サーバーへデプロイし、管理する</td><td>顧客</td></tr>\n<tr><td>Runtime Fabric</td><td>顧客が作成・管理する Kubernetes クラスターに Mule アプリと API プロキシをデプロイする</td><td>顧客</td></tr>\n<tr><td>Anypoint Platform Private Cloud Edition(PCE)</td><td>Anypoint Platform の管理機能をコンテナ化した配布。オンプレミスか自社のプライベートクラウドでホストする</td><td>顧客(管理機能ごと)</td></tr>\n</table></div><h4>ハイブリッド(顧客ホストの Mule サーバー)</h4><ul>\n<li>ハイブリッドでは、まず Mule サーバーを Runtime Manager エージェント(Runtime Manager agent)で登録します。次に必要ならサーバーグループかクラスターに追加し、最後にサーバー、サーバーグループ、クラスターのどれかへデプロイします。</li>\n<li>サーバーグループでは、各ノードのアプリのインスタンスは完全に独立しています。クラスターでは、ノードどうしがお互いを認識し、情報を共有して状態を同期します。</li>\n<li>サーバーグループやクラスターに入れるサーバーは、すべて同じ Mule ランタイムのバージョンと、同じ Runtime Manager エージェントのバージョンにそろえます。</li>\n<li>既定では、クラウド(コントロールプレーン)に送られるのは、エージェントが送るメタデータだけです。アプリケーションのデータは公開されません。</li>\n</ul><h4>Runtime Fabric</h4><ul>\n<li>Runtime Fabric は、EKS、AKS、GKE などのマネージド Kubernetes サービスや、Red Hat OpenShift などのディストリビューションの上で動きます。</li>\n<li>Runtime Fabric は、アプリごとに別々の Mule ランタイムサーバーを動かして分離します。複数レプリカでの水平スケールと、自動フェイルオーバーもできます。</li>\n<li>Runtime Fabric では、ロードバランシングとイングレス(外からの入口)は顧客側の管理です。CloudHub のような既定のエンドポイントは用意されません。</li>\n</ul><h4>選び方の目安</h4><ul>\n<li>インフラの管理を MuleSoft に任せ、コンテナで動かしたい場合は、CloudHub 2.0 が候補です。</li>\n<li>厳しい規制やコンプライアンス要件でクラウドの利用が制限される場合は、PCE でアプリをオンプレミスにデプロイ・ホストできます。</li>\n<li>Kubernetes クラスターを運用する知見があり、自社が管理するインフラでコンテナとして動かしたい場合は、Runtime Fabric が候補です。</li>\n<li>既存の自社サーバーで Mule を動かしつつ、管理はクラウドの Runtime Manager で行いたい場合は、ハイブリッドが候補です。</li>\n<li>Anypoint Studio や Anypoint Code Builder の中の組み込みテストサーバーは本番用ではありません。本番は Runtime Manager が対応するデプロイ先を使います。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>ハイブリッドって、うちの業務データがクラウドに流れちゃわない?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>既定で送られるのはメタデータだけです。アプリのデータは送られません。試験でもよく聞かれます。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>agent は外向きに接続する。inbound のポートを開ける話ではない。</p></div>\n<div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>CloudHub 2.0 と CloudHub は MuleSoft がランタイムをホストします。ハイブリッド、Runtime Fabric、PCE は顧客がホストします。</li>\n<li>管理機能(コントロールプレーン)まで自社でホストするのは PCE だけです。</li>\n<li>ハイブリッドの手順は、エージェントでサーバー登録、サーバーグループかクラスターに追加、デプロイ、の順です。</li>\n<li>クラスターはノード間で情報を共有します。サーバーグループは共有しません。</li>\n<li>Runtime Fabric のイングレスとロードバランシングは顧客の責任です。</li>\n</ul></div>",
    "questions": [
     {
      "q": "ある金融機関は、規制当局の要件により、Anypoint Platform の管理機能も含めてパブリッククラウドを利用できません。それでも Mule アプリケーションを Anypoint Platform の機能で管理したいと考えています。アーキテクトは何を推奨すべきですか?",
@@ -28,13 +28,13 @@
     {
      "q": "ある会社は社内に Kubernetes を運用するチームがあり、AKS の上で Mule アプリケーションをコンテナとして動かしたいと考えています。アプリごとの分離と、複数レプリカでの自動フェイルオーバーも必要です。アーキテクトは何を推奨すべきですか?",
      "o": [
-      "Runtime Fabric",
       "CloudHub 2.0 の共有スペース",
+      "Runtime Fabric",
       "ハイブリッドのサーバーグループ",
       "Anypoint Flex Gateway のみでの運用"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "Runtime Fabric は顧客が管理する Kubernetes(EKS、AKS、GKE など)の上で動き、アプリごとに別の Mule ランタイムで分離し、複数レプリカでのフェイルオーバーができます。CloudHub 2.0 は MuleSoft が管理するクラウドで、自社の AKS は使えません。Flex Gateway は API ゲートウェイで、Mule アプリの実行環境ではありません。",
      "u": "https://docs.mulesoft.com/runtime-fabric/latest/",
@@ -43,13 +43,13 @@
     {
      "q": "ある会社はハイブリッドデプロイメントを検討しています。セキュリティ担当者は、業務データがクラウドに送られることを心配しています。既定の動作の説明として正しいものはどれですか?",
      "o": [
-      "Runtime Manager エージェントが送るメタデータだけがクラウドに送られ、アプリケーションのデータは公開されない",
       "すべてのメッセージのペイロードが Anypoint Monitoring のためにクラウドへ送られる",
+      "Runtime Manager エージェントが送るメタデータだけがクラウドに送られ、アプリケーションのデータは公開されない",
       "ログは既定ですべて CloudHub のログサービスに転送される",
       "Mule サーバーは Runtime Manager からの受信接続のために 8081 番ポートを開ける必要がある"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "既定では、各 Mule ランタイムのエージェントが送るメタデータだけがクラウドに流れ、アプリケーションのデータは公開されません。エージェントは外向きの HTTPS から WebSocket 接続を張るため、受信ポートを開ける前提ではありません。",
      "u": "https://docs.mulesoft.com/runtime-manager/deployment-strategies",
@@ -58,13 +58,13 @@
     {
      "q": "ある会社は、自社の Mule サーバー3台でアプリを動かしています。ノードどうしがお互いを認識し、情報を共有して状態を同期する構成にしたいと考えています。Runtime Manager で何を構成すべきですか?",
      "o": [
-      "クラスター",
       "サーバーグループ",
       "ドメインプロジェクト",
+      "クラスター",
       "共有スペース"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "クラスターでは、ノードがお互いを認識し、情報を共有して状態を同期します。サーバーグループではアプリのインスタンスは完全に独立していて、情報は共有されません。ドメインプロジェクトはグローバル設定の共有のしくみで、共有スペースは CloudHub 2.0 のマルチテナントの実行場所です。",
      "u": "https://docs.mulesoft.com/runtime-manager/managing-servers",
@@ -88,13 +88,13 @@
     {
      "q": "ある会社は、既存のオンプレミスの Mule サーバーを使い続けながら、管理はクラウドの Runtime Manager で行いたいと考えています。最初に行うべき作業はどれですか?",
      "o": [
-      "Mule サーバーを Runtime Manager エージェントで Runtime Manager に登録する",
       "Runtime Manager で Runtime Fabric を作成する",
+      "Mule サーバーを Runtime Manager エージェントで Runtime Manager に登録する",
       "CloudHub 2.0 のプライベートスペースを作成する",
       "アプリを Anypoint Exchange にパブリックとして公開する"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "ハイブリッドでは、まず Mule サーバーを Runtime Manager エージェントで登録し、必要ならサーバーグループかクラスターに追加してからデプロイします。Runtime Fabric の作成やプライベートスペースは、別のデプロイ先の手順です。",
      "u": "https://docs.mulesoft.com/runtime-manager/deployment-strategies",
@@ -103,13 +103,13 @@
     {
      "q": "ある会社は Runtime Fabric と CloudHub 2.0 を比べています。Runtime Fabric の説明として正しいものはどれですか?",
      "o": [
-      "ロードバランシングとイングレスは顧客が管理し、CloudHub のような既定のエンドポイントは用意されない",
       "OS のパッチ適用とノードのスケールは MuleSoft がすべて管理する",
       "アプリは MuleSoft のマルチテナントの共有スペースで動く",
+      "ロードバランシングとイングレスは顧客が管理し、CloudHub のような既定のエンドポイントは用意されない",
       "永続的な VM キュー(persistent VM queues)が使える"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "機能比較では、Runtime Fabric の既定エンドポイントは非対応で、ロードバランシングとイングレスは自己管理です。プロビジョニングや OS パッチも自己管理です。共有スペースは CloudHub 2.0 の実行場所で、永続的な VM キューは CloudHub(1.0)だけの機能です。",
      "u": "https://docs.mulesoft.com/cloudhub-2/ch2-features",
@@ -122,7 +122,7 @@
    "no": "Ch5·2",
    "title": "CloudHub でのデプロイと運用(レプリカ・ワーカー・vCore・プライベートスペース・ロードバランサー)",
    "tag": "CloudHub",
-   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>では問題です。CloudHub 2.0 で、1つのアプリに割り当てられる1レプリカの最大サイズは何 vCore でしょう?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>16 vCore!この前の資料に書いてあったもん。</p><p class=\"tk rou\" data-f=\"sweat\"><b class=\"who\">クラウドちゃん</b>残念、それは CloudHub(1.0)のワーカーです。CloudHub 2.0 のレプリカは最大4 vCore です。</p><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>うわ、名前がほぼ同じなのに数字が違うの、ずるい…。</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>ワーカーは1.0、レプリカは2.0。変数名で型を見分けるのと同じだ。</p></div>\n<p class=\"one\">CloudHub では、アプリを動かすインスタンスの大きさ(vCore)と数を選び、ロードバランサーとネットワーク分離のしくみで公開範囲を決めます。CloudHub(1.0)はワーカーと Anypoint VPC、CloudHub 2.0 はレプリカとプライベートスペースが中心です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>ワーカーやレプリカはお店のレジ、vCore はレジ1台の処理能力です。レジを増やせば行列は分散し、どれか1台が壊れても営業を続けられます。</p></div><h4>CloudHub(1.0)と CloudHub 2.0 の違い</h4><div class=\"tw\"><table><thead><tr><th>項目</th><th>CloudHub(1.0)</th><th>CloudHub 2.0</th></tr></thead>\n<tr><td>実行単位</td><td>ワーカー(worker)</td><td>レプリカ(replica)</td></tr>\n<tr><td>サイズ</td><td>0.1〜16 vCore(16 vCore はメモリ 64 GB)</td><td>0.1〜4 vCore(1デプロイの上限は4 vCore)</td></tr>\n<tr><td>数の上限</td><td>契約により最大8ワーカー、1アプリ最大128 vCore</td><td>最大8レプリカ。Anypoint Integration Advanced パッケージか Platinum/Titanium なら最大16</td></tr>\n<tr><td>分離されたネットワーク</td><td>Anypoint VPC</td><td>プライベートスペース(非公開スペース)</td></tr>\n<tr><td>永続的な VM キュー</td><td>対応</td><td>非対応</td></tr>\n<tr><td>Mule クラスタリング</td><td>非対応</td><td>対応(2レプリカ以上)</td></tr>\n<tr><td>静的 IP アドレス</td><td>アプリ単位</td><td>プライベートスペース単位</td></tr>\n<tr><td>メタスペースの上限</td><td>無制限</td><td>256 MB</td></tr>\n</table></div><h4>両方に共通する点</h4><ul>\n<li>1 vCore 未満のサイズは CPU と I/O が限られ、短時間だけ高い CPU 速度にバーストできます。ただしバーストは保証されません。安定した性能が必要なら 1 vCore 以上を使います。</li>\n<li>vCore の消費に数えられるのは実行中のアプリだけです。停止中のアプリは数えられません。</li>\n<li>リージョン(AWS のリージョンに対応)全体が落ちても、アプリは自動では他のリージョンに複製されません。リージョンをまたぐ災害対策(DR)は顧客の責任です。</li>\n<li>バッチジョブは一度に1つのワーカー(CloudHub 2.0 ではレプリカ)でしか動かず、複数に分散できません。</li>\n</ul><h4>CloudHub(1.0)のネットワークと高可用性</h4><ul>\n<li>CloudHub(1.0)のアプリは、ホスト 0.0.0.0 で、予約プロパティ ${http.port}(8081)か ${https.port}(8082)を使って待ち受けます。共有ロードバランサーは 80 番と 443 番をこれらのポートに転送します。</li>\n<li>ワーカーの内部 IP 用のポート ${http.private.port} と ${https.private.port} は 8091 と 8092 で、Anypoint VPC の中からだけ使えます。</li>\n<li>共有ロードバランサーのアイドルタイムアウトは300秒です。これより長くかかる処理は非同期にすることを検討します。</li>\n<li>専用ロードバランサー(DLB)を使うには、先に Anypoint VPC を作ります。DLB では、カスタム証明書、双方向 SSL のクライアント認証、カスタムドメインへの対応付け(マッピングルール)ができます。</li>\n<li>DLB の1ユニットはロードバランス用の2ワーカー分で、1つの DLB に最大4ユニットを割り当てられます。</li>\n<li>Anypoint VPC の基本サブスクリプションには2つの VPC が含まれます。1つの VPC は複数の環境に関連付けられるので、本番用と非本番用に分けられます。</li>\n<li>永続的なキューはメッセージ損失ゼロとワーカー間の負荷分散を実現します。ただし1回だけの配信は保証せず、重複することがあります。保持期間は最大4日です。</li>\n<li>複数ワーカーは既定で別々のアベイラビリティゾーンに置かれます。1ワーカーの場合にそのゾーンが落ちると、別のゾーンで再起動されますが、その間は停止します。</li>\n</ul><h4>CloudHub 2.0 のスペースとレプリカ</h4><ul>\n<li>共有スペース(shared space)はマルチテナントです。プライベートスペースは、シングルテナントで仮想的、非公開、分離された論理空間です。</li>\n<li>プライベートスペースでは、プライベートネットワーク(IP 範囲とリージョン)、Anypoint VPN かトランジットゲートウェイでの接続、TLS コンテキスト(使えるドメインと相互 TLS)、ファイアウォールルール、デプロイを許す環境とビジネスグループを定義します。</li>\n<li>プライベートスペースのインバウンドは、既定で 80(HTTP)と 443(HTTPS)をどこから(0.0.0.0/0)でも許可します。アウトバウンドは既定ですべて許可します。</li>\n<li>同じリージョンに複数のプライベートスペースを作り、本番と非本番のネットワークを分けられます。</li>\n<li>高可用性には最低2つのレプリカが必要です。複数のレプリカは既定で2つ以上のアベイラビリティゾーンに分散されます。</li>\n<li>ランタイムクラスターモード(Run in Runtime Cluster Mode)は2レプリカ以上が必要で、レプリカ間でメモリ上のデータを共有します。スケジュールはプライマリのレプリカで1回だけ実行されます。</li>\n<li>クラスタリングなしで複数レプリカの場合、スケジュールは各レプリカで別々に実行され、Object Store もレプリカ間で共有されません。</li>\n<li>レプリカのローカルディスクは、再起動や再デプロイで消えます。再起動をまたいでデータを残すには Object Store v2 を使います。</li>\n<li>デプロイモデルは、レプリカを順に更新して可用性を保つローリング更新(Rolling update)と、先にレプリカを終了して速く入れ替える再作成(Recreate)の2つです。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>1.0 で永続的なキューを使ってたアプリ、2.0 に引っ越すとどうなるの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>CloudHub 2.0 は永続的な VM キューに対応していません。メッセージ損失を防ぎたいなら、Anypoint MQ を使うようにアプリを構成します。</p></div>\n<div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>最大サイズは、CloudHub(1.0)のワーカーが16 vCore、CloudHub 2.0 のレプリカが4 vCore です。</li>\n<li>CloudHub 2.0 は Mule クラスタリングに対応し、永続的な VM キューには非対応です。CloudHub(1.0)はその逆です。</li>\n<li>DLB は CloudHub(1.0)の機能で、Anypoint VPC が前提です。</li>\n<li>CloudHub(1.0)のアプリは ${http.port}(8081)か ${https.port}(8082)で待ち受けます。</li>\n<li>複数レプリカでスケジュールを1回だけ動かしたいなら、ランタイムクラスターモードを有効にします。</li>\n</ul></div>",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>では問題です。CloudHub 2.0 で、1つのアプリに割り当てられる1レプリカの最大サイズは何 vCore でしょう?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>16 vCore!この前の資料に書いてあったもん。</p><p class=\"tk rou\" data-f=\"sweat\"><b class=\"who\">クラウドちゃん</b>残念、それは CloudHub(1.0)のワーカーです。CloudHub 2.0 のレプリカは最大4 vCore です。</p><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>うわ、名前がほぼ同じなのに数字が違うの、ずるい…。</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>ワーカーは1.0、レプリカは2.0。変数名で型を見分けるのと同じだ。</p></div>\n<p class=\"one\">CloudHub では、アプリを動かすインスタンスの大きさ(vCore)と数を選び、ロードバランサーとネットワーク分離のしくみで公開範囲を決めます。CloudHub(1.0)はワーカーと Anypoint VPC、CloudHub 2.0 はレプリカとプライベートスペースが中心です。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>ワーカーやレプリカはお店のレジ、vCore はレジ1台の処理能力です。レジを増やせば行列は分散し、どれか1台が壊れても営業を続けられます。</p></div><h4>CloudHub(1.0)と CloudHub 2.0 の違い</h4><div class=\"tw\"><table><thead><tr><th>項目</th><th>CloudHub(1.0)</th><th>CloudHub 2.0</th></tr></thead>\n<tr><td>実行単位</td><td>ワーカー(worker)</td><td>レプリカ(replica)</td></tr>\n<tr><td>サイズ</td><td>0.1〜16 vCore(16 vCore はメモリ 64 GB)</td><td>0.1〜4 vCore(1デプロイの上限は4 vCore)</td></tr>\n<tr><td>数の上限</td><td>契約により最大8ワーカー、1アプリ最大128 vCore</td><td>最大8レプリカ。Anypoint Integration Advanced パッケージか Platinum/Titanium なら最大16</td></tr>\n<tr><td>分離されたネットワーク</td><td>Anypoint VPC</td><td>プライベートスペース(非公開スペース)</td></tr>\n<tr><td>永続的な VM キュー</td><td>対応</td><td>非対応</td></tr>\n<tr><td>Mule クラスタリング</td><td>非対応</td><td>対応(2レプリカ以上)</td></tr>\n<tr><td>静的 IP アドレス</td><td>アプリ単位</td><td>プライベートスペース単位</td></tr>\n<tr><td>メタスペースの上限</td><td>無制限</td><td>256 MB</td></tr>\n</table></div><h4>両方に共通する点</h4><ul>\n<li>1 vCore 未満のサイズは CPU と I/O が限られ、短時間だけ高い CPU 速度にバーストできます。ただしバーストは保証されません。安定した性能が必要なら 1 vCore 以上を使います。</li>\n<li>vCore の消費に数えられるのは実行中のアプリだけです。停止中のアプリは数えられません。</li>\n<li>リージョン(AWS のリージョンに対応)全体が落ちても、アプリは自動では他のリージョンに複製されません。リージョンをまたぐ災害対策(DR)は顧客の責任です。</li>\n</ul><h4>CloudHub(1.0)のネットワークと高可用性</h4><ul>\n<li>CloudHub(1.0)のアプリは、ホスト 0.0.0.0 で、予約プロパティ ${http.port}(8081)か ${https.port}(8082)を使って待ち受けます。共有ロードバランサーは 80 番と 443 番をこれらのポートに転送します。</li>\n<li>専用ロードバランサー(DLB)を使うには、先に Anypoint VPC を作ります。DLB では、カスタム証明書、双方向 SSL のクライアント認証、カスタムドメインへの対応付け(マッピングルール)ができます。</li>\n<li>Anypoint VPC の基本サブスクリプションには2つの VPC が含まれます。1つの VPC は複数の環境に関連付けられるので、本番用と非本番用に分けられます。</li>\n<li>永続的なキューはメッセージ損失ゼロとワーカー間の負荷分散を実現します。ただし1回だけの配信は保証せず、重複することがあります。保持期間は最大4日です。</li>\n<li>複数ワーカーは既定で別々のアベイラビリティゾーンに置かれます。1ワーカーの場合にそのゾーンが落ちると、別のゾーンで再起動されますが、その間は停止します。</li>\n</ul><h4>CloudHub 2.0 のスペースとレプリカ</h4><ul>\n<li>共有スペース(shared space)はマルチテナントです。プライベートスペースは、シングルテナントで仮想的、非公開、分離された論理空間です。</li>\n<li>プライベートスペースでは、プライベートネットワーク(IP 範囲とリージョン)、Anypoint VPN かトランジットゲートウェイでの接続、TLS コンテキスト(使えるドメインと相互 TLS)、ファイアウォールルール、デプロイを許す環境とビジネスグループを定義します。</li>\n<li>プライベートスペースのインバウンドは、既定で 80(HTTP)と 443(HTTPS)をどこから(0.0.0.0/0)でも許可します。アウトバウンドは既定ですべて許可します。</li>\n<li>高可用性には最低2つのレプリカが必要です。複数のレプリカは既定で2つ以上のアベイラビリティゾーンに分散されます。</li>\n<li>ランタイムクラスターモード(Run in Runtime Cluster Mode)は2レプリカ以上が必要で、レプリカ間でメモリ上のデータを共有します。スケジュールはプライマリのレプリカで1回だけ実行されます。</li>\n<li>レプリカのローカルディスクは、再起動や再デプロイで消えます。再起動をまたいでデータを残すには Object Store v2 を使います。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>1.0 で永続的なキューを使ってたアプリ、2.0 に引っ越すとどうなるの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>CloudHub 2.0 は永続的な VM キューに対応していません。メッセージ損失を防ぎたいなら、Anypoint MQ を使うようにアプリを構成します。</p></div>\n<div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>最大サイズは、CloudHub(1.0)のワーカーが16 vCore、CloudHub 2.0 のレプリカが4 vCore です。</li>\n<li>CloudHub 2.0 は Mule クラスタリングに対応し、永続的な VM キューには非対応です。CloudHub(1.0)はその逆です。</li>\n<li>DLB は CloudHub(1.0)の機能で、Anypoint VPC が前提です。</li>\n<li>CloudHub(1.0)のアプリは ${http.port}(8081)か ${https.port}(8082)で待ち受けます。</li>\n<li>複数レプリカでスケジュールを1回だけ動かしたいなら、ランタイムクラスターモードを有効にします。</li>\n</ul></div>",
    "questions": [
     {
      "q": "ある会社は、CloudHub(1.0)で永続的なキューを使っているアプリを CloudHub 2.0 へ移行しようとしています。正しい説明はどれですか?",
@@ -142,13 +142,13 @@
     {
      "q": "ある会社は CloudHub 2.0 に、スケジューラーを含むアプリを2つのレプリカでデプロイしています。スケジュールされた処理が1回だけ実行されるようにしたいと考えています。アーキテクトは何を推奨すべきですか?",
      "o": [
-      "ランタイムクラスターモード(Run in Runtime Cluster Mode)を有効にする",
       "デプロイモデルを再作成(Recreate)に変える",
       "Object Store v2 を無効にする",
+      "ランタイムクラスターモード(Run in Runtime Cluster Mode)を有効にする",
       "レプリカのサイズを 4 vCore に上げる"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "ランタイムクラスターモードを有効にすると、スケジュールはプライマリのレプリカで1回だけ実行されます。クラスタリングなしの複数レプリカでは、スケジュールが各レプリカで別々に実行されます。デプロイモデルやサイズは実行回数には関係しません。",
      "u": "https://docs.mulesoft.com/cloudhub-2/ch2-clustering",
@@ -157,13 +157,13 @@
     {
      "q": "ある開発者が、CloudHub(1.0)にデプロイする Mule アプリの HTTP リスナーを設定しています。正しい設定はどれですか?",
      "o": [
-      "ホスト 0.0.0.0、ポートは予約プロパティ ${http.port}(8081)または ${https.port}(8082)",
       "ホスト localhost、ポート 80",
       "ホスト 0.0.0.0、ポート 8091 を固定値で指定",
-      "ホスト 127.0.0.1、ポート 443"
+      "ホスト 127.0.0.1、ポート 443",
+      "ホスト 0.0.0.0、ポートは予約プロパティ ${http.port}(8081)または ${https.port}(8082)"
      ],
      "a": [
-      0
+      3
      ],
      "ex": "CloudHub(1.0)のアプリは 0.0.0.0 で ${http.port}(8081)か ${https.port}(8082)を待ち受け、共有ロードバランサーが 80/443 をそこへ転送します。8091/8092 は Anypoint VPC 内からだけ使える内部用のポートです。",
      "u": "https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide",
@@ -172,13 +172,13 @@
     {
      "q": "ある会社は CloudHub(1.0)で、複数のアプリを自社のカスタムドメインの下で公開し、独自の証明書と双方向 SSL のクライアント認証を使いたいと考えています。専用ロードバランサー(DLB)の前提として必要なものはどれですか?",
      "o": [
-      "Anypoint VPC",
       "CloudHub 2.0 のプライベートスペース",
       "Runtime Fabric のイングレスコントローラー",
-      "Anypoint Flex Gateway"
+      "Anypoint Flex Gateway",
+      "Anypoint VPC"
      ],
      "a": [
-      0
+      3
      ],
      "ex": "CloudHub(1.0)の DLB を使うには、先に Anypoint VPC を作る必要があります。DLB では、カスタム証明書、双方向 SSL、カスタムドメインへの対応付けができます。プライベートスペースは CloudHub 2.0 の機能です。",
      "u": "https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer",
@@ -187,13 +187,13 @@
     {
      "q": "ある会社は CloudHub 2.0 で、処理量の多いアプリを水平にスケールしようとしています。特別なパッケージやサブスクリプションがない場合、1つのアプリにデプロイできるレプリカの最大数はいくつですか?",
      "o": [
-      "8",
       "4",
       "16",
-      "128"
+      "128",
+      "8"
      ],
      "a": [
-      0
+      3
      ],
      "ex": "CloudHub 2.0 では最大8レプリカで、Anypoint Integration Advanced パッケージか Platinum/Titanium なら最大16です。4 はレプリカ1つの最大 vCore で、128 は CloudHub(1.0)の1アプリあたりの最大 vCore です。",
      "u": "https://docs.mulesoft.com/cloudhub-2/ch2-clustering",
@@ -202,13 +202,13 @@
     {
      "q": "ある会社は CloudHub 2.0 のプライベートスペースを作りました。ファイアウォールルールを何も変更していない場合の動作として正しいものはどれですか?",
      "o": [
-      "インバウンドは 80 番と 443 番がどこからでも許可され、アウトバウンドはすべて許可される",
       "インバウンドもアウトバウンドもすべて拒否される",
       "インバウンドは 8081 番と 8082 番だけが許可される",
-      "インバウンドは社内ネットワークからだけ許可される"
+      "インバウンドは社内ネットワークからだけ許可される",
+      "インバウンドは 80 番と 443 番がどこからでも許可され、アウトバウンドはすべて許可される"
      ],
      "a": [
-      0
+      3
      ],
      "ex": "プライベートスペースのインバウンドは、既定で 80(HTTP)と 443(HTTPS)を 0.0.0.0/0 から許可し、アウトバウンドはすべて許可します。8081/8082 を外部に公開するのは CloudHub(1.0)の話です。",
      "u": "https://docs.mulesoft.com/cloudhub-2/ch2-private-space-about",
@@ -217,13 +217,13 @@
     {
      "q": "ある会社は CloudHub(1.0)で、2つのワーカーにまたがって大きなファイルを並列処理するため、永続的なキューを有効にしようとしています。注意すべき点はどれですか?",
      "o": [
-      "1回だけの配信は保証されず、メッセージが重複することがある",
       "メッセージの保持期間は最大30日である",
       "永続的なキューを使うにはワーカーを4つ以上にする必要がある",
+      "1回だけの配信は保証されず、メッセージが重複することがある",
       "永続的なキューは CloudHub 2.0 のレプリカ間でだけ使える"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "永続的なキューはメッセージ損失ゼロとワーカー間の負荷分散を実現しますが、1回だけの配信は保証せず、重複がありえます。保持期間は最大4日です。CloudHub 2.0 は永続的な VM キューに対応していません。",
      "u": "https://docs.mulesoft.com/cloudhub/cloudhub-fabric",
@@ -236,18 +236,18 @@
    "no": "Ch5·3",
    "title": "自動化と DevOps(Maven プラグイン・CI/CD・プロパティ)",
    "tag": "CI/CD",
-   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>今日はぼくが先に説明するね!Mule Maven プラグインを pom.xml に入れて、mvn deploy すれば CloudHub にデプロイされる!</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>惜しい。フラグが1つ足りない。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>え、フラグ?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>-DmuleDeploy です。これがないと、distributionManagement のリポジトリへアップロードするだけで、デプロイはされません。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>なるほど。muleDeploy を付けて、はじめて Runtime Manager に届くんだね。</p></div>\n<p class=\"one\">Mule Maven プラグインを使うと、Mule アプリのパッケージ化とデプロイを Maven のライフサイクルに組み込めます。CI/CD のパイプラインから、テスト、パッケージ化、デプロイまでを自動で流せます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>工場の生産ラインです。部品(ソース)を入れると、検査(MUnit)、箱詰め(package)、出荷(deploy)が自動で進みます。出荷先ごとの住所や個数(プロパティ)はラベルとして外から貼り替えます。</p></div><h4>Mule Maven プラグイン</h4><ul>\n<li>Mule Maven プラグイン(Mule Maven plugin)のデプロイ先は、CloudHub、CloudHub 2.0、Runtime Fabric、Runtime Manager REST API 経由の自社サーバーやクラスター、Runtime Manager エージェント、スタンドアロンの Mule です。</li>\n<li>package ゴールはアプリの JAR ファイルを作ります。Maven の package フェーズに結びついています。</li>\n<li>mvn clean deploy -DmuleDeploy で、パッケージ化して、プラグインに設定したデプロイ先へデプロイします。muleDeploy を付けないと、pom.xml の distributionManagement のリポジトリへアップロードするだけです。</li>\n<li>mvn mule:deploy はビルドせずに既存の成果物をデプロイします。mvn mule:undeploy はデプロイ先からアプリを削除します。</li>\n<li>設定要素は、CloudHub(1.0)が cloudHubDeployment(workers、workerType など)、CloudHub 2.0 が cloudhub2Deployment(target、provider に MC、replicas、vCores など)です。</li>\n<li>CloudHub(1.0)の workers の既定は1、workerType の既定は MICRO(0.1 vCore)です。</li>\n<li>CloudHub 2.0 へ Maven でデプロイするには、アプリを先に Anypoint Exchange に公開しておきます。</li>\n<li>認証方法は、ユーザー名とパスワード、Maven の settings.xml のサーバー、認証トークン、接続アプリケーション(Connected App)の4つです。接続アプリケーションはプログラムからの認証に使います。</li>\n<li>Exchange の SNAPSHOT 版はデプロイ後に中身が変わりうるので、本番環境へのデプロイは避けます。</li>\n</ul><h4>テストと自動化のツール</h4><ul>\n<li>MUnit Maven プラグインは、Maven のビルドライフサイクルで MUnit テストを実行し、CI 環境に組み込めます。カバレッジの基準(requiredApplicationCoverage など)と failBuild で、基準に届かないときにビルドを失敗させられます。</li>\n<li>Anypoint Platform CLI は、スクリプトでの自動化や CI/CD パイプラインとの連携に使うコマンドラインツールです。4.0 以降はバッチモードだけで動きます。</li>\n</ul><h4>プロパティと秘密情報</h4><ul>\n<li>同じ名前のプロパティの優先順位は、デプロイメントプロパティ、システムプロパティ、環境プロパティ、アプリケーションプロパティ、グローバルプロパティの順に高いです。</li>\n<li>${env}-properties.yaml のようにファイル名をプロパティで切り替え、グローバルプロパティで既定値(例: dev)を置けます。</li>\n<li>Runtime Manager の Properties タブで設定した値は、アプリ内のプロパティファイルの同名の値より優先されます。</li>\n<li>安全な設定プロパティ(Secure Configuration Properties)では、暗号化した値を ![値] で囲みます。暗号化には Secure Properties Tool を使い、Mule Secure Configuration Properties Extension で読み込みます。</li>\n<li>CloudHub(1.0)とハイブリッドでは、mule-artifact.json の secureProperties にプロパティ名を並べると、Runtime Manager で値が表示されない「安全に隠されたプロパティ」になります。</li>\n<li>CloudHub 2.0 では、Properties タブの保護(Protect)で値を隠します。mule-artifact.json での指定は CloudHub 2.0 では効きません。</li>\n<li>CloudHub 2.0 へ Maven で再デプロイするとき、pom に properties か secureProperties を書くと、Runtime Manager の値とマージされず、pom にない既存のプロパティは削除されます。</li>\n<li>CloudHub 2.0 のプロパティは最大300個で、キーと値はそれぞれ1024文字までです。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>パスワードを pom.xml に直接書くのはまずいよね?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>まずい。変数で外から渡す。リポジトリに秘密を commit するのはバグだ。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Maven の settings.xml のサーバーや、接続アプリケーションの認証情報を使う方法があります。</p></div>\n<div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>パイプラインからのデプロイは mvn clean deploy -DmuleDeploy です。</li>\n<li>CloudHub(1.0)は cloudHubDeployment、CloudHub 2.0 は cloudhub2Deployment で設定します。</li>\n<li>プロパティの優先順位は、デプロイメント、システム、環境、アプリケーション、グローバルの順です。</li>\n<li>値を隠す方法は、CloudHub(1.0)とハイブリッドが mule-artifact.json の secureProperties、CloudHub 2.0 が Properties タブの保護です。</li>\n<li>暗号化した値をファイルに入れるなら、安全な設定プロパティの ![値] 形式を使います。</li>\n</ul></div>",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>今日はぼくが先に説明するね!Mule Maven プラグインを pom.xml に入れて、mvn deploy すれば CloudHub にデプロイされる!</p><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>惜しい。フラグが1つ足りない。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>え、フラグ?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>-DmuleDeploy です。これがないと、distributionManagement のリポジトリへアップロードするだけで、デプロイはされません。</p><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>なるほど。muleDeploy を付けて、はじめて Runtime Manager に届くんだね。</p></div>\n<p class=\"one\">Mule Maven プラグインを使うと、Mule アプリのパッケージ化とデプロイを Maven のライフサイクルに組み込めます。CI/CD のパイプラインから、テスト、パッケージ化、デプロイまでを自動で流せます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>工場の生産ラインです。部品(ソース)を入れると、検査(MUnit)、箱詰め(package)、出荷(deploy)が自動で進みます。出荷先ごとの住所や個数(プロパティ)はラベルとして外から貼り替えます。</p></div><h4>Mule Maven プラグイン</h4><ul>\n<li>Mule Maven プラグイン(Mule Maven plugin)のデプロイ先は、CloudHub、CloudHub 2.0、Runtime Fabric、Runtime Manager REST API 経由の自社サーバーやクラスター、Runtime Manager エージェント、スタンドアロンの Mule です。</li>\n<li>package ゴールはアプリの JAR ファイルを作ります。Maven の package フェーズに結びついています。</li>\n<li>mvn clean deploy -DmuleDeploy で、パッケージ化して、プラグインに設定したデプロイ先へデプロイします。muleDeploy を付けないと、pom.xml の distributionManagement のリポジトリへアップロードするだけです。</li>\n<li>設定要素は、CloudHub(1.0)が cloudHubDeployment(workers、workerType など)、CloudHub 2.0 が cloudhub2Deployment(target、provider に MC、replicas、vCores など)です。</li>\n<li>CloudHub 2.0 へ Maven でデプロイするには、アプリを先に Anypoint Exchange に公開しておきます。</li>\n<li>認証方法は、ユーザー名とパスワード、Maven の settings.xml のサーバー、認証トークン、接続アプリケーション(Connected App)の4つです。接続アプリケーションはプログラムからの認証に使います。</li>\n</ul><h4>テストと自動化のツール</h4><ul>\n<li>MUnit Maven プラグインは、Maven のビルドライフサイクルで MUnit テストを実行し、CI 環境に組み込めます。カバレッジの基準(requiredApplicationCoverage など)と failBuild で、基準に届かないときにビルドを失敗させられます。</li>\n<li>Anypoint Platform CLI は、スクリプトでの自動化や CI/CD パイプラインとの連携に使うコマンドラインツールです。4.0 以降はバッチモードだけで動きます。</li>\n</ul><h4>プロパティと秘密情報</h4><ul>\n<li>同じ名前のプロパティの優先順位は、デプロイメントプロパティ、システムプロパティ、環境プロパティ、アプリケーションプロパティ、グローバルプロパティの順に高いです。</li>\n<li>Runtime Manager の Properties タブで設定した値は、アプリ内のプロパティファイルの同名の値より優先されます。</li>\n<li>安全な設定プロパティ(Secure Configuration Properties)では、暗号化した値を ![値] で囲みます。暗号化には Secure Properties Tool を使い、Mule Secure Configuration Properties Extension で読み込みます。</li>\n<li>CloudHub(1.0)とハイブリッドでは、mule-artifact.json の secureProperties にプロパティ名を並べると、Runtime Manager で値が表示されない「安全に隠されたプロパティ」になります。</li>\n<li>CloudHub 2.0 では、Properties タブの保護(Protect)で値を隠します。mule-artifact.json での指定は CloudHub 2.0 では効きません。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\"><b class=\"who\">まなびん</b>パスワードを pom.xml に直接書くのはまずいよね?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>まずい。変数で外から渡す。リポジトリに秘密を commit するのはバグだ。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>Maven の settings.xml のサーバーや、接続アプリケーションの認証情報を使う方法があります。</p></div>\n<div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>パイプラインからのデプロイは mvn clean deploy -DmuleDeploy です。</li>\n<li>CloudHub(1.0)は cloudHubDeployment、CloudHub 2.0 は cloudhub2Deployment で設定します。</li>\n<li>プロパティの優先順位は、デプロイメント、システム、環境、アプリケーション、グローバルの順です。</li>\n<li>値を隠す方法は、CloudHub(1.0)とハイブリッドが mule-artifact.json の secureProperties、CloudHub 2.0 が Properties タブの保護です。</li>\n<li>暗号化した値をファイルに入れるなら、安全な設定プロパティの ![値] 形式を使います。</li>\n</ul></div>",
    "questions": [
     {
      "q": "ある会社は CI/CD パイプラインから、Mule アプリをビルドして CloudHub 2.0 にデプロイしたいと考えています。Mule Maven プラグインの設定は済んでいます。パイプラインで実行すべきコマンドはどれですか?",
      "o": [
-      "mvn clean deploy -DmuleDeploy",
       "mvn clean deploy",
       "mvn mule:undeploy",
-      "mvn package -DattachMuleSources"
+      "mvn package -DattachMuleSources",
+      "mvn clean deploy -DmuleDeploy"
      ],
      "a": [
-      0
+      3
      ],
      "ex": "mvn clean deploy -DmuleDeploy でパッケージ化し、プラグインに設定したデプロイ先へデプロイします。muleDeploy を付けないと distributionManagement のリポジトリへアップロードするだけです。mule:undeploy は削除、package は JAR の作成だけです。",
      "u": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept",
@@ -271,13 +271,13 @@
     {
      "q": "ある Mule アプリでは、プロパティ db.host がアプリケーションの設定プロパティファイルにも、システムプロパティ(-D)にも定義されています。実行時に使われるのはどちらの値ですか?",
      "o": [
-      "システムプロパティの値",
       "アプリケーションの設定プロパティファイルの値",
       "グローバルプロパティの値",
+      "システムプロパティの値",
       "先に読み込まれたほうの値"
      ],
      "a": [
-      0
+      2
      ],
      "ex": "優先順位は、デプロイメントプロパティ、システムプロパティ、環境プロパティ、アプリケーションプロパティ、グローバルプロパティの順です。そのため、システムプロパティがアプリケーションプロパティより優先されます。",
      "u": "https://docs.mulesoft.com/mule-runtime/latest/configuring-properties",
@@ -301,13 +301,13 @@
     {
      "q": "ある会社は、Mule アプリの設定ファイルに暗号化した値を入れて、Git リポジトリで管理したいと考えています。正しい方法はどれですか?",
      "o": [
-      "Secure Properties Tool で暗号化した値を ![値] で囲み、Mule Secure Configuration Properties Extension で読み込む",
       "値を Base64 にして通常の configuration-properties で読み込む",
+      "Secure Properties Tool で暗号化した値を ![値] で囲み、Mule Secure Configuration Properties Extension で読み込む",
       "値を mule-artifact.json の secureProperties に直接書く",
       "値を API Manager の SLA 層に保存する"
      ],
      "a": [
-      0
+      1
      ],
      "ex": "安全な設定プロパティでは、暗号化した値を ![値] で囲み、Secure Properties Tool で暗号化し、Mule Secure Configuration Properties Extension で読み込みます。secureProperties はプロパティ名を並べて画面で隠すためのしくみで、値を暗号化して書く場所ではありません。",
      "u": "https://docs.mulesoft.com/mule-runtime/latest/secure-configuration-properties",
