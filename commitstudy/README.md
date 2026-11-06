@@ -131,6 +131,7 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - `patch_qact_last.py`: 最後の問題で「結果を見る」が「答え合わせ」に重なるのを直す(スマホ幅では2段に)
 - `patch_stats_fix.py`: 問題集「その他」の成績の札が縦に伸びるのを直す(「前回まで」は次の行に)
 - `patch_famls_merge.py`: 端末の記録の同期(fam-ls)で、読み込み前の保存がアカウントの記録を丸ごと置き換えて消していたのを直す(読み込み後に保存・アカウントの記録に重ねて保存)
+- `patch_sync_merge.py` + `sync_lib.js`(window.CSQ): 複数端末・タブでの記録の同期。保存前に読み直して項目ごとに合わせる(削除の印・単調な時刻・端末ごとの回数・タブ間の storage 同期・容量あふれ時はキャッシュを消して再試行)。テストは scratchpad/audit/run_all.sh と t8_migration.js
 - `patch_no_reduced_motion.py`: 端末の「視差効果を減らす」(prefers-reduced-motion)で動きを止める指定をすべて外す(ユーザーの希望。rebuild.sh の最後近くに置く)
 
 ## 科目 MuleSoft Platform Architect(mulepa)
