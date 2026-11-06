@@ -1,0 +1,556 @@
+[
+ {
+  "label": "v2026-05-09",
+  "no": 1,
+  "f": "deployopts",
+  "a": [
+   3
+  ],
+  "q": "DataGraph で統合スキーマ(unified schema)を作るのに使える API はどれですか。[FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/055e6cad37154851841c3c14b0816713.jpg]",
+  "o": [
+   "API 1、3、5",
+   "API 2、4、6",
+   "API 1、2、5、6",
+   "API 1、2、3、4"
+  ],
+  "ex": "(原本は図つき)Anypoint DataGraph は、統合スキーマに追加する API の URL に接続できる必要があります。公式ドキュメントでは、CloudHub 上の API、Anypoint VPC に接続したスタンドアロンの API、公開されている API なら追加の設定は不要とされています。原本の解説によると、図の API 5 と 6 は公開されていない顧客ホストのサーバー上にあるため使えず、API 1、2、3、4 が正解です。",
+  "u": "https://docs.mulesoft.com/datagraph/hosting-options",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "Anypoint DataGraph は、統合スキーマに追加する API の URL に接続できる必要があります。CloudHub 上の API、Anypoint VPC に接続したスタンドアロンの API、公開されている API なら、追加の設定は不要です。",
+   "source_url": "https://docs.mulesoft.com/datagraph/hosting-options",
+   "note": "DataGraph must connect to the destination URL. No extra config if APIs run on CloudHub, on standalone connected to Anypoint VPC, or are public. Non-public standalone not on VPC must first be paired to Anypoint VPC."
+  }
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 2,
+  "f": "monitoring",
+  "a": [
+   2
+  ],
+  "q": "ある製造業の会社が API 実装を CloudHub にデプロイしましたが、ワーカーが応答しないときに CloudHub が自動で再起動する設定はしていません。どの API クライアントもその API 実装を呼び出していないとき、正しい説明はどれですか。",
+  "o": [
+   "API の呼び出しについても API 実装についても、アラートは発生しない",
+   "API の呼び出しについても API 実装についても、アラートが発生しうる",
+   "API の呼び出しについてのアラートは発生しないが、API 実装についてのアラートは発生しうる",
+   "API の呼び出しについてのアラートは発生するが、API 実装についてのアラートは発生しない"
+  ],
+  "ex": "これは CloudHub(1.0)のワーカーが前提の問題です。リクエスト数や応答時間など API の呼び出しにもとづくアラートは、呼び出しがなければ条件を満たさないので発生しません。一方、ワーカーの異常などアプリケーション(API 実装)の状態についての Runtime Manager のアラートは、呼び出しがなくても発生しえます。",
+  "u": "https://docs.mulesoft.com/runtime-manager/alerts-on-runtime-manager",
+  "v": "原本どおり",
+  "x": "Runtime Manager のアラートは別の仕組みです。デプロイの完了(成功・失敗)、ワーカーの異常、サーバーの切断や削除など、インフラストラクチャとアプリケーションのライフサイクルの出来事を通知します。Anypoint Monitoring のアラートページには表示されず、履歴は30日間保持されます。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 3,
+  "f": "layers",
+  "a": [
+   0
+  ],
+  "q": "ある組織のアプリケーションネットワークで、1つの業務プロセスを実装しようとしています。アーキテクチャグループは、細かい粒度(fine-grained)の設計と比べて、アプリケーションネットワークにデプロイする API が比較的少ない、粗い粒度(coarse-grained)の設計を提案しています。全体として、細かい粒度の設計と比べて、粗い粒度の設計で一般に増えるものはどれですか。",
+  "o": [
+   "各 API 実装の複雑さ",
+   "アプリケーションネットワークにデプロイされた API に関する、検出可能なアセットの数",
+   "アプリケーションネットワーク内の API 実装の間で考えられる接続の数",
+   "アプリケーションネットワークによるネットワークインフラストラクチャのリソースの使用量"
+  ],
+  "ex": "粗い粒度の設計では、1つの API が多くの機能を受け持つため、各 API 実装の中身が複雑になります。API の数が減るので、Exchange に並ぶアセットの数、API 同士の接続の数、API 間の通信によるネットワークの使用量は、むしろ減ります。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 4,
+  "f": "cloudhub",
+  "a": [
+   1
+  ],
+  "q": "ある顧客が MuleSoft のアプリケーションを CloudHub 1.0 でホストし、ドメイン https://api.acmecorp.com で公開したいと考えています。acme-dlb-prod という名前の専用ロードバランサー(DLB)を作ったあと、設定を完了するために顧客がしなければならないことはどれですか。",
+  "o": [
+   "api.acmecorp.com の TLS 証明書を DLB に設定し、api.acmecorp.com の A レコードを DLB の公開 IP アドレスに向けて作る",
+   "api.acmecorp.com の TLS 証明書を DLB に設定し、api.acmecorp.com から acme-dlb-prod.lb.anypointdns.net への CNAME レコードを作る",
+   "acme-dlb-prod.lb.anypointdns.net の TLS 証明書を DLB に設定し、api.acmecorp.com から acme-dlb-prod.lb.anypointdns.net への CNAME レコードを作る",
+   "api.acmecorp.com の TLS 証明書を DLB に設定し、api.acmecorp.com から acme-dlb-prod.ei.cloudhub.io への CNAME レコードを作る"
+  ],
+  "ex": "CloudHub 1.0 の DLB には、DLB のインスタンスの公開 IP に解決される DNS の A レコード [lb-name].lb.anypointdns.net があり、DNS プロバイダーで自社ドメインからこの名前への CNAME レコードを作って使います。DLB の SSL エンドポイントは証明書の CN で識別されるので、証明書は自社ドメイン api.acmecorp.com 用のものを設定します。IP は変わりうるので A レコードで IP を直接指すのは不適切で、*.cloudhub.io は DLB の名前ではありません。原本の選択肢は表記が崩れていたため、正しい名前に直しています。",
+  "u": "https://docs.mulesoft.com/cloudhub/lb-architecture",
+  "v": "公式で確認済み",
+  "x": "専用ロードバランサー(DLB)を使うには、先に Anypoint VPC を作ります。DLB では、カスタム証明書、双方向 SSL のクライアント認証、カスタムドメインへの対応付け(マッピングルール)ができます。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 5,
+  "f": "nfr",
+  "a": [
+   3
+  ],
+  "q": "バックエンドシステムの制約により、ある System API は毎秒 500 リクエストまでしか処理できません。バックエンドシステムの過負荷を防ぐために System API に適用する API ポリシーとして、最も適切なものはどれですか。",
+  "o": [
+   "Rate Limiting",
+   "HTTP Caching",
+   "Rate Limiting - SLA based",
+   "Spike Control"
+  ],
+  "ex": "Spike Control は、急な増加をならしてバックエンドを守るためのポリシーで、上限を超えたリクエストをすぐに拒否せずキューに入れて再試行します。Rate Limiting と Rate Limiting - SLA based は、利用量の説明責任やクライアントごとのハードリミットのためのものです。HTTP Caching は応答をキャッシュするもので、過負荷対策の目的とは違います。",
+  "u": "https://docs.mulesoft.com/mule-gateway/policies-included-spike-control",
+  "v": "公式で確認済み",
+  "x": "バックエンドを急な集中から守るのは Spike Control、契約やクライアントごとの上限は Rate Limiting 系です。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 6,
+  "f": "appnet",
+  "a": [
+   1
+  ],
+  "q": "ある組織が、モダンな API(MuleSoft の定義による)を使って再利用可能な IT アセットの消費を重視する IT 運用モデルへ移行するという、戦略的な決定をしました。この新しい IT 運用モデルとの関係で、各モダン API を最もよく表しているのはどれですか。",
+  "o": [
+   "モダン API はそれぞれ独自のソフトウェア開発ライフサイクルを持ち、それによってドキュメントや自動化の必要性が減る",
+   "モダン API はそれぞれ製品として扱い、特定の対象者(たとえばモバイルアプリの開発者)向けに設計しなければならない",
+   "モダン API はそれぞれ使いやすくなければならないので、SAML や JWT のような複雑な認証のしくみは避けるべきである",
+   "モダン API はそれぞれ REST で HTTP ベースでなければならない"
+  ],
+  "ex": "消費を重視する IT 運用モデルでは、API を製品として扱い、利用者(対象者)が見つけて使いやすいように設計します。独自のライフサイクルがあってもドキュメントや自動化は減らず、むしろ重要です。安全のための認証を避ける理由はなく、モダン API が REST や HTTP に限られるわけでもありません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 7,
+  "f": "platform",
+  "a": [
+   0
+  ],
+  "q": "ある会社は、Mule の API 実装をできるだけ早く本番に移したいと考えています。Mule アプリケーションのデータとメタデータへのアクセスをすべて守るため、すべての Mule アプリケーションを企業のファイアウォール内にある自社ホストのインフラにデプロイすることが求められています。このプロジェクトのライフサイクルの目標を満たすランタイムプレーンとコントロールプレーンの組み合わせはどれですか。",
+  "o": [
+   "手動でプロビジョニングした顧客ホストのランタイムプレーンと、顧客ホストのコントロールプレーン",
+   "MuleSoft ホストのランタイムプレーンと、顧客ホストのコントロールプレーン",
+   "手動でプロビジョニングした顧客ホストのランタイムプレーンと、MuleSoft ホストのコントロールプレーン",
+   "iPaaS でプロビジョニングした顧客ホストのランタイムプレーンと、MuleSoft ホストのコントロールプレーン"
+  ],
+  "ex": "MuleSoft ホストのコントロールプレーンを使うと、少なくともメタデータは社外のコントロールプレーンに送られます。データとメタデータの両方をファイアウォール内に置くには、コントロールプレーンも自社でホストする Anypoint Platform Private Cloud Edition(PCE)と、自社で用意したランタイム(PCE で使えるのはハイブリッドスタンドアロン)の組み合わせが必要です。MuleSoft ホストのランタイムプレーンを使う選択肢は、デプロイ先を自社のインフラにするという条件も満たしません。",
+  "u": "https://docs.mulesoft.com/private-cloud/latest/",
+  "v": "公式で確認済み",
+  "x": "PCE は、コントロールプレーンもランタイムプレーンも自社で持つ構成です。組み合わせられるのはハイブリッドスタンドアロンだけです。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 8,
+  "f": "apimgr",
+  "a": [
+   0
+  ],
+  "q": "Anypoint Platform によって、公開しているエンドポイントに API ポリシーを適用できる Mule アプリケーションはどれですか。[FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/a21b97297817f3719e7617fc939668a2.jpg]",
+  "o": [
+   "HTTP/1.x でリクエストを受け付ける Mule アプリケーション",
+   "TCP で JSON のリクエストを受け付けるが、応答を返す必要はない Mule アプリケーション",
+   "WebSocket で JSON のリクエストを受け付ける Mule アプリケーション",
+   "HTTP/2 で gRPC のリクエストを受け付ける Mule アプリケーション"
+  ],
+  "ex": "(原本は図つき)Mule Gateway のポリシーを適用するには、HTTP Listener を使うフローを持つ Mule アプリケーションを自動検出で API に結び付ける必要があります。HTTP を下で使うほかのコネクターではポリシーは適用されないため、TCP、WebSocket、HTTP/2 の gRPC で受け付けるアプリケーションは対象外です。正解は HTTP/1.x でリクエストを受け付けるアプリケーションです。",
+  "u": "https://docs.mulesoft.com/mule-gateway/policies-included-apply",
+  "v": "公式で確認済み",
+  "x": "flowRef で指すフローは HTTP Listener を使う必要があります。HTTP を下で使う別のコネクターでは、ポリシーは適用されません。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 9,
+  "f": "cicd",
+  "a": [
+   0
+  ],
+  "q": "ある会社は、EU コントロールプレーンと顧客ホストの Mule ランタイムを組み合わせたハイブリッドの Anypoint Platform のデプロイモデルを使っています。Staging 環境で Mule の API 実装のテストに成功したあと、環境ごとのプロパティを設定して Production 環境に昇格させる必要があります。Mule の API 実装を構成し、Production 環境への昇格を自動化する方法として、MuleSoft が推奨するものはどれですか。",
+  "o": [
+   "環境ごとのプロパティファイルを Mule の API 実装のデプロイ可能なアーカイブに同梱し、Anypoint CLI か Anypoint Platform REST API を使って Production 環境へ昇格させる",
+   "API Manager の Properties タブで Mule の API 実装のプロパティを変更し、API Manager を使って Production 環境へ昇格させる",
+   "Anypoint Exchange で Mule の API 実装のプロパティを変更し、Runtime Manager を使って Production 環境へ昇格させる",
+   "API ポリシーで Staging 環境にデプロイした Mule の API 実装のプロパティを変更し、別の API ポリシーで Production 環境へデプロイする"
+  ],
+  "ex": "環境ごとのプロパティファイルをアプリケーションに含めておき、環境を示すプロパティで読み分ければ、同じアーカイブを環境間で昇格できます。デプロイの自動化には、スクリプトや CI/CD と連携できる Anypoint Platform CLI や Anypoint Platform の REST API が使えます。Exchange、API Manager、API ポリシーには、Mule アプリケーションのプロパティを変更したり、アプリケーションをデプロイしたりする機能はありません。",
+  "u": "https://docs.mulesoft.com/anypoint-cli/latest/",
+  "v": "原本どおり",
+  "x": "Anypoint Platform CLI は、スクリプトでの自動化や CI/CD パイプラインとの連携に使うコマンドラインツールです。4.0 以降はバッチモードだけで動きます。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 10,
+  "f": "layers",
+  "a": [
+   2
+  ],
+  "q": "Platform Architect が、ある顧客のすべての保険契約を表示するなど、いくつもの処理を行うレガシーでモノリシックな SOAP ベースの Web サービスを引き継ぎました。このサービスは、生命保険の管理システムと損害保険の管理システムという2つのバックエンドシステムに接続し、それぞれのシステムで保険契約の情報を照会して結果を集約し、SOAP ベースの応答をユーザーインターフェース(UI)に返します。アーキテクトは、このモノリシックな Web サービスを API 主導の接続の考え方に沿って分割したいと考えています。Process 層に置くべき部分はどれですか。",
+  "o": [
+   "各バックエンドの管理システムへの認証と接続の維持",
+   "SOAP ベースの応答を UI に返すこと",
+   "管理システムから得た保険契約の情報を組み合わせること",
+   "管理システムからデータを照会すること"
+  ],
+  "ex": "Process API は、複数の System API(やほかの Process API)のデータを組み合わせて、再利用できる業務ロジックにする層です。そのため、2つのシステムの保険契約情報を組み合わせる処理が Process 層に入ります。バックエンドへの認証・接続やデータの照会は System 層、UI 向けの SOAP 応答の提示は Experience 層の役割です。",
+  "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+  "v": "公式で確認済み",
+  "x": "Process API複数の System API やほかの Process API のデータを組み合わせ、再利用できる業務ロジックにする。変換、集約、補強を担うSalesforce の顧客データと EC サイトの注文データをまとめ、1つのレポート用のビューにする"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 11,
+  "f": "cloudhub",
+  "a": [
+   1
+  ],
+  "q": "API 実装を Anypoint VPC にデプロイしなければならないのは、どのような場合ですか。",
+  "o": [
+   "API 実装が永続的な Object Store に書き込む必要がある場合",
+   "公開アクセスを許可しない、制限された顧客ホストのネットワークのサブネット内から、API 実装にアクセスできる必要がある場合",
+   "Mule Maven プラグインを使って、本番の AWS VPC に API 実装をデプロイする必要がある場合",
+   "CloudHub の外の、顧客が管理する AWS インスタンスにデプロイされた、公開されているサービスを API 実装が呼び出す必要がある場合"
+  ],
+  "ex": "これは CloudHub(1.0)の Anypoint VPC が前提の問題です。Anypoint VPC は、Anypoint VPN などで社内のプライベートネットワークとつなげるため、公開アクセスのない社内ネットワークから API 実装にアクセスさせる場合に必要です。公開されているサービスは VPC がなくても呼び出せ、Object Store v2 の利用や Mule Maven プラグインでのデプロイにも VPC は不要です。原本の解答は D でしたが、公開されたサービスの呼び出しに Anypoint VPC は要らず、プライベートネットワークとの接続に必要なため B が正解です(別の回の原本も B としています)。",
+  "u": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept",
+  "v": "解答を修正(公式にもとづく)",
+  "x": null,
+  "add": {
+   "text": "CloudHub(1.0)の Anypoint VPC は、Anypoint VPN(IPsec)、トランジットゲートウェイ、VPC ピアリング、AWS Direct Connect で社内ネットワークとつなげます。オンプレミスとの接続には IPsec VPN が推奨されます。",
+   "source_url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept",
+   "note": "接続方法は IPsec トンネル(Anypoint VPN)、Transit Gateway アタッチメント、VPC ピアリング(自社の Amazon VPC と同一リージョンでペアリング)、AWS Direct Connect。VPC からオンプレミスへの接続には IPsec VPN トンネルが一般に推奨される。"
+  }
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 12,
+  "f": "monitoring",
+  "a": [
+   0
+  ],
+  "q": "ある顧客は、一定期間に届くリクエストの数を監視して把握し、主要業績評価指標(応答時間、CPU 使用率、アクティブな API の数)を測定したいと考えています。これらのデータを提供するツールはどれですか。",
+  "o": [
+   "Anypoint Monitoring",
+   "API Manager",
+   "Runtime のアラート",
+   "Functional Monitoring"
+  ],
+  "ex": "Anypoint Monitoring の組み込みダッシュボードでは、リクエスト数、応答時間、CPU 使用率などの指標を設定なしで確認できます。API Manager はポリシーや契約の管理、アラートは条件を満たしたときの通知、API Functional Monitoring はエンドポイントの定期的なテストのための機能で、指標を継続して分析する道具ではありません。",
+  "u": "https://docs.mulesoft.com/monitoring/",
+  "v": "公式で確認済み",
+  "x": "アプリケーションの組み込みダッシュボード(Built-in dashboards)は設定不要で、概要、リクエスト、エラー、JVM(CPU、ヒープ、スレッド数など)、インフラストラクチャのページがあります。フロー別とコネクター別のページは Advanced と Titanium だけです。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 13,
+  "f": "c4e",
+  "a": [
+   3
+  ],
+  "q": "一般的な C4E の成功を測る主要業績評価指標(KPI)のうち、Anypoint Platform の API の応答からすぐに分かるものはどれですか。",
+  "o": [
+   "直近24時間に報告された本番障害の件数",
+   "公開アクセスできる HTTP エンドポイントを持ち、Anypoint Platform で管理されている API 実装の数",
+   "CI/CD ツールでデプロイされたものに対する、手動でデプロイされた API 実装の割合",
+   "Anypoint Exchange に公開された RAML または OAS 形式の API 仕様の数"
+  ],
+  "ex": "C4E の成功は、再利用できるアセットをどれだけ作り、Anypoint Exchange に公開したかで測れます。Exchange に公開された RAML や OAS の API 仕様の数は、Anypoint Platform の API で一覧を取得すればすぐに分かります。障害件数、公開エンドポイントの数、手動デプロイの割合は、C4E の成果を直接表すものでも、Platform の API の応答からすぐに分かるものでもありません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": "再利用の土台は Anypoint Exchange です。C4E は承認済みのアセットを Exchange にパブリッシュします。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 14,
+  "f": "c4e",
+  "a": [
+   2
+  ],
+  "q": "ある会社はアプリケーションネットワークを作り始め、C4E(Center for Enablement)の組織モデルを導入しようとしています。集中型ではなく連邦型(federated)の C4E を選ぶ決め手となる要因はどれですか。",
+  "o": [
+   "開発チームが共有する既存の共通アセットが多数ある場合",
+   "API を作るさまざまなチームが連携に不慣れで、大がかりなトレーニングが必要な場合",
+   "開発がすでにいくつもの独立した取り組みやグループに分かれている場合",
+   "アプリケーションネットワーク内のアプリケーションの大半がクラウドベースの場合"
+  ],
+  "ex": "開発がすでに独立した複数の取り組みやグループに分かれているなら、1つの中央チームがすべてを調整するより、各グループに C4E の役割を持たせる連邦型のほうがうまく機能します。チームが連携に不慣れで大がかりなトレーニングが必要なら、むしろ集中型で支えるのが向いています。共通アセットの多さやクラウドの利用割合は、連邦型を選ぶ決め手にはなりません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 15,
+  "f": "cicd",
+  "a": [
+   1
+  ],
+  "q": "ある自動車メーカーは成熟した CI/CD の実践を持ち、CloudHub のワーカーやレプリカ、顧客ホストの Mule ランタイム、Anypoint Runtime Fabric など、さまざまなデプロイ先への Mule アプリケーションのパッケージ化とデプロイを自動化したいと考えています。会社の CI/CD の実践の一部として、さまざまなデプロイ先への Mule アプリケーションのパッケージ化とデプロイの自動化を支える、MuleSoft 提供のツールやコンポーネントはどれですか。",
+  "o": [
+   "Anypoint Runtime Manager",
+   "Mule Maven plugin",
+   "Anypoint Platform CLI",
+   "Anypoint Platform REST API"
+  ],
+  "ex": "Mule Maven プラグインを使うと、Mule アプリケーションのパッケージ化とデプロイを Maven のライフサイクルに組み込め、CloudHub、CloudHub 2.0、Runtime Fabric、顧客ホストのサーバーなどへデプロイできます。Runtime Manager はデプロイと管理の画面で、パッケージ化はしません。CLI や REST API でもデプロイはできますが、パッケージ化まで含めて CI/CD に組み込むのに最も適しているのは Mule Maven プラグインです。",
+  "u": "https://docs.mulesoft.com/mule-runtime/latest/mmp-concept",
+  "v": "公式で確認済み",
+  "x": "Mule Maven プラグイン(Mule Maven plugin)のデプロイ先は、CloudHub、CloudHub 2.0、Runtime Fabric、Runtime Manager REST API 経由の自社サーバーやクラスター、Runtime Manager エージェント、スタンドアロンの Mule です。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 16,
+  "f": "impl",
+  "a": [
+   3
+  ],
+  "q": "あるチームが、API 主導の接続の設計原則に従って、Experience API の仕様を拡張しようとしています。この API を拡張する動機として正しいものはどれですか。",
+  "o": [
+   "主要な API 利用者が、ある種のエンドポイントを C4E の標準から利用者側のシステムの標準に変えてほしいと望んでいる",
+   "基盤となる System API が更新され、よく使われる複数のリソースについて、より詳しいデータを返すようになった",
+   "Development 環境と Staging 環境の API インスタンスに IP Allowlist ポリシーが追加される",
+   "API に含まれる複数の種類のデータに影響する、共通データモデル(Canonical Data Model)が採用される"
+  ],
+  "ex": "共通データモデルが採用されると、API が扱うデータの型そのものが変わるため、仕様の拡張が必要になります。C4E の標準から外れる変更は API 主導の接続の考え方に合わず、System API の変更は Experience API を必ずしも変える理由になりません。IP Allowlist はポリシーの追加で、API 仕様の変更は要りません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": "API 仕様で、包括的な正規データモデル(canonical data model)を使うと、インターフェースの再利用性と柔軟性が高まります。Experience、Process、System の各層の間で必要なデータ変換も減らせます。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 17,
+  "f": "impl",
+  "a": [
+   2
+  ],
+  "q": "System API の API データモデルが、対応するバックエンドシステムのデータモデルをほぼそのまま写し、わずかな改善にとどめてもよいのは、どのような場合ですか。",
+  "o": [
+   "組織全体で広く使われている既存のエンタープライズデータモデルがある場合",
+   "System API を、対応するデータモデルを持つ境界づけられたコンテキスト(Bounded Context)に割り当てられる場合",
+   "バックエンドシステムからの分離が限られた、実用本位のアプローチが適切と判断された場合",
+   "対応するバックエンドシステムが近いうちに置き換えられる予定の場合"
+  ],
+  "ex": "エンタープライズデータモデルがあればその型を使い、なければ境界づけられたコンテキストのデータモデルを使うのが基本です。それが手間に見合わないときの実用本位の選択肢として、バックエンドのデータモデルを軽く整えて写すやり方があり、分離は限られることを受け入れます。バックエンドが近く置き換わる場合は、むしろ写すと System API とその利用者に変更が波及するため不適切です。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 18,
+  "f": "exchange",
+  "a": [
+   2
+  ],
+  "q": "コード中心の API ドキュメント環境では、API 利用者が、代表的なシナリオの中で1つ以上の API を呼び出す例を示した API クライアントのソースコードを調べ、実行できるようにする必要があります。Anypoint Platform でこのようなコード中心の API ドキュメント環境を提供する最も効果的な方法はどれですか。",
+  "o": [
+   "関連する各 API のモックサービスを有効にし、Anypoint Exchange のエントリーから公開する",
+   "Anypoint Exchange のエントリーと API Console で API を十分に文書化し、それらのページをすべての API 利用者と共有する",
+   "API Notebook を作成し、関連する Anypoint Exchange のエントリーに含める",
+   "関連する API を Anypoint Exchange のエントリーで検出できるようにする"
+  ],
+  "ex": "API Notebook は、説明文と JavaScript のコードブロックを組み合わせて API の機能を文書化する Exchange の機能で、利用者はコードを書き換えて再生ボタンで実行できます。モックサービスや API Console は個々の呼び出しを試すもので、複数の API を呼ぶクライアントコードを示す環境ではありません。Exchange で検出できるようにするだけでも、コード中心のドキュメントにはなりません。",
+  "u": "https://docs.mulesoft.com/exchange/to-use-api-notebook",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "API Notebook は、説明文とコードブロックを組み合わせて API の機能を文書化する Exchange の機能です。利用者はコードブロックの JavaScript を書き換え、再生ボタンで実行できます。",
+   "source_url": "https://docs.mulesoft.com/exchange/to-use-api-notebook",
+   "note": "API Notebook lets you document an API's functionality with explanations that accompany code windows; users can change code and execute it with the Play button; created from the Exchange editor using JavaScript."
+  }
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 19,
+  "f": "versioning",
+  "a": [
+   2
+  ],
+  "q": "ある Process API の実装を変更しなければなりません。この変更が API クライアントに与える影響を最小限にする妥当な方法はどれですか。",
+  "o": [
+   "現在の Process API の RAML 定義を更新し、更新した RAML 定義へのリンクを API クライアントの開発者に送って知らせる",
+   "API 利用者が新しい Process API や API バージョンへの移行の準備ができたと認めるまで、変更を延期する",
+   "できるかぎり Process API の RAML 定義を変えずに済むように、Process API の実装に必要な変更を加える",
+   "Process API の変更を新しい API 実装に入れ、古い API 実装からは HTTP ステータスコード 301 Moved Permanently を返して、新しい API 実装を呼ぶよう API クライアントに知らせる"
+  ],
+  "ex": "API クライアントが依存しているのは API の仕様(契約)なので、実装だけを変えて RAML 定義を変えなければ、クライアントには影響しません。RAML 定義を更新すると、変更によってはクライアント側の対応が必要になります。すべての利用者の準備を待つのは現実的でなく、301 で新しい実装に誘導するのはクライアントに大きな影響を与えます。",
+  "u": null,
+  "v": "原本どおり",
+  "x": "Exchange の API アセットには、アセットバージョンと API バージョンの2つの番号があります。後方互換を壊す変更のときだけメジャーを上げ、利用者が旧版から計画的に移れるようにします。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 20,
+  "f": "apimgr",
+  "a": [
+   1
+  ],
+  "q": "Mule 4 の API を CloudHub にデプロイし、すべての API のメソッドとリソースに Basic Authentication - Simple ポリシーを適用しました。しかし、クライアントは認証なしでまだこの API にアクセスできます。なぜこのようなことが起こりうるのですか。",
+  "o": [
+   "APIkit Router コンポーネントが、API の誤った Exchange のバージョンを指している",
+   "デプロイした Mule アプリケーションに自動検出(Autodiscovery)の要素がない",
+   "この API に対するクライアントアプリケーションの契約が作成されていない",
+   "アプリケーションの CloudHub ワーカーの1つが再起動した"
+  ],
+  "ex": "Mule Gateway のポリシーは、HTTP Listener を使うフローを持つアプリケーションが自動検出で API インスタンスに結び付けられていて、はじめて適用されます。自動検出の要素がなければ、API Manager で設定したポリシーはアプリケーションに届かず、認証なしで呼べてしまいます。APIkit Router はポリシーの適用に関わらず、Basic Authentication - Simple は契約を必要とせず、ワーカーの再起動でポリシーが外れることもありません。原本の選択肢は表記が崩れていたため、意味が通るように直しています。",
+  "u": "https://docs.mulesoft.com/mule-gateway/policies-included-apply",
+  "v": "公式で確認済み",
+  "x": "自動検出の要素は apiId と flowRef の2つです。対象のフローには HTTP Listener が必要です。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 21,
+  "f": "layers",
+  "a": [
+   0
+  ],
+  "q": "ある EC 企業の事業部門(LoB)が、顧客のモバイルアプリケーションまたは社内の Web アプリケーションで新しい注文が処理されるたびに、メールで自動通知を送る処理を求めています。将来は、テキストメッセージやプッシュ通知など、通知のチャネルが増える可能性があります。このシナリオに対して最も効果的な API 主導の接続のアプローチはどれですか。",
+  "o": [
+   "Web アプリケーション用とモバイルアプリケーション用に Experience API を1つずつ作る。オーケストレーションを行い、データベースからメールのテンプレートを取得する Process API を作る。Anypoint Connector for Email でメールを送る System API を作る。",
+   "Web アプリケーション用とモバイルアプリケーション用に Experience API を1つずつ作る。オーケストレーションを行い、データベースからメールのテンプレートを取得し、Anypoint Connector for Email でメールを送る Process API を作る。[FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/ca51c6e82d88e5b71373bf3336ff7b95.jpg]",
+   "Web アプリケーションとモバイルアプリケーションの両方に Experience API を作る。オーケストレーションを行い、データベースからメールのテンプレートを取得し、Anypoint Connector for Email でメールを送る Process API を作る。",
+   "Web アプリケーションとモバイルアプリケーションの両方に Experience API を作る。オーケストレーションを行い、データベースからメールのテンプレートを取得する Process API を作る。Anypoint Connector for Email でメールを送る System API を作る。"
+  ],
+  "ex": "(原本は図つき)メールの送信のようにバックエンドとのやり取りは System API に切り出し、Process API はオーケストレーションに専念させると、将来 SMS やプッシュ通知の System API を足すだけで済みます。B と C は Process API が直接メールを送るため、チャネルの追加に弱くなります。原本の選択肢 A は同じ文が2回繰り返されていたため1回分にまとめ、D は崩れていた表記を直しました。A と D は文章上ほぼ同じ構成ですが、原本の解答の A を正解としています。",
+  "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+  "v": "原本どおり",
+  "x": "System APIデータベース、ERP、CRM などの基幹システムに直接つながり、閉じ込められていたデータを公開する。基幹システムを混乱から守るSalesforce の顧客データを、CRM の動作に影響を与えずにほかのアプリから使えるようにする"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 22,
+  "f": "governance",
+  "a": [
+   2
+  ],
+  "q": "API を呼び出して処理するとき、API 実装、API クライアント、API 利用者(API consumer)はどのように組み合わさりますか。",
+  "o": [
+   "API 利用者が API 実装を作り、API 実装が API からの呼び出しを受け取って、API クライアントのために処理する",
+   "API クライアントが API 利用者を作り、API 利用者が API からの呼び出しを受け取って、API 実装のために処理する",
+   "API 利用者が API クライアントを作り、API クライアントが API に呼び出しを送り、それを API 実装が処理する",
+   "API クライアントが API 利用者を作り、API 利用者が API に呼び出しを送り、それを API 実装が処理する"
+  ],
+  "ex": "API 利用者(API consumer)は API クライアントを作って所有する人や組織で、API クライアントは API を呼び出すアプリケーションやコードです。API クライアントが API(API インスタンス)に呼び出しを送り、その機能を実際に実装した API 実装(Mule アプリケーションなど)が処理します。ほかの選択肢は、作る側と作られる側、呼ぶ側と処理する側の関係が逆になっています。",
+  "u": null,
+  "v": "原本どおり",
+  "x": "クライアントアプリケーションは API を呼ぶ側のアプリで、契約によって API インスタンスを使えるようになります。API Governance は、API がルールセット(社内の標準)に準拠しているかを続けて検証する Anypoint Platform のコンポーネントです。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 23,
+  "f": "cloudhub",
+  "a": [
+   1
+  ],
+  "q": "Anypoint VPC の技術的なアーキテクチャについて、正しいものはどれですか。",
+  "o": [
+   "Anypoint VPC のプライベート IP アドレスの範囲は、CloudHub が自動で選ぶ",
+   "Anypoint VPC にデプロイした Mule アプリケーションとオンプレミスのシステムの間の通信は、プライベートネットワーク内にとどめられる",
+   "CloudHub の環境ごとに別々の Anypoint VPC が必要である",
+   "VPC ピアリングを使って、基盤の AWS VPC をオンプレミス(AWS 以外)のプライベートネットワークにつなげられる"
+  ],
+  "ex": "これは CloudHub(1.0)の Anypoint VPC が前提の問題です。Anypoint VPN(IPsec トンネル)などでオンプレミスとつなげば、Mule アプリケーションと社内システムの通信をプライベートネットワーク内にとどめられます。IP 範囲(CIDR ブロック)は作成時に利用者が指定し、1つの VPC は複数の環境に関連付けられます。VPC ピアリングは自社の Amazon VPC とつなぐ方法で、オンプレミスとの接続には VPN を使います。",
+  "u": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "CloudHub(1.0)の Anypoint VPC は、Anypoint VPN(IPsec)、トランジットゲートウェイ、VPC ピアリング、AWS Direct Connect で社内ネットワークとつなげます。オンプレミスとの接続には IPsec VPN が推奨されます。",
+   "source_url": "https://docs.mulesoft.com/cloudhub/vpc-connectivity-methods-concept",
+   "note": "接続方法は IPsec トンネル(Anypoint VPN)、Transit Gateway アタッチメント、VPC ピアリング(自社の Amazon VPC と同一リージョンでペアリング)、AWS Direct Connect。VPC からオンプレミスへの接続には IPsec VPN トンネルが一般に推奨される。"
+  }
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 24,
+  "f": "layers",
+  "a": [
+   2
+  ],
+  "q": "ある会社が、MuleSoft が推奨する API の層に沿ってアプリケーションネットワークを作っています。アプリケーションネットワークにおける Process API の主な(既定の)役割はどれですか。",
+  "o": [
+   "バックエンドシステム間の大量データのダンプの同期処理を、安全かつ最適に行う",
+   "アプリケーションネットワーク内で、バックエンドシステムとエンドユーザーのクライアントやモバイルデバイスとの直接の安全な通信を管理・処理する",
+   "アプリケーションネットワーク内のほかの API の呼び出しを調整・オーケストレーションして、業務プロセスの一部を自動化する",
+   "アプリケーションネットワーク内で、特定の種類のエンドユーザーのクライアントアプリケーションやデバイスとの通信を保護・管理・処理する"
+  ],
+  "ex": "Process API は、複数の System API やほかの Process API を呼び出してデータを組み合わせ、再利用できる業務ロジックとして業務プロセスを自動化する層です。特定のクライアントやデバイスとの通信を受け持つのは Experience API で、バックエンドとクライアントを直接つなぐのは API 主導の接続の考え方に反します。大量データの同期は Process API の既定の役割ではありません。",
+  "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+  "v": "公式で確認済み",
+  "x": "Process API複数の System API やほかの Process API のデータを組み合わせ、再利用できる業務ロジックにする。変換、集約、補強を担うSalesforce の顧客データと EC サイトの注文データをまとめ、1つのレポート用のビューにする"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 25,
+  "f": "layers",
+  "a": [
+   2
+  ],
+  "q": "図を参照してください。API 主導の接続のアーキテクチャスタイルと両立するアーキテクチャ上の制約はどれですか。[FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/1541a8c3eac36ccacdbee08cb569cc28.jpg]",
+  "o": [
+   "3つの層(Experience、Process、System)それぞれにちょうど1つずつ API を作る階層型のアプローチを常に使う [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/8eb1fdfb626e4514d954f5104ed1851a.jpg]",
+   "Process API は複数の System API の呼び出しのオーケストレーションに使い、ほかの Process API の呼び出しには使わない",
+   "特定済みの Process API や Experience API が今は必要としていないデータも、System API が返すことを認める [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/90ae1572173ac97a298f11f16595314f.jpg]",
+   "エンドユーザーのアプリケーション向けのカスタマイズは、Experience 層ではなく Process 層で扱う"
+  ],
+  "ex": "(原本は図つき)Trailhead では、Process API は複数の System API とほかの Process API のデータをまとめるものと説明されており、Process API がほかの Process API を呼ぶことは禁じられていません。各層の API は必要に応じて複数あってよく、利用者向けのカスタマイズは Experience 層で行います。System API が今は使われていないデータも返せば、将来の Process API が System API を作り直さずに再利用できます。原本の解答は B でしたが、Process API はほかの Process API も呼び出せるため、C が正解です(同じ問題の別の回の原本も、この選択肢を正解としています)。",
+  "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+  "v": "解答を修正(公式にもとづく)",
+  "x": "Process API複数の System API やほかの Process API のデータを組み合わせ、再利用できる業務ロジックにする。変換、集約、補強を担うSalesforce の顧客データと EC サイトの注文データをまとめ、1つのレポート用のビューにする"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 26,
+  "f": "resilience",
+  "a": [
+   2
+  ],
+  "q": "ある EC 企業が、Web サイトに新しく商品詳細の機能を追加しようとしています。顧客が商品カタログのページを開くと、商品ごとに新しい「商品詳細」のリンクが表示され、クリックすると商品の詳細説明を取得します。商品詳細のデータは、年に1、2回の商品更新のリリースで更新されます。現在、データベースはアクセスが多いため応答がとても遅くなっています。応答時間が最も短く、障害に強く、一貫したデータで商品詳細を取得できるのはどの方法ですか。",
+  "o": [
+   "Cache スコープの中でデータベースから商品詳細を取得し、API の応答で返す",
+   "データベースから商品詳細を取得して Anypoint MQ に入れ、Anypoint MQ のサブスクライバーが商品詳細を受け取って API の応答で返す",
+   "最初にデータベースから読んだ商品詳細をオブジェクトストアに保存して取り出し、API の応答で返す",
+   "データベースから商品詳細を取得し、API の応答で返す"
+  ],
+  "ex": "めったに変わらないデータは、最初に読んだものを Object Store(CloudHub では Object Store v2)に保存しておけば、遅いデータベースに毎回問い合わせずに速く返せます。永続的なストアなので再起動や複数ワーカーでも同じデータを使え、障害に強く一貫性も保てます。Cache スコープの既定の保存先はメモリ内のストアで再起動すると消え、Anypoint MQ はデータの保管ではなくメッセージングのためのもので、毎回データベースを読む方法は遅いままです。",
+  "u": "https://docs.mulesoft.com/object-store/",
+  "v": "原本どおり",
+  "x": "Object Store v2 は、CloudHub のアプリケーションがデータや状態を保存できるサービスです。エントリ数に上限はなく、値は Base64 エンコード後で最大 10 MB です。"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 27,
+  "f": "layers",
+  "a": [
+   1
+  ],
+  "q": "図を参照してください。1つのエンドツーエンドの業務プロセスを、Experience API、Process API、System API の連携に分解する最もよい方法はどれですか。[FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/121f489d539963f80d822beb4a493ca8.jpg]",
+  "o": [
+   "エンドユーザーのアプリケーション向けのカスタマイズは、Experience API ではなく Process API で扱う",
+   "特定済みの Process API や Experience API が今は必要としていないデータも、System API が返すことを認める",
+   "3つの層(Experience、Process、System API)それぞれにちょうど1つずつ API を作る階層型のアプローチを常に使う",
+   "Process API は複数の System API の呼び出しのオーケストレーションに使い、ほかの Process API の呼び出しには使わない"
+  ],
+  "ex": "(原本は図つき)System API が今は使われていないデータも返せるようにしておけば、将来の Process API がそのまま再利用でき、System API を何度も作り直さずに済みます。利用者向けのカスタマイズは Experience 層で行い、各層の API は必要に応じて複数あってよいものです。Trailhead では Process API は System API とほかの Process API のデータをまとめるものと説明されており、Process API がほかの Process API を呼ぶことは禁じられていません。",
+  "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+  "v": "公式で確認済み",
+  "x": "Process API複数の System API やほかの Process API のデータを組み合わせ、再利用できる業務ロジックにする。変換、集約、補強を担うSalesforce の顧客データと EC サイトの注文データをまとめ、1つのレポート用のビューにする"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 28,
+  "f": "policies",
+  "a": [
+   0,
+   1
+  ],
+  "q": "IT セキュリティのコンプライアンス監査人が、セキュリティ対策としてすでに実装されている非機能要件(NFR)を評価しています。Web API には次のポリシーが適用されています。Rate Limiting - SLA、Basic Authentication - LDAP、JSON Threat Protection、IP Allowlist。強制されている NFR はどれですか。2つ選択してください。",
+  "o": [
+   "API の呼び出しが既知のサブネットの範囲から来ている",
+   "ログインの資格情報の検証に、ユーザー名とパスワードが使える",
+   "重要な情報が漏れないよう、機密データがマスクされている",
+   "API が XML を使った攻撃から守られている",
+   "性能の目標として、毎秒 1,000 リクエストまで許可される"
+  ],
+  "ex": "IP Allowlist は指定した IP アドレスや範囲からのリクエストだけを通すので、呼び出し元が既知のサブネットであることを強制します。Basic Authentication - LDAP は、ユーザー名とパスワードを LDAP サーバーで検証します。データのマスクを行うポリシーはなく、JSON Threat Protection は XML の攻撃は対象外です。Rate Limiting - SLA はクライアントごとの上限で、毎秒 1,000 リクエストという性能目標を保証するものではありません。",
+  "u": "https://docs.mulesoft.com/mule-gateway/policies-included-ip-allowlist",
+  "v": "公式で確認済み",
+  "x": "IP Allowlist(IP 許可リスト)指定した IP アドレスや範囲からのリクエストだけを通す403"
+ }
+]

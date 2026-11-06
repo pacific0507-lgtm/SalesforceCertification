@@ -1,0 +1,605 @@
+[
+ {
+  "label": "v2026-05-09",
+  "no": 1,
+  "qe": "Which APIs can be used with DataGraph to create a unified schema? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/055e6cad37154851841c3c14b0816713.jpg]",
+  "oe": [
+   "APIs 1, 3, 5",
+   "APIs 2, 4 ,6",
+   "APIs 1, 2, s5, 6",
+   "APIs 1, 2, 3, 4"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "To create a unified schema in MuleSoft's DataGraph, APIs must be exposed in a way that allows DataGraph to pull and consolidate data from these APIs into a single schema accessible to consumers. DataGraph provides a federated approach, combining multiple APIs to form a single, unified API endpoint.In this setup:APIs 1, 2, 3, and 4 are suitable candidates for DataGraph because they are hosted within the Customer VPC on CloudHub and are accessible either through a Shared Load Balancer (LB) or a Dedicated Load Balancer (DLB). Both of these load balancers provide public access, which is a necessary condition for DataGraph as it must access the APIs to aggregate data.APIs 5 and 6 are hosted on Customer Hosted Server 2, which is explicitly marked as \"Not public\". Since DataGraph requires API access through a publicly reachable endpoint to aggregate them into a unified schema, APIs 5 and 6 cannot be used with DataGraph in this configuration.APIs 3 and 4 on Customer Hosted Server 1 appear accessible through a Shared LB, implying public accessibility that meets DataGraph's requirements.By combining APIs 1, 2, 3, and 4 within DataGraph, you can create a unified schema that enables clients to query data seamlessly from all these APIs as if it were from a single source.This setup allows for efficient data retrieval and can simplify API consumption by reducing the need to call multiple APIs individually, thus optimizing performance and developer experience.ReferenceFor more detailed information on setting up and managing unified schemas in DataGraph, refer to the DataWeave documentation and MuleSoft DataGraph resources which provide in-depth guidelines on schema aggregation and API federation.",
+  "fig": true,
+  "also": [
+   [
+    "v2026-01-30",
+    36
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 2,
+  "qe": "A manufacturing company has deployed an API implementation to CloudHub and has not configured it to be automatically restarted by CloudHub when the worker is not responding.Which statement is true when no API Client invokes that API implementation?",
+  "oe": [
+   "No alert on the API invocations and APT implementation can be raised",
+   "Alerts on the APT invocation and API implementation can be raised",
+   "No alert on the API invocations is raised but alerts on the API implementation can be raised",
+   "Alerts on the API invocations are raised but no alerts on the API implementation can be raised"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "When an API implementation is deployed on CloudHub without configuring automatic restarts in case of worker non-responsiveness, MuleSoft's monitoring and alerting behavior is as follows:API Invocation Alerts:If no clients are invoking the API, there will be no invocation alerts triggered, as alerts related to invocations depend on actual client requests.Implementation-Level Alerts:Even without invocation, CloudHub can still monitor the state of the API implementation. If the worker becomes unresponsive, an alert related to the API implementation's health or availability could still be raised.Why Option C is Correct:This option correctly identifies that no invocation-related alerts would be triggered in the absence of client requests, while implementation-level alerts could still be generated based on the worker's state.ReferenceFor additional information, check MuleSoft documentation on CloudHub monitoring and alert configurations to understand worker status alerts versus invocation alerts.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 3,
+  "qe": "A business process is being implemented within an organization's application network. The architecture group proposes using a more coarse-grained application network design with relatively fewer APIs deployed to the application network compared to a more fine-grained design.Overall, which factor typically increases with a more coarse-grained design for this business process implementation and deployment compared with using a more fine-grained design?",
+  "oe": [
+   "The complexity of each API implementation",
+   "The number of discoverable assets related to APIs deployed in the application network",
+   "The number of possible connections between API implementations in the application network",
+   "The usage of network infrastructure resources by the application network"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Understanding Coarse-Grained vs. Fine-Grained API Design:A coarse-grained design consolidates multiple operations within a single API, leading to fewer APIs but with more complex implementations. Conversely, a fine-grained design breaks down functionalities into smaller, more specific APIs, resulting in simpler implementations but a larger number of APIs.Evaluating the Options:Option A (Correct Answer): With a coarse-grained design, each API handles more functionalities, increasing the complexity of each API implementation as it needs to manage more use cases and logic.Option B: A coarse-grained design typically reduces the number of APIs, so fewer discoverable assets are available.Option C: Fewer APIs generally mean fewer connections between them in the application network.Option D: Network infrastructure usage may actually decrease with fewer APIs, as there are fewer calls between APIs.Conclusion:Option A is the correct answer, as the complexity of each API implementation increases in a coarse-grained design due to the consolidation of multiple functionalities into single APIs.Refer to MuleSoft's documentation on API design principles and best practices for coarse-grained vs. fine-grained API implementation.",
+  "also": [
+   [
+    "v2026-01-30",
+    11
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 4,
+  "qe": "A customer wants to host their MuleSoft applications in CloudHub 1.0, and these applications should be available at the domain https://api.acmecorp.com.After creating a dedicated load balancer (DLB) called acme-dib-prod, which further action must the customer take to complete the configuration?",
+  "oe": [
+   "Configure the DLB with a TLS certificate for api.acmecorp.com and create an A record for api.acmecorp.com to the public IP addresses associated with their DLB",
+   "Configure the DLB with a TLS certificate for api.acmecorp.com and create a CNAME record from api.acmecorp.com to acme-dib-prod.\\|lb.anypointdns.net",
+   "Configure the DLB with a TLS certificate for acme-dib-prod.Jb.anypointdns.net and create a CNAME record from api.acmecorp:com to acme-dlb-prod.lb.anypointdns.net",
+   "Configure the DLB with a TLS certificate for aplacmecorp.com and create a CNAME record from api.aomecorp.com to acme-dib-prod.ei.cloubhub.io"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "When setting up a custom domain for MuleSoft applications hosted on CloudHub 1.0 using a Dedicated Load Balancer (DLB), follow these steps:Set Up the TLS Certificate: Configure the DLB (acme-dib-prod) with a TLS certificate that covers the custom domain api.acmecorp.com. This certificate will allow HTTPS traffic to be securely directed through the DLB to your Mule applications.DNS Configuration with CNAME:Create a CNAME record that points api.acmecorp.com to the DLB hostname acme-dib-prod.lb.anypointdns.net.The CNAME record enables the custom domain to resolve to the DLB provided by MuleSoft's Anypoint Platform. This CNAME mapping directs all traffic to the correct DLB for processing and load distribution.Why Option B is Correct:A CNAME record provides the necessary aliasing to acme-dib-prod.lb.anypointdns.net, which is the endpoint managed by Anypoint Platform for your DLB.Option B also correctly identifies the need to configure the DLB with a TLS certificate specifically for api.acmecorp.com rather than for the DLB's internal hostname.of Incorrect Options:Options that suggest configuring the DLB with a TLS certificate for the DLB's internal hostname or using an A record are not suitable in this scenario. MuleSoft CloudHub 1.0 DLBs work with CNAME records to provide flexible and scalable domain management, and a direct IP (A record) is not supported for these load balancers.ReferenceFor more information on configuring custom domains and DLBs on CloudHub 1.0, refer to the MuleSoft documentation on DLB setup and DNS configuration.",
+  "also": [
+   [
+    "v2026-01-30",
+    53
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 5,
+  "qe": "Due to a limitation in the backend system, a system API can only handle up to 500 requests per second. What is the best type of API policy to apply to the system API to avoid overloading the backend system?",
+  "oe": [
+   "Rate limiting",
+   "HTTP caching",
+   "Rate limiting - SLA based",
+   "Spike control"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Correct Answe r: Spike control*****************************************>> First things first, HTTP Caching policy is for purposes different than avoiding the backend system from overloading. So this is OUT.>> Rate Limiting and Throttling/ Spike Control policies are designed to limit API access, but have different intentions.>> Rate limiting protects an API by applying a hard limit on its access.>> Throttling/ Spike Control shapes API access by smoothing spikes in traffic.That is why, Spike Control is the right option.",
+  "also": [
+   [
+    "v2026-01-30",
+    40
+   ],
+   [
+    "v2026",
+    50
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 6,
+  "qe": "An organization makes a strategic decision to move towards an IT operating model that emphasizes consumption of reusable IT assets using modern APIs (as defined by MuleSoft).What best describes each modern API in relation to this new IT operating model?",
+  "oe": [
+   "Each modern API has its own software development lifecycle, which reduces the need for documentation and automation",
+   "Each modem API must be treated like a product and designed for a particular target audience (for instance, mobile app developers)",
+   "Each modern API must be easy to consume, so should avoid complex authentication mechanisms such as SAML or JWT D",
+   "Each modern API must be REST and HTTP based"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Correct Answers: 1\\. Each modern API must be treated like a product and designed for a particular target audience (for instance mobile app developers) - **************************************** [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/a33e413786d7434e2f7aadc5495bcf2c.jpg] Bottom of Form Top of Form",
+  "also": [
+   [
+    "v2026-01-30",
+    17
+   ]
+  ],
+  "note": "Explanation begins with \"Correct Answers: 1.\" quoting option B."
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 7,
+  "qe": "A company wants to move its Mule API implementations into production as quickly as possible. To protect access to all Mule application data and metadata, the company requires that all Mule applications be deployed to the company's customer-hosted infrastructure within the corporate firewall. What combination of runtime plane and control plane options meets these project lifecycle goals?",
+  "oe": [
+   "Manually provisioned customer-hosted runtime plane and customer-hosted control plane",
+   "MuleSoft-hosted runtime plane and customer-hosted control plane",
+   "Manually provisioned customer-hosted runtime plane and MuleSoft-hosted control plane",
+   "iPaaS provisioned customer-hosted runtime plane and MuleSoft-hosted control plane"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Correct Answe r: Manually provisioned customer-hosted runtime plane and customer-hosted control plane*****************************************There are two key factors that are to be taken into consideration from the scenario given in the question.>> Company requires both data and metadata to be resided within the corporate firewall>> Company would like to go with customer-hosted infrastructure.Any deployment model that is to deal with the cloud directly or indirectly (Mulesoft-hosted or Customer's own cloud like Azure, AWS) will have to share atleast the metadata.Application data can be controlled inside firewall by having Mule Runtimes on customer hosted runtime plane. But if we go with Mulsoft-hosted/ Cloud-based control plane, the control plane required atleast some minimum level of metadata to be sent outside the corporate firewall.As the customer requirement is pretty clear about the data and metadata both to be within the corporate firewall, even though customer wants to move to production as quickly as possible, unfortunately due to the nature of their security requirements, they have no other option but to go with manually provisioned customer-hosted runtime plane and customer-hosted control plane.",
+  "also": [
+   [
+    "v2026-01-30",
+    55
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 8,
+  "qe": "What Mule application can have API policies applied byAnypoint Platform to the endpoint exposed by that Mule application? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/a21b97297817f3719e7617fc939668a2.jpg]",
+  "oe": [
+   "A Mule application that accepts requests over HTTP/1.x",
+   "A Mule application that accepts JSON requests over TCP but is NOT required to provide a response",
+   "A Mute application that accepts JSON requests over WebSocket",
+   "A Mule application that accepts gRPC requests over HTTP/2"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Correct Answe r: Option A*****************************************>> Anypoint API Manager and API policies are applicable to all types of HTTP/1.x APIs.>> They are not applicable to WebSocket APIs, HTTP/2 APIs and gRPC APIs",
+  "fig": true,
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 9,
+  "qe": "A company uses a hybrid Anypoint Platform deployment model that combines the EU control plane with customer-hosted Mule runtimes. After successfully testing a Mule API implementation in the Staging environment, the Mule API implementation is set with environment-specific properties and must be promoted to the Production environment. What is a way that MuleSoft recommends to configure the Mule API implementation and automate its promotion to the Production environment?",
+  "oe": [
+   "Bundle properties files for each environment into the Mule API implementation's deployable archive, then promote the Mule API implementation to the Production environment using Anypoint CLI or the Anypoint Platform REST APIsB.",
+   "Modify the Mule API implementation's properties in the API Manager Properties tab, then promote the Mule API implementation to the Production environment using API Manager",
+   "Modify the Mule API implementation's properties in Anypoint Exchange, then promote the Mule API implementation to the Production environment using Runtime Manager",
+   "Use an API policy to change properties in the Mule API implementation deployed to the Staging environment and another API policy to deploy the Mule API implementation to the Production environment"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Correct Answe r: Bundle properties files for each environment into the Mule API implementation's deployable archive, then promote the Mule API implementation to the Production environment using Anypoint CLI or the Anypoint Platform REST APIs*****************************************>> Anypoint Exchange is for asset discovery and documentation. It has got no provision to modify the properties of Mule API implementations at all.>> API Manager is for managing API instances, their contracts, policies and SLAs. It has also got no provision to modify the properties of API implementations.>> API policies are to address Non-functional requirements of APIs and has again got no provision to modify the properties of API implementations.So, the right way and recommended way to do this as part of development practice is to bundle properties files for each environment into the Mule API implementation and just point and refer to respective file per environment.",
+  "also": [
+   [
+    "v2026-05-09",
+    50
+   ],
+   [
+    "v2026",
+    42
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 10,
+  "qe": "A Platform Architect inherits a legacy monolithic SOAP-based web service that performs a number of tasks, including showing all policies belonging to a client. The service connects to two back-end systems - a life-insurance administration system and a general-insurance administration system - and then queries for insurance policy information within each system, aggregates the results, and presents a SOAP-based response to a user interface (UI).The architect wants to break up the monolithic web service to follow API-led conventions.Which part of the service should be put into the process layer?",
+  "oe": [
+   "Authenticating and maintaining connections to each of the back-end administration systems",
+   "Presenting the SOAP-based response to the UI",
+   "Combining the insurance policy information from the administration systems",
+   "Querying the data from the administration systems"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 11,
+  "qe": "When must an API implementation be deployed to an Anypoint VPC?",
+  "oe": [
+   "When the API Implementation must write to a persistent Object Store",
+   "When the API implementation must be accessible within a subnet of a restricted customer-hosted network that does not allow public access",
+   "When the API implementation must be deployed to a production AWS VPC using the Mule Maven plugin",
+   "When the API Implementation must invoke publicly exposed services that are deployed outside of CloudHub in a customer- managed AWS instance"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "",
+  "also": [
+   [
+    "v2026-01-30",
+    5
+   ],
+   [
+    "v2026",
+    20
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026 #20 answers Correct answer: B. When the API implementation must be accessible within a subnet of a restricted customer-hosted network that does not allow public access"
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 12,
+  "qe": "A customer wants to monitor and gain insights about the number of requests coming in a given time period as well as to measure key performance indicators (response times, CPU utilization, number of active APIs).Which tool provides these data insights?",
+  "oe": [
+   "Anypoint Monitoring",
+   "APT Manager",
+   "Runtime Alerts",
+   "Functional Monitoring"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Understanding Anypoint Monitoring and Its Capabilities:Anypoint Monitoring provides comprehensive visibility into Mule applications, offering metrics and analytics such as request counts, response times, CPU utilization, memory usage, and other key performance indicators (KPIs). This tool is designed to help teams monitor API usage, troubleshoot issues, and optimize application performance.Evaluating the Options:Option A (Correct Answer): Anypoint Monitoring is the ideal tool for this requirement. It provides real-time insights into metrics such as the number of requests, response times, CPU utilization, and active API usage.Option B (API Manager): API Manager focuses on API lifecycle management, including applying policies, managing contracts, and setting access controls. It does not provide performance monitoring or KPI tracking.Option C (Runtime Alerts): Runtime Alerts can notify users of specific conditions, like high CPU usage, but they do not provide a full suite of metrics or insights over a given time period.Option D (Functional Monitoring): Functional Monitoring focuses on functional testing of APIs rather than performance and usage metrics. It does not provide continuous KPI tracking.Conclusion:Option A is the correct answer. Anypoint Monitoring is the most suitable tool to track the specified metrics, providing detailed insights into API requests, response times, CPU usage, and active API counts.For further details, refer to MuleSoft's Anypoint Monitoring documentation on configuring dashboards and tracking performance metrics.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 13,
+  "qe": "What is a key performance indicator (KPI) that measures the success of a typical C4E that is immediately apparent in responses from the Anypoint Platform APIs?",
+  "oe": [
+   "The number of production outage incidents reported in the last 24 hours",
+   "The number of API implementations that have a publicly accessible HTTP endpoint and are being managed by Anypoint Platform",
+   "The fraction of API implementations deployed manually relative to those deployed using a CI/CD tool",
+   "The number of API specifications in RAML or OAS format published to Anypoint Exchange"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Correct Answe r: The number of API specifications in RAML or OAS format published to Anypoint Exchange*****************************************>> The success of C4E always depends on their contribution to the number of reusable assets that they have helped to build and publish to Anypoint Exchange.>> It is NOT due to any factors w.r.t # of outages, Manual vs CI/CD deployments or Publicly accessible HTTP endpoints>> Anypoint Platform APIs helps us to quickly run and get the number of published RAML/OAS assets to Anypoint Exchange. This clearly depicts how successful a C4E team is based on number of returned assets in the response.",
+  "also": [
+   [
+    "v2026-01-30",
+    24
+   ],
+   [
+    "v2026",
+    30
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 14,
+  "qe": "A company has started to create an application network and is now planning to implement a Center for Enablement (C4E) organizational model. What key factor would lead the company to decide upon a federated rather than a centralized C4E?",
+  "oe": [
+   "When there are a large number of existing common assets shared by development teams",
+   "When various teams responsible for creating APIs are new to integration and hence need extensive training",
+   "When development is already organized into several independent initiatives or groups",
+   "When the majority of the applications in the application network are cloud based"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: When development is already organized into several independent initiatives or groups*****************************************>> It would require lot of process effort in an organization to have a single C4E team coordinating with multiple already organized development teams which are into several independent initiatives. A single C4E works well with different teams having at least a common initiative. So, in this scenario, federated C4E works well instead of centralized C4E.",
+  "also": [
+   [
+    "v2026",
+    49
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 15,
+  "qe": "An auto manufacturer has a mature CI/CD practice and wants to automate packaging and deployment of any Mule applications to various deployment targets, including CloudHub workers/replicas, customer-hosted Mule runtimes, and Anypoint Runtime Fabric.Which MuleSoft-provided tool or component facilitates automating the packaging and deployment of Mule applications to various deployment targets as part of the company's CI/CD practice?",
+  "oe": [
+   "Anypoint Runtime Manager",
+   "Mule Maven plugin",
+   "Anypoint Platform CLI",
+   "Anypoint Platform REST APIs"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "For organizations with established CI/CD practices, the Mule Maven plugin is the recommended tool for automating packaging and deployment across multiple environments, including CloudHub, on-premise Mule runtimes, and Anypoint Runtime Fabric. Here's why:Automation with Maven:The Mule Maven plugin allows for CI/CD integration by supporting automated build and deployment processes. It is commonly used in CI/CD pipelines to handle application packaging and deployment directly through Maven commands, making it ideal for teams that want consistent deployment automation across different MuleSoft environments.Supported Deployment Targets:The Mule Maven plugin supports deployment to various targets, including CloudHub, Runtime Fabric, and on-premises servers, thus meeting the needs of environments with diverse deployment destinations.Why Option B is Correct:The Mule Maven plugin is specifically designed for CI/CD pipelines and integrates with Jenkins, GitLab, and other CI/CD tools to facilitate continuous deployment. It is the most efficient MuleSoft-provided tool for this purpose.of Incorrect Options:Option A (Anypoint Runtime Manager) provides deployment management but does not automate CI/CD processes.Option C (Anypoint Platform CLI) can script deployments but lacks direct integration with CI/CD tools.Option D (Anypoint Platform REST APIs) requires custom scripting for deployment, which can be more complex than using the Mule Maven plugin.ReferenceFor more details, refer to MuleSoft documentation on using the Mule Maven plugin for CI/CD.",
+  "also": [
+   [
+    "v2026-01-30",
+    30
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 16,
+  "qe": "A team is planning to enhance an Experience API specification, and they are following API-led connectivity design principles.What is their motivation for enhancing the API?",
+  "oe": [
+   "The primary API consumer wants certain kinds of endpoints changed from the Center for Enablement standard to the consumer system standard",
+   "The underlying System API is updated to provide more detailed data for several heavily used resources",
+   "An IP Allowlist policy is being added to the API instances in the Development and Staging environments",
+   "A Canonical Data Model is being adopted that impacts several types of data included in the API"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "In API-led design, an Experience API is enhanced to improve how data is delivered to end-user applications. One primary reason to enhance an Experience API is when new data standards, such as a Canonical Data Model, are adopted. Here's why:Canonical Data Model (CDM):Adopting a CDM standardizes data representations across the organization, making APIs more consistent and easier to consume across various services and applications.Updating the Experience API ensures that it delivers data in this standardized format, improving interoperability and reusability.of Correct Answer (D):A CDM impacts the structure and types of data the API provides, and this update would be directly relevant to an Experience API, as it is the primary point of interaction for applications.of Incorrect Options:Option A involves adapting to consumer-specific standards, which is against API-led design principles.Option B involves changes in System APIs, which don't directly mandate changes to the Experience API unless data formatting adjustments are required.Option C (IP Allowlist) relates to security rather than API design and would not motivate a functional enhancement of the API.ReferenceFor more details on the use of Canonical Data Models in API-led architecture, refer to MuleSoft's guidelines on data standardization and Experience API best practices.",
+  "also": [
+   [
+    "v2026-01-30",
+    31
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 17,
+  "qe": "When could the API data model of a System API reasonably mimic the data model exposed by the corresponding backend system, with minimal improvements over the backend system's data model?",
+  "oe": [
+   "When there is an existing Enterprise Data Model widely used across the organization",
+   "When the System API can be assigned to a bounded context with a corresponding data model",
+   "When a pragmatic approach with only limited isolation from the backend system is deemed appropriate",
+   "When the corresponding backend system is expected to be replaced in the near future"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: When a pragmatic approach with only limited isolation from the backend system is deemed appropriate.*****************************************General guidance w.r.t choosing Data Models:>> If an Enterprise Data Model is in use then the API data model of System APIs should make use of data types from that Enterprise Data Model and the corresponding API implementation should translate between these data types from the Enterprise Data Model and the native data model of the backend system.>> If no Enterprise Data Model is in use then each System API should be assigned to a Bounded Context, the API data model of System APIs should make use of data types from the corresponding Bounded Context Data Model and the corresponding API implementation should translate between these data types from the Bounded Context Data Model and the native data model of the backend system. In this scenario, the data types in the Bounded Context Data Model are defined purely in terms of their business characteristics and are typically not related to the native data model of the backend system. In other words, the translation effort may be significant.>> If no Enterprise Data Model is in use, and the definition of a clean Bounded Context Data Model is considered too much effort, then the API data model of System APIs should make use of data types that approximately mirror those from the backend system, same semantics and naming as backend system, lightly sanitized, expose all fields needed for the given System API's functionality, but not significantly more and making good use of REST conventions.The latter approach, i.e., exposing in System APIs an API data model that basically mirrors that of the backend system, does not provide satisfactory isolation from backend systems through the System API tier on its own. In particular, it will typically not be possible to \"swap out\" a backend system without significantly changing all System APIs in front of that backend system and therefore the API implementations of all Process APIs that depend on those System APIs! This is so because it is not desirable to prolong the life of a previous backend system's data model in the form of the API data model of System APIs that now front a new backend system. The API data models of System APIs following this approach must therefore change when the backend system is replaced.On the other hand:>> It is a very pragmatic approach that adds comparatively little overhead over accessing the backend system directly>> Isolates API clients from intricacies of the backend system outside the data model (protocol, authentication, connection pooling, network address, ...)>> Allows the usual API policies to be applied to System APIs>> Makes the API data model for interacting with the backend system explicit and visible, by exposing it in the RAML definitions of the System APIs>> Further isolation from the backend system data model does occur in the API implementations of the Process API tier",
+  "also": [
+   [
+    "v2026",
+    34
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 18,
+  "qe": "A code-centric API documentation environment should allow API consumers to investigate and execute API client source code that demonstrates invoking one or more APIs as part of representative scenarios.What is the most effective way to provide this type of code-centric API documentation environment using Anypoint Platform?",
+  "oe": [
+   "Enable mocking services for each of the relevant APIs and expose them via their Anypoint Exchange entry",
+   "Ensure the APIs are well documented through their Anypoint Exchange entries and API Consoles and share these pages with all API consumers",
+   "Create API Notebooks and include them in the relevant Anypoint Exchange entries",
+   "Make relevant APIs discoverable via an Anypoint Exchange entry"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: Create API Notebooks and Include them in the relevant Anypoint exchange entries*****************************************>> API Notebooks are the one on Anypoint Platform that enable us to provide code-centric API documentation Reference:Bottom of FormTop of Form",
+  "also": [
+   [
+    "v2026-01-30",
+    3
+   ],
+   [
+    "v2026",
+    16
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 19,
+  "qe": "The implementation of a Process API must change.What is a valid approach that minimizes the impact of this change on API clients?",
+  "oe": [
+   "Update the RAML definition of the current Process API and notify API client developers by sending them links to the updated RAML definition",
+   "Postpone changes until API consumers acknowledge they are ready to migrate to a new Process API or API version",
+   "Implement required changes to the Process API implementation so that whenever possible, the Process API's RAML definition remains unchanged",
+   "Implement the Process API changes in a new API implementation, and have the old API implementation return an HTTP status code 301 - Moved Permanently to inform API clients they should be calling the new API implementation"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: Implement required changes to the Process API implementation so that, whenever possible, the Process API's RAML definition remains unchanged.*****************************************Key requirement in the question is:>> Approach that minimizes the impact of this change on API clientsBased on above:>> Updating the RAML definition would possibly impact the API clients if the changes require any thing mandatory from client side. So, one should try to avoid doing that until really necessary.>> Implementing the changes as a completely different API and then redirectly the clients with 3xx status code is really upsetting design and heavily impacts the API clients.>> Organisations and IT cannot simply postpone the changes required until all API consumers acknowledge they are ready to migrate to a new Process API or API version. This is unrealistic and not possible.The best way to handle the changes always is to implement required changes to the API implementations so that, whenever possible, the API's RAML definition remains unchanged.",
+  "also": [
+   [
+    "v2026-01-30",
+    52
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 20,
+  "qe": "A Mule 4 API has been deployed to CloudHub and a Basic Authentication - Simple policy has been applied to all API methods and resources. However, the API is still accessible by clients without using authentication.How is this possible?",
+  "oe": [
+   "The APE Router component is pointing to the incorrect Exchange version of the APT",
+   "The Autodiscovery element is not present, in the deployed Mule application",
+   "No... for client applications have been created of this API",
+   "One of the application's CloudHub workers restarted"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "When a Basic Authentication policy is applied to an API on CloudHub but clients can still access the API without authentication, the likely cause is a missing Autodiscovery element. Here's how this affects API security:Autodiscovery in MuleSoft:The Autodiscovery element is essential for linking an API implementation deployed in CloudHub with its API instance defined in API Manager. This connection allows the policies applied in API Manager, such as Basic Authentication, to be enforced on the deployed API.Why Option B is Correct:Without Autodiscovery, the deployed application does not \"know\" about the policies configured in API Manager, resulting in unrestricted access. Adding Autodiscovery enables the API to enforce the policies correctly.of Incorrect Options:Option A (incorrect Exchange version) would not cause bypassing of security policies.Option C (missing client applications) does not impact authentication policy enforcement.Option D (worker restart) is irrelevant to policy enforcement.ReferenceRefer to MuleSoft documentation on Autodiscovery configuration and linking API Manager policies for additional information on setting up secure API policies.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 21,
+  "qe": "The Line of Business (LoB) of an eCommerce company is requesting a process that sends automated notifications via email every time a new order is processed through the customer's mobile application or through the internal company's web application. In the future, multiple notification channels may be added: for example, text messages and push notifications.What is the most effective API-led connectivity approach for the scenario described above?",
+  "oe": [
+   "Create one Experience API for the web application and one for the mobile application.Create a Process API to orchestrate and retrieve the email template from = database.Create a System API that sends the email using the Anypoint Connector for Email.Create one Experience API for the web application and one for the mobile application.Create a Process API to orchestrate and retrieve the email template from = database.Create a System API that sends the email using the Anypoint Connector for Email.",
+   "Create one Experience API for the web application and one for the mobile application, Create a Process API to orchestrate, retrieve the email template from a database, and send the email using the Anypoint Connector for Email. [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/ca51c6e82d88e5b71373bf3336ff7b95.jpg]",
+   "Create Experience APIs for both the web application and mobile application.Create a Process API ta orchestrate, retrieve the email template from e database, and send the email using the Anypoint Connector for Email.\\\\",
+   "Create Experience APIs for both the web application and mobile application.(Create 3 Process API to orchestrate and retrieve the email template from 2 databese.Create a System API that sends the email using the Anypoint Connector for Email."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "In this scenario, the best approach to satisfy the API-led connectivity principles and support future scalability is:Experience APIs:Create separate Experience APIs for the web application and the mobile application. This allows each application to have an optimized interface, supporting different needs and potential differences in request/response structures or security configurations.Process API:A single Process API can be used to orchestrate the workflow, including retrieving the email template from a database and preparing the email content. By centralizing this logic in the Process layer, we can ensure it is reusable and easily adaptable for different notification channels in the future.System API:A System API specifically designed for sending emails (using the Anypoint Connector for Email) abstracts the email-sending functionality from the business logic. This approach ensures that the email-sending function is reusable and scalable, and it can easily be extended or modified if other notification channels (like SMS or push notifications) are added later.Why Option A is Correct:This structure aligns with API-led connectivity principles by separating concerns across Experience, Process, and System layers. It provides flexibility for future notification channels and isolates each layer's responsibility, making it easier to maintain and scale.of Incorrect Options:Option B lacks a separate System API for sending emails, which goes against the principle of isolating back-end functionality in System APIs.Option C similarly lacks a dedicated System API, reducing flexibility and reusability.Option D suggests creating multiple Process APIs for database retrieval, which adds unnecessary complexity and does not adhere to the single-orchestration principle typically followed in API-led design.ReferenceFor further guidance on API-led connectivity and the responsibilities of each API layer, refer to MuleSoft's documentation on API-led architecture and design best practices.",
+  "fig": true,
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 22,
+  "qe": "How are an API implementation, API client, and API consumer combined to invoke and process an API?",
+  "oe": [
+   "The API consumer creates an API implementation, which receives API invocations from an API such that they are processed for an API client",
+   "The API client creates an API consumer, which receives API invocations from an API such that they are processed for an API implementation",
+   "The ApI consumer creates an API client, which sends API invocations to an API such that they are processed by an API implementation",
+   "The ApI client creates an API consumer, which sends API invocations to an API such that they are processed by an API implementation"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: The API consumer creates an API client, which sends API invocations to an API such that they are processed by an API implementation*****************************************Terminology:>> API Client - It is a piece of code or program the is written to invoke an API>> API Consumer - An owner/entity who owns the API Client. API Consumers write API clients.>> API - The provider of the API functionality. Typically an API Instance on API Manager where they are managed and operated.>> API Implementation - The actual piece of code written by API provider where the functionality of the API is implemented. Typically, these are Mule Applications running on Runtime Manager.",
+  "also": [
+   [
+    "v2026",
+    4
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 23,
+  "qe": "What is true about the technology architecture of Anypoint VPCs?",
+  "oe": [
+   "The private IP address range of an Anypoint VPC is automatically chosen by CloudHub",
+   "Traffic between Mule applications deployed to an Anypoint VPC and on-premises systems can stay within a private network",
+   "Each CloudHub environment requires a separate Anypoint VPC",
+   "VPC peering can be used to link the underlying AWS VPC to an on-premises (non AWS) private network"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Correct Answe r: Traffic between Mule applications deployed to an Anypoint VPC and on-premises systems can stay within a private network - **************************************** >> The private IP address range of an Anypoint VPC is NOT automatically chosen by CloudHub. It is chosen by us at the time of creating VPC using thr CIDR blocks. CIDR Block: The size of the Anypoint VPC in Classless Inter-Domain Routing (CIDR) notation. For example, if you set it to 10.111.0.0/24, the Anypoint VPC is granted 256 IP addresses from 10.111.0.0 to 10.111.0.255. Ideally, the CIDR Blocks you choose for the Anypoint VPC come from a private IP space, and should not overlap with any other Anypoint VPC's CIDR Blocks, or any CIDR Blocks in use in your corporate network. [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/5f794654e151e9bb96e58885f17cae06.jpg] that each CloudHub environment requires a separate Anypoint VPC. Once an Anypoint VPC is created, we can choose a same VPC by multiple environments. However, it is generally a best and recommended practice to always have seperate Anypoint VPCs for Non-Prod and Prod environments. >> We use Anypoint VPN to link the underlying AWS VPC to an on-premises (non AWS) private network. NOT VPC Peering. Reference: Only true statement in the given choices is that the traffic between Mule applications deployed to an Anypoint VPC and on-premises systems can stay within a private network. https://docs.mulesoft.com/runtime-manager/vpc-connectivity-methods-concept",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 24,
+  "qe": "A company is building an application network using MuleSoft's recommendations for various API layers.What is the main (default) role of a process API in an application network?",
+  "oe": [
+   "To secure and optimize the data synchronization processing of large data dumps between back-end systems",
+   "To manage and process the secure direct communication between a back-end system and an end-user client of mobile device in the application network",
+   "To automate parts of business processes by coordinating and orchestrating the invocation of other APIs in the application network",
+   "To secure, Manage, and process communication with specific types of end-user client applications or devices in the application network"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Role of Process API in API-led Connectivity:In MuleSoft's API-led connectivity approach, a Process API is used to coordinate, aggregate, and orchestrate data from various System APIs. It is primarily responsible for implementing business logic that spans multiple backend systems or entities, transforming and combining data as needed to support business processes.Process APIs are not directly exposed to end-user clients; rather, they work between System APIs and Experience APIs, providing business logic and orchestration capabilities.Evaluating the Options:Option A: Process APIs are not typically responsible for large data dumps or data synchronization. That function would be handled by a System API or a specialized batch process.Option B: Managing direct, secure communication between back-end systems and end-user clients is typically the role of Experience APIs rather than Process APIs.Option C (Correct Answer): Process APIs are designed to coordinate and orchestrate calls to multiple other APIs in the network, which supports the automation of business processes.Option D: Securing and managing communication with end-user clients is typically the role of Experience APIs, not Process APIs.Conclusion:Option C is the correct answer, as the main role of a Process API is to coordinate and orchestrate interactions between other APIs, enabling business processes to function seamlessly across multiple systems.Refer to MuleSoft's API-led connectivity documentation for further explanation of the roles and responsibilities of Process APIs in an application network.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 25,
+  "qe": "Refer to the exhibits.Which architectural constraint is compatible with the API-led connectivity architectural style? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/1541a8c3eac36ccacdbee08cb569cc28.jpg]",
+  "oe": [
+   "Always use a tiered approach by creating exactly one API for each of the three layers (Experience, Process, and System) [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/8eb1fdfb626e4514d954f5104ed1851a.jpg]",
+   "Use a Process API to-orchestrate calls to multiple System APIs but not to other Process APIs:",
+   "Allow System APIs to return data that is not currently required by the identified Process or Experience APIs [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/90ae1572173ac97a298f11f16595314f.jpg]",
+   "Handle customizations for the end-user application at the Process layer rather than at the Experience layer"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Understanding API-led Connectivity Layers:In MuleSoft's API-led connectivity approach, APIs are categorized into three layers:Experience Layer: This layer is responsible for providing data to the end-user applications and is often customized to meet the needs of different user interfaces.Process Layer: This layer is used to orchestrate and combine data from multiple System APIs. It acts as a mediator and business logic layer without directly interacting with the backend systems.System Layer: This layer provides direct access to the backend systems (e.g., databases, ERPs) and is usually focused on exposing atomic data operations.Evaluating the Architectural Constraints:Option A: Always using a strict tiered approach by creating exactly one API per layer is not necessarily an architectural constraint of API-led connectivity. While a layered approach is recommended, it is common to have multiple APIs in each layer as needed for different functionalities.Option B (Correct Answer): In API-led connectivity, Process APIs are generally responsible for orchestrating calls to System APIs and should not call other Process APIs. This maintains a clear separation of concerns, ensuring that Process APIs aggregate data from System APIs only and provide it to Experience APIs.Option C: System APIs are generally designed to provide only the necessary data to meet current business requirements. Allowing them to return extra data that is not needed by Process or Experience APIs is not a best practice, as it can lead to inefficiencies.Option D: Customizations specific to end-user applications are typically handled at the Experience Layer rather than the Process Layer, as the Experience Layer is intended to tailor the data to fit the needs of each specific client or front-end application.Conclusion:Option B is the correct answer as it aligns with the API-led connectivity principles. In this architectural style, Process APIs should orchestrate System APIs but should avoid interacting with other Process APIs to keep a clear separation of responsibilities across the layers.For additional details, refer to MuleSoft documentation on API-led connectivity best practices, particularly around the roles of each layer in API orchestration and data handling.",
+  "fig": true,
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 26,
+  "qe": "An eCommerce company is adding a new Product Details feature to their website, A customer will launch the product catalog page, a new Product Details link will appear by product where they can click to retrieve the product detail description. Product detail data is updated with product update releases, once or twice a year, Presently the database response time has been very slow due to high volume.What action retrieves the product details with the lowest response time, fault tolerant, and consistent data?",
+  "oe": [
+   "Select the product details from a database in a Cache scope and return them within the API response",
+   "Select the product details from a database and put them in Anypoint MQ; the Anypoint MO subseriber will receive the product details and return them within the API response",
+   "Use an object store to store and retrieve the product details originally read from a database and return them within the API response",
+   "Select the product details from a database and return them within the API response"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Scenario Analysis:The eCommerce company's Product Details feature requires low response time and consistent data for a feature where data rarely changes (only once or twice a year).The database response time is slow due to high volume, so querying the database directly on each request would lead to poor performance and higher response times.Optimal Solution Requirements:Low Response Time: Data retrieval should be fast and not depend on database performance.Fault Tolerance and Data Consistency: Cached or stored data should be consistent and resilient in case of database unavailability, as the product details data changes infrequently.Evaluating the Options:Option A: Using a Cache scope would temporarily store the product details in memory, which could improve performance but might not be suitable for infrequent updates (only twice a year), as cache expiration policies typically require shorter durations.Option B: Storing product details in Anypoint MQ and then retrieving it through a subscriber is not suitable for this use case. Anypoint MQ is better for messaging rather than as a data storage mechanism.Option C (Correct Answer): Using an object store to store and retrieve product details is ideal. Object stores in MuleSoft are designed for persistent storage of key-value pairs, which allows storing data retrieved from the database initially. This provides quick, consistent access without querying the database on every request, aligning with requirements for low response time, fault tolerance, and data consistency.Option D: Selecting data directly from the database for each request would not meet the performance requirement due to known slow response times from the database.Conclusion:Option C is the best answer, as using an object store allows caching the infrequently updated product details. This approach reduces the dependency on the database, significantly improving response time and ensuring consistent data.Refer to MuleSoft documentation on Object Store v2 and best practices for data caching to implement this solution effectively.",
+  "also": [
+   [
+    "v2026-01-30",
+    48
+   ],
+   [
+    "v2026",
+    1
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 27,
+  "qe": "Refer to the exhibit.What is the best way to decompose one end-to-end business process into a collaboration of Experience, Process, and System APIs? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/121f489d539963f80d822beb4a493ca8.jpg]",
+  "oe": [
+   "Handle customizations for the end-user application at the Process API level rather than the Experience API level",
+   "Allow System APIs to return data that is NOT currently required by the identified Process or Experience APIs",
+   "Always use a tiered approach by creating exactly one API for each of the 3 layers (Experience, Process and System APIs)",
+   "Use a Process API to orchestrate calls to multiple System APIs, but NOT to other Process APIs"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Correct Answe r: Allow System APIs to return data that is NOT currently required by the identified Process or Experience APIs. - **************************************** >> All customizations for the end-user application should be handled in \"Experience API\" only. Not in Process API >> We should use tiered approach but NOT always by creating exactly one API for each of the 3 layers. Experience APIs might be one but Process APIs and System APIs are often more than one. System APIs for sure will be more than one all the time as they are the smallest modular APIs built in front of end systems. >> Process APIs can call System APIs as well as other Process APIs. There is no such anti-design pattern in API-Led connectivity saying Process APIs should not call other Process APIs. So, the right answer in the given set of options that makes sense as per API-Led connectivity principles is to allow System APIs to return data that is NOT currently required by the identified Process or Experience APIs. This way, some future Process APIs can make use of that data from System APIs and we need NOT touch the System layer APIs again and again. [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/987ab662e8dbe0167110e5116fd400a1.jpg]",
+  "fig": true,
+  "also": [
+   [
+    "v2026-01-30",
+    22
+   ],
+   [
+    "v2026",
+    8
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 28,
+  "qe": "An IT Security Compliance Auditor is assessing which nonfunctional requirements (NFRs) are already being implemented to meet security measures.* The Web API has Rate-Limiting SLA* Basic Authentication - LDAP* JSON Threat Protection* TP Allowlist policies appliedWhich two NFRs-are enforced?",
+  "oe": [
+   "The API invocations are coming from a known subnet range",
+   "Username/password supported to validate login credentials",
+   "Sensitive data is masked to prevent compromising critical information",
+   "The API is protected against XML invocation attacks",
+   "Performance expectations are to be allowed up to 1,000 requests per second"
+  ],
+  "ans": [
+   0,
+   1
+  ],
+  "ans_raw": "Correct Answer: A,B",
+  "expl": "Understanding Nonfunctional Requirements (NFRs):The NFRs in this context are related to security measures implemented for the Web API, such as rate limiting, LDAP-based authentication, JSON threat protection, and IP allowlist policies.Evaluating the Options:Option A (Correct Answer): The IP allowlist policy restricts access to known subnets, ensuring that API invocations come from a defined range of IPs.Option B (Correct Answer): Basic Authentication with LDAP enforces a username/password validation, satisfying an NFR for identity verification.Option C: Masking sensitive data is not part of the listed NFRs, as none of the mentioned policies address data masking.Option D: XML threat protection is not mentioned, so this option is incorrect.Option E: While rate-limiting implies performance control, it does not directly enforce a specific performance expectation.Conclusion:Options A and B are correct as they directly address the implemented security measures related to IP range restrictions and username/password authentication.Refer to MuleSoft's documentation on API security policies for details on LDAP, rate limiting, and allowlist policies.",
+  "also": []
+ }
+]

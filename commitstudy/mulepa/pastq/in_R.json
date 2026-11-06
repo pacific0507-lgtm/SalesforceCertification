@@ -1,0 +1,654 @@
+[
+ {
+  "label": "v2026-05-09",
+  "no": 58,
+  "qe": "An API experiences a high rate of client requests (TPS) vwth small message paytoads. How can usage limits be imposed on the API based on the type of client application?",
+  "oe": [
+   "Use an SLA-based rate limiting policy and assign a client application to a matching SLA tier based on its type",
+   "Use a spike control policy that limits the number of requests for each client application type",
+   "Use a cross-origin resource sharing (CORS) policy to limit resource sharing between client applications, configured by the client application type",
+   "Use a rate limiting policy and a client ID enforcement policy, each configured by the client application type"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Correct Answe r: Use an SLA-based rate limiting policy and assign a client application to a matching SLA tier based on its type.*****************************************>> SLA tiers will come into play whenever any limits to be imposed on APIs based on client type",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 59,
+  "qe": "When using CloudHub with the Shared Load Balancer, what is managed EXCLUSIVELY by the API implementation (the Mule application) and NOT by Anypoint Platform?",
+  "oe": [
+   "The assignment of each HTTP request to a particular CloudHub worker",
+   "The logging configuration that enables log entries to be visible in Runtime Manager",
+   "The SSL certificates used by the API implementation to expose HTTPS endpoints",
+   "The number of DNS entries allocated to the API implementation"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: The SSL certificates used by the API implementation to expose HTTPS endpoints*****************************************>> The assignment of each HTTP request to a particular CloudHub worker is taken care by Anypoint Platform itself. We need not manage it explicitly in the API implementation and in fact we CANNOT manage it in the API implementation.>> The logging configuration that enables log entries to be visible in Runtime Manager is ALWAYS managed in the API implementation and NOT just for SLB. So this is not something we do EXCLUSIVELY when using SLB.>> We DO NOT manage the number of DNS entries allocated to the API implementation inside the code. Anypoint Platform takes care of this.It is the SSL certificates used by the API implementation to expose HTTPS endpoints that is to be managed EXCLUSIVELY by the API implementation. Anypoint Platform does NOT do this when using SLBs.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 60,
+  "qe": "What is the most performant out-of-the-box solution in Anypoint Platform to track transaction state in an asynchronously executing long-running process implemented as a Mule application deployed to multiple CloudHub workers?",
+  "oe": [
+   "Redis distributed cache",
+   "java.util.WeakHashMap",
+   "Persistent Object Store",
+   "File-based storage"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: Persistent Object Store*****************************************>> Redis distributed cache is performant but NOT out-of-the-box solution in Anypoint Platform>> File-storage is neither performant nor out-of-the-box solution in Anypoint Platform>> java.util.WeakHashMap needs a completely custom implementation of cache from scratch using Java code and is limited to the JVM where it is running. Which means the state in the cache is not worker aware when running on multiple workers. This type of cache is local to the worker. So, this is neither out-of-the-box nor worker-aware among multiple workers on cloudhub. https://www.baeldung.com/java-weakhashmap>> Persistent Object Store is an out-of-the-box solution provided by Anypoint Platform which is performant as well as worker aware among multiple workers running on CloudHub. https://docs.mulesoft.com/object-store/ So, Persistent Object Store is the right answer.",
+  "also": [
+   [
+    "v2026-01-30",
+    57
+   ],
+   [
+    "v2026",
+    14
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 61,
+  "qe": "What is true about API implementations when dealing with legal regulations that require all data processing to be performed within a certain jurisdiction (such as in the USA or the EU)?",
+  "oe": [
+   "They must avoid using the Object Store as it depends on services deployed ONLY to the US East region",
+   "They must use a Jurisdiction-local external messaging system such as Active MQ rather than Anypoint MQ",
+   "They must te deployed to Anypoint Platform runtime planes that are managed by Anypoint Platform control planes, with both planes in the same Jurisdiction",
+   "They must ensure ALL data is encrypted both in transit and at rest"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: They must be deployed to Anypoint Platform runtime planes that are managed by Anypoint Platform control planes, with both planes in the same Jurisdiction.*****************************************>> As per legal regulations, all data processing to be performed within a certain jurisdiction. Meaning, the data in USA should reside within USA and should not go out. Same way, the data in EU should reside within EU and should not go out.>> So, just encrypting the data in transit and at rest does not help to be compliant with the rules. We need to make sure that data does not go out too.>> The data that we are talking here is not just about the messages that are published to Anypoint MQ. It includes the apps running, transaction states, application logs, events, metric info and any other metadata. So, just replacing Anypoint MQ with a locally hosted ActiveMQ does NOT help.>> The data that we are talking here is not just about the key/value pairs that are stored in Object Store. It includes the messages published, apps running, transaction states, application logs, events, metric info and any other metadata. So, just avoiding using Object Store does NOT help.>> The only option left and also the right option in the given choices is to deploy application on runtime and control planes that are both within the jurisdiction.",
+  "also": [
+   [
+    "v2026",
+    36
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 62,
+  "qe": "A retail company with thousands of stores has an API to receive data about purchases and insert it into a single database. Each individual store sends a batch of purchase data to the API about every 30 minutes. The API implementation uses a database bulk insert command to submit all the purchase data to a database using a custom JDBC driver provided by a data analytics solution provider. The API implementation is deployed to a single CloudHub worker. The JDBC driver processes the data into a set of several temporary disk files on the CloudHub worker, and then the data is sent to an analytics engine using a proprietary protocol. This process usually takes less than a few minutes. Sometimes a request fails. In this case, the logs show a message from the JDBC driver indicating an out-of-file-space message. When the request is resubmitted, it is successful. What is the best way to try to resolve this throughput issue?",
+  "oe": [
+   "se a CloudHub autoscaling policy to add CloudHub workers",
+   "Use a CloudHub autoscaling policy to increase the size of the CloudHub worker",
+   "Increase the size of the CloudHub worker(s)",
+   "Increase the number of CloudHub workers"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Correct Answe r: Increase the size of the CloudHub worker(s)*****************************************The key details that we can take out from the given scenario are:>> API implementation uses a database bulk insert command to submit all the purchase data to a database>> JDBC driver processes the data into a set of several temporary disk files on the CloudHub worker>> Sometimes a request fails and the logs show a message indicating an out-of-file-space message Based on above details:>> Both auto-scaling options does NOT help because we cannot set auto-scaling rules based on error messages. Auto-scaling rules are kicked-off based on CPU/Memory usages and not due to some given error or disk space issues.>> Increasing the number of CloudHub workers also does NOT help here because the reason for the failure is not due to performance aspects w.r.t CPU or Memory. It is due to disk-space.>> Moreover, the API is doing bulk insert to submit the received batch data. Which means, all data is handled by ONE worker only at a time. So, the disk space issue should be tackled on \"per worker\" basis. Having multiple workers does not help as the batch may still fail on any worker when disk is out of space on that particular worker.Therefore, the right way to deal this issue and resolve this is to increase the vCore size of the worker so that a new worker with more disk space will be provisioned.",
+  "also": [
+   [
+    "v2026",
+    13
+   ]
+  ],
+  "note": "Page answer line says D, but the page explanation argues for C (increase worker size / vCore for more disk); the v2026 copy (B13) answers C. Answer differs in duplicate: v2026 #13 answers Correct answer: C. Increase the size of the CloudHub worker(s)"
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 1,
+  "qe": "REST API 実装の統合テストの特性として最も当てはまらないものは何ですか?",
+  "oe": [
+   "テストでは、すべてのソースシステムおよび/またはターゲットシステムが構成され、アクセス可能である必要があります。",
+   "テストは、Mule アプリケーションがコンパイルされパッケージ化された直後に実行されます。",
+   "テストは外部HTTPリクエストによってトリガーされます",
+   "テストは既知のリクエストペイロードを準備し、レスポンスペイロードを検証します。"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "正解：B",
+  "expl": "正解: テストは、Mule アプリケーションがコンパイルされパッケージ化された直後に実行されます。*****************************************>> 統合テストは、完全にカバーするために追加する必要があるテストの最後のレイヤーです。>> これらのテストは、実際には完全な構成で実行されている Mule に対して実行され、PROD で動作しているときに外部ソースからテストされます。>> これらのテストは、実際のトランスポートを有効にした状態でアプリケーション全体をテストします。そのため、テストの実行時に外部システムに影響が及ぶ可能性があります。したがって、これらのテストは、Mule アプリケーションがコンパイルされパッケージ化された直後には実行されません。参考までに... ユニット テストは、Mule アプリケーションがコンパイルされパッケージ化された直後に実行されるテストです。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 2,
+  "qe": "大企業は、データとメタデータがローカルに保存されるという企業の IT ポリシー要件に基づいて、独自のデータ センターに IT インフラストラクチャを実装したいと考えています。Mule コントロール プレーンと Mule ランタイム プレーンのどの組み合わせが要件を満たしていますか?",
+  "oe": [
+   "コントロールプレーンとMuleSoftがホストするランタイムプレーン用のAnypoint Platform Private Cloud Edition",
+   "MuleSoft がホストするコントロールプレーンとランタイムプレーン用の Anypoint Runtime Fabric",
+   "MuleSoft がホストするコントロールプレーンと、ランタイムプレーン用の顧客がホストする Mule ランタイム",
+   "コントロールプレーン用のAnypoint Platform Private Cloud Editionと、ランタイムプレーン用の顧客ホスト型Muleランタイム"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "制御プレーンとランタイムプレーンの理解:コントロールプレーン：コントロールプレーンは、Muleアプリケーションの管理、監視、およびデプロイを担います。プライベートクラウドエディション（PCE）では、このコントロールプレーンは顧客のインフラストラクチャ内にオンプレミスでデプロイされ、データレジデンシーとセキュリティ要件を満たします。ランタイムプレーン：ランタイムプレーンは、Mule アプリケーションを実行する Mule ランタイムで構成されています。これらのランタイムをお客様のインフラストラクチャ内でホストすることで、データとメタデータをローカルに保持でき、データレジデンシーに関する企業ポリシーに準拠できます。オプションの評価:オプション A: コントロール プレーンに Anypoint Platform Private Cloud Edition を使用し、MuleSoft がホストするランタイム プレーンを使用すると、ランタイム プレーンが MuleSoft によってホストされ、データがローカルに保持されないため、要件を満たせません。オプション B: ランタイム プレーン用の Anypoint Runtime Fabric を備えた MuleSoft がホストするコントロール プレーンでは、メタデータは依然として MuleSoft のクラウドで管理されるため、データとメタデータをオンプレミスで保持するという要件に準拠しません。オプション C: MuleSoft がホストするコントロール プレーンと顧客がホストする Mule ランタイムでは、メタデータがオンプレミスではなくクラウドに存在するため、常駐要件を満たしません。オプション D (正解): コントロール プレーンと顧客がホストする Mule ランタイム用の Anypoint Platform Private Cloud Edition (PCE) は、コントロール プレーンとランタイム プレーンの両方が顧客のデータ センター内でホストされるため、両方の要件を満たします。結論：オプション D が正解です。コントロール プレーンとランタイム プレーンの両方がオンプレミスでホストされ、企業の IT ポリシーに従ってデータとメタデータがローカルに保存されるようになります。詳細については、MuleSoft の Private Cloud Edition の展開とオンプレミスのランタイム構成に関するドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 4,
+  "qe": "運用コストを最小限に抑えるため、お客様はCloudHub 1.0ソリューションの利用を希望しています。お客様の要件は次のとおりです。* 2つのビジネスグループでリソースを分離* すべてのAPIの高可用性（HA）* 専用ロードバランサ（DLB）経由でトラフィックをルーティングする* 環境を本番環境と非本番環境に分けるどのソリューションが顧客のニーズを満たしますか?",
+  "oe": [
+   "1 つの本番環境用仮想プライベート クラウド (VPC) と 1 つの非本番環境用仮想プライベート クラウド (VPC)。可用性ゾーンを使用して、ビジネス グループを区別します。可用性ゾーン全体で HA を確保するために、VPC ごとに最大 CIDR を割り当てます。",
+   "ビジネス グループごとに 1 つの本番環境用仮想プライベート クラウド (VPC) と 1 つの非本番環境用仮想プライベート クラウド (VPC)。予測されるアプリケーション合計に合わせて CIDR を最小限に抑えます。複数のアベイラビリティーゾーンを持つ MuleSoft CloudHub 1.0 リージョンを選択します。HAのために複数のワーカーを展開し、",
+   "ビジネス グループごとに 1 つの本番環境用仮想プライベート クラウド (VPC) と 1 つの非本番環境用仮想プライベート クラウド (VPC)。予測されるアプリケーション合計に合わせて CIDR を最小限に抑えます。HA 用 API のデプロイ中にアベイラビリティーゾーンを分割します。",
+   "1 つの本番環境と 1 つの非本番環境の仮想プライベート クラウド (VPC)。ビジネス グループを区別するためにサブネットを構成します。子グループを簡単に追加できるように、VPC ごとに最大 CIDR を割り当てます。VPC を拡張して 3 つのアベイラビリティーゾーンをカバーします。"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "正解：B",
+  "expl": "要件を理解する:ビジネス グループ: ソリューションは 2 つのビジネス グループをサポートする必要があり、通常、論理的な分離には個別の VPC が必要です。高可用性 (HA): 複数の可用性ゾーンにわたってリソースを展開する必要があります。専用ロードバランサー (DLB): トラフィックは、CloudHub 上の VPC 内で動作する DLB 経由でルーティングする必要があります。環境の分離: 実稼働環境と非実稼働環境を分離する必要があります。オプションの評価:オプション A: 単一の本番環境用および非本番環境用の VPC を使用し、アベイラビリティーゾーンによってビジネス グループを区別することは、各ビジネス グループが完全に分離されず、最大 CIDR 割り当てを使用するのが無駄になるため、理想的ではありません。オプション B (正解): 最小限の CIDR ブロック、複数のアベイラビリティーゾーン、および HA 用のアプリケーションごとに複数のワーカーを使用して、ビジネス グループごとに個別の本番環境用および非本番環境用の VPC を作成すると、すべての要件が効果的に満たされます。オプション C: このオプションでは、ビジネス グループごとに VPC が分離されますが、API デプロイメント中にのみマルチゾーン デプロイメントを指定することで、アベイラビリティ ゾーン全体の HA 要件に完全には対応できず、冗長性が保証されない可能性があります。オプション D: 単一の本番環境および非本番環境 VPC 内でビジネス グループを区別するようにサブネットを構成すると、ビジネス グループが完全に分離されません (これは要件です)。結論：オプション B は、最小限の CIDR 割り当てを使用し、複数のワーカーを可用性ゾーン全体に展開することで、高可用性、ビジネス グループの分離、コスト効率の要件を満たすため、最適な選択肢です。詳細については、MuleSoft の VPC 構成と高可用性展開戦略に関するドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 6,
+  "qe": "An organization is deploying their new implementation of the OrderStatus System API to multiple workers in CloudHub. This API fronts the organization's on-premises Order Management System, which is accessed by the API implementation over an IPsec tunnel. What type of error typically does NOT result in a service outage of the OrderStatus System API?",
+  "oe": [
+   "A CloudHub worker fails with an out-of-memory exception",
+   "API Manager has an extended outage during the initial deployment of the API implementation",
+   "The AWS region goes offline with a major network failure to the relevant AWS data centers",
+   "The Order Management System is Inaccessible due to a network outage in the organization's on-premises data center"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "正解：A",
+  "expl": "正解: CloudHub ワーカーがメモリ不足例外で失敗します。*****************************************>> AWSリージョン自体がダウンすると、Mule Appに割り当てられたワーカーの数に関係なく、そのリージョン内のすべてのワーカーがダウンするため、確実に停止が発生します。これは完全なダウンタイムと機能停止です。>> API 実装の初期展開中に API マネージャーが長時間停止すると、当然のことながら、API 自動検出が失敗したり、API ポリシー テンプレートとポリシーがダウンロードされずにアプリケーションの起動時に埋め込まれないなど、アプリケーションの適切な起動自体に問題が発生します。問題が発生する理由は多数あります。>> オンプレミスのネットワークが停止すると、当然ながら注文管理システムにアクセスできなくなります。また、アプリに何人の作業者が割り当てられているかに関係なく、全員が失敗し、確実に停止が発生します。サービス停止に至らない唯一の選択肢は、CloudHubワーカーがメモリ不足例外で停止した場合です。たとえワーカーが停止しても、リクエストを処理し、APIの稼働を維持する他のワーカーが存在します。つまり、これが正しい答えです。",
+  "also": [
+   [
+    "v2026",
+    46
+   ]
+  ],
+  "qj": "ある組織が、CloudHub 内の複数のワーカーに OrderStatus システム API の新しい実装をデプロイしています。この API は組織のオンプレミスの注文管理システムのフロントエンドとして機能し、API 実装から IPsec トンネル経由でアクセスされます。通常、OrderStatus システム API のサービス停止を引き起こさないエラーの種類は何ですか?",
+  "oj": [
+   "CloudHubワーカーがメモリ不足例外で失敗する",
+   "API 実装の初期展開中に API Manager が長時間停止しました",
+   "関連するAWSデータセンターへの大規模なネットワーク障害によりAWSリージョンがオフラインになります",
+   "組織のオンプレミスデータセンターのネットワーク障害のため、注文管理システムにアクセスできません"
+  ],
+  "text_from": [
+   "v2026",
+   46
+  ],
+  "note_text": "English wording taken from duplicate v2026 #46; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's. The v2026 copy answers B (API Manager outage) - answers differ.",
+  "note": "Answer differs in duplicate: v2026 #46 answers Correct answer: B. API Manager has an extended outage during the initial deployment of the API implementation"
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 7,
+  "qe": "4 実稼働環境は CloudHub 1.0 上の専用の仮想プライベート クラウド (VPC) で実行されており、セキュリティ チームのガイドラインでは HTTP トラフィックは禁止されていることが明記されています。これらのセキュリティ ガイドラインをサポートする 2 つのオプションはどれですか?2つの回答を選択してください",
+  "oe": [
+   "Mule アプリケーションの HTTP リスナーで HTTPS プロトコルを設定します。",
+   "設定されたAPIエンドポイントへのアクセスを制御するために、送信および受信HTTPリクエストに適用するカスタムポリシーを作成します。",
+   "VPCファイアウォールルールからエントリを削除します [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/3d54c640e62e8a0f88f13f888d5fb085.jpg]",
+   "IP ブロックリスト ポリシーを構成して、構成された API エンドポイントへの単一の IP アドレスまたは IP アドレスの範囲からのアクセスを制御します。",
+   "VPC ファイアウォール ルールにエントリを追加します。 [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/4932447e331e53a67bc77559963d6f65.jpg]"
+  ],
+  "ans": [
+   0,
+   2
+  ],
+  "ans_raw": "正解：A,C",
+  "expl": "セキュリティガイドラインの概要:本番環境はCloudHub 1.0上の専用仮想プライベートクラウド（VPC）上にホストされており、セキュリティチームからはHTTP経由のトラフィックを一切許可しないという明確な要件が課せられています。これは、安全なHTTPSトラフィックのみを許可し、HTTPアクセス（ポート8081、MuleアプリケーションのデフォルトHTTPポート）は無効化する必要があることを意味します。オプションの評価:オプションA（正解）：MuleアプリケーションのHTTPリスナーでHTTPSプロトコルを設定すると、すべてのトラフィックが暗号化され、HTTPS（Muleアプリケーション上のHTTPSのデフォルトポートは8092）経由で送信されます。これは、暗号化されていないHTTPトラフィックを防止するというセキュリティガイドラインに直接準拠しています。オプションB：受信および送信HTTPリクエストに対してカスタムポリシーを作成することで、アクセスをある程度制御できますが、HTTPSのみの使用を強制することはできません。このオプションではHTTPトラフィックが無効化されないため、ガイドラインを効果的に満たすことはできません。オプションC（正解）：VPCファイアウォールルールからHTTP（ポート8081）のエントリを削除すると、HTTPトラフィックがファイアウォールレベルで完全にブロックされます。これにより、HTTPリクエストがアプリケーションに到達できなくなり、ガイドラインに準拠したセキュリティレイヤーが追加されます。オプションD: IPブロックリストポリシーはIPアドレスに基づいてアクセスを制御しますが、HTTPSの使用を強制しません。このポリシーは、HTTPトラフィックをブロックするという特定の要件には対応していません。オプションE：HTTP（ポート8081）のファイアウォールルールエントリを追加すると、HTTPトラフィックが有効になり、セキュリティガイドラインに反することになります。したがって、このオプションは避けるべきです。結論：オプションAとオプションCが正しい選択です。MuleアプリケーションのHTTPリスナーでHTTPSプロトコルを設定することで、HTTPSトラフィックのみが許可され、HTTP（ポート8081）のファイアウォールルールを削除すると、HTTPトラフィックがアプリケーションに到達できなくなります。これらのオプションを組み合わせることで、セキュリティガイドラインで要求されている安全なトラフィックが確保されます。これらのセキュリティ制御の実装の詳細については、HTTP リスナーの構成と VPC ファイアウォール ルールの管理に関する MuleSoft のドキュメントを参照してください。",
+  "lang": "ja",
+  "fig": true,
+  "also": [],
+  "note": "Options C and E each have a figure attached (VPC firewall rule screenshots)."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 10,
+  "qe": "In an organization, the InfoSec team is investigating Anypoint Platform related data traffic. From where does most of the data available to Anypoint Platform for monitoring and alerting originate?",
+  "oe": [
+   "From the Mule runtime or the API implementation, depending on the deployment model",
+   "From various components of Anypoint Platform, such as the Shared Load Balancer, VPC, and Mule runtimes",
+   "From the Mule runtime or the API Manager, depending on the type of data",
+   "From the Mule runtime irrespective of the deployment model"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "正解: デプロイメントモデルに関係なく、Mule ランタイムから*****************************************>> モニタリングとアラートのメトリックは、デプロイメント モデルに関係なく、常に Mule ランタイムから生成されます。>> 一部のメトリクス（Runtime Manager）はMule Runtimeから生成され、一部のメトリクス（API呼び出し/API分析）はAPI Managerから生成されているように見えるかもしれません。しかし、実際にはそうではありません。API ManagerはAPIインスタンスの管理ツールに過ぎませんが、APIに適用されたすべてのポリシーは最終的にMule Runtime（組み込みまたはAPIプロキシ）でのみ実行されるためです。>> 同様に、すべての API 実装も Mule ランタイム上で実行されます。したがって、デプロイメント モデルが MuleSoft ホスト型、顧客ホスト型、またはハイブリッド型であるかどうかに関係なく、監視とアラートに必要な 1 日の大半は Mule Runtimes からのみ生成されます。",
+  "also": [
+   [
+    "v2026",
+    17
+   ]
+  ],
+  "qj": "ある組織では、InfoSec チームが Anypoint Platform 関連のデータ トラフィックを調査しています。Anypoint Platform で監視およびアラートに使用できるデータのほとんどはどこから発生するのでしょうか?",
+  "oj": [
+   "デプロイメント モデルに応じて、Mule ランタイムまたは API 実装から",
+   "共有ロードバランサ、VPC、Muleランタイムなど、Anypoint Platformのさまざまなコンポーネントから",
+   "データの種類に応じて、Mule ランタイムまたは API マネージャーから取得されます。",
+   "デプロイメントモデルに関係なく、Mule ランタイムから"
+  ],
+  "text_from": [
+   "v2026",
+   17
+  ],
+  "note_text": "English wording taken from duplicate v2026 #17; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 12,
+  "qe": "複数のAPI実装（Muleアプリケーション）を持つAPIが、CloudHubとお客様がホストするMuleランタイムの両方にデプロイされています。すべてのデプロイメントは、MuleSoftがホストするコントロールプレーンによって管理されています。API実装がAPIリクエストへの応答を停止した場合、一定期間APIクライアントからの呼び出しがない場合でも、アラートをトリガーする必要があります。API 実装を監視するためのアラートを作成するための最も効果的なすぐに使用できるソリューションは何ですか?",
+  "oe": [
+   "API実装のAnypoint Functional Monitoringでモニターを作成し、各モニターがAPI実装エンドポイントを繰り返し呼び出します。",
+   "API呼び出しがタイムアウトしたときにAnypoint Platformでカスタムアラートを生成するために、各APIクライアントにAnypoint Platform REST APIリクエストを送信するコードを追加します。",
+   "呼び出し元のAPIクライアント内でAPI呼び出し例外を処理し、そのような例外がスローされたときにそのAPIクライアントからアラートを発生させます。",
+   "すべてのAPI実装に対してAnypoint Runtime Managerで1つのWorker Not Respondingアラートを設定し、すべてのAPI実装を監視します。"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "正解：A",
+  "expl": "複数のAPI実装が異なる環境（CloudHubとお客様がホストするランタイム）に展開されているシナリオでは、Anypoint Functional MonitoringはAPIの可用性を監視し、API実装が応答しなくなった際にアラートをトリガーする最も効果的なツールです。その仕組みは以下のとおりです。Anypoint 機能モニタリングの使用:機能モニタリングを使用すると、API実装上の特定のエンドポイントを定期的に呼び出し、クライアントリクエストをシミュレートするモニターを作成できます。これにより、実際のクライアントリクエストがない場合でも、APIが応答可能であることを確認できます。API 実装が期待どおりに応答しない場合、機能モニタリングはアラートを生成し、管理者に潜在的な問題を通知します。オプションAが正しい理由:機能モニタリングを設定してAPIエンドポイントを定期的に自動的に呼び出すことで、継続的な監視とアラート機能を確保できます。これは、トラフィックが少ない、または全くない期間が発生する可能性のあるAPIに特に役立ちます。このアプローチはプロアクティブなソリューションを提供し、実際のユーザーに影響が出る前に問題を特定して対処することができます。誤った選択肢:オプション B では、アラートをトリガーするようにクライアント アプリケーションを変更することを提案していますが、監視の責任がクライアントに移行し、制御と一貫性が低下するため、これはベスト プラクティスではありません。オプション C では、クライアント アプリケーション内で例外を処理しますが、クライアントが要求を行っていない状況には対処できません。オプション D では、ランタイム マネージャーでワーカーが応答しないアラートを提案しますが、これはワーカー固有のアラートに限定されており、リクエストに対する API の実際の応答性を確実に監視できない可能性があります。参照詳細については、API 可用性監視のための Anypoint 機能監視のセットアップと使用方法に関する MuleSoft のドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 15,
+  "qe": "べき等性はいつ考慮されるべきでしょうか?",
+  "oe": [
+   "現在ロックされているエンティティを更新するリクエストを行う場合",
+   "後続のリクエストへの応答に使用するために、前回のリクエストの結果を保存する場合",
+   "同じエンティティに対して同時更新リクエストを送信する場合",
+   "複数送信されたリクエストからの重複処理を防ぐ場合"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "冪等性を理解する:冪等性とは、APIにおける概念であり、ある操作を最初の適用後、結果が変化することなく複数回実行できることを意味します。これは、ネットワークの再試行やクライアントエラーによって繰り返し実行される可能性のある操作において特に重要です。べき等性を考慮する場合:複数のリクエストが送信されることで処理が重複するリスクがある場合（例：再試行やエラー）、冪等性を考慮する必要があります。これにより、リクエストの繰り返しによって、複数のレコードが作成されたり、同じトランザクションが複数回処理されたりするといった意図しない副作用が発生しなくなります。オプションの評価:オプション A: ロックされたエンティティには特別な処理が必要になる場合がありますが、これは直接的にはべき等性には関係ありません。オプション B: 将来の応答のために結果を保存することは有用ですが、べき等操作とは関係ありません。オプション C: 同じエンティティに対する同時要求では競合の処理が必要になる可能性がありますが、このシナリオはトランザクション管理または同時実行制御に適しています。オプション D (正解): 複数のリクエストからの重複処理を防ぐことが、べき等性を実装する主な理由であり、繰り返しのリクエストが悪影響を及ぼさないようにします。結論：オプション D が正解です。べき等性は、重複したリクエストが送信される可能性のあるシナリオを処理するために特に使用され、意図しない処理を防ぎます。詳細については、API 設計におけるべき等性のベスト プラクティスに関する MuleSoft のドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 16,
+  "qe": "展示品を参照してください。新しいプロモーション プロセス API 用の RAML 定義が提案され、Anypoint Exchange に公開されました。プロモーション API の重要な消費者となるマーケティング部門には、満たさなければならない重要な要件と期待があります。Anypoint Platform の機能を活用して、マーケティング部門をこの初期の API 設計フェーズに参加させる最も効果的な方法は何ですか? [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/ec9f29e5b6ffb2b96e1d2847d5c9e2f7.jpg] [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/37d9f0d4bceb97d1c0d529bf48e4ce0c.jpg] [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/306871fa4a901f271b43cac97f8f02b8.jpg]",
+  "oe": [
+   "マーケティング部門に、自動生成されたAPIコンソールを使用してAPIのモック実装を操作するように依頼します。",
+   "マーケティング部門のDBAと設計ワークショップを開催し、マーケティングITシステムのデータベーススキーマをRAMLに変換する",
+   "Anypoint Studioを使用してAPIをMuleアプリケーションとして実装し、そのAPI実装をCloudHubにデプロイして、マーケティング部門に操作を依頼する",
+   "APIデザイナーから統合テストスイートをエクスポートし、マーケティング部門にそのスイートでテストを実行させて、合格することを確認する"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "正解：A",
+  "expl": "正解: 自動的に生成された API コンソールを使用して、マーケティング部門に API のモック実装を操作するように依頼します。 - **************************************** MuleSoft の IT 運用モデルによると、 >> API コンシューマーは、完全な API 実装が準備されるまで待つ必要はありません。 >> API を操作するためにエンドユーザーと技術的なテスト スイートを共有する必要はありません。 >> Anypoint Platform は、Anypoint Exchange に公開されているすべての API 仕様のモック機能を提供します。また、API の機能と動作特性の詳細をすべて網羅したドキュメントも豊富に用意されています。 >> フィードバックを得るためにエンドユーザーとのワークショップを何日も開催する必要はありません。 API利用者は、プラットフォーム上のAnypoint Exchange機能を利用し、モック機能を使ってAPIを操作できます。フィードバックはすぐに共有され、変更を反映させることができます。 [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/1fb1fb8f362be9e28700344ad1ee9bdd.jpg]",
+  "lang": "ja",
+  "fig": true,
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 18,
+  "qe": "経験豊富な中央IT部門を持つ大規模組織が、MuleSoftの導入を開始しています。サイロ化されたバックエンドシステムを新しい顧客関係管理（CRM）システムに接続するプロジェクトが進行中です。Enablementセンターは、API主導の接続性を活用するよう指導しています。API 主導の接続性を使用したアプリケーション ネットワークの作成をサポートするアクションは何ですか?",
+  "oe": [
+   "ビジネスアナリストに、2つのシステム間の標準データモデルを指定するためのビジネスプロセスモデルの作成を依頼します。",
+   "新しい CRM システムがカスタム REST API の作成をサポートし、CloudHub で 4 つのプライベート ネットワークを確立し、GAuth 2.0 認証をサポートしているかどうかを判断します。",
+   "このプロジェクトを迅速に進めるために、中央IT部門はCRMシステムとバックエンドシステムを拡張し、組み込みの統合インターフェースを使用して相互に接続する必要があります。",
+   "REST APIを使用してバックエンドシステムのデータをロック解除するためのシステムAPIを作成します。"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "API 主導の接続性から始めて、サイロ化されたバックエンド システムを新しい CRM と統合する組織の場合、次のアプローチはベスト プラクティスと MuleSoft の Center for Enablement (C4E) ガイダンスと一致します。API 主導の接続性: このモデルは、API を個別のレイヤー (システム、プロセス、エクスペリエンス) に編成し、再利用性、モジュール性、管理性を向上させます。システム API は、コア システム (バックエンド アプリケーションやデータベースなど) からデータを公開およびロック解除するために使用されます。プロセス API は、複数のシステム間でデータを調整し、必要に応じて変換します。エクスペリエンス API は、この場合の CRM などのアプリケーションやデバイスで使用するためにデータを特別にフォーマットします。アプリケーションネットワークをサポートするための手順:バックエンドシステム用のシステムAPIを作成します。このAPIは、CRMとの統合をサポートするために必要なデータを公開する必要があります。RESTful インターフェースを備えたシステム API を作成することで、標準化された方法でデータにアクセスできるようになり、他のシステムとの統合が容易になり、将来のスケーラビリティがサポートされます。オプションDが正しい理由:システムAPIを作成することは、API主導の接続性の原則に沿っており、データが再利用可能な方法で公開されることを保証します。このAPIは、CRMの要件を満たすために必要に応じてプロセスAPIによってオーケストレーションされ、他のアプリケーションにも容易に拡張できます。誤った選択肢:オプション A (ビジネス プロセス モデルの作成) では、接続が直接有効になったり、API を通じてバックエンド データが公開されたりすることはありません。オプション B はこの段階では不要です。OAuth 2.0 サポートなどの CRM 機能の評価は、システム API を介したアプリケーション ネットワークの作成とは直接関係ありません。オプション C は、柔軟性と拡張性の欠如により API 主導の接続が回避しようとするポイントツーポイントの統合を提案することで、API 主導のベスト プラクティスと矛盾します。参照システム、プロセス、エクスペリエンス API を使用してスケーラブルな統合レイヤーを構築するための詳細なフレームワークについては、MuleSoft の API 主導の接続リソースを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 19,
+  "qe": "Which of the following best fits the definition of API-led connectivity?",
+  "oe": [
+   "API-led connectivity is not just an architecture or technology but also a way to organize people and processes for efficient IT delivery in the organization",
+   "API-led connectivity is a 3-layered architecture covering Experience, Process and System layers",
+   "API-led connectivity is a technology which enabled us to implement Experience, Process and System layer based APIs"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "正解：A",
+  "expl": "正解: API 主導の接続性は、単なるアーキテクチャやテクノロジーではなく、組織内で効率的な IT 提供のために人材とプロセスを編成する方法でもあります。 - **************************************** 参照： [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/2af9003ef273a3f2aef0094d8aa55be2.jpg]",
+  "also": [
+   [
+    "v2026",
+    2
+   ]
+  ],
+  "qj": "API 主導の接続性の定義に最も適したものは次のどれですか?",
+  "oj": [
+   "API主導の接続性は、単なるアーキテクチャやテクノロジーではなく、組織内で効率的なIT提供のために人材とプロセスを編成する方法でもあります。",
+   "API主導の接続性は、エクスペリエンス、プロセス、システム層をカバーする3層アーキテクチャです。",
+   "API主導の接続性は、エクスペリエンス、プロセス、システム層ベースのAPIを実装することを可能にする技術です。"
+  ],
+  "text_from": [
+   "v2026",
+   2
+  ],
+  "note_text": "English wording taken from duplicate v2026 #2; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 20,
+  "qe": "老舗通信会社がAPI主導の接続性への取り組みを開始しています。同社は長年にわたり、実績のあるエンタープライズ・データ・モデルを活用してきました。同社はAPI主導の最初の取り組みとして、セルフサービス・アカウント管理アプリを選定し、以下のAPIを採用しました。エクスペリエンス レイヤー: モバイル アカウント管理 EAPI、ブラウザー アカウント管理 EAPI プロセス レイヤー: 顧客検索 PAPI、サービス検索 PAPI、アカウント検索 PAPI システム レイヤー: 顧客 SAPI、アカウント SAPI、製品 SAPI、サービス SAPI MuleSoft の API 主導の接続アプローチによれば、エンタープライズ データ モデルで提供されない API はどれですか。",
+  "oe": [
+   "顧客SAPI",
+   "顧客検索PAPI",
+   "モバイルアカウント管理EAPI",
+   "SAPI サービス"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "正解：C",
+  "expl": "API 主導の接続アプローチでは、API はエクスペリエンス、プロセス、システムの各レイヤーに分類されます。エンタープライズ データ モデルの範囲:エンタープライズデータモデル（EDM）は、組織全体で使用される標準データ構造を定義することで、一般的にシステムAPIと一部のプロセスAPIをサポートします。ただし、エクスペリエンスAPIは特定のアプリケーションやインターフェースに合わせてカスタマイズされており、各ユーザーインターフェース固有のニーズを満たすためにカスタマイズされたデータ表現が必要になる場合があるため、EDMから直接提供される可能性は低くなります。オプションCが正しい理由:モバイルアカウント管理EAPIはモバイル特有のニーズに対応しており、標準化されたデータモデルとは異なる形式のデータを必要とすることがよくあります。そのため、EDMの直接的な範囲外となり、モバイルアプリケーションの要件に合わせてカスタムマッピングが採用される可能性があります。誤った選択肢:オプション A (顧客 SAPI)、オプション B (顧客検索 PAPI)、およびオプション D (サービス SAPI) は、EDM がサポートするコア データとサービスに近いため、通常は EDM と一致します。参照追加のガイダンスについては、API 主導の接続性とデータ モデリングに関する MuleSoft のベスト プラクティスを確認してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 21,
+  "qe": "一般的な Enablement Center の成功を測定し、Anypoint Platform API からの応答ですぐに利用できる、すぐに使用できる主要業績評価指標はどれですか。",
+  "oe": [
+   "ビジネスグループごとに、C1/CDパイプラインを使用して展開された本番環境のAPT実装の数と手動で展開された本番環境のAPI実装の数の比率",
+   "展開されたAPI実装ごとに、1日に消費される帯域幅の量",
+   "公開されたAPIごとに、API仕様のバージョンをダウンロードした開発者の数",
+   "公開された API ごとに、API へのアクセスを要求し、本番環境で承認されたコンシューマーの数"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "イネーブルメントセンター（C4E）KPI：MuleSoftのCenter for Enablement (C4E)は、組織全体で利用可能なAPIを提供することで、セルフサービスと再利用の実現に重点を置いています。成功の重要な指標は、公開されたAPIをどれだけのユーザーが利用しているかです。API へのアクセスを要求し、それを取得した消費者の数は、C4E の目標に一致する採用と再利用のレベルを示します。オプションの評価:オプション A: このメトリックはデプロイメントの自動化を示している可能性がありますが、C4E による API の再利用と消費の実現の成功を直接測定するものではありません。オプション B: API 実装ごとの帯域幅使用量は、API トラフィックに関する洞察を提供しますが、C4E の有効化や消費者のエンゲージメントを測定するものではありません。オプション C: API 仕様をダウンロードする開発者の数は関心の指標にはなりますが、実際の使用状況や有効化を確認するものではありません。オプション D (正解): 運用中の API へのアクセスを要求し、アクセスを取得した消費者の数は、API の採用と再利用を示す重要な指標であり、C4E の目標と一致しています。結論：オプション D は、消費者の関与と採用を直接測定し、組織全体で API の使用を促進する C4E の成功を示すため、正解です。追加の分析情報については、MuleSoft の C4E KPI と API 使用状況メトリックに関するドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 23,
+  "qe": "A client has several applications running on the Salesforce service cloud. The business requirement for integration is to get daily data changes from Account and Case Objects. Data needs to be moved to the client's private cloud AWS DynamoDB instance as a single JSON and the business foresees only wanting five attributes from the Account object, which has 219 attributes (some custom) and eight attributes from the Case Object.What design should be used to support the API/ Application data model?",
+  "oe": [
+   "Create separate entities for Account and Case Objects by mimicking all the attributes in SAPI, which are combined by the PAPI and filtered to provide JSON output containing 13 attributes.",
+   "Request client’s AWS project team to replicate all the attributes and create Account and Case JSON table in DynamoDB. Then create separate entities for Account and Case Objects by mimicking all the attributes in SAPI to transfer ISON data to DynamoD for respective Objects",
+   "Start implementing an Enterprise Data Model by defining enterprise Account and Case Objects and implement SAPI and DynamoDB tables based on the Enterprise Data Model,",
+   "Create separate entities for Account with five attributes and Case with eight attributes in SAPI, which are combined by the PAPI to provide JSON output containing 13 attributes."
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "要件を理解する:企業は、Salesforce アカウントおよびケース オブジェクトから毎日のデータ変更を単一の JSON 形式で AWS DynamoDB に転送する必要があります。必要なのは属性のサブセットのみ (Account から 5 個、Case から 8 個) なので、Account オブジェクトの 219 個の属性すべてを含める必要はありません。設計アプローチ:各 Salesforce オブジェクト (アカウントとケース) に対してシステム API (SAPI) を作成し、必要なフィールド (アカウントの場合は 5 つの属性、ケースの場合は 8 つの属性) のみを公開する必要があります。プロセス API (PAPI) を使用すると、これらの SAPI からのデータを集約および変換し、アカウントとケースから選択した 13 個の属性を DynamoDB の単一の JSON 構造に結合できます。オプションの評価:オプション A: 必要な属性は 13 個だけなので、SAPI のすべての属性を模倣するのは非効率的で不要です。オプション B: DynamoDB 内のすべての属性を複製するのは過剰であり、ストレージと処理のコストが高くなりますが、属性のサブセットのみが必要であることを考えると、これは不要です。オプション C: エンタープライズ データ モデルの実装は、より広範なデータ管理に役立ちますが、軽量な統合に重点を置いているため、ここでは必要ありません。オプション D (正解): 必要な属性のみを持つアカウントとケースの個別のエンティティを SAPI で作成し、PAPI を使用してそれらを単一の JSON に集約するのが最も効率的で、要件を効果的に満たします。結論：オプション D は、必要な属性のみを転送し、リソースの使用を最小限に抑えることで要件を満たす軽量で効率的な設計を提供するため、最適な選択肢です。SAPI と PAPI を効率的に構築するには、API 主導の接続性とデータ モデリングに関する MuleSoft のベスト プラクティスを参照してください。",
+  "also": [
+   [
+    "v2026",
+    5
+   ]
+  ],
+  "qj": "あるクライアントは、Salesforce サービスクラウド上で複数のアプリケーションを稼働させています。統合のビジネス要件は、アカウントオブジェクトとケースオブジェクトから毎日データの変更を取得することです。データは単一の JSON としてクライアントのプライベートクラウド AWS DynamoDB インスタンスに移動する必要があり、アカウントオブジェクトには 219 個の属性（一部カスタム属性）があり、ケースオブジェクトからは 8 個の属性のみを取得する予定です。API/アプリケーション データ モデルをサポートするにはどのような設計を使用する必要がありますか?",
+  "oj": [
+   "SAPI のすべての属性を模倣して、アカウント オブジェクトとケース オブジェクトに個別のエンティティを作成します。これらの属性は PAPI によって結合され、フィルター処理されて、13 個の属性を含む JSON 出力が提供されます。",
+   "クライアントのAWSプロジェクトチームに、すべての属性を複製し、DynamoDBにアカウントとケースのJSONテーブルを作成するよう依頼します。次に、SAPIのすべての属性を模倣してアカウントオブジェクトとケースオブジェクトに個別のエンティティを作成し、それぞれのオブジェクトのISONデータをDynamoDBに転送します。",
+   "エンタープライズアカウントとケースオブジェクトを定義してエンタープライズデータモデルの実装を開始し、エンタープライズデータモデルに基づいてSAPIとDynamoDBテーブルを実装します。",
+   "SAPI で 5 つの属性を持つ Account と 8 つの属性を持つ Case の個別のエンティティを作成し、これらを PAPI によって結合して、13 個の属性を含む JSON 出力を提供します。"
+  ],
+  "text_from": [
+   "v2026",
+   5
+  ],
+  "note_text": "English wording taken from duplicate v2026 #5; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 25,
+  "qe": "Anypoint 仮想プライベートクラウド (VPC) のテクノロジー アーキテクチャについて正しい記述はどれですか。2つの回答を選択してください",
+  "oe": [
+   "ポート8081と8082が使用されます",
+   "CIDR黒が使用される",
+   "Anypoint VPCはアプリケーションの負荷分散を担当します",
+   "ラウンドロビン負荷分散は、クライアントのリクエストを異なるアプリケーションに分散するために使用されます。",
+   "デフォルトでは、パブリックインターネットからポート6091のワーカーにHTTPリクエストを送信できます。"
+  ],
+  "ans": [
+   1,
+   4
+  ],
+  "ans_raw": "正解：B,E",
+  "expl": "Anypoint 仮想プライベート クラウド (VPC) は、特定のアーキテクチャ要素を使用して、MuleSoft アプリケーションに安全でプライベートなネットワーク環境を提供します。CIDR ブロック:Anypoint VPC は CIDR ブロックを使用して IP 範囲を定義し、組織が VPC の IP アドレス空間を制御およびセグメント化できるようにします。HTTPリクエスト用のポート6091:デフォルトでは、パブリック インターネットからポート 6091 上のワーカーに HTTP リクエストを送信できるため、追加の制限が適用されない限り、アクセス可能なエントリ ポイントが提供されます。正解（B、E）CIDR ブロックにより VPC の IP 範囲管理が可能になり、ポート 6091 は Anypoint VPC のデフォルト設定の一部であるデフォルトのパブリック エントリ ポートになります。誤った選択肢:オプション A (ポート 8081 および 8082) は正しくありません。これらは Anypoint VPC のデフォルトのパブリック ポートではありません。オプション C (負荷分散を担当) は、負荷分散には別個の専用ロードバランサー (DLB) が必要であるため、正しくありません。オプション D (ラウンドロビン負荷分散) は、VPC に直接ではなく、DLB に適用されます。参照VPC のセットアップとネットワークの詳細については、VPC 構成とデフォルトのポート設定に関する MuleSoft のドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 26,
+  "qe": "In which layer of API-led connectivity, does the business logic orchestration reside?",
+  "oe": [
+   "System Layer",
+   "Experience Layer",
+   "Process Layer"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "正解：C",
+  "expl": "プロセス層*****************************************>> エクスペリエンスレイヤーは、エンドユーザーエクスペリエンスの向上を目的としています。このレイヤーは、さまざまなAPIクライアント/コンシューマーのニーズに対応します。>> システム層は、本質的にモジュール化されたAPI専用であり、バックエンドシステムのさまざまな個別の機能を実装/公開します。>> プロセス レイヤーは、1 つまたは複数のシステム レイヤー モジュラー API を呼び出すことによって、単純または複雑なビジネス オーケストレーション ロジックが記述される場所です。したがって、プロセス レイヤーが正しい答えです。",
+  "also": [
+   [
+    "v2026",
+    40
+   ]
+  ],
+  "qj": "API 主導の接続のどのレイヤーに、ビジネス ロジック オーケストレーションが存在しますか?",
+  "oj": [
+   "システム層",
+   "エクスペリエンスレイヤー",
+   "プロセス層"
+  ],
+  "text_from": [
+   "v2026",
+   40
+  ],
+  "note_text": "English wording taken from duplicate v2026 #40; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 35,
+  "qe": "Anypoint Platform が提供する 4 つの重要なプラットフォーム機能は何ですか?",
+  "oe": [
+   "API のバージョン管理、API ランタイムの実行とホスティング、API の呼び出し、API コンシューマーのエンゲージメント",
+   "API の設計と開発、API ランタイムの実行とホスティング、API のバージョン管理、API の廃止",
+   "API の設計と開発、API ランタイムの実行とホスティング、API の運用と管理、API コンシューマーのエンゲージメント",
+   "API の設計と開発、API の廃止、API のバージョン管理、API 消費者エンゲージメント"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "正解：C",
+  "expl": "正解: API の設計と開発、API ランタイムの実行とホスティング、API の運用と管理、API コンシューマーエンゲージメント - *************************************** >> API 設計と開発 - Anypoint Studio、Anypoint Design Center、Anypoint Connectors >> API ランタイム実行とホスティング - Mule ランタイム、CloudHub、ランタイム サービス >> API 運用と管理 - Anypoint API Manager、Anypoint Exchange >> API コンシューマー管理 - API 契約、パブリック ポータル、Anypoint Exchange、API ノートブック [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/6313e39a21174a8ec6a2042736cf308c.jpg]",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 39,
+  "qe": "TemperatureSensors APIインスタンスは、CAR_FACTORYビジネスグループのPROD環境のAPI Managerで定義されています。AcmelemperatureSensors MuleアプリケーションはこのAPIインスタンスを実装し、Runtime ManagerからCAR_FACTORYビジネスグループのPROD環境にデプロイされます。有効なクライアントIDとクライアントシークレットを要求するポリシーが、API ManagerでこのAPIインスタンスに適用されています。API コンシューマーは、AcmeTemperatureSensors Mule アプリケーションを呼び出すために有効なクライアント ID とクライアント シークレットをどこで入手できますか?",
+  "oe": [
+   "シークレットマネージャーで、共有シークレットの静的ユーザー名/パスワードへのアクセスをリクエストします。",
+   "API Manager の CAR_FACTORY ビジネス グループの PROD 環境から",
+   "アクセス管理では、CAR_FACTORYビジネスグループのPROD環境から",
+   "Anypoint Exchangeでは、TemperatureSensors APIインスタンスに承認されたAPIクライアントアプリケーションから"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "API Manager 内の API インスタンスに、クライアント ID とクライアントシークレットを必要とする API ポリシーが適用されると、API コンシューマーは登録済みのクライアントアプリケーションを通じてこれらの認証情報を取得する必要があります。その仕組みは以下のとおりです。Anypoint Exchange およびクライアント アプリケーション:セキュアなAPIにアクセスするには、APIコンシューマーはAnypoint Exchangeでクライアントアプリケーションを作成または登録する必要があります。このプロセスでは、特定のAPIへのアクセスをリクエストし、承認されると、コンシューマーはアプリケーションに関連付けられたクライアントIDとクライアントシークレットを取得できます。オプションDが正しい理由:オプションDは、クライアントIDとクライアントシークレットがAnypoint Exchange内で生成および管理されるため、プロセスを正確に説明しています。APIコンシューマはこれらの認証情報を使用してTemperatureSensors APIで認証できます。誤った選択肢:オプション A (シークレット マネージャー) は、API アクセス用のクライアント資格情報がシークレット マネージャー経由で管理されないため、正しくありません。オプション B (API マネージャー) は、API マネージャーがポリシーを管理しますが、クライアント固有の資格情報を提供しないため、正しくありません。オプション C (アクセス管理) は適用されません。アクセス管理は主に API クライアント資格情報ではなく、ユーザー ロールと権限に使用されるためです。参照Anypoint Exchange でクライアント アプリケーションを管理する方法の詳細については、クライアント アプリケーションの登録と API セキュリティ ポリシーに関する MuleSoft のドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 41,
+  "qe": "Order APIは、バックエンドの在庫データベースで注文の商品の詳細を参照するための一連のAPI呼び出しをトリガーします。Order APIはOrderItemsプロセスAPIを呼び出し、OrderItemsプロセスAPIはInventoryシステムAPIを呼び出します。InventoryシステムAPIは、バックエンドの在庫データベースでデータベース操作を実行します。Inventory システム API とデータベース間のネットワーク接続は信頼性が低く、予期しない時間にハングすることが知られています。Order API が Orderltems プロセス API からの応答を 2 秒以上待たないように、API 処理シーケンスのどこに 2 秒のタイムアウトを構成する必要がありますか? [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/9e73fa958c4e50d1f98a81503c7c262e.jpg]",
+  "oe": [
+   "OrderltemsプロセスAPI実装内",
+   "Order API実装では",
+   "在庫システムAPI実装",
+   "在庫データベース内"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "正解：A",
+  "expl": "API フローとタイムアウト要件を理解する:Order API は OrderItems プロセス API への呼び出しを開始し、次に Inventory システム API を呼び出して在庫データベースから詳細を取得します。この要件では、チェーンのさらに下流 (在庫システム API とデータベースの間) で遅延が発生した場合でも、Order API は OrderItems プロセス API からの応答を 2 秒以上待機してはならないと規定されています。適切なタイムアウト場所の選択:OrderItemsプロセスAPIレベルでタイムアウトを設定することで、在庫システムAPIの応答に2秒以上かかる場合、OrderItemsプロセスAPIはリクエストを終了し、タイムアウト応答をOrder APIに返します。これにより、データベースへの接続が不安定なためにOrder APIが無期限に待機し続けることを防ぎます。在庫システム API またはデータベースでタイムアウトが設定されている場合、OrderItems プロセス API は依然として応答を待機しているため、Order API に直接役立つことはありません。各オプションの詳細な分析:オプションA（正解）：OrderItemsプロセスAPIにタイムアウトを設定することで、在庫システムAPIからの応答を待つ時間を制御できます。在庫システムAPIが2秒以内に応答しない場合、OrderItemsプロセスAPIは呼び出しを終了し、Order APIにタイムアウト応答を返すことで要件を満たします。オプション B: Order API でタイムアウトを設定しても、OrderItems プロセス API レベルでの待機時間は制限されません。つまり、OrderItems プロセス API は依然として Inventory システム API を無期限に待機することになり、遅延が長くなります。オプション C: 在庫システム API でタイムアウトを設定すると、データベースへの接続にのみ影響し、OrderItems プロセス API が在庫システム API の応答を待機する時間には影響しません。オプション D: データベース タイムアウトは通常、データベース操作用に構成され、API チェーン全体の API 応答時間を直接制御しないため、このコンテキストではデータベースにタイムアウトを設定することは実現できません。結論：オプションAは最適な選択肢です。これにより、データベースへのダウンストリーム接続がハングした場合でも、OrderItemsプロセスAPIがOrder APIを必要な2秒以上保持することがなくなります。この構成は、APIオーケストレーションにおけるタイムアウト設定に関するMuleSoftのベストプラクティスに準拠しており、依存関係を管理し、一連のAPI呼び出しにおける遅延を防止します。タイムアウト設定の詳細については、タイムアウトの処理と API オーケストレーションのベスト プラクティスに関する MuleSoft のドキュメントを参照してください。",
+  "lang": "ja",
+  "fig": true,
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 42,
+  "qe": "An organization wants MuleSoft-hosted runtime plane features (such as HTTP load balancing, zero downtime, and horizontal and vertical scaling) in its Azure environment. What runtime plane minimizes the organization's effort to achieve these features?",
+  "oe": [
+   "Anypoint Runtime Fabric",
+   "Anypoint Platform for Pivotal Cloud Foundry",
+   "CloudHub",
+   "A hybrid combination of customer-hosted and MuleSoft-hosted Mule runtimes"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "正解：D",
+  "expl": "",
+  "also": [
+   [
+    "v2026",
+    22
+   ]
+  ],
+  "qj": "ある組織は、Azure 環境で MuleSoft がホストするランタイム プレーン機能（HTTP ロードバランシング、ゼロダウンタイム、水平および垂直スケーリングなど）を導入したいと考えています。これらの機能を実現するための組織の労力を最小限に抑えるランタイム プレーンはどれでしょうか。",
+  "oj": [
+   "Pivotal Cloud Foundry 向け Anypoint プラットフォーム",
+   "クラウドハブ",
+   "顧客ホスト型と MuleSoft ホスト型の Mule ランタイムのハイブリッドな組み合わせ",
+   "Anypoint ランタイムファブリック"
+  ],
+  "text_from": [
+   "v2026",
+   22
+  ],
+  "note_text": "English wording taken from duplicate v2026 #22; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 43,
+  "qe": "Refer to the exhibit. [FIGURE: https://selfexamtraining.com/uploadimages/MuleSoft-Platform-Architect-I-Q-46.png] Three business processes need to be implemented, and the implementations need to communicate with several different SaaS applications. These processes are owned by separate (siloed) LOBs and are mainly independent of each other, but do share a few business entities. Each LOB has one development team and their own budget In this organizational context, what is the most effective approach to choose the API data models for the APIs that will implement these business processes with minimal redundancy of the data models?",
+  "oe": [
+   "Build several Bounded Context Data Models that align with coherent parts of the business processes and the definitions of associated business entities",
+   "Build distinct data models for each API to follow established micro-services and Agile API-centric practices",
+   "Build all API data models using XML schema to drive consistency and reuse across the organization",
+   "Build one centralized Canonical Data Model (Enterprise Data Model) that unifies all the data types from all three business processes, ensuring the data model is consistent and non-redundant"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "正解：A",
+  "expl": "正解: ビジネス プロセスの一貫した部分と関連するビジネス エンティティの定義に一致する境界付きコンテキスト データ モデルをいくつか構築します。 - **************************************** >> XMLスキーマを用いたAPIデータモデルの構築／アジャイルAPI中心のプラクティスに関する選択肢は、質問で示されたシナリオとは無関係です。したがって、これら2つは無効です。 >> チームと LOB がサイロで作業し、それぞれが異なる取り組みや予算などを持っているため、EDM (エンタープライズ データ モデル) の構築は、このシナリオでは実現不可能であり、適切ではありません。EDM の構築には、チーム全体の間での徹底的な調整が必要ですが、このシナリオでは明らかに不可能と思われます。 したがって、このシナリオに最適なのは、ビジネス プロセスの一貫した部分と関連するビジネス エンティティの定義に一致する、境界付きコンテキスト データ モデルをいくつか構築することです。 [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/74d0b15cbd7b9b63901af88afb5e1057.jpg]",
+  "fig": true,
+  "also": [
+   [
+    "v2026",
+    3
+   ]
+  ],
+  "qj": "展示品を参照してください。3 つのビジネス プロセスを実装する必要があり、実装では複数の異なる SaaS アプリケーションと通信する必要があります。これらのプロセスは、それぞれ独立した（サイロ化された）LOBによって所有されており、基本的には互いに独立していますが、いくつかのビジネスエンティティを共有しています。各LOBにはそれぞれ1つの開発チームと独自の予算が割り当てられています。このような組織的状況において、データモデルの冗長性を最小限に抑えながらこれらのビジネスプロセスを実装するAPIデータモデルを選択するための最も効果的なアプローチは何でしょうか？ [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/840ad523f89ebabdefbc6eb2166e9e64.jpg]",
+  "oj": [
+   "ビジネスプロセスの一貫した部分と関連するビジネスエンティティの定義に一致する複数の境界付きコンテキストデータモデルを構築する",
+   "確立されたマイクロサービスとアジャイル API 中心のプラクティスに従うために、各 API に個別のデータ モデルを構築する",
+   "組織全体で一貫性と再利用性を高めるために、XML スキーマを使用してすべての API データ モデルを構築する",
+   "3 つのビジネス プロセスすべてのデータ タイプを統合し、データ モデルの一貫性と冗長性を確保する 1 つの集中化された標準データ モデル (エンタープライズ データ モデル) を構築する"
+  ],
+  "text_from": [
+   "v2026",
+   3
+  ],
+  "note_text": "English wording taken from duplicate v2026 #3; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 45,
+  "qe": "An organization wants to make sure only known partners can invoke the organization's APIs. To achieve this security goal, the organization wants to enforce a Client ID Enforcement policy in API Manager so that only registered partner applications can invoke the organization's APIs. In what type of API implementation does MuleSoft recommend adding an API proxy to enforce the Client ID Enforcement policy, rather than embedding the policy directly in the application's JVM?",
+  "oe": [
+   "A Mule 3 application using APIkit",
+   "A Mule 3 or Mule 4 application modified with custom Java code",
+   "A Mule 4 application with an API specification",
+   "A Non-Mule application"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "正解: 非Muleアプリケーション*****************************************>> Mule ランタイム上で実行されるすべてのタイプの Mule アプリケーション (Mule 3/Mule 4/APIkit 付き/カスタム Java コード付きなど) は、埋め込みポリシー適用をサポートしています。>> 埋め込みポリシー適用ができない、またはサポートされておらず、API プロキシが必要な唯一のオプションは、非 Mule アプリケーション用です。したがって、Non-Mule アプリケーションが正しい答えです。",
+  "also": [
+   [
+    "v2026",
+    29
+   ]
+  ],
+  "qj": "ある組織は、既知のパートナーのみが組織のAPIを呼び出せるようにしたいと考えています。このセキュリティ目標を達成するために、API ManagerでクライアントID適用ポリシーを適用し、登録済みのパートナーアプリケーションのみが組織のAPIを呼び出せるようにしたいと考えています。MuleSoftは、どのようなタイプのAPI実装において、クライアントID適用ポリシーをアプリケーションのJVMに直接埋め込むのではなく、APIプロキシを追加して適用することを推奨していますか？",
+  "oj": [
+   "APIkit を使用した Mule 3 アプリケーション",
+   "カスタム Java コードで変更された Mule 3 または Mule 4 アプリケーション",
+   "API仕様を備えたMule 4アプリケーション",
+   "非Muleアプリケーション"
+  ],
+  "text_from": [
+   "v2026",
+   29
+  ],
+  "note_text": "English wording taken from duplicate v2026 #29; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 46,
+  "qe": "たとえば、CRM-Z と呼ばれるレガシー CRM システムがあり、以下の機能を提供しているとします。1. 顧客の創造2. 既存顧客の詳細を修正する3. 顧客の詳細を取得する4. 顧客を停止する",
+  "oe": [
+   "customerManagement という名前のシステム API を実装します。この API には、さまざまな操作やリソースとしてすべての機能がラップされています。",
+   "createCustomer、amendCustomer、retrieveCustomer、suspendCustomer という異なるシステム API を実装します。これらはモジュール化されており、関心の分離が可能です。",
+   "createCustomerInCRMZ、amendCustomerInCRMZ、retrieveCustomerFromCRMZ、suspendCustomerInCRMZ という異なるシステム API を実装します。これらはモジュール化されており、関心の分離が可能です。"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "正解：B",
+  "expl": "正解: モジュール化されており、関心の分離があるため、createCustomer、amendCustomer、retrieveCustomer、suspendCustomer という異なるシステム API を実装します。*****************************************>> 単一のAPIと複数の動詞とリソースの組み合わせを持つことはごく一般的です。しかし、これはエクスペリエンスAPIやプロセスAPIには適していますが、システムAPIには最適なアーキテクチャスタイルではありません。したがって、顧客管理APIを1つだけ使用するという選択肢は、ここでは最適な選択肢ではありません。>> createCustomerInCRMZ形式のAPIを使用するオプションは、モジュール化とメンテナンスの軽減という点では次に近い選択肢ですが、APIの命名はレガシーシステムと直接結びついています。より適切なアプローチとしては、バックエンドシステム名を抽象化してAPIに名前を付けることが挙げられます。これにより、いつでもあらゆるバックエンドシステムをシームレスに置き換え・移行できます。したがって、これも正しい選択ではありません。>> createCustomer、amendCustomer、retrieveCustomer、suspendCustomer は正しいアプローチであり、モジュール化されており、同時にバックエンド システムから名前が分離されており、システム API に必要なすべての要件がカバーされているため、他のオプションと比較して最適です。",
+  "lang": "ja",
+  "also": []
+ }
+]

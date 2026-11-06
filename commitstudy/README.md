@@ -138,6 +138,7 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 ## 科目 MuleSoft Platform Architect(mulepa)
 - `mulepa_SPEC.md` 原稿の仕様(問題は4択)、`mulepa/manuscript/out_ch1〜7.json`、`build_mulepa.py` で data を組み立て、`figs_m/spec_J.py`(1〜4章)・`spec_K.py`(5〜7章)と `figs_m/apply_mulepa.py` で図を入れる。用語カードは `mulepa/data/terms.json`。`patch_add_mulepa.py` で科目を登録(rebuild.sh で patch_add_afspec の直後)。公開データは `mulepa/data/`
 - 作り直し: `python3 build_mulepa.py mulepa/manuscript <out> && python3 figs_m/apply_mulepa.py <out>/chapters.json <out>/chapters.json && cp mulepa/data/terms.json <out>/`
+- 過去問: Notion の3ページ(v2026-05-09・v2026-01-30・日付なし=v2026)169問から重複60問を除いた109問を `mulepa/pastq/`(in_/out_/dups.json/SPEC.md)に。日付は「日付のない問題は重複先の日付、日付のある回どうしは新しいほう」。`python3 add_pastq_mulepa.py mulepa/pastq mulepa/pastq mulepa/data <out>` で問題集と本文(関連知識)に追加
 
 ## 科目 Agentforce スペシャリスト(afspec)
 - `afspec_SPEC.md` 原稿の仕様(問題は3択)、`afspec/manuscript/out_ch1〜6.json` 章ごとの原稿、`build_afspec.py` で data を組み立て、`figs_m/spec_H.py`(2〜6章)・`spec_I.py`(1章)と `figs_m/apply_afspec.py` で図を入れる。用語カードは `afspec/data/terms.json`。`patch_add_afspec.py` で科目を登録(rebuild.sh の最後)。公開データは `afspec/data/`

@@ -1,0 +1,449 @@
+[
+ {
+  "label": "v2026-01-30",
+  "no": 47,
+  "qe": "システムAPIは、スケーラビリティに課題のあるバックエンドシステムからデータを取得するために設計されています。バックエンドシステムを最も効果的に保護できるAPIポリシーは何でしょうか？",
+  "oe": [
+   "IPホワイトリスト",
+   "SLAベースのレート制限",
+   "認証2トークンの強制",
+   "クライアントIDの強制"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "正解：B",
+  "expl": "SLAベースのレート制限*****************************************>> クライアントID適用ポリシーは「コンプライアンス」関連のNFRであり、「サービス品質（QoS）」の維持には役立ちません。バックエンドシステムをスケーラビリティの問題から保護することは不可能であり、そのように意図されているわけでもありません。>> IPホワイトリストとOAuth 2.0トークンの強制は「セキュリティ」関連のNFRであり、「サービス品質（QoS）」の維持には役立ちません。これらは、バックエンドシステムをスケーラビリティの問題から保護することはできず、またそのように意図されていません。レート制限、レート制限 SLA、スロットリング、スパイク制御は、「サービス品質 (QOS)」関連の NFR であるポリシーであり、バックエンド システムが過負荷になるのを防ぐのに役立ちます。https://dzone.com/articles/apis のセキュリティ保護方法",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 50,
+  "qe": "An organization has created an API-led architecture that uses various API layers to integrate mobile clients with a backend system. The backend system consists of a number of specialized components and can be accessed via a REST API. The process and experience APIs share the same bounded-context model that is different from the backend data model. What additional canonical models, bounded-context models, or anti-corruption layers are best added to this architecture to help process data consumed from the backend system?",
+  "oe": [
+   "Create a bounded-context model for every layer and overlap them when the boundary contexts overlap, letting API developers know about the differences between upstream and downstream data models",
+   "Create a canonical model that combines the backend and API-led models to simplify and unify data models, and minimize data transformations.",
+   "Create a bounded-context model for the system layer to closely match the backend data model, and add an anti-corruption layer to let the different bounded contexts cooperate across the system and process layers",
+   "Create an anti-corruption layer for every API to perform transformation for every data model to match each other, and let data simply travel between APIs to avoid the complexity and overhead of building canonical models"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "正解：C",
+  "expl": "正解: システム層の境界付きコンテキスト モデルを作成してバックエンド データ モデルと密接に一致させ、破損防止層を追加して、異なる境界付きコンテキストがシステム層とプロセス層全体で連携できるようにします。*****************************************>> 組織はすでに努力を重ね、エクスペリエンス API とプロセス API 用の境界付きコンテキスト モデルを作成しているため、ここでは標準モデルは選択できません。>> エクスペリエンスAPIとプロセスAPIは同じ境界コンテキストモデルを共有しているため、すべてのAPIに破損防止レイヤーを設けるのは不要かつ無効です。現在、適切なアプローチを選択すべきなのはシステム層APIのみです。>> したがって、プロセス層とシステム層の間に破損防止層を設けるのが効果的です。また、このアプローチを高速化するために、システムAPIはバックエンドシステムのデータモデルを模倣できます。",
+  "also": [
+   [
+    "v2026",
+    31
+   ]
+  ],
+  "qj": "ある組織は、様々なAPIレイヤーを用いてモバイルクライアントとバックエンドシステムを統合するAPI主導のアーキテクチャを構築しました。バックエンドシステムは複数の専用コンポーネントで構成され、REST API経由でアクセスできます。プロセスAPIとエクスペリエンスAPIは、バックエンドデータモデルとは異なる境界付きコンテキストモデルを共有しています。バックエンドシステムから消費されるデータの処理を支援するために、このアーキテクチャにどのような標準モデル、境界付きコンテキストモデル、または破損防止レイヤーを追加するのが最適でしょうか？",
+  "oj": [
+   "各レイヤーに境界コンテキストモデルを作成し、境界コンテキストが重なる場合は重ね合わせることで、API開発者が上流と下流のデータモデルの違いを認識できるようにします。",
+   "バックエンド モデルと API 主導のモデルを組み合わせた標準モデルを作成し、データ モデルを簡素化および統合し、データ変換を最小限に抑えます。",
+   "システム層の境界付きコンテキストモデルを作成し、バックエンドデータモデルと密接に一致させ、破損防止層を追加して、異なる境界付きコンテキストがシステム層とプロセス層全体で連携できるようにします。",
+   "すべての API に破損防止レイヤーを作成し、すべてのデータ モデルが互いに一致するように変換し、データが API 間で簡単に移動できるようにして、標準モデルを構築する複雑さとオーバーヘッドを回避します。"
+  ],
+  "text_from": [
+   "v2026",
+   31
+  ],
+  "note_text": "English wording taken from duplicate v2026 #31; ans is this page's (v2026-01-30) answer mapped onto that option order; ans_raw/expl are the original Japanese page's."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 51,
+  "qe": "展示品を参照してください。API 主導の接続性とアプリケーション ネットワークの意味で有効な API とは何でしょうか? [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/19cbf9cf6eb39bb4a69dac25c211b5bc.jpg]",
+  "oe": [
+   "TCP 経由の Java RMI",
+   "TCP 経由の Java RMI",
+   "HOP 経由の CORBA",
+   "UDP経由のXML"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "正解: XML over HTTP - **************************************** >> API 主導の接続性とアプリケーション ネットワークでは、最も効果的な API とネットワークを構築するために、HTTP ベースのプロトコル上に API を配置することが求められています。 >> HTTPベースのAPIにより、プラットフォームはさまざまなポリシーを適用して多くのNFRに対応できます。 >> HTTP ベースの API を使用すると、HTTP ベースの w3c ルールに準拠した多くの標準的かつ効果的な実装パターンを実装することもできます。 [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/eaa1e4d9456e0436a970a0a2b5c0d80b.jpg]",
+  "lang": "ja",
+  "fig": true,
+  "also": [],
+  "note": "Options are OCR-garbled (A and B identical \"Java RMI over TCP\", \"HOP\"=IIOP); answer line says D \"XML over UDP\" but the explanation says the correct answer is \"XML over HTTP\" - the original option D was likely XML over HTTP. Real options are in the figure."
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 56,
+  "qe": "統合テストではなく MUnit テストに適したシナリオはどれですか?",
+  "oe": [
+   "依存関係（他のWeb APIなど）への読み取り専用のやり取り用",
+   "テストに実装の詳細に関する知識が必要ない場合",
+   "モックが許可されていない場合",
+   "SoapUIを使用して実装されたテストの場合"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "正解：A",
+  "expl": "MUnitは、Anypoint Studio内で自動テストを作成・実行するためのMuleSoftのテストフレームワークです。Muleアプリケーションのユニットテスト用に特別に設計されており、テスト対象コンポーネントの内部動作や実装の詳細を理解する必要がないテストに最適です。MUnit の理想的な使用例:MUnitは、個々のフロー、関数、またはコンポーネントを個別にテストする場合に最適です。このタイプのテストは、システム全体を理解する必要がなく、各ユニットの動作を検証することに重点を置いています。ユニット テストでは外部統合や依存関係が稼働している必要がないため、MUnit では外部サービスや API の動作をシミュレートするためにモックがよく使用されます。オプションBが正しい理由:オプションBは、システム統合よりも機能テストに重点を置くユニットテストの概念に沿っています。一方、統合テストは実装に関する知識と実際のエンドポイントを必要とするため、MUnitのスコープには適していません。誤った選択肢:MUnit は依存関係をシミュレートするためのモック機能を備えて設計されているため、オプション A (読み取り専用インタラクション) とオプション C (モックなし) は MUnit の一般的なテスト環境には適していません。オプション D (SoapUI ベースのテスト) は外部テスト ツールを提案しますが、MUnit は MuleSoft に固有です。参照MUnit のベスト プラクティスの詳細については、MuleSoft の MUnit ドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-01-30",
+  "no": 58,
+  "qe": "CloudHub Object Store v2 はいつ使用できますか?",
+  "oe": [
+   "無制限の数のキーと値のペアを保存する",
+   "平均サイズが15MBを超えるペイロードを保存する",
+   "Mule 4 Object Store v1 に情報を保存する",
+   "最大300文字のキーと値のペアを保存します。"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "正解：D",
+  "expl": "CloudHub Object Store v2は、MuleSoftが提供するマネージドキーバリューストアで、一時的なデータストレージが必要な様々なユースケースをサポートします。選択肢Dが正解である理由は次のとおりです。キーの長さのサポート: Object Store v2 では、最大 300 文字の長さのキーを保存できるため、柔軟で説明的なキーを必要とするアプリケーションに適しています。サイズの制限:Object Store v2は大容量のペイロードの保存には適しておらず、各値のサイズ制限は10MB未満が推奨されます。15MBを超えるペイロードはパフォーマンスの問題を引き起こす可能性があるため、ファイルストレージシステムまたはデータベースの使用が適しています。オプション B は不正解です。15 MB を超えるペイロードを保存すると、オブジェクト ストアの最適使用仕様を超えてしまいます。キーと値の制限：Object Store v2は中程度の一時的なストレージニーズ向けに設計されており、無制限のストレージをサポートしていません。したがって、選択肢Aは誤りです。下位互換性: Object Store v2 は、Object Store v1 を実行する Mule 4 アプリケーションをサポートしません。Object Store v1 と v2 は異なるため、オプション C は誤りです。参照CloudHub Object Store v2 の詳細については、Object Store の制限と構成に関する MuleSoft のドキュメントを参照してください。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 6,
+  "qe": "A set of tests must be performed prior to deploying API implementations to a staging environment. Due to data security and access restrictions, untested APIs cannot be granted access to the backend systems, so instead mocked data must be used for these tests. The amount of available mocked data and its contents is sufficient to entirely test the API implementations with no active connections to the backend systems. What type of tests should be used to incorporate this mocked data?",
+  "oe": [
+   "Integration tests",
+   "Performance tests",
+   "Functional tests (Blackbox)",
+   "Unit tests (Whitebox)"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct answer: D. Unit tests (Whitebox)",
+  "expl": "MUnit (MuleSoft’s test framework) is designed to run unit tests that mock processors/connectors so your flows can be fully validated offline with predetermined data. This matches the requirement: no access to secured backends, yet complete behavior coverage using mocked payloads/responses.Eliminate others:A. Integration tests — Typically verify interactions with real downstream systems; using only mocks defeats the purpose of integration testing.B. Performance tests — Focus on throughput/latency under load, usually against production-like environments and data, not mocked-only setups. (Not aligned with the stated goal.)C. Functional tests (Blackbox) — Blackbox/API functional monitoring validates a deployed API and its live dependencies based on inputs/outputs, without mocking or altering internals—the opposite of this scenario.References:MUnit Overview — MuleSoft’s framework for unit/integration tests.MUnit Mock When — How to mock processors/connectors in tests.Mocking resources for tests — Using DataWeave/resources to feed mocked data.API Functional Monitoring (BAT) — Blackbox tests hit live dependencies; no mocking.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 7,
+  "qe": "What is a best practice when building System APIs?",
+  "oe": [
+   "Document the API using an easily consumable asset like a RAML definition",
+   "Model all API resources and methods to closely mimic the operations of the backend system",
+   "Build an Enterprise Data Model (Canonical Data Model) for each backend system and apply it to System APIs",
+   "Expose to API clients all technical details of the API implementation's interaction wifch the backend system"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. Document the API using an easily consumable asset like a RAML definition",
+  "expl": "When building System APIs in the context of MuleSoft’s API-led connectivity, the goal is to create reusable, secure, and well-governed interfaces that abstract the complexities of backend systems (e.g., ERPs, databases, legacy systems) and provide standardized access to their data and functionality. System APIs are the foundation of the API-led connectivity model, and best practices focus on ensuring they are reusable, maintainable, and easy to consume by other layers (e.g., Process APIs) or developers.Why Option A is Correct:Documentation with RAML: A key best practice for System APIs is to provide clear, standardized, and consumable documentation to enable reuse and ease of integration. RAML (RESTful API Modeling Language) is MuleSoft’s preferred specification for defining APIs in a structured, human- and machine-readable format. It allows developers to describe API resources, methods, parameters, and responses clearly, which aligns with MuleSoft’s emphasis on discoverability and self-service in Anypoint Platform (e.g., via Anypoint Exchange).Benefits: RAML documentation promotes reusability, reduces onboarding time for developers, and supports governance by making APIs discoverable in tools like Anypoint Exchange. It abstracts implementation details, making it easier for consumers to understand and use the API without needing to know the backend system’s complexities.MuleSoft Alignment: MuleSoft’s best practices, as outlined in their documentation and training, emphasize publishing APIs with clear specifications (like RAML or OpenAPI) to Anypoint Exchange to ensure they are consumable and reusable across the organization.Why Not the Other Options?B. Model all API resources and methods to closely mimic the operations of the backend system:Incorrect. A key principle of System APIs is to abstract the backend system’s complexity, not mirror it. Directly mimicking backend operations (e.g., exposing raw database queries or legacy system methods) defeats the purpose of decoupling the API consumer from the backend. Instead, System APIs should expose simplified, standardized interfaces that hide backend intricacies and provide a consistent contract for consumers. For example, a System API for a Salesforce backend should expose logical resources (e.g., /accounts) rather than replicating Salesforce’s internal API methods.C. Build an Enterprise Data Model (Canonical Data Model) for each backend system and apply it to System APIs:Incorrect. While a canonical data model (CDM) is valuable for standardizing data across APIs (typically in Process APIs or across the enterprise), it is not a best practice to create a CDM for each backend system for System APIs. System APIs are designed to expose the data and functionality of a specific backend system in a simplified way, often reflecting the backend’s native data model (translated into a RESTful structure). A CDM is more appropriate for Process APIs, which orchestrate data across multiple systems and require a unified data model to ensure consistency.D. Expose to API clients all technical details of the API implementation’s interaction with the backend system:Incorrect. Exposing technical details (e.g., how the API interacts with the backend’s protocols, queries, or internal logic) violates the principle of abstraction in API-led connectivity. System APIs should shield consumers from backend complexities, providing a clean, RESTful interface that focuses on business-relevant resources and operations. Exposing implementation details makes the API harder to consume, reduces flexibility, and tightly couples consumers to the backend, which undermines reusability and maintainability.Reference:MuleSoft Documentation: API-led Connectivity – System APIs – Emphasizes that System APIs abstract backend systems and require clear, consumable interfaces.MuleSoft Anypoint Exchange: Best Practices for API Design – Highlights the importance of documenting APIs with RAML or OpenAPI for discoverability and reuse in Anypoint Exchange.MuleSoft Training: MuleSoft Certified Platform Architect – Level 1 (MCPA) course materials stress that System APIs should be well-documented, reusable, and abstract backend complexity, with RAML as a standard for defining API contracts.RAML Specification: RAML.org – Details how RAML provides a structured, consumable way to define APIs, aligning with MuleSoft’s best practices.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 15,
+  "qe": "An organization is implementing a Quote of the Day API that caches today's quote. What scenario can use the GoudHub Object Store via the Object Store connector to persist the cache's state?",
+  "oe": [
+   "When there are three CloudHub deployments of the API implementation to three separate CloudHub regions that must share the cache state",
+   "When there are two CloudHub deployments of the API implementation by two Anypoint Platform business groups to the same CloudHub region that must share the cache state",
+   "When there is one deployment of the API implementation to CloudHub and anottV deployment to a customer-hosted Mule runtime that must share the cache state",
+   "When there is one CloudHub deployment of the API implementation to three CloudHub workers that must share the cache state"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct answer: D. When there is one CloudHub deployment of the API implementation to three CloudHub workers that must share the cache state",
+  "expl": "The CloudHub Object Store is designed to provide persistence for data that needs to be shared across multiple workers within a single CloudHub application deployment.D. When there is one CloudHub deployment of the API implementation to three CloudHub workers that must share the cache state:This is the ideal use case for the CloudHub Object Store. In CloudHub, workers within a single application are not clustered in the traditional sense, so they don't share in-memory cache. By using the persistent Object Store (Object Store V2), any worker that updates the \"Quote of the Day\" cache will make that updated value immediately available to all other workers in the same application deployment, ensuring a consistent cache state.A. When there are three CloudHub deployments... to three separate CloudHub regions...:The CloudHub Object Store is regional. This means an application's object store is only available within the region where the application is deployed. Sharing the cache state across different regions would require a different, more complex mechanism, possibly involving the Object Store REST API or an external database.B. When there are two CloudHub deployments... by two Anypoint Platform business groups...:Object stores are isolated per application deployment. Deployments in different business groups, even if in the same region, cannot share an object store using the standard connector. They would require the use of the Object Store REST API with proper permissions for cross-business group access.C. When there is one deployment... to CloudHub and another deployment to a customer-hosted Mule runtime...:A CloudHub deployment cannot directly share its persistent Object Store with a customer-hosted (on-premise) Mule runtime using the connector. The on-premise runtime would need to use the Object Store REST API, or a different shared cache solution would be required entirely.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 18,
+  "qe": "A Mule application exposes an HTTPS endpoint and is deployed to three CloudHub workers that do not use static IP addresses. The Mule application expects a high volume of client requests in short time periods. What is the most cost-effective infrastructure component that should be used to serve the high volume of client requests?",
+  "oe": [
+   "A customer-hosted load balancer",
+   "The CloudHub shared load balancer",
+   "An API proxy",
+   "Runtime Manager autoscaling"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct answer: B. The CloudHub shared load balancer",
+  "expl": "B. The CloudHub shared load balancer ExplanationCost-effectiveness:The CloudHub shared load balancer is included with your CloudHub subscription at no additional cost for basic functionality. Other options, like a Dedicated Load Balancer or customer-hosted solution, would incur significant extra costs.Built-in load balancing:When you deploy an application to more than one CloudHub worker, the shared load balancer automatically distributes incoming traffic using a round-robin algorithm. Since the application is already deployed to three workers, this built-in capability is the most direct and economical way to handle high request volumes.HTTPS support:The shared load balancer supports HTTPS endpoints. It includes a shared SSL certificate, so no custom certificate is required.No static IP dependency:The shared load balancer uses DNS to route traffic to the workers and does not require static IP addresses, which aligns with the application's deployment configuration.Why the other options are incorrectA. A customer-hosted load balancer:This would be significantly more expensive due to infrastructure, setup, and maintenance costs. The lack of static IPs for the CloudHub workers also makes a custom-hosted load balancer challenging to configure.C. An API proxy:While an API proxy can provide caching, security, and traffic management, it is primarily a component managed within API Manager for governance, not a high-volume load-balancing solution by itself. It also typically requires a load balancer in front of it.D. Runtime Manager autoscaling:Autoscaling is for dynamically scaling the number of workers up or down based on load. While it's a good tool for managing variable loads, it is not a direct load-balancing component and has additional licensing requirements. Since the application is already on three workers, the immediate need is for an efficient, cost-effective way to distribute the high volume of requests, which is the function of the shared load balancer.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 19,
+  "qe": "What best explains the use of auto-discovery in API implementations?",
+  "oe": [
+   "It makes API Manager aware of API implementations and hence enables it to enforce policies",
+   "It enables Anypoint Studio to discover API definitions configured in Anypoint Platform",
+   "It enables Anypoint Exchange to discover assets and makes them available for reuse",
+   "It enables Anypoint Analytics to gain insight into the usage of APIs"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. It makes API Manager aware of API implementations and hence enables it to enforce policies",
+  "expl": "In the implementation you add the API’s auto-discovery configuration (with the API ID). When the app starts, the Mule runtime registers with API Manager, so the platform can push/enforce policies (e.g., rate limiting, OAuth, CORS), control access via contracts, and collect usage telemetry. The essence/purpose is to let API Manager manage the live implementation.Eliminate others:B. Studio discovering platform APIs — not what auto-discovery does.C. Exchange asset discovery — Exchange publishing is separate; auto-discovery doesn’t publish or “make reusable” assets.D. Analytics insight — usage data collection happens as a consequence of being managed in API Manager, but analytics alone is not the purpose; policy/governance is.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 23,
+  "qe": "Which of the following sequence is correct?",
+  "oe": [
+   "API Client implementes logic to call an API >> API Consumer requests access to API >> API Implementation routes the request to >> API",
+   "API Consumer requests access to API >> API Client implementes logic to call an API >> API routes the request to >> API Implementation",
+   "API Consumer implementes logic to call an API >> API Client requests access to API >> API Implementation routes the request to >> API",
+   "API Client implementes logic to call an API >> API Consumer requests access to API >> API routes the request to >> API Implementation"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct answer: B. API Consumer requests access to API >> API Client implementes logic to call an API >> API routes the request to >> API Implementation",
+  "expl": "The process follows this logical order:API Consumer requests access to API: An organization or developer (the API consumer) discovers an API in Anypoint Exchange and requests access. This usually involves obtaining client credentials (Client ID and Secret) to use the API.API Client implements logic to call an API: The developer then incorporates the API call into their application's code (the API client). This involves programming the application to use the obtained credentials and send requests to the API's endpoint.API routes the request to API Implementation: At runtime, the implemented API client makes a request. The API Gateway (the \"API\" in the sequence) intercepts this request, validates the credentials and applies policies, and then routes the traffic to the backend Mule application (the API implementation) that contains the business logic.Why other options are incorrect:A: This sequence is incorrect because the consumer must first request access and obtain credentials before the client can implement the logic to call the API.C: This option swaps the roles of \"Consumer\" and \"Client.\" The consumer is the entity (person/organization) requesting access, while the client is the software component making the actual programmatic call.D: Similar to A, access must be granted before implementation can begin. Also, the roles are slightly jumbled at the end, as the API (Gateway/Proxy) routes the request to the implementation.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 25,
+  "qe": "What is the main change to the IT operating model that MuleSoft recommends to organizations to improve innovation and clock speed?",
+  "oe": [
+   "Drive consumption as much as production of assets; this enables developers to discover and reuse assets from other projects and encourages standardization",
+   "Expose assets using a Master Data Management (MDM) system; this standardizes projects and enables developers to quickly discover and reuse assets from other projects C. Implement SOA for reusable APIs to focus on production over consumption; this standardizes on XML and WSDL formats to speed up decision making",
+   "Create a lean and agile organization that makes many small decisions everyday; this speeds up decision making and enables each line of business to take ownership of its projects"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. Drive consumption as much as production of assets; this enables developers to discover and reuse assets from other projects and encourages standardization",
+  "expl": "✅ Correct Answer: Option ADrive consumption as much as production of assets; this enables developers to discover and reuse assets from other projects and encourages standardization.MuleSoft’s recommended IT operating model emphasizes API-led connectivity, where organizations not only produce APIs but also ensure they are consumed and reused across projects. This shift is critical because traditional IT often focused solely on production, leading to duplication, siloed systems, and slower innovation. By encouraging consumption, developers can discover existing APIs in an Anypoint Exchange, reuse them, and build new solutions faster. This approach accelerates “clock speed” (time-to-market) and fosters innovation by reducing redundant work and encouraging standardization across the enterprise.This consumption-driven model aligns with MuleSoft’s vision of creating a composable enterprise, where reusable APIs act as building blocks for innovation. It directly addresses the exam’s focus on improving innovation and speed.❌ Option BExpose assets using a Master Data Management (MDM) system; this standardizes projects and enables developers to quickly discover and reuse assets from other projects.While MDM systems help manage and govern data, MuleSoft does not recommend MDM as the primary IT operating model for innovation. MDM focuses on data consistency and governance, not on enabling API reuse across projects. MuleSoft’s strategy is broader, focusing on APIs as reusable assets rather than centralizing data in an MDM system. Thus, this option misrepresents MuleSoft’s recommended approach.❌ Option CImplement SOA for reusable APIs to focus on production over consumption; this standardizes on XML and WSDL formats to speed up decision making.Service-Oriented Architecture (SOA) was a predecessor to API-led connectivity but is not MuleSoft’s recommended model. SOA often emphasized production and relied heavily on XML/WSDL, which limited flexibility and slowed innovation. MuleSoft differentiates itself by focusing on lightweight, RESTful APIs and driving consumption. Therefore, this option reflects outdated practices that MuleSoft explicitly moves away from.❌ Option DCreate a lean and agile organization that makes many small decisions everyday; this speeds up decision making and enables each line of business to take ownership of its projects.Agility and lean practices are valuable, but MuleSoft’s exam guide specifically highlights consumption-driven reuse as the key operating model change. While organizational agility supports innovation, it is not the primary recommendation MuleSoft makes for IT operating models. This option is too generic and misses the core principle of API-led connectivity.📖 ReferencesMuleSoft Whitepaper: API-led ConnectivityMuleSoft Blog: Why IT Must Drive Consumption as Much as Production (MuleSoft official blog)Salesforce Exam Guide: MuleSoft Certified Platform Architect I (Mule-Arch-201) — Operating Model section👉 In summary,Option A is correct because MuleSoft’s operating model shift is about balancing production and consumption of APIs, enabling reuse, standardization, and faster innovation. The other options either misrepresent MuleSoft’s approach (MDM, SOA) or are too generic (lean/agile).",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 26,
+  "qe": "What API policy would be LEAST LIKELY used when designing an Experience API that is intended to work with a consumer mobile phone or tablet application?",
+  "oe": [
+   "OAuth 2.0 access token enforcement",
+   "Client ID enforcement",
+   "JSON threat protection",
+   "IPwhitellst"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct answer: D. IPwhitellst",
+  "expl": "When designing an Experience API for mobile phones or tablets, the network environment of the client is highly dynamic:Dynamic IP Addresses: Mobile devices frequently switch between cellular towers and various Wi-Fi networks (home, office, public hotspots). Each transition assigns a new IP address to the device.Unpredictable Range: It is impossible for an architect to maintain a \"whitelist\" of allowed IP addresses for a general consumer mobile application because you cannot predict which IP ranges a mobile provider or a random coffee shop's Wi-Fi might use. Applying this policy would result in legitimate users being blocked as soon as their device switches networks.Why the Other Policies are Likely UsedA. OAuth 2.0 access token enforcement: This is the standard for mobile applications. It allows for secure, delegated authorization without storing user credentials on the device and supports features like token refresh and revocation.B. Client ID enforcement: This is a basic requirement in Anypoint Platform to identify which specific mobile application version is calling the API, enabling traffic monitoring and tier-based rate limiting.C. JSON threat protection: Since mobile applications primarily communicate via JSON, this policy is essential to protect the backend from malicious payloads (e.g., deeply nested objects or massive arrays) that could cause a Denial of Service (DoS).Key Takeaway for the Exam:Always evaluate the stability of the client's network. For Server-to-Server (System API) communication, IP whitelisting is a strong security measure. For Mobile-to-Server (Experience API) communication, IP whitelisting is impractical and should be avoided in favor of token-based security (OAuth 2.0).",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 27,
+  "qe": "An organization has implemented a Customer Address API to retrieve customer address information. This API has been deployed to multiple environments and has been configured to enforce client IDs everywhere. A developer is writing a client application to allow a user to update their address. The developer has found the Customer Address API in Anypoint Exchange and wants to use it in their client application. What step of gaining access to the API can be performed automatically by Anypoint Platform?",
+  "oe": [
+   "Approve the client application request for the chosen SLA tier",
+   "Request access to the appropriate API Instances deployed to multiple environments using the client application's credentials",
+   "Modify the client application to call the API using the client application's credentials",
+   "Create a new application in Anypoint Exchange for requesting access to the API"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct answer: B. Request access to the appropriate API Instances deployed to multiple environments using the client application's credentials",
+  "expl": "This question tests the understanding of the automated provisioning capabilities of Anypoint Platform's API Manager, particularly around the client application registration and access request workflow. The key phrase is \"automatically by Anypoint Platform.\"Why B is Correct: This step can be fully automated using the Automatic Provisioning feature in API Manager. Once an API is configured for client ID enforcement, API Manager can be set to automatically approve requests and auto-create client credentials (Client ID/Secret) when a developer requests access via Exchange. Specifically, for APIs deployed to multiple environments (e.g., Sandbox, Dev, QA, Prod), the platform can be configured to automatically provision the client app's access to each corresponding API instance across those environments using a single request. This is a core feature to accelerate developer onboarding without manual administrative intervention.Why A is Incorrect: Approving the request for an SLA tier is typically a manual, administrative action performed by an API product manager or operations team in a governance-heavy model. While it can be automated (via the \"automatic\" SLA tier setting), the question implies a more general scenario. The platform does not automatically decide on SLA approvals unless specifically configured to do so, which is less common for production tiers. The question asks what can be automated, and approval often requires a business decision.Why C is Incorrect: Modifying the client application code is an action performed by the developer on their local machine or CI/CD pipeline. Anypoint Platform cannot and does not automatically modify a developer's source code. It provides credentials and endpoints (via Exchange or the API portal), but the developer must manually integrate them.Why D is Incorrect: Creating a new application in Exchange is a manual step performed by the developer. In Exchange, the developer clicks \"Request Access\" and is prompted to either select an existing application (client) or create a new one. This is the developer's responsibility to define their application name and set its properties. The platform does not auto-create the application definition without developer input.Key Workflow & Feature:- Developer discovers API in Exchange.- Developer clicks \"Request Access\" and selects/creates their client application.- If Automatic Provisioning is enabled on the API (in API Manager), Anypoint Platform automatically: - Grants the request. - Generates client credentials (ID & Secret). - Provisions access to the API instances across the specified environments (Sandbox, Dev, etc.).- Developer receives credentials instantly and can begin coding (Step C, which is manual).Reference:Anypoint Platform documentation on \"Manage Client Applications\" and \"Automatic Provisioning\" states: \"When a developer requests access to an API, you can configure the API to automatically approve the request and generate client credentials... This enables self-service onboarding for developers.\" This directly describes automating step B.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 28,
+  "qe": "What do the API invocation metrics provided by Anypoint Platform provide?",
+  "oe": [
+   "ROI metrics from APIs that can be directly shared with business users",
+   "Measurements of the effectiveness of the application network based on the level of reuse",
+   "Data on past API invocations to help identify anomalies and usage patterns across various APIs",
+   "Proactive identification of likely future policy violations that exceed a given threat threshold"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct answer: C. Data on past API invocations to help identify anomalies and usage patterns across various APIs",
+  "expl": "Anypoint Platform's API invocation metrics (available through Anypoint Monitoring and API Manager dashboards) capture historical data on API calls, including request counts, response times, error rates, status codes, throughput, client locations, endpoints/paths, and more. These metrics allow users to analyze trends over time, spot usage patterns (e.g., peak times, top consumers/endpoints), and identify anomalies (e.g., sudden spikes in errors or latency deviations) via built-in/custom dashboards, charts, and alerts.This historical and aggregated data supports troubleshooting, performance optimization, and operational insights without requiring custom scripting in most cases.Why the other options are incorrect:A. ROI metrics from APIs that can be directly shared with business users → Incorrect.Invocation metrics are technical/operational (e.g., requests, latency); they do not directly compute financial ROI. Higher-level business insights (e.g., via custom KPIs or Anypoint Analytics trends) require additional interpretation.B. Measurements of the effectiveness of the application network based on the level of reuse → Incorrect.Reuse effectiveness is measured separately via Anypoint Visualizer (dependency graphs) or Exchange asset consumption metrics, not directly from invocation metrics.D. Proactive identification of likely future policy violations that exceed a given threat threshold → Incorrect.Policy violations (e.g., rate limits, OAuth issues) are tracked separately in API Manager/Analytics. While invocation metrics can show past violations or trends leading to them, they do not proactively predict future ones with threat thresholds—that requires alerts or advanced anomaly detection configurations.Reference:MuleSoft official documentation on Anypoint Monitoring (built-in API dashboards) and Metrics API emphasizes historical invocation data for performance analysis, anomaly detection via visualizations/alerts, and usage insights (e.g., top paths, clients, geographic patterns). This aligns with certification topics on monitoring application networks.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 33,
+  "qe": "Mule applications that implement a number of REST APIs are deployed to their own subnet that is inaccessible from outside the organization.External business-partners need to access these APIs, which are only allowed to be invoked from a separate subnet dedicated to partners - called Partner-subnet. This subnet is accessible from the public internet, which allows these external partners to reach it. Anypoint Platform and Mule runtimes are already deployed in Partner-subnet. These Mule runtimes can already access the APIs.What is the most resource-efficient solution to comply with these requirements, while having the least impact on other applications that are currently using the APIs?",
+  "oe": [
+   "Implement (or generate) an API proxy Mule application for each of the APIs, then deploy the API proxies to the Mule runtimes",
+   "Redeploy the API implementations to the same servers running the Mule runtimes",
+   "Add an additional endpoint to each API for partner-enablement consumption",
+   "Duplicate the APIs as Mule applications, then deploy them to the Mule runtimes"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. Implement (or generate) an API proxy Mule application for each of the APIs, then deploy the API proxies to the Mule runtimes",
+  "expl": "In this scenario, the organization has Mule applications implementing REST APIs deployed in an internal subnet that is inaccessible from outside. External business partners need access, but only through a Partner-subnet that is internet-accessible. Mule runtimes are already deployed in the Partner-subnet and can reach the internal APIs.The most resource-efficient and least disruptive solution is to implement API proxies for each of the APIs and deploy them to the Mule runtimes in the Partner-subnet. An API proxy is a lightweight Mule application that exposes the API externally while forwarding requests to the actual implementation in the internal subnet.This approach has several advantages:Resource efficiency: Proxies are lightweight and require minimal resources compared to redeploying full API implementations.Separation of concerns: The internal APIs remain unchanged, preserving their existing consumers and avoiding disruption.Security and governance: Policies such as Client ID Enforcement, Rate Limiting, or OAuth can be applied at the proxy level in API Manager.Minimal impact: Existing applications using the APIs internally continue to function without modification. External partners gain access through the proxy without affecting internal traffic.Best practice alignment: MuleSoft recommends using API proxies when exposing APIs to external consumers, especially when the implementation resides in a restricted subnet.Thus, Option A is the correct answer because it balances efficiency, security, and minimal disruption.❌ Option BRedeploy the API implementations to the same servers running the Mule runtimesThis would require moving the full API implementations to the Partner-subnet, consuming more resources and disrupting existing internal consumers. It is not resource-efficient and introduces unnecessary duplication.❌ Option CAdd an additional endpoint to each API for partner-enablement consumptionAdding endpoints directly to the APIs complicates their design and increases maintenance overhead. It also mixes internal and external concerns, which MuleSoft advises against.❌ Option DDuplicate the APIs as Mule applications, then deploy them to the Mule runtimesDuplicating APIs is highly inefficient, leading to code duplication, increased maintenance, and potential inconsistencies. This option has the highest resource cost and operational overhead.📖 ReferencesMuleSoft Documentation: [API Proxy](https://docs.mulesoft.com/api-manager/latest/api-proxy-landing-page)MuleSoft Documentation: API Manager PoliciesMuleSoft Certified Platform Architect I Exam Guide — API Security and Deployment Best Practices section👉 In summary:Option A is correct because deploying lightweight API proxies in the Partner-subnet allows external partners to access the APIs securely and efficiently, with minimal impact on existing applications.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 37,
+  "qe": "What condition requires using a CloudHub Dedicated Load Balancer?",
+  "oe": [
+   "When cross-region load balancing is required between separate deployments of the same Mule application",
+   "When custom DNS names are required for API implementations deployed to customerhosted Mule runtimes",
+   "When API invocations across multiple CloudHub workers must be load balanced",
+   "When server-side load-balanced TLS mutual authentication is required between API implementations and API clients"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct answer: D. When server-side load-balanced TLS mutual authentication is required between API implementations and API clients",
+  "expl": "A CloudHub Dedicated Load Balancer (DLB) is a specialized feature of MuleSoft’s CloudHub that provides organizations with greater control over how traffic is routed to their Mule applications. Unlike the shared CloudHub load balancer, a DLB allows customization of DNS names, certificates, and routing rules.The key condition that requires a DLB is when TLS mutual authentication must be enforced between API clients and API implementations. Mutual TLS (mTLS) requires both the client and the server to present and validate certificates during the handshake. This ensures that only trusted clients can connect to the API.The shared CloudHub load balancer does not support server-side load-balanced TLS mutual authentication. To achieve this, organizations must configure a Dedicated Load Balancer, which allows:Uploading and managing custom SSL/TLS certificates.Enforcing mutual TLS authentication at the load balancer level.Routing traffic securely across multiple workers while maintaining certificate validation.Providing custom DNS names that map to the DLB, ensuring secure and consistent access for clients.This makes the DLB essential in scenarios where regulatory, compliance, or security requirements mandate mutual TLS authentication. Without a DLB, CloudHub applications cannot enforce this level of security.❌ Option AWhen cross-region load balancing is required between separate deployments of the same Mule applicationCloudHub DLBs are region-specific. They do not provide cross-region load balancing. This option is incorrect.❌ Option BWhen custom DNS names are required for API implementations deployed to customer-hosted Mule runtimesDLBs apply to CloudHub deployments, not customer-hosted runtimes. Customer-hosted runtimes can use their own DNS and load balancers. This option is incorrect.❌ Option CWhen API invocations across multiple CloudHub workers must be load balancedThe shared CloudHub load balancer already provides load balancing across multiple workers. A DLB is not required for this basic functionality. This option is incorrect.📖 ReferencesMuleSoft Documentation: [CloudHub Dedicated Load Balancer](https://docs.mulesoft.com/cloudhub/cloudhub-dedicated-load-balancer)MuleSoft Blog: When to Use a Dedicated Load Balancer in CloudHubMuleSoft Certified Platform Architect I Exam Guide — CloudHub Deployment and Load Balancing section👉 In summary:Option D is correct because a CloudHub Dedicated Load Balancer is required when TLS mutual authentication must be enforced between API clients and API implementations. The other options either describe capabilities of the shared load balancer or misapply DLB functionality.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 38,
+  "qe": "Traffic is routed through an API proxy to an API implementation. The API proxy is managed by API Manager and the API implementation is deployed to a CloudHub VPC using Runtime Manager. API policies have been applied to this API. In this deployment scenario, at what point are the API policies enforced on incoming API client requests?",
+  "oe": [
+   "At the API proxy",
+   "At the API implementation",
+   "At both the API proxy and the API implementation",
+   "At a MuleSoft-hosted load balancer"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. At the API proxy",
+  "expl": "In a scenario where an API Proxy is used to \"shield\" an API Implementation, the goal is to decouple the management and security of the API from the actual business logic. The location of policy enforcement depends on where the API Autodiscovery is configured and where the request first hits the managed environment.Correct AnswerOption A: At the API proxyWhen you use a proxy, the proxy application itself is the entity registered with API Manager.The API Proxy is a lightweight Mule application that contains the Autodiscovery element linked to the API ID in API Manager.When a client makes a request, it hits the Proxy first. The Proxy’s internal handler checks for applied policies such as Client ID Enforcement, Rate Limiting, or OAuth.The policies are enforced at the proxy. If the request passes the policies, the proxy then forwards the request to the actual API Implementation, which is the backend.The implementation in this scenario is typically unmanaged from the perspective of those specific policies because the governance has already been handled at the perimeter by the proxy.Incorrect AnswersOption B: At the API implementationIf the implementation is not configured with Autodiscovery or is being accessed through a proxy, it does not enforce the policies managed by the proxy’s API ID. While policies could be applied directly to the implementation, the scenario described is a proxy-based management setup.Option C: At both the API proxy and the API implementationThis approach is redundant and highly inefficient. It would double the latency and require two separate API Manager entries and Autodiscovery configurations. In a standard proxy deployment, the proxy is the single enforcement point.Option D: At a MuleSoft-hosted load balancerMuleSoft Shared or Dedicated Load Balancers handle TLS termination and routing at OSI layers 4 and 7, but they do not execute Mule API policies. Policies such as JSON Threat Protection or Header Validation require execution by the Mule Runtime engine.ReferencesMuleSoft Documentation: API Proxy Landing Page — The proxy handles the governance and security, then forwards the request to the implementation.MuleSoft Training: Anypoint Platform Architecture — Application Networks — The API proxy serves as the policy enforcement point for the backend service it protects.MCPA Exam Guide: Section 1 — Explaining and Application of the Anypoint Platform (API Manager and Gateway).",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 39,
+  "qe": "What Mule application deployment scenario requires using Anypoint Platform Private Cloud Edition or Anypoint Platform for Pivotal Cloud Foundry?",
+  "oe": [
+   "When it Is required to make ALL applications highly available across multiple data centers",
+   "When it is required that ALL APIs are private and NOT exposed to the public cloud",
+   "When regulatory requirements mandate on-premises processing of EVERY data item, including meta-data",
+   "When ALL backend systems in the application network are deployed in the organization's intranet"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct answer: C. When regulatory requirements mandate on-premises processing of EVERY data item, including meta-data",
+  "expl": "This question tests your understanding of the difference between the Runtime Plane, where data is processed, and the Control Plane, where management metadata such as logs, audit trails, and API metrics reside.Metadata ResidencyIn standard CloudHub or Runtime Fabric deployments, the Control Plane is hosted by MuleSoft in the public cloud. Even if your application data stays on-premises, the metadata, including application names, performance metrics, and logs, is sent to the cloud.Full IsolationAnypoint Private Cloud Edition and Anypoint Platform for PCF are fully private versions of the platform. They allow an organization to host both the Runtime Plane and the Control Plane within their own data center. This ensures that no data, not even metadata, ever leaves the organization’s physical infrastructure.Regulatory ComplianceThis level of isolation is typically required by government agencies, defense contractors, or highly regulated financial institutions that are legally forbidden from using public cloud services for any part of their infrastructure.Why Other Options are IncorrectA: High availability across multiple data centers can be achieved using Runtime Fabric or standard hybrid deployments. It does not strictly require a private version of the Control Plane.B: You can keep all APIs private in a standard hybrid or CloudHub VPC environment using internal load balancers and VPNs. The management of those APIs, which is the Control Plane, can still reside in the cloud.D: Connecting to on-premises backend systems is a standard feature of CloudHub using VPN or Transit Gateway, or Runtime Fabric. It does not necessitate moving the entire Anypoint management platform to a private cloud.Key Takeaway for 2025For the Platform Architect exam, if the requirement mentions metadata residency or full Control Plane isolation on-premises, the correct answer is Anypoint Private Cloud Edition.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 41,
+  "qe": "An API client calls one method from an existing API implementation. The API implementation is later updated. What change to the API implementation would require the API client's invocation logic to also be updated?",
+  "oe": [
+   "When the data type of the response is changed for the method called by the API client",
+   "When a new method is added to the resource used by the API client",
+   "When a new required field is added to the method called by the API client",
+   "When a child method is added to the method called by the API client"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct answer: C. When a new required field is added to the method called by the API client",
+  "expl": "This question tests the understanding of what constitutes a breaking change versus a non-breaking change in an API contract. A breaking change forces the client to update their invocation logic, while a non-breaking change does not.Why C is Correct:Adding a new required field, either to the request payload or as a required query or header parameter, is a breaking change. Existing client requests will now be invalid because they do not include the newly required information. The API will likely return a 400 Bad Request or 422 Unprocessable Entity error. The client must be updated to provide this new field to successfully call the method. This changes the contract in a way that fails existing, unchanged clients.Why A is Incorrect:Changing the data type of the response for the called method is also a breaking change and would require a client update, for example changing from a string to an integer or altering the structure of a JSON object. This option acts as a distractor because it is a more obvious and severe breaking change. While both A and C are technically breaking changes, option C represents the more subtle and commonly tested scenario in API versioning discussions. When only one answer is expected, C is typically chosen as the classic example of a contract violation that is easy to overlook.Why B is Incorrect:Adding a new method to a resource is a non-breaking, backward-compatible change. Existing clients that invoke the original method continue to function without modification. This is a standard way to extend an API’s functionality.Why D is Incorrect:Adding a child method, such as a new nested endpoint like /resource/\\{id\\}/newChild, is also a non-breaking change. It introduces a new endpoint without altering the behavior of any existing endpoints used by clients.Clarification on Option A vs. C:In a strict interpretation, both A and C represent breaking changes. However, in the context of typical MuleSoft certification exams, option C is the quintessential example of a breaking change because it violates backward compatibility through stricter validation rules rather than an obvious structural change. Adding required fields is a very common real-world mistake that breaks clients, making it the expected answer.Best Practice:Any change that causes an existing, valid client request to become invalid is a breaking change and requires a MAJOR version increment, for example moving from version 2.1.0 to 3.0.0, along with proper client coordination.Reference:MuleSoft’s API design guidance and the Semantic Versioning specification classify adding new required parameters or fields as a MAJOR breaking change because it breaks backward compatibility.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 43,
+  "qe": "What Anypoint Connectors support transactions?",
+  "oe": [
+   "Database, JMS, VM",
+   "Database, 3MS, HTTP",
+   "Database, JMS, VM, SFTP",
+   "Database, VM, File"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. Database, JMS, VM",
+  "expl": "In MuleSoft, transactions are used to ensure that a group of operations either all succeed or all fail together, maintaining consistency and reliability. Mule runtime supports transactional resources through specific connectors that can participate in local transactions or XA transactions.Connectors that support transactions:Database Connector:Supports transactional operations when interacting with relational databases. Multiple SQL statements can be grouped into a single transaction, ensuring rollback if one fails.JMS Connector:Supports transactions when interacting with message queues. JMS can participate in XA transactions, ensuring that message consumption and database updates occur atomically.VM Connector:Supports transactional message handling within Mule applications. VM queues can be transactional, ensuring reliable delivery and rollback in case of failures.These connectors are explicitly designed to integrate with Mule’s transaction management framework, allowing developers to configure transactional scopes using transaction elements in flows.Why other connectors do not support transactions:Connectors such as HTTP, File, or SFTP do not support transactions. They operate in a stateless, request-response or file-based manner, where rollback semantics are not applicable. For example, once an HTTP request is sent or a file is written to disk, the action cannot be rolled back like a database insert or a JMS message acknowledgment.Correct Answer:Option A: Database, JMS, VM❌ Option BDatabase, 3MS, HTTPIncorrect. \"3MS\" is a typo, likely intended to be JMS. HTTP does not support transactions because requests cannot be rolled back.❌ Option CDatabase, JMS, VM, SFTPIncorrect. SFTP does not support transactional semantics. File transfers cannot be rolled back once executed.❌ Option DDatabase, VM, FileIncorrect. The File connector does not support transactions. Once a file is written or deleted, rollback is not possible.📖 ReferencesMuleSoft Documentation: Transactions in MuleMuleSoft Documentation: Database Connector TransactionsMuleSoft Certified Platform Architect I Exam Guide — Transactional Resources section👉 In summary:Option A is correct because only Database, JMS, and VM connectors support transactions in MuleSoft. Other connectors such as HTTP, File, and SFTP do not provide transactional rollback semantics.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 44,
+  "qe": "An API implementation is being designed that must invoke an Order API, which is known to repeatedly experience downtime. For this reason, a fallback API is to be called when the Order API is unavailable. What approach to designing the invocation of the fallback API provides the best resilience?",
+  "oe": [
+   "Search Anypoint Exchange for a suitable existing fallback API, and then implement invocations to this fallback API in addition to the Order API",
+   "Create a separate entry for the Order API in API Manager, and then invoke this API as a fallback API if the primary Order API is unavailable",
+   "Redirect client requests through an HTTP 307 Temporary Redirect status code to the fallback API whenever the Order API is unavailable",
+   "Set an option in the HTTP Requester component that invokes the Order API to instead invoke a fallback API whenever an HTTP 4xx or 5xx response status code is returned from the Order API"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. Search Anypoint Exchange for a suitable existing fallback API, and then implement invocations to this fallback API in addition to the Order API",
+  "expl": "A. Search Anypoint Exchange for a suitable existing fallback API, and then implement invocations to this fallback API in addition to the Order API Explanation:✅ Why A is correct:For maximum resilience, MuleSoft recommends handling fallback logic explicitly in the application flow, rather than relying on implicit platform behavior or redirects.A resilient design typically includes:- Primary API invocation- Explicit error handling / circuit-breaker logic- Fallback API invocation when the primary API failsBy searching Anypoint Exchange for an existing fallback or alternative API (e.g., a cached, degraded, or read-only service) and invoking it when the primary Order API is unavailable, you:- Maintain control over fallback behavior- Avoid tight coupling or hidden runtime behavior- Align with API-led connectivity and reuse principlesThis is the most reliable and architecturally correct approach.❌ Why the other options are incorrect:B. Create a second API in API Manager and invoke it as fallbackAPI Manager is for governance and policy enforcement, not dynamic fallback routing. Creating a second API instance does not inherently provide resilience.C. Redirect using HTTP 307Redirecting clients pushes responsibility to the consumer and breaks abstraction. Clients may not support or expect redirects, which violates good API design practices.D. Use an HTTP Requester option to auto-fallbackThe Mule HTTP Requester does not provide a built-in fallback option for handling 4xx/5xx responses. Error handling and fallback logic must be explicitly implemented in the flow using patterns like on-error-continue, choice, or circuit breaker.✅ Summary:The most resilient and MuleSoft-aligned approach is to explicitly design fallback behavior in the application logic, typically using an alternative API discovered via Anypoint Exchange.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 45,
+  "qe": "A system API is deployed to a primary environment as well as to a disaster recovery (DR) environment, with different DNS names in each environment. A process API is a client to the system API and is being rate limited by the system API, with different limits in each of the environments. The system API's DR environment provides only 20% of the rate limiting offered by the primary environment. What is the best API fault-tolerant invocation strategy to reduce overall errors in the process API, given these conditions and constraints?",
+  "oe": [
+   "Invoke the system API deployed to the primary environment; add timeout and retry logic to the process API to avoid intermittent failures; if it still fails, invoke the system API deployed to the DR environment",
+   "Invoke the system API deployed to the primary environment; add retry logic to the process API to handle intermittent failures by invoking the system API deployed to the DR environment",
+   "In parallel, invoke the system API deployed to the primary environment and the system API deployed to the DR environment; add timeout and retry logic to the process API to avoid intermittent failures; add logic to the process API to combine the results",
+   "Invoke the system API deployed to the primary environment; add timeout and retry logic to the process API to avoid intermittent failures; if it still fails, invoke a copy of the process API deployed to the DR environment"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. Invoke the system API deployed to the primary environment; add timeout and retry logic to the process API to avoid intermittent failures; if it still fails, invoke the system API deployed to the DR environment",
+  "expl": "In this scenario, the system API is deployed in two environments:- Primary environment with full rate limits.- Disaster Recovery (DR) environment with only 20% of the rate limiting capacity of the primary.The process API consumes the system API and must be resilient to failures. The challenge is to design a fault-tolerant invocation strategy that reduces errors while respecting the constraints of rate limits and DR capacity.The best approach is to prioritize the primary environment and only fall back to the DR environment when necessary. This is achieved by:- Invoking the primary system API first.- This ensures the process API benefits from the higher rate limits and avoids overwhelming the DR environment unnecessarily.- Adding timeout and retry logic.- Timeouts prevent the process API from hanging indefinitely when the primary system API is unresponsive.- Retries handle transient failures (e.g., network glitches, temporary overloads).- Failover to the DR environment only if retries fail.- This ensures the DR environment is used sparingly, preserving its limited capacity.- The DR environment acts as a safety net, not a primary path.This strategy aligns with MuleSoft’s resilience best practices:- Fail fast, retry smartly, and fallback gracefully.- Avoid parallel invocation (Option C), which would overwhelm the DR environment and waste resources.- Avoid invoking DR too early (Option B), which risks hitting rate limits quickly.- Avoid deploying duplicate process APIs (Option D), which adds unnecessary complexity and does not solve the rate limiting issue.By keeping the DR environment as a last resort, the process API minimizes errors while ensuring continuity of service during outages in the primary environment.❌ Option BRetry logic that immediately invokes DRIncorrect. This would quickly consume the DR environment’s limited rate limit capacity, leading to errors.❌ Option CParallel invocation of primary and DRIncorrect. This doubles traffic and overwhelms the DR environment unnecessarily. It also complicates result handling.❌ Option DInvoke a copy of the process API in DRIncorrect. Duplicating the process API does not solve the rate limiting issue. It adds complexity without resilience benefits.📖 ReferencesMuleSoft Documentation: Resilience PatternsMuleSoft Blog: Designing Fault-Tolerant APIs with Retry and FallbackMuleSoft Certified Platform Architect I Exam Guide — Resilience and DR Strategies section👉 In summary:Option A is correct because the most resilient strategy is to invoke the primary system API with timeout and retry logic, and only failover to the DR environment if the primary fails completely. This minimizes errors and respects the DR environment’s limited rate limits.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 47,
+  "qe": "A system API has a guaranteed SLA of 100 ms per request. The system API is deployed to a primary environment as well as to a disaster recovery (DR) environment, with different DNS names in each environment. An upstream process API invokes the system API and the main goal of this process API is to respond to client requests in the least possible time. In what order should the system APIs be invoked, and what changes should be made in order to speed up the response time for requests from the process API?",
+  "oe": [
+   "In parallel, invoke the system API deployed to the primary environment and the system API deployed to the DR environment, and ONLY use the first response",
+   "In parallel, invoke the system API deployed to the primary environment and the system API deployed to the DR environment using a scatter-gather configured with a timeout, and then merge the responses",
+   "Invoke the system API deployed to the primary environment, and if it fails, invoke the system API deployed to the DR environment",
+   "Invoke ONLY the system API deployed to the primary environment, and add timeout and retry logic to avoid intermittent failures"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct answer: A. In parallel, invoke the system API deployed to the primary environment and the system API deployed to the DR environment, and ONLY use the first response",
+  "expl": "This question presents a different optimization goal than the previous disaster recovery question. Here, the primary goal is the least possible response time for the Process API, and the System API has a guaranteed SLA of 100ms. The presence of a DR environment is a secondary fact to be leveraged for performance, not just resilience.Why A is Correct:This implements a \"fastest response\" or \"race\" pattern, which is optimal for minimizing latency when you have multiple, functionally equivalent endpoints.- Parallel Invocation: The Process API sends requests to both the primary and DR System API endpoints simultaneously.- Use First Response: It immediately returns the result from whichever endpoint responds first, discarding the slower response. This statistically guarantees the lowest possible latency for the client, as it eliminates the risk of the chosen endpoint being temporarily slower. It turns the DR environment into a performance asset, not just a resilience backup.Why B is Incorrect:Using a scatter-gather to merge responses adds unnecessary complexity and increases latency. Scatter-gather waits for all parallel routes to complete (or timeout) before proceeding to merge results. This means the response is delayed until the slowest of the two endpoints responds, which is the opposite of the goal to get the fastest possible response. It's used for aggregating different data, not for speed.Why C is Incorrect:This is a sequential, primary-first failover strategy. It is excellent for resilience and conserving DR capacity, but it is poor for minimizing response time. If the primary is slow (but not failing), the client still waits for the primary's timeout before even trying the DR, resulting in higher overall latency. It optimizes for reliability, not speed.Why D is Incorrect:Invoking only the primary with retries is the baseline approach. It does nothing to leverage the DR environment to improve speed. Timeout and retry logic adds latency on failure but doesn't improve the best-case response time. It fails to use available resources to meet the stated goal.Trade-off Consideration:Pattern A (Race): Optimizes for minimum latency but doubles the load on the backend systems (both primary and DR get every request). This is acceptable only if both environments are scaled to handle 100% of the traffic, which may have cost implications.Pattern C (Failover): Optimizes for resource efficiency and resilience but accepts higher latency in failure scenarios.Given the explicit goal of \"respond in the least possible time,\" the race pattern (A) is the architecturally correct choice.Implementation in Mule 4:This can be implemented using a Scatter-Gather where each route calls a different endpoint, but with a critical difference: you would not aggregate. Instead, you would use Error Handling and Choice logic to capture the first successful response and cancel the other route, or use a custom aggregation strategy that picks the first successful result. More elegantly, it can be done with the async scope and competing callbacks.Reference:This pattern is known as \"Parallel Request\" or \"Competing Consumers\" in integration design. It's a standard technique for reducing latency when idempotent calls can be made to multiple identical endpoints. MuleSoft's documentation on performance optimization discusses parallel processing for reducing overall flow execution time.",
+  "also": []
+ },
+ {
+  "label": "v2026",
+  "no": 48,
+  "qe": "An Anypoint Platform organization has been configured with an external identity provider (IdP) for identity management and client management. What credentials or token must be provided to Anypoint CLI to execute commands against the Anypoint Platform APIs?",
+  "oe": [
+   "The credentials provided by the IdP for identity management",
+   "The credentials provided by the IdP for client management",
+   "An OAuth 2.0 token generated using the credentials provided by the IdP for client management",
+   "An OAuth 2.0 token generated using the credentials provided by the IdP for identity management"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct answer: D. An OAuth 2.0 token generated using the credentials provided by the IdP for identity management",
+  "expl": "When an Anypoint Platform organization is configured with an external identity provider (IdP), authentication and authorization are delegated to that IdP. This means that both users and clients authenticate against the IdP rather than directly against Anypoint’s native identity system.For tools such as Anypoint CLI, which execute commands against the Anypoint Platform APIs, the CLI must authenticate using an OAuth 2.0 token. This token is generated by the IdP and represents the authenticated user’s identity and permissions.Key points:- Identity management via IdP: The IdP issues OAuth 2.0 tokens for users. These tokens are then used by Anypoint CLI to call Anypoint Platform APIs.- Client management via IdP: This applies to API client applications (e.g., apps consuming APIs via Client ID/Secret). It is not relevant for CLI authentication, which requires user identity tokens.- OAuth 2.0 token usage: The CLI does not use raw credentials (username/password) directly. Instead, it requires a valid OAuth 2.0 token issued by the IdP.- Why identity management, not client management: CLI commands are executed on behalf of a user, not an API client application. Therefore, the token must come from the IdP’s identity management flow, not client management.This aligns with MuleSoft’s best practices:- CLI authentication → OAuth 2.0 token from IdP (identity management).- API client authentication → Client ID/Secret from IdP (client management).Thus, the correct answer is Option D, because the CLI requires an OAuth 2.0 token generated using IdP credentials for identity management.❌ Option AThe credentials provided by the IdP for identity management — Incorrect. Raw credentials (username/password) are not used directly; they must generate an OAuth 2.0 token.❌ Option BThe credentials provided by the IdP for client management — Incorrect. These are for API client applications, not CLI user authentication.❌ Option CAn OAuth 2.0 token generated using the credentials provided by the IdP for client management — Incorrect. This applies to API clients, not CLI users. CLI requires identity tokens.📖 References:MuleSoft Documentation: [External Identity Providers](https://docs.mulesoft.com/access-management/external-identity-index)MuleSoft Documentation: Anypoint CLI AuthenticationMuleSoft Certified Platform Architect I Exam Guide — Identity and Access Management section👉 In summary:Option D is correct because Anypoint CLI requires an OAuth 2.0 token from the IdP’s identity management flow, not client management credentials.",
+  "also": []
+ }
+]

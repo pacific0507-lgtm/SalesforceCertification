@@ -30,14 +30,14 @@ s = "\n".join(lines)
 # ---- エンジンの CFG ----
 CFG = {
  "key": "sr-" + ID, "quizKey": "sr-" + ID + "-quiz-v1", "legacyPrefs": None,
- "srcs": [{"k": "orig", "label": "オリジナル問題(公式ドキュメントにもとづく)", "re": "^オリジナル"}, {"k": "past", "label": "過去問"}],
+ "srcs": [{"k": "past", "label": "過去問"}, {"k": "orig", "label": "オリジナル問題(公式ドキュメントにもとづく)", "re": "^オリジナル"}],
  "cx": ["アプリケーションネットワークの基本", "組織とプラットフォームの基盤", "API の設計と共有", "API 実装の設計", "デプロイ", "API のガバナンス", "非機能要件と監視"], "cxLabel": "出題範囲",
  "pal": PAL,
  "aiRole": "あなたは、Salesforce Certified MuleSoft Platform Architect 認定試験の学習を手伝う講師です。相手は初学者です。下の【テキスト】を主な根拠に、日本語で答えてください。",
  "aiqRole": "あなたはSalesforce Certified MuleSoft Platform Architect 認定試験の問題作成者です。問題は4択で作ってください。",
  "sub": "MuleSoft Platform Architect 認定試験の学習テキストと問題集です(問題は4択)。読みながら、わからないところをその場でAI先生に質問できます。本文の文字を選ぶとマーカーを引けて、自分用のメモも残せます。各項目の末尾から、その項目の問題にも進めます。",
  "h1": "MuleSoft Platform Architect",
- "qfoot": "問題は、試験の出題範囲と MuleSoft の公式ドキュメントをもとに作ったオリジナル問題(4択)です。根拠にした公式ページを各問題に付けています。画面や仕様はリリースで変わるため、最新の公式情報で確認してください。",
+ "qfoot": "問題は、過去問(出題回つき・解答は公式ドキュメントで1問ずつ検証)と、試験の出題範囲と MuleSoft の公式ドキュメントをもとに作ったオリジナル問題(4択)です。根拠にした公式ページを各問題に付けています。画面や仕様はリリースで変わるため、最新の公式情報で確認してください。",
 }
 rep(',S={afspec:', ',S={' + ID + ':' + json.dumps(CFG, ensure_ascii=False) + ',afspec:')
 

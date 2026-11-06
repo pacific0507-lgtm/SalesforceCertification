@@ -1,0 +1,586 @@
+[
+ {
+  "label": "v2026-05-09",
+  "no": 29,
+  "qe": "Select the correct Owner-Layer combinations from below options",
+  "oe": [
+   "1. App Developers owns and focuses on Experience Layer APIs2. Central IT owns and focuses on Process Layer APIs3. LOB IT owns and focuses on System Layer APIs",
+   "1. Central IT owns and focuses on Experience Layer APIs2. LOB IT owns and focuses on Process Layer APIs3. App Developers owns and focuses on System Layer APIs",
+   "1. App Developers owns and focuses on Experience Layer APIs2. LOB IT owns and focuses on Process Layer APIs3. Central IT owns and focuses on System Layer APIs"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: 1\\. App Developers owns and focuses on Experience Layer APIs 2\\. LOB IT owns and focuses on Process Layer APIs 3\\. Central IT owns and focuses on System Layer APIs [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/c9656ca780ae8c49fc2f00352bdbdee1.jpg] Reference: https://blogs.mulesoft.com/biz/api/experience-api-ownership/ https://blogs.mulesoft.com/biz/api/process-api-ownership/ https://blogs.mulesoft.com/biz/api/system-api-ownership/",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 30,
+  "qe": "A Mule application exposes an HTTPS endpoint and is deployed to the CloudHub Shared Worker Cloud. All traffic to that Mule application must stay inside the AWS VPC.To what TCP port do API invocations to that Mule application need to be sent?",
+  "oe": [
+   "443",
+   "8081",
+   "8091",
+   "8082"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Correct Answe r: 8082*****************************************>> 8091 and 8092 ports are to be used when keeping your HTTP and HTTPS app private to the LOCAL VPC respectively.>> Above TWO ports are not for Shared AWS VPC/ Shared Worker Cloud.>> 8081 is to be used when exposing your HTTP endpoint app to the internet through Shared LB>> 8082 is to be used when exposing your HTTPS endpoint app to the internet through Shared LB So, API invocations should be sent to port 8082 when calling this HTTPS based app.Reference\\:https\\://docs.mulesoft.com/runtime-manager/cloudhub-networking-guidehttps://help.mulesoft.com/s/article/Configure-Cloudhub-Application-to-Send-a-HTTPS-Request-Directly-to-Another-Cloudhub-Applicationhttps://help.mulesoft.com/s/question/0D52T00004mXXULSA4/multiple-http-listerners-on-cloudhub-one-with-port-9090 Discover morePrep for TestsFind Study AidsFind Schools",
+  "also": [
+   [
+    "v2026-01-30",
+    34
+   ]
+  ],
+  "note": "This question had no heading on the page (embedded after question 33); numbered 34 here."
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 31,
+  "qe": "A company is using an on-prem cluster in the data center as a runtime plane and MuleSoft-hosted control plane.How can the company monitor the detailed performance metrics on the Mule applications deployed to the cluster from the control plane?",
+  "oe": [
+   "The settings of the Monitoring section in the control plane must be updated to enable detailed logging on the metrics to be captured",
+   "Monitoring Agent must be installed on each node in the cluster",
+   "Due to the potential performance impact on the runtime nodes, the Monitoring agent should be installed on a separate server",
+   "There is no action needed as the on-prem runtime automatically sends the performance data to the control plane"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Monitoring On-Premise Mule Applications:For Mule applications deployed on an on-premises cluster, monitoring detailed performance metrics requires communication with the MuleSoft-hosted control plane. The control plane, when used with on-premises runtimes, relies on Anypoint Monitoring and requires a Monitoring Agent to gather and send detailed performance metrics.Setting Up Monitoring:To enable detailed metrics, the Monitoring Agent must be installed on each node in the cluster where Mule applications are deployed. This agent collects data on memory usage, CPU load, response times, and other metrics, and sends it to the control plane for aggregation and visualization.Evaluating the Options:Option A: Updating settings in the control plane alone does not enable detailed monitoring; the agent must be installed on each node to capture detailed metrics.Option B (Correct Answer): Installing the Monitoring Agent on each node ensures that each runtime node in the cluster can send its metrics to the control plane, enabling detailed monitoring.Option C: Installing the agent on a separate server would not be effective, as each node in the cluster needs to independently report its metrics to ensure full visibility.Option D: The on-prem runtime does not automatically send detailed metrics to the control plane without the Monitoring Agent installed.Conclusion:Option B is the correct answer, as installing the Monitoring Agent on each node is essential for detailed performance monitoring of on-prem applications in a cluster.Refer to MuleSoft's documentation on configuring Anypoint Monitoring for on-premises deployments and using the Monitoring Agent.",
+  "also": [
+   [
+    "v2026-01-30",
+    28
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 32,
+  "qe": "Refer to the exhibit. An organization is running a Mule standalone runtime and has configured Active Directory as the Anypoint Platform external Identity Provider. The organization does not have budget for other system components.What policy should be applied to all instances of APIs in the organization to most effecuvelyKestrict access to a specific group of internal users?",
+  "oe": [
+   "Apply a basic authentication - LDAP policy; the internal Active Directory will be configured as the LDAP source for authenticating users",
+   "Apply a client ID enforcement policy; the specific group of users will configure their client applications to use their specific client credentials",
+   "Apply an IP whitelist policy; only the specific users' workstations will be in the whitelist",
+   "Apply an OAuth 2.0 access token enforcement policy; the internal Active Directory will be configured as the OAuth server"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Correct Answe r: Apply a basic authentication - LDAP policy; the internal Active Directory will be configured as the LDAP source for authenticating users.*****************************************>> IP Whitelisting does NOT fit for this purpose. Moreover, the users workstations may not necessarily have static IPs in the network.>> OAuth 2.0 enforcement requires a client provider which isn't in the organizations system components.>> It is not an effective approach to let every user create separate client credentials and configure those for their usage.The effective way it to apply a basic authentication - LDAP policy and the internal Active Directory will be configured as the LDAP source for authenticating users.",
+  "also": [
+   [
+    "v2026-01-30",
+    29
+   ],
+   [
+    "v2026-01-30",
+    44
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 33,
+  "qe": "Which statement is true about identity management and client management on Anypoint Platform?",
+  "oe": [
+   "If an external identity provider is configured, the SAML 2.0 bearer tokens issued by the identity provider cannot be used for invocations of the Anypoint Platform web APIs",
+   "If an external client provider is configured, it must be configured at the Anypoint Platform organization level and cannot be assigned to individual business groups and environments",
+   "Anypoint Platform supports configuring one external identity provider",
+   "Both client management and identity management require an identity provider"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Anypoint Platform allows organizations to integrate one external identity provider (IdP) for identity and access management (IAM), supporting SSO and centralized user authentication.Identity Provider Limit:Anypoint Platform supports configuring a single IdP for the organization, which can be used to authenticate all users across business groups and environments within that Anypoint organization.of Correct Answer (C):Configuring one IdP ensures centralized and secure identity management, aligned with MuleSoft's architecture.of Incorrect Options:Option A is incorrect because SAML 2.0 bearer tokens from external IdPs can indeed be used for invoking Anypoint Platform APIs.Option B is incorrect as client providers can be assigned to specific business groups and environments.Option D is incorrect since only identity management strictly requires an IdP; client management does not.ReferenceFor further details on identity management options, consult MuleSoft documentation on Anypoint Platform's IAM capabilities.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 34,
+  "qe": "An organization wants to create a Center for Enablement (C4E). The IT director schedules a series of meetings with IT senior managers.What should be on the agenda of the first meeting?",
+  "oe": [
+   "Define C4E objectives, mission statement, guiding principles, a",
+   "Explore API monetization options based on identified use cases through MuleSoft",
+   "A walk through of common-services best practices for logging, auditing, exception handling, caching, security via policy, and rate limiting/throttling via policy",
+   "Specify operating model for the MuleSoft Integrations division"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "In the initial meeting for establishing a Center for Enablement (C4E), it's essential to lay the foundational vision, objectives, and guiding principles for the team. Here's why this is crucial:Clear Vision and Mission:Defining the mission statement and objectives at the start ensures alignment within the organization and clarifies the C4E's role in supporting API-led development and integration practices.Guiding Principles:Establishing guiding principles will help the C4E maintain consistent practices and strategies across projects. This serves as a framework for decisions and fosters shared understanding among IT leaders and stakeholders.of Correct Answer (A):By prioritizing the C4E's objectives and mission, the organization builds a solid foundation, paving the way for subsequent meetings focused on technical standards, processes, and operating models.of Incorrect Options:Option B (API monetization) and Option C (common services best practices) are specific topics better suited for later discussions.Option D (specifying the operating model) is an important step but typically follows the establishment of the C4E's objectives and vision.ReferenceFor more on C4E objectives and foundational setup, refer to MuleSoft's documentation on establishing a C4E and the roles and mission statements recommended for such initiatives.",
+  "also": [
+   [
+    "v2026-01-30",
+    49
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 35,
+  "qe": "An API has been updated in Anypoint exchange by its API producer from version 3.1.1 to 3.2.0 following accepted semantic versioning practices and the changes have been communicated via the APIs public portal. The API endpoint does NOT change in the new version. How should the developer of an API client respond to this change?",
+  "oe": [
+   "The API clients need to update the code on their side and need to do full regression",
+   "The API producer should be contacted to understand the change to existing functionality",
+   "The API client code only needs to be changed if it needs to take advantage of the new features",
+   "The API producer should be requested to run the old version in parallel with the new one"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "",
+  "also": [
+   [
+    "v2026-01-30",
+    13
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 36,
+  "qe": "A REST API is being designed to implement a Mule application.What standard interface definition language can be used to define REST APIs?",
+  "oe": [
+   "Web Service Definition Language(WSDL)",
+   "OpenAPI Specification (OAS)",
+   "AsyncAPI Specification",
+   "YAML"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 37,
+  "qe": "Refer to the exhibit.A developer is building a client application to invoke an API deployed to the STAGING environment that is governed by a client ID enforcement policy.What is required to successfully invoke the API? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/ff80a4e40f32d62fa924d240d6c39594.jpg]",
+  "oe": [
+   "The client ID and secret for the Anypoint Platform account owning the API in the STAGING environment",
+   "The client ID and secret for the Anypoint Platform account's STAGING environment",
+   "The client ID and secret obtained from Anypoint Exchange for the API instance in the STAGING environment",
+   "A valid OAuth token obtained from Anypoint Platform and its associated client ID and secret"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: The client ID and secret obtained from Anypoint Exchange for the API instance in the STAGING environment*****************************************>> We CANNOT use the client ID and secret of Anypoint Platform account or any individual environments for accessing the APIs>> As the type of policy that is enforced on the API in question is \"Client ID Enforcment Policy\", OAuth token based access won't work.Right way to access the API is to use the client ID and secret obtained from Anypoint Exchange for the API instance in a particular environment we want to work on.Reference:Managing API instance Contracts on API Managerhttps://docs.mulesoft.com/api-manager/1.x/request-access-to-api-taskhttps://docs.mulesoft.com/exchange/to-request-accesshttps://docs.mulesoft.com/api-manager/2.x/policy-mule3-client-id-based-policies",
+  "fig": true,
+  "also": [
+   [
+    "v2026",
+    10
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 38,
+  "qe": "An organization has built an application network following the API-led connectivity approach recommended by MuleSoft. To protect the application network against attacks from malicious external API clients, the organization plans to apply JSON Threat Protection policies.To which API-led connectivity layer should the JSON Threat Protection policies most commonly be applied?",
+  "oe": [
+   "All layers",
+   "System layer",
+   "Process layer",
+   "Experience layer"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Understanding JSON Threat Protection Policies:JSON Threat Protection policies are used to protect APIs from attacks that exploit JSON payloads, such as oversized payloads, deeply nested objects, and excessive array elements. This helps prevent Denial of Service (DoS) attacks and other malicious payload-related threats.These policies are typically applied to safeguard APIs that are directly exposed to external clients, where the risk of receiving malicious payloads is highest.API-led Connectivity Layers:Experience Layer: This layer is designed to expose APIs to end-users or external API clients, often acting as the interface that interacts with users or applications.Process Layer: This layer is used for orchestration and aggregation of data from various System APIs, typically operating within a trusted environment and not directly exposed to external clients.System Layer: This layer provides access to backend systems and databases, often within the organization's secure environment and not directly accessible to external clients.Evaluating the Options:Option A (All layers): While JSON Threat Protection can technically be applied to all layers, it is most commonly applied at the Experience layer, where APIs are exposed to external traffic and are more vulnerable to attacks.Option B (System layer): The System layer is generally not exposed to external clients directly, so JSON Threat Protection is less critical here.Option C (Process layer): Similar to the System layer, the Process layer is typically internal and not exposed directly to external clients, so JSON Threat Protection is less commonly applied.Option D (Correct Answer): The Experience layer is the correct answer because it is the layer that directly interacts with external clients, making it the primary target for malicious payloads. Applying JSON Threat Protection here effectively protects the application network from external threats.Conclusion:Option D is the correct answer, as the Experience layer is the most common layer for applying JSON Threat Protection policies to protect against external attacks.For further reference, consult MuleSoft's documentation on API security policies and best practices for securing APIs at the Experience layer.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 39,
+  "qe": "Refer to the exhibit.An organization uses one specific CloudHub (AWS) region for all CloudHub deployments.How are CloudHub workers assigned to availability zones (AZs) when the organization's Mule applications are deployed to CloudHub in that region? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/2dac2e724d00d56dc416c32e0dac3e17.jpg]",
+  "oe": [
+   "Workers belonging to a given environment are assigned to the same AZ within that region",
+   "AZs are selected as part of the Mule application's deployment configuration",
+   "Workers are randomly distributed across available AZs within that region",
+   "An AZ is randomly selected for a Mule application, and all the Mule application's CloudHub workers are assigned to that one AZ"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Correct Answe r: Workers are randomly distributed across available AZs within that region. - **************************************** >> Currently, we only have control to choose which AWS Region to choose but there is no control at all using any configurations or deployment options to decide what Availability Zone (AZ) to assign to what worker. >> There are NO fixed or implicit rules on platform too w.r.t assignment of AZ to workers based on environment or application. >> They are completely assigned in random. However, cloudhub definitely ensures that HA is achieved by assigning the workers to more than on AZ so that all workers are not assigned to same AZ for same application. Reference: [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/a10cb98385bc5c4cfdedb530b4b40190.jpg] Bottom of Form",
+  "fig": true,
+  "also": [
+   [
+    "v2026-01-30",
+    54
+   ]
+  ],
+  "note": "Page answer line says D, but the page explanation argues for C (\"Workers are randomly distributed across available AZs\"). Page answer line says D, but the page explanation argues for C (workers randomly distributed across AZs)."
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 40,
+  "qe": "An API implementation is deployed to CloudHub.What conditions can be alerted on using the default Anypoint Platform functionality, where the alert conditions depend on the API invocations to an API implementation?",
+  "oe": [
+   "When the API invocations are sent directly to the internal DNS record of the API implementation",
+   "When the API invocations are not over-a- secure TLS/SSL communication channel",
+   "When the APL invecations originate from a geography different than the API",
+   "When the number of API invocations are below a threshold"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Default Alert Capabilities in Anypoint Platform:Anypoint Platform provides out-of-the-box alerting capabilities for monitoring API invocation conditions, including setting thresholds for the number of invocations.Alerts can be configured for conditions such as high or low traffic (invocations exceeding or falling below a defined threshold).Evaluating the Options:Option A: Anypoint Platform does not provide direct alerting based on DNS records.Option B: Anypoint Platform does not provide default alerts based on whether invocations use TLS/SSL; this would require custom configuration.Option C: Geolocation-based alerting is not natively supported in Anypoint Platform.Option D (Correct Answer): Alerts based on API invocation thresholds (e.g., invocations falling below a set threshold) are supported and can be configured as part of the default Anypoint alerting functionality.Conclusion:Option D is correct, as Anypoint Platform allows configuring alerts based on the number of API invocations falling below or exceeding a threshold.Refer to MuleSoft's documentation on Anypoint Monitoring and alert configurations for more details.",
+  "also": [
+   [
+    "v2026-01-30",
+    38
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 41,
+  "qe": "What are the major benefits of MuleSoft proposed IT Operating Model?",
+  "oe": [
+   "1. Decrease the IT delivery gap2. Meet various business demands without increasing the IT capacity3. Focus on creation of reusable assets first. Upon finishing creation of all the possible assets then inform the LOBs in the organization to start using them",
+   "1. Decrease the IT delivery gap2. Meet various business demands by increasing the IT capacity and forming various IT departments3. Make consumption of assets at the rate of production",
+   "1. Decrease the IT delivery gap2. Meet various business demands without increasing the IT capacity3. Make consumption of assets at the rate of production"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r:1. Decrease the IT delivery gap2. Meet various business demands without increasing the IT capacity3. Make consumption of assets at the rate of production.*****************************************",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 42,
+  "qe": "Once an API Implementation is ready and the API is registered on API Manager, who should request the access to the API on Anypoint Exchange?",
+  "oe": [
+   "None",
+   "Both",
+   "API Client",
+   "API Consumer"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Correct Answe r: API Consumer*****************************************>> API clients are piece of code or programs that use the client credentials of API consumer but does not directly interact with Anypoint Exchange to get the access>> API consumer is the one who should get registered and request access to API and then API client needs to use those client credentials to hit the APIs So, API consumer is the one who needs to request access on the API from Anypoint Exchange",
+  "also": [
+   [
+    "v2026-01-30",
+    27
+   ],
+   [
+    "v2026",
+    32
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 43,
+  "qe": "Version 3.0.1 of a REST API implementation represents time values in PST time using ISO 8601 hh\\:mm\\:ss format. The API implementation needs to be changed to instead represent time values in CEST time using ISO 8601 hh\\:mm\\:ss format. When following the semver.org semantic versioning specification, what version should be assigned to the updated API implementation?",
+  "oe": [
+   "3.0.2",
+   "4.0.0",
+   "3.1.0",
+   "3.0.1"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Correct Answe r: 4.0.0*****************************************As per semver.org semantic versioning specification:Given a version number MAJOR.MINOR.PATCH, increment the:- MAJOR version when you make incompatible API changes.- MINOR version when you add functionality in a backwards compatible manner.- PATCH version when you make backwards compatible bug fixes.As per the scenario given in the question, the API implementation is completely changing its behavior. Although the format of the time is still being maintained as hh\\:mm\\:ss and there is no change in schema w.r.t format, the API will start functioning different after this change as the times are going to come completely different.Example: Before the change, say, time is going as 09:00:00 representing the PST. Now on, after the change, the same time will go as 18:00:00 as Central European Summer Time is 9 hours ahead of Pacific Time.>> This may lead to some uncertain behavior on API clients depending on how they are handling the times in the API response. All the API clients need to be informed that the API functionality is going to change and will return in CEST format. So, this considered as a MAJOR change and the version of API for this new change would be 4.0.0",
+  "also": [
+   [
+    "v2026",
+    24
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 44,
+  "qe": "An API implementation is deployed to CloudHub.What conditions can be alerted on using the default Anypoint Platform functionality, where the alert conditions depend on the end-to-end request processing of the API implementation?",
+  "oe": [
+   "When the API is invoked by an unrecognized API client",
+   "When a particular API client invokes the API too often within a given time period",
+   "When the response time of API invocations exceeds a threshold",
+   "When the API receives a very high number of API invocations"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: When the response time of API invocations exceeds a threshold*****************************************>> Alerts can be setup for all the given options using the default Anypoint Platform functionality>> However, the question insists on an alert whose conditions depend on the end-to-end request processing of the API implementation.>> Alert w.r.t \"Response Times\" is the only one which requires end-to-end request processing of API implementation in order to determine if the threshold is exceeded or not.",
+  "also": [
+   [
+    "v2026-01-30",
+    37
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 45,
+  "qe": "A company requires Mule applications deployed to CloudHub to be isolated between non-production and production environments. This is so Mule applications deployed to non-production environments can only access backend systems running in their customer-hosted non-production environment, and so Mule applications deployed to production environments can only access backend systems running in their customer-hosted production environment. How does MuleSoft recommend modifying Mule applications, configuring environments, or changing infrastructure to support this type of per-environment isolation between Mule applications and backend systems?",
+  "oe": [
+   "Modify properties of Mule applications deployed to the production Anypoint Platform environments to prevent access from non-production Mule applications",
+   "Configure firewall rules in the infrastructure inside each customer-hosted environment so that only IP addresses from the corresponding Anypoint Platform environments are allowed to communicate with corresponding backend systems",
+   "Create non-production and production environments in different Anypoint Platform business groups",
+   "Create separate Anypoint VPCs for non-production and production environments, then configure connections to the backend systems in the corresponding customer-hosted environments"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Correct Answe r: Create separate Anypoint VPCs for non-production and production environments, then configure connections to the backend systems in the corresponding customer-hosted environments.*****************************************>> Creating different Business Groups does NOT make any difference w.r.t accessing the non-prod and prod customer-hosted environments. Still they will be accessing from both Business Groups unless process network restrictions are put in place.>> We need to modify or couple the Mule Application Implementations with the environment. In fact, we should never implements application coupled with environments by binding them in the properties. Only basic things like endpoint URL etc should be bundled in properties but not environment level access restrictions.>> IP addresses on CloudHub are dynamic until unless a special static addresses are assigned. So it is not possible to setup firewall rules in customer-hosted infrastrcture. More over, even if static IP addresses are assigned, there could be 100s of applications running on cloudhub and setting up rules for all of them would be a hectic task, non-maintainable and definitely got a good practice.>> The best practice recommended by Mulesoft (In fact any cloud provider), is to have your Anypoint VPCs seperated for Prod and Non-Prod and perform the VPC peering or VPN tunneling for these Anypoint VPCs to respective Prod and Non-Prod customer-hosted environment networks.Reference:Bottom of FormTop of Form",
+  "also": [
+   [
+    "v2026",
+    11
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 46,
+  "qe": "Which of the below, when used together, makes the IT Operational Model effective?",
+  "oe": [
+   "Create reusable assets, Do marketing on the created assets across organization, Arrange time to time LOB reviews to ensure assets are being consumed or not",
+   "Create reusable assets, Make them discoverable so that LOB teams can self-serve and browse the APIs, Get active feedback and usage metrics",
+   "Create resuable assets, make them discoverable so that LOB teams can self-serve and browse the APIs"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: Create reusable assets, Make them discoverable so that LOB teams can self-serve and browse the APIs, Get active feedback and usage metrics. - **************************************** [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/e6966c0d82acf38f211bd2c323443ecd.jpg]",
+  "also": [
+   [
+    "v2026-01-30",
+    33
+   ]
+  ],
+  "note": "Page answer line says C, but the page explanation quotes option B (with active feedback and usage metrics)."
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 47,
+  "qe": "A company has created a successful enterprise data model (EDM). The company is committed to building an application network by adopting modern APIs as a core enabler of the company's IT operating model. At what API tiers (experience, process, system) should the company require reusing the EDM when designing modern API data models?",
+  "oe": [
+   "At the experience and process tiers",
+   "At the experience and system tiers",
+   "At the process and system tiers",
+   "At the experience, process, and system tiers"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: At the process and system tiers*****************************************>> Experience Layer APIs are modeled and designed exclusively for the end user's experience. So, the data models of experience layer vary based on the nature and type of such API consumer. For example, Mobile consumers will need light-weight data models to transfer with ease on the wire, where as web-based consumers will need detailed data models to render most of the info on web pages, so on. So, enterprise data models fit for the purpose of canonical models but not of good use for experience APIs.>> That is why, EDMs should be used extensively in process and system tiers but NOT in experience tier.",
+  "also": [
+   [
+    "v2026-01-30",
+    14
+   ],
+   [
+    "v2026",
+    12
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 48,
+  "qe": "An API implementation is updated. When must the RAML definition of the API also be updated?",
+  "oe": [
+   "When the API implementation changes the structure of the request or response messages",
+   "When the API implementation changes from interacting with a legacy backend system deployed on-premises to a modern, cloud-based (SaaS) system",
+   "When the API implementation is migrated from an older to a newer version of the Mule runtime",
+   "When the API implementation is optimized to improve its average response time"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Correct Answe r: When the API implementation changes the structure of the request or response messages*****************************************>> RAML definition usually needs to be touched only when there are changes in the request/response schemas or in any traits on API.>> It need not be modified for any internal changes in API implementation like performance tuning, backend system migrations etc..",
+  "also": [
+   [
+    "v2026",
+    35
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 49,
+  "qe": "Which statement is true about Spike Control policy and Rate Limiting policy?",
+  "oe": [
+   "All requests are rejected after the limit is reached in Rate Limiting policy, whereas the requests are queued in Spike Control policy after the limit is reached",
+   "In a clustered environment, the Rate Limiting.and Spike Control policies are applied to each node in the cluster",
+   "To protect Experience APIs by limiting resource consumption, Rate Limiting policy must be applied",
+   "In order to apply Rate Limiting and Spike Control policies, a contract to bind client application and API is needed for both"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Understanding Spike Control and Rate Limiting Policies:Spike Control Policy: Limits the number of requests processed by the API in a short time to handle sudden bursts of traffic. It does not queue requests but rejects any request that exceeds the allowed burst rate.Rate Limiting Policy: Sets a limit on the number of requests that an API can handle within a given timeframe. Once the limit is reached, additional requests are rejected.Evaluating the Options:Option A: Incorrect. In both Spike Control and Rate Limiting policies, requests are rejected once the limit is reached. Spike Control does not queue requests; it only controls the burst rate by rejecting excessive requests.Option B (Correct Answer): In a clustered environment, each node independently enforces the Rate Limiting and Spike Control policies, meaning that the limits apply to each node separately. This ensures that each node can control its own resource usage independently within the cluster.Option C: This is partially correct, as Rate Limiting is often used to protect Experience APIs, but Spike Control could also be useful in limiting resource consumption under high burst conditions.Option D: Incorrect. Although a contract is required to enforce client-specific policies, Rate Limiting and Spike Control do not require a contract to function for general traffic control.Conclusion:Option B is the correct answer because, in a clustered environment, Rate Limiting and Spike Control policies apply separately to each node, helping each instance to manage its own load.For more information, refer to MuleSoft's documentation on applying Rate Limiting and Spike Control policies in a clustered environment.",
+  "also": [
+   [
+    "v2026-01-30",
+    32
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 51,
+  "qe": "Which component monitors APIs and endpoints at scheduled intervals, receives reports about whether tests pass or fail, and displays statistics about API and endpoint performance?",
+  "oe": [
+   "API Analytics",
+   "Anypoint Monitoring dashboards",
+   "APT Functional Monitoring",
+   "Anypoint Runtime Manager alerts"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Understanding API Functional Monitoring:API Functional Monitoring is a feature within MuleSoft's Anypoint Platform that enables users to monitor the health and performance of APIs and endpoints by running functional tests at scheduled intervals.It checks whether APIs are functioning as expected by running test calls and then evaluating if the response meets the desired conditions. This is particularly useful for testing endpoint availability, checking for specific data in responses, and measuring API performance over time.Component Features:Scheduled Intervals: Functional monitoring allows configuring tests to run at regular intervals, such as every minute, hour, or day, depending on the monitoring requirements.Reports on Test Pass/Fail Status: After each test run, API Functional Monitoring reports whether the API passed or failed the test conditions.Performance Statistics: It displays metrics like average response time, success rate, and error rates, giving insights into API health and performance.Evaluating the Options:Option A (API Analytics): API Analytics provides insights on API usage and metrics but does not involve scheduled tests for pass/fail status or endpoint health checks.Option B (Anypoint Monitoring Dashboards): These dashboards display API metrics but do not actively test API endpoints or provide pass/fail reporting on a scheduled basis.Option C (Correct Answer): API Functional Monitoring fits the description, as it is designed to monitor API and endpoint health with scheduled test runs and display statistics about performance.Option D (Anypoint Runtime Manager Alerts): Runtime Manager alerts notify users of issues with application status but do not actively test endpoints at scheduled intervals.Conclusion:Option C (API Functional Monitoring) is the correct answer because it provides the necessary tools to test API functionality, monitor endpoint health, and display performance statistics in real-time.Refer to MuleSoft documentation on API Functional Monitoring for further guidance on setting up and configuring these tests in Anypoint Platform.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 52,
+  "qe": "A Platinum customer uses the U.S. control plane and deploys applications to CloudHub in Singapore with a default log configuration.The compliance officer asks where the logs and monitoring data reside?",
+  "oe": [
+   "Logs are held in:Singapore and monitoring data is held in the United States",
+   "Logs and monitoring data are held in the United States",
+   "Logs are held in the United States and monitoring data is held in Singapore",
+   "Logs and monitoring data are held in Singapore"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "For applications deployed on CloudHub in a foreign region (e.g., Singapore), MuleSoft handles log and monitoring data in the region where the control plane resides. This data storage policy is standard for CloudHub deployments to maintain centralized log and monitoring data.Data Location:For a U.S.-based control plane, all logs and monitoring data are stored in the United States, regardless of the deployment region.Although the application itself runs in Singapore, data related to application performance and logs is not localized to the deployment region.of Correct Answer (B):Since the control plane is based in the United States, all operational data like logs and monitoring will also be stored there, ensuring compliance with MuleSoft's data handling policies.of Incorrect Options:Option A and D are incorrect because MuleSoft does not store logs or monitoring data in the application deployment region when the control plane is located in the United States.Option C suggests mixed storage, which does not align with MuleSoft's data policy structure.ReferenceFor details on data residency in CloudHub deployments, refer to MuleSoft's documentation on CloudHub control planes and data handling policies.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 53,
+  "qe": "True or False. We should always make sure that the APIs being designed and developed are self-servable even if it needs more man-day effort and resources.",
+  "oe": [
+   "FALSE",
+   "TRUE"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Correct Answe r: TRUE*****************************************>> As per MuleSoft proposed IT Operating Model, designing APIs and making sure that they are discoverable and self-servable is VERY VERY IMPORTANT and decides the success of an API and its application network.",
+  "also": [
+   [
+    "v2026",
+    9
+   ]
+  ]
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 54,
+  "qe": "An organization uses various cloud-based SaaS systems and multiple on-premises systems. The on-premises systems are an important part of the organization's application network and can only be accessed from within the organization's intranet.What is the best way to configure and use Anypoint Platform to support integrations with both the cloud-based SaaS systems and on-premises systems? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/dedb4365569d7960fcc7f96323ff72e9.jpg]",
+  "oe": [
+   "Use CloudHub-deployed Mule runtimes in an Anypoint VPC managed by Anypoint Platform Private Cloud Edition control plane",
+   "Use CloudHub-deployed Mule runtimes in the shared worker cloud managed by the MuleSoft-hosted Anypoint Platform control plane",
+   "Use an on-premises installation of Mule runtimes that are completely isolated with NO external network access, managed by the Anypoint Platform Private Cloud Edition control plane",
+   "Use a combination of Cloud Hub-deployed and manually provisioned on-premises Mule runtimes managed by the MuleSoft-hosted Anypoint Platform control plane"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "Correct Answer: B",
+  "expl": "Correct Answe r: Use a combination of CloudHub-deployed and manually provisioned on-premises Mule runtimes managed by the MuleSoft-hosted Platform control plane.*****************************************Key details to be taken from the given scenario:>> Organization uses BOTH cloud-based and on-premises systems>> On-premises systems can only be accessed from within the organization's intranet Let us evaluate the given choices based on above key details:>> CloudHub-deployed Mule runtimes can ONLY be controlled using MuleSoft-hosted control plane. We CANNOT use Private Cloud Edition's control plane to control CloudHub Mule Runtimes. So, option suggesting this is INVALID>> Using CloudHub-deployed Mule runtimes in the shared worker cloud managed by the MuleSoft-hosted Anypoint Platform is completely IRRELEVANT to given scenario and silly choice. So, option suggesting this is INVALID>> Using an on-premises installation of Mule runtimes that are completely isolated with NO external network access, managed by the Anypoint Platform Private Cloud Edition control plane would work for On-premises integrations. However, with NO external access, integrations cannot be done to SaaS-based apps. Moreover CloudHub-hosted apps are best-fit for integrating with SaaS-based applications. So, option suggesting this is BEST WAY.The best way to configure and use Anypoint Platform to support these mixed/hybrid integrations is to use a combination of CloudHub-deployed and manually provisioned on-premises Mule runtimes managed by the MuleSoft-hosted Platform control plane.",
+  "fig": true,
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 55,
+  "qe": "Which layer in the API-led connectivity focuses on unlocking key systems, legacy systems, data sources etc and exposes the functionality?",
+  "oe": [
+   "Experience Layer",
+   "Process Layer",
+   "System Layer"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C",
+  "expl": "Correct Answe r: System Layer [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/2af9003ef273a3f2aef0094d8aa55be2.jpg] The APIs used in an API-led approach to connectivity fall into three categories: System APIs - these usually access the core systems of record and provide a means of insulating the user from the complexity or any changes to the underlying systems. Once built, many users, can access data without any need to learn the underlying systems and can reuse these APIs in multiple projects. Process APIs - These APIs interact with and shape data within a single system or across systems (breaking down data silos) and are created here without a dependence on the source systems from which that data originates, as well as the target channels through which that data is delivered. Experience APIs - Experience APIs are the means by which data can be reconfigured so that it is most easily consumed by its intended audience, all from a common data source, rather than setting up separate point-to-point integrations for each channel. An Experience API is usually created with API-first design principles where the API is designed for the specific user experience in mind.",
+  "also": []
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 56,
+  "qe": "When designing an upstream API and its implementation, the development team has been advised to NOT set timeouts when invoking a downstream API, because that downstream API has no SLA that can be relied upon. This is the only downstream API dependency of that upstream API.Assume the downstream API runs uninterrupted without crashing. What is the impact of this advice?",
+  "oe": [
+   "An SLA for the upstream API CANNOT be provided",
+   "The invocation of the downstream API will run to completion without timing out",
+   "A default timeout of 500 ms will automatically be applied by the Mule runtime in which the upstream API implementation executes",
+   "A toad-dependent timeout of less than 1000 ms will be applied by the Mule runtime in which the downstream API implementation executes"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Correct Answer: A",
+  "expl": "Correct Answe r: An SLA for the upstream API CANNOT be provided.*****************************************>> First thing first, the default HTTP response timeout for HTTP connector is 10000 ms (10 seconds). NOT 500 ms.>> Mule runtime does NOT apply any such \"load-dependent\" timeouts. There is no such behavior currently in Mule.>> As there is default 10000 ms time out for HTTP connector, we CANNOT always guarantee that the invocation of the downstream API will run to completion without timing out due to its unreliable SLA times. If the response time crosses 10 seconds then the request may time out.The main impact due to this is that a proper SLA for the upstream API CANNOT be provided.",
+  "also": [
+   [
+    "v2026",
+    21
+   ]
+  ],
+  "note": "Option C text on this page is corrupted (copied from another question)."
+ },
+ {
+  "label": "v2026-05-09",
+  "no": 57,
+  "qe": "What API policy would LEAST likely be applied to a Process API?",
+  "oe": [
+   "Custom circuit breaker",
+   "Client ID enforcement",
+   "Rate limiting",
+   "JSON threat protection"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Correct Answer: D",
+  "expl": "Correct Answe r: JSON threat protection*****************************************Fact: Technically, there are no restrictions on what policy can be applied in what layer. Any policy can be applied on any layer API. However, context should also be considered properly before blindly applying the policies on APIs.That is why, this question asked for a policy that would LEAST likely be applied to a Process API.From the given options:>> All policies except \"JSON threat protection\" can be applied without hesitation to the APIs in Process tier.>> JSON threat protection policy ideally fits for experience APIs to prevent suspicious JSON payload coming from external API clients. This covers more of a security aspect by trying to avoid possibly malicious and harmful JSON payloads from external clients calling experience APIs.As external API clients are NEVER allowed to call Process APIs directly and also these kind of malicious and harmful JSON payloads are always stopped at experience API layer only using this policy, it is LEAST LIKELY that this same policy is again applied on Process Layer API.",
+  "also": [
+   [
+    "v2026-01-30",
+    9
+   ]
+  ]
+ }
+]
