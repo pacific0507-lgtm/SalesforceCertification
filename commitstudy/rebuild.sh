@@ -10,25 +10,27 @@ python3 $C/figs_m/apply.py $T/d1.json $T/d2.json $M $T/m2.json $T/p3.html $T/p4.
 python3 $C/patch_quiz_pos.py $T/p4.html $T/p5.html
 python3 $C/patch_sync_keys.py $T/p5.html $T/p6.html
 python3 $C/patch_add_afsales.py $T/p6.html $OUT
-python3 $C/patch_ask_form.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_news.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/guide/patch_guide.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_rotate_keep.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_badge_toast.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_home_wait.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_texts_order.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_grass.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_garden.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_add_afspec.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_add_mulepa.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_subj_order_all.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_texts_tags.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_qv_terms.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_hero_grass.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_qact_last.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_stats_fix.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_famls_merge.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_sync_merge.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_exam_rounds.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_qbm_no.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
-python3 $C/patch_no_reduced_motion.py $OUT $OUT.tmp && mv $OUT.tmp $OUT
+python3 $C/patch_ask_form.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_news.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/guide/patch_guide.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_rotate_keep.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_badge_toast.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_home_wait.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_texts_order.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_grass.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_garden.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_add_afspec.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_add_mulepa.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_add_fe.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_add_sg.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_subj_order_all.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_texts_tags.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_qv_terms.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_hero_grass.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_qact_last.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_stats_fix.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_famls_merge.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_sync_merge.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_exam_rounds.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_qbm_no.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_no_reduced_motion.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
