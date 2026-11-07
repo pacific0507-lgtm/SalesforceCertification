@@ -13,7 +13,7 @@ def rep(old, new, count=1):
     s = s.replace(old, new)
 JS = r'''
 /* ==草の庭: 学習した日・解いた問題数・勉強時間で草が生え、庭・丘・山と育つ== */
-var CS_STAGES=[[0,"まだ空き地","1節読むか1問解くと、最初の芽が出ます"],[1,"芽が出た","草が少しずつ生えてきました"],[7,"小さな草むら","草が集まってきました"],[15,"草の庭","庭らしくなってきました"],[30,"花の庭","花が咲きそろう庭になりました"],[60,"小さな丘","草が積もって丘ができました"],[100,"草の山","ついに山になりました"],[200,"緑の山脈","山が連なる大自然です"]];
+var CS_STAGES=[[0,"まだ空き地","1節読むか1問解くと、最初の芽が出ます"],[1,"芽が出た","草が少しずつ生えてきました"],[7,"小さな草むら","草が集まってきました"],[15,"草の庭","庭らしくなってきました"],[30,"花の庭","花が咲きそろう庭になりました"],[60,"小さな丘","草が積もって丘ができました"],[100,"草の山","ついに山になりました"],[200,"緑の山脈","山が連なる大自然です"],[300,"小さな林","木が育ちはじめました"],[400,"深い森","森が広がりました"],[500,"森の湖","森の奥に湖ができました"],[650,"虹の谷","谷に虹がかかりました"],[800,"雲海の高原","雲の上まで緑が届きました"],[1000,"緑の楽園","どこまでも緑が続く楽園です"]];
 var CS_GNAMES=["芝","双葉","花","草むら","若葉","つくし","たんぽぽ","ススキ","四つ葉"];
 /* 草の本数: 学習した日に1本、さらにこれまでに解いた問題10問ごとに1本、勉強時間30分ごとに1本 */
 function csGardenDays(days){var ks=Object.keys(days||{}).filter(function(k){var d=days[k];return d&&(d.q||d.r||d.t)}).sort(),out=[],q=0,t=0,nq=0,nt=0;
@@ -24,7 +24,13 @@ function csGardenSVG(list,W,H){var n=list.length,st=csStage(n),g="";
   if(st>=5)g+='<path d="M0 '+(H*0.62)+' Q'+(W*0.25)+' '+(H*0.28)+' '+(W*0.5)+' '+(H*0.6)+' T'+W+' '+(H*0.58)+' V'+H+' H0Z" class="gd-hill"/>';
   if(st>=6)g+='<path d="M'+(W*0.18)+' '+(H*0.66)+' L'+(W*0.42)+' '+(H*0.14)+' L'+(W*0.66)+' '+(H*0.66)+'Z" class="gd-mt"/><path d="M'+(W*0.36)+' '+(H*0.27)+' L'+(W*0.42)+' '+(H*0.14)+' L'+(W*0.48)+' '+(H*0.27)+'Z" fill="#fff" opacity=".85"/>';
   if(st>=7)g+='<path d="M'+(W*0.55)+' '+(H*0.68)+' L'+(W*0.78)+' '+(H*0.22)+' L'+W+' '+(H*0.6)+' V'+(H*0.7)+'Z" class="gd-mt2"/>';
-  g+='<rect y="'+(H*0.64)+'" width="'+W+'" height="'+(H*0.36)+'" class="gd-ground"/>';
+  /* 300本からの段階: 林・森・湖・虹・雲海・楽園 */
+  if(st>=12)g='<path d="M0 '+(H*0.3)+' Q'+(W*0.2)+' '+(H*0.22)+' '+(W*0.4)+' '+(H*0.3)+' T'+(W*0.8)+' '+(H*0.28)+' T'+W+' '+(H*0.3)+' V'+(H*0.38)+' H0Z" class="gd-cloud"/>'+g;
+  if(st>=11)g='<path d="M'+(W*0.12)+' '+(H*0.66)+' A'+(W*0.38)+' '+(H*0.55)+' 0 0 1 '+(W*0.88)+' '+(H*0.66)+'" class="gd-rb gd-rb1"/><path d="M'+(W*0.16)+' '+(H*0.66)+' A'+(W*0.34)+' '+(H*0.49)+' 0 0 1 '+(W*0.84)+' '+(H*0.66)+'" class="gd-rb gd-rb2"/><path d="M'+(W*0.2)+' '+(H*0.66)+' A'+(W*0.3)+' '+(H*0.43)+' 0 0 1 '+(W*0.8)+' '+(H*0.66)+'" class="gd-rb gd-rb3"/>'+g;
+  if(st>=13)g='<circle cx="'+(W*0.9)+'" cy="'+(H*0.16)+'" r="'+(H*0.09)+'" class="gd-sun"/>'+g;
+  if(st>=8){var tn=st>=9?9:4;for(var ti=0;ti<tn;ti++){var tx=W*(0.06+ti*(0.88/(tn-1||1))),ty=H*(0.6+((ti*37)%7)/100),tr=H*(0.07+((ti*13)%4)/100);g+='<path d="M'+tx.toFixed(1)+' '+(ty-tr*2.4).toFixed(1)+' L'+(tx+tr).toFixed(1)+' '+ty.toFixed(1)+' L'+(tx-tr).toFixed(1)+' '+ty.toFixed(1)+'Z" class="gd-tree"/><rect x="'+(tx-1.5).toFixed(1)+'" y="'+ty.toFixed(1)+'" width="3" height="'+(tr*0.5).toFixed(1)+'" class="gd-trunk"/>'}}
+  var lk=st>=10?'<ellipse cx="'+(W*0.7)+'" cy="'+(H*0.76)+'" rx="'+(W*0.15)+'" ry="'+(H*0.055)+'" class="gd-lake"/>':'';
+  g+='<rect y="'+(H*0.64)+'" width="'+W+'" height="'+(H*0.36)+'" class="gd-ground"/>'+lk;
   var shown=list.slice(-90);
   shown.forEach(function(day,i){var h=csGrassHash(day+"#g"),x=8+(h%1000)/1000*(W-28),y=H*0.62+((h>>>10)%1000)/1000*(H*0.3),sc=0.55+((h>>>20)%100)/100*0.25;
     g+='<g transform="translate('+x.toFixed(1)+','+y.toFixed(1)+') scale('+sc.toFixed(2)+') translate(-20,-31)">'+CS_GRASS[csGrassKind(day)]+'</g>'});
@@ -55,6 +61,15 @@ CSS = """
 .garden .gd-hill{fill:color-mix(in srgb,#7cc35a 60%,var(--paper))}
 .garden .gd-mt{fill:color-mix(in srgb,#4f9a4a 75%,var(--paper))}
 .garden .gd-mt2{fill:color-mix(in srgb,#3d7f3c 70%,var(--paper))}
+.garden .gd-tree{fill:#2f7a3b}
+.garden .gd-trunk{fill:#7a5a3a}
+.garden .gd-lake{fill:#6fb6e8;opacity:.85}
+.garden .gd-rb{fill:none;stroke-width:4;opacity:.55}
+.garden .gd-rb1{stroke:#f08a8a}
+.garden .gd-rb2{stroke:#f2c94c}
+.garden .gd-rb3{stroke:#7cc5f0}
+.garden .gd-cloud{fill:#fff;opacity:.75}
+.garden .gd-sun{fill:#f6c343}
 .garden .gd-empty{font-size:12px;fill:var(--sub)}
 .gd-st{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:8px 0 0}
 .gd-st b{font-size:16px}.gd-st small{color:var(--sub);font-size:12.5px}
