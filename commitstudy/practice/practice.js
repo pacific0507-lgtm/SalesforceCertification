@@ -161,7 +161,7 @@ function bindQ(){var box=$("#qbox");box.addEventListener("click",function(e){var
   document.addEventListener("keydown",function(e){if(ST.tab!=="q"||e.target.closest&&e.target.closest("input,textarea,select,#fclose,a"))return;if(/^[1-8]$/.test(e.key)&&CUR&&+e.key<=CUR.o.length){choose(+e.key-1);e.preventDefault()}else if(e.key==="Enter"){DONE?next():check();e.preventDefault()}else if(e.key==="ArrowRight"){next();e.preventDefault()}else if(e.key==="ArrowLeft"){prev();e.preventDefault()}})}
 
 /* 用語カード */
-var TERMS={},TKN="cs-term-known-v1",KNOWN=LS.get(TKN,{}),TL=[],TI=0,FLIP=false;
+var GBK="cs-term-bm-v1",TERMS={},TKN="cs-term-known-v1",KNOWN=LS.get(TKN,{}),TL=[],TI=0,FLIP=false;
 var tkey=function(c){return c.subj+":"+c.s+":"+c.t};
 async function loadTerms(id){if(TERMS[id])return TERMS[id];var rows=await getJSON("data/"+id+"/terms.json"),secs=await getJSON("data/"+id+"/sections.json");var rank={},title={};secs.forEach(function(s){var k=String(s.id).split(":").pop();rank[k]=s.sort_order;title[k]=s.title});
   TERMS[id]=rows.map(function(r,i){return {subj:id,s:r.s,t:r.t,d:r.d,title:title[r.s]||"",o:(rank[r.s]||999)*1000+i}}).sort(function(a,b){return a.o-b.o});return TERMS[id]}
@@ -170,21 +170,24 @@ async function renderTerms(rebuild){
   var ids=ST.gsubj==="all"?SUBJ.map(function(s){return s.id}):[ST.gsubj];await Promise.all(ids.map(loadTerms));
   var all=[];ids.forEach(function(id){all=all.concat(TERMS[id]||[])});
   var todo=all.filter(function(c){return !KNOWN[tkey(c)]});
-  chips($("#g-only"),[{v:"all",l:"すべて"},{v:"todo",l:"まだ覚えていないカード",n:todo.length}],ST.gonly,function(v){ST.gonly=v;save();TI=0;renderTerms(true)});
+  var GB=LS.get(GBK,{}),bms=all.filter(function(c){return GB[tkey(c)]});
+  chips($("#g-only"),[{v:"all",l:"すべて"},{v:"todo",l:"まだ覚えていないカード",n:todo.length},{v:"bm",l:"★しおり",n:bms.length}],ST.gonly,function(v){ST.gonly=v;save();TI=0;renderTerms(true)});
   $("#g-known").textContent="この範囲で覚えたカード "+(all.length-todo.length)+" / "+all.length+"枚";
   chips($("#g-mode"),[{v:"order",l:"順番に"},{v:"random",l:"ランダム"}],ST.gmode,function(v){ST.gmode=v;save();TI=0;renderTerms(true)});
-  if(rebuild||!TL.built){TL=(ST.gonly==="todo"?todo:all).slice();TL.built=true;if(ST.gmode==="random")for(var i=TL.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=TL[i];TL[i]=TL[j];TL[j]=t}}
+  if(rebuild||!TL.built){TL=(ST.gonly==="todo"?todo:ST.gonly==="bm"?bms:all).slice();TL.built=true;if(ST.gmode==="random")for(var i=TL.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=TL[i];TL[i]=TL[j];TL[j]=t}}
   drawCard();
 }
 function drawCard(){
   var fc=$("#fc");FLIP=false;fc.classList.remove("on");
-  if(!TL.length){fc.querySelector(".front").innerHTML='<p>'+(ST.gonly==="todo"?"この範囲のカードは、すべて「覚えた」になっています。":"カードがありません。")+'</p>';fc.querySelector(".back").innerHTML="";$("#g-pos").textContent="";return}
+  if(!TL.length){fc.querySelector(".front").innerHTML='<p>'+(ST.gonly==="todo"?"この範囲のカードは、すべて「覚えた」になっています。":ST.gonly==="bm"?"しおりを付けたカードはありません。カードの右上の☆で付けられます。":"カードがありません。")+'</p>';fc.querySelector(".back").innerHTML="";$("#g-pos").textContent="";return}
   if(TI>=TL.length)TI=0;if(TI<0)TI=TL.length-1;var c=TL[TI],sj=SUBJ.filter(function(s){return s.id===c.subj})[0];
-  fc.querySelector(".front").innerHTML='<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span><span>'+esc(c.title)+'</span></p><h3>'+esc(c.t)+'</h3>';
-  fc.querySelector(".back").innerHTML='<p class="bx-k"><span>'+esc(c.t)+'</span></p><p class="tc-d">'+esc(c.d)+'</p><p class="tq-links"><a class="bx-go" href="/'+c.subj+'/#f-'+esc(c.s)+'">テキストで確認する</a></p><div class="gk"><button type="button" data-k="again">まだ</button><button type="button" data-k="known"'+(KNOWN[tkey(c)]?' aria-pressed="true"':"")+'>覚えた</button></div>';
+  var gbm=!!LS.get(GBK,{})[tkey(c)],gst='<button type="button" class="g-bm" data-gbm aria-pressed="'+gbm+'" aria-label="しおり">'+(gbm?"★":"☆")+'</button>';
+  fc.querySelector(".front").innerHTML=gst+'<p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span><span>'+esc(c.title)+'</span></p><h3>'+esc(c.t)+'</h3>';
+  fc.querySelector(".back").innerHTML=gst+'<p class="bx-k"><span>'+esc(c.t)+'</span></p><p class="tc-d">'+esc(c.d)+'</p><p class="tq-links"><a class="bx-go" href="/'+c.subj+'/#f-'+esc(c.s)+'">テキストで確認する</a></p><div class="gk"><button type="button" data-k="again">まだ</button><button type="button" data-k="known"'+(KNOWN[tkey(c)]?' aria-pressed="true"':"")+'>覚えた</button></div>';
   $("#g-pos").textContent=(TI+1)+" / "+TL.length;
 }
 function bindTerms(){
+  $("#fc").addEventListener("click",function(e){var g=e.target.closest("[data-gbm]");if(!g)return;e.stopImmediatePropagation();var c=TL[TI];if(!c)return;var B=LS.get(GBK,{}),k=tkey(c);if(B[k])delete B[k];else B[k]=Date.now();LS.set(GBK,B);if(ST.gonly==="bm"){renderTerms(true)}else{var on=!!B[k];$$("#fc [data-gbm]").forEach(function(x){x.setAttribute("aria-pressed",String(on));x.textContent=on?"★":"☆"});var gc=$("#g-only [data-v=bm]");if(gc){var cnt=0;Object.keys(B).forEach(function(){cnt++});}}},true);
   var fc=$("#fc");fc.addEventListener("click",function(e){var k=e.target.closest(".gk button");if(k){e.stopPropagation();var c=TL[TI];if(k.dataset.k==="known")KNOWN[tkey(c)]=Date.now();else delete KNOWN[tkey(c)];LS.set(TKN,KNOWN);TI++;renderTerms(false);return}var a=e.target.closest("a");if(a){var c0=TL[TI];try{if(c0)sessionStorage.setItem("cs-term-jump",JSON.stringify({subj:c0.subj,s:c0.s,t:c0.t,ts:Date.now()}))}catch(x){}return}FLIP=!FLIP;fc.classList.toggle("on",FLIP)});
   fc.addEventListener("keydown",function(e){if(e.key===" "||e.key==="Enter"){e.preventDefault();FLIP=!FLIP;fc.classList.toggle("on",FLIP)}});
   $("#g-prev").onclick=function(){TI--;drawCard()};$("#g-next").onclick=function(){TI++;drawCard()};

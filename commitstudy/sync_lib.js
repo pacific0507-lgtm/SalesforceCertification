@@ -206,7 +206,7 @@
 
   /* ---- 端末の記録の同期(fam-ls) ----
      項目ごとに合わせる鍵(用語カード・復習の予定・合格した科目)。ほかは鍵ごとに新しい方 */
-  var MAPK = ["cs-term-known-v1", "cs-review-v1", "cs-subj-passed"], IT = "ls-mirror-it";
+  var MAPK = ["cs-term-known-v1", "cs-term-bm-v1", "cs-review-v1", "cs-subj-passed"], IT = "ls-mirror-it";
   function pj(v, d) { try { var x = JSON.parse(v); return x == null ? d : x; } catch (e) { return d; } }
   function itAll() { var x = pj(g(IT), {}); return isObj(x) ? x : {}; }
   /* setItem のたびに(古い値と新しい値を比べて)項目ごとの時刻を残す */
