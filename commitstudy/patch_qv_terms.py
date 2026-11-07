@@ -46,7 +46,12 @@ function tcRender(){if(!TC.on)return;tcLoad().then(function(all){var K=tcKnown()
     sc.innerHTML='<option value="all">Chapter: すべて('+all.length+'枚)</option>'+Object.keys(chs).sort(function(a,b){return a-b}).map(function(k){return '<option value="'+k+'">Chapter '+k+' '+esc(CHT[k]||"")+'('+chs[k]+'枚)</option>'}).join("");sc.value=TC.cat;
     var fs={},fo=[];all.forEach(function(c){if(TC.cat!=="all"&&String(chOfS(c.s))!==String(TC.cat))return;if(!fs[c.s]){fs[c.s]=0;fo.push(c.s)}fs[c.s]++});
     sf.innerHTML='<option value="all">項目: すべて</option>'+fo.map(function(k){return '<option value="'+esc(k)+'">'+esc(dk(k))+' '+esc(TITLES[k]||"")+'('+fs[k]+'枚)</option>'}).join("");if(TC.feat!=="all"&&!fs[TC.feat])TC.feat="all";sf.value=TC.feat;
-    var BM=tcBm(),L={all:"すべて",todo:"まだ覚えていない",known:"覚えた",bm:"★しおり"};[].slice.call(ss.options).forEach(function(o){o.textContent="状態: "+L[o.value]+"("+base.filter(function(c){var m=!!K[tcKey(c)];return o.value==="all"||(o.value==="bm"?!!BM[tcKey(c)]:o.value==="todo"?!m:m)}).length+"枚)"});ss.value=TC.st;cr.checked=TC.rnd}
+    var BM=tcBm(),L={all:"すべて",todo:"まだ覚えていない",known:"覚えた",bm:"★しおり"};[].slice.call(ss.options).forEach(function(o){o.textContent="状態: "+L[o.value]+"("+base.filter(function(c){var m=!!K[tcKey(c)];return o.value==="all"||(o.value==="bm"?!!BM[tcKey(c)]:o.value==="todo"?!m:m)}).length+"枚)"});ss.value=TC.st;cr.checked=TC.rnd;
+    /* 選ぶと0枚になる選択肢はグレーにする(問題の絞り込みと同じ) */
+    var dim=function(el,fn){[].slice.call(el.options).forEach(function(o){if(o.value==="all"){o.disabled=false;o.style.color="";return}var n=all.filter(function(c){return fn(o.value,c)}).length;o.disabled=!n&&o.value!==el.value;o.style.color=o.disabled?"var(--muted)":""})};
+    dim(sc,function(v,c){return String(chOfS(c.s))===String(v)&&tcPass(c,K,BM)});
+    dim(sf,function(v,c){return c.s===v&&tcPass(c,K,BM)});
+    dim(ss,function(v,c){var save=TC.st;TC.st=v;var r=(TC.cat==="all"||String(chOfS(c.s))===String(TC.cat))&&(TC.feat==="all"||c.s===TC.feat)&&tcPass(c,K,BM);TC.st=save;return r})}
   /* まとめ */
   var parts=[TC.cat==="all"?"全Chapter":"Chapter "+TC.cat+" "+(CHT[TC.cat]||"")];if(TC.feat!=="all")parts.push(dk(TC.feat)+" "+(TITLES[TC.feat]||""));if(TC.st!=="all")parts.push(TC.st==="todo"?"まだ覚えていない":TC.st==="bm"?"★しおり":"覚えた");if(TC.rnd)parts.push("ランダム");
   var sm=byId("tcSum");if(sm)sm.innerHTML='<span>'+esc(parts.join(" / "))+'</span><span class="tc-kn">覚えた '+known+' / '+base.length+'枚</span>';
