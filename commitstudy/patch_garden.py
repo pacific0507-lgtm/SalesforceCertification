@@ -12,10 +12,12 @@ def rep(old, new, count=1):
     if n != count: sys.exit(f"置換対象が {n} 件(期待 {count} 件): {old[:90]!r}")
     s = s.replace(old, new)
 JS = r'''
-/* ==草の庭: 学習した日ごとに草が1本ずつ生え、庭・丘・山と育つ== */
-var CS_STAGES=[[0,"まだ空き地","1日学習すると、最初の芽が出ます"],[1,"芽が出た","草が少しずつ生えてきました"],[7,"小さな草むら","1週間分の草が集まりました"],[15,"草の庭","庭らしくなってきました"],[30,"花の庭","花が咲きそろう庭になりました"],[60,"小さな丘","草が積もって丘ができました"],[100,"草の山","ついに山になりました"],[200,"緑の山脈","山が連なる大自然です"]];
+/* ==草の庭: 学習した日・解いた問題数・勉強時間で草が生え、庭・丘・山と育つ== */
+var CS_STAGES=[[0,"まだ空き地","1節読むか1問解くと、最初の芽が出ます"],[1,"芽が出た","草が少しずつ生えてきました"],[7,"小さな草むら","草が集まってきました"],[15,"草の庭","庭らしくなってきました"],[30,"花の庭","花が咲きそろう庭になりました"],[60,"小さな丘","草が積もって丘ができました"],[100,"草の山","ついに山になりました"],[200,"緑の山脈","山が連なる大自然です"]];
 var CS_GNAMES=["芝","双葉","花","草むら","若葉","つくし","たんぽぽ","ススキ","四つ葉"];
-function csGardenDays(days){return Object.keys(days||{}).filter(function(k){var d=days[k];return d&&(d.q||d.r||(d.r&&d.r.length))}).sort()}
+/* 草の本数: 学習した日に1本、さらにこれまでに解いた問題10問ごとに1本、勉強時間30分ごとに1本 */
+function csGardenDays(days){var ks=Object.keys(days||{}).filter(function(k){var d=days[k];return d&&(d.q||d.r||d.t)}).sort(),out=[],q=0,t=0,nq=0,nt=0;
+  ks.forEach(function(k){var d=days[k];if(d.q||d.r)out.push(k);q+=+d.q||0;t+=+d.t||0;while(Math.floor(q/10)>nq){nq++;out.push(k+"#q"+nq)}while(Math.floor(t/1800)>nt){nt++;out.push(k+"#t"+nt)}});return out}
 function csStage(n){var k=0;for(var i=0;i<CS_STAGES.length;i++)if(n>=CS_STAGES[i][0])k=i;return k}
 function csGardenSVG(list,W,H){var n=list.length,st=csStage(n),g="";
   var sky='<rect width="'+W+'" height="'+H+'" class="gd-sky"/>';
@@ -29,13 +31,13 @@ function csGardenSVG(list,W,H){var n=list.length,st=csStage(n),g="";
   if(!n)g+='<text x="'+W/2+'" y="'+(H*0.82)+'" text-anchor="middle" class="gd-empty">ここに草が生えていきます</text>';
   return '<svg class="garden" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="これまでに生えた草 '+n+'本">'+sky+g+'</svg>'}
 function csGarden(el,s){try{if(!el||!s)return;var list=csGardenDays(s.days),n=list.length,st=csStage(n),nx=CS_STAGES[st+1];
-  el.innerHTML='<p class="bx-k">草の庭<span>'+n+'本</span></p>'+csGardenSVG(list,340,150)+'<p class="gd-st"><b>'+CS_STAGES[st][1]+'</b>'+(nx?'<small>あと'+(nx[0]-n)+'日で「'+nx[1]+'」</small>':'<small>最高の段階です</small>')+'</p><a class="bx-go" href="/record/#garden-d">草の庭をくわしく見る</a>'}catch(e){}}
+  el.innerHTML='<p class="bx-k">草の庭<span>'+n+'本</span></p>'+csGardenSVG(list,340,150)+'<p class="gd-st"><b>'+CS_STAGES[st][1]+'</b>'+(nx?'<small>あと'+(nx[0]-n)+'本で「'+nx[1]+'」</small>':'<small>最高の段階です</small>')+'</p><a class="bx-go" href="/record/#garden-d">草の庭をくわしく見る</a>'}catch(e){}}
 function csGardenDetail(days){try{var el=document.getElementById("garden-detail");if(!el)return;var list=csGardenDays(days),n=list.length,st=csStage(n),cur=CS_STAGES[st],nx=CS_STAGES[st+1];
   var pct=nx?Math.round((n-cur[0])/(nx[0]-cur[0])*100):100,cnt=[0,0,0,0,0,0,0,0,0];list.forEach(function(d){cnt[csGrassKind(d)]++});
   var h=csGardenSVG(list,340,190)+'<div class="gd-now"><b>'+cur[1]+'</b><span>'+cur[2]+'</span></div>';
-  h+='<div class="gd-prog"><div class="l"><span>'+(nx?'次の段階「'+nx[1]+'」まで':'最高の段階')+'</span><span>'+n+(nx?' / '+nx[0]:'')+'日</span></div><div class="bar"><i style="width:'+Math.max(0,Math.min(100,pct))+'%"></i></div></div>';
+  h+='<div class="gd-prog"><div class="l"><span>'+(nx?'次の段階「'+nx[1]+'」まで':'最高の段階')+'</span><span>'+n+(nx?' / '+nx[0]:'')+'本</span></div><div class="bar"><i style="width:'+Math.max(0,Math.min(100,pct))+'%"></i></div></div>';
   h+='<p class="gd-h">生えた草の種類</p><ul class="gd-kinds">'+CS_GNAMES.map(function(nm,k){return '<li class="'+(cnt[k]?"":"z")+'"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" class="gs-bg"/>'+CS_GRASS[k]+'</svg><span>'+nm+'</span><b>'+cnt[k]+'</b></li>'}).join("")+'</ul>';
-  h+='<p class="gd-h">育ち方</p><ol class="gd-steps">'+CS_STAGES.map(function(x,i){return '<li class="'+(i<=st?"on":"")+(i===st?" cur":"")+'"><b>'+x[0]+'日〜</b>'+x[1]+'</li>'}).join("")+'</ol><p class="bx-s">1節読むか1問解いた日に、草が1本生えます。草の種類は日付で決まり、まれに四つ葉のクローバーが生えます。</p>';
+  h+='<p class="gd-h">育ち方</p><ol class="gd-steps">'+CS_STAGES.map(function(x,i){return '<li class="'+(i<=st?"on":"")+(i===st?" cur":"")+'"><b>'+x[0]+'本〜</b>'+x[1]+'</li>'}).join("")+'</ol><p class="bx-s">1節読むか1問解いた日に、草が1本生えます。さらに、これまでに解いた問題10問ごとに1本、勉強時間30分ごとに1本生えます。草の種類はランダムに決まり、まれに四つ葉のクローバーが生えます。</p>';
   el.innerHTML=h}catch(e){}}
 '''
 rep("FAMP.home=function(){", JS + "\nFAMP.home=function(){")
