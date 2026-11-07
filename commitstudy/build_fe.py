@@ -49,4 +49,8 @@ for n in sorted(chs):
 W = lambda name, obj: json.dump(obj, open(os.path.join(out, name), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 W("chapters.json", chapters); W("sections.json", sections); W("questions.json", Q); W("qrows.json", R)
 for name, v in (("mcq.json", []), ("numcards.json", []), ("presets.json", []), ("traps.json", {})): W(name, v)
-print("chapters", len(chapters), "sections", len(sections), "questions", len(Q))
+# 用語カード: 原稿フォルダの隣の terms.json(fe/terms.json など)があれば、そのまま data に入れる
+tp = os.path.join(os.path.dirname(os.path.abspath(src)), "terms.json")
+T = json.load(open(tp, encoding="utf-8")) if os.path.exists(tp) else []
+if T: W("terms.json", T)
+print("chapters", len(chapters), "sections", len(sections), "questions", len(Q), "terms", len(T))
