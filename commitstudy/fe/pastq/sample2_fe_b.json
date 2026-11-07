@@ -46,7 +46,7 @@
   "set": "sample2_fe_b",
   "no": 3,
   "s": "基本情報技術者試験 科目Bのサンプル問題 問3",
-  "q": "次のプログラム中の［ a ］と［ b ］に入れる正しい答えの組合せを，解答群の中から選べ。\n手続 append は，引数で与えられた文字を単方向リストに追加する手続である。単方向リストの各要素は，クラス ListElement を用いて表現する。クラス ListElement の説明を図に示す。ListElement 型の変数はクラス ListElement のインスタンスの参照を格納するものとする。大域変数 listHead は，単方向リストの先頭の要素の参照を格納する。リストが空のときは，listHead は未定義である。\n〔図 クラス ListElement の説明〕\nメンバ変数 val：文字型。リストに格納する文字。\nメンバ変数 next：ListElement。リストの次の文字を保持するインスタンスの参照。初期状態は未定義である。\nコンストラクタ ListElement(文字型: qVal)：引数 qVal でメンバ変数 val を初期化する。\n〔プログラム〕\n大域: ListElement: listHead ← 未定義の値\n\n○append(文字型: qVal)\n　ListElement: prev, curr\n　curr ← ListElement(qVal)\n　if (listHead が［ a ］)\n　　listHead ← curr\n　else\n　　prev ← listHead\n　　while (prev.next が 未定義でない)\n　　　prev ← prev.next\n　　endwhile\n　　prev.next ←［ b ］\n　endif",
+  "q": "次のプログラム中の［ a ］と［ b ］に入れる正しい答えの組合せを，解答群の中から選べ。\n手続 append は，引数で与えられた文字を単方向リストに追加する手続である。単方向リストの各要素は，クラス ListElement を用いて表現する。クラス ListElement の説明を図に示す。ListElement 型の変数はクラス ListElement のインスタンスの参照を格納するものとする。大域変数 listHead は，単方向リストの先頭の要素の参照を格納する。リストが空のときは，listHead は未定義である。\n〔図 クラス ListElement の説明〕\nメンバ変数｜型｜説明\nval｜文字型｜リストに格納する文字。\nnext｜ListElement｜リストの次の文字を保持するインスタンスの参照。初期状態は未定義である。\n\nコンストラクタ｜説明\nListElement(文字型: qVal)｜引数 qVal でメンバ変数 val を初期化する。\n〔プログラム〕\n大域: ListElement: listHead ← 未定義の値\n\n○append(文字型: qVal)\n　ListElement: prev, curr\n　curr ← ListElement(qVal)\n　if (listHead が［ a ］)\n　　listHead ← curr\n　else\n　　prev ← listHead\n　　while (prev.next が 未定義でない)\n　　　prev ← prev.next\n　　endwhile\n　　prev.next ←［ b ］\n　endif",
   "o": [
    "a：未定義，b：curr",
    "a：未定義，b：curr.next",
@@ -60,7 +60,7 @@
   ],
   "f": "fe_dstr",
   "x": "リスト(連結リスト)は、各要素が次の要素の位置(ポインタ)を持つ構造です。挿入や削除はポインタの付け替えだけで済みますが、目的の要素は先頭から順にたどって探します。",
-  "ex": "リストが空(listHead が未定義)なら、新しい要素 curr を先頭にします。空でなければ、next が未定義の末尾の要素までたどり、その next に新しい要素 curr をつなぎます。curr.next はまだ未定義で、listHead をつなぐとリストが環状になってしまいます。(出題時の表を文章の形に改変)",
+  "ex": "リストが空(listHead が未定義)なら、新しい要素 curr を先頭にします。空でなければ、next が未定義の末尾の要素までたどり、その next に新しい要素 curr をつなぎます。curr.next はまだ未定義で、listHead をつなぐとリストが環状になってしまいます。",
   "u": "https://www.ipa.go.jp/shiken/syllabus/ps6vr7000000oett-att/fe_kamoku_b_sample.pdf",
   "v": "公式で確認済み"
  },
@@ -89,7 +89,7 @@
   "set": "sample2_fe_b",
   "no": 5,
   "s": "基本情報技術者試験 科目Bのサンプル問題 問5",
-  "q": "次のプログラム中の［　　　］に入れる正しい答えを，解答群の中から選べ。\n任意の異なる 2 文字を c1，c2 とするとき，英単語群に含まれる英単語において，c1 の次に c2 が出現する割合を求めるプログラムである。英単語は，英小文字だけから成る。英単語の末尾の文字が c1 である場合，その箇所は割合の計算に含めない。例えば，図に示す 4 語の英単語“importance”，“inflation”，“information”，“innovation”から成る英単語群において，c1 を“n”，c2 を“f”とする。英単語の末尾の文字以外に“n”は五つあり，そのうち次の文字が“f”であるものは二つである。したがって，求める割合は，2 ÷ 5 ＝ 0.4 である。c1 と c2 の並びが一度も出現しない場合，c1 の出現回数によらず割合を 0 と定義する。\n〔図 4 語から成る英単語群の例〕importance，inflation，information，innovation。各語の末尾以外の“n”の次の文字は，importance では c，inflation と information では f，innovation では n と o である。末尾の“n”は割合の計算に含めない。\nプログラムにおいて，英単語群は Words 型の大域変数 words に格納されている。クラス Words のメソッドの説明を，表に示す。本問において，文字列に対する演算子“＋”は，文字列の連結を表す。また，整数に対する演算子“÷”は，実数として計算する。\n〔表 クラス Words のメソッドの説明〕\nfreq(文字列型: str)：戻り値は整数型。英単語群中の文字列 str の出現回数を返す。\nfreqE(文字列型: str)：戻り値は整数型。英単語群の中で，文字列 str で終わる英単語の数を返す。\n〔プログラム〕\n大域: Words: words /* 英単語群が格納されている */\n/* c1の次にc2が出現する割合を返す */\n○実数型: prob(文字型: c1, 文字型: c2)\n　文字列型: s1 ← c1の1文字だけから成る文字列\n　文字列型: s2 ← c2の1文字だけから成る文字列\n　if (words.freq(s1 ＋ s2) が 0 より大きい)\n　　return［　　　］\n　else\n　　return 0\n　endif",
+  "q": "次のプログラム中の［　　　］に入れる正しい答えを，解答群の中から選べ。\n任意の異なる 2 文字を c1，c2 とするとき，英単語群に含まれる英単語において，c1 の次に c2 が出現する割合を求めるプログラムである。英単語は，英小文字だけから成る。英単語の末尾の文字が c1 である場合，その箇所は割合の計算に含めない。例えば，図に示す 4 語の英単語“importance”，“inflation”，“information”，“innovation”から成る英単語群において，c1 を“n”，c2 を“f”とする。英単語の末尾の文字以外に“n”は五つあり，そのうち次の文字が“f”であるものは二つである。したがって，求める割合は，2 ÷ 5 ＝ 0.4 である。c1 と c2 の並びが一度も出現しない場合，c1 の出現回数によらず割合を 0 と定義する。\n〔図 4 語から成る英単語群の例〕\nimportance，inflation，information，innovation\n各語の末尾以外の“n”の次の文字は，importance では c，inflation と information では f，innovation では n と o である。\n末尾の“n”は割合の計算に含めない。\n\nプログラムにおいて，英単語群は Words 型の大域変数 words に格納されている。クラス Words のメソッドの説明を，表に示す。本問において，文字列に対する演算子“＋”は，文字列の連結を表す。また，整数に対する演算子“÷”は，実数として計算する。\n〔表 クラス Words のメソッドの説明〕\nメソッド｜戻り値｜説明\nfreq(文字列型: str)｜整数型｜英単語群中の文字列 str の出現回数を返す。\nfreqE(文字列型: str)｜整数型｜英単語群の中で，文字列 str で終わる英単語の数を返す。\n〔プログラム〕\n大域: Words: words /* 英単語群が格納されている */\n/* c1の次にc2が出現する割合を返す */\n○実数型: prob(文字型: c1, 文字型: c2)\n　文字列型: s1 ← c1の1文字だけから成る文字列\n　文字列型: s2 ← c2の1文字だけから成る文字列\n　if (words.freq(s1 ＋ s2) が 0 より大きい)\n　　return［　　　］\n　else\n　　return 0\n　endif",
   "o": [
    "(words.freq(s1) － words.freqE(s1)) ÷ words.freq(s1 ＋ s2)",
    "(words.freq(s2) － words.freqE(s2)) ÷ words.freq(s1 ＋ s2)",
@@ -101,7 +101,7 @@
   ],
   "f": "fe_btrace",
   "x": "文字列処理では、文字列を1文字ずつ並んだ配列のように扱い、先頭から順に調べることが多いです。回文の判定なら、先頭と末尾から1文字ずつ内側へ比べていきます。",
-  "ex": "割合の分子は c1 の次に c2 が出る回数で、words.freq(s1 ＋ s2) です。分母は末尾を除いた c1 の出現回数なので、c1 の出現回数 words.freq(s1) から、c1 で終わる英単語の数 words.freqE(s1) を引きます。よって words.freq(s1 ＋ s2) ÷ (words.freq(s1) － words.freqE(s1)) です。(出題時の図と表を文章の形に改変)",
+  "ex": "割合の分子は c1 の次に c2 が出る回数で、words.freq(s1 ＋ s2) です。分母は末尾を除いた c1 の出現回数なので、c1 の出現回数 words.freq(s1) から、c1 で終わる英単語の数 words.freqE(s1) を引きます。よって words.freq(s1 ＋ s2) ÷ (words.freq(s1) － words.freqE(s1)) です。(出題時の図を文章の形に改変)",
   "u": "https://www.ipa.go.jp/shiken/syllabus/ps6vr7000000oett-att/fe_kamoku_b_sample.pdf",
   "v": "公式で確認済み"
  },
