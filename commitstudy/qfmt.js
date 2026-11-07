@@ -5,7 +5,7 @@
   - 〔見出し〕の次の行が空行 → 本文の節の見出し(枠を作らず、空行は詰める)
   - 「｜」を含む行が続くところ → 表(1行目が見出し行)。見出し行のあとに「---」だけの行はなくてよい。
     セルの前後の半角空白は除き、全角空白(字下げ)は残す。セルの中の「。・」「 ・」では改行する(箇条書き)。
-    表は画面の幅に収める(はみ出さない)。列が5つ以上・7つ以上の表は字を小さくする
+    表は画面の幅に収める(table-layout:fixed と列ごとの幅。はみ出さない)。列が5つ以上・7つ以上の表は字を小さくする
   - 〔プログラム〕〔SQL 文〕の直後から、次の見出しまたは(次の行がプログラムでない)空行まで → プログラムの枠(等幅・字下げそのまま。長い行は折り返し、折り返した行は字下げの位置より少し右から続ける)
   - 「○」や全角空白で始まる行が続くところ → プログラムの枠
   - 〔図…〕などそのほかの見出しの直後から、空行・次の見出しまで → 囲みの枠
@@ -23,7 +23,9 @@ function csQF(h){
     return z===""?'<div class="qb-ce"></div>':'<div class="qb-cl" style="padding-left:'+(n+1.5)+'em;text-indent:-1.5em">'+z.slice(m.length)+"</div>"}).join("")+"</div>"};
   var tbl=function(rows,noHead){
     var n=0;rows.forEach(function(r){n=Math.max(n,r.length)});
-    var t='<div class="qb-tw"><table class="qb-t'+(n>=7?" qb-c7":n>=5?" qb-c5":"")+'">';
+    /* 列の幅は、各列のいちばん長いセルの字数(20字まで)の割合で決める。table-layout:fixed なのでどのブラウザでも画面の幅から出ない */
+    var wl=[],sum=0;for(var j0=0;j0<n;j0++){var mx=2;rows.forEach(function(r){var c=(r[j0]||"").replace(/&[a-z#0-9]+;/g,"x").trim();var len=0;for(var q=0;q<c.length;q++)len+=c.charCodeAt(q)>255?1:0.55;mx=Math.max(mx,Math.min(len,20))});wl.push(mx);sum+=mx}
+    var t='<div class="qb-tw"><table class="qb-t'+(n>=7?" qb-c7":n>=5?" qb-c5":"")+'"><colgroup>'+wl.map(function(w){return '<col style="width:'+(w/sum*100).toFixed(1)+'%">'}).join("")+"</colgroup>";
     rows.forEach(function(r,k){var tag=k===0&&rows.length>1&&!noHead?"th":"td";t+="<tr>";
       for(var j=0;j<n;j++){var c=cell(r[j]);t+="<"+tag+">"+c+"</"+tag+">"}t+="</tr>"});
     return t+"</table></div>"};
