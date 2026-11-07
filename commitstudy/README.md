@@ -149,3 +149,4 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - IPA 公開問題(令和5〜8年度)・サンプル問題は `fe/pastq/`・`sg/pastq/`。`python3 add_pastq_ipa.py <pastq> <組み立てた data> <出力>` で問題集と本文(関連知識)に追加。出典は s に「令和8年度 基本情報技術者試験 公開問題 科目A 問1」の形。図を文字にできない問題は収録しない
 - 作り直し: `python3 build_fe.py fe/manuscript <b> && python3 figs_m/apply_fe.py <b>/chapters.json <b>/chapters.json && python3 add_pastq_ipa.py fe/pastq <b> fe/data`(sg も同じ)。公開データは `fe/data/`・`sg/data/`。`make_catalog.py` で catalog.json も作り直す
 - `patch_add_fe.py`・`patch_add_sg.py` で科目を登録(`mk_ipa_patch` 由来。テキスト一覧では「Salesforce・情報処理技術者試験」のグループ)。`patch_ipa_display.py` で改行の表示(pre-wrap)・選択肢記号 J まで・出題回の「令和N年度」「サンプル問題」のまとめ
+- 問題文の書式: `qfmt.js`(csQF)で、〔見出し〕・「｜」区切りの表・プログラムの枠・図の囲みを組み立てる(`patch_qfmt.py` で問題集とトレーニングの問題文に使う)。データ側のきまりは qfmt.js の先頭のコメント。確認は `node qfmt_preview.js fe/data <out.html>`
