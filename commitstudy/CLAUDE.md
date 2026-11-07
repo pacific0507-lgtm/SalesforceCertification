@@ -7,3 +7,4 @@
 - 使い方ページの画面写真は `guide/run2.js`(デモ用の記録を入れて iPhone サイズで撮り、説明する箇所の位置を rects.json に保存)と `guide/draw.py`(赤枠を描いて webp に)で撮り直せる。画面を変えたら撮り直して `guide/shots/*.webp`(公開先 brand/guide/)を更新する。
 - 端末の「視差効果を減らす」(prefers-reduced-motion)は無視する方針(ユーザーの希望)。新しい動きにも reduced-motion 用の指定は付けない。
 - ユーザーへの報告・返信は日本語で書く(ユーザーの希望)。
+- 公開先では index.html 全体が claude.ai のページの body の中に入り、科目を開くと body が作り直される。足す CSS は `<style>` をファイルに置かず、スクリプトで `document.head` に入れる。テストもこの形(ページを body に包む)で行う。
