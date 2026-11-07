@@ -143,3 +143,9 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 ## 科目 Agentforce スペシャリスト(afspec)
 - `afspec_SPEC.md` 原稿の仕様(問題は3択)、`afspec/manuscript/out_ch1〜6.json` 章ごとの原稿、`build_afspec.py` で data を組み立て、`figs_m/spec_H.py`(2〜6章)・`spec_I.py`(1章)と `figs_m/apply_afspec.py` で図を入れる。用語カードは `afspec/data/terms.json`。`patch_add_afspec.py` で科目を登録(rebuild.sh の最後)。公開データは `afspec/data/`
 - 作り直し: `python3 build_afspec.py afspec/manuscript <out> && python3 figs_m/apply_afspec.py <out>/chapters.json <out>/chapters.json && cp afspec/data/terms.json <out>/`
+
+## 科目 基本情報技術者(fe)・情報セキュリティマネジメント(sg)
+- `fe_SPEC.md`・`sg_SPEC.md` 原稿の仕様、`fe/manuscript/out_ch1〜12.json`・`sg/manuscript/out_ch1〜7.json`。`build_fe.py`・`build_sg.py` で data を組み立て(用語カード `fe/terms.json`・`sg/terms.json` も写す。確認は `python3 check_terms.py fe sg`)、`figs_m/spec_L.py`・`spec_M.py` と `figs_m/apply_fe.py`・`apply_sg.py` で図を入れる
+- IPA 公開問題(令和5〜8年度)・サンプル問題は `fe/pastq/`・`sg/pastq/`。`python3 add_pastq_ipa.py <pastq> <組み立てた data> <出力>` で問題集と本文(関連知識)に追加。出典は s に「令和8年度 基本情報技術者試験 公開問題 科目A 問1」の形。図を文字にできない問題は収録しない
+- 作り直し: `python3 build_fe.py fe/manuscript <b> && python3 figs_m/apply_fe.py <b>/chapters.json <b>/chapters.json && python3 add_pastq_ipa.py fe/pastq <b> fe/data`(sg も同じ)。公開データは `fe/data/`・`sg/data/`。`make_catalog.py` で catalog.json も作り直す
+- `patch_add_fe.py`・`patch_add_sg.py` で科目を登録(`mk_ipa_patch` 由来。テキスト一覧では「Salesforce・情報処理技術者試験」のグループ)。`patch_ipa_display.py` で改行の表示(pre-wrap)・選択肢記号 J まで・出題回の「令和N年度」「サンプル問題」のまとめ

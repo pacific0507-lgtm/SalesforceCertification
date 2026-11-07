@@ -33,4 +33,5 @@ python3 $C/patch_famls_merge.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_sync_merge.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_exam_rounds.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_qbm_no.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_ipa_display.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_no_reduced_motion.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
