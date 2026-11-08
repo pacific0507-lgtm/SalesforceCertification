@@ -314,6 +314,8 @@ CSS = """
 .gd-fs-x{position:absolute;top:calc(12px + env(safe-area-inset-top));right:calc(12px + env(safe-area-inset-right));width:44px;height:44px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;background:rgba(255,255,255,.85);color:#1f2a24;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer}
 .gd-fs-x:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .gd-fs-cap{position:absolute;left:calc(12px + env(safe-area-inset-left));bottom:calc(12px + env(safe-area-inset-bottom));margin:0;max-width:calc(100% - 24px);box-sizing:border-box;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.86);color:#1f2a24;display:flex;flex-direction:column;gap:1px;font-size:12.5px;line-height:1.45;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.gd-fs-cap{animation:gdCapOut 1.8s ease 5s forwards}
+@keyframes gdCapOut{to{opacity:0;visibility:hidden}}
 .gd-fs-cap b{font-size:15px}.gd-fs-cap b span{font-weight:600;font-size:12.5px;margin-left:8px;color:#4a5a52}.gd-fs-cap small{color:#4a5a52;font-size:11.5px}
 .gd-st{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:8px 0 0}
 .gd-st b{font-size:16px}.gd-st small{color:var(--sub);font-size:12.5px}
