@@ -40,3 +40,4 @@ python3 $C/patch_kamoku.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_flcount.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_mcadmin_past.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_no_reduced_motion.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_garden_pals.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
