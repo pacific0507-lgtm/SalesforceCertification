@@ -5,6 +5,8 @@
   3. x(本文の該当箇所)が本文に完全一致するか、f(項目)・a(正解の位置)が正しいかを確かめる
   "skip" の問題(図が前提で文章にできないもの、重複)は入れない。同じ出典 s が既にあれば入れない。
 pastq/*.json の各問: {set, no, s, u, q, o, a:[正解index], f, x, xs(任意), add(任意), ex, v} または {set, no, s, skip:理由}
+図を画像で出す問題は、問題文に「〔図:ファイル名〕代替テキスト」の行を書き(書式は qfmt.js)、画像を <pastq>/img/ に置く。
+  画像は出力フォルダの img/ に写す(公開先では data/<科目>/img/)。問題文が指す画像がなければ警告。
 使い方: python3 add_pastq_ipa.py <pastq のフォルダ> <ビルド済みのデータのフォルダ> <出力フォルダ>
   出力フォルダには chapters.json / questions.json / qrows.json を書き、ほかのファイルはそのまま写す。
 """
@@ -59,6 +61,7 @@ for c in CH:
 have = {r["data"]["s"] for r in Q}
 nid = max(r["data"]["id"] for r in Q); added = 0
 per = {}
+used_img = {fn for it in items for fn in re.findall(r"^〔図:([^〕]+)〕", it["q"], re.M)}
 for it in items:
     s = it["s"]
     if s in have: print("skip(既にあり)", s); continue
@@ -71,6 +74,8 @@ for it in items:
     if not x: W("該当箇所 x がない", s)
     elif x not in units.get(xs or f, set()): W("該当箇所が本文にない", s, xs or f, x[:40])
     if xs and xs not in secch: W("xs の項目がない", s, xs)
+    for fn in re.findall(r"^〔図:([^〕]+)〕", it["q"], re.M):
+        if not re.fullmatch(r"[A-Za-z0-9_.\-]+", fn) or not os.path.isfile(os.path.join(pqd, "img", fn)): W("画像がない", s, fn)
     nid += 1; added += 1; per[it["set"]] = per.get(it["set"], 0) + 1
     d = {"a": sorted(it["a"]), "c": secch[f] - 1, "ex": it["ex"], "f": "f-" + f, "id": nid, "n": None, "o": it["o"],
          "q": it["q"], "s": s, "u": it.get("u"), "v": it["v"], "x": x}
@@ -83,5 +88,11 @@ for n, obj in (("chapters.json", CH), ("questions.json", Q), ("qrows.json", R)):
 for n in os.listdir(src):
     if n not in ("chapters.json", "questions.json", "qrows.json") and os.path.isfile(os.path.join(src, n)):
         shutil.copy(os.path.join(src, n), os.path.join(dst, n))
+imgd = os.path.join(pqd, "img")
+if os.path.isdir(imgd):
+    od = os.path.join(dst, "img"); os.makedirs(od, exist_ok=True)
+    for n in sorted(os.listdir(imgd)):
+        if n not in used_img: W("使っていない画像", n)
+        shutil.copy(os.path.join(imgd, n), os.path.join(od, n))
 for k in sorted(per): print(f"  {k}: {per[k]} 問")
 print("追加", added, "問 / 収録しない", len(skipped), "問 / 関連知識", sum(len(v) for v in by.values()), "件(", len(by), "項目) / 警告", warn)

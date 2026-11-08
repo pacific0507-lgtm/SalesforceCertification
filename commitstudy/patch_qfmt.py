@@ -1,6 +1,8 @@
 """問題文の表・〔見出し〕・プログラムを見やすく表示する(IPA の問題用)。
   書式のきまりは qfmt.js(csQF)。問題集(.qq)とトレーニング(.tq-q)の問題文に使う。
   表やプログラムの枠を入れるため、問題文の要素を p から div に変える。
+  図の画像(〔図:ファイル名〕)は data/<科目>/img/ から読む。問題集は開いている科目(FAMV.id)、トレーニングは問題の科目(q.subj)。
+  画像は白地(ダークモードでも黒い線の図が読めるように)。
 使い方: python3 patch_qfmt.py <index.html> <出力>
 """
 import sys, os, json
@@ -29,12 +31,14 @@ css = """.qb-l{display:block;overflow-wrap:break-word}
 .qb-cl{min-height:1.65em}
 .qb-ce{height:.8em}
 .qb-box{margin:2px 0 12px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;font-size:14.5px;line-height:1.7;font-weight:500}
-.qb-box .qb-tw,.qb-box .qb-code{margin:6px 0}"""
+.qb-box .qb-tw,.qb-box .qb-code{margin:6px 0}
+.qb-fig{margin:6px 0 12px;display:flex;flex-direction:column;align-items:center;gap:10px;white-space:normal}
+.qb-img{display:block;width:100%;max-width:100%;height:auto;box-sizing:border-box;padding:6px;background:#fff;border:1px solid var(--line);border-radius:8px}"""
 # 公開先ではこのファイル全体が claude.ai のページの body の中に入り、科目を開くと body が作り直されるため、
 # <style> をここに置くと消える。document.head に入れる(head は作り直されない)
 add = "(function(){if(document.getElementById('cs-qfmt'))return;var st=document.createElement('style');st.id='cs-qfmt';st.textContent=" + json.dumps(css + "\n.qq,.mcb span,.tq-b span,.exp p,.tq-ex p{white-space:pre-wrap}") + ";document.head.appendChild(st)})();"
 rep('</head>', '<script>' + js + add + '</script></head>')
 rep("""h+='<p class="qq" id="q'+q.n+'-qq" data-title="'+esc(qTitle(q))+'">'+(revealed?ronHtml(q.q,q.kq,q.a==="×"?"rn-ng":"rn-ok",true):esc(q.q))+"</p>";""",
-    """h+='<div class="qq" id="q'+q.n+'-qq" data-title="'+esc(qTitle(q))+'">'+csQF(revealed?ronHtml(q.q,q.kq,q.a==="×"?"rn-ng":"rn-ok",true):esc(q.q))+"</div>";""")
-rep("""h+='<p class="tq-q">'+esc(q.q)+'</p>';""", """h+='<div class="tq-q">'+csQF(esc(q.q))+'</div>';""")
+    """h+='<div class="qq" id="q'+q.n+'-qq" data-title="'+esc(qTitle(q))+'">'+csQF(revealed?ronHtml(q.q,q.kq,q.a==="×"?"rn-ng":"rn-ok",true):esc(q.q),"data/"+((window.FAMV&&FAMV.id)||"d360")+"/img/")+"</div>";""")
+rep("""h+='<p class="tq-q">'+esc(q.q)+'</p>';""", """h+='<div class="tq-q">'+csQF(esc(q.q),"data/"+q.subj+"/img/")+'</div>';""")
 open(out, "w", encoding="utf-8").write(s); print("ok")

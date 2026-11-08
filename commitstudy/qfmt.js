@@ -10,9 +10,13 @@
   - 「○」や全角空白で始まる行が続くところ → プログラムの枠
   - 〔図…〕などそのほかの見出しの直後から、空行・次の見出しまで → 囲みの枠
     (枠の中では、全角空白で始まる行だけが続くところは字下げした行のまま。「○」「大域:」の行を含めばプログラムの枠)
+  - 〔図:ファイル名〕代替テキスト の行 → 画像(<img class="qb-img">)。続けて書いた行は一つの図の囲み(qb-fig)にまとめる。
+    画像は <base><ファイル名>(base は2つめの引数。例 "data/fe/img/"。省略すると FAMV.id の科目の data/<科目>/img/)。
+    公開先では famURL() を通す。ファイル名は英数字と _ . - だけ。名前の末尾が _w300.webp のように _w<数> なら、表示の幅をその px にする
+    (画面より広ければ画面の幅に縮む)。画像は表示の幅の2倍の画素で作る。代替テキストは、画像が出なくても答えられるように図の中身を書く
   - 空行 → 段落の区切り
   見出しのない行(本文)はそのまま。改行のない短い文は何も変えない。 */
-function csQF(h){
+function csQF(h,base){
   if(typeof h!=="string"||(h.indexOf("\n")<0&&h.indexOf("｜")<0&&h.indexOf("〔")<0))return h;
   var L=h.split("\n"),o=[],i=0;
   var cap=function(l){return /^〔[^〕]+〕/.test(l)};
@@ -29,9 +33,15 @@ function csQF(h){
     rows.forEach(function(r,k){var tag=k===0&&rows.length>1&&!noHead?"th":"td";t+="<tr>";
       for(var j=0;j<n;j++){var c=cell(r[j]);t+="<"+tag+">"+c+"</"+tag+">"}t+="</tr>"});
     return t+"</table></div>"};
+  var FIG=/^〔図:([A-Za-z0-9_.\-]+)〕(.*)$/;
+  if(base==null)base=typeof window!=="undefined"&&window.FAMV&&window.FAMV.id?"data/"+window.FAMV.id+"/img/":"";
+  var img=function(m){var src=base+m[1],w=m[1].match(/_w(\d+)\.[a-z]+$/);
+    if(typeof window!=="undefined"&&window.famURL)src=window.famURL(src);
+    return '<img class="qb-img" src="'+src+'" alt="'+m[2].replace(/<[^>]*>/g,"").trim()+'" loading="lazy"'+(w?' style="width:'+w[1]+'px"':"")+">"};
   var takeRows=function(){var rows=[];while(i<L.length&&bar(L[i])&&!cap(L[i])){rows.push(L[i].split("｜"));i++}return rows};
   while(i<L.length){
     var l=L[i];
+    if(FIG.test(l)){var f=[];while(i<L.length&&FIG.test(L[i])){f.push(img(L[i].match(FIG)));i++}o.push('<div class="qb-fig">'+f.join("")+"</div>");continue}
     if(cap(l)){
       var m=l.match(/^〔([^〕]+)〕(.*)$/),title=m[1],rest=m[2].trim(),head=null,note=[],noHead=false;
       /* 括弧の中に「｜」があれば表の見出し行、なければ注記 */
