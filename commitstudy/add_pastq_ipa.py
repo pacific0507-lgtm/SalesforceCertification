@@ -91,6 +91,7 @@ for n in os.listdir(src):
 imgd = os.path.join(pqd, "img")
 if os.path.isdir(imgd):
     od = os.path.join(dst, "img"); os.makedirs(od, exist_ok=True)
+    for n in set(os.listdir(od)) - set(os.listdir(imgd)): os.remove(os.path.join(od, n))  # 使わなくなった画像を消す
     for n in sorted(os.listdir(imgd)):
         if n not in used_img: W("使っていない画像", n)
         shutil.copy(os.path.join(imgd, n), os.path.join(od, n))
