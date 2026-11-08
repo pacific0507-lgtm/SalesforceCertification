@@ -2,6 +2,7 @@
   - 一覧の上の「並べ替え・合格の印」を押すと編集モード。各科目に ↑ ↓ と「合格」のボタンが出る。終えるときは画面下の中央に追従する「完了」
   - ↑↓で動かすと、入れ替わったカードがすべるように動き、動かしたカードが光る
   - 並び(cs-subj-order)と合格(cs-subj-passed)はアカウントに同期(fam-ls)
+  - 合格した科目のカードは、枠と背景を金色(--sun)にする
   - 合格した科目は、カードに「合格」の印が付く
 使い方: python3 patch_texts_order.py <index.html> <出力>
 """
@@ -67,7 +68,7 @@ CSS = """
 .tx-ed button:disabled{opacity:.35;cursor:default}
 .tx-ed .pz{padding:0 14px}
 .tx-ed .pz[aria-pressed=true]{background:var(--sun);border-color:var(--sun);color:#2b1900}
-.tx.passed{border-color:var(--sun)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--sun) 55%,transparent)}
+.tx.passed{border-color:var(--sun)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--sun) 55%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--sun) 30%,var(--paper)) 0%,color-mix(in srgb,var(--sun) 12%,var(--paper)) 55%,color-mix(in srgb,var(--sun) 24%,var(--paper)) 100%)}\n.tx.passed::before{background:color-mix(in srgb,var(--sun) 45%,var(--paper))}\n.tx.passed::after{content:"";position:absolute;z-index:-1;right:-18px;bottom:-26px;width:96px;height:96px;border-radius:50%;background:color-mix(in srgb,var(--sun) 28%,transparent)}
 .pass-b{display:inline-block;vertical-align:2px;margin-left:8px;font-size:11.5px;font-weight:800;line-height:1.6;color:#2b1900;background:var(--sun);border-radius:999px;padding:0 9px;letter-spacing:.06em;white-space:nowrap}
 """
 lines = s.split("\n"); l = lines[4]

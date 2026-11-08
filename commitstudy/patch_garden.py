@@ -31,7 +31,9 @@ var CS_SKYVN={mist:"朝もや",birds:"渡り鳥",rainbow:"雨上がりの虹",fu
 var CS_SKYBASE={spring:{dawn:"花びら",day:"花びらとちょう",dusk:"花びら",night:"夜桜"},summer:{dawn:"入道雲",day:"ひまわりと入道雲",dusk:"ほたる",night:"ほたる"},autumn:{dawn:"ススキ",day:"落ち葉と赤とんぼ",dusk:"赤とんぼ",night:"お月見"},winter:{dawn:"雪の朝",day:"雪",dusk:"雪",night:"雪の夜"}};
 function csDayKey(d){d=d||new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
 function csSkyNow(){var o=window.__csSky||{},d=new Date(),h=d.getHours(),m=d.getMonth()+1,day=o.day||csDayKey(d);
-  var tod=o.tod||(h<5||h>=19?"night":h<8?"dawn":h<16?"day":h<19?"dusk":"night"),season=o.season||(m>=3&&m<=5?"spring":m>=6&&m<=8?"summer":m>=9&&m<=11?"autumn":"winter");
+  /* 時間帯は、月ごとの日の出・日の入り(東京のおよその時刻、時間の小数)で決める。日の出の30分前〜1時間後が朝、日の入りの1時間前〜30分後が夕方 */
+  var SUN=[[6.8,16.9],[6.5,17.4],[5.9,17.8],[5.3,18.2],[4.7,18.6],[4.4,19],[4.6,18.9],[5.1,18.5],[5.5,17.8],[5.9,17.1],[6.3,16.6],[6.7,16.5]][m-1],hh=h+d.getMinutes()/60;
+  var tod=o.tod||(hh<SUN[0]-0.5||hh>=SUN[1]+0.5?"night":hh<SUN[0]+1?"dawn":hh<SUN[1]-1?"day":"dusk"),season=o.season||(m>=3&&m<=5?"spring":m>=6&&m<=8?"summer":m>=9&&m<=11?"autumn":"winter");
   var L=((CS_SKYV[season]||CS_SKYV.spring)[tod])||[["none",1]],v=o.variant;
   if(!(v==="none"||CS_SKYVN[v])){var tot=0;L.forEach(function(x){tot+=x[1]});var r=csGrassHash(day+"|sky|"+season+tod)%tot;v=L[0][0];for(var i=0;i<L.length;i++){if(r<L[i][1]){v=L[i][0];break}r-=L[i][1]}}
   return {tod:tod,season:season,variant:v,day:day}}
@@ -43,7 +45,7 @@ function csGardenSVG(list,W,H,opt){opt=opt||{};var n=list.length,st=csStage(n),g
   var fy=function(f){return F(f<=0.64?HY-TH*(0.64-f):HY+(f-0.64)/0.36*(H-HY))};
   var sd=csGrassHash(SK.day)%997,rnd=function(i){var x=Math.sin(i*99.13+W+sd)*43758.5453;return x-Math.floor(x)};
   var night=T==="night",low=T==="dawn"||T==="dusk";
-  var SC=night?(SE==="spring"?["#1c2143","#3b3d68"]:V==="aurora"?["#0d1730","#25365e"]:["#16233f","#34466e"]):T==="dawn"?["#f4a988","#fde2c4"]:T==="dusk"?["#ee8559","#f8cf96"]:{spring:["#9fd3f2","#eaf6fc"],summer:["#5fb4ee","#d9f0fb"],autumn:["#7cbbe8","#e4f1f8"],winter:[V==="clear"?"#86c3ee":"#b3d3e6","#eef5f9"]}[SE];
+  var SC=night?(SE==="spring"?["#1c2143","#3b3d68"]:V==="aurora"?["#0d1730","#25365e"]:["#16233f","#34466e"]):T==="dawn"?["#9fb8e3","#fbe0cf"]:T==="dusk"?["#8a5a8f","#f39a5a"]:{spring:["#9fd3f2","#eaf6fc"],summer:["#5fb4ee","#d9f0fb"],autumn:["#7cbbe8","#e4f1f8"],winter:[V==="clear"?"#86c3ee":"#b3d3e6","#eef5f9"]}[SE];
   var full=SE==="autumn"&&night||V==="fullmoon",mx=W*(full||SE==="spring"?0.78:0.16),my=F(HY*(full?0.3:0.27)),mr=(full?(SE==="autumn"?15:13):11.25)*um;
   var df='<defs><linearGradient id="'+uid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+SC[0]+'"/><stop offset="1" stop-color="'+SC[1]+'"/></linearGradient>'
     +'<linearGradient id="'+uid+'o" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1630" stop-opacity=".04"/><stop offset="1" stop-color="#0b1630" stop-opacity=".3"/></linearGradient>'
@@ -132,7 +134,8 @@ function csGardenSVG(list,W,H,opt){opt=opt||{};var n=list.length,st=csStage(n),g
   if(V==="mist")[0.62,0.7,0.8].forEach(function(f,k){fx+='<g><animateTransform attributeName="transform" type="translate" values="0 0;'+F((k%2?-18:18)*u)+' 0;0 0" dur="'+(18+k*5)+'s" repeatCount="indefinite"/><ellipse cx="'+F(W*(0.3+k*0.2))+'" cy="'+fy(f)+'" rx="'+F(W*0.45)+'" ry="'+F(7*u)+'" fill="#fff" opacity=".4" filter="url(#'+uid+'c)"/></g>'});
   /* 時間帯の色: 夜は下ほど暗く(星空はそのまま)、朝夕はほんのり暖色 */
   if(night)fx+='<rect width="'+W+'" height="'+H+'" fill="url(#'+uid+'o)"/>';
-  else if(low)fx+='<rect width="'+W+'" height="'+H+'" fill="#f08a4b" opacity=".08"/>';
+  else if(T==="dusk")fx+='<rect width="'+W+'" height="'+H+'" fill="#f08a4b" opacity=".1"/>';
+  else if(T==="dawn")fx+='<rect width="'+W+'" height="'+H+'" fill="#cfe0ff" opacity=".08"/>';
   if(night)fx+=lit+saku;else fx=saku+fx+lit;
   return '<svg class="garden gd-'+SE+(night?" gd-n":"")+'" viewBox="0 0 '+W+' '+H+'" data-tod="'+T+'" data-season="'+SE+'" data-v="'+V+'" data-hy="'+F(HY)+'" data-u="'+u.toFixed(3)+'" data-lake="'+(st>=10?1:0)+'" role="img" aria-label="これまでに生えた草 '+n+'本('+csSkyLabel(SK)+'の庭)。タップすると演出が出ます">'+df+sk+g+fx+'</svg>'}
 /* ==タップの演出: タップした場所に、季節と時間帯に合った演出を1つ出す。まれに四つ葉・小さな虹・流星群== */
