@@ -90,6 +90,20 @@ for it in items:
     R.append({"id": f"{SUBJ}:q{qid}", "subject_id": SUBJ, "n": qid, "kind": "mc", "source": "past", "exam": s, "text": it["q"],
               "section_id": f"{SUBJ}:{f}", "kq": [], "law": None})
 json.dump(dict(sorted(IDS.items(), key=lambda kv: kv[1])), open(idp, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+# 科目A・科目B(km): 問題集で問題ごとに表示し、絞り込みに使う
+#  基本情報: 出典に「科目B」→科目B、修了試験・「科目A」→科目A。オリジナルは12章(科目B 対策)が科目B
+#  情報セキュリティマネジメント: 公開問題は問13以降、サンプル問題セットは問49以降、「科目B」のサンプルが科目B(試験要綱の科目A 48問・科目B 12問の並び)。オリジナルは7章(科目B 事例)が科目B
+BCH = {"fe": 11, "sg": 6}
+def kmOf(d):
+    s = d["s"]
+    if s.startswith("オリジナル"): return "科目B" if d.get("c") == BCH.get(SUBJ) else "科目A"
+    if "科目B" in s: return "科目B"
+    m = re.search(r"問\s*(\d+)\s*$", s); n = int(m.group(1)) if m else 0
+    if SUBJ == "sg":
+        if "公開問題" in s: return "科目B" if n >= 13 else "科目A"
+        if "サンプル問題セット" in s: return "科目B" if n >= 49 else "科目A"
+    return "科目A"
+for r in Q: r["data"]["km"] = kmOf(r["data"])
 for n, obj in (("chapters.json", CH), ("questions.json", Q), ("qrows.json", R)):
     json.dump(obj, open(os.path.join(dst, n), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 for n in os.listdir(src):
