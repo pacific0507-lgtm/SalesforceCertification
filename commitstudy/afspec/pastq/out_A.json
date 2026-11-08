@@ -1,0 +1,3029 @@
+[
+ {
+  "label": "v2026-08-19",
+  "no": 1,
+  "f": "actions",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、注文のキャンセルを扱う Agentforce Service エージェントを作っています。重要な「Check Cancellation Eligibility」アクションを、推論エンジンの判断に任せず、該当するターンで毎回決定的に実行させたいと考えています。コードレビューで若手の開発者から、なぜ reasoning.actions ブロックに並べるのではなく run @actions.name コマンドで呼んだのかと聞かれました。Agentforce スペシャリストは、2つの呼び出し方の違いをどう説明すべきですか?",
+  "o": [
+   "どちらも毎ターン自動でアクションを実行する。違いは書き方だけで、run は Agent Script の新しい書き方にすぎない",
+   "run コマンドは reasoning.actions ブロックの中でパラメーターを渡すときだけ有効で、LLM が使えるようにするには reasoning.actions に並べる必要がある",
+   "reasoning.actions に並べたアクションは、呼ぶかどうかを LLM が決めるツールになる。run コマンドで呼ぶと毎回確実に実行される"
+  ],
+  "ex": "Agent Script のロジックの指示(->)は毎回決定的に実行され、アクションの実行や変数の設定に使います。reasoning.actions に並べたアクションは、LLM が説明と文脈を見て呼ぶかどうかを決める「推論で使えるアクション」です。必ず実行したいアクションは、推論の指示の中で run を使って呼びます。",
+  "u": "https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-lang.html",
+  "v": "公式で確認済み",
+  "x": "推論の前に必ず実行したいアクションは推論の指示に、LLMに選ばせたいアクションは推論で使えるアクションに入れます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 2,
+  "f": "datalib",
+  "a": [
+   2
+  ],
+  "q": "ファイルのアップロードを使うデータライブラリを設定するとき、テキストまたは HTML のファイルと PDF のファイルの最大サイズは、それぞれいくつですか?",
+  "o": [
+   "テキストまたは HTML は100 MBまで、PDF は4 MBまで",
+   "テキストまたは HTML も PDF も50 MBまで",
+   "テキストまたは HTML は4 MBまで、PDF は100 MBまで"
+  ],
+  "ex": "ファイル型のデータライブラリにアップロードできるのは、テキストと HTML が4 MBまで、PDF が100 MBまでです。A は数値が逆で、B のような共通の上限はありません。",
+  "u": null,
+  "v": "公式で確認済み",
+  "x": "ファイルのアップロードテキストとHTMLは4 MBまで、PDFは100 MBまで。状態はUploading、Uploaded、Indexing、Indexedと進む"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 3,
+  "f": "grounding",
+  "a": [
+   1
+  ],
+  "q": "Agentforce スペシャリストは、取引先の関連リストをカスタムのプロンプトテンプレートで使いたいと考えています。プロンプトテンプレートを設定するときに考慮すべきことは何ですか?",
+  "o": [
+   "テキストのエンコード(UTF-8、ASCII など)の設定",
+   "関連リストの差し込み項目の最大数",
+   "リストを XML と JSON のどちらの形式で出すか"
+  ],
+  "ex": "差し込み項目は1つのテンプレートで最大50個で、そのうち関連リストの差し込み項目は最大5個です。関連リストを使うときは、この上限を意識して設計します。エンコードや XML/JSON の選択は設定項目にありません(関連リストのデータは JSON 形式で渡されます)。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_related_list.htm",
+  "v": "公式で確認済み",
+  "x": "差し込み項目は1つのテンプレートで最大50個です。そのうち、フロー、Apex、関連リストの差し込み項目は、それぞれ最大5個です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 4,
+  "f": "testing",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、本番に出す前にエージェントの有効性、信頼性、信頼を確かめたいと考えています。多数の発話を、くり返し効率よくテストしたいです。Agentforce スペシャリストは何を推奨すべきですか?",
+  "o": [
+   "Agent Large Language Model (LLM) の画面で、有効化の前にいろいろな発話を試す",
+   "QA 用の Sandbox にエージェントを配置し、Utterance Analysis のレポートで有効性を確かめる",
+   "テストのテンプレートを使って UC のテストケースの CSV を作り、Agentforce Testing Center で使う"
+  ],
+  "ex": "多数の発話をまとめて自動で評価するなら Testing Center です。CSV のテンプレートに独自のテストケースを書いてアップロードでき、1ファイルで最大1,000件まで扱えます。1件ずつの手動テストや、本番後の分析レポートでは、事前の大量テストになりません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "CSVをアップロード自社の業務ロジックに合わせた独自のシナリオを使う1ファイル最大1,000件"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 5,
+  "f": "observe",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は、顧客の理解とやり取りを良くするために Einstein の生成AIを導入しています。監査とフィードバックのデータをレポートで使えるようにしたいと考えています。この要件で考慮すべきことは何ですか?",
+  "o": [
+   "このデータを保存するには、Data Cloud がプロビジョニングされている必要がある",
+   "このデータを保存するには、カスタムオブジェクトを設定する必要がある",
+   "このデータを保存するには、Salesforce のビッグオブジェクトが必要になる"
+  ],
+  "ex": "監査とフィードバックのデータは Data 360(旧 Data Cloud)に保存されます。そのため、Data 360 がプロビジョニングされ、Einstein がオンになっていることが前提です。カスタムオブジェクトやビッグオブジェクトは使いません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_feedback_enable.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "前提は、Data 360 がプロビジョニングされ、Einstein がオンになっていることです。データスペースが1つだけの組織では、Agentforce をオンにすると既定でオンになります。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 6,
+  "f": "stdagents",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、マーケティングチームがキャンペーンのデータをすばやく探し、クリエイティブな内容を作り、プロジェクトのタスクを管理できるAIの機能を導入したいと考えています。マーケティング担当者が個別の支援を受け、関連情報を見つけ、Salesforce の中で仕事を完了できることも求めています。UC はどのAIソリューションを導入すべきですか?",
+  "o": [
+   "Sales Coach エージェント",
+   "Service エージェント",
+   "Employee エージェント"
+  ],
+  "ex": "社内の従業員に知識を提供し、タスクを実行して業務を効率化するのは Employee エージェントです。Service エージェントは社外の顧客の対応、Sales Coach は営業担当者の売り込みの練習に使います。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_setup_explore_types.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Agentforce Employee エージェント従業員に社内の知識を提供し、タスクを実行して業務を効率化する"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 7,
+  "f": "observe",
+  "a": [
+   0
+  ],
+  "q": "Agentforce スペシャリストは、エージェントとのやり取りを分析し、ユーザーの入力、依頼、質問からパターンや傾向を見つけるよう求められています。これを実現する機能はどれですか?",
+  "o": [
+   "User Utterances ダッシュボード",
+   "Agent Event Logs ダッシュボード",
+   "AI Audit & Feedback Data ダッシュボード"
+  ],
+  "ex": "ユーザーの発話を集めて傾向を見るのは、発話の分析のダッシュボードです。公式ヘルプでは Utterance Analysis という名前で、似た発話をクラスターにまとめ、何が求められているかの傾向を示します(Agentforce (Default) が対象)。イベントログは個々のセッションの調査、監査とフィードバックは LLM とのやり取りの記録です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_utterance_analysis.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Utterance Analysis は、Agentforce (Default) の利用者の発話を似たものどうしのクラスターにまとめ、何が求められ、エージェントが対応できたかの傾向を示すダッシュボードです。週1回更新されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.copilot_utterance_analysis.htm&type=5",
+   "note": "Utterance Analysis groups similar utterances into clusters/categories to see trends; dashboard updated weekly."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 8,
+  "f": "actions",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、返品を処理するカスタムフローを追加し、新しいエージェントアクションを作りました。Agentforce Service エージェントがこのアクションでフローを実行できるようにするには、何をすべきですか?",
+  "o": [
+   "Agentforce のエージェントユーザーでフローを作り直す",
+   "Agentforce のエージェントユーザーに「Manage Users」権限を割り当てる",
+   "Agentforce のエージェントユーザーに「Run Flows」権限を割り当てる"
+  ],
+  "ex": "フローを参照するカスタムアクションは、そのフローの権限に従い、実行するユーザーには少なくとも「Run Flows」権限が必要です。Service エージェントはエージェントユーザーで動くので、エージェントユーザーに割り当てます。フローを作り直す必要はなく、Manage Users は関係ありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_actions_custom.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "カスタムアクションの権限は、参照先の機能に従います。フローなら、そのフローの権限、項目レベルセキュリティ、共有設定に従い、少なくとも「Run Flows」権限が必要です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 9,
+  "f": "trust",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、LLM が生成した内容に有害な言葉が含まれているかを高い確度で見つけたいと考えています。有害性が適切に管理されていることを確かめるため、Agentforce スペシャリストは Trust Layer で何をすべきですか?",
+  "o": [
+   "Setup の Toxicity Detection ログを開き、isToxicityDetected が true のエントリーをすべて書き出す",
+   "応答の有害性スコアがしきい値を超えるたびに、指定のアドレスにメールを送るフローを作る",
+   "Data Cloud で Trust Layer の監査レポートを作り、検出器の種類で有害性に絞り込んで、有害な応答とスコアを表示する"
+  ],
+  "ex": "有害性のスコアは、カテゴリごとと全体のスコアが監査証跡として Data 360(旧 Data Cloud)に保存されます。そのデータでレポートを作り、有害な応答とスコアを確かめます。Setup にそのようなログはなく、メール通知のフローは管理の確認になりません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_arch.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "スコアは0から1で、1が最も有害です。カテゴリごとのスコアと全体のスコアが、監査証跡として Data 360 に保存されます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 10,
+  "f": "grounding",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は外部サービスを登録し、REST API からデータを取得する外部サービスを呼び出すテンプレートトリガー型プロンプトフローを作りました。テンプレートの実行時に、外部サービスの応答のデータをプロンプトテンプレートの中で差し込み項目として使えるようにしたいです。UC はどうすべきですか?",
+  "o": [
+   "External Service Record の差し込み項目を使う",
+   "JSON を XML の差し込み項目に変換する",
+   "フローの「Add Prompt Instructions」要素を使う"
+  ],
+  "ex": "テンプレートトリガー型プロンプトフローでは、「Add Prompt Instructions」要素で、取得したデータをプロンプトの指示としてテンプレートに渡します。テンプレートには、このフローを差し込み項目として入れます。原本の解答は「External Service Record の差し込み項目」でしたが、公式ヘルプにそのような差し込み項目はなく、Add Prompt Instructions 要素がフローからテンプレートにデータを渡す手段のため、C が正解です。",
+  "u": "https://help.salesforce.com/s/articleView?id=platform.flow_ref_elements_add_prompt.htm&type=5",
+  "v": "解答を修正(公式にもとづく)",
+  "x": "フローテンプレートトリガー型プロンプトフローが作るテキストフローの「Add Prompt Instructions」要素で、テンプレートに差し込む指示を作る"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 11,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Agentforce スペシャリストは新しい組織を設定していて、ユーザーがプロンプトテンプレートを作成、実行できるようにする必要があります。どの役割が必要か分からずにいます。プロンプトテンプレートを作成、実行するユーザーに割り当てる権限セットはどれですか?",
+  "o": [
+   "作成には Prompt Template Manager、実行には Data Cloud Admin",
+   "作成には Prompt Template Manager、実行には Prompt Template User",
+   "作成には Data Cloud Admin、実行には Prompt Template User"
+  ],
+  "ex": "テンプレートを作成、管理する人には Prompt Template Manager、生成AIの機能でテンプレートを実行するだけの人には Prompt Template User の権限セットを割り当てます。Data Cloud Admin は Data 360 の管理用で、テンプレートの作成や実行の権限ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "作る人は Prompt Template Manager、使うだけの人は Prompt Template User の権限セットです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 12,
+  "f": "datalib",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、サポート担当者が Agentforce を使って、製品のチュートリアルやガイドについて質問できるようにしたいと考えています。Agentforce スペシャリストは何をすべきですか?",
+  "o": [
+   "製品のチュートリアルとガイド用のプロンプトテンプレートを作る",
+   "製品オブジェクトに、チュートリアルの手順を入れる Answer Questions のカスタム項目を追加する",
+   "製品のチュートリアルとガイドをナレッジ記事として公開する"
+  ],
+  "ex": "エージェントは、標準アクション「Answer Questions with Knowledge」でデータライブラリのナレッジを使って質問に答えます。チュートリアルやガイドをナレッジ記事として公開し、データライブラリに登録すれば、根拠のある回答ができます。テンプレートやカスタム項目を作るだけでは、資料を検索できません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "エージェントは、標準アクション「Answer Questions with Knowledge」でデータライブラリを使います。「Show Sources」を選ぶと、回答に引用元(サイテーション)が付きます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 13,
+  "f": "datalib",
+  "a": [
+   2
+  ],
+  "q": "Agentforce データライブラリでデータソースを選んだあと、そのデータソースを変更することについて正しいのはどれですか?",
+  "o": [
+   "Data Cloud の設定から変更できる",
+   "Data Retriever を設定し直して、別のデータソースを使わせられる",
+   "一度選んだデータソースは変更できない"
+  ],
+  "ex": "データライブラリのデータソース(ナレッジかファイルか)は、一度選ぶとあとから変更できません。変えたいときは、新しいデータライブラリを作ります。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "データソース(ナレッジかファイルか)は、一度選ぶとあとから変更できません。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 14,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Agentforce スペシャリストは、プロンプトテンプレートのバージョン4を宣言的に編集しています。これは前のバージョン3と大きく違います。その後、バージョン3にバグが見つかり、別のチームがすぐに修正を本番に出す必要があります。修正は新しいバージョンとしてリリースされます。最新の作業を失わず、新しいバージョンとぶつからないようにするには、どうすべきですか?",
+  "o": [
+   "バグを直した新しいプロンプトテンプレートを作り、すべての参照を新しいものに替えて、古いテンプレートを削除する",
+   "作業をバージョン4に保存し、修正を含む新しいバージョン5としてリリースしてもらう",
+   "バージョン4をバックアップのファイルやバージョン管理の代わりにコピーし、バージョン4の中身を修正版で上書きしてもらう"
+  ],
+  "ex": "プロンプトテンプレートはバージョンを分けて管理でき、有効にできるのは1つのバージョンだけです。自分の作業はバージョン4に保存し、修正は新しいバージョン(5)として作ってもらえば、互いの作業を壊しません。テンプレートを作り直したり、上書きしたりする必要はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "原本どおり",
+  "x": "一度でも有効にしたバージョンは、無効化したあとも変更できません。直したいときは「新しいバージョンとして保存(Save as a New Version)」を使います。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 15,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers は、AI で営業チームの生産性を上げようとしています。Prompt Builder が必要になる要件はどれですか?",
+  "o": [
+   "今度の展示会向けのニュースレターの下書きを作る",
+   "顧客が離反する(取引をやめる)可能性を予測する",
+   "過去の購入データから顧客生涯価値(CLV)の見込みを出す"
+  ],
+  "ex": "Prompt Builder は、LLM に渡す指示文をテンプレートにし、CRM のデータを差し込んで文章を生成する機能です。ニュースレターの下書きのような文章の生成に向いています。離反の予測や CLV の算出は、予測AIの仕事です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "Prompt Builder は、LLM(大規模言語モデル)に渡す指示文を「プロンプトテンプレート」として作り、CRM のデータを差し込んで、テストし、管理する Setup の機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 16,
+  "f": "topics",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、顧客の購入の追跡を手伝う Agentforce Service エージェントを作っています。会話中に注文番号を保存するため、Agent Script で order_id: string = \" \" と、mutable キーワードを付けずに変数を宣言しました。テストで、エージェントは @utils.setVariables でユーザーの注文番号をこの変数に入れようとします。実行時、この宣言はどうなりますか?",
+  "o": [
+   "変数は既定で変更可能になる。mutable キーワードは任意で効果がなく、更新は成功する",
+   "宣言は構文エラーになり、エージェントをデプロイできない",
+   "変数は読み取り専用として扱われる。mutable キーワードがないので、実行時にアクションや @utils.setVariables では更新できない"
+  ],
+  "ex": "Agent Script で会話中に値を変えられるのは、mutable と宣言した変数(カスタム変数)だけです。@utils.setVariables は宣言済みの mutable な変数にしか値を入れられず、mutable のない宣言には書き込めません。2026年8月の時点ではこの誤りは警告として示され、将来のリリースでエラーになる予定です。",
+  "u": "https://help.salesforce.com/s/articleView?id=release-notes.rn_agentforce_script_new_changed.htm&release=262.0.0&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "変数には、オブジェクトの項目に対応づけるコンテキスト変数(linked)と、会話中に値を変えられるカスタム変数(mutable)があります。@utils.setVariables やアクションの出力で値を書き込めるのは、mutable と宣言した変数だけです。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_variables.htm&type=5",
+   "note": "Context variable = linked, mapped to object field; custom variable = mutable, holds value during session. @utils.setVariables can only assign to declared mutable variables; linked ContactId cannot be written."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 17,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は、顧客とのチャットに返信する担当者の生産性を上げる必要があります。役に立つ生成AIの機能はどれですか?",
+  "o": [
+   "Case Summaries",
+   "Service Replies",
+   "Case Escalation"
+  ],
+  "ex": "Einstein Service Replies は、チャットやメールでの返信案を生成AIで作り、担当者の返信を速くします。Case Summaries はケースの要約で、返信そのものは作りません。Case Escalation は上位への引き継ぎで、生成AIの機能ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Service Replies は、チャットやメールでの顧客への返信案を生成AIで作る機能です。Service AI Grounding でナレッジやケースの項目を根拠に選べ、ナレッジにもとづく返信には元の記事が示されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+   "note": "Service Replies drafts replies; Service AI Grounding selects Knowledge or Case fields; reps can see whether replies are grounded in knowledge and open the source article."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 18,
+  "f": "topics",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、複雑で何段階もある顧客のオンボーディングを扱う Agentforce Service エージェントを作っています。会話のロジックを整理するため、処理を2つのサブエージェントに分け、2つ目の手順の初期設定を新しいサブエージェントの before_reasoning ブロックに置きました。テストで、会話の途中でこのサブエージェントに遷移すると、ときどき会話が止まったり、想定外の動きをしたりします。before_reasoning の実行のタイミングについて、何を考慮すべきですか?",
+  "o": [
+   "before_reasoning ブロックは1回だけ実行され、変更できない変数を設定する",
+   "before_reasoning ブロックは、遷移したあとの次のターンの始めに実行される",
+   "before_reasoning ブロックは、エージェントの起動直後の最初のターンでだけ実行される"
+  ],
+  "ex": "before_reasoning は LLM の推論の前に決定的に実行されるブロックで、1回だけや起動直後だけではありません(A と C は誤り)。原本は「遷移のあとの次のターンの始めに実行される」を正解としています。一方、Salesforce Architects の解説では、before_reasoning はサブエージェントに入ったとき、アクションの実行後、新しい発話のたびに実行されるとされ、遷移の直後に実行されると読めるため、公式の説明と原本の解説が完全には一致しません。",
+  "u": "https://architect.salesforce.com/docs/architect/fundamentals/guide/hybrid-reasoning-agentforce-builder-agent-script.html",
+  "v": "要確認(矛盾あり)",
+  "x": null,
+  "add": {
+   "text": "Agent Script の before_reasoning ブロックは、LLM が推論する前に決定的に実行されます。サブエージェントに入ったとき、アクションの実行後、同じサブエージェントでの新しい発話のたびに実行されます。",
+   "source_url": "https://architect.salesforce.com/docs/architect/fundamentals/guide/hybrid-reasoning-agentforce-builder-agent-script.html",
+   "note": "before_reasoning runs at the start of every parse: first entry into the subagent, after every tool call, and on every new user turn within the subagent."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 19,
+  "f": "models",
+  "a": [
+   1
+  ],
+  "q": "Agentforce スペシャリストは、Salesforce に保存された顧客データを使って個別の営業メールを作る生成モデルを設定する担当です。すでに OpenAI のプラットフォームで LLM をファインチューニングしています。顧客にとって、セキュリティとデータのプライバシーは重要です。カスタムの LLM をどう Salesforce に組み込むべきですか?",
+  "o": [
+   "カスタム LLM のアプリケーションを作り、iFrame で Sales Cloud に埋め込む",
+   "ファインチューニングした LLM を Einstein Studio の Model Builder に追加する",
+   "OpenAI でモデルのエンドポイントを有効にし、メール生成のためにモデルを呼び出す"
+  ],
+  "ex": "自社のアカウントの基盤モデルは、BYOLLM として AI Models(旧 Einstein Studio)の Model Builder に追加します。OpenAI は対応プロバイダーの1つで、追加したモデルは Einstein Trust Layer を通して Prompt Builder などで使えます。iFrame や直接の呼び出しでは、Trust Layer の保護を受けられません。(Einstein Studio は2026年4月に AI Models に名前が変わりました。)",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_use_ai_models.htm",
+  "v": "公式で確認済み",
+  "x": "BYOLLM(独自の LLM の持ち込み)自社のアカウントの基盤モデルを AI Models に追加して使う。対応するプロバイダーは Amazon Bedrock、Azure OpenAI、OpenAI、Vertex AI(Google)"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 20,
+  "f": "multiagent",
+  "a": [
+   2
+  ],
+  "q": "Cloud Kicks は、調査には他社製のエージェントを、顧客サービスには Agentforce のエージェントを使っています。異なるベンダーのエージェントどうしが通信するための専用のプロトコルはどれですか?",
+  "o": [
+   "Model Context Protocol (MCP)",
+   "Application Programming Interface (API)",
+   "Agent-to-Agent (A2A)"
+  ],
+  "ex": "A2A は、エージェントどうしが互いの機能を見つけて呼び出し、協力するための公開標準のプロトコルです。MCP はエージェントがツールやリソースを使うための仕組みで、エージェントどうしの会話のためのものではありません。API は一般的な連携の手段で、エージェント間通信専用ではありません。",
+  "u": "https://architect.salesforce.com/docs/architect/fundamentals/guide/mulesoft-architecting-agentic-enterprise.html",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Agent-to-Agent(A2A)プロトコルは、専門のエージェントどうしが互いの機能を見つけて呼び出し、協力するための公開標準です。MCP がエージェントからツールを使う仕組みなのに対し、A2A はエージェントどうしの連携に使います。",
+   "source_url": "https://architect.salesforce.com/docs/architect/fundamentals/guide/mulesoft-architecting-agentic-enterprise.html",
+   "note": "A2A is an open standard for peer-to-peer collaboration between specialized agents discovering and invoking each other's capabilities; MCP is agent-invoking-tool."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 21,
+  "f": "grounding",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は、Prompt Builder で取引先に関連付けたプロンプトテンプレートで、関連リストの差し込み項目を使っています。UC が考慮すべきことは何ですか?",
+  "o": [
+   "取引先の活動(Activities)の関連リストは、ポリモーフィックな項目のためサポートされていない",
+   "個人取引先を有効にしていると、取引先の差し込み項目が使えなくなる",
+   "実行時に取引先に関連リストがないと、プロンプトの生成で応答が返らない"
+  ],
+  "ex": "活動(Activities)の関連リストは、グラウンディングに使えません(原本の解説では、ポリモーフィックな項目のためとしています)。個人取引先で差し込み項目が使えなくなることはなく、関連レコードがなくても生成は行われます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_related_list.htm",
+  "v": "公式で確認済み",
+  "x": "活動(Activities)の関連リストや、User と Organization の関連リストは、グラウンディングに使えません。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 22,
+  "f": "access",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、新しい Agentforce Service エージェントを設定しています。社内に機密の医療製品の研究データがあり、エージェントがそれにアクセスできないようにしたいです。UC は何をすべきですか?",
+  "o": [
+   "Agentforce Service エージェントのユーザーに、組織の階層で最も低いロールを割り当ててアクセスを防ぐ",
+   "Agentforce Service エージェントが、カスタムオブジェクトや関連項目を一切使えないようにする",
+   "最小権限の原則に従い、Medical Product オブジェクトや関連レコードを参照する権限を与えない"
+  ],
+  "ex": "エージェントユーザーは最小限のアクセスで作られ、必要な権限だけを最小権限の原則で足していきます。機密のオブジェクトの権限を与えなければ、エージェントはアクセスできません。ロールを下げても権限セットのアクセスは残り、カスタムオブジェクトをすべて禁じると必要な業務まで止まります。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_user.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "最小限のアクセスで作られます。必要な権限は、最小権限の原則にしたがって [Agent_Name]_Permissions 権限セットに追加します。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 23,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Agentforce スペシャリストは Setup で Einstein の生成AIをオンにしました。次に Prompt Builder でカスタムのプロンプトテンプレートを作りたいのですが、Setup のメニューに Prompt Builder が表示されません。原因は何ですか?",
+  "o": [
+   "Prompt Template User 権限セットが正しく割り当てられていない",
+   "Prompt Template Manager 権限セットが正しく割り当てられていない",
+   "Data Cloud で LLM が正しく設定されていない"
+  ],
+  "ex": "テンプレートを作成、管理するには Prompt Template Manager 権限セットが必要です。これがないと Prompt Builder を開けません。Prompt Template User はテンプレートを実行するためのもので、作成には足りません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "テンプレートを作成、管理する管理者には「Prompt Template Manager」権限セットを割り当てます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 24,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は、AIが生成する回答で顧客の質問への対応を効率化し、処理時間を減らしたいと考えています。担当者は既存のナレッジベースを活用でき、回答が LLM から来たのか Salesforce ナレッジから来たのかを見分けられる必要があります。UC はどうすべきですか?",
+  "o": [
+   "Service AI Grounding、Grounding with Case、Service Replies をオンにする",
+   "Service Replies、Service AI Grounding、Grounding with Knowledge をオンにする",
+   "Service AI Grounding と Grounding with Knowledge をオンにする"
+  ],
+  "ex": "返信案を作るのは Service Replies で、Service AI Grounding でナレッジの項目を根拠に選ぶと、ナレッジにもとづく返信案ができます。担当者は、返信がナレッジにもとづくかどうかと、元の記事を確かめられます。原本の解答は C でしたが、Service Replies をオンにしないと返信案そのものが作られない(原本の解説も3つをオンにすると説明している)ため、B が正解です。",
+  "u": "https://help.salesforce.com/s/articleView?id=service.einstein_generative_ai_enable_grounding.htm&type=5",
+  "v": "解答を修正(公式にもとづく)",
+  "x": null,
+  "add": {
+   "text": "Einstein Service Replies は、チャットやメールでの顧客への返信案を生成AIで作る機能です。Service AI Grounding でナレッジやケースの項目を根拠に選べ、ナレッジにもとづく返信には元の記事が示されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+   "note": "Service Replies drafts replies; Service AI Grounding selects Knowledge or Case fields; reps can see whether replies are grounded in knowledge and open the source article."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 25,
+  "f": "stdagents",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers の営業マネージャーは、新人の営業担当者たちが複雑な商談での反論への対応や価格交渉に苦労していることに悩んでいます。マネージャーには、大事な商談の前に一人ひとりを指導する時間がありません。新人たちは、手ごわい会話を再現して売り込みを練習し、担当する商談に合った個別のフィードバックをもらえる道具を求めています。Agentforce スペシャリストはどのソリューションを推奨すべきですか?",
+  "o": [
+   "Employee Coach",
+   "SDR エージェント",
+   "Sales Coach"
+  ],
+  "ex": "Sales Coach は、営業担当者の売り込みやロールプレイに、商談フェーズに合った個別のフィードバックを返すエージェントです。SDR(現 Lead Nurturing)はリードへの働きかけを行うエージェントで、Employee Coach という標準のエージェントはありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_setup_explore_types.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Sales Coach営業担当者の売り込みやロールプレイに、商談フェーズに合ったフィードバックを返す"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 26,
+  "f": "topics",
+  "a": [
+   2
+  ],
+  "q": "Horizon Insurance のカスタマーサービスチームから、ユーザーの意図が明らかに保険金請求なのに、エージェントが請求受付の会話をいつも Policy Inquiry サブエージェントに振り分けてしまうと報告がありました。Agentforce スペシャリストは条件を追加しましたが、問題は続いています。最も考えられる原因は何ですか?",
+  "o": [
+   "正しいサブエージェントに振り分けるために Salesforce フローを必要とする手順の指示",
+   "規制の厳しい環境で、グローバルの指示でサブエージェントへの振り分けを定めていること",
+   "Claims Intake と Policy Inquiry のサブエージェントの説明や開始条件が重なっていること"
+  ],
+  "ex": "エージェントは、会話とすべてのサブエージェントの名前と説明を比べて、最も合うものを選びます。2つのサブエージェントの説明が重なっていると、誤ったほうが選ばれやすくなります。名前と説明を具体的にし、重なりをなくすのが対策です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_topics_routing.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "サブエージェントの名前と説明は、ほかのサブエージェントと重ならないようにします。重なると、誤ったサブエージェントが選ばれやすくなります。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 27,
+  "f": "stdagents",
+  "a": [
+   1
+  ],
+  "q": "Cloud Kicks の Agentforce スペシャリストは、営業スタッフが毎日のタスクの予定を立て、製品の価格や取引の背景を詳しく説明する手助けをするエージェントを作りたいと考えています。Salesforce のベストプラクティスに従うと、どのタイプのエージェントを作るべきですか?",
+  "o": [
+   "Service エージェント",
+   "Employee エージェント",
+   "Sales エージェント"
+  ],
+  "ex": "社内の従業員(ここでは営業スタッフ)に知識を提供し、タスクを実行して業務を助けるのは Employee エージェントです。公式ヘルプのエージェントタイプの一覧には、Employee、Lead Nurturing(旧 SDR)、Sales Coach、Service などがあり、「Sales エージェント」というタイプはありません。原本の解答は C でしたが、社内の従業員を支援するエージェントは Employee タイプのため、B が正解です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_setup_explore_types.htm&type=5",
+  "v": "解答を修正(公式にもとづく)",
+  "x": "社外の顧客対応は Service、社内の従業員の支援は Employee です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 28,
+  "f": "d360ai",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、外部システムにある構造化データを Data 360 に複製せずに、新しい Agentforce エージェントのグラウンディングに使う必要があります。データの即時の正確さを保ち、保存のコストを抑えるためです。Data 360 のどの考え方を使うべきですか?",
+  "o": [
+   "外部のコンテンツにセマンティックインデックスを作る",
+   "ゼロコピーで、取り込まずに外部のデータにアクセスする",
+   "データストリームを設定して、データを Data 360 に取り込む"
+  ],
+  "ex": "データを取り込まずに使いたいなら、ゼロコピーのデータフェデレーションです。データソースに直接つなぐので、複製による保存のコストがかからず、最新のデータを使えます。データストリームは取り込み(コピー)で、インデックスは検索のための仕組みです。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_ingestion.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "データを取り込まずに使いたいなら、ゼロコピーのデータフェデレーションです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 29,
+  "f": "models",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は、アジャイルのスクラムのミーティングで AI の戦略を話し合っています。Agentforce スペシャリストが、Einstein Studio(Model Builder)で外部の基盤モデルにつなぐことを推奨するきっかけになる要件はどれですか?",
+  "o": [
+   "UC はモデルの温度を細かく調整したい",
+   "UC は自社のデータでファインチューニングしたモデルを使いたい",
+   "UC はモデルの Frequency Penalty を変えたい"
+  ],
+  "ex": "自社のデータでファインチューニングしたモデルは、外部のプロバイダーのモデルとして BYOLLM で追加し、エンドポイントを接続して使います。温度や Frequency Penalty は、既存のモデルのモデル設定やプロンプトテンプレートの設定で調整でき、外部モデルの接続は必要ありません。(Einstein Studio は現在 AI Models という名前です。)",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_use_ai_models.htm",
+  "v": "原本どおり",
+  "x": "基盤モデル(Foundation Model)を追加すると、外部のモデルプロバイダーと Salesforce の間にエンドポイントの接続ができます。接続には、プロバイダーのダッシュボードで確認できる URL と認証情報が必要です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 30,
+  "f": "topics",
+  "a": [
+   0
+  ],
+  "q": "Agentforce スペシャリストがカスタムのエージェントアクションを作りましたが、プランナーサービスが正しい順番でそれを選びません。プランナーサービスが期待どおりに動くよう、カスタムアクションの指示をどう直すべきですか?",
+  "o": [
+   "依存するアクションを、アクションの API 名で参照して指定する",
+   "アクションを呼び出せるプロファイルやカスタム権限を指定する",
+   "アクションの呼び出しに使う LLM のプロバイダーとバージョンを指定する"
+  ],
+  "ex": "指示には「いつ」「何を」するかを具体的に書き、使ってほしいアクションの名前を入れると安定して実行されます。前後関係のあるアクションは、名前で参照して順番を明示します。プロファイルや LLM のバージョンは、選ばれる順番を決めません。(プランナーサービスは現在の Atlas 推論エンジンにあたります。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_topics_routing.htm&type=5",
+  "v": "原本どおり",
+  "x": "「いつ」「何を」するかを具体的に書きます。使ってほしいアクションの名前を入れ、「必ず(always)」のような明確な言葉を使うと、安定して実行されます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 31,
+  "f": "trust",
+  "a": [
+   0
+  ],
+  "q": "組織は、Einstein Trust Layer を使って、マスクされたデータをどのように監査、追跡、確認すべきですか?",
+  "o": [
+   "LLM に送られたすべてのプロンプトを記録して Data Cloud に保存する監査証跡を使う",
+   "Setup で Prompt Builder を使い、マスクされたデータを返すよう LLM にプロンプトを送る",
+   "Setup で監査証跡を開き、ユーザーが作ったプロンプトをすべて書き出す"
+  ],
+  "ex": "監査とフィードバックは、プロンプト、応答、信頼性のシグナルを Data 360(旧 Data Cloud)に記録します。元のプロンプトとマスク済みのプロンプトの両方が記録されるので、マスキングの状況を確かめられます。Setup にそのような監査証跡はなく、LLM にマスク前のデータを求めるのは誤りです。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_arch.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "監査とフィードバック(Audit and Feedback)プロンプト、応答、信頼性のシグナルを Data 360 に記録する"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 33,
+  "f": "stdagents",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は、リードをカスタムオブジェクトで管理しています。UC は Sales Development Representative(SDR)エージェントの導入を準備しています。UC が念頭に置くべきことは何ですか?",
+  "o": [
+   "Agentforce SDR は標準のリードオブジェクトでしか動かない",
+   "Agentforce SDR は商談でしか動かない",
+   "Agentforce SDR は取引先に関連するカスタムオブジェクトだけをサポートする"
+  ],
+  "ex": "Agentforce SDR(現 Lead Nurturing)は標準のオブジェクトの見込み客に働きかけるエージェントで、カスタムオブジェクトのリードは対象になりません。そのため、選択肢の中では A が最も妥当です。ただし公式ヘルプでは、対象はリードだけでなく取引先責任者と個人取引先も含むとされており、「リードだけ」という表現は今の仕様と食い違います。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_execution_data.htm&type=5",
+  "v": "要確認(矛盾あり)",
+  "x": null,
+  "add": {
+   "text": "Agentforce Lead Nurturing(旧 SDR)は、リード、取引先責任者、個人取引先に自動で働きかけます。利用には「Use Agentforce SDR Agent App」の権限が必要で、エージェントは EinsteinSDRAgent User で動きます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.agent_execution_data.htm&type=5",
+   "note": "Lead Nurturing works leads, contacts, person accounts; permission Use Agentforce SDR Agent App; runs as EinsteinSDRAgent User."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 34,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers の営業担当者はとても忙しく、音声やビデオの長い商談の通話で大事な点を聞き逃すことがあります。生成AIの機能を使い始めたところです。会話で聞き逃した内容を確かめるために、Agentforce スペシャリストはどの Einstein の生成AIの機能を推奨すべきですか?",
+  "o": [
+   "Call Summary",
+   "Call Explorer",
+   "Sales Summary"
+  ],
+  "ex": "Einstein Conversation Insights の通話の要約(Call Summary)は、録音した通話の大事な点を自動でまとめるので、聞き逃した内容をすぐに確かめられます。Call Explorer は通話記録に個別に質問する機能で、要約を自動で作るものではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=sales.ci_start.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Conversation Insights は通話や会議の録音を分析します。Setup の Call Insights で競合や製品のキーワードの分析を設定でき、Call Explorer では通話記録に質問して内容を確かめられます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=sales.call_coaching_setup_insights.htm&type=5",
+   "note": "ECI analyzes recordings; Call Insights setup configures competitor/product keyword insights; Call Explorer lets users ask questions about a call record."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 35,
+  "f": "topics",
+  "a": [
+   0
+  ],
+  "q": "Agentforce スペシャリストは、カスタムのエージェントアクションが会話の中で期待どおりに動くようにしたいと考えています。アクションの指示を書くときに重視すべきことは何ですか?",
+  "o": [
+   "簡潔なアクションの指示を書き、Agentforce Builder でテストする",
+   "アクションのラベルを発話の意図と一致させる",
+   "包括的で詳しい説明を入れ、スモークテストを行う"
+  ],
+  "ex": "指示は長く書けますが、短く簡潔なほうが性能は良くなります。書いたら Agentforce Builder のプレビューで発話を入力し、どのアクションが選ばれたかを確かめます。ラベルを合わせるだけでは不十分で、長い説明はかえって精度を下げます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_topics_routing.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "指示の各欄には最大131,072文字まで書けますが、短く簡潔な指示のほうが性能は良くなります。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 36,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Einstein Prompt Builder の活用に向いている業務要件はどれですか?",
+  "o": [
+   "過去のデータから将来の売上の傾向を予測する",
+   "ターゲットを絞ったマーケティングキャンペーン向けに、価値の高い見込み客を見つける",
+   "提案依頼(RFP)への返答を、個別のメールで送る"
+  ],
+  "ex": "Prompt Builder は、CRM のデータを差し込んだプロンプトテンプレートで、メールや要約などの文章を生成します。RFP への個別の返信メールは典型的な用途です。売上の予測や見込み客のスコアリングは予測AIの仕事です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "Prompt Builder は、LLM(大規模言語モデル)に渡す指示文を「プロンプトテンプレート」として作り、CRM のデータを差し込んで、テストし、管理する Setup の機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 37,
+  "f": "promptbp",
+  "a": [
+   2
+  ],
+  "q": "サービスマネージャーは、サポートの通話のあとにケースのメモを要約するために Prompt Builder を使いたいと考えています。要約は、顧客の問題、行ったトラブルシューティング、次の対応を含み、5文以内で、専門用語のない平易な言葉で書き、次の対応がなければ「No next action required.」と明記する必要があります。この要件を満たすプロンプトの構成要素はどれですか?",
+  "o": [
+   "役割、タスク、LLM Clarity Score、形式",
+   "役割、タスク、トークン数の上限、形式",
+   "タスク、文脈、制約、形式"
+  ],
+  "ex": "要約するという作業(タスク)、問題や対応の内容(文脈)、5文以内・平易な言葉・決まった文言(制約)、出力の形(形式)の4つで要件を表せます。LLM Clarity Score という要素はなく、トークン数の上限は文の数や語の選び方を決めるものではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+  "v": "原本どおり",
+  "x": "よいプロンプトテンプレートは、役割、目標、データ、指示、ガイドライン、言語、文体などの材料を必要なだけ組み合わせて作り、プレビューで何度もテストしてから有効化します。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 38,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers は、サービスセンターの業務の生産性を上げるために、Einstein の生成AIの機能を検討しています。Agentforce スペシャリストはどの機能を推奨すべきですか?",
+  "o": [
+   "Service Replies と Case Summaries",
+   "Service Replies と Work Summaries",
+   "Reply Recommendations と Sales Summaries"
+  ],
+  "ex": "Service Replies は顧客への返信案を作り、Case Summaries はケースの内容をまとめて担当者がすばやく状況をつかめるようにします。原本はこの組み合わせを正解としています。Reply Recommendations は生成AIではない従来の機能で、Sales Summaries は営業向けです。",
+  "u": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "Einstein Service Replies は、チャットやメールでの顧客への返信案を生成AIで作る機能です。Service AI Grounding でナレッジやケースの項目を根拠に選べ、ナレッジにもとづく返信には元の記事が示されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+   "note": "Service Replies drafts replies; Service AI Grounding selects Knowledge or Case fields; reps can see whether replies are grounded in knowledge and open the source article."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 39,
+  "f": "builder",
+  "a": [
+   1
+  ],
+  "q": "カスタムのエージェントアクションを有効化する前に、Agentforce スペシャリストは、実際のさまざまなユーザーの発話でアクションが適切に選ばれるかを確かめたいと考えています。どのツールを推奨すべきですか?",
+  "o": [
+   "Agentforce",
+   "Agent Builder",
+   "Model Playground"
+  ],
+  "ex": "Agentforce Builder(旧 Agent Builder)のプレビューでは、発話を入力してテストし、どのサブエージェントやアクションが選ばれたかを確認できます。Model Playground は、AI Models でモデル設定とプロンプトを試す場所で、アクションの選ばれ方は確かめられません。原本の解答は Model Playground(同じ問題の Q141 も同じ)でしたが、アクションの選択を確かめるのはビルダーのプレビューのため、B が正解です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_tour.htm&type=5",
+  "v": "解答を修正(公式にもとづく)",
+  "x": "Preview発話を入力してテストし、どのサブエージェントやアクションが選ばれたかを確認する"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 40,
+  "f": "deploy",
+  "a": [
+   2
+  ],
+  "q": "複数のトピックと、フローや Apex を使うエージェントアクションを持つ Agentforce エージェントを作りました。これらを本番にデプロイする方法として、使えるものはどれですか?",
+  "o": [
+   "フローと Apex は通常のデプロイの道具で移し、エージェント関連のものは本番で手作業で作り直す",
+   "Salesforce CLI はエージェント関連のメタデータのデプロイに対応していないので、変更セットだけを使う",
+   "フロー、Apex、エージェント関連のすべてを、変更セットまたは Salesforce CLI/メタデータ API でデプロイする"
+  ],
+  "ex": "エージェントは、Bot、BotVersion、GenAiPlannerBundle などのメタデータとして取得してリリースでき、アクションが使う Apex やフローも一緒に含めます。Salesforce CLI もメタデータ API も使え、手で作り直す必要はありません。(トピックは2026年4月にサブエージェントへ名前が変わりました。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_lifecycle.htm&type=5",
+  "v": "原本どおり",
+  "x": "メタデータでの移行(API v67以前)Bot、BotVersion、GenAiPlannerBundle(サブエージェントとアクションの入れ物)、GenAiPlugin(サブエージェント)、GenAiFunction(アクション)などを取得してリリースする。アクションが使う Apex、フロー、プロンプトテンプレートも手で含める"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 41,
+  "f": "channels",
+  "a": [
+   1
+  ],
+  "q": "Omni-Channel フローで会話をエージェントに振り分けるとき、Agentforce スペシャリストはどの要素を使うべきですか?",
+  "o": [
+   "Route Conversation",
+   "Route Work",
+   "Route to Agent"
+  ],
+  "ex": "メッセージングやメールにつなぐエージェントは受信用と送信用の Omni-Channel フローを持ち、フローは「Route Work」アクションで会話を振り分けます。振り分け先に Agentforce Service エージェントを指定します。Route Conversation や Route to Agent という要素はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_escalation.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "メッセージングやメールにつなぐエージェントは、少なくとも1つずつの受信用と送信用の Omni-Channel フローを持ちます。フローは「Route Work」アクションで会話を振り分けます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 42,
+  "f": "grounding",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、CRM のデータを整った JSON の形で、LLM へのプロンプトに入れたいと考えています。この要件で重要な考慮点は何ですか?",
+  "o": [
+   "プロンプトテンプレートを作るときに「CRM data to JSON」のチェックボックスを選ぶ必要がある",
+   "Apex のコードで、JSON 形式の差し込み項目を返せる",
+   "Prompt Builder の設定で JSON 形式を有効にする必要がある"
+  ],
+  "ex": "Apex の差し込み項目では、SOQL や外部 API の結果を、整形した JSON などの文字列としてテンプレートに渡せます。InvocableMethod を付けたメソッドを作り、出力を Prompt という名前の文字列で返します。JSON に変換するチェックボックスや設定はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_related_list.htm",
+  "v": "公式で確認済み",
+  "x": "ApexSOQL や外部 API の結果、整形した JSON、プログラムによる絞り込みInvocableMethod を付けたメソッドが必要。出力は Prompt という名前の文字列"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 43,
+  "f": "retriever",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、外部システムにある顧客ごとの保証の情報を Data Cloud に取り込む必要があります。Agentforce には、保証の状態が有効な取引先についてだけ、保証に関する回答をさせたいです。保証の情報を正しく取得するため、Agentforce スペシャリストはどの検索の方法を設定すべきですか?",
+  "o": [
+   "Agentforce の指示で保証の条件を守らせ、WarrantyStatus = Active の結果だけを含めさせる",
+   "取引先の保証の状態を Agentforce のカスタム変数に入れ、取得のときに動的に絞り込む",
+   "ハイブリッド検索を使い、新しいカスタムリトリーバーで、該当する取引先と WarrantyStatus = Active で事前に絞り込む"
+  ],
+  "ex": "特定の状態や地域だけを返したいときは、リトリーバーの絞り込み条件(プレフィルター)を使います。ハイブリッド検索は、型番のような文字そのものの一致と意味の近さの両方で探せます。指示で絞らせる方法は LLM の解釈に頼るため、確実ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "特定のカテゴリや地域だけを返したいときは、リトリーバーの絞り込み条件(プレフィルタ)を使います。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 44,
+  "f": "testing",
+  "a": [
+   1
+  ],
+  "q": "Agentforce Testing Center について正しいのはどれですか?",
+  "o": [
+   "テストを実行すると、本番環境の CRM のデータが変更されるおそれがある",
+   "テストを実行しても Einstein Requests を消費しない",
+   "Agentforce Testing Center は本番環境でしか使えない"
+  ],
+  "ex": "Summer '26 から、Testing Center でのテストは従量課金の対象外になり、Einstein Requests や Flex Credits を消費しません(Data 360 へのクエリは課金対象)。原本の正解は B です。ただし公式ヘルプは、テスト中のエージェントが CRM のデータを変更することがあるため Sandbox で使うよう案内しており、A も本番で実行した場合には当てはまるので、選択肢が1つに絞り切れません。C は誤りです。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+  "v": "要確認(矛盾あり)",
+  "x": "Summer ’26 から、Testing Center でのテストは従量課金の対象外になり、Einstein Requests や Flex Credits を消費しません。ただし Data 360 へのクエリは引き続き課金対象です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 45,
+  "f": "deploy",
+  "a": [
+   1
+  ],
+  "q": "Agentforce スペシャリストは、フローを使うカスタムアクションを持つ新しい Service エージェントを作りました。Sandbox でテストし、デプロイの準備ができています。本番環境でのエージェントの有効化について、重要な考慮点は何ですか?",
+  "o": [
+   "フローも有効な場合にだけ、エージェントは自動で有効化される",
+   "Sandbox での状態にかかわらず、本番でエージェントを手動で有効化する必要がある",
+   "デプロイが成功すると、エージェントは自動で有効化される"
+  ],
+  "ex": "エージェントは、コミットしたバージョンを有効化(Activate)して初めて顧客や従業員が使えるようになります。原本は、デプロイ後に本番で手動で有効化する必要があるとしています。デプロイしただけで有効になることはありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_lifecycle.htm&type=5",
+  "v": "原本どおり",
+  "x": "コミットしたバージョンを有効化(Activate)して、顧客や従業員に公開する"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 46,
+  "f": "channels",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers は、Agentforce Service エージェントから SMS のテキストメッセージをサービス担当者に振り分けたいと考えています。正しく振り分けるには、フローでどのサービスチャネルを使うべきですか?",
+  "o": [
+   "Messaging",
+   "Route Work Action",
+   "Live Agent"
+  ],
+  "ex": "SMS は拡張メッセージングのチャネルの1つで、メッセージングのセッションは Messaging のサービスチャネルで扱います。Omni-Channel フローの Route Work アクションで、このサービスチャネルを指定して担当者に振り分けます。Route Work はアクションでサービスチャネルではなく、Live Agent は旧来のチャットです。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_escalation.htm&type=5",
+  "v": "原本どおり",
+  "x": "メッセージングやメールにつなぐエージェントは、少なくとも1つずつの受信用と送信用の Omni-Channel フローを持ちます。フローは「Route Work」アクションで会話を振り分けます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 47,
+  "f": "models",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は AI のアーキテクチャを監査していて、開発者が承認された LLM だけを使うよう制限する必要があります。Agentforce スペシャリストは、組織全体で未承認のモデルが使われないよう、どう管理すべきですか?",
+  "o": [
+   "Einstein Trust Layer で属性ベースのアクセス制御のポリシーを使い、未承認の LLM へのプロンプトを止める",
+   "Agent Builder のシステムの指示に「推論に外部モデルを使わない」と厳しく書く",
+   "Einstein の Setup のモデルプロバイダーの設定で、承認された LLM だけを有効にする"
+  ],
+  "ex": "Setup ではモデルプロバイダーごとに使用を止められ、AI Models ではモデル設定を非表示にして Prompt Builder で選べないようにできます。管理はプラットフォームの設定で行い、指示の文言に頼りません。Trust Layer にモデルの振り分けを止める属性ベースのポリシーはありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_use_ai_models.htm",
+  "v": "公式で確認済み",
+  "x": "管理者は、AI Models でモデル設定を非表示にして、Prompt Builder で選べないようにできます。Setup では、モデルプロバイダーごとに使用を止めることもできます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 48,
+  "f": "access",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は、ケースの詳細と更新を、ケースに関連する複数のカスタム項目とカスタムオブジェクトに保存しています。顧客が状況を尋ねたとき、Agentforce Service エージェントがこれらの項目や関連レコードの情報を答えられるようにしたいです。エージェントにこの情報へのアクセスを与えるベストプラクティスはどれですか?",
+  "o": [
+   "Agentforce Service エージェントのユーザーに割り当て済みの AgentforceServiceAgentUserPsg 権限セットグループで、オブジェクトと項目のアクセスを更新する",
+   "Einstein Agent ライセンスの新しい権限セットを作ってカスタム項目とカスタムオブジェクトの参照権限を付け、Agentforce Service エージェントのユーザーに割り当てる",
+   "Einstein Agent User プロファイルでオブジェクトと項目のアクセスを更新し、Agentforce Service エージェントが常に必要なアクセスを持つようにする"
+  ],
+  "ex": "公式ヘルプでは、エージェントユーザーのオブジェクトの権限は [Agent_Name]_Permissions 権限セットで管理し、別の権限セットを作る場合は Einstein Agent ライセンスと Einstein Agent User プロファイルに関連付けるよう案内しています。原本の解答は A でしたが、標準の権限セットグループではなく、エージェントユーザー用の権限セットに必要な権限だけを足すのが公式の方法のため、B が正解です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_user.htm&type=5",
+  "v": "解答を修正(公式にもとづく)",
+  "x": "最小限のアクセスで作られます。必要な権限は、最小権限の原則にしたがって [Agent_Name]_Permissions 権限セットに追加します。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 49,
+  "f": "topics",
+  "a": [
+   1
+  ],
+  "q": "Pinnacle Healthcare は、患者の予約と治療の調整を改善するために、エージェントと Agent Script の実装を強化しています。コンプライアンスの責任者は、予約の前に患者の情報を確認するとき、エージェントが決定的に動くことを求めています。患者の確認が終わるまで、予約などの後続のアクションを止める必要があります。標準の設定の指針に沿って、最も適切な方法はどれですか?",
+  "o": [
+   "カスタムの Apex の @InvocableMethod で確認のロジックを実行し、予約のアクションを使えるかどうかを動的に変える",
+   "@utils.setVariables で患者の確認状態を mutable なセッション変数に入れ、予約のアクションを available when で制限する",
+   "アクションの説明にテンプレート式を入れ、確認状態に応じて指示を動的に表示する"
+  ],
+  "ex": "フィルターと変数を使うと、本人確認が済んだときにだけ特定のアクションやサブエージェントを使わせられます。確認状態を mutable な変数に持ち、予約のアクションに available when の条件を付けるのが、Agent Script の宣言的な方法です。Apex は必要以上に複雑で、説明の文言は実行を強制しません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_variables.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "フィルター(「Make this action available when:」)と変数を使うと、本人確認が済んだ顧客にだけ特定のサブエージェントを使わせることができます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 50,
+  "f": "grounding",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、構造化されていない会議のメモをチャンクに分けてベクトル化し、Data 360 の検索インデックスにしました。Agentforce スペシャリストは、このデータをプロンプトテンプレートにつなぎ、検索の条件を動的に絞って最も関連する情報を取り出したいと考えています。どうすべきですか?",
+  "o": [
+   "データレイクオブジェクト(DLO)を参照するフレックステンプレートを作る",
+   "プロンプトテンプレートでリトリーバーを参照するフレックステンプレートを作る",
+   "データモデルオブジェクト(DMO)を参照するフレックステンプレートを作る"
+  ],
+  "ex": "リトリーバーは、Data 360 にインデックス化されたデータから関連情報を探してテンプレートに返す部品です。検索インデックスとプロンプトテンプレートをつなぐのはリトリーバーで、DLO や DMO を直接参照しても意味での検索はできません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_related_list.htm",
+  "v": "公式で確認済み",
+  "x": "リトリーバーは、Data 360 にインデックス化されたナレッジから関連情報を探してテンプレートに返します。作る場所は AI Models(旧 Einstein Studio)です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 51,
+  "f": "testing",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は、Agentforce Testing Center のテストケースで、成功の基準を定めています。テストがエージェントの機能を正しく反映するよう、期待する出力として何を指定すべきですか?",
+  "o": [
+   "期待するトピックの API 名",
+   "期待するフローの API 名",
+   "期待するプロンプトテンプレートの名前"
+  ],
+  "ex": "Testing Center の既定の評価の1つ、Subagent Assertion(旧 Topic Assertion)は、発話に対して正しいサブエージェント(旧トピック)が選ばれたかを確かめます。そのため、期待するトピックの API 名を指定します。フローやテンプレートの名前は評価の項目にありません。(トピックは2026年4月にサブエージェントへ名前が変わりました。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Subagent Assertion(既定。旧 Topic Assertion)発話に対して正しいサブエージェントが選ばれたか"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 52,
+  "f": "agents",
+  "a": [
+   2
+  ],
+  "q": "Salesforce の管理者は、Agent でユーザーとのやり取りを良くできるかを調べています。Agent がユーザーの依頼をどう処理し、どんな仕組みで回答を返すのか、LLM と直接やり取りして幅広い依頼に応じるのかに関心があります。Agent は Salesforce でユーザーの依頼をどう処理しますか?",
+  "o": [
+   "Agent は、プロンプトテンプレートを使うフローを起動してメッセージを作る",
+   "Agent は、LLM のプロバイダーに HTTP コールアウトを行う",
+   "Agent はユーザーの依頼を分析し、LLM の技術で適切な回答を作って表示する"
+  ],
+  "ex": "推論エンジンは会話をサブエージェントへ振り分け、LLM と推論して次の手を決め、回答を作ります。毎回フローを起動するわけではなく、LLM への通信は Einstein Trust Layer を通り、直接の HTTP コールアウトではありません。(問題文の Agent は Agentforce のエージェントのことです。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_reasoning_engine.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "推論エンジン会話をサブエージェントへ振り分け、LLMと推論して次の手を決める"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 53,
+  "f": "promptbp",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、問い合わせメールから顧客の製品の型番と数量を一貫して抜き出し、返信を作るプロンプトテンプレートを作りたいと考えています。どのベストプラクティスを取り入れるべきですか?",
+  "o": [
+   "詳しい答えを促すために、自由回答の質問を入れる",
+   "明確で肯定的な指示を書き、少数の例(few-shot)を示す",
+   "創造的な出力を増やすために、温度を高く設定する"
+  ],
+  "ex": "決まった情報を抜き出す作業には、何をどの形で取り出すかを簡潔で分かりやすく指示し、入力と出力の例を示すのが効果的です。自由回答の質問はばらつきを増やし、温度を上げると応答がランダムになります。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+  "v": "原本どおり",
+  "x": "簡潔で分かりやすく書きます。業界用語や技術用語を避け、自然な言葉を使います。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 54,
+  "f": "grounding",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers は、営業チームが顧客向けに個別のメールを作れる、Einstein の新しい生成AIの機能を試しています。ときどき、受信者の取引先責任者のレコードから取れるはずの属性が、下書きのメールでプレースホルダーのままになっています。最も考えられる理由は何ですか?",
+  "o": [
+   "ユーザーにその項目へのアクセス権がない",
+   "ユーザーのロケールの言語が Prompt Builder でサポートされていない",
+   "ユーザーに Einstein Sales Emails の権限が割り当てられていない"
+  ],
+  "ex": "差し込むデータへのアクセスは、テンプレートを実行するユーザーの権限で決まります。Sales Emails では項目レベルセキュリティが適用され、アクセスできない項目のデータは使われず、担当者にはプレースホルダーが表示されます。Sales Emails の権限がなければ、そもそも下書きを作れません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_emails_considerations.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "実行時、差し込むデータへのアクセスは、テンプレートを実行するユーザーの権限で決まります。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 55,
+  "f": "models",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers のコンプライアンスチームは、ある顧客サービスのプロンプトについて、セキュアな自社ホストの Amazon Bedrock モデルだけでデータを処理し、既定の OpenAI のモデルは使わせないと決めました。Agentforce スペシャリストは、このモデルの振り分けをどう設定すべきですか?",
+  "o": [
+   "専用のエージェントユーザーに、既定の Salesforce の LLM のメタデータレコードの参照を制限する権限セットを割り当てる",
+   "すべての Agentforce の要求を既定の LLM ゲートウェイから自動で振り替える、Data 360 の Private Connect のエンドポイントを設定する",
+   "モデルを Einstein Studio で BYOLLM として登録し、プロンプトテンプレートの設定でこのモデルを明示的に選ぶ"
+  ],
+  "ex": "Amazon Bedrock は BYOLLM の対応プロバイダーで、AI Models(旧 Einstein Studio)に基盤モデルを追加してモデル設定を作ります。プロンプトテンプレートはバージョンごとに使うモデルを選べ、実際に使われるのは有効化したバージョンのモデルです。権限セットや Private Connect では、テンプレート単位のモデルの指定はできません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_use_ai_models.htm",
+  "v": "公式で確認済み",
+  "x": "テンプレートのバージョンごとに、別のモデル設定を持てます。実際に使われるのは、有効化したバージョンのモデルだけです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 56,
+  "f": "access",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は、設定のときに Agentforce Service エージェントにナレッジへのアクセスを与え忘れました。エージェントがナレッジ記事を使って顧客の質問に答えられるようにするには、どの権限を追加すべきですか?",
+  "o": [
+   "Allow View Knowledge と Run Flows",
+   "ナレッジのレコードと項目へのアクセス、および Allow View Knowledge",
+   "カスタムオブジェクトへのアクセスと Manage External Users"
+  ],
+  "ex": "エージェントユーザーにはナレッジのライセンスを付けられませんが、アプリケーション権限「Allow View Knowledge」と、ナレッジオブジェクトの参照(項目を含む)の権限を与えればナレッジ記事を使えます。Run Flows や Manage External Users はナレッジの参照には関係ありません。",
+  "u": "https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-example-rag-jargon.html",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "エージェントユーザーにはナレッジのライセンスを付けられませんが、アプリケーション権限「Allow View Knowledge」とナレッジオブジェクトの参照権限を与えると、ナレッジ記事を使って回答できます。",
+   "source_url": "https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-example-rag-jargon.html",
+   "note": "You can't give the agent user a Knowledge license, but you can grant the Allow View Knowledge app permission (plus Knowledge object Read)."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 57,
+  "f": "actions",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、ユーザー向けに Agentforce を導入しました。あるユーザーから、エージェントが過去7日間の活動を削除してくれないと苦情がありました。原因は何ですか?",
+  "o": [
+   "Agentforce に、ユーザーのレコードを削除する権限がない",
+   "Agentforce の Delete Record Action の権限がユーザーに関連付けられていない",
+   "Agentforce には、レコードを削除する標準アクションがない"
+  ],
+  "ex": "原本は、Agentforce の標準アクションには、レコードの作成、更新、要約などはあるが、レコードを削除する標準アクションはないと説明しています。削除が必要なら、フローや Apex でカスタムアクションを作ります。Delete Record Action という権限はありません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 58,
+  "f": "observe",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、すべてのエージェントの詳しいやり取りのデータを記録して保存する必要があります。推論エンジンの実行、アクション、プロンプトとゲートウェイの入出力、エラーメッセージ、最終応答を含め、エージェントの動きを最初から最後まで見られる機能はどれですか?",
+  "o": [
+   "Agentforce Analytics",
+   "Utterance Analysis",
+   "Agentforce Session Tracing"
+  ],
+  "ex": "Agentforce セッショントレースは、セッションごとのターン、推論の手順、アクション、メッセージ、エラーを Data 360 に記録し、エージェントが何を判断し何をしたかを追えます。Agentforce Analytics は全体の傾向の集計、Utterance Analysis は発話の傾向の分析です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_feedback_enable.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Agentforce セッショントレース(Session Tracing)セッションごとのターン、推論の手順、アクション、メッセージ、エラーエージェントが何を判断し、何をしたか"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 59,
+  "f": "topics",
+  "a": [
+   2
+  ],
+  "q": "Coral Cloud Resorts(CCR)は、顧客の会員ランクが「Premium」か「Elite」のときだけ予約のアクションを使えるようにしたいと考えています。この業務ルールは決定的に守らせる必要があります。CCR は何を実装すべきですか?",
+  "o": [
+   "予約のオブジェクトに入力規則を作り、対象外の顧客が予約を完了できないようにする",
+   "予約のアクションは Premium か Elite の顧客にだけ使うと、例を添えてトピックの指示に明記する",
+   "顧客の会員ランクの項目に対応づけたコンテキスト変数を作り、MembershipTier の条件でフィルターを付ける"
+  ],
+  "ex": "変数とフィルター(「Make this action available when:」)を使うと、条件を満たすときだけアクションを使わせられます。コンテキスト変数はオブジェクトの項目に対応づけた変数で、フィルターの条件に使えます。指示は LLM が解釈するので確実ではなく、入力規則ではアクションが選ばれること自体は防げません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_variables.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "フィルター(「Make this action available when:」)と変数を使うと、本人確認が済んだ顧客にだけ特定のサブエージェントを使わせることができます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 60,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、営業チームが通話のあとに、競合、製品、その他の独自のフレーズへの言及を自動で確認できるようにしたいと考えています。Agentforce スペシャリストはどの機能を設定すべきですか?",
+  "o": [
+   "Call Summaries",
+   "Call Explorer",
+   "Call Insights"
+  ],
+  "ex": "Call Insights では、自社にとって大事な競合や製品のキーワードの分析を設定でき、独自の語句のカスタムインサイトも作れます。通話の中でそれらが言及された箇所が自動で示されます。Call Summaries は要約、Call Explorer は個別の質問の機能です。",
+  "u": "https://help.salesforce.com/s/articleView?id=sales.call_coaching_setup_insights.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Conversation Insights は通話や会議の録音を分析します。Setup の Call Insights で競合や製品のキーワードの分析を設定でき、Call Explorer では通話記録に質問して内容を確かめられます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=sales.call_coaching_setup_insights.htm&type=5",
+   "note": "ECI analyzes recordings; Call Insights setup configures competitor/product keyword insights; Call Explorer lets users ask questions about a call record."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 61,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、営業チームが AI でカタログからおすすめの製品を提案できるようにしたいと考えています。UC はどの種類のプロンプトテンプレートを使うべきですか?",
+  "o": [
+   "レコード要約のプロンプトテンプレート",
+   "メール生成のプロンプトテンプレート",
+   "フレックスのプロンプトテンプレート"
+  ],
+  "ex": "ほかの種類でカバーできない用途で、入力のオブジェクトを自由に決めたいときはフレックステンプレートです。製品のカタログと顧客の情報など、複数の入力を組み合わせて提案を作れます。レコード要約やメール生成は、用途が決まっています。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "入力のオブジェクトを自由に決めたい、複数のオブジェクトを使いたいときはフレックスです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 62,
+  "f": "multiagent",
+  "a": [
+   0
+  ],
+  "q": "企業の AI の導入で、Model Context Protocol(MCP)の使い方を最もよく表している場面はどれですか?",
+  "o": [
+   "法務アシスタントのエージェントが、MCP で文書分類の API を動的に見つけ、訴訟のファイルを分析する",
+   "カスタマーサービスのエージェントが、別のエージェントとリアルタイムで会話してチケットを解決する",
+   "営業のエージェントが、Agent Card を使って別のエージェントの機能を見つける"
+  ],
+  "ex": "MCP は、エージェントが外部のツールを見つけて使うための仕組みです。MCP for Agentforce を使うと、外部の MCP サーバーのツールをエージェントのアクションとして使えます。エージェントどうしの会話や Agent Card による機能の発見は、A2A(Agent-to-Agent)の領域です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_multi_orch.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "MCP for Agentforce を使うと、外部のMCPサーバーのツールをエージェントのアクションとして使えます。Agentforceには、MCPのクライアントが組み込まれています。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 63,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Prompt Builder の主な目的は何ですか?",
+  "o": [
+   "Visual Studio Code で開発者が使い、Apex のプログラミング用のプロンプトを作って、コードを効率よく書けるようにするツール",
+   "LLM に渡す再利用可能なプロンプトを作り、生成AIの応答を業務の流れに組み込めるようにするツール",
+   "ユーザーにリアルタイムで AI の提案や助言を示し、生産性と意思決定を高める Salesforce のツール"
+  ],
+  "ex": "Prompt Builder は、LLM に渡す指示文をプロンプトテンプレートとして作り、CRM のデータを差し込んでテストし、管理する機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "Prompt Builder は、LLM(大規模言語モデル)に渡す指示文を「プロンプトテンプレート」として作り、CRM のデータを差し込んで、テストし、管理する Setup の機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 64,
+  "f": "datalib",
+  "a": [
+   2
+  ],
+  "q": "ナレッジを使うデータライブラリで、「Filter by Knowledge Data Categories」をオンにすると、何ができますか?",
+  "o": [
+   "選んだデータカテゴリのカスタムメタデータをナレッジ記事に付け、検索の関連性を高める",
+   "インデックス化したナレッジ記事を、データカテゴリごとの区画に分ける",
+   "インデックス化する記事を、選んだデータカテゴリに属するものだけに絞り、インデックスの精度を高める"
+  ],
+  "ex": "ナレッジのデータライブラリでは、識別項目と内容項目を選び、データカテゴリで対象の記事を絞り込めます。選んだカテゴリの記事だけがインデックス化されます。なお、絞り込みに使うカテゴリは表示可能になっている必要があります。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "ナレッジ(Knowledge)識別項目と内容項目を選ぶ。公開済み(Published)の記事だけが対象。「Use Public Knowledge Articles」で公開記事(IsVisibleInPkbがTrue)に絞れる。データカテゴリでも絞り込める"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 65,
+  "f": "observe",
+  "a": [
+   2
+  ],
+  "q": "Agentforce スペシャリストは、Einstein Trust Layer でデータマスキングを設定しました。正しい項目がマスクされているかを確かめるには、まず何をすべきですか?",
+  "o": [
+   "Prompt Builder でフローのリソースを使い、Flow Debugger で項目の差し込み値をデバッグする",
+   "Setup の Security セクションから Einstein Generative AI Audit Data を要求する",
+   "Einstein Feedback の設定ページで、Einstein の生成AIの監査データの収集と保存をオンにする"
+  ],
+  "ex": "マスク済みのプロンプトは、監査とフィードバックのデータに記録されます。まず Setup で監査とフィードバック(Audit and Feedback)の収集をオンにし、Data 360 に保存されたデータで確かめます。この設定ページは現在「Einstein Audit, Analytics, and Monitoring Setup」という名前です。(原本の解説は B を正解と書いていますが、解答の C が正しい手順です。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_feedback_enable.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "設定の「Einstein Audit, Analytics, and Monitoring Setup」で「Audit and Feedback」をオンにする"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 66,
+  "f": "promptbp",
+  "a": [
+   0
+  ],
+  "q": "Agentforce スペシャリストは、フレックスのプロンプトテンプレートを作っています。どのベストプラクティスに従うべきですか?",
+  "o": [
+   "LLM に文脈となる情報を与え、営業担当者やサポート担当者のような役割を与える",
+   "取引先のデータでグラウンディングし、LLM の応答を保存するカスタム項目「取引先の要約」を作る",
+   "リトリーバーでグラウンディングし、LLM の応答を保存するカスタム項目を作る"
+  ],
+  "ex": "LLM に営業担当者やサポート担当者などの役割を演じさせ、その人物の目標と文脈を与えるのはプロンプトのベストプラクティスです。フレックステンプレートは項目に書き込む種類ではないので、応答を保存するカスタム項目を作ることはベストプラクティスに当たりません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+  "v": "公式で確認済み",
+  "x": "LLM に、営業担当者やサポート担当者などの役割を演じさせ、その人物の目標を定義します。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 67,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers は、AI でカスタマーサポートチームの生産性を上げようとしています。Prompt Builder が必要になる用途はどれですか?",
+  "o": [
+   "新しい製品パッチについてのサポート告知の下書きを作る",
+   "AI でサポート担当者の成績スコアを作る",
+   "過去のデータと季節の傾向から、サポートのチケット数を見積もる"
+  ],
+  "ex": "Prompt Builder は、CRM のデータを差し込んだプロンプトテンプレートで文章を生成します。告知の下書きは文章の生成なので向いています。成績スコアやチケット数の見積もりは予測AIや分析の仕事です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "Prompt Builder は、LLM(大規模言語モデル)に渡す指示文を「プロンプトテンプレート」として作り、CRM のデータを差し込んで、テストし、管理する Setup の機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 68,
+  "f": "grounding",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、関連リストでプロンプトテンプレートをグラウンディングしました。ユーザー受け入れテスト(UAT)で、ユーザーに正しい応答が返りません。原因は何ですか?",
+  "o": [
+   "関連リストが参照のみになっている",
+   "関連リストのプロンプトテンプレートのオプションが有効になっていない",
+   "関連リストが親オブジェクトのページレイアウトにない"
+  ],
+  "ex": "関連リストを設定しても、ユーザーのページレイアウトにその関連リストがない、または関連オブジェクトの参照権限がない場合は、関連リストのデータは LLM に送られません。そのため、期待どおりの応答になりません。参照のみかどうかや、特別なオプションは関係ありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_related_list.htm",
+  "v": "公式で確認済み",
+  "x": "関連リストを設定しても、ユーザーのページレイアウトにその関連リストがない、または関連オブジェクトの参照権限がない場合は、関連リストのデータは LLM に送られません。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 69,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)の Salesforce 組織は長く使われていて、ケースとナレッジ記事に大量のデータがあります。古い項目が多く、Einstein AI が正確な返信メールを作るのに向かないデータもあると心配しています。決めたデータソースから Einstein AI に返信を作らせるには、どのソリューションを使うべきですか?",
+  "o": [
+   "Service AI Grounding",
+   "Work Summaries",
+   "Service Replies"
+  ],
+  "ex": "Service AI Grounding では、グラウンディングに使うナレッジやケースの項目を選べます。根拠にする項目を決めることで、古い項目に引きずられない返信案になります。Work Summaries は要約、Service Replies は返信案を作る機能そのものです。",
+  "u": "https://help.salesforce.com/s/articleView?id=service.einstein_generative_ai_enable_grounding.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Service Replies は、チャットやメールでの顧客への返信案を生成AIで作る機能です。Service AI Grounding でナレッジやケースの項目を根拠に選べ、ナレッジにもとづく返信には元の記事が示されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+   "note": "Service Replies drafts replies; Service AI Grounding selects Knowledge or Case fields; reps can see whether replies are grounded in knowledge and open the source article."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 70,
+  "f": "testing",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、実際に近いデータを保ちつつ、本番から切り離してエージェントをテストしたいと考えています。Testing Center ではどの環境を使うべきですか?",
+  "o": [
+   "本番のデータを反映しない個人の Developer 組織を使う",
+   "テストのアサーションを付けて、本番組織で直接テストする",
+   "本番から複製した Sandbox で、安全にテストする"
+  ],
+  "ex": "テスト中のエージェントは CRM のデータを変更することがあるため、Testing Center は Sandbox で使うよう公式に案内されています。本番を複製した Sandbox なら、実際に近いデータで安全に試せます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "テスト中のエージェントはCRMのデータを変更することがあります。そのため、Testing Center は Sandbox で使うよう公式に案内されています。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 71,
+  "f": "retriever",
+  "a": [
+   0
+  ],
+  "q": "Data Cloud のリトリーバーの正しい用途はどれですか?",
+  "o": [
+   "ベクトルデータベースから関連するデータを返し、プロンプトを補強する",
+   "外部の Web サイトのデータで、RAG によってプロンプトを補強する",
+   "Data Cloud につないだソースシステムのデータを変更、更新する"
+  ],
+  "ex": "リトリーバーは、検索インデックス(ベクトル化したデータ)から目的に合う情報を取り出して、プロンプトに渡す部品です。データを書き換える機能はありません。Web の検索は、エージェントの標準アクション「Search the Web」や Web リトリーバーの役割です。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "検索インデックスは、データをチャンクに分けてベクトル化し、意味で探せるようにしたものです。リトリーバーは、その検索インデックスから目的に合う情報を取り出して、プロンプトに渡す部品です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 72,
+  "f": "datalib",
+  "a": [
+   1
+  ],
+  "q": "ある会社は、顧客が常に最新版のサポート資料にもとづいた回答を受け取れるようにする必要があります。Agentforce スペシャリストは何を推奨すべきですか?",
+  "o": [
+   "ファイル型の Agentforce データライブラリを使い、バージョン管理の設定を有効にして常に最新の文書を取り出させる",
+   "ナレッジ型の Agentforce データライブラリを使う。ナレッジ記事にはバージョン管理が組み込まれているので、エージェントは公開中の最新版を取り出す",
+   "どちらの種類のデータライブラリでもよい。検索インデックスが作り直されれば、どちらも最新の内容を返す"
+  ],
+  "ex": "ナレッジのデータライブラリは「公開済み」の記事だけを対象にし、下書きはインデックスされません。ナレッジは記事の公開状態とバージョンを管理しているので、公開中の内容にもとづいて回答できます。ファイル型にはそのようなバージョン管理の設定はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "ナレッジは「公開済み」の記事だけが対象です。下書きの記事はインデックスされません。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 73,
+  "f": "retriever",
+  "a": [
+   1
+  ],
+  "q": "Cloud Kicks には、長く複雑な契約書があります。Agentforce のエージェントは、大きな節の中に入れ子になった特定の条項を取り出せる必要があります。標準のチャンク化では、条項の文脈が十分に取れていません。文書の構造を保つために、管理者はどのチャンク化の方法を使うべきですか?",
+  "o": [
+   "チャンクのサイズを小さくする",
+   "チャンクのサイズを大きくする",
+   "キーワードにもとづくチャンク化を使う"
+  ],
+  "ex": "条項が大きな節に入れ子になっている場合、チャンクが小さいと定義や例外から切り離されてしまいます。原本は、チャンクを大きくして周りの文脈を一緒に保つのが正解としています。なお、検索インデックスの Advanced Setup ではチャンク化の方法を選べ、HTML と PDF の既定は見出しで区切る Section-Aware Chunking です。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "原本どおり",
+  "x": "Advanced Setup(詳細設定)では、解析(パーサー)、前処理、チャンク化の方法、埋め込みモデル、絞り込み用の項目を自分で選びます。絞り込み用の項目は10個までです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 74,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は、Salesforce の生成AIの機能で、既存のナレッジ記事にもとづく返信案を示し、サービス担当者の処理時間を減らしたいと考えています。UC はどの AI の機能についてサービス担当者を訓練すべきですか?",
+  "o": [
+   "Service Replies",
+   "Case Replies",
+   "Knowledge Replies"
+  ],
+  "ex": "Einstein Service Replies は、ナレッジなどにもとづく返信案を生成AIで作る機能で、ナレッジにもとづく返信には元の記事が示されます。Case Replies や Knowledge Replies という機能はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Service Replies は、チャットやメールでの顧客への返信案を生成AIで作る機能です。Service AI Grounding でナレッジやケースの項目を根拠に選べ、ナレッジにもとづく返信には元の記事が示されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+   "note": "Service Replies drafts replies; Service AI Grounding selects Knowledge or Case fields; reps can see whether replies are grounded in knowledge and open the source article."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 75,
+  "f": "promptbp",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers の Agentforce スペシャリストは、製品デモの依頼をした顧客に送る個別のメールを作るプロンプトテンプレートを作っています。AI が作るメールは、指針を厳しく守り、関連する商談の情報だけを使い、受信者に望む行動を促す必要があります。これらの指示を新しい行でテンプレートに入れるには、どうすべきですか?",
+  "o": [
+   "三重引用符(\"\"\")で囲む",
+   "差し込み項目が定義されていることを確かめる",
+   "波かっこ {} で指示を囲む"
+  ],
+  "ex": "文脈と指示を区別させるため、別の行に「Instructions:」と書き、指示を三重引用符(\"\"\")で囲むのが公式のベストプラクティスです。波かっこは差し込み項目の書き方で、指示の区切りではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+  "v": "公式で確認済み",
+  "x": "文脈と指示を区別させるため、別の行に「Instructions:」と書き、指示を三重引用符(\"\"\")で囲みます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 76,
+  "f": "observe",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers のサービス部門の VP は、Agentforce Service エージェントについて、過去90日間の週ごとのデフレクション率の傾向とエスカレーションの件数を示すレポートを求めています。Agentforce スペシャリストは何を推奨すべきですか?",
+  "o": [
+   "Agentforce Health Monitoring でエスカレーション率のアラートのしきい値を設定し、得られた傾向のデータを Tableau のダッシュボードに書き出す",
+   "Agentforce Observability の Agent Analytics を使う。Data 360 に保存されたセッションのデータから計算した、デフレクション率、エスカレーションの件数、離脱の指標を持つ Tableau のダッシュボードがある",
+   "Data 360 の OTEL 準拠の Session Tracing のデータモデルに CRM Analytics でクエリし、独自のダッシュボードを作る"
+  ],
+  "ex": "Agent Analytics は全セッションを集計して傾向をダッシュボードで見るツールで、Effectiveness タブで Deflection Rate、Escalation Rate、Abandonment Rate などを確認できます。Health Monitoring はしきい値を超えたときの通知、トレースのデータへの独自のクエリは標準の指標があるのに手間がかかります。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_feedback_enable.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Effectiveness タブでは、Deflection Rate(エスカレーションなしで終わったセッションの割合)、Escalation Rate、Abandonment Rate などを見ます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 77,
+  "f": "retriever",
+  "a": [
+   0
+  ],
+  "q": "RAG の品質テストで、Agentforce スペシャリストは、Data 360 の独自の文書取り込みパイプラインから来た表の情報が、複数のチャンクに分かれて文脈を失っていることに気づきました。最も適切な解決方法は何ですか?",
+  "o": [
+   "検索インデックスのパーサーを、既定から Docling に変える",
+   "アンサンブルリトリーバーで、複数のチャンクを動的につなぎ直す",
+   "検索インデックスの設定を、キーワード検索のスコアだけを使うように切り替える"
+  ],
+  "ex": "検索インデックスの Advanced Setup では、解析(パーサー)、前処理、チャンク化の方法を自分で選べます。原本は、表やレイアウトの理解に強い Docling のパーサーに変えるのが正解としています。アンサンブルリトリーバーは複数のリトリーバーの結果をまとめるもので、分かれたチャンクを組み立て直すものではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "原本どおり",
+  "x": "Advanced Setup(詳細設定)では、解析(パーサー)、前処理、チャンク化の方法、埋め込みモデル、絞り込み用の項目を自分で選びます。絞り込み用の項目は10個までです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 78,
+  "f": "topics",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers の Agentforce スペシャリストは、明らかに請求に関する問い合わせなのに、エージェントが一般のトラブルシューティングのサブエージェントへ振り分けることが多いのに気づきました。この誤った振り分けで、平均処理時間が増え、SLA の目標を外しています。コンタクトセンターのマネージャーは、すぐに実装でき、複雑で一直線でない会話を扱う力を残す解決策を求めています。最も適切な方法はどれですか?",
+  "o": [
+   "エージェントのグローバルなシステムの指示に、サブエージェントごとの禁止キーワードの一覧を入れる",
+   "サブエージェントの指示の意味の重なりを洗い出し、決定的なフィルターでプランナーの選択を導く",
+   "Decision 要素ですべての依頼を特定のサブエージェントに手作業で割り当てるルーター用のサブフローを作る"
+  ],
+  "ex": "誤ったサブエージェントが選ばれるときは、名前と説明を具体的にし、ほかとの重なりをなくします。必ず守らせたい条件には、フィルターと変数で決定的に制限をかけます。禁止キーワードの一覧は LLM の解釈頼みで、すべてをフローで振り分けると会話の柔軟さが失われます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_topics_routing.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "誤ったサブエージェントが選ばれるときは、名前と説明を具体的にし、ほかとの重なりをなくします。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 79,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "データサイエンティストは、Einstein Studio でモデルを表示、管理し、さらに Prompt Builder でプロンプトテンプレートを作る必要があります。Agentforce スペシャリストは、どの権限セットを割り当てるべきですか?",
+  "o": [
+   "Prompt Template Manager と Prompt Template User",
+   "Data Cloud Admin と Prompt Template Manager",
+   "Prompt Template User と Data Cloud Admin"
+  ],
+  "ex": "テンプレートの作成、管理には Prompt Template Manager が必要です。Einstein Studio(現 AI Models)は Data 360 のアプリなので、モデルの管理には Data Cloud Admin(Data 360 の管理者)の権限を使います。Prompt Template User はテンプレートの実行だけの権限です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "原本どおり",
+  "x": "テンプレートを作成、管理する管理者には「Prompt Template Manager」権限セットを割り当てます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 80,
+  "f": "multiagent",
+  "a": [
+   0
+  ],
+  "q": "Agent-to-Agent(A2A)プロトコルの主な利点は何ですか?",
+  "o": [
+   "ベンダーをまたいでエージェントを見つけ、通信するための標準の枠組みを提供する",
+   "追加の契約、信頼スコア、共通の ID 管理なしに、他社のエージェントを自動で受け入れられる",
+   "社内のエージェントを見つけ、通信するための標準の実行エンジンを提供する"
+  ],
+  "ex": "A2A は、専門のエージェントどうしが互いの機能を見つけて呼び出すための公開標準で、異なるベンダーやプラットフォームのエージェントの連携に使います。ガバナンスや信頼の仕組みが不要になるわけではなく、実行エンジンでもありません。",
+  "u": "https://architect.salesforce.com/docs/architect/fundamentals/guide/mulesoft-architecting-agentic-enterprise.html",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Agent-to-Agent(A2A)プロトコルは、専門のエージェントどうしが互いの機能を見つけて呼び出し、協力するための公開標準です。MCP がエージェントからツールを使う仕組みなのに対し、A2A はエージェントどうしの連携に使います。",
+   "source_url": "https://architect.salesforce.com/docs/architect/fundamentals/guide/mulesoft-architecting-agentic-enterprise.html",
+   "note": "A2A is an open standard for peer-to-peer collaboration between specialized agents discovering and invoking each other's capabilities; MCP is agent-invoking-tool."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 81,
+  "f": "retriever",
+  "a": [
+   2
+  ],
+  "q": "Agentforce 向けに、Data Cloud でハイブリッドの検索インデックスを選ぶ理由として正しいのはどれですか?",
+  "o": [
+   "ハイブリッドの検索インデックスは、意味の埋め込みが不要なので、ベクトル検索より速く処理できる",
+   "ハイブリッド検索のベクトル埋め込みはキーワードの一致で事前に絞られるので、計算の負荷が減り精度が上がる",
+   "ハイブリッドの検索インデックスは、キーワードの文字どおりの一致と意味での検索の両方に対応し、特定の語と意図が混ざった質問に向く"
+  ],
+  "ex": "ハイブリッド検索は、ベクトル検索とキーワード検索の両方で探し、結果をまとめて順位をつけます。型番やエラーコードのような文字そのものの一致と、意味の近さの両方が大事なときに選びます。埋め込みをなくすわけでも、キーワードで事前に絞るわけでもありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "ハイブリッド検索(Hybrid Search)ベクトル検索とキーワード検索の両方で探し、結果をまとめて順位をつける「LaserPrinter TX 400」と「TX 440」のような型番の違いにも強い"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 82,
+  "f": "agents",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、注文の追跡、返品、ロイヤルティのサポートに Agentforce を導入しています。エージェントには、顧客の問い合わせに柔軟に対応しつつ、アカウントの情報にアクセスする前の本人確認の手順は確実に実行することが求められます。開発チームは、エージェントの指示の組み立て方を検討しています。Agent Script のハイブリッド推論を正しく説明しているのはどれですか?",
+  "o": [
+   "ハイブリッド推論は、複数の LLM を同時に使い、1つが会話の応答を、もう1つがフローの連携で決定的な業務ロジックを担う",
+   "ハイブリッド推論では、宣言的な指示には Canvas ビュー、手続き的な指示には Script ビューが必要で、それぞれの画面の機能が違う",
+   "ハイブリッド推論は、LLM が解釈する宣言的な自然言語の指示と、-> を付けて実行の順序を保証する手続き的な指示を組み合わせる"
+  ],
+  "ex": "Agent Script は、決定的なロジックと LLM の推論を1つの流れで組み合わせます。ロジックの指示(->)は毎回決定的に実行され、プロンプトの指示(|)は LLM が解釈します。複数の LLM を使い分けるわけではなく、Canvas と Script のビューは同じ設定を表示します。",
+  "u": "https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-lang.html",
+  "v": "公式で確認済み",
+  "x": "Agent Script(エージェントを作るための言語)で、全体の業務の流れと会話の柔軟さを分けます。決定的なルールとLLMの推論を同じエンジンで組み合わせることを、ハイブリッド推論と呼びます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 83,
+  "f": "agents",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、融資の申し込みの業務のエージェントを作りました。非決定的な面と厳しい規制の要件の両方に対応する必要があり、本人確認と信用調査の手順を決まった順番で必ず実行させなければなりません。Agent Script のハイブリッド推論の2つの指示の型の違いを正しく説明しているのはどれですか?",
+  "o": [
+   "宣言的な指示は業務ロジックにフローの実行が必要で、手続き的な指示は Agent Script に組み込まれているが外部のシステムや API にはアクセスできない",
+   "宣言的な指示は LLM の解釈で会話の柔軟さを生み、手続き的な指示は -> を付けて run、if、遷移で実行の順序を保証する",
+   "宣言的な指示は Canvas ビューの視覚的な編集でしか使えず、手続き的な指示は Script ビューが必要で、画面上には表示できない"
+  ],
+  "ex": "ロジックの指示(->)は、ビジネスルール、アクションの実行(run)、変数の設定、条件分岐(if)、遷移に使い、毎回決定的に実行されます。プロンプトの指示は自然言語で LLM に渡され、会話を柔軟にします。Canvas と Script のビューは同じ設定を表示し、どちらでも編集できます。",
+  "u": "https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-lang.html",
+  "v": "公式で確認済み",
+  "x": "Agent Script(エージェントを作るための言語)で、全体の業務の流れと会話の柔軟さを分けます。決定的なルールとLLMの推論を同じエンジンで組み合わせることを、ハイブリッド推論と呼びます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 84,
+  "f": "multiagent",
+  "a": [
+   2
+  ],
+  "q": "Agent-to-Agent(A2A)プロトコルを使うのが適切なのは、どんなときですか?",
+  "o": [
+   "エージェントが他社の API を呼び出す必要があるとき",
+   "エージェントがツールにアクセスする必要があるとき",
+   "エージェントどうしが協力する必要があるとき"
+  ],
+  "ex": "A2A は、エージェントどうしが互いの機能を見つけて呼び出し、協力するためのプロトコルです。エージェントがツールや API を使うのは MCP や通常の連携の役割です。",
+  "u": "https://architect.salesforce.com/docs/architect/fundamentals/guide/mulesoft-architecting-agentic-enterprise.html",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Agent-to-Agent(A2A)プロトコルは、専門のエージェントどうしが互いの機能を見つけて呼び出し、協力するための公開標準です。MCP がエージェントからツールを使う仕組みなのに対し、A2A はエージェントどうしの連携に使います。",
+   "source_url": "https://architect.salesforce.com/docs/architect/fundamentals/guide/mulesoft-architecting-agentic-enterprise.html",
+   "note": "A2A is an open standard for peer-to-peer collaboration between specialized agents discovering and invoking each other's capabilities; MCP is agent-invoking-tool."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 85,
+  "f": "retriever",
+  "a": [
+   0
+  ],
+  "q": "テキストのチャンクをベクトル化すると、何が起こりますか?",
+  "o": [
+   "チャンクの内容を数値で表したものができ、意味にもとづく検索ができるようになる",
+   "内容が暗号化され、Data 360 のデータスペースに安全に保存できるようになる",
+   "元の文書のファイルサイズが小さくなり、Data 360 のコストが下がる"
+  ],
+  "ex": "ベクトル化は、テキストの意味を数値の並び(埋め込み)にする処理です。検索インデックスはデータをチャンクに分けてベクトル化し、意味で探せるようにします。暗号化や圧縮の処理ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "検索インデックスは、データを読み込み、チャンクに分け、ベクトル化(意味を数値の並びにする処理)して、検索しやすい形で保存したものです。データスペースの中で、DMOまたはUDMOにひも付けて作ります。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 86,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers には厳しい変更管理のプロセスがあり、できる設定はすべて Sandbox で行ってから本番にデプロイする決まりです。Agentforce スペシャリストは、拡張メッセージングの Work Summaries を設定する担当です。本番では Einstein の生成AIがすでに有効で、Einstein Work Summaries の権限セットも本番にあります。Sandbox で行い、本番にデプロイできる設定の手順はどれですか?",
+  "o": [
+   "Issue、Resolution、Summary を保存するカスタム項目を作り、これらを更新するクイックアクションを作り、Messaging Session のレコードページに Wrap Up コンポーネントを追加し、対象の担当者に権限セットを割り当てる",
+   "Einstein の Setup で Einstein をオンにし、Issue、Resolution、Summary のカスタム項目を作り、これらを更新するクイックアクションを作り、Messaging Session のレコードページに Wrap Up コンポーネントを追加する",
+   "Issue、Resolution、Summary を保存するカスタム項目を作り、これらを更新するクイックアクションを作り、Messaging Session のレコードページに Wrap Up コンポーネントを追加する"
+  ],
+  "ex": "メッセージングの Work Summaries では、要約を保存するクイックアクションを作り、担当者が使う画面に Wrap Up コンポーネントを置き、生成結果を項目に対応づけます。項目、クイックアクション、ページはメタデータなのでデプロイできます。権限セットの割り当てはデプロイできず、Einstein はすでに本番で有効です。",
+  "u": "https://help.salesforce.com/s/articleView?id=service.work_summaries_messaging_show.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Work Summaries は、会話の終わりやケースページで、要約・問題(Issue)・解決策(Resolution)を予測して入力します。メッセージングでは、要約を保存するクイックアクションと Wrap Up コンポーネントを設定します。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=service.cc_generative_ai_work_summaries.htm&type=5",
+   "note": "Einstein predicts and fills a summary, issue, and resolution; for messaging create a quick action and add the Wrap Up component."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 87,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は公開の生成AIのモデルを試していて、必要な情報を得るための言い回しにも慣れています。しかし、営業とサービスの担当者が毎回プロンプトを入力するのは時間がかかり、プロンプトの一貫性も保てません。UC はどの Salesforce の機能を使うべきですか?",
+  "o": [
+   "Agent Builder とアクション「Query Records」",
+   "Einstein Prompt Builder とプロンプトテンプレート",
+   "Einstein Recommendation Builder"
+  ],
+  "ex": "Prompt Builder では、指示文をプロンプトテンプレートとして作り、CRM のデータを差し込んで再利用できます。担当者は毎回入力せずに済み、全員が同じテンプレートを使うので一貫性も保てます。Recommendation Builder はおすすめの予測の機能です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "Prompt Builder は、LLM(大規模言語モデル)に渡す指示文を「プロンプトテンプレート」として作り、CRM のデータを差し込んで、テストし、管理する Setup の機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 88,
+  "f": "channels",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers は、サービスエージェントとの会話を人間の担当者のキューに振り分けたいと考えています。エスカレーションのために、サービスエージェントと人間の担当者のキューをつなぐ道具はどれですか?",
+  "o": [
+   "送信用の Omni-Channel フロー",
+   "画面フロー",
+   "プロンプトフロー"
+  ],
+  "ex": "メッセージングにつなぐエージェントは、受信用と送信用の Omni-Channel フローを持ちます。エスカレーションでは、送信用のフローが Route Work で会話を担当者やキューへ送ります。画面フローやプロンプトフローは振り分けの道具ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_escalation.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "メッセージングやメールにつなぐエージェントは、少なくとも1つずつの受信用と送信用の Omni-Channel フローを持ちます。フローは「Route Work」アクションで会話を振り分けます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 89,
+  "f": "actions",
+  "a": [
+   2
+  ],
+  "q": "Agentforce スペシャリストは、Agentforce でカスタムアクションを作っています。カスタムのエージェントアクションに選べるものはどれですか?",
+  "o": [
+   "Apex トリガー",
+   "SOQL",
+   "フロー"
+  ],
+  "ex": "カスタムアクションが参照できるのは、自動起動フロー、Apex の呼び出し可能メソッド、プロンプトテンプレート、外部サービスなどです。Apex トリガーはレコードの変更で動く処理で、SOQL は問い合わせ言語なので、アクションとして直接選べません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_actions_custom.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "フロー(自動起動フロー)レコードの更新など、ノーコードで組んだ処理を実行する"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 90,
+  "f": "retriever",
+  "a": [
+   2
+  ],
+  "q": "リトリーバーと検索インデックスについて、Data Cloud でのデータの準備を最もよく表しているのはどれですか?",
+  "o": [
+   "データの準備は、即時の取り込みと動的なインデックス化で、前処理なしに動的なグラウンディング用のデータを作ること",
+   "データの準備は、構造化データを集約、正規化、符号化して、データガバナンスとセキュリティの決まりを守ること",
+   "データの準備は、内容を読み込み、チャンクに分け、ベクトル化し、検索しやすい形で保存して、ベクトルデータベースからの取得に備えること"
+  ],
+  "ex": "検索インデックスは、データを読み込み、チャンクに分け、ベクトル化して、検索しやすい形で保存したものです。リトリーバーは、そこから目的に合う情報を取り出してプロンプトに渡します。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "検索インデックスは、データを読み込み、チャンクに分け、ベクトル化(意味を数値の並びにする処理)して、検索しやすい形で保存したものです。データスペースの中で、DMOまたはUDMOにひも付けて作ります。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 91,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers のマーケティングチームは、顧客の行動、好み、購入履歴にもとづいてメールを個別化する方法を探しています。なぜ Agent を使うべきなのですか?",
+  "o": [
+   "顧客ごとのやり取りに合った内容を生成するため",
+   "過去のキャンペーンの成果を分析するため",
+   "すべての顧客に自動でメールを送るため"
+  ],
+  "ex": "生成AIは、顧客のデータを差し込んで、その顧客に合った文章を作るのに向いています。原本は、顧客ごとに関連性の高い内容を生成できる点を理由としています。成果の分析や一斉送信は、生成AIを使う理由になりません。(問題文の Agent は Agentforce のことです。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "原本どおり",
+  "x": "Prompt Builder は、LLM(大規模言語モデル)に渡す指示文を「プロンプトテンプレート」として作り、CRM のデータを差し込んで、テストし、管理する Setup の機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 92,
+  "f": "topics",
+  "a": [
+   0
+  ],
+  "q": "顧客は認証され、ブロンズ、シルバー、ゴールドのいずれかの会員ランクと特定されます。ランクによって、エージェントが使えるサブエージェントやアクションが決まります。エージェントに適切に応答させる最もよい方法はどれですか?",
+  "o": [
+   "before reasoning でカスタム変数を設定し、フィルターやフローのロジックで使う",
+   "after reasoning でカスタム変数を設定し、フィルターやフローのロジックで使う",
+   "Agent Router でカスタム変数を設定し、フィルターやフローのロジックで使う"
+  ],
+  "ex": "before_reasoning は LLM が推論する前に決定的に実行されるので、利用資格のチェックや、変数への値の設定に向いています。ランクを先に変数に入れておけば、どのサブエージェントやアクションを見せるかをフィルターで決められます。after_reasoning は推論のあとなので、その回の選択には間に合いません。",
+  "u": "https://architect.salesforce.com/docs/architect/fundamentals/guide/hybrid-reasoning-agentforce-builder-agent-script.html",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Agent Script の before_reasoning ブロックは、LLM が推論する前に決定的に実行されます。サブエージェントに入ったとき、アクションの実行後、同じサブエージェントでの新しい発話のたびに実行されます。",
+   "source_url": "https://architect.salesforce.com/docs/architect/fundamentals/guide/hybrid-reasoning-agentforce-builder-agent-script.html",
+   "note": "before_reasoning runs at the start of every parse: first entry into the subagent, after every tool call, and on every new user turn within the subagent."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 93,
+  "f": "trust",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、Einstein の生成AIで取引先の要約を作っています。内容が安全で包括的になるよう、Einstein Trust Layer の有害性スコアで安全性を評価したいと考えています。Einstein の生成AIの有害性スコアで、カテゴリのスコアが1なのは何を意味しますか?",
+  "o": [
+   "応答の有害性が最も低い",
+   "応答は有害ではない",
+   "応答の有害性が最も高い"
+  ],
+  "ex": "有害性のスコアは0から1で、1が最も有害です。カテゴリごとのスコアと全体のスコアが、監査証跡として Data 360 に保存されます。(原本の選択肢 A は文が崩れていたため、意味の通る形に直しています。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_arch.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "スコアは0から1で、1が最も有害です。カテゴリごとのスコアと全体のスコアが、監査証跡として Data 360 に保存されます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 94,
+  "f": "agents",
+  "a": [
+   2
+  ],
+  "q": "Agent のシステムで、プランナーサービスの主な働きは何ですか?",
+  "o": [
+   "会話の履歴からレコードのクエリを作る",
+   "会話中にリアルタイムで言語を翻訳する",
+   "ユーザーの発話に応答するための Copilot のアクションを特定する"
+  ],
+  "ex": "推論エンジン(旧プランナーサービス)は、会話をサブエージェントへ振り分け、LLM と推論して次の手、つまり実行するアクションを決めます。クエリの作成や翻訳が主な役割ではありません。(Einstein Copilot は現在 Agentforce、プランナーサービスは Atlas 推論エンジンにあたります。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_reasoning_engine.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "推論エンジン会話をサブエージェントへ振り分け、LLMと推論して次の手を決める"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 95,
+  "f": "access",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、ナレッジ記事を使う Agentforce データライブラリを設定しました。Agent Builder と Experience Cloud のサイトでテストすると、エージェントがナレッジ記事にもとづいて回答しません。一方、Prompt Builder でテストすると正しい応答が返ります。UC はどう調べるべきですか?",
+  "o": [
+   "「Manage Knowledge」を与える新しい権限セットを作り、Agentforce Service エージェントのユーザーに割り当てる",
+   "割り当てた権限セットに、ナレッジ記事を使うプロンプトテンプレートへのアクセスが含まれているか確かめる",
+   "Agentforce Service エージェントのユーザーに、Data Cloud User 権限セットが割り当てられているか確かめる"
+  ],
+  "ex": "データライブラリは Data 360 の上で動くので、エージェントユーザーには Data Cloud User の権限セットが必要です。エージェントユーザーの権限セットグループ AgentforceServiceAgentUserPsg には、Data Cloud User が含まれています。Prompt Builder では自分のユーザーで動くので成功し、エージェントでは権限の不足で失敗していると考えられます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_user.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "権限セットグループ AgentforceServiceAgentUserPsg が割り当てられます。中身は Agentforce Service Agent User、Data Cloud User、Prompt Template User の権限セットです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 96,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "顧客とのチャットが始まったとき、推奨されたナレッジ記事にもとづいて、生成AIで返信やメールの下書きを作る Salesforce の機能はどれですか?",
+  "o": [
+   "Einstein Reply Recommendations",
+   "Einstein Service Replies",
+   "Einstein Grounding"
+  ],
+  "ex": "Einstein Service Replies は、ナレッジなどにもとづいて返信案を生成AIで作る機能で、ナレッジにもとづく返信には元の記事が示されます。Reply Recommendations は生成AIではない従来の返信の推奨機能で、Einstein Grounding という単独の機能はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Service Replies は、チャットやメールでの顧客への返信案を生成AIで作る機能です。Service AI Grounding でナレッジやケースの項目を根拠に選べ、ナレッジにもとづく返信には元の記事が示されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=service.reply_recs_generative_ai_use_service_replies.htm&type=5",
+   "note": "Service Replies drafts replies; Service AI Grounding selects Knowledge or Case fields; reps can see whether replies are grounded in knowledge and open the source article."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 97,
+  "f": "testing",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters は、Agentforce データライブラリにつないだエージェントをテストしています。エージェントはライブラリから正しいデータを取り出しますが、文法的に正しい会話の文ではなく、生の JSON のままユーザーに返しています。この場合、どの品質の評価のスコアが低くなりますか?",
+  "o": [
+   "Coherence",
+   "Conciseness",
+   "Completeness"
+  ],
+  "ex": "Coherence は、応答が自然な文章になっているか(JSON などの生データのままでないか)を評価します。Conciseness は簡潔さ、Completeness は情報の網羅を見るので、データが正しく揃っているこの場面では低くなりません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Completeness / Coherence / Conciseness情報の網羅、自然な文章か(JSONなどの生データのままでないか)、簡潔さ"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 98,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Agentforce スペシャリストは、営業チームに Einstein Sales Emails を導入しています。チームは、やり取りや Salesforce のデータにもとづいて、リードに個別のフォローアップのメールを送りたいと考えています。メールの生成に最も正確で最新の情報を使うには、どのグラウンディングの方法を使うべきですか?",
+  "o": [
+   "Apex の差し込み項目でグラウンディングする",
+   "レコードの差し込み項目でグラウンディングする",
+   "「Draft with Einstein」の機能による自動のグラウンディングを使う"
+  ],
+  "ex": "Sales Emails は、リードや取引先責任者のレコードのデータで自動的にグラウンディングして、個別のメールを作ります(「Draft with Einstein」ボタン)。原本の解答はこの C です。ただし原本の解説は「レコードの差し込み項目」(B)を正解と説明しており、カスタムの営業メールテンプレートではレコードの差し込み項目でグラウンディングするため、原本の中で食い違いがあります。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_emails_overview.htm&type=5",
+  "v": "要確認(矛盾あり)",
+  "x": null,
+  "add": {
+   "text": "Einstein Sales Emails は、取引先責任者やリード宛ての個別のメールを生成AIで作り、レコードのデータで自動的にグラウンディングします。ユーザーが参照できない項目は使われず、プレースホルダーとして表示されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.einstein_sales_emails_considerations.htm&type=5",
+   "note": "Sales Emails generates personalized emails for contacts and leads and uses grounding; FLS enforced, fields without access show a placeholder."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 99,
+  "f": "topics",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、Canvas でエージェントを作っていて、「Issue Refund」アクションを用意しました。業務ルールでは、返金は顧客の Account Tier が「Platinum」のときだけ認められます。今はシステムの指示でランクを確かめさせていますが、ときどき権限を勝手に認め、Standard の顧客にも返金のアクションを呼んで、バックエンドでエラーになります。条件を満たさない限り「Issue Refund」アクションを処理できないよう、フィルターで決定的に保証するにはどうすべきですか?",
+  "o": [
+   "システムの指示に、ランクが Platinum でなければ返金の依頼を手作業で除外する厳しいルールを書く",
+   "エージェントのセッションにテキストのフィルターを付け、Platinum の顧客でなければユーザーのプロンプトから「refund」という語を止める",
+   "「Issue Refund」アクションにアクションの条件のフィルターを付け、Account Tier が「Platinum」のときだけエージェントが使えるようにする"
+  ],
+  "ex": "フィルター(「Make this action available when:」)と変数を使うと、条件を満たすときだけアクションを使わせられます。条件を満たさない間は、アクションが LLM に見えないので呼ばれません。指示は LLM が解釈するため確実ではなく、語を止めるフィルターという機能はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_variables.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "フィルター(「Make this action available when:」)と変数を使うと、本人確認が済んだ顧客にだけ特定のサブエージェントを使わせることができます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 100,
+  "f": "actions",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers はカスタムのエージェントを作っていて、製品名のリストのような、テキストの値の集まりを入力に受け取る新しい Apex アクションを作っています。Agentforce Assets でアクションのメタデータを設定し、推論エンジンが文字列のリストを正しく渡せるよう入力を対応づける必要があります。この入力の complex_data_type_name に何を指定すべきですか?",
+  "o": [
+   "lightning__stringType",
+   "apex__String",
+   "lightning__textType"
+  ],
+  "ex": "エージェントアクションの入力と出力は、標準の Lightning タイプで定義します。Apex の文字列は lightning__stringType に対応づけられます。原本はこれを正解としています。apex__String という型名はなく、lightning__textType は1つのテキストの入力に使う型です。",
+  "u": "https://developer.salesforce.com/docs/ai/agentforce/guide/lightning-types-standard.html",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "アクションの入出力は標準の Lightning タイプに対応づけます。文字列は lightning__stringType、日付は lightning__dateType、数値は lightning__numberType、リストは lightning__listType です。",
+   "source_url": "https://developer.salesforce.com/docs/ai/agentforce/guide/lightning-types-standard.html",
+   "note": "Apex inputs like dates, strings, numbers map to lightning__dateType, lightning__stringType, lightning__numberType; lists displayed with lightning__listType."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 101,
+  "f": "observe",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、Agentforce のエージェントで会話型 AI を CRM の業務に取り入れる試験導入を始めました。エージェントの使いやすさと、アクションの割り当てを監視するにはどうすべきですか?",
+  "o": [
+   "Platform Debug Logs のレポートを実行する",
+   "メタデータ API でエージェントのログのデータを問い合わせる",
+   "Agent Analytics を実行する"
+  ],
+  "ex": "Agent Analytics は全セッションを集計し、利用状況や効果などの傾向をダッシュボードで示します。デバッグログやメタデータ API は、エージェントの使われ方を分析するための道具ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_feedback_enable.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Agent Analytics全セッションを集計し、傾向をダッシュボードで見る。Effectiveness、Usage、Quality Scores、Health、Trust などのタブがある"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 102,
+  "f": "grounding",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は新しい AI のプロジェクトを始めました。取引先のページの関連リストをプロンプトテンプレートで使うとき、何を考慮すべきですか?",
+  "o": [
+   "Prompt Builder で、関連リストの項目を JSON 形式に割り当てる必要がある",
+   "取引先から関連リストを選んだあと、Prompt Builder の項目選択で差し込み項目を選ぶ",
+   "関連リストの項目は、現在のユーザーの取引先の既定のページレイアウトにもとづく"
+  ],
+  "ex": "関連リストのデータは JSON 形式で渡され、含まれる項目は実行ユーザーの親オブジェクトのページレイアウトにもとづきます。JSON への割り当ては自分で行う必要がなく、項目は個別に選びません。(同じ問題の Q114 は B を正解としていましたが、公式ヘルプにもとづき C を正解とします。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_related_list.htm",
+  "v": "公式で確認済み",
+  "x": "関連リスト親レコードの関連リストのデータ。JSON 形式で渡される項目は、実行ユーザーの親オブジェクトのページレイアウトにもとづく。レコードレベルのフィルタはかからない"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 103,
+  "f": "channels",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、チームが Slack のチャネルで直接エージェントとやり取りできるよう、Slack で Agentforce を使えるようにする計画です。Slack で Agentforce を使えるようにする主な手順を表しているのはどれですか?",
+  "o": [
+   "Slack の既定のチャネル Agentforce を有効にし、ユーザーに Slack のエージェントへのアクセスを割り当てる",
+   "Slack のワークフローで Agentforce API を呼ぶように設定し、決めたトリガーと自動の手順でエージェントとやり取りさせる",
+   "Slack のエージェントの接続を設定し、エージェントをインストールして、ユーザーにエージェントへのアクセスを割り当てる"
+  ],
+  "ex": "Slack の Employee エージェントは、Agentforce Builder で Slack の接続を追加し、Slack 側でエージェントをインストールして使います。そのうえで、エージェントを使えるユーザーを決めます。既定のチャネルや、ワークフローから API を呼ぶ方法ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_escalation.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "SlackEmployee エージェント向け。Agentforce Builder で Slack の接続を追加し、Slack 側でエージェントをインストールする"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 104,
+  "f": "access",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers の Service エージェントは、フローのアクションで商談のレコードを取得します。商談オブジェクトの組織の共有設定は「非公開」です。条件に合うレコードがあり、フローのロジックも正しいのに、エージェントは何も返しません。最小権限の原則に厳密に従う解決策はどれですか?",
+  "o": [
+   "Einstein Service Agent User の権限セットに必要なオブジェクトの権限を追加し、適切な共有ルールを設定する",
+   "エージェントのアクションのフローを、共有なしのシステムモードで実行する",
+   "Einstein Service Agent User がレコードにアクセスできるよう、商談の組織の共有設定を「公開/参照のみ」に変える"
+  ],
+  "ex": "Service エージェントは、エージェントユーザーのプロファイル、権限、項目レベルセキュリティ、共有ルールに従います。必要なオブジェクトの権限と、対象のレコードだけを共有するルールを足すのが最小権限です。システムモードや組織全体の共有の変更は、必要以上のアクセスを与えます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_user.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Agentforce Service エージェントエージェントユーザー(EinsteinServiceAgent User)エージェントユーザーのプロファイル、権限、項目レベルセキュリティ、共有ルール"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 105,
+  "f": "models",
+  "a": [
+   0
+  ],
+  "q": "データサイエンスのチームは、製品のおすすめのための XGBoost の分類モデルを Databricks で学習させました。Agentforce スペシャリストは、このモデルの製品のおすすめの推論結果を、単独のデータモデルオブジェクト(DMO)として Data Cloud に取り込む担当です。どう設定すべきですか?",
+  "o": [
+   "Databricks でサービングエンドポイントを作り、Model Builder でモデルを設定する",
+   "Einstein Studio でサービングエンドポイントを作り、Model Builder でモデルを設定する",
+   "Databricks でサービングエンドポイントを作り、Python SDK のコネクタでモデルを設定する"
+  ],
+  "ex": "Databricks のモデルは、Databricks 側のエンドポイントの URL と認証情報を、AI Models(旧 Einstein Studio)の Predictive タブ(Model Builder)で「Connect a Databricks model」として接続します。予測の結果は Data 360 で使えます。エンドポイントは Einstein Studio 側には作りません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_byom_connect_your_external_model_databricks.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Databricks の予測モデルは、そのエンドポイントを AI Models(旧 Einstein Studio)の Predictive タブの「Connect a Databricks model」で接続します。予測は Data 360 で使えます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_byom_connect_your_external_model_databricks.htm&type=5",
+   "note": "In AI Models Predictive tab, Add Predictive Model > Connect a Databricks model, specify endpoint URL and auth; predictions consumed in Data 360."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 106,
+  "f": "topics",
+  "a": [
+   0
+  ],
+  "q": "Coral Cloud Resorts(CCR)では、エージェントが、会話の前のほうで聞いた食事や活動の好みを忘れてしまいます。その好みをセッションの間ずっと保つ必要があります。CCR は何を実装すべきですか?",
+  "o": [
+   "アクションの出力から顧客の好みを受け取って保存するカスタム変数を設定する",
+   "自然な会話の記憶に頼り、前の会話を振り返るようエージェントに指示する",
+   "顧客の好みをアクションの出力として受け取って保存するコンテキスト変数を作る"
+  ],
+  "ex": "会話中に値を入れ、セッションの間保つのはカスタム変数(mutable な変数)で、アクションの出力を変数に設定できます。コンテキスト変数はオブジェクトの項目に対応づけた変数(linked)で、@utils.setVariables では書き込めません。原本の解答は C でしたが、アクションの出力を保存できるのはカスタム変数のため、A が正解です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_variables.htm&type=5",
+  "v": "解答を修正(公式にもとづく)",
+  "x": null,
+  "add": {
+   "text": "変数には、オブジェクトの項目に対応づけるコンテキスト変数(linked)と、会話中に値を変えられるカスタム変数(mutable)があります。@utils.setVariables やアクションの出力で値を書き込めるのは、mutable と宣言した変数だけです。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_variables.htm&type=5",
+   "note": "Context variable = linked, mapped to object field; custom variable = mutable, holds value during session. @utils.setVariables can only assign to declared mutable variables; linked ContactId cannot be written."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 107,
+  "f": "observe",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、Einstein Trust Layer と Einstein の生成AIの監査データを組み合わせて使うことを検討しています。Einstein Trust Layer で使える監査データはどれですか?",
+  "o": [
+   "応答の正確さと不快さのスコア",
+   "ハルシネーションのスコアと偏りのスコア",
+   "マスクされたデータと有害性のスコア"
+  ],
+  "ex": "監査とフィードバックは、元のプロンプト、マスク済みのプロンプト、有害性スコア、LLM の元の出力、デマスク後の出力、ユーザーのフィードバックを記録します。正確さやハルシネーションのスコアは記録されません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_feedback_enable.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "監査とフィードバック(Audit and Feedback)元のプロンプト、マスク済みのプロンプト、有害性スコア、LLMの元の出力、デマスク後の出力、ユーザーのフィードバックLLMの応答が正確で安全だったか"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 108,
+  "f": "deploy",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers の管理者は、変更セットで新しいエージェントを Sandbox から本番に移しました。エージェントは、複雑な計算をするフローを呼ぶプロンプトテンプレートを使います。本番では、フローが動くはずの場面で毎回エラーになります。フローは変更セットに含まれていて、本番にあります。最も考えられる原因は何ですか?",
+  "o": [
+   "デプロイのあと、本番組織でフローを手動で有効化していない",
+   "本番のユーザーにフローを実行する権限がない",
+   "変更セットに、フローが依存する Apex クラスが含まれていない"
+  ],
+  "ex": "変更セットに含めた有効なフローは、移行先では無効の状態でリリースされるので、リリース後に手動で有効化します。フローが本番にあるのに毎回失敗するなら、無効のままであることが最も考えられます。本番組織では、フローを有効のままリリースする設定を有効にすることもできます。",
+  "u": "https://help.salesforce.com/s/articleView?id=platform.flow_considerations_change_sets.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "変更セットで移行した有効なフローは、移行先では無効の状態でリリースされるため、リリース後に手動で有効化します。本番組織では、プロセスとフローを有効のままリリースする設定もあります。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=platform.flow_considerations_change_sets.htm&type=5",
+   "note": "An active flow in a change set is deployed as inactive; activate manually. Production orgs can enable deploying a new active version."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 109,
+  "f": "trust",
+  "a": [
+   2
+  ],
+  "q": "Einstein Trust Layer のアーキテクチャのうち、組織のデータを LLM のプロンプトに入れて、関連性が高く正確な応答を返すのはどの部分ですか?",
+  "o": [
+   "プロンプト防御",
+   "データマスキング",
+   "動的グラウンディング"
+  ],
+  "ex": "動的グラウンディングは、プロンプトを実行するユーザーの権限と項目レベルセキュリティの範囲で、CRM のデータを実行時に差し込みます。プロンプト防御は有害な出力やプロンプトインジェクションへの対策、データマスキングは機密データを隠す機能です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_arch.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "動的グラウンディングと安全なデータ取得プロンプトを実行するユーザーの権限と項目レベルセキュリティの範囲でだけ、CRMのデータを実行時に差し込む"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 110,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)は、Lightning Web コンポーネントから呼び出せるカスタムのプロンプトテンプレートを作る必要があります。UC はどの種類のプロンプトテンプレートを作るべきですか?",
+  "o": [
+   "項目生成",
+   "営業メール",
+   "フレックス"
+  ],
+  "ex": "フレックステンプレートは、ほかの種類でカバーできない任意の用途のためのもので、入力を自分で定義し、フロー、Apex、REST API などから呼び出せます。Lightning Web コンポーネントからは Apex などを通して呼び出します。項目生成はレコードページの項目、営業メールはメール作成画面で使う種類です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "フレックス(Flex)ほかの種類でカバーできない任意の用途の内容。入力(リソース)を自分で定義するフロー、Apex、REST API、エージェントのアクションなど"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 111,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)には、Salesforce と連携させる必要のある古いシステムがあります。生成 API の機能で、取引先の行動計画のダイジェストを作りたいと考えています。どの API を使うべきですか?",
+  "o": [
+   "REST API",
+   "メタデータ API",
+   "SOAP API"
+  ],
+  "ex": "プロンプトテンプレートは、呼び出し可能なアクションとして、または Connect REST API や Connect in Apex から呼び出せます。外部のシステムからは REST API で呼び出して要約を作れます。メタデータ API は設定の移行用です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "テンプレートは、Salesforce Platform のどこからでも呼び出し可能なアクション(invocable action)として、または Connect REST API や Connect in Apex から呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 112,
+  "f": "retriever",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は、ファイルのアップロードを使うデータライブラリとカスタムのプロンプトで、AI による研修の資料を支えています。しかし、AI が古い文書をよく返すとユーザーから報告がありました。内容の関連性を高めるため、UC はどの対策をとるべきですか?",
+  "o": [
+   "データライブラリのソースをファイルのアップロードからナレッジに変える。ナレッジは文書の新しさを自動で管理し、最新の文書を返す",
+   "最近の決まった期間に更新された文書だけを取り出す条件を持つカスタムリトリーバーを設定し、最新の内容だけを AI の応答に使う",
+   "フィルターなしの既定のリトリーバーを使い続ける。定期的に再アップロードすれば、設定なしでもいずれ古い文書は出なくなる"
+  ],
+  "ex": "特定の期間やカテゴリだけを返したいときは、リトリーバーの絞り込み条件(プレフィルター)を使います。インデックスは汎用に作り、用途ごとにリトリーバーで絞るのが基本です。データソースはあとから変えられず、何もしなければ古い文書は残ります。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "特定のカテゴリや地域だけを返したいときは、リトリーバーの絞り込み条件(プレフィルタ)を使います。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 113,
+  "f": "topics",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、available when @variables.isVerified == True の条件で制限した「Reset Password」アクションを持つエージェントをテストしています。1回の会話のターンの中で、LLM は @utils.setVariables で isVerified を true にしますが、その直後に「Reset Password」アクションを呼びません。推論エンジンがアクションの使用可否をどう評価するかについて、何を考慮すべきですか?",
+  "o": [
+   "アクションは最初から使える。ユーザーの問題を解決しようとする推論エンジンの意図が、available when の条件より優先される",
+   "アクションはすぐに使えるようになる。available when の条件は、1つのターンの中でも変数が変わるたびに評価し直される",
+   "アクションはそのターンの間は使えない。available when の条件は LLM へのアクションの見え方を決め、推論のサイクルの前に評価されるので、次のターンまで呼べない"
+  ],
+  "ex": "available when の条件が偽の間、アクションは LLM のツールの一覧から外れます。Salesforce Architects の解説では、条件は処理(パース)ごとに評価され、パースはアクションの実行が終わったあとにも始まるとされています。そのため、setVariables の実行後の次のパースではアクションが見えるようになり、最も妥当なのは B です。原本の解答は C(次のターンまで呼べない)で、公式の説明と食い違います。なお同じ解説は、ゲートの変数を LLM に設定させず、決定的な処理で設定するよう勧めています。",
+  "u": "https://architect.salesforce.com/docs/architect/fundamentals/guide/hybrid-reasoning-agentforce-builder-agent-script.html",
+  "v": "要確認(矛盾あり)",
+  "x": null,
+  "add": {
+   "text": "available when の条件が偽のアクションは、LLM に渡すツールの一覧から外れ、呼び出せません。条件は処理(パース)のたびに評価され、パースはアクションの実行が終わったあとにも始まります。",
+   "source_url": "https://architect.salesforce.com/docs/architect/fundamentals/guide/hybrid-reasoning-agentforce-builder-agent-script.html",
+   "note": "When available when evaluates false, the action is removed from the tool list. A parse is initiated on first entry, after every tool call, and on every new user turn."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 115,
+  "f": "models",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers のデータサイエンスのチームは、生成型の LLM を Amazon Web Services(AWS)でホストしています。外部でホストされたモデルを Salesforce Platform で使うには、何を使うべきですか?",
+  "o": [
+   "Model Builder",
+   "App Builder",
+   "Copilot Builder"
+  ],
+  "ex": "自社のアカウントの基盤モデル(Amazon Bedrock など)は、BYOLLM として AI Models(旧 Einstein Studio)の Model Builder に追加して使います。App Builder は画面の作成、Copilot Builder(現 Agentforce Builder)はエージェントの作成の道具です。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_use_ai_models.htm",
+  "v": "公式で確認済み",
+  "x": "BYOLLM(独自の LLM の持ち込み)自社のアカウントの基盤モデルを AI Models に追加して使う。対応するプロバイダーは Amazon Bedrock、Azure OpenAI、OpenAI、Vertex AI(Google)"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 116,
+  "f": "multiagent",
+  "a": [
+   2
+  ],
+  "q": "Global Finance Corp(GFC)は、基本的な顧客サービスのエージェントから、不正検知、融資の受付、請求を扱う専門のエージェント群へと Agentforce を広げています。GFC は1つのグローバルな Salesforce 組織だけを使っています。CIO は、専門のエージェントが増えても、セキュリティのガードレールとユーザーの文脈を一元的に管理し、複数の部門にまたがる依頼でも顧客が同じ説明をくり返さずに済むようにしたいと考えています。妥当なアーキテクチャはどれですか?",
+  "o": [
+   "Model Context Protocol(MCP)で、外部の複数の他社エージェントを既存の Agentforce Service コンソールに直接まとめる",
+   "部門ごとのエージェントを分離するため、Agent-to-Agent(A2A)プロトコルでつないだ複数組織・複数エージェント(MOMA)の構成にする",
+   "主となるオーケストレーターエージェントで共通の文脈を管理し、専門のエージェントに仕事を振り分ける、単一組織・複数エージェント(SOMA)の構成にする"
+  ],
+  "ex": "マルチエージェントオーケストレーションは、同じ組織の複数の Agentforce エージェントをつなぎ、オーケストレーターという1つの入口から協力させる機能です。1つの組織の中なら、共通の文脈とガバナンスのもとで専門のエージェントに振り分けられます。複数組織の構成や外部エージェントの取り込みは、この要件には不要です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_multi_orch.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "マルチエージェントオーケストレーション(Multi-Agent Orchestration for Agentforce)は、同じ組織の複数のAgentforceエージェントをつなぎ、1つの入口から協力して仕事を進めさせる機能です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 117,
+  "f": "agents",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は Salesforce Service Cloud で顧客とケースを扱う担当者を支えています。UC は Agent の導入と、Service Cloud のモバイルユーザーへの拡大を検討しています。Agent の導入が最も効果的なのは、どんなときですか?",
+  "o": [
+   "顧客サポートの業務を効率化し、応答時間を短くしたいとき",
+   "データセキュリティとコンプライアンスの対策を強化したいとき",
+   "マーケティングキャンペーンと戦略を最適化したいとき"
+  ],
+  "ex": "エージェントは、業務データにもとづいてタスクを自律的に進める会話型の AI アシスタントです。原本は、サポートの業務を効率化し応答を速くすることを最も効果的な場面としています。セキュリティの強化やマーケティングの最適化は主な目的ではありません。(Agent は Agentforce のエージェントのことです。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_reasoning_engine.htm&type=5",
+  "v": "原本どおり",
+  "x": "Agentforce のエージェントは、業務データにもとづいて自律的にタスクを進める、会話型のAIアシスタントです。決めた用途とガードレールの範囲で、次の一手を自分で判断します。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 118,
+  "f": "observe",
+  "a": [
+   1
+  ],
+  "q": "Agent で「Enrich event logs with conversation data」の設定をオンにすると、Agentforce スペシャリストは何ができますか?",
+  "o": [
+   "各 Copilot アクションに至ったユーザーのクリックの経路を見る",
+   "過去7日間のセッションについて、ユーザーの入力と Copilot の応答を含むセッションのデータを見る",
+   "すべての Copilot の会話について、任意の期間の詳しいレポートを作る"
+  ],
+  "ex": "拡張イベントログをオンにすると、イベントに加えてユーザーとエージェントのメッセージも記録され、セッションのすべての動きを確かめられます。イベントログのデータは7日間保持されます。現在の設定名は「Keep a record of conversations with enhanced event logs to review agent behavior」です。(Copilot は現在 Agentforce のエージェントです。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_setup_enhanced_event_logs.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "イベントログは、エージェントのセッションのイベントとユーザーのメッセージを記録し、テストやトラブルシューティングに使います。拡張イベントログをオンにすると会話の内容も保存され、データは7日間保持されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.copilot_setup_enhanced_event_logs.htm&type=5",
+   "note": "Event logs capture events and user messages to test and troubleshoot; enhanced event logs store conversation data; event logs store information for seven days."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 119,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers には、業務の要件を十分に満たさない、有効な標準のメールのプロンプトテンプレートがあります。この標準テンプレートの内容を使い、要件を満たすようにカスタマイズするには、どうすべきですか?",
+  "o": [
+   "「新しいテンプレートとして保存(Save as New Template)」して、必要に応じて編集する",
+   "既存のテンプレートを複製(Clone)して、必要に応じて変更する",
+   "「新しいバージョンとして保存(Save as New Version)」して、必要に応じて編集する"
+  ],
+  "ex": "標準のプロンプトテンプレートをカスタマイズするには、「Save As」ボタンでそれをもとにしたカスタムテンプレートを作ります。新しいバージョンとして保存できるのは、上書き可能な標準テンプレートやカスタムテンプレートです。原本の解答は「複製」でしたが、公式ヘルプが示す方法は Save As で新しいテンプレートを作ることのため、A が正解です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_prompt_templates.htm&type=5",
+  "v": "解答を修正(公式にもとづく)",
+  "x": null,
+  "add": {
+   "text": "標準のプロンプトテンプレートを変えたいときは、「Save As」でそれをもとにしたカスタムテンプレートを作ります。上書き可能な標準テンプレートなら、標準の代わりに動くバージョンを作ることもできます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_prompt_templates.htm&type=5",
+   "note": "Use the Save As button to create a custom template based on a standard template; overridable standard templates can have versions that work in place of the standard."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 120,
+  "f": "retriever",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers(UC)のユーザーから、エージェントの回答が満足できないと苦情がありました。エージェントは PDF のファイルを知識の源にしています。UC はどう調べるべきですか?",
+  "o": [
+   "ソースの項目と Data Cloud のオブジェクトの項目の対応づけを分析する",
+   "エージェントに、データライブラリの PDF ファイルの項目へのアクセス権があるか確かめる",
+   "リトリーバーの絞り込み条件と、データソースの接続を確かめる"
+  ],
+  "ex": "PDF をもとに回答するとき、取り出される情報はリトリーバーの設定(データスペース、検索インデックス、絞り込み条件、返す件数など)で決まります。原本は、絞り込み条件とデータソースの接続を確かめるのが正解としています。ファイル型のライブラリでは、項目の対応づけやファイル項目の権限は調べる対象になりません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_retriever.htm&type=5",
+  "v": "原本どおり",
+  "x": "個別リトリーバー(Individual Retriever)は、データスペース、DMO、検索インデックスを選び、絞り込み条件、返す件数、返す項目を決めます。絞り込み条件は10個まで指定できます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 121,
+  "f": "datalib",
+  "a": [
+   1
+  ],
+  "q": "Agentforce スペシャリストは、Salesforce ナレッジをデータライブラリのデータソースに設定していて、Agentforce が正しい情報を見つけるための「識別項目」を選ぶ必要があります。ナレッジ記事の内容は豊富で詳しく、かなり長いです。識別項目には何を使うべきですか?",
+  "o": [
+   "最も関連する記事が使われるよう、記事の本文",
+   "記事を簡潔にまとめた、テキストまたはテキストエリアの項目",
+   "適切な連結キーを持つ、標準またはカスタムの数式項目"
+  ],
+  "ex": "ナレッジの識別項目は、テキスト型またはテキストエリア型で、512トークンまでです。長い本文は内容項目に回し、識別項目には記事を簡潔に表す項目を選びます。数式項目は識別項目に使えません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "ナレッジの識別項目は、テキスト型またはテキストエリア型で、512トークンまでです。255文字までのテキスト型項目なら、確実にこの範囲に収まります。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 122,
+  "f": "multiagent",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers には複数の Salesforce 組織があり、それぞれに独自の顧客サービスのエージェントがあります。本人確認のエージェントは、アカウントの変更を扱う後続のエージェントに顧客の身元のデータを渡す必要があります。顧客 ID は、エージェントの引き継ぎの間も安全に保たれ、LLM に書き換えられないようにする必要があります。最も適切な設定はどれですか?",
+  "o": [
+   "確認状態を一時的に保存するカスタムオブジェクトを作り、各エージェントが実行中に SOQL のアクションで問い合わせる",
+   "最初のエージェントが作った会話の変数に顧客の身元を保存し、ほかのエージェントがその変数を読む",
+   "Agent API で後続のエージェントのセッションを始め、確認済みの顧客 ID を読み取り専用のコンテキスト変数として渡し、安全を保って LLM による変更を防ぐ"
+  ],
+  "ex": "Agent API は外部からエージェントと会話するための API で、セッションの開始時に変数を渡せます。コンテキスト変数はセッションの開始後は既定で変更できないので、確認済みの ID を書き換えられずに渡せます。組織が分かれているので、マルチエージェントオーケストレーション(同じ組織のみ)や会話の変数の共有は使えません。(原本では同じ問題が2回続けて「Question 122」として入っていて、2つ目を Q123 として扱っています。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_multi_orch.htm&type=5",
+  "v": "原本どおり",
+  "x": "Agent API は、外部のアプリからREST APIでエージェントと会話するためのAPIです(種類が「Agentforce (Default)」のエージェントは対象外)。セッションの開始、メッセージの送信(同期またはストリーミング)、セッションの終了、フィードバックの送信ができます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 124,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は、「Save As」の機能を使って、Prompt Builder で新しい営業メールのプロンプトテンプレートを作りたいと考えています。しかし、ハイパーパラメーターが写されないため、新しいテンプレートは標準の営業メールのプロンプトと違う結果を出します。新しいテンプレートで標準と同じような結果を出すには、どうすべきですか?",
+  "o": [
+   "Model Playground で、指定のパラメーターを持つモデル設定を作る",
+   "新しいテンプレートにハイパーパラメーターを手作業で追加する",
+   "変更せずに標準のテンプレートを使い続ける"
+  ],
+  "ex": "標準の営業メールのプロンプトはハイパーパラメーターが組み込まれていて、「Save As」では写されません。公式ヘルプは、AI Models(旧 Einstein Studio)で温度や Frequency Penalty などを指定したモデル設定を作るよう案内しています。モデル設定は Model Playground で作って試します。原本の解答は「手作業で追加する」でしたが、テンプレートにハイパーパラメーターを直接書き込む方法はなく、モデル設定を作るのが公式の方法のため、A が正解です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_prompt_templates.htm&type=5",
+  "v": "解答を修正(公式にもとづく)",
+  "x": null,
+  "add": {
+   "text": "標準の営業メールテンプレートのハイパーパラメーターは「Save As」で写されません。同じような結果にするには、AI Models(旧 Einstein Studio)で温度などを指定したモデル設定を作ります。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_prompt_templates.htm&type=5",
+   "note": "Standard sales email hyperparameters aren't copied by Save As; create a Model Configuration in AI Models with the listed parameters."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 125,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "リゾートホテルの営業チームは、各宿泊客のプロファイルにある活動の好みにもとづいて、宿泊客の関心の要約とおすすめを作りたいと考えています。要約は取引先責任者のレコードページにだけ表示したいです。どの AI の機能を使うべきですか?",
+  "o": [
+   "Flow Builder",
+   "Agentforce Builder",
+   "Prompt Builder"
+  ],
+  "ex": "Prompt Builder の項目生成テンプレートを使うと、レコードの項目に入れる要約や説明文を作り、Lightning レコードページの項目に置けます。取引先責任者のページにだけ要約を出す用途に合います。Agentforce Builder はエージェントの作成、Flow Builder は自動化の道具です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "項目生成(Field Generation)レコードの項目に入れる要約や説明文Lightning レコードページの項目。ボタンを押すと生成される"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 126,
+  "f": "trust",
+  "a": [
+   1
+  ],
+  "q": "Secure Data Retrieval(安全なデータ取得)は、動的グラウンディングに必要な Salesforce のデータに、権限のあるユーザーだけがアクセスできるよう、どのように保証していますか?",
+  "o": [
+   "「Run As」のユーザーの権限にもとづいて Salesforce のデータを取得する",
+   "プロンプトを実行するユーザーの権限にもとづいて Salesforce のデータを取得する",
+   "プロンプトテンプレートのオブジェクトの権限にもとづいて Salesforce のデータを取得する"
+  ],
+  "ex": "動的グラウンディングと安全なデータ取得では、プロンプトを実行するユーザーの権限と項目レベルセキュリティの範囲でだけ、CRM のデータを差し込みます。見られないデータは差し込まれません。「Run As」のユーザーやテンプレートの権限で決まるわけではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_trust_arch.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "動的グラウンディングと安全なデータ取得プロンプトを実行するユーザーの権限と項目レベルセキュリティの範囲でだけ、CRMのデータを実行時に差し込む"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 127,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Salesforce 組織で Prompt Builder を使う正しい手順はどれですか?",
+  "o": [
+   "使うプロンプトテンプレートの種類を選び、Salesforce の標準のプロンプトの1つを選び、プロンプトを関連付けるオブジェクトを決め、検証するレコードを選び、プロンプトをアクションに関連付ける",
+   "使うプロンプトテンプレートの種類を選び、プロンプトのワークスペースでプロンプトを作り、CRM のグラウンディングのデータを動的に差し込むリソースを選び、使うモデルを選び、生成された応答をテストして検証する",
+   "対象のオブジェクトで生成プロンプトを有効にし、プロンプトのワークスペースでプロンプトを作り、応答をファインチューニングしてグラウンディングするレコードを選び、Trust Layer を有効にし、プロンプトをアクションに関連付ける"
+  ],
+  "ex": "Prompt Builder では、用途に合うテンプレートの種類を選び、Prompt Template Workspace で本文を書き、「Insert Resource」で差し込み項目を入れ、モデルを選んで、プレビューでテストしてから有効化します。オブジェクトで生成プロンプトを有効にする設定や、レコードでのファインチューニングはありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "Prompt Builder は、LLM(大規模言語モデル)に渡す指示文を「プロンプトテンプレート」として作り、CRM のデータを差し込んで、テストし、管理する Setup の機能です。作ったテンプレートは、レコードページ、メール作成画面、フロー、Apex、エージェントのアクションから呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 128,
+  "f": "promptbp",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は、標準の基盤モデルを使うプロンプトテンプレートを導入する予定です。Prompt Builder でテンプレートを作るときに、何を考慮すべきですか?",
+  "o": [
+   "LLM の文脈の理解を試すため、プロンプトに多肢選択式の質問を入れる",
+   "LLM により多くの文脈を与えるため、テンプレートで登場人物の役を演じさせる",
+   "語の選び方、強調語、絵文字、句読点など、さまざまな文体のデータで LLM を学習させる"
+  ],
+  "ex": "LLM に営業担当者やサポート担当者などの役割を演じさせ、その人物の目標を定義するのはベストプラクティスです。文体は1つに決めて守るもので、いろいろな文体で学習させるのではありません。プロンプトで LLM を試験する必要もありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+  "v": "公式で確認済み",
+  "x": "LLM に、営業担当者やサポート担当者などの役割を演じさせ、その人物の目標を定義します。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 129,
+  "f": "promptbp",
+  "a": [
+   0
+  ],
+  "q": "管理者は、作ったフレックスのプロンプトテンプレートの応答を確かめたいのですが、プレビューのボタンがグレーアウトしています。理由は何ですか?",
+  "o": [
+   "プロンプトに関連するレコードが選ばれていない",
+   "プロンプトが保存、有効化されていない",
+   "プロンプトに差し込み項目が入っていない"
+  ],
+  "ex": "プレビューは「Preview Settings」で入力のレコードを選んで行います。フレックステンプレートは入力(リソース)ごとにレコードを選ぶ必要があり、原本は、レコードが選ばれていないのでプレビューできないと説明しています。有効化する前でもプレビューはできます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+  "v": "原本どおり",
+  "x": "「Preview Settings」で入力のレコードを選んでプレビューします。解決(Resolution)の表示は既定でオンで、差し込み項目が実際の値に置き換わったプロンプトを確認できます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 130,
+  "f": "access",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers の管理者は、新しい Sales Development Representative(SDR)エージェントを設定しています。エージェントの目的は、冷えたリードを育ててから担当の営業担当者につなぐことです。北米の営業地域のリードに必要なアクセスをエージェントに与えるには、管理者は何をすべきですか?",
+  "o": [
+   "北米のロール階層で最上位のロールのユーザーを、SDR エージェントのユーザーにする",
+   "「Einstein Agent User」プロファイルに、リードオブジェクトの「すべて表示」の権限を与える",
+   "対象のリードのレコードへのアクセスを SDR エージェントのユーザーに与える、条件にもとづく共有ルールを作る"
+  ],
+  "ex": "Lead Nurturing(旧 SDR)のエージェントは、専用のエージェントユーザー(EinsteinSDRAgent User)のプロファイル、権限、共有ルールに従って動きます。北米のリードだけに絞るなら、条件にもとづく共有ルールで必要なレコードだけを共有するのが最小権限です。すべて表示の権限や最上位のロールは、必要以上のアクセスを与えます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_execution_data.htm&type=5",
+  "v": "原本どおり",
+  "x": "Agentforce リードナーチャリングエージェントエージェントユーザー(EinsteinSDRAgent User)エージェントユーザーのプロファイル、権限、項目レベルセキュリティ、共有ルール"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 131,
+  "f": "d360ai",
+  "a": [
+   1
+  ],
+  "q": "業務の担当者は、AI で Data Cloud のデータにもとづく要約を作りたいと考えています。Prompt Builder から Data Cloud のデータにアクセスするには、どの方法を使うべきですか?",
+  "o": [
+   "フレックステンプレートで DMO に直接アクセスする方法、Data Cloud の関連リストを使う方法、プロンプトから起動するフローで Data Cloud のデータを取得する方法",
+   "Data Cloud の関連リストを使う方法と、プロンプトから起動するフローで Data Cloud のデータを取得する方法",
+   "外部の API だけを使って Data Cloud のデータを Prompt Builder に取り込む方法"
+  ],
+  "ex": "Prompt Builder では、Data 360(旧 Data Cloud)のエンリッチメントで取引先責任者やリードと DMO を関連づけると、その DMO のデータを関連リストなどで使えます。原本は、関連リストとフローで取得する方法の2つを正解とし、フレックステンプレートで DMO に直接アクセスする方法は含めていません。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_data_ingestion.htm&type=5",
+  "v": "原本どおり",
+  "x": "Prompt Builderでは、Data 360のエンリッチメントで取引先責任者(Contact)やリード(Lead)とDMOを関連づけると、そのDMOのデータをグラウンディングに使えます。関連づけの種類は、項目のコピーと関連リストの2つです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 132,
+  "f": "access",
+  "a": [
+   1
+  ],
+  "q": "Coral Cloud Resorts は、テストに関するクレジットの使用量を確認したいと考えています。これを支える機能はどれですか?",
+  "o": [
+   "Agentforce Analytics",
+   "デジタルウォレット",
+   "Testing Center"
+  ],
+  "ex": "エージェントの使用量は Flex Credits で計測され、デジタルウォレットで確認します。また Summer '26 から、Testing Center でのテストは従量課金の対象外になり、Einstein Requests や Flex Credits を消費しません(Data 360 へのクエリは課金対象)。原本の解答は Testing Center でしたが、クレジットの使用量を見る場所として公式ヘルプが示すのはデジタルウォレットのため B を正解とし、要確認とします。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_user.htm&type=5",
+  "v": "要確認(矛盾あり)",
+  "x": "エージェントの使用量は Flex Credits で計測され、デジタルウォレットで確認します。テキストの会話では、標準アクションもカスタムアクションも、トークン数に関係なく1回の呼び出しを1アクションと数えます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 133,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は、関連のない5つのオブジェクト(標準2つ、カスタム3つ)のデータを直接使って、マーケティングのニュースレターを作るプロンプトテンプレートを作りたいと考えています。どうすべきですか?",
+  "o": [
+   "フレックステンプレートを作り、5つのオブジェクトを入力にする",
+   "レコードを一時的につなぐ特別なカスタムオブジェクトを渡すプロンプトテンプレートを作る",
+   "テンプレートトリガー型プロンプトフローを作り、5つのオブジェクトのデータにアクセスする"
+  ],
+  "ex": "フレックステンプレートのリソース(入力)は最大5つまで追加でき、入力のオブジェクトを自由に決められます。関連のない5つのオブジェクトを使うなら、フレックステンプレートで5つを入力にします。つなぐためのオブジェクトやフローを作る必要はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "入力のオブジェクトを自由に決めたい、複数のオブジェクトを使いたいときはフレックスです。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 134,
+  "f": "datalib",
+  "a": [
+   1
+  ],
+  "q": "Agentforce データライブラリでナレッジ記事を使う主な利点は何ですか?",
+  "o": [
+   "ナレッジ記事のリトリーバーだけが、プラットフォームの中と顧客の Web サイトの両方からナレッジにアクセスできる",
+   "承認された文書の、構造化されて検索できる保管場所となり、エージェントが問い合わせごとに信頼できる情報を取り出せる",
+   "ナレッジ記事のリトリーバーは、既定のリトリーバーより精度と性能が高い"
+  ],
+  "ex": "ナレッジのデータライブラリは公開済みの記事だけを対象にするので、承認された内容にもとづいて回答できます。原本はこれを主な利点としています。ナレッジのリトリーバーだけが特別に高性能というわけではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "原本どおり",
+  "x": "ナレッジは「公開済み」の記事だけが対象です。下書きの記事はインデックスされません。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 135,
+  "f": "topics",
+  "a": [
+   0
+  ],
+  "q": "Agentforce スペシャリストは、Salesforce Agentforce Platform でエージェントにアクションを割り当て、業務の流れを最適化する担当です。エージェントにアクションを割り当てる正しい方法はどれですか?",
+  "o": [
+   "Agent Builder で、まずアクションをトピックに割り当てる",
+   "Agent Actions の詳細ページで、まずアクションをトピックに割り当てる",
+   "Action Builder で、まずアクションをトピックに割り当てる"
+  ],
+  "ex": "アクションは、Agentforce Builder(旧 Agent Builder)でサブエージェント(旧トピック)に割り当てて使います。サブエージェントは、指示とアクションをまとめて持つ「1つの仕事」です。Action Builder という画面はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_topics_routing.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "アクション定義サブエージェントに割り当てたアクションの一覧。入力、出力、参照先の機能を持ち、Script ビューで見える"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 136,
+  "f": "actions",
+  "a": [
+   2
+  ],
+  "q": "ある会社は、外部の API からデータを取得する、Employee エージェントが呼ぶカスタムの Apex アクションを作りました。コールアウトのメソッドは、現在のユーザーの Salesforce のセッション ID で認証しています。画面からはコールアウトが問題なく動きますが、エージェントから呼ぶと何も言わずに失敗します。アーキテクチャとしてのベストプラクティスの修正はどれですか?",
+  "o": [
+   "Apex クラスのセキュリティを、ログイン中のユーザーのプロファイルまで明示的に広げる",
+   "Employee エージェントに Agentforce Service Agent User の権限セットグループを割り当てる",
+   "セッション ID の取得を、指定ログイン情報(Named Credential)に置き換える"
+  ],
+  "ex": "外部 API の認証は、画面のセッション ID に頼らず、指定ログイン情報で行うのが基本です。原本は、エージェントの実行の文脈は画面とは違うため、セッション ID による認証は失敗しやすく、指定ログイン情報で認証を一元管理すべきと説明しています。Service エージェント用の権限セットグループは Employee エージェントには関係ありません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 137,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、Call Explorer を使って、営業チームが録音した会議からすばやく洞察を得たいと考えています。この機能をオンにする前に、Agentforce スペシャリストは何を知っておくべきですか?",
+  "o": [
+   "Call Explorer は Salesforce ナレッジとは独立して動き、事前の設定はいらない",
+   "設定の前に、カスタムの Call Explorer のアクションを作る必要がある",
+   "Call Explorer には、Einstein Conversation Insights の権限セットが必要である"
+  ],
+  "ex": "Call Explorer は Einstein Conversation Insights(ECI)の通話記録に質問する機能で、ECI のライセンス(権限セット)を持つユーザーの通話が対象です。利用には Einstein Sales Call Explorer の権限セットも必要です。カスタムのアクションを作る必要はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=sales.eci_call_explorer.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Conversation Insights は通話や会議の録音を分析します。Setup の Call Insights で競合や製品のキーワードの分析を設定でき、Call Explorer では通話記録に質問して内容を確かめられます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=sales.call_coaching_setup_insights.htm&type=5",
+   "note": "ECI analyzes recordings; Call Insights setup configures competitor/product keyword insights; Call Explorer lets users ask questions about a call record."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 138,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、多くのレコードでうまく動いていた項目生成のプロンプトテンプレートを作りました。しかし、ユーザーからトークン数の上限のエラーでときどき失敗すると報告がありました。このエラーがランダムに起きる原因は何ですか?",
+  "o": [
+   "グラウンディングで変わるトークン数に対応するため、テンプレートの種類をフレックスに変える必要がある",
+   "プロンプトテンプレートは動的なので、生成されるトークン数がレコードによって変わる",
+   "LLM が処理できるトークン数が、ユーザー全体の需要によって変わる"
+  ],
+  "ex": "差し込み項目や関連リストの内容はレコードごとに違うので、解決後のプロンプトの長さ(トークン数)もレコードによって変わります。原本は、データの多いレコードでだけ上限を超えるのが、失敗がランダムに見える理由と説明しています。テンプレートの種類を変えても解決せず、上限が需要で変わることもありません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 139,
+  "f": "models",
+  "a": [
+   0
+  ],
+  "q": "Model Playground で、Salesforce が用意した既存の基盤モデルについて、Agentforce スペシャリストが変更できるハイパーパラメーターはどれですか?",
+  "o": [
+   "Temperature、Frequency Penalty、Presence Penalty",
+   "Temperature、Top-k sampling、Presence Penalty",
+   "Temperature、Frequency Penalty、Output Tokens"
+  ],
+  "ex": "モデル設定では、温度(0〜2)、Frequency Penalty と Presence Penalty(どちらも -2.0〜2.0)を設定します。温度は応答のばらつき、Frequency Penalty は同じ語の繰り返し、Presence Penalty は新しい語の使用に影響します。",
+  "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_ai_use_ai_models.htm",
+  "v": "公式で確認済み",
+  "x": "Frequency Penalty は同じ語の繰り返しを抑え、Presence Penalty はまだ使っていない語の使用を促します。どちらも -2.0 から 2.0 の値です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 140,
+  "f": "stdagents",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は新しい Agentforce Sales Development Representative(SDR)を本番に導入しましたが、営業担当者から見つからないと言われています。原因は何ですか?",
+  "o": [
+   "営業担当者のプロファイルに Allow SDR Agent の権限がない",
+   "営業担当者に SDR Agent オブジェクトへのアクセスがない",
+   "営業担当者に Use SDR Agent の権限セットがない"
+  ],
+  "ex": "Agentforce SDR(現 Lead Nurturing)を使うには、「Use Agentforce SDR Agent App」の権限が必要です。権限のない営業担当者には、エージェントが表示されません。Allow SDR Agent という権限や SDR Agent オブジェクトはありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_actions_ref_sales_sdr_opt_out_lead.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Agentforce Lead Nurturing(旧 SDR)は、リード、取引先責任者、個人取引先に自動で働きかけます。利用には「Use Agentforce SDR Agent App」の権限が必要で、エージェントは EinsteinSDRAgent User で動きます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.agent_execution_data.htm&type=5",
+   "note": "Lead Nurturing works leads, contacts, person accounts; permission Use Agentforce SDR Agent App; runs as EinsteinSDRAgent User."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 142,
+  "f": "promptbp",
+  "a": [
+   1
+  ],
+  "q": "Coral Cloud Resorts のサポートチームは、担当者の引き継ぎのために、複雑なケースの履歴を要約するフレックスのプロンプトテンプレートを作る必要があります。要約は簡潔で、Issue、Steps Taken、Next Action の3部構成にする必要があります。一貫した出力にするため、何を推奨すべきですか?",
+  "o": [
+   "Chain-of-thought の推論を使う",
+   "指示の中で、見出しを明示して望む出力の構成を定める",
+   "プロンプトテンプレートトリガー型のフローで応答を整形する"
+  ],
+  "ex": "期待する種類の内容だけを生成するよう直接指示するのがベストプラクティスで、出力の構成も見出しを含めて指示に書けば一貫します。Chain-of-thought は推論の過程を引き出す方法で、形をそろえるものではありません。フローはテンプレートに渡すデータを作るもので、応答を整形しません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+  "v": "原本どおり",
+  "x": "「顧客に送るメッセージだけを生成する」のように、期待する種類の内容だけを生成するよう直接指示します。内容を作る過程の説明が返ってくるのを防ぎます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 143,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、大量のチャットの問い合わせに対応するため、生産性を上げる Einstein Work Summaries を導入しています。担当者と顧客の会話のあと、Einstein は「要約」のほかに何を生成して入力しますか?",
+  "o": [
+   "感情分析と感情の検出",
+   "アンケート依頼のメールの下書き",
+   "問題(Issue)と解決策(Resolution)"
+  ],
+  "ex": "Einstein Work Summaries は、会話の終わりやケースページで、要約、問題(Issue)、解決策(Resolution)を予測して入力します。感情分析やアンケートのメールは作りません。",
+  "u": "https://help.salesforce.com/s/articleView?id=service.cc_generative_ai_work_summaries.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Einstein Work Summaries は、会話の終わりやケースページで、要約・問題(Issue)・解決策(Resolution)を予測して入力します。メッセージングでは、要約を保存するクイックアクションと Wrap Up コンポーネントを設定します。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=service.cc_generative_ai_work_summaries.htm&type=5",
+   "note": "Einstein predicts and fills a summary, issue, and resolution; for messaging create a quick action and add the Wrap Up component."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 144,
+  "f": "channels",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers は Employee エージェントを作りました。エージェントを Slack のチャネルにつなぐには、Agentforce スペシャリストは何をすべきですか?",
+  "o": [
+   "Salesforce と Slack のワークスペースの間に接続を作る",
+   "Omni-Channel フローと、Salesforce と Slack のワークスペースの間の接続を作る",
+   "組み込みサービスのデプロイと、Salesforce と Slack のワークスペースの間の接続を作る"
+  ],
+  "ex": "Slack の Employee エージェントは、Agentforce Builder で Slack の接続を追加し、Slack 側でエージェントをインストールして使います。Omni-Channel フローは Service エージェントのメッセージングの振り分け、組み込みサービスは Web のチャットのためのもので、Slack には不要です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_escalation.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "SlackEmployee エージェント向け。Agentforce Builder で Slack の接続を追加し、Slack 側でエージェントをインストールする"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 145,
+  "f": "datalib",
+  "a": [
+   0
+  ],
+  "q": "Pacific Distribution Co. は、パートナーの注文サポートと在庫の問い合わせを扱う仕組みを導入しています。パートナーの質問にエージェントが答えるとき、取得の精度を上げるため、大きな文書を効果的に処理する必要があります。チャンク化の特徴として正しいのはどれですか?",
+  "o": [
+   "チャンク化は、大きな文書をパッセージと呼ばれる小さな単位に分ける",
+   "チャンク化では、文書全体を LLM に渡して処理させる",
+   "チャンク化の方法は入れ替えても同じで、取得には影響しない"
+  ],
+  "ex": "チャンク化はデータを小さな単位に分ける処理で、分けたチャンクをベクトル化してインデックスにします。既定のチャンク化の方法は Passage Extraction(パッセージの抽出)です。文書全体を渡すわけではなく、方法によって取得の結果は変わります。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "チャンク化(データを小さな単位に分ける処理)とインデックス化を行う"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 146,
+  "f": "datalib",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、Agentforce Service エージェントが支える顧客向けのセルフサービスのポータルを運営しています。コンプライアンスチームは、公開済みの製品のコンプライアンスの指針、サービスの規約、規制の手続きを Salesforce ナレッジで管理し、専門家が定期的に更新しています。顧客の質問を意味で理解しつつ、公開中の最新の内容だけを取り出し、古い記事が決して出ないようにする最も効率的な方法はどれですか?",
+  "o": [
+   "Salesforce フローを使うサブエージェントのアクションを作り、実行時にナレッジ記事のデータモデルオブジェクトを問い合わせて、合う内容を返す",
+   "Salesforce ナレッジにつないだ Agentforce データライブラリを作り、公開済みの記事に絞る。RAG による意味での検索で回答をグラウンディングし、ナレッジの更新はエージェントの設定を変えずに反映される",
+   "Data 360 の検索インデックスにつないだカスタムリトリーバーを Einstein Studio で作り、最新とタグ付けされた文書だけに絞る"
+  ],
+  "ex": "ナレッジのデータライブラリは公開済みの記事だけを対象にし、RAG に必要な検索インデックスやリトリーバーを自動で作ります。意味での検索で回答をグラウンディングでき、記事の更新もライブラリに反映されます。フローでの問い合わせは意味での検索にならず、独自のリトリーバーとタグの管理は手間がかかります。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "ナレッジは「公開済み」の記事だけが対象です。下書きの記事はインデックスされません。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 147,
+  "f": "promptbp",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers(UC)は、Guest というカスタムオブジェクトを要約するために、Salesforce で生成AIを導入しました。ユーザーから、生成された情報が合わないと報告がありました。プロンプトの設計の方針を見直すにあたり、UC はどの取り組みを優先すべきですか?",
+  "o": [
+   "プロンプトのテストモードを有効にし、プロンプトの案を一部のユーザーに割り振って評価し、成果の良いモデルに統一する",
+   "効果的なグラウンディング、文脈に合った役割、明確な指示を持つ、簡潔で分かりやすく一貫したプロンプトテンプレートを作り、フィードバックで改善を重ねる",
+   "Salesforce にプロンプトの確認を依頼するケースを出し、プレイグラウンドで出力が期待どおりになるまでテストする"
+  ],
+  "ex": "公式のベストプラクティスは、簡潔で分かりやすく書き、役割を与え、正確なデータでグラウンディングし、プレビューでテストしながら直していくことです。プロンプトのテストモードという機能はなく、Salesforce にプロンプトの確認を依頼する仕組みもありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_best_practices.htm",
+  "v": "公式で確認済み",
+  "x": "簡潔で分かりやすく書きます。業界用語や技術用語を避け、自然な言葉を使います。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 148,
+  "f": "testing",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、AI エージェントの応答が、合格か不合格かだけでなく、会社独自のブランドの語り口と品質の基準を常に反映しているようにしたいと考えています。この基準を評価するには、Testing Center をどう設定すべきですか?",
+  "o": [
+   "Coherence の品質の評価を有効にする",
+   "既定の Response Evaluation の指標を使う",
+   "LLM の審査役を使うカスタムの評価を作る"
+  ],
+  "ex": "品質の評価(Completeness など)の基準が合わないときは、独自の基準を持つカスタムスコアラーを追加します。ブランドの語り口のような会社独自の基準は、LLM を審査役にしたカスタムの評価で採点します。Coherence や既定の Response Evaluation は、独自の基準を見るものではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Subagent Assertion と Action Assertion は1(合格)か0(不合格)で採点されます。品質の評価(Completeness など)は0〜5で採点され、3以上が合格です。基準が合わないときは、独自の基準を持つカスタムスコアラーを追加します。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 149,
+  "f": "promptbuilder",
+  "a": [
+   1
+  ],
+  "q": "営業マネージャーは、多数のリードに、関連性の高い解決策と個別のメッセージで、できるだけ効率よく連絡する必要があります。最も合う Salesforce のソリューションはどれですか?",
+  "o": [
+   "Einstein Sales Assistant",
+   "Prompt Builder",
+   "Einstein Lead follow-up"
+  ],
+  "ex": "Prompt Builder の営業メールテンプレートを使うと、リードのレコードのデータにもとづく個別のメールを、テンプレートとして大量に作れます。原本はこれを最も合う解決策としています。Einstein Sales Assistant や Einstein Lead follow-up という製品は、この用途の Salesforce の機能ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "原本どおり",
+  "x": "営業メール(Sales Email)取引先責任者やリード宛ての、レコードのデータにもとづく個別のメールLightning Experience のメール作成画面"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 150,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "プロンプトテンプレートを使うとき、グラウンディングのデータと選んだモデルについて、Agentforce スペシャリストは何を考慮すべきですか?",
+  "o": [
+   "Einstein Trust Layer のトークンの上限を確認する",
+   "モデルのトークンの上限を超えないよう、グラウンディングのクエリで OFFSET を使う",
+   "Prompt Builder で、モデルの制限とグラウンディングのデータの量を比べて確認する"
+  ],
+  "ex": "LLM には一度に扱える入力の量(コンテキストウィンドウ)の上限があります。原本は、グラウンディングで差し込むデータの量が、選んだモデルの上限に収まるかを確認すべきと説明しています。Trust Layer にトークンの上限の設定はなく、OFFSET はクエリの読み飛ばしで量を制御する方法ではありません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 151,
+  "f": "access",
+  "a": [
+   1
+  ],
+  "q": "サービスの依頼で顧客をうまく手伝ってきた Agentforce Service エージェントが、新しい製品交換の手続きについて顧客を手伝えなくなりました。会社は最近、交換を管理する Product Replacement というカスタムオブジェクトを導入しました。Agentforce のエージェントユーザーにどの変更が必要ですか?",
+  "o": [
+   "エージェントユーザーに割り当てた権限セットグループで、Product Replacement のフローへのアクセスを与える",
+   "エージェントユーザーに割り当てた権限セットに、カスタムオブジェクト Product Replacement の参照権限を与える",
+   "Agentforce のエージェントユーザーのプロファイルに、カスタムオブジェクト Product Replacement の AI 学習の権限を与える"
+  ],
+  "ex": "エージェントユーザーは、アクションが扱う各オブジェクトに最小限のオブジェクトの権限が必要です。新しいオブジェクトを使うなら、エージェントユーザー用の権限セットに参照権限を追加します。AI 学習の権限というものはありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_user.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "最小限のアクセスで作られます。必要な権限は、最小権限の原則にしたがって [Agent_Name]_Permissions 権限セットに追加します。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 152,
+  "f": "deploy",
+  "a": [
+   1
+  ],
+  "q": "複数のトピックとエージェントアクションを持つ Agentforce Service エージェントを本番に導入するとき、Universal Containers は何を考慮すべきですか?",
+  "o": [
+   "ステージングでテストせずにエージェントの部品をデプロイし、本番のデータで確かめる。Sandbox の設定だけでデプロイは問題なく進む",
+   "依存関係をすべて含め、Apex クラスのテストカバー率を75%以上にし、設定を本番と合わせる。バージョン管理とデプロイ後の有効化も計画する",
+   "デプロイの失敗や本番のエージェントの問題を避けるため、エージェント、トピック、アクションのあとにフローや Apex をデプロイする"
+  ],
+  "ex": "エージェントの移行では、エージェントのメタデータに加えて、アクションが使う Apex、フロー、プロンプトテンプレートなどの依存関係も含めます。本番への Apex のデプロイにはテストカバー率75%以上が必要で、エージェントはデプロイ後に有効化します。テストを省いたり、依存先をあとからデプロイしたりするのは誤りです。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_versions_lifecycle.htm&type=5",
+  "v": "原本どおり",
+  "x": "API v67 以前の移行では Bot、BotVersion、GenAiPlannerBundle などに加え、Apex、フロー、プロンプトテンプレートも含めます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 153,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、ユーザーが受注番号を入力できる独自の画面を Salesforce に作りたいと考えています。そのあと、カスタムのプロンプトテンプレートを呼んで、受注のヘッダーと明細の要約を作って表示します。どのソリューションを実装すべきですか?",
+  "o": [
+   "自動起動フローを作り、標準の「Prompt Template」フローアクションでテンプレートを呼ぶ",
+   "テンプレートトリガー型プロンプトフローを作り、標準の「Prompt Template」フローアクションでテンプレートを呼ぶ",
+   "画面フローを作って受注番号を受け取り、標準の「Prompt Template」フローアクションでテンプレートを呼ぶ"
+  ],
+  "ex": "プロンプトテンプレートは呼び出し可能なアクションとしてフローから呼べます。ユーザーの入力を受け取る画面が必要なので、画面フローで受注番号を受け取り、テンプレートを呼んで結果を表示します。自動起動フローには画面がなく、テンプレートトリガー型プロンプトフローはテンプレートにデータを渡す側のフローです。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "原本どおり",
+  "x": "テンプレートは、Salesforce Platform のどこからでも呼び出し可能なアクション(invocable action)として、または Connect REST API や Connect in Apex から呼び出せます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 154,
+  "f": "testing",
+  "a": [
+   0
+  ],
+  "q": "Agentforce スペシャリストは Testing Center でエージェントをテストしています。結果を見ると、エージェントは発話を扱う正しいサブエージェントを選んでいますが、そのサブエージェントの中で必要なアクションをすべて選べていません。この失敗を特定する評価の指標はどれですか?",
+  "o": [
+   "Action Assertion",
+   "Response Evaluation",
+   "Subagent Assertion"
+  ],
+  "ex": "Action Assertion は、正しいアクションを、必要なものを漏れなく選んだかを評価します。Subagent Assertion は正しいサブエージェントが選ばれたか、Response Evaluation は期待する回答と実際の回答の比較です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_testing_center.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Action Assertion(既定)正しいアクションを、必要なものを漏れなく選んだか"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 155,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers は、Employee エージェントを使う営業担当者に、営業の要約を示す必要がありますが、既定の回答に満足していません。どのベストプラクティスを推奨すべきですか?",
+  "o": [
+   "レコード要約のカスタムのプロンプトテンプレートを作る",
+   "ナレッジ回答のカスタムのプロンプトテンプレートを作る",
+   "標準のレコード要約のアクションを更新する"
+  ],
+  "ex": "レコード要約の種類のテンプレートは、標準の呼び出し可能アクション「Summarize Record」とエージェントの同名のアクションで使われます。要約の内容を変えたいときは、レコード要約のカスタムテンプレートを作ります。ナレッジ回答はナレッジで答える方法のカスタマイズで、標準アクションの入力や出力を変えるにはカスタムアクションが必要です。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "レコード要約(Record Summary)レコード全体を見渡すための要約標準の呼び出し可能アクション「Summarize Record」とエージェントの同名アクション"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 156,
+  "f": "access",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers は、会社の Web サイトに新しい Agentforce Service エージェントを配置しましたが、Salesforce ナレッジの記事にある内容をエージェントが答えないというフィードバックを受けています。考えられる問題は何ですか?",
+  "o": [
+   "Agentforce Service エージェントのユーザーに、正しい Agent Type License が割り当てられていない",
+   "Agentforce Service エージェントのユーザーは、標準の Agent Knowledge プロファイルで作る必要がある",
+   "Agentforce Service エージェントのユーザーに、Allow View Knowledge の権限が与えられていない"
+  ],
+  "ex": "エージェントユーザーにはナレッジのライセンスを付けられませんが、アプリケーション権限「Allow View Knowledge」を与えればナレッジ記事を参照できます。これがないと、エージェントはナレッジにもとづいて答えられません。Agent Type License や Agent Knowledge プロファイルというものはありません。",
+  "u": "https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-example-rag-jargon.html",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "エージェントユーザーにはナレッジのライセンスを付けられませんが、アプリケーション権限「Allow View Knowledge」とナレッジオブジェクトの参照権限を与えると、ナレッジ記事を使って回答できます。",
+   "source_url": "https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-example-rag-jargon.html",
+   "note": "You can't give the agent user a Knowledge license, but you can grant the Allow View Knowledge app permission (plus Knowledge object Read)."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 157,
+  "f": "observe",
+  "a": [
+   2
+  ],
+  "q": "Agentforce スペシャリストは、エージェントの性能の問題を調べたいと考えています。エージェントのエラー、誤って起動したアクション、完了しなかった計画を含め、エージェントとのすべてのやり取りを見るには、どこに行くべきですか?",
+  "o": [
+   "Plan Canvas",
+   "Agent Settings",
+   "Event Logs"
+  ],
+  "ex": "イベントログは、エージェントのセッションのイベントとユーザーのメッセージを記録し、テストやトラブルシューティングに使います。セッション ID をクリックすると、エラーを含む詳しい情報を確かめられます。Plan Canvas は1回のやり取りの計画の表示、Agent Settings は設定の画面です。(新しいエージェントでは、Agentforce セッショントレースや Agent Optimization でも調べられます。)",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.copilot_setup_enhanced_event_logs.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "イベントログは、エージェントのセッションのイベントとユーザーのメッセージを記録し、テストやトラブルシューティングに使います。拡張イベントログをオンにすると会話の内容も保存され、データは7日間保持されます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=ai.copilot_setup_enhanced_event_logs.htm&type=5",
+   "note": "Event logs capture events and user messages to test and troubleshoot; enhanced event logs store conversation data; event logs store information for seven days."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 159,
+  "f": "promptbuilder",
+  "a": [
+   0
+  ],
+  "q": "Universal Containers(UC)は、営業チームが通話の中で言及された製品名や競合の名前を把握できるようにしたいと考えています。UC はどうすべきですか?",
+  "o": [
+   "Einstein Conversation Insights を有効にし、録音のプロバイダーを接続し、権限セットを割り当て、最大25の製品でインサイトをカスタマイズする",
+   "Einstein Conversation Insights を有効にし、権限セットを割り当て、録音の管理者を決め、最大50の競合の名前でインサイトをカスタマイズする",
+   "Einstein Conversation Insights を有効にし、営業の録音を有効にし、権限セットを割り当て、最大50の製品でインサイトをカスタマイズする"
+  ],
+  "ex": "ECI を使うには、音声やビデオの録音のプロバイダーを接続し、ECI の権限セットを割り当てます。そのうえで Setup の Call Insights で、競合や製品のキーワードのインサイトを設定します。原本は A(最大25の製品)を正解としています。公式ヘルプでは、カスタムのインサイト1つにつきキーワードは最大25個とされています。",
+  "u": "https://help.salesforce.com/s/articleView?id=sales.call_coaching_setup_insights.htm&type=5",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "Einstein Conversation Insights は通話や会議の録音を分析します。Setup の Call Insights で競合や製品のキーワードの分析を設定でき、Call Explorer では通話記録に質問して内容を確かめられます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=sales.call_coaching_setup_insights.htm&type=5",
+   "note": "ECI analyzes recordings; Call Insights setup configures competitor/product keyword insights; Call Explorer lets users ask questions about a call record."
+  }
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 160,
+  "f": "actions",
+  "a": [
+   2
+  ],
+  "q": "ある会社のサポートのエージェントは、返金の処理の前に必須の不正チェックのアクションを実行したりしなかったりします。ある会話では不正チェックが動き、別の会話では返金にすぐ進んでしまいます。Agentforce スペシャリストは、指示の中に run @actions.fraud_check と、そのあとに run @actions.process_refund を置くよう勧めました。この変更の効果は何ですか?",
+  "o": [
+   "不正チェックのアクションが LLM により強く勧められるが、会話に関係ないと LLM が判断すれば省かれることもある",
+   "LLM が手順の実行で見落とした場合に不正チェックが実行されるが、エージェントは共感的な口調を失う",
+   "手続き的な指示は実行の順序を決定的に制御するので、すべての会話で不正チェックが返金の前に必ず実行される"
+  ],
+  "ex": "推論の指示の中の run は、そのコードの位置に来ると決定的に実行されます。2つの run を順に並べれば、不正チェックは毎回返金の前に実行されます。LLM の判断で省かれることはなく、口調にも影響しません。",
+  "u": "https://developer.salesforce.com/docs/ai/agentforce/guide/ascript-lang.html",
+  "v": "公式で確認済み",
+  "x": "推論の前に必ず実行したいアクションは推論の指示に、LLMに選ばせたいアクションは推論で使えるアクションに入れます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 161,
+  "f": "topics",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、顧客サービスの業務を強化するためにカスタムのエージェントアクションを導入しています。開発チームは、正しく設定するためにカスタムのエージェントアクションの中心となる構成要素を理解する必要があります。中心となる構成要素の1つを確かめるには、カスタムのエージェントアクションの設定の何を見るべきですか?",
+  "o": [
+   "Action Triggers",
+   "Instructions",
+   "Output Types"
+  ],
+  "ex": "カスタムのエージェントアクションは、指示(Instructions)、入力、出力で構成され、指示はエージェントがいつそのアクションを使うかを決める手がかりになります。原本は指示を中心となる構成要素としています。Action Triggers という設定はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_topics_routing.htm&type=5",
+  "v": "原本どおり",
+  "x": "「いつ」「何を」するかを具体的に書きます。使ってほしいアクションの名前を入れ、「必ず(always)」のような明確な言葉を使うと、安定して実行されます。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 162,
+  "f": "datalib",
+  "a": [
+   2
+  ],
+  "q": "Salesforce の Agentforce データライブラリを設定して保存すると(データソースにかかわらず)、Data Cloud に自動で作られて使えるようになる部品はどれですか?",
+  "o": [
+   "データパイプライン、インデックスのエンジン、クエリのプロセッサー",
+   "データコネクタ、分析のダッシュボード、ワークフロールール",
+   "データストリーム、検索インデックス、リトリーバー"
+  ],
+  "ex": "データライブラリを作ると、データストリーム、DLO と DMO、検索インデックス、リトリーバーなど、RAG に必要な仕組みが Data 360(旧 Data Cloud)に既定の設定で自動作成されます。プロンプトテンプレートと標準アクションも用意されます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_create.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "データライブラリを作ると、検索インデックス、リトリーバー、プロンプトテンプレート、標準アクションまで既定の設定で自動作成されます。RAGを一番早く始める方法です。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 163,
+  "f": "promptbuilder",
+  "a": [
+   2
+  ],
+  "q": "Universal Containers の Agentforce スペシャリストは、新しい項目生成のプロンプトテンプレートを設定しようとして、次の手順を行いました。1. 新しい項目生成のプロンプトテンプレートを作る。2. オブジェクトにケースを選ぶ。3. 対象の項目にカスタム項目 AI_Analysis__c を選ぶ。テンプレートを保存、テスト、有効化しましたが、ケースのレコードで AI Analysis の項目の編集の鉛筆に(スパークルの)アイコンが出ず、編集すると普通の項目のように動きます。見落とした重要な手順はどれですか?",
+  "o": [
+   "項目生成テンプレートを有効化したあと、ケースの Lightning ページを再有効化していない",
+   "ケースのオブジェクトは項目生成に対応しておらず、Einstein Service Replies を使うべきだった",
+   "Lightning ページを編集し、項目をプロンプトテンプレートに関連付けていない"
+  ],
+  "ex": "項目生成テンプレートを Lightning レコードページに置くには、動的フォームを有効にし、ページの項目にテンプレートを関連付けます。これをしないと、項目は普通の項目のままです。ページの再有効化は不要で、ケースも項目生成に使えます。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.prompt_builder_standard_template_types.htm",
+  "v": "公式で確認済み",
+  "x": "項目生成テンプレートを Lightning レコードページに置くには、動的フォーム(Dynamic Forms)を有効にする必要があります。"
+ },
+ {
+  "label": "v2026-08-19",
+  "no": 164,
+  "f": "topics",
+  "a": [
+   1
+  ],
+  "q": "Universal Containers は、顧客が本人確認を通過したあとでだけ機密のアカウント情報にアクセスできる、Service エージェントの顧客確認の手続きを導入しています。Agentforce スペシャリストは、LLM が確認を飛ばしてアカウントの照会のアクションを実行しないよう、このセキュリティのルールを決定的に守らせる必要があります。何を設定すべきですか?",
+  "o": [
+   "Einstein Trust Layer でプロンプト防御のポリシーを設定し、確認が終わるまで機密のアカウントのデータを推論エンジンから隠す",
+   "ユーザーの確認状態をカスタム変数に保存し、アカウントの照会のアクションに available when のフィルター条件を付けて、変数が true になるまで推論エンジンからアクションが見えないようにする",
+   "サブエージェントの定義に、アカウントの照会の前に必ず本人確認のアクションを優先するよう LLM に指示する、自然言語の指示を明記する"
+  ],
+  "ex": "フィルターと変数を使うと、本人確認が済んだ顧客にだけ特定のアクションやサブエージェントを使わせられます。条件が満たされるまでアクションは LLM に見えないので、確認を飛ばせません。プロンプト防御はアクションの使用を制御せず、自然言語の指示は LLM が解釈するため確実ではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=ai.agent_builder_variables.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "フィルター(「Make this action available when:」)と変数を使うと、本人確認が済んだ顧客にだけ特定のサブエージェントを使わせることができます。"
+ }
+]

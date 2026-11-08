@@ -144,6 +144,7 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 ## 科目 Agentforce スペシャリスト(afspec)
 - `afspec_SPEC.md` 原稿の仕様(問題は3択)、`afspec/manuscript/out_ch1〜6.json` 章ごとの原稿、`build_afspec.py` で data を組み立て、`figs_m/spec_H.py`(2〜6章)・`spec_I.py`(1章)と `figs_m/apply_afspec.py` で図を入れる。用語カードは `afspec/data/terms.json`。`patch_add_afspec.py` で科目を登録(rebuild.sh の最後)。公開データは `afspec/data/`
 - 作り直し: `python3 build_afspec.py afspec/manuscript <out> && python3 figs_m/apply_afspec.py <out>/chapters.json <out>/chapters.json && cp afspec/data/terms.json <out>/`
+- 過去問: Notion の1ページ(v2026-08-19 英語164問)から重複5問を除いた159問を `afspec/pastq/`(in_/out_/dups.json/ids.json/SPEC.md)に。原本は「Question 122」が2回入っていて本来の Q123 がないため、2つ目を Q123 として Q122 の重複にした。公式ドキュメントで検証し、確認済み114・原本どおり31・解答を修正8・要確認6。`python3 add_pastq_afspec.py afspec/pastq afspec/pastq afspec/data <out>` で問題集と本文(関連知識17件)に追加。問題の番号は `afspec/pastq/ids.json` で出典ごとに固定(118〜276)
 
 ## 科目 基本情報技術者(fe)・情報セキュリティマネジメント(sg)
 - `fe_SPEC.md`・`sg_SPEC.md` 原稿の仕様、`fe/manuscript/out_ch1〜12.json`・`sg/manuscript/out_ch1〜7.json`。`build_fe.py`・`build_sg.py` で data を組み立て(用語カード `fe/terms.json`・`sg/terms.json` も写す。確認は `python3 check_terms.py fe sg`)、`figs_m/spec_L.py`・`spec_M.py` と `figs_m/apply_fe.py`・`apply_sg.py` で図を入れる
