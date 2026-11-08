@@ -17,7 +17,7 @@ L = lambda n: json.load(open(os.path.join(src, n), encoding="utf-8"))
 CH, Q, R = L("chapters.json"), L("questions.json"), L("qrows.json")
 SUBJ = R[0]["subject_id"]
 items, skipped = [], []
-for f in sorted(glob.glob(os.path.join(pqd, "*.json"))):
+for f in sorted(g for g in glob.glob(os.path.join(pqd, "*.json")) if os.path.basename(g) != "ids.json"):
     for it in json.load(open(f, encoding="utf-8")):
         (skipped if it.get("skip") else items).append(it)
 secch = {}
@@ -59,7 +59,12 @@ for c in CH:
         units[m.group(1)] = u
 # 2. 問題を追加
 have = {r["data"]["s"] for r in Q}
-nid = max(r["data"]["id"] for r in Q); added = 0
+# 問題の番号(id)は出典 s ごとに ids.json で固定する(途中に問題を足しても、既存の問題の番号がずれて回答履歴が別の問題に付かないように)
+idp = os.path.join(pqd, "ids.json")
+IDS = json.load(open(idp, encoding="utf-8")) if os.path.exists(idp) else {}
+base_max = max(r["data"]["id"] for r in Q)
+if IDS and min(IDS.values()) <= base_max: sys.exit(f"原稿の問題番号(最大 {base_max})と過去問の番号(最小 {min(IDS.values())})が重なっています")
+nid = max([base_max] + list(IDS.values())); added = 0
 per = {}
 used_img = {fn for it in items for fn in re.findall(r"^〔図:([^〕]+)〕", it["q"], re.M)}
 for it in items:
@@ -76,13 +81,15 @@ for it in items:
     if xs and xs not in secch: W("xs の項目がない", s, xs)
     for fn in re.findall(r"^〔図:([^〕]+)〕", it["q"], re.M):
         if not re.fullmatch(r"[A-Za-z0-9_.\-]+", fn) or not os.path.isfile(os.path.join(pqd, "img", fn)): W("画像がない", s, fn)
-    nid += 1; added += 1; per[it["set"]] = per.get(it["set"], 0) + 1
-    d = {"a": sorted(it["a"]), "c": secch[f] - 1, "ex": it["ex"], "f": "f-" + f, "id": nid, "n": None, "o": it["o"],
+    if s not in IDS: nid += 1; IDS[s] = nid
+    qid = IDS[s]; added += 1; per[it["set"]] = per.get(it["set"], 0) + 1
+    d = {"a": sorted(it["a"]), "c": secch[f] - 1, "ex": it["ex"], "f": "f-" + f, "id": qid, "n": None, "o": it["o"],
          "q": it["q"], "s": s, "u": it.get("u"), "v": it["v"], "x": x}
     if xs and xs != f: d["xs"] = xs
-    Q.append({"id": f"q{nid:04d}", "data": d})
-    R.append({"id": f"{SUBJ}:q{nid}", "subject_id": SUBJ, "n": nid, "kind": "mc", "source": "past", "exam": s, "text": it["q"],
+    Q.append({"id": f"q{qid:04d}", "data": d})
+    R.append({"id": f"{SUBJ}:q{qid}", "subject_id": SUBJ, "n": qid, "kind": "mc", "source": "past", "exam": s, "text": it["q"],
               "section_id": f"{SUBJ}:{f}", "kq": [], "law": None})
+json.dump(dict(sorted(IDS.items(), key=lambda kv: kv[1])), open(idp, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
 for n, obj in (("chapters.json", CH), ("questions.json", Q), ("qrows.json", R)):
     json.dump(obj, open(os.path.join(dst, n), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 for n in os.listdir(src):
