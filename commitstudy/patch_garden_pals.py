@@ -149,6 +149,9 @@ function csPalsSheet(open){if(!csFS)return;var el=csFS.el.querySelector(".gd-fs-
   el.innerHTML='<div class="gd-fs-ph"><b>庭の仲間</b><span>'+csPalsHead()+'</span><button type="button" class="gd-fs-pc" aria-label="一覧を閉じる"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="gd-fs-pbd"><p class="gd-palsd-s">庭にいるのは、仲間の中からランダムに選んだ最大10匹です。</p>'+csPalsList()+'</div>';
   csFS.el.appendChild(el);try{el.querySelector(".gd-fs-pc").focus({preventScroll:true})}catch(x){}}
 document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;if(t.closest(".gd-fs-pb")){e.preventDefault();csPalsSheet(true);return}if(t.closest(".gd-fs-pc")){e.preventDefault();csPalsSheet(false)}});
+/* 全画面の「庭の仲間」ボタンと下の説明は、開いて5秒でゆっくり消える(patch_garden の gdCapOut)。庭の何もない所をタップすると、また5秒出る */
+document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;var fs=t.closest(".gd-fs");if(!fs||t.closest(".gd-fs-pb,.gd-fs-x,.gd-fs-pals,button"))return;
+  [].forEach.call(fs.querySelectorAll(".gd-fs-cap,.gd-fs-pb"),function(el){el.style.animation="none";void el.offsetWidth;el.style.animation=""})},true);
 '''
 rep("FAMP.home=function(){setTimeout(csHomeExtra,0);", JS + "\nFAMP.home=function(){setTimeout(csHomeExtra,0);")
 # 庭の絵に仲間を描く(草・季節の小物の後、桜の枝・舞うもの・夜の暗さの前)
@@ -221,6 +224,7 @@ CSS = """
 .gd-pals li.lk b{color:var(--sub)}
 .gd-fs-pb{position:absolute;top:calc(12px + env(safe-area-inset-top));left:calc(12px + env(safe-area-inset-left));height:40px;padding:0 14px;border-radius:99px;border:0;background:rgba(255,255,255,.88);color:#1f2a24;font:inherit;font-size:13px;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.22);cursor:pointer}
 .gd-fs-pb b{color:#2a9765}
+.gd-fs-pb{animation:gdCapOut 1.8s ease 5s forwards}
 .gd-fs-pals{position:absolute;left:0;right:0;bottom:0;max-height:78%;display:flex;flex-direction:column;background:#f6faf4;color:#1f2a24;border-radius:18px 18px 0 0;box-shadow:0 -4px 18px rgba(0,0,0,.25);padding-bottom:env(safe-area-inset-bottom);animation:gdSheet .25s ease-out both;--paper:#fff;--bg:#f6faf4;--ink:#1f2a24;--sub:#5a6a62;--ok:#2a9765;--line:#dfe8dc}
 @keyframes gdSheet{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 .gd-fs-ph{display:flex;align-items:center;gap:10px;padding:12px 12px 8px 16px}
