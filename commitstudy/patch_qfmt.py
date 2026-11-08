@@ -19,14 +19,19 @@ css = """.qb-l{display:block;overflow-wrap:break-word}
 .qb-sp{height:.7em}
 .qb-cap{margin:14px 0 6px;font-size:14px;font-weight:700;color:var(--brand,var(--accent,#333));line-height:1.5}
 .qb-cap small{display:block;font-size:12px;font-weight:500;color:var(--sub,var(--muted,#666))}
-.qb-tw{margin:2px 0 12px;max-width:100%;overflow:hidden}
-.qb-t{width:calc(100% - 1px);max-width:100%;min-width:0;table-layout:fixed;border-collapse:collapse;font-size:13.5px;line-height:1.55;font-weight:500;white-space:normal}
-.qb-t th,.qb-t td{white-space:normal;min-width:0;width:auto;word-break:break-word;border:1px solid var(--line);padding:5px 7px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
-.qb-t th{background:var(--accent-soft);font-weight:700}
-.qb-t.qb-c5{font-size:12.5px}
-.qb-t.qb-c5 th,.qb-t.qb-c5 td{padding:4px 5px}
-.qb-t.qb-c7{font-size:11px;line-height:1.45}
-.qb-t.qb-c7 th,.qb-t.qb-c7 td{padding:3px 3px}
+.qb-tw{margin:2px 0 12px;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.qb-t{width:100%;min-width:0;table-layout:auto;border-collapse:collapse;font-size:13.5px;line-height:1.55;font-weight:500;white-space:normal}
+.qb-t th,.qb-t td{white-space:normal;min-width:3em;border:1px solid var(--line);padding:5px 7px;text-align:left;vertical-align:top;overflow-wrap:break-word}
+.qb-t th{background:var(--accent-soft);font-weight:700;min-width:4.5em}
+.qb-t tr>:first-child{min-width:5.5em}
+.qb-t.qb-c5{font-size:13px}
+.qb-t.qb-c5 th,.qb-t.qb-c5 td{padding:4px 6px}
+.qb-t.qb-c7{font-size:12.5px;line-height:1.5}
+.qb-t.qb-c7 th,.qb-t.qb-c7 td{padding:4px 5px}
+/* テキスト本文の表: スマホで列が2文字幅まで細くならないように(収まらない表は表の中で横にスクロール) */
+.feat .tw table{min-width:0}
+.feat .tw th,.feat .tw td{min-width:5em;padding-left:8px;padding-right:8px}
+.feat .tw tr>:first-child{min-width:6.5em}
 .qb-code{margin:4px 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(128,128,128,.13);color:var(--ink,inherit);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Osaka-Mono","MS Gothic",monospace;font-size:13px;line-height:1.65;font-weight:500;white-space:pre-wrap;overflow-wrap:anywhere}
 .qb-cl{min-height:1.65em}
 .qb-ce{height:.8em}
