@@ -37,4 +37,5 @@ python3 $C/patch_ipa_display.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_qfmt.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_list_head.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_kamoku.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_flcount.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_no_reduced_motion.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
