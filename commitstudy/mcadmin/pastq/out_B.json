@@ -1,0 +1,676 @@
+[
+ {
+  "label": "v2026-02-19",
+  "no": 2,
+  "f": "setup-home",
+  "a": [
+   0,
+   3,
+   4
+  ],
+  "q": "Northern Trail Outfitters は Marketing Cloud を購入したばかりです。Setup Assistant で Marketing Cloud 管理者が案内される3つの作業はどれですか?(3つ選択)",
+  "o": [
+   "職務に合ったロールを割り当ててユーザーを作る",
+   "SMS メッセージを作ってモバイルキャンペーンを送る",
+   "送信を分類し、メール送信のパラメーターを決める",
+   "オーディエンスの情報を保存するデータ構造を作る",
+   "Data Loader で連絡先にデータを取り込む"
+  ],
+  "ex": "Setup Assistant は、新しいアカウントを用途に合わせて設定する手順を案内し、組織に合ったデータ構造の実装も助けます。原本では、ユーザーとロールの作成、データ構造の作成、連絡先へのデータの取り込みが正解です。SMS の送信や送信分類は、初期設定のあとに各アプリで行う作業です。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_setup_assistant.htm&type=5",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "Setup Assistant は、新しいアカウントを用途に合わせて設定する手順を案内するツールです。組織に合ったデータ構造の実装も助け、最後にメールを作成、送信、追跡します。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_setup_assistant.htm&type=5",
+   "note": "Setup Assistant guides configuring a new account for your use case, helps implement a data structure, and ends with creating, sending, tracking an email."
+  }
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 3,
+  "f": "security-bp",
+  "a": [
+   0
+  ],
+  "q": "銀行の Marketing Cloud 管理者は、機密データをクラウドに保存しないよう求められています。このデータは送信を行うときにだけ Marketing Cloud に渡されます。この要件を満たすために使う機能はどれですか?",
+  "o": [
+   "Tokenized Sending",
+   "List Sending",
+   "Field-Level Encryption",
+   "Distributed Marketing の送信"
+  ],
+  "ex": "Tokenized Sending では、機密性の高いデータを自社のシステムから API で渡し、送信時にだけ使います。受け取ったデータは Marketing Cloud に保存されません。Field-Level Encryption は保存したデータを暗号化する機能なので、「保存しない」要件は満たしません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_tokenized_sending1.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Tokenized SendingEngagement のデータベースに保存できないほど機密性の高いデータを、自社システムから API で渡し、送信時にだけ使う"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 6,
+  "f": "products",
+  "a": [
+   0,
+   3
+  ],
+  "q": "Northern Trail Outfitters にはモバイルアプリがあります。アプリの利用者にプッシュ通知を送れる2つの製品はどれですか?(2つ選択)",
+  "o": [
+   "Journey Builder",
+   "Contact Builder",
+   "MobileConnect",
+   "MobilePush"
+  ],
+  "ex": "MobilePush は自社アプリの利用者にプッシュ通知を送る機能で、Journey Builder のジャーニーの中でもプッシュ通知のアクティビティを使えます。MobileConnect は SMS の機能、Contact Builder はデータを管理するツールです。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_mobile_studio.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "SMSは MobileConnect、プッシュ通知は MobilePush、LINE は GroupConnect です。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 9,
+  "f": "data-ext",
+  "a": [
+   3
+  ],
+  "q": "Marketing Cloud で、パブリケーションリストはどのように使われますか?",
+  "o": [
+   "オプトインの状態に関係なく、すべての購読者に送るため",
+   "ガイド付き送信やトリガー送信で購読者を管理するため",
+   "購読者の種類ごとにダイナミックコンテンツのルールを作るため",
+   "すべての配信を止める代わりに、一部の配信だけを止められるようにするため"
+  ],
+  "ex": "データエクステンションに送るときはパブリケーションリストを選び、購読者はそのカテゴリだけを配信停止できます。すべての配信を止めずに、受け取りたくない種類だけを止められる(オプトダウン)ので、全配信停止を減らせます。オプトインの状態を無視して送る仕組みではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_list_versus_data_extension.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "データエクステンションに送るときは、パブリケーションリストを選びます。購読者はこれを使って、カテゴリ単位で配信停止できます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 11,
+  "f": "contacts",
+  "a": [
+   2
+  ],
+  "q": "Northern Trail Outfitters は、レコードが二重、三重に重複しない Marketing Cloud のデータモデルにしたいと考えています。同じアカウントで MobilePush とメールのチャネルを使う場合、データモデルの一意の識別子はどう設定すべきですか?",
+  "o": [
+   "チャネルごとに、レコード作成時に Marketing Cloud が自動で付けるキーを使う",
+   "外部のシステムで、重複した連絡先キーを見つけて削除する",
+   "連絡先キーの値を自社で管理し、その値でチャネルをまたいでレコードをつなぐ",
+   "メールでは連絡先キーを自社で管理し、MobilePush では Marketing Cloud に自動でつながせる"
+  ],
+  "ex": "連絡先キーはサブスクライバーキーと同じ値で、特定のチャネルに依存しない一意の値を使います。自社で管理する同じ値をメールでも MobilePush でも使えば、チャネルをまたいで1人の連絡先にまとまります。Marketing Cloud は連絡先をあとからマージできないので、自動のキーに任せると重複します。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_contact_builder_best_practices.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "連絡先キーは、Email Studio のサブスクライバーキーと同じ値です。特定のチャネルに依存しない、一意の値を使います。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 13,
+  "f": "connect",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters は、Synchronized Data Sources で Salesforce の取引先責任者のデータを同期したいと考えています。ただし、マーケティングに使えると判断したレコードだけを同期したいとのことです。取引先責任者の同期の設定で使える絞り込みの方法はどれですか?",
+  "o": [
+   "カスタムのブール型項目が true のレコードをすべて選ぶ",
+   "メールアドレスのあるレコードをすべて選ぶ",
+   "特定の日付以降に作成されたレコードをすべて選ぶ"
+  ],
+  "ex": "同期するレコードは、すべてのレコード、メールアドレスがあるレコード、指定日以降に作成されたレコード、ブール型項目の値で絞り込めます。「マーケティングに使える」と判断したかどうかは、CRM 側のブール型のカスタム項目で表し、その値が true のものだけを同期します。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_creating_and_interacting_with_synchronized_data_sources.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "同期の頻度は「Poll Schedule」で選びます。同期するレコードは、すべてのレコード、メールアドレスがあるレコード、指定日以降に作成されたレコード、Boolean項目の値で絞り込めます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 53,
+  "f": "connect",
+  "a": [
+   1,
+   3
+  ],
+  "q": "Northern Trail Outfitters は、Synchronized Data Sources で Salesforce の取引先責任者のデータを同期したいと考えています。ただし、取り込むデータを減らすため、送信できるレコードだけを同期したいとのことです。取引先責任者の同期の設定で使える2つの絞り込みの方法はどれですか?(2つ選択)",
+  "o": [
+   "過去6か月にメールを開封したレコードをすべて選ぶ",
+   "メールアドレスのあるレコードをすべて選ぶ",
+   "All Subscribers で Active のレコードをすべて選ぶ",
+   "HasOptedOutOfEmail が FALSE のレコードをすべて選ぶ"
+  ],
+  "ex": "同期の絞り込みは、メールアドレスがあるレコード、指定日以降に作成されたレコード、ブール型項目の値などで行います。メールアドレスがあり、ブール型の HasOptedOutOfEmail が FALSE のレコードに絞れば、送信できる人だけになります。開封の履歴や All Subscribers のステータスは、CRM の同期の条件には使えません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_creating_and_interacting_with_synchronized_data_sources.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "同期の頻度は「Poll Schedule」で選びます。同期するレコードは、すべてのレコード、メールアドレスがあるレコード、指定日以降に作成されたレコード、Boolean項目の値で絞り込めます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 14,
+  "f": "connect",
+  "a": [
+   2
+  ],
+  "q": "Marketing Cloud 管理者は、Marketing Cloud Connect のマルチ組織(Multi-Org)の有効化を依頼する担当になりました。この連携で、プロファイルセンター、プリファレンスセンターについて考慮すべきことはどれですか?",
+  "o": [
+   "各ビジネスユニットのプロファイルセンターのブランディングは、既定のビジネスユニットの設定を引き継ぐ",
+   "マルチ組織でつないだビジネスユニットごとに、プロファイルセンターが自動で作られる",
+   "マルチ組織では、ビジネスユニットの標準のプロファイルセンター、プリファレンスセンターは使えない",
+   "マルチ組織のアカウントのプロファイルセンターは、Salesforce CRM の設定で構成する"
+  ],
+  "ex": "原本の解説では、マルチ組織の構成では標準のプロファイルセンター、プリファレンスセンターに対応していないため、独自のセンターを用意する必要があるとされています。マルチ組織は Enterprise 2.0 で、ビジネスユニットごとに別の Salesforce 組織とつなぐ構成です。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_co_multi_org_account_configuration.htm&type=5",
+  "v": "原本どおり",
+  "x": "マルチ組織(Multi-Org)は、Enterprise 2.0アカウントで使える構成です。ビジネスユニットごとに、別々のSalesforce組織と接続できます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 17,
+  "f": "contacts",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters は、顧客の購入履歴を持つ新しいデータエクステンションを Marketing Cloud に追加したいと考えています。Data Designer で新しいデータエクステンションを既存の連絡先レコードにつなぐのに使うべき値はどれですか?",
+  "o": [
+   "連絡先を一意に識別する値(連絡先キー)",
+   "主キー",
+   "連絡先の一意のメールアドレス",
+   "Subscriber ID"
+  ],
+  "ex": "属性グループは、できるだけ連絡先キーで連絡先レコードにつなぎます。連絡先キーがあるのにメールアドレスでつなぐのは避けます。Subscriber ID は内部で使う代理キーで、マーケティングのデータの関連付けには使いません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_data_designer.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "属性グループや母集団は、できるだけ連絡先キーでリンクします。連絡先キーがあるのに、メールアドレス項目でリンクすることは避けます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 29,
+  "f": "contacts",
+  "a": [
+   0,
+   3
+  ],
+  "q": "ある顧客は、Webサイトに新しい EC のコーナーを作っており、取引データをカスタマージャーニーに使う予定です。この取り組みに役立つ Marketing Cloud の2つの機能はどれですか?(2つ選択)",
+  "o": [
+   "Data Designer",
+   "CloudPages",
+   "Web Analytics Connector",
+   "Content Builder"
+  ],
+  "ex": "原本の解答は Data Designer と Content Builder です。取引データをデータエクステンションに入れ、Data Designer で連絡先とつなげばジャーニーで使えます。Content Builder では、取引データを差し込むメールのコンテンツを作ります。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 34,
+  "f": "journey",
+  "a": [
+   2,
+   3,
+   4
+  ],
+  "q": "Northern Trail Outfitters(NTO)は、最も価値の高いアウトドアスポーツの顧客に、ドリップキャンペーンを行いたいと考えています。大幅な割引を出すので、優良顧客であるだけでなく、反応する見込みの高い顧客に絞りたいとのことです。オーディエンスを作る3つの条件はどれですか?(3つ選択)",
+  "o": [
+   "店舗までの距離",
+   "世帯の年齢構成",
+   "生涯購入金額",
+   "コンバージョン率",
+   "最後の購入日"
+  ],
+  "ex": "優良顧客かどうかは生涯購入金額で、反応する見込みはコンバージョン率と最後の購入日(最近買った人ほど反応しやすい)で判断できます。店舗までの距離や世帯の年齢構成は、価値や反応のしやすさを直接は表しません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 36,
+  "f": "users",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters は、ビジネスアナリストに連絡先のリストをインポートしてもらいたいと考えています。アナリストには Marketing Cloud Channel Manager と Marketing Cloud Viewer のロールがあります。ログインはできますが、連絡先のリストをインポートできません。適切な権限を与えるには、ユーザーをどう変更すべきですか?",
+  "o": [
+   "Marketing Cloud Viewer を外す",
+   "Marketing Cloud Security Administrator を加える",
+   "Marketing Cloud Channel Manager を外す",
+   "Distributed Sending のユーザーを加える"
+  ],
+  "ex": "Marketing Cloud Viewer は見るだけの最も制限の強いロールで、明示的な拒否はほかのロールの許可より優先されます。Security Administrator はセキュリティ設定とユーザーの活動を管理するロールで、インポートの権限を与えるものではありません。原本の解答は B ですが、ロールの説明と合わないため A としました。公式情報では確定できません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_marketing_cloud_roles.htm&type=5",
+  "v": "要確認(矛盾あり)",
+  "x": "Marketing Cloud Viewer(閲覧者)アカウント内のクロスチャネルの活動を見るだけ。作成、送信、レポートはできない。最も制限の強いロール"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 38,
+  "f": "email",
+  "a": [
+   1
+  ],
+  "q": "Northern Trail Outfitters は、オンラインで購入した顧客にフォローアップのメールを送って、EC サイトを改善したいと考えています。メールから移動せずに Webサイトの感想を集めるのに使える機能はどれですか?",
+  "o": [
+   "CloudPages のフォームのコンテンツブロック",
+   "Email Form のコンテンツブロック",
+   "ダイナミックコンテンツのブロック",
+   "Reference のコンテンツブロック"
+  ],
+  "ex": "Email Form のコンテンツブロックを使うと、メールの中にフォームを埋め込み、受信者はメールを開いたまま回答を送れます。CloudPages のフォームは Webページに移動して回答します。ダイナミックコンテンツは表示を切り替えるだけで、回答は集められません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_pm_retail_onboarding.htm&type=5",
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 39,
+  "f": "contacts",
+  "a": [
+   0,
+   2
+  ],
+  "q": "Marketing Cloud 管理者は、初めて Marketing Cloud のデータモデルを設定しています。Journey Builder では、注文があったかどうかで送るメッセージを変えます。既存のデータは次の2つです。・Customers: メールアドレス、名、姓などの購読者の情報 ・Orders: 注文の情報と、顧客の一意の識別子。ジャーニーでこのデータを使えるようにするため、Data Designer をどう設定すべきですか?(2つ選択)",
+  "o": [
+   "Customers のデータエクステンションを、Customer ID でデータモデルにつなぐ",
+   "Orders を Customers に多対多の関係でつなぐ",
+   "Orders を Customers に1対多の関係でつなぐ",
+   "Customers のデータエクステンションを、メールアドレスでデータモデルにつなぐ"
+  ],
+  "ex": "連絡先レコードには、メールアドレスではなく一意の識別子(連絡先キーと同じ Customer ID)でつなぎます。1人の顧客は複数の注文を持つので、Customers と Orders は1対多の関係にします。メールアドレスは家族で共有されることがあり、識別子には向きません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_data_designer.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "1対多の例は、1人の連絡先と、その人の複数の注文データをつなぐ関係です。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 41,
+  "f": "security-bp",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters は、販促メールから、購読者のメールアドレスを URL のパラメーターでランディングページに渡したいと考えています。メールアドレスを安全に渡せる Marketing Cloud の機能はどれですか?",
+  "o": [
+   "AMPscript の CloudPagesURL 関数",
+   "Web Analytics Connector",
+   "リンクのラッピング"
+  ],
+  "ex": "CloudPagesURL 関数は、暗号化したクエリ文字列を付けた URL を作ります。メールアドレスなどの顧客データを、平文の URL パラメーターではなく暗号化して CloudPages に渡せます。Web Analytics Connector は解析用のパラメーターを付ける機能で、暗号化はしません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_security_settings.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "AMPscript の CloudPagesURL 関数は、AES-GCMで暗号化したクエリ文字列を付けたURLを作ります。顧客データを平文のURLパラメーターではなく、暗号化して渡せます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 42,
+  "f": "data-quality",
+  "a": [
+   1
+  ],
+  "q": "Northern Trail Outfitters は All Subscribers にファイルをインポートしました。その後届いた結果ファイルには、admin@example.com をインポートできなかったと書かれていました。このレコードの理由として書かれているのはどれですか?",
+  "o": [
+   "Restricted Values",
+   "List Detective",
+   "Invalid Email Address",
+   "Skipped Records"
+  ],
+  "ex": "List Detective は、admin@ のような役割のアドレスなど問題のあるアドレスを見つけ、送信対象から外す仕組みです。リストではインポート時に確認されるため、All Subscribers へのインポートで弾かれ、結果ファイルに List Detective と書かれます。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_bounce_mail_management.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "List Detective は問題のあるアドレスを見つけ、送信対象から外します。リストではインポート時、データエクステンションでは送信時に確認します。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 43,
+  "f": "reports",
+  "a": [
+   2
+  ],
+  "q": "Marketing Cloud 管理者は、トリガー送信のメールの中の特定のコンテンツエリアの成果を調べるよう求められました。使うべきレポートはどれですか?",
+  "o": [
+   "Dynamic Content for Triggered Sends",
+   "Account Send Summary",
+   "Impression Tracking for Triggered Sends",
+   "Email Performance by Attribute"
+  ],
+  "ex": "インプレッショントラッキングは、メールの一部分(インプレッション領域)ごとに表示やクリックを集計します。トリガー送信用には、期間を選んでその領域の成果を見るレポートがあります。Account Send Summary は送信全体の集計で、コンテンツの一部分の成果はわかりません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_re_email_studio_reports.htm&type=5",
+  "v": "公式で確認済み",
+  "x": null,
+  "add": {
+   "text": "Analytics Builder の Impression Tracking for Triggered Send by Period レポートは、トリガー送信でのインプレッション領域(メールのコンテンツの一部分)の成果を、選んだ期間で示します。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=mktg.mc_re_email_studio_reports.htm&type=5",
+   "note": "Impression Tracking for Triggered Send by Period: shows the performance of an impression region for triggered sends by a time period you choose."
+  }
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 45,
+  "f": "subscribers",
+  "a": [
+   1
+  ],
+  "q": "Northern Trail Outfitters(NTO)は、メールのオーディエンスにすべてデータエクステンションを使っています。ある顧客から、数週間前に配信停止したのに、古いアドレスに毎日のダイジェストが届き続けると報告がありました。NTO の管理者は、該当のデータエクステンションから確かに削除しています。この状況を説明できるのはどれですか?",
+  "o": [
+   "データエクステンションのデータ保持の設定が間違っていた",
+   "All Subscribers にあるメールアドレスの状態が優先される",
+   "Contact Builder が正しく設定されていなかった",
+   "データエクステンションが送信可能に設定されていなかった"
+  ],
+  "ex": "データエクステンションの人も、送信した時点で All Subscribers に入ります。配信停止の状態は All Subscribers で管理され、データエクステンションから行を消しても、All Subscribers のレコードと状態はそのまま残ります。そのため、All Subscribers の状態を確認して直す必要があります。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_all_subscribers_list.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "All Subscribers で配信停止になった人は、すべてのリストとグループで配信停止になります。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 47,
+  "f": "security",
+  "a": [
+   3
+  ],
+  "q": "Marketing Cloud 管理者は、Marketing Cloud のユーザーのログイン情報で誰も API にアクセスできないようにしたいと考えています。これを制御するセキュリティ設定はどれですか?",
+  "o": [
+   "「Identity Verification」を選ぶ",
+   "「Enable Audit Trail Data Collection」を選ぶ",
+   "「Exclude API Users From Password Expiration」を外す",
+   "「Enable Username and Password for Web Services」を外す"
+  ],
+  "ex": "原本の解説では、「Enable Username and Password for Web Services」がオンだと、ユーザー名とパスワードで API(Webサービス)にアクセスでき、外すとできなくなるとされています。Audit Trail は記録の設定、パスワードの期限切れの除外は API ユーザーのパスワードの設定です。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 48,
+  "f": "email",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters(NTO)は、ブランドのガイドラインで、すべての印刷物に独自のブランドフォントを使っています。メールでもこのフォントを使いたいと考えています。メールのフォントについての推奨されるベストプラクティスはどれですか?",
+  "o": [
+   "ブランドのフォントに近い Webセーフフォントを本文に使う",
+   "すべての文字をブランドのフォントにして、メール全体を1枚の画像にする",
+   "メールの HTML を編集し、style タグの font-family に独自のフォントを指定する",
+   "すべての文字をブランドのフォントにした複数の画像でメールを作る"
+  ],
+  "ex": "メールソフトは独自のフォントを表示できないことが多いので、どの環境でも表示できる Webセーフフォントのうち、ブランドのフォントに近いものを使います。文字を画像にすると、画像が表示されないと読めず、迷惑メールと判定されやすくなります。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 49,
+  "f": "contacts",
+  "a": [
+   1,
+   3
+  ],
+  "q": "ある顧客は EC サイトを運営し、毎日3つのデータエクステンションにデータを取り込んでいます。・Orders: OrderId、CustomerID、OrderNumber、OrderDate、OrderTotal、GrandTotal ・Order_Details: ProductId、OrderID、Qty、UnitPrice、ExtendedPrice、Discount ・Products: ProductId、SKU、Name、Description、Cost、Price。Data Designer で行うべき2つの設定はどれですか?(2つ選択)",
+  "o": [
+   "連絡先レコードと Order_Details を1対1の関係でつなぐ",
+   "Orders と Order_Details を1対多の関係でつなぐ",
+   "Orders と Order_Details を1対1の関係でつなぐ",
+   "Order_Details と Products を1対1の関係でつなぐ"
+  ],
+  "ex": "1つの注文には複数の明細があるので、Orders と Order_Details は OrderID で1対多の関係にします。明細の各行は1つの商品を指すので、ProductId で Products につなぎます(原本の選択肢では1対1)。連絡先は Orders の CustomerID でつなぐので、明細を直接連絡先につなぐ必要はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_data_designer.htm&type=5",
+  "v": "原本どおり",
+  "x": "1対多の例は、1人の連絡先と、その人の複数の注文データをつなぐ関係です。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 52,
+  "f": "data-ext",
+  "a": [
+   1
+  ],
+  "q": "1人の購読者が1つの属性に複数の値を持つ場合、使うべき保存の方法はどれですか?",
+  "o": [
+   "プロファイル属性",
+   "データエクステンション",
+   "パブリケーションリスト",
+   "リスト"
+  ],
+  "ex": "リストのプロファイル属性は1人につき1つの値しか持てません。データエクステンションなら、項目を自由に設計でき、1人に複数の行を持たせたり、別のデータエクステンションに分けて関連付けたりできます。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_list_versus_data_extension.htm&type=5",
+  "v": "原本どおり",
+  "x": "データエクステンションは、自分で項目を設計できるデータの表です。リストより柔軟で、大量のデータや複雑な構造に向いています。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 54,
+  "f": "contacts",
+  "a": [
+   0,
+   1,
+   2
+  ],
+  "q": "Marketing Cloud 管理者は、エンタープライズのデータモデルを作り直す担当になりました。今のデータモデルはメールのチャネルだけですが、近いうちに SMS とプッシュにも広げる予定です。新しいモデルでデータの質を高く保つために、行うべき3つの準備はどれですか?(3つ選択)",
+  "o": [
+   "マーケティングに不要なデータを除く",
+   "レコードをつなぐための適切なキーを決めて割り当てる",
+   "データと項目を正規化して重複をなくす",
+   "使えるデータはすべて含める",
+   "すべてのデータソースに送信用の項目を持たせる"
+  ],
+  "ex": "チャネルが増えても1人の連絡先にまとまるよう、チャネルに依存しないキーを決めてレコードをつなぎます。不要なデータを除き、正規化して重複をなくすと、データの質と処理の性能が保てます。すべてのデータを含めたり、すべてのデータソースを送信可能にしたりする必要はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_contact_builder_best_practices.htm&type=5",
+  "v": "原本どおり",
+  "x": "連絡先キーはサブスクライバーキーと同じ値で、チャネルに依存せず変わらない値を使います。数値のIDは文字列型にします。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 55,
+  "f": "setup-home",
+  "a": [
+   3
+  ],
+  "q": "Marketing Cloud 管理者は、メールのリンクに UTM(Urchin Tracking Module)の変数を付けるよう求められました。これを可能にする機能はどれですか?",
+  "o": [
+   "Advertising Studio",
+   "Personalization Builder",
+   "Web and Mobile Analytics",
+   "Web Analytics Connector"
+  ],
+  "ex": "Web Analytics Connector は、メールのリンクの遷移先 URL に変数を自動で付け、Google Analytics などの Web解析サービスでメールからの流入を追跡できるようにします(設定と有効化は Parameter Manager で行います)。Web and Mobile Analytics は Webサイトやアプリでの行動を分析する機能です。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_wa_web_analytics_connector.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Web Analytics ConnectorGoogle Analyticsなどのウェブ解析サービスで、Marketing Cloud Engagementからの送信をもとにした分析ができるようにする"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 56,
+  "f": "security",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters のセキュリティチームには、Marketing Cloud で守らせたいパスワードのポリシーがあります。Marketing Cloud 管理者が Setup で設定できるポリシーはどれですか?",
+  "o": [
+   "パスワードの最小文字数、パスワードの複雑さ、パスワードの履歴、有効期間",
+   "パスワードの最小文字数、強力なパスフレーズの使用、パスワードの履歴、秘密の質問の数",
+   "パスワードの最小文字数、強力なパスフレーズの使用、一意のパスワード、秘密の質問の数",
+   "パスワードの最大文字数、パスワードの複雑さ、一意のパスワード、有効期間"
+  ],
+  "ex": "Security Settings では、Minimum Password Length(最小文字数)、Password Complexity(含める文字の種類)、Enforce Password History(過去のパスワードの再利用の制限)、User Passwords Expire In(有効期間)を設定できます。最大文字数や秘密の質問の数という設定はありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_security_settings.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Minimum Password Length はパスワードの最小文字数で、推奨は8文字以上です。Password Complexity は、必ず含める文字の種類を決めます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 61,
+  "f": "setup-home",
+  "a": [
+   1,
+   3
+  ],
+  "q": "Marketing Cloud 管理者は、初めて SFTP のユーザーを作ろうとしています。SFTP のユーザーを設定するときに考慮すべき2つの点はどれですか?(2つ選択)",
+  "o": [
+   "既定では、ユーザー名は今の Marketing Cloud の MID になる",
+   "パスワードは12文字以上にする",
+   "既定では、パスワードはログイン中のユーザーのパスワードになる",
+   "作ったあと、SFTP を使うにはユーザーを有効にする必要がある"
+  ],
+  "ex": "原本の解答は、パスワードの最小文字数とユーザーの有効化です。SFTP のユーザーは Setup の FTP Accounts で作り、Marketing Cloud のログインとは別のユーザー名とパスワードを使います。そのため、ログイン中のユーザーのパスワードが引き継がれることはありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_add_ftp_accounts.htm&type=5",
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 62,
+  "f": "contacts",
+  "a": [
+   3
+  ],
+  "q": "Northern Trail Outfitters は、Customers、Orders、Products の3つのデータエクステンションの顧客データを使うウェルカムジャーニーを作りたいと考えています。Contact Builder でこれを実現する最もよい方法はどれですか?",
+  "o": [
+   "Customers を連絡先に、Orders を Customers に、Products を Orders につなぐ、3つの別々の属性グループを作る",
+   "連絡先を Customers に、Orders を Products に、Products を Customers につなぐ、1つの属性グループを作る",
+   "各データエクステンションを直接連絡先につなぐ、3つの別々の属性グループを作る",
+   "Customers を連絡先に、Orders を Customers に、Products を Orders につなぐ、1つの属性グループを作る"
+  ],
+  "ex": "属性グループは、複数のデータエクステンションを1つにまとめた単位です。連絡先から Customers、Orders、Products と順につなぐ1つの属性グループにすれば、ジャーニーで顧客ごとの注文と商品の情報をたどれます。注文や商品を直接連絡先につなぐと、関係が正しく表せません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_data_designer.htm&type=5",
+  "v": "原本どおり",
+  "x": "属性グループは、複数のデータエクステンションを1つにまとめた単位です。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 65,
+  "f": "data-ext",
+  "a": [
+   2,
+   3
+  ],
+  "q": "Northern Trail Outfitters は、データウェアハウスの購読者データを Marketing Cloud に取り込みたいと考えています。データエクステンションを作るとき、サイズや拡張性の点であまり気にしなくてよい2つの項目の型はどれですか?(2つ選択)",
+  "o": [
+   "Text",
+   "Decimal",
+   "Number",
+   "Boolean"
+  ],
+  "ex": "原本の解答は Number と Boolean です。Text は長さを、Decimal は桁数と小数点以下の桁数を決める必要がありますが、Number と Boolean は長さの指定がなく、サイズを気にする必要がほとんどありません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 66,
+  "f": "setup-home",
+  "a": [
+   1
+  ],
+  "q": "Setup Assistant とは何ですか?",
+  "o": [
+   "繰り返し行う管理作業を外部に任せるサポートサービス",
+   "優先順位を付けたアカウント設定のチェックリスト",
+   "ヘルプとトレーニングの中で、設定の資料だけを探す検索",
+   "ビジネスユニットの主要な指標を表示するダッシュボード"
+  ],
+  "ex": "Setup Assistant は、新しいアカウントを用途に合わせて設定する手順を案内するツールで、原本では優先順位を付けた設定のチェックリストとされています。データ構造の実装も助け、最後にメールを作成、送信、追跡します。サポートサービスやダッシュボードではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_setup_assistant.htm&type=5",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "Setup Assistant は、新しいアカウントを用途に合わせて設定する手順を案内するツールです。組織に合ったデータ構造の実装も助け、最後にメールを作成、送信、追跡します。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_setup_assistant.htm&type=5",
+   "note": "Setup Assistant guides configuring a new account for your use case, helps implement a data structure, and ends with creating, sending, tracking an email."
+  }
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 68,
+  "f": "data-ext",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters は販促メールを送る準備をしています。オーディエンスのファイルをデータエクステンションに取り込みましたが、送信を予約する Marketing Cloud 管理者の画面に表示されません。何を確認すべきですか?",
+  "o": [
+   "データエクステンションが送信可能(Sendable)に設定されている",
+   "データエクステンションに Salesforce ID がある",
+   "データエクステンションが送信可能かつテスト可能に設定されている",
+   "データエクステンションが連絡先キーでつながっている"
+  ],
+  "ex": "送信に使うには、データエクステンションの作成時に「Is Sendable」を選び、Send Relationship でサブスクライバーキーとの対応を決めます。送信可能でないデータエクステンションは、送信の対象に表示されません。テスト可能(Is Testable)はテスト送信に使うための設定です。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_create_data_extension.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "送信に使うには、作成時に「Is Sendable」を選びます。テスト送信に使うには「Is Testable」を選びます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 72,
+  "f": "data-ext",
+  "a": [
+   2
+  ],
+  "q": "標準のサブスクリプションセンターで、独自の購読ステータスを持たせるのに使えるデータ構造はどれですか?",
+  "o": [
+   "グループ",
+   "データエクステンション",
+   "パブリケーションリスト"
+  ],
+  "ex": "パブリケーションリストを使うと、カテゴリごとに購読と配信停止の状態を持てます。標準のサブスクリプションセンターはデータエクステンションに対応しておらず、グループも表示されません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_list_versus_data_extension.htm&type=5",
+  "v": "原本どおり",
+  "x": "データエクステンションに送るときは、パブリケーションリストを選びます。購読者はこれを使って、カテゴリ単位で配信停止できます。"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 73,
+  "f": "security-bp",
+  "a": [
+   0
+  ],
+  "q": "Marketing Cloud 管理者は、メールの送信に必要な機密情報を Marketing Cloud に取り込んで保存しないようにしたいと考えています。導入すべき方法はどれですか?",
+  "o": [
+   "Tokenized Sending",
+   "Transparent Data Encryption",
+   "Key Management",
+   "Field-Level Encryption"
+  ],
+  "ex": "Tokenized Sending では、機密情報を自社のシステムから API で渡して送信時にだけ使い、Marketing Cloud には保存しません。Field-Level Encryption や Transparent Data Encryption は保存したデータを暗号化する方法で、Key Management は暗号化などに使うキーの管理です。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_tokenized_sending1.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Tokenized SendingEngagement のデータベースに保存できないほど機密性の高いデータを、自社システムから API で渡し、送信時にだけ使う"
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 74,
+  "f": "maintenance",
+  "a": [
+   2
+  ],
+  "q": "Northern Trail Outfitters は、この1年に送ったマーケティングコミュニケーションに顧客がどう反応しているかを知りたいと考えています。Einstein Engagement Scoring のダッシュボードにデータを表示するには、どうすべきですか?",
+  "o": [
+   "予測アルゴリズムを1つ選び、Deploy をクリックする",
+   "Deploy をクリックすれば、すぐに結果が表示される",
+   "対象のチャネル(メール、プッシュ、SMS)を選び、Activate をクリックする",
+   "Activate をクリックし、メールの通知を待つ"
+  ],
+  "ex": "原本の解説では、Einstein Engagement Scoring は、スコアを出すチャネル(メール、プッシュ、SMS)を選んで Activate をクリックすると、データの分析が始まるとされています。Deploy という操作ではなく、結果はすぐには表示されません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 80,
+  "f": "connect",
+  "a": [
+   2
+  ],
+  "q": "Northern Trail Outfitters は、Marketing Cloud Connect で Sales Cloud のデータをジャーニーに使っています。あるユーザーから、Sales Cloud から来るデータが最新ではないと報告がありました。Marketing Cloud 管理者は、どこから調べ始めるべきですか?",
+  "o": [
+   "Contact Builder > Synchronized Data Extensions",
+   "Automation Studio > File Transfers",
+   "Contact Builder > Data Sources",
+   "Email Studio > Synchronized Data Extensions"
+  ],
+  "ex": "同期の設定と状態は、Contact Builder の「Data Sources」の「Synchronized」で確認します。同期の頻度(Poll Schedule)、行数と進行状況、一時停止と再開もここで扱います。原本の解答は A でしたが、公式ヘルプで同期データソースを確認、操作する場所は Data Sources とされているため C としました。ただし、同期データエクステンションの中身から確かめる考え方もあり、確定できません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_cab_interact_with_synchronized_data_sources.htm&type=5",
+  "v": "要確認(矛盾あり)",
+  "x": "Contact Builderの「Data Sources」タブにある「Synchronized」で、同期するオブジェクトと項目を選びます。Salesforceの標準オブジェクトとカスタムオブジェクトに対応します。"
+ }
+]

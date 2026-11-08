@@ -1,0 +1,229 @@
+[
+ {
+  "label": "v2025-09-22",
+  "no": 3,
+  "qe": "Northern Trail Outfitters uses Parameter Manager to automatically tag links, they want to include a Campaign Identifier to the links within a specific campaign message. At which level should the utm_campaign value be configured?",
+  "oe": [
+   "Subscriber",
+   "Link",
+   "Email",
+   "Account"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": "For Northern Trail Outfitters to include a Campaign Identifier (utm_campaign) to the links within a specific campaign message using Parameter Manager, the utm_campaign value should be configured at the Email level. This allows the specific campaign identifier to be applied to all links within that particular email campaign, ensuring consistent tracking and reporting across all links included in that email. Reference: Salesforce Help - Parameter Manager",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 8,
+  "qe": "Northern Trail Outfitters (NTO) has decided to use Journey Builder to launch event-driven lifecycle marketing programs. This includes personalized interactions with customers with the goal of increasing purchase frequency. Which two pieces of information would help NTO achieve this objective? Choose 2 answers",
+  "oe": [
+   "Products purchased from a competitor.",
+   "Number of items per order.",
+   "Channel preference of customers.",
+   "Last purchase date"
+  ],
+  "ans": [
+   2,
+   3
+  ],
+  "ans_raw": "Answer: C D",
+  "expl": "To enhance personalized interactions and increase purchase frequency using Journey Builder: Channel Preference: Understanding the preferred communication channels of customers allows for personalized and effective outreach, potentially increasing engagement and response rates. Last Purchase Date: Tracking when a customer last made a purchase can help in timing communications effectively, triggering reminders or promotions at optimal times to encourage repeat purchases. Reference: Salesforce Marketing Cloud Journey Builder Best Practices",
+  "also": [
+   [
+    "v2025-09-22",
+    27
+   ]
+  ]
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 9,
+  "qe": "NTO wants to format links for consumption by Google Analytics 360. NTO wants to make sure they do not have any data which could be considered Personally Identifiable information (PII) within their links. Which three values could be used as personalization strings in query string parameters? Choose 3 answers",
+  "oe": [
+   "Product Code",
+   "Application ID",
+   "Subscriber ID",
+   "Email Address",
+   "Name"
+  ],
+  "ans": [
+   0,
+   1,
+   2
+  ],
+  "ans_raw": "Answer: A B C",
+  "expl": "For NTO to format links for Google Analytics 360 without including PII, they should use nonpersonally identifiable information in the query string parameters. Suitable options include: A). Product Code: Identifies a product without revealing customer identity. B). Application ID: An internal reference that does not disclose personal details. C). Subscriber ID: A unique identifier for a subscriber that is not directly tied to personal details like an email or name. Reference: Salesforce Help - Personalization Strings and PII",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 12,
+  "qe": "Analyst of The Northern Trail Outfitters(NTO) marketing team needs to pull email metrics for an upcoming quarterly company meeting. These metrics need to be reported per email campaign for each of NTO's Business Units:  - Number of Sends - Delivery Rate - Overall Bounce Rate - Block Bounce Rate *Open Rate - Click Rate - Complaint Rate - Unsubscribe Rate Which email report should NTO's Marketing Analyst pull from Marketing Cloud to get this information?",
+  "oe": [
+   "Campaign Email Tracking Report",
+   "Email Performance Over Time Report",
+   "Email Send Report",
+   "Account Send Summary Report"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Answer: C",
+  "expl": "For NTO's requirement to pull detailed email metrics for each campaign across different Business Units, the appropriate report to use is the Email Send Report. This report provides comprehensive details on metrics such as number of sends, delivery rate, various bounce rates, open rate, click rate, complaint rate, and unsubscribe rate for individual email sends, which aligns well with the specified reporting needs for the quarterly meeting. Reference: Salesforce Help - Email Send Report",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 13,
+  "qe": "Which three statements should be considered before using Goals in Journey Builder? Choose 3 answers",
+  "oe": [
+   "Goal target statistics are stored in a data extension.",
+   "Goals are created to evaluate journey performance.",
+   "Goals can act as exit criteria.",
+   "Contacts are evaluated against the goal after a wait activity.",
+   "Each contact is assigned an individual goal."
+  ],
+  "ans": [
+   1,
+   2,
+   3
+  ],
+  "ans_raw": "Answer: B C D",
+  "expl": "Before using Goals in Journey Builder, consider the following: B). Goals are created to evaluate journey performance: Goals help measure how well a journey is performing against specific objectives, allowing for adjustments and improvements. C). Goals can act as exit criteria: When a contact meets the goal criteria, they can be set to exit the journey, making goals a powerful tool to dynamically manage contact flow based on behavior or achievements. D). Contacts are evaluated against the goal after a wait activity: This setup ensures that contacts have time to perform the expected action before being evaluated against the goal, which can be crucial for accurately measuring engagement and responses. Reference: Salesforce Help - Journey Builder Goals",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 14,
+  "qe": "Northern Trail Outfitters (NTO)hired a new Marketing Cloud admin, who was told all emails come from info@email.nto.com. the previous admin did not leave any documentation. Which aspects would confirm a Sender Authentication Package (SAP) has been set up on the account? 2 answers",
+  "oe": [
+   "Upon receiving an email, all tracked links start with click.email.nto.com",
+   "The login page for Marketing Cloud Users is login.email.nto.com and is branded with NTO colors",
+   "Cloudpages personalized URLs are served from cloud.email.nto.com",
+   "Users receive Marketing Cloud password reset emails from help@email nto.com"
+  ],
+  "ans": [
+   0,
+   2
+  ],
+  "ans_raw": "Answer: A C",
+  "expl": "To verify if a Sender Authentication Package (SAP) has been set up, check: Tracked Links Prefix: If all links in emails sent start with click.email.nto.com, it indicates that a SAP is configured for link rewriting to include the company's domain. CloudPages URL: Personalized URLs for CloudPages that use the domain cloud.email.nto.com also suggest that SAP is set up, ensuring that all customer-facing URLs reflect the organization's branding. Reference: Salesforce Marketing Cloud SAP Documentation",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 20,
+  "qe": "What are two possible outcomes when \"Send as Multipart MIME\" is selected during the send process? Choose 2 answers",
+  "oe": [
+   "Open and click activity are tracked in either version.",
+   "The email will avoid detection by various SPAM filters.",
+   "An auto-generated text version will be sent with your HTML email.",
+   "A custom text version will be sent with your HTML email."
+  ],
+  "ans": [
+   0,
+   2
+  ],
+  "ans_raw": "Answer: A C",
+  "expl": "When selecting \"Send as Multipart MIME\" during the email send process: Activity Tracking: Both the HTML and text versions of the email allow for the tracking of opens and clicks, ensuring that engagement data is captured regardless of the version the recipient views. Auto-generated Text Version: Alongside the HTML email, a text version is automatically generated and sent. This ensures that recipients whose email clients do not support HTML can still receive and read the email content. Reference: Salesforce Marketing Cloud Email Send Options",
+  "src": "原本の2つ目の問題集(Marketing Cloud Administrator)の NO.3。同じページ内で番号を続けて Q20 とした",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 24,
+  "qe": "The Northern Trail Outfitters (NTO) marketing team is launching a new email campaign. NTO's Email Specialist wants to perform quality assurance checks on the email prior to send and has asked about using the Validate functionality for this effort. Which three items will Validate check in an email message? Choose 3 answers",
+  "oe": [
+   "Each content area specified in a dynamic content rule exists.",
+   "Words or phrases used may trigger spam filters.",
+   "Grammar and spelling in the email text is correct.",
+   "Correct syntax is used on any AMPScript in the email's code.",
+   "Personalization strings map to attributes or data extension fields"
+  ],
+  "ans": [
+   0,
+   3,
+   4
+  ],
+  "ans_raw": "Answer: A D E",
+  "expl": "In Salesforce Marketing Cloud, the Validate functionality in Email Studio is designed to check specific technical elements of an email to ensure it is correctly configured before sending. The Validate function will check the following items: A). Each content area specified in a dynamic content rule exists. This check ensures that all content areas referred to by dynamic rules are correctly linked and available, preventing errors when the dynamic content is supposed to display based on subscriber attributes or behaviors. D). Correct syntax is used on any AMPScript in the email's code. Validate function checks for syntax errors in AMPScript code within the email. This is crucial as it prevents runtime errors that could occur when the email is processed, ensuring that all scripting functions as intended to provide personalization and dynamic content. E). Personalization strings map to attributes or data extension fields. This ensures that all personalization strings used in the email correctly correspond to attributes or fields in the data source, thereby guaranteeing that personalization and dynamic content display correctly. These checks are fundamental for ensuring the technical accuracy of the email content, scripting, and personalization, aiding in delivering a high-quality and effective email campaign. References: Salesforce Marketing Cloud Email Studio Documentation",
+  "src": "原本の2つ目の問題集(Marketing Cloud Administrator)の NO.7。同じページ内で番号を続けて Q24 とした",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 28,
+  "qe": "A Consultant has a data extension that contains all current product information. The customer wants to refresh data each morning by importing a CSV containing today's product catalog. The product catalog is never the same; products can be added and removed. Which import type should be used?",
+  "oe": [
+   "Overwrite",
+   "Add Only",
+   "Add/Update",
+   "Update Only"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": "Given that the customer's product catalog changes daily with products being added and removed, the import type that should be used is A. Overwrite. This import type will replace the existing data in the data extension with the new data from the CSV file each morning, ensuring that the data extension always reflects the most current product catalog without any outdated entries. Reference: Salesforce Help - Import Types",
+  "src": "原本の2つ目の問題集(Marketing Cloud Administrator)の NO.11。同じページ内で番号を続けて Q28 とした",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 29,
+  "qe": "Northern Trail Outfitters (NTO) experienced a 24-hour website outage beginning on a peak shopping day. As a result, a number of logged-in customers' shopping sessions were disrupted. When the site is back online, the retailer would like to encourage those shoppers to return to the site and continue their shopping. What action should NTO take?",
+  "oe": [
+   "Import a file of logged-in customers into NTO's existing Abandoned Cart journey in Journey Builder.",
+   "Create a user-initiated message to logged-in customers to send once the website is restored.",
+   "Do not send an email, as outage may have increased negative sentiment, resulting in unsubscribes .",
+   "Create and send an apology email that includes a discount for a future purchase to all customers"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Answer: D",
+  "expl": "Given the website outage experienced by NTO during a peak shopping period: D). Create and send an apology email that includes a discount for a future purchase to all customers: This action acknowledges the inconvenience caused by the outage and incentivizes customers to return to the site. Offering a discount can help mitigate any negative sentiment and encourage customers to complete their interrupted purchases. This approach helps to maintain customer goodwill and potentially recover some of the lost sales due to the outage. Reference: Salesforce Help - Email Best Practices",
+  "src": "原本の2つ目の問題集(Marketing Cloud Administrator)の NO.12。同じページ内で番号を続けて Q29 とした",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 32,
+  "qe": "Northern Trail Outfitters was given a set of requirements from their governance team to protect against misuse of customer data. One item mandated Marketing Cloud users should NOT be able to export data without approval from the governance team, however, users should still be able to view data within the system. Which feature would allow compliance with this requirement?",
+  "oe": [
+   "Export Email Allowlist",
+   "IP Allowlist",
+   "Identity Verification",
+   "Audit Trail"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "Answer: A",
+  "expl": "The Export Email Allowlist feature allows the admin to specify a list of email addresses that are authorized to receive data exports from Marketing Cloud. This feature can help protect against misuse of customer data by preventing unauthorized users from exporting data without approval. The other features do not directly address the requirement of restricting data exports.",
+  "src": "原本の2つ目の問題集(Marketing Cloud Administrator)の NO.15。同じページ内で番号を続けて Q32 とした",
+  "also": []
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 33,
+  "qe": "Which Product enables a Marketing Cloud admin to observe customer behavior, build performance profiles and deliver the next best content?",
+  "oe": [
+   "Content Builder",
+   "Einstein Send Time Optimization",
+   "Audience Builder",
+   "Einstein Email Recommendations"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "Answer: D",
+  "expl": "Einstein Email Recommendations is a product that enables a Marketing Cloud admin to observe customer behavior, build performance profiles and deliver the next best content. This product uses predictive intelligence to recommend products or content based on each customer's preferences and actions. The other products do not have this capability.",
+  "src": "原本の2つ目の問題集(Marketing Cloud Administrator)の NO.16。同じページ内で番号を続けて Q33 とした",
+  "also": []
+ }
+]

@@ -1,0 +1,613 @@
+[
+ {
+  "label": "v2026-02-19",
+  "no": 2,
+  "qe": "Northern Trail Outfitters just purchased Marketing Cloud.Which three tasks would the Marketing Cloud admin be guided through in Setup Assistant?Choose 3 answers",
+  "oe": [
+   "Creating users and assigning roles which meet their job functions",
+   "Creating a SMS message and sending a mobile campaign",
+   "Classifying sends and defining parameters for email sends",
+   "Building the data structure used to store audience information",
+   "Importing data into contacts using the Data Loader"
+  ],
+  "ans": [
+   0,
+   3,
+   4
+  ],
+  "ans_raw": "<b>Correct Answer: A,D,E</b>",
+  "expl": "In the Setup Assistant for a new Salesforce Marketing Cloud instance, the admin is guided through several critical tasks to establish the operational environment:Creating users and assigning roles: Setup Assistant helps define user roles and permissions tailored to specific job functions, ensuring proper access control and workflow management.Building the data structure: This task involves creating data extensions and attribute groups to effectively organize and manage customer data.Importing data into contacts: Utilizing tools like Data Loader, the admin can import existing customer data into Marketing Cloud, setting the foundation for targeted marketing activities.Reference: Salesforce Marketing Cloud Setup Assistant",
+  "also": [
+   [
+    "v2025-09-22",
+    1
+   ]
+  ]
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 3,
+  "qe": "A Marketing Cloud admin at a bank is asked to avoid storing sensitive data in the cloud. This data will only be sent to Marketing cloud to execute a send.Which feature would the admin use to meet this requirement?",
+  "oe": [
+   "Tokenized Sending",
+   "List Sending",
+   "Field Level Encryption.",
+   "Distributed Marketing Sends."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "To avoid storing sensitive data in the cloud, the admin should use Tokenized Sending. This feature allows Marketing Cloud to send emails without storing sensitive data such as credit card numbers or social security numbers. Instead, Marketing Cloud uses tokens that are replaced with actual data at send time by an external system.",
+  "also": [
+   [
+    "v2025-09-22",
+    2
+   ]
+  ]
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 6,
+  "qe": "Northern Trail Outfitters has a mobile app.Which two products would allow them to send push notifications to customers with their mobile app?Choose 2 answers",
+  "oe": [
+   "Journey Builder",
+   "Contact Builder",
+   "Mobile Connect",
+   "Mobile Push"
+  ],
+  "ans": [
+   0,
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: A,D</b>",
+  "expl": "Journey Builder and Mobile Push are two products that would allow them to send push notifications to customers with their mobile app. Journey Builder is a product that allows marketers to create and execute cross-channel customer journeys based on events, activities, and goals. Journey Builder can be used to send push notifications to mobile app users as part of a journey. Mobile Push is a product that allows marketers to create, manage, and deliver push notifications to mobile app users. Mobile Push can be used to send push notifications as standalone messages or as part of a journey",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 9,
+  "qe": "How are publication lists used in the Marketing Cloud?",
+  "oe": [
+   "To send communication to all subscribers, regardless of opt -in status.",
+   "To manage subscribers in guided and triggered email sends.",
+   "To build dynamic content rules by subscriber type.",
+   "To allow subscribers to opt-down/out instead of unsubscribing from all."
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: D</b>",
+  "expl": "Publication lists in the Marketing Cloud are used to allow subscribers to opt-down or opt-out of specific types of communications without unsubscribing from all communications. This functionality enables more granular control over communication preferences, helping organizations maintain engagement with subscribers who might not be interested in all content but still wish to receive certain types of messages.Reference: Salesforce Help - Publication Lists",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 11,
+  "qe": "Northern Trail Outfitters wants a data model in Marketing Cloud which will prevent them from duplicating, or even triplicating, records.How should the unique identifier of the data model be setup if the Mobile Push and Email channels are used within the same account?",
+  "oe": [
+   "Use the auto-generated keys supplied by Marketing Cloud at time of record creation for each channel used.",
+   "Use a third-party system to identify and delete duplicate Contact Keys.",
+   "Strategically control the Contact Key values and tie records together across channels using this key.",
+   "Strategically control the Contact Key values in email, but let Marketing Cloud automatically tie records as needed from Mobile Push."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>Correct Answer: C</b>",
+  "expl": "The best way to prevent duplicate records in Marketing Cloud is to strategically control the Contact Key values and tie records together across channels using this key. The Contact Key is a unique identifier for each contact in Marketing Cloud, and it can be set by the admin or automatically generated by Marketing Cloud. If the same Contact Key is used for a contact in both email and mobile push channels, then the contact will be unified and not duplicated.",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 13,
+  "qe": "Northern Trail Outfitters wants to use Synchronized Data Sources to sync Contact data from Salesforce CRM.However, they only want to sync records that they have identified as marketable.Which filtering option in the synchronization settings could be used when configuring the Contact synced object?",
+  "oe": [
+   "Select all records where custom boolean field is true",
+   "Select all records that have an email address",
+   "Select all records created since a certain date"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 53,
+  "qe": "Northern Trail Outfitters wants to use Synchronized Data Sources to sync Contact data from Salesforce CRM.However, they only want to sync records they would be able to send to reducing the amount of data being brought over.Which two filtering options could be used when configuring the Contact synced object?Choose 2 answers",
+  "oe": [
+   "Select all records which have opened an email in the past six months",
+   "Select all records with an email address",
+   "Select all records which are active in All Subscribers",
+   "Select all records where Has OptedOutofEmail is FALSE"
+  ],
+  "ans": [
+   1,
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: B,D</b>",
+  "expl": "Synchronized Data Sources can use two types of filters: attribute filters and relationship filters. Attribute filters are based on the fields of the object being synced, such as email address or opt-out status. Relationship filters are based on the fields of a related object, such as account or campaign. Filtering by email open activity or subscriber status is not possible with Synchronized Data Sources.",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 14,
+  "qe": "A Marketing Cloud admin is tasked with requesting Marketing Cloud Connect Multi-Org enablement.What consideration should be given to the preference profile centers for this integration?",
+  "oe": [
+   "Branding for each business units' profile centers will be inherited from the default business unit setup.",
+   "Profile/Preference centers are automatically created for each business unit connected through Multi-org",
+   "Multi org does not support the standard profile preference center for the business units.",
+   "Profile/Preference centers for Multi-Org accounts are configured in the Salesforce CRM settings."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>Correct Answer: C</b>",
+  "expl": "When enabling Multi-Org in Marketing Cloud Connect, it's important to consider:The Multi-Org configuration does not support using a standard profile and preference center across connected business units. Each business unit operates independently.Admins must consider alternative strategies for managing subscriber preferences across multiple Salesforce orgs linked to different business units in Marketing Cloud.Reference: Salesforce Marketing Cloud Connect Setup Guide",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 17,
+  "qe": "Northern Trail Outfitters wants to add new data extensions containing customer purchases to their Marketing Cloud account Which value should link these new data extensions in Data Designer to the existing contact records?",
+  "oe": [
+   "Unique Contact Identifier",
+   "Primary key",
+   "Unique Contact email address",
+   "Subscriber ID"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "In Salesforce Marketing Cloud, linking new data extensions in Data Designer to existing contact records requires using a \"Unique Contact Identifier.\" This identifier ensures that each record in the data extension can be uniquely associated with a corresponding record in the contact database, thereby enabling accurate targeting, segmentation, and personalization. It is vital that this identifier is consistently used across data extensions to maintain data integrity and proper linkages.Reference: https://help.salesforce.com/",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 29,
+  "qe": "A customer is developing a new eCommerce section of their website and plans to leverage transactional data in customer journeys.Which two Marketing Cloud features will support this effort?Choose 2 answers",
+  "oe": [
+   "Data Designer",
+   "Cloud Pages",
+   "Web Analytics Connector",
+   "Content Builder"
+  ],
+  "ans": [
+   0,
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: A,D</b>",
+  "expl": "To support the development of a new eCommerce section and leverage transactional data in customer journeys, the following Marketing Cloud features are relevant:A). Data Designer: Enables the design and configuration of data models within Contact Builder, crucial for managing transactional data effectively for use in journeys.D). Content Builder: Facilitates the creation of personalized email content using transactional data, enhancing the relevance and engagement of communications sent to customers.These features are essential for integrating and utilizing transactional data to drive personalized customer interactions within eCommerce contexts.Reference: Salesforce Help - Data Designer Reference: Salesforce Help - Content Builder\n\nLearn a LanguagePrep for TestsFind Study Aids",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 34,
+  "qe": "Northern Trail Outfitters (NTO) wants to implement a drip campaign to its highest -value outdoor sports customers. NTO is including a deep product discount and wants to limit the audience to not only its best customers, but also those customers most likely to respond.Which three criteria should the customer use to create an audience for this campaign?Choose 3 answers",
+  "oe": [
+   "Proximity to Store",
+   "Ages in Household",
+   "Lifetime Purchase Value",
+   "Conversion Rate",
+   "Last Purchase Date"
+  ],
+  "ans": [
+   2,
+   3,
+   4
+  ],
+  "ans_raw": "<b>Correct Answer: C,D,E</b>",
+  "expl": "To effectively target high-value outdoor sports customers likely to respond to a deep product discount:Lifetime Purchase Value: Identify customers who have demonstrated significant financial commitment to the brand over time.Conversion Rate: Focus on customers with a higher likelihood of responding based on past conversion metrics.Last Purchase Date: Include customers who have made recent purchases, indicating active engagement and potential interest in new offers.Reference: Salesforce Marketing Cloud Audience Segmentation",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 36,
+  "qe": "Northern Trail Outfitters wants to business analyst to import contact lists. The analyst has the following Marketing Cloud roles: Marketing Cloud Channel Manager and Marketing Cloud Viewer. The analyst logged in but is unable to import contact lists.How should the user be updated to allow the analyst the appropriate access?",
+  "oe": [
+   "Remove Marketing Cloud Viewer",
+   "Add Marketing Cloud Security Administrator",
+   "Remove Marketing Cloud Channel manager",
+   "Add Distributed Sending user"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>Correct Answer: B</b>",
+  "expl": "To allow the business analyst at Northern Trail Outfitters to import contact lists, the role needed is one that grants permissions for import activities. Among the options:B). Add Marketing Cloud Security AdministratorThis role would provide the analyst with the necessary permissions to manage data imports. The Marketing Cloud Security Administrator role includes broader permissions that encompass data management and security settings, which are required for importing contact lists.Reference: Salesforce Help - User Roles and Permissions",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 38,
+  "qe": "Northern Trail Outfitters wants to optimize their eCommerce site by sending a follow-up Email to a customer alter an online purchase is made.What feature could be used to solicit website feedback without navigating away from the email?",
+  "oe": [
+   "Cloud Page forms Content Block",
+   "Email Form Content Block",
+   "Dynamic Content Block",
+   "Reference Content Block"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>Correct Answer: B</b>",
+  "expl": "To solicit website feedback directly within an email without navigating away from the email, the feature to use is B. Email Form Content Block. This block allows subscribers to submit feedback directly within the email, enhancing user experience and increasing the likelihood of feedback submission since the subscriber does not need to leave their email environment.Reference: Salesforce Help - Email Form Content Block",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 39,
+  "qe": "A Marketing Cloud admin is configuring the Marketing Cloud data model for the first time. Journey Builder with of messages being sent to customers, based on if there has been an order or not. There are two existing data model Orders:- Customers contains information about subscribers including Email Address, First Name, Last name.- Orders contains information about the orders and includes the unique identifier of the customer In which two ways should the admin configure Data Designer to allow this data to be used within a journey?Choose 2 answers",
+  "oe": [
+   "Link the Customers data extension to the data model using Customer ID",
+   "Link the Orders data extension to the Customers data extension using a Many-to-Many relationship",
+   "Link the Orders data extension to the Customers data extension using a One-to-Many relationship",
+   "Link the Customers data extension to the data model using Email Address"
+  ],
+  "ans": [
+   0,
+   2
+  ],
+  "ans_raw": "<b>Correct Answer: A,C</b>",
+  "expl": "To configure the data model in Marketing Cloud for effective use in Journey Builder:Customer ID Linkage: Connect the Customers data extension to the data model using the Customer ID. This serves as a unique identifier to relate customer records across different data extensions.One-to-Many Relationship: Establish a One-to-Many relationship between the Orders data extension and the Customers data extension. This setup accurately reflects that each customer can have multiple orders but each order is linked to only one customer, facilitating targeted messaging based on order status.Reference: Salesforce Marketing Cloud Data Designer Documentation",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 41,
+  "qe": "Northern Trail Outfitters wants to pass the email address of a subscriber to a landing page through a URL parameter from a promotional email.Which Marketing Cloud capability allows for secure transmission of the email address?",
+  "oe": [
+   "Cloud Pages URL AMP script function",
+   "Web Analytics Connector",
+   "Link Wrapping"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "To pass the email address of a subscriber to a landing page through a URL parameter from a promotional email securely, the admin should use the CloudPagesURL AMPscript function. This function encrypts the email address and other parameters and generates a unique URL for each subscriber. The landing page can then use the RequestParameter AMPscript function to decrypt the email address and other parameters",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 42,
+  "qe": "Northern Trail Outfitters has Imported a file Into All Subscribers. They then received a results file stating admin@example.com could NOT be imported.Which error code would the file contain for this record?",
+  "oe": [
+   "Restricted Values",
+   "List Detective",
+   "Invalid Email Address",
+   "Skipped Records"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>Correct Answer: B</b>",
+  "expl": "When Northern Trail Outfitters imported a file into All Subscribers and received a results file indicating that admin@example.com could not be imported, the likely error code that would appear in the file is B. List Detective. List Detective is a built-in functionality of Marketing Cloud that prevents the addition of email addresses that do not meet certain criteria to ensure list quality and compliance. It automatically blocks common role-based emails or improperly formatted email addresses.Reference: Salesforce Help - List Detective",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 43,
+  "qe": "A Marketing Cloud admin is asked to understand how a certain content area within a Triggered Send Email is performing.Which report should be used?",
+  "oe": [
+   "Dynamic Content for Triggered Sends",
+   "Sends Account Send Summary",
+   "Impression Tracking for Triggered Sends",
+   "Email Performance by Attribute"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>Correct Answer: C</b>",
+  "expl": "To understand how a specific content area within a Triggered Send Email is performing, the admin should use C). Impression Tracking for Triggered Sends. Impression Tracking allows the admin to track how often a particular content area or piece of dynamic content is viewed within emails, giving insights into the performance of content within Triggered Sends.Reference: Salesforce Help - Impression Tracking",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 45,
+  "qe": "Northern Trail Outfitters (NTO) uses data extensions for all of their email audiences. A customer reports they unsubscribed several week-end ago, but continue to receive NTO's daily digest at their old address. NTO's Marketing cloud Admin has confidently deleted them from present in the appropriate data extension.What consideration could account for this behavior?",
+  "oe": [
+   "Data retention settings were incorrect in the data extension.",
+   "The email address in All Subscribers is prioritized.",
+   "Contact Builder was not configured properly.",
+   "The data extension was not configured as sendable."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>Correct Answer: B</b>",
+  "expl": "The issue where a customer continues to receive emails despite unsubscribing and being deleted from the data extension likely arises because the email address in All Subscribers still exists and is active. In Marketing Cloud, the All Subscribers list acts as a master list overriding subscription statuses in individual data extensions. Thus, even if a customer is removed from a specific data extension, if their status in All Subscribers is not updated to 'Unsubscribed,' they will continue to receive communications.Reference: Salesforce Help - All Subscribers List",
+  "also": [
+   [
+    "v2025-09-22",
+    22
+   ]
+  ]
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 47,
+  "qe": "A Marketing Cloud admin wants to ensure no one could access the API with their Marketing Cloud user credentials.Which security setting would control this behavior?",
+  "oe": [
+   "Select 'Identity Verification'",
+   "Select 'Enable Audit Trail Data Collection'",
+   "Deselect 'Exclude API Users From Password Expiration'",
+   "Deselect 'Enable Username and Password for Web Services'"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: D</b>",
+  "expl": "The security setting 'Enable Username and Password for Web Services' allows users to access the API with their Marketing Cloud username and password. If this setting is deselected, users will need to use an API user or an installed package to access the API",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 48,
+  "qe": "As part of their brand guidelines, Northern Trail Outfitters (NTO) uses a custom brand font for all print marketing materials. NTO wants to use their custom brand font in email as well.What is the recommended best practice for font usage in email?",
+  "oe": [
+   "Use a web-safe font for text that closely matches the brand's custom font.",
+   "Build an email as one image, with all text saved in the brand font.",
+   "Edit an email's HTML to list the custom brand font in the style tag's font-family property.",
+   "Build an email using multiple images, with all text saved in the brand font."
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "When incorporating custom brand fonts into emails for Northern Trail Outfitters:Web-safe Fonts: It's recommended to use web-safe fonts in emails to ensure consistent rendering across different email clients. Custom fonts are often not supported by many email clients, which can lead to inconsistent branding and user experience.Font Selection: Choose a web-safe font that closely resembles the custom brand font to maintain the brand's visual identity while ensuring the email content is accessible and readable across all platforms.Reference: Salesforce Marketing Cloud Email Design Best Practices",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 49,
+  "qe": "A customer has an eCommerce site and imports data into three data extensions daily: Orders, Order_Details, and 'Products.The data extensions contain the following information:- Orders: OrderId, CustomerID,OrderNumber, OrderDate, OrderTotal, GrandTotal- Order_Details: ProductId, OrderID, Qty, UnitPrice, ExtendedPrice, Discount- Products: ProductId, SKU, Name, Description, Cost, PriceWhich two actions should be taken in Data Designer?Choose 2 answers",
+  "oe": [
+   "Create a one-to-one relationship between the contact record and Order Details.",
+   "Create a one -to -many relationship between Orders and Order_Details.",
+   "Create a one-to-one relationship between Orders and Order_Details.",
+   "Create a one-to-one relationship between Order_Details and Products."
+  ],
+  "ans": [
+   1,
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: B,D</b>",
+  "expl": "In the scenario of managing data relationships for an eCommerce site:B). Create a one-to-many relationship between Orders and Order_Details: This relationship allows multiple order details (such as individual items, quantities, and prices) to be associated with a single order, reflecting the typical structure of an eCommerce transaction.D). Create a one-to-one relationship between Order_Details and Products: This relationship links each order detail line to a specific product, allowing for detailed tracking and analysis of product sales.These relationships set up a logical and functional structure in Data Designer, enabling effective data management and utilization for reporting and customer insights.Reference: Salesforce Help - Data Designer",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 52,
+  "qe": "What storage model should be used if a subscriber has more than one value for an attribute?",
+  "oe": [
+   "Profile Attribute",
+   "Data Extensions",
+   "Publication Lists",
+   "Lists"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>Correct Answer: B</b>",
+  "expl": "For handling multiple values for a subscriber attribute effectively:Use Data Extensions: Data Extensions provide a flexible and scalable storage model that can accommodate complex data types, including multiple values for a single attribute per subscriber.Advantages: Unlike Profile Attributes, which limit each subscriber to a single value per attribute, Data Extensions allow the creation of relational data models that can store multiple entries for individual attributes.Reference: Salesforce Marketing Cloud Data Extensions",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 54,
+  "qe": "A Marketing Cloud admin is tasked with overhauling the data model for Enterprise. While the current data model is isolated to the email channel and there are plans to expand to both SMS and Push channels in the near future.Which three data preparations should be made to retain high data quality in the new mode? Choose 3 answers.",
+  "oe": [
+   "Remove nonessential data for marketing purposes.",
+   "Identify and assign appropriate keys to tie records together.",
+   "Normalize data and fields to prevent redundancy.",
+   "Ensure all available data is included.",
+   "Ensure every data source has a sendable field."
+  ],
+  "ans": [
+   0,
+   1,
+   2
+  ],
+  "ans_raw": "<b>Correct Answer: A,B,C</b>",
+  "expl": "As the Marketing Cloud admin plans to expand the data model to include SMS and Push channels, it's important to prepare the data model for high data quality:A). Remove nonessential data for marketing purposes: This helps streamline data management and ensures the data model is not cluttered with irrelevant information, making it easier to manage and use.B). Identify and assign appropriate keys to tie records together: Proper key management ensures that different data sources can be linked effectively, facilitating a unified view across different marketing channels.C). Normalize data and fields to prevent redundancy: Normalization reduces data redundancy and inconsistency, which is essential for maintaining data integrity and efficiency in a multi-channel environment.Reference: Salesforce Help - Data Management Best Practices",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 55,
+  "qe": "A Marketing Cloud admin is asked to append an Urchin Tracking Module (UTM) variable string to links in emails.What functionality would allow this?",
+  "oe": [
+   "Advertising Studio",
+   "Personalization Builder",
+   "Web and Mobile Analytics",
+   "Web Analytics Connector"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: D</b>",
+  "expl": "To append an Urchin Tracking Module (UTM) variable string to links in emails, the Marketing Cloud admin should use the Web Analytics Connector (WAC). This functionality automatically appends tracking parameters, such as UTM parameters, to all URLs in outgoing emails. This allows for detailed tracking of email effectiveness within analytics platforms like Google Analytics. The Web Analytics Connector can be configured within Email Studio to include specific UTM parameters as required by marketing strategies.Reference: Salesforce Help - Web Analytics Connector",
+  "also": [
+   [
+    "v2025-09-22",
+    18
+   ]
+  ]
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 56,
+  "qe": "Northern Trail Outfitters' security team has password policies they want enforced within Marketing Cloud.Which policies could the Marketing Cloud admin configure in Setup7",
+  "oe": [
+   "Minimum Password Length, Password Complexity, Password History, Expiration Period",
+   "Minimum Password Length, Use Strong Passphrases, Password History, Number of Security Questions",
+   "Minimum Password Length, Use Strong Passphrases, Unique Password, Number of Security Questions",
+   "Maximum Password Length, PasswordComplexity, Unique Password, Expiration Period"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "Configure the business unit data retention setting to 12 months is the policy that the Marketing Cloud admin could configure in Setup. Business unit data retention setting is a setting that allows marketers to specify how long records in data extensions should be retained at the business unit level. By configuring the business unit data retention setting to 12 months, any inactive data that is older than 12 months will be automatically deleted from the data extensions in that business unit2",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 61,
+  "qe": "A Marketing Cloud admin wants to create an SFTP User for the first time.Which two considerations should be taken when configuring an SFTP User7 Choose 2 answers",
+  "oe": [
+   "By default, the username is the MID for the current Marketing Cloud MID.",
+   "Minimum password length is 12 characters.",
+   "By default, the password will be the password of the logged-in user.",
+   "Once created, the user will need to be activated in order to use the SFTP."
+  ],
+  "ans": [
+   1,
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: B,D</b>",
+  "expl": "When configuring an SFTP user in Marketing Cloud, the following considerations should be taken into account:B). Minimum password length is 12 characters: Ensuring password security, Marketing Cloud requires SFTP passwords to have a minimum length of 12 characters.D). Once created, the user will need to be activated in order to use the SFTP: After the SFTP user account is created, it must be activated by the admin before it can be used for file transfers.Reference: Salesforce Help - Manage SFTP Users",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 62,
+  "qe": "Northern Trail Outfitters wants to set up a welcome journey that leverages customer data across three data extensions: Customers, Orders, and Products.What is the best way to facilitate this within Contact Builder?",
+  "oe": [
+   "Create three distinct Attribute Groups that link Customers to Contacts, Orders to Customers, and Products to Orders.",
+   "Create a single Attribute Group that links Contacts to Customers, Orders to Products, and Products to Customers.",
+   "Create three distinct Attribute Groups that link each data extension directly to Contacts.",
+   "Create a single Attribute Group that links Customers to Contacts, Orders to Customers, and Products to Orders."
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: D</b>",
+  "expl": "To effectively set up a welcome journey leveraging customer data across multiple data extensions in Contact Builder:Single Attribute Group: Create one cohesive Attribute Group that interlinks Customers to Contacts, Orders to Customers, and Products to Orders. This setup ensures a streamlined data flow and relational integrity, crucial for targeting and personalization within the journey.Data Relationships: This configuration facilitates the use of data across different stages of customer interaction-from acquisition through orders to product preferences-enabling more personalized journey experiences.Reference: Salesforce Marketing Cloud Contact Builder",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 65,
+  "qe": "Northern Trail Outfitters wants to bring subscriber data from its data warehouse into Marketing Cloud.Which 2 fields would need minimal consideration, for size/scalability related reasons, when creating a data extension to house the data?Choose 2 answers",
+  "oe": [
+   "Text",
+   "Decimal",
+   "Number",
+   "Boolean"
+  ],
+  "ans": [
+   2,
+   3
+  ],
+  "ans_raw": "<b>Correct Answer: C,D</b>",
+  "expl": "When creating a data extension for subscriber data from a data warehouse, fields that typically require minimal consideration for size or scalability include:Number: Fields designated as 'Number' generally consume less storage space and are straightforward in terms of scalability and processing within data extensions.Boolean: Boolean fields, representing simple true/false values, are highly efficient in terms of storage and processing, making them less of a concern in terms of scalability.Reference: Salesforce Marketing Cloud Data Extension Best Practices",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 66,
+  "qe": "What is Setup Assistant?",
+  "oe": [
+   "Support service allowing the outsourcing of repetitive admin tasks",
+   "A prioritized account configuration checklist",
+   "A search within Help and Training limited to configuration documents",
+   "A dashboard containing key metrics for the business unit"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>Correct Answer: B</b>",
+  "expl": "Setup Assistant in Salesforce Marketing Cloud:Functionality: Setup Assistant acts as a prioritized checklist designed to guide administrators through the configuration of their Marketing Cloud account. It outlines essential steps in a logical and structured order to ensure a complete and efficient setup process.Usage: Administrators can access Setup Assistant from the Setup menu in Marketing Cloud, where they can follow the step-by-step instructions to configure various components of their account, such as sending domains, data management, and more.Reference: Salesforce Marketing Cloud Setup Assistant Guide",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 68,
+  "qe": "Northern Trail Outfitters is preparing to send a promotional email. The audience file was loaded into a data extension but does not display for Marketing Cloud admin scheduling the send.What should the admin confirm to resolve the issue?",
+  "oe": [
+   "The data extension is marked as Sendable",
+   "The data extension contains a Salesforce ID",
+   "The Data extension is marked as Sendable and Testable",
+   "The data extension is linked using the Contact Key"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "To resolve the issue of a data extension not appearing for email sends, confirm:Sendable Status: Ensure the data extension is marked as Sendable. This setting links the data extension to a subscriber attribute, allowing it to be used for email sends.Configuration Check: Verify the send relationship within the data extension properties, ensuring it correctly relates to the subscriber key or another unique identifier used for email campaigns.Reference: Salesforce Marketing Cloud Data Extension Setup",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 72,
+  "qe": "Which data structure can be utilized inside the out-of-the-box Subscription Center to enable custom subscription status?",
+  "oe": [
+   "Groups",
+   "Data Extensions",
+   "Publication Lists"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>Correct Answer: C</b>",
+  "expl": "",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 73,
+  "qe": "A marketing Cloud admin wants to ensure sensitive information needed for email sends is NOT imported and stored in Marketing cloud. What solution should they implement?",
+  "oe": [
+   "Tokenized Sending",
+   "Transparent Data Encryption",
+   "Key Management",
+   "Field level Encryption"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "To ensure sensitive information is not imported and stored in Marketing Cloud, implement:Tokenized Sending: This approach uses tokens to represent sensitive data, ensuring that the actual data does not reside within Marketing Cloud. Instead, the tokens are matched with the original data only during the send process, enhancing security by minimizing data exposure.Setup: Configure Tokenized Sending by defining data relationships in Marketing Cloud Connect or through external token providers to integrate seamlessly with the sending process.Reference: Salesforce Marketing Cloud Tokenized Sending Documentation",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 74,
+  "qe": "Northern Trail Outfitters wants to know how customers are engaging with marketing communications they have sent over the last year. What action should be taken to populate the Einstein Engagement Scoring Dashboard?",
+  "oe": [
+   "Select one of the Predictive Algorithms then click Deploy",
+   "Click Deploy and results are available immediately",
+   "Select the channels (Emails, Push, SMS) to report on then click Activate",
+   "Click Activate and wait for an email notification"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "Correct Answer: C(解説の先頭)",
+  "expl": "To use the Einstein Engagement Scoring Dashboard for analyzing customer engagement:Select Channels: Choose which channels (Email, Push, SMS) you want to include in the engagement scoring.Activate: Click on \"Activate\" to start the data analysis process. This will generate insights based on the selected channels and customer interactions over the specified period.Reference: Salesforce Marketing Cloud Einstein Engagement Scoring",
+  "also": []
+ },
+ {
+  "label": "v2026-02-19",
+  "no": 80,
+  "qe": "Northern Trail Outfitters uses Marketing Cloud Connect to leverage Sales Cloud data in their journeys. a user recently reported the data coming from Sales Cloud is NOT up to date.Where should the Marketing Cloud admin begin troubleshooting?",
+  "oe": [
+   "Contact Builder > Synchronized Data Extensions",
+   "Automation Studio > File Transfers",
+   "Contact Builder > Data Sources",
+   "Email Studio > Synchronized Data Extensions"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>Correct Answer: A</b>",
+  "expl": "To troubleshoot issues with outdated data from Sales Cloud in Marketing Cloud, the admin should:Check Synchronized Data Extensions: Navigate to Contact Builder and review the Synchronized Data Extensions. This area shows the synchronization status and configuration between Sales Cloud and Marketing Cloud.Data Refresh Rate: Verify how frequently the data is synchronized and ensure that the synchronization schedule meets the operational requirements, adjusting as necessary to ensure data is up to date.Reference: Salesforce Marketing Cloud Synchronization Documentation",
+  "also": []
+ }
+]

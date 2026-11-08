@@ -1,0 +1,2506 @@
+[
+ {
+  "label": "v2026-03-24",
+  "no": 1,
+  "qe": "Northern Trail Outfitters は、構築を計画している外部アプリケーションに REST API を活用したいと考えています。Marketing Cloud 管理者は、REST 認証を許可するための権限をどこで設定する必要がありますか?",
+  "oe": [
+   "インストールされたパッケージ",
+   "データ管理",
+   "セキュリティ設定",
+   "Salesforce 統合"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "インストール済みパッケージは、Marketing Cloud 管理者が REST 認証を許可するための権限を設定する場所です。インストール済みパッケージは、Marketing Cloud の API 連携、コンポーネント、権限を保持するコンテナです。外部アプリケーションで REST API を使用するには、管理者はインストール済みパッケージを作成し、認証方法、スコープ、リダイレクト URI などの API 連携設定を構成する必要があります。また、管理者はインストール済みパッケージに権限を割り当て、特定の Marketing Cloud 機能やデータへのアクセスを許可する必要があります。",
+  "lang": "ja",
+  "also": [
+   [
+    "v2026-03-24",
+    43
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 2,
+  "qe": "NTO は、大量の送信を行うと配信率が低下することに気付きました。配信可能性のどの部分が、送信中にスパム トラップにヒットすることと関係していますか?",
+  "oe": [
+   "コンテンツ",
+   "リストの衛生",
+   "認証",
+   "エンゲージメント"
+  ],
+  "ans": [
+   1,
+   2
+  ],
+  "ans_raw": "<b>正解：B,C</b>",
+  "expl": "",
+  "lang": "ja",
+  "also": [
+   [
+    "v2026-03-24",
+    8
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-03-24 #8 answers <b>正解：A</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 3,
+  "qe": "A Marketing Cloud admin has been asked to Include Sales Cloud data in their queries.Which feature would allow this functionality?",
+  "oe": [
+   "Query Studio",
+   "Journey Builder",
+   "CloudPages",
+   "Synchronized Data Sources"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "Sales Cloud データをクエリで使用するには、管理者は同期データソースを使用する必要があります。この機能により、Marketing Cloud は Sales Cloud のオブジェクトやフィールドからデータを自動的にインポートし、更新できます。データはデータエクステンションに保存され、SQL でクエリできます。",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、クエリに Sales Cloud データを含めるように求められています。どのような将来がこの機能を可能にするのでしょうか?",
+  "oj": [
+   "クエリスタジオ",
+   "ジャーニービルダー",
+   "クラウドページ",
+   "同期されたデータ ソース。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   5
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #5 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    32
+   ],
+   [
+    "v2026-02-19",
+    5
+   ],
+   [
+    "v2026-02-19",
+    35
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 4,
+  "qe": "Northern Trail Outfitters は Send Log データ拡張機能を設定したいと考えています。長期的な成功のためには、どのような 3 つの点を考慮する必要がありますか?3つの回答を選択してください",
+  "oe": [
+   "適切な範囲のデータ保持期間を適用する",
+   "送信ログテンプレートに含まれていないカスタムフィールドを追加します",
+   "通信の監査に必要なログ属性データ",
+   "送信時にメール内でキャプチャされたすべての変数データをログに記録します",
+   "データ保持ポリシーで期間を固定日付に設定する"
+  ],
+  "ans": [
+   0,
+   1,
+   2
+  ],
+  "ans_raw": "<b>正解：A,B,C</b>",
+  "expl": "送信ログデータ拡張機能を長期的に成功させるには:* データ保持：スコープを設定した保持ポリシーを実装し、古いエントリを定期的に削除することで送信ログのサイズを管理します。これにより、データベースの過負荷を防ぎ、パフォーマンスを維持できます。* カスタムフィールド：デフォルトのテンプレートに含まれていないカスタムフィールドを追加することで、送信ログを強化できます。このカスタマイズにより、NTOのニーズに関連する特定のデータポイントを取得できます。* 監査データのログ記録：コミュニケーションの有効性とコンプライアンスを監査するために必要なすべての属性データがログに記録されていることを確認します。これには、送信コンテキスト、購読者の反応、エンゲージメント指標などの変数が含まれます。",
+  "lang": "ja",
+  "also": [
+   [
+    "v2026-03-24",
+    106
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 5,
+  "qe": "Which two data structures could be configured to appear in the out-of-the-box Subscription center? Choose 2 answers",
+  "oe": [
+   "Publication Lists",
+   "Data Extensions",
+   "Lists",
+   "Groups"
+  ],
+  "ans": [
+   0,
+   2
+  ],
+  "ans_raw": "<b>正解：A,C</b>",
+  "expl": "すぐに使用できるサブスクリプションセンターでは、購読者がオプトインまたはオプトアウトできるオプションとして、パブリケーションリストとリストを表示できます。データ拡張機能とグループは、デフォルトのサブスクリプションセンターではサポートされていません。",
+  "lang": "ja",
+  "qj": "すぐに使えるサブスクリプションセンターに表示されるように設定できるデータ構造はどれですか？2つの回答を選択してください。",
+  "oj": [
+   "出版物リスト",
+   "データ拡張",
+   "リスト",
+   "グループ"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   20
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #20 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    27
+   ],
+   [
+    "v2026-02-19",
+    20
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-03-24 #27 answers <b>正解：A</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 6,
+  "qe": "Northern Trail Outfitters requires all subscriber files placed on the SFTP for import be encrypted.Which activity in Automation Studio could be used to decrypt the file to prepare for Importing?",
+  "oe": [
+   "File Transfer Activity",
+   "Decryption Activity",
+   "Data Extract Activity",
+   "Import Activity"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters では、インポート用に SFTP に配置されるすべての加入者ファイルを暗号化する必要があります。インポートの準備としてファイルを復号化するために使用できる Automation Studio のアクティビティはどれですか?",
+  "oj": [
+   "ファイル転送アクティビティ",
+   "復号アクティビティ",
+   "データ抽出アクティビティ",
+   "インポートアクティビティ"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   1
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #1 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    1
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 7,
+  "qe": "Northern Trail Outfitters は本日、送信に関する問題に気付きました。セットアップ ホームのどの 2 つのリンクを使用して問題をトラブルシューティングできますか?2つの回答を選択してください",
+  "oe": [
+   "サポートケースを作成する",
+   "送信失敗",
+   "ヘルプとトレーニング",
+   "システムステータス"
+  ],
+  "ans": [
+   1,
+   3
+  ],
+  "ans_raw": "<b>正解：B,D</b>",
+  "expl": "Salesforce Marketing Cloud でのメール送信に関する問題をトラブルシューティングするには:B). 失敗した送信: セットアップのこのリンクでは、特定の送信が失敗した詳細なログと理由が提供されます。これは、特定の電子メール キャンペーンの問題を診断する上で重要です。D). システム ステータス: システム ステータスを確認すると、Salesforce サーバーに、世界的または地域的にメールの送信に影響を与える可能性のある問題が継続して発生しているかどうかを判断するのに役立ちます。参考: Salesforce ヘルプ - メール送信のトラブルシューティング",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 9,
+  "qe": "Marketing Cloud 管理者は、特定のエンドユーザーに対して個別のメール結果が Sales Cloud にプッシュバックされていないことに気づきました。Marketing Cloud Connect の管理は正常に機能しています。管理者はデータ拡張について何を確認する必要がありますか?",
+  "oe": [
+   "風の関係は、加入者キーとメールアドレスの加入者をリンクします。",
+   "データ拡張機能は、同期されたデータ拡張機能フォルダーにあります。",
+   "データ拡張機能は、Salesforce データ拡張機能フォルダーにあります。",
+   "トリガーされた送信データ拡張データ拡張テンプレートが使用されました。"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "個別メールの結果をSales Cloudに正しくプッシュバックするには、使用するデータエクステンションがSalesforceデータエクステンションであることが不可欠です。このタイプのデータエクステンションはSalesforce CRMと連携するように設計されており、個別メールの結果などのデータをSales Cloudにシームレスに返すことができます。これにより、Marketing Cloudに記録されたメールインタラクションデータがSales Cloudに正確に反映され、包括的な追跡とレポート作成が可能になります。参考: Salesforce ヘルプ - Marketing Cloud Connect",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 10,
+  "qe": "Northern Trail Outfitters (NTO) purchased one Sender Authentication Package (SAP) to ensure their branding is on every marketing communication.What would be achieved with SAP?",
+  "oe": [
+   "Image URLS are wrapped with the appropriate brand URL",
+   "The out-of-the-box profile center will display NTO branding",
+   "A different click domain can be used for each brand",
+   "A Dedicated IP is automatically warmed up"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "送信者認証パッケージ（SAP）を使用すると、画像URLを適切なブランドURLでラップできるため、メールのブランディングと配信率が向上します。SAPは、プロファイルセンターのブランディング、クリックドメイン、IPウォーミングには影響しません。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters (NTO) は、すべてのマーケティング コミュニケーションに自社のブランドが表示されるように、送信者認証パッケージ (SAP) を 1 つ購入しました。SAP で何が達成できるでしょうか?",
+  "oj": [
+   "画像のURLは適切なブランドURLで囲まれます",
+   "すぐに使えるプロファイルセンターにはNTOブランドが表示されます",
+   "ブランドごとに異なるクリックドメインを使用できます",
+   "専用IPは自動的にウォームアップされます"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   75
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #75 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    70
+   ],
+   [
+    "v2026-02-19",
+    75
+   ],
+   [
+    "v2025-09-22",
+    11
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 11,
+  "qe": "Einstein Recommendations uses data extensions to store user-facing information How is this data passed to Marketing Cloud?",
+  "oe": [
+   "Google Analytics 360",
+   "Collect Tracking code",
+   "Conversion Tracking",
+   "Web & Mobile Analytics"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "Collect Trackingコードは、ウェブサイトに追加されるJavaScriptコードで、ユーザーの行動データをキャプチャしてMarketing Cloudに送信します。このデータはデータ拡張機能に保存され、Einsteinのレコメンデーションに使用できます1",
+  "lang": "ja",
+  "qj": "Einstein レコメンデーションはデータ拡張機能を使用してユーザー向け情報を保存します。このデータはどのように Marketing Cloud に渡されるのでしょうか?",
+  "oj": [
+   "Google アナリティクス 360",
+   "トラッキングコードを収集する",
+   "コンバージョントラッキング",
+   "ウェブとモバイルの分析"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   51
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #51 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    51
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 12,
+  "qe": "Marketing Cloud 管理者は、Email Studio 経由で送信された電子メール内のすべてのリンクに 4 つのトラッキング パラメータのセットを自動的に追加するように求められます。管理者はどの解決策を提案すべきでしょうか?",
+  "oe": [
+   "マーケティングクラウド用の AMPscript",
+   "パラメータマネージャ",
+   "Google アナリティクス 360",
+   "マーケティングクラウドコネクト"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "メール内のリンクにトラッキング パラメータを自動的に追加するには:* パラメーターマネージャー：Marketing Cloud のパラメーターマネージャーを利用すると、メール内のすべてのリンクに事前定義されたトラッキングパラメーターのセットを設定し、自動的に追加できます。このツールはプロセスを効率化し、送信するすべてのメールの一貫性を確保します。* 効率性と一貫性: パラメーター マネージャーを使用すると、管理者は、各メールを手動で入力したりカスタマイズしたりすることなく、Email Studio 経由で送信されるすべてのメールに必要な追跡パラメーターが含まれていることを確認できます。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 13,
+  "qe": "A Marketing Cloud admin at Northern Trail Outfitters (NTO) is exploring whether they need to separate their brands into separate business units.When should the admin create separate business units for each of NTO's brands?",
+  "oe": [
+   "NTO requires SSL certificate configurations for Content Builder and Portfolio images",
+   "Brand-specific private domains need to be leveraged when wrapping images and links in email campaigns",
+   "Multiple brand logos must be accommodated in an email header",
+   "A new sender profile needs to be leveraged for sending transactional emails"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "メールキャンペーンで画像やリンクをラッピングする際にブランド固有のプライベートドメインを活用する必要がある場合、管理者はNTOのブランドごとに個別のビジネスユニットを作成する必要があります。プライベートドメインとは、email.nto.comなど、NTOが所有し、メール送信に使用するドメイン名です。プライベートドメインは、メール内の画像やリンクをラッピングすることで、配信率とブランディングを向上させることができます。ただし、Marketing Cloudではプライベートドメインを1つのビジネスユニットにしか関連付けることができないため、NTOは異なるプライベートドメインを必要とするブランドごとに個別のビジネスユニットを作成する必要があります2。その他の選択肢は、以下の理由により誤りです。NTOでは、コンテンツビルダーとポートフォリオ画像にSSL証明書の設定が必要です。SSL証明書の設定はアカウントレベルまたはビジネスユニットレベルで適用できるため、ブランドごとに個別のビジネスユニットを作成する必要はありません。SSL証明書は、NTOのWebサーバーと登録者のブラウザ間の接続を保護するために使用され、コンテンツビルダーやポートフォリオ画像に適用することで、HTTPS3経由で配信されることが保証されます。メールヘッダーには複数のブランドロゴを表示する必要があります。しかし、ダイナミックコンテンツやAMPscriptを使用すれば、複数のブランドロゴをメールヘッダーに表示できるため、ブランドごとに別々のビジネスユニットを作成する必要はありません。ダイナミックコンテンツやAMPscriptは、NTOが購読者属性やデータ拡張フィールド4に基づいてメールに異なるコンテンツを表示できる機能です。トランザクションメールを送信するには、新しい送信者プロファイルを活用する必要があります。これは、ブランドごとに別々のビジネスユニットを作成する理由にはなりません。同じビジネスユニット内で新しい送信者プロファイルを作成し、活用できるからです。送信者プロファイルとは、送信者名、送信元アドレス、返信先アドレス、送信者分類など、メールの送信者情報を定義する設定です5。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters (NTO) の Marketing Cloud 管理者は、ブランドを別々のビジネス ユニットに分割する必要があるかどうかを検討しています。管理者はいつ NTO の各ブランドに対して個別のビジネス ユニットを作成する必要がありますか?",
+  "oj": [
+   "NTO では、コンテンツ ビルダーとポートフォリオ画像に SSL 証明書の設定が必要です。",
+   "メールキャンペーンで画像やリンクをラップする際には、ブランド固有のプライベートドメインを活用する必要があります。",
+   "メールヘッダーに複数のブランドロゴを収容する必要がある",
+   "トランザクションメールを送信するには、新しい送信者プロファイルを活用する必要があります。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   70
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #70 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    29
+   ],
+   [
+    "v2026-02-19",
+    70
+   ],
+   [
+    "v2026-02-19",
+    21
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 14,
+  "qe": "A Marketing Cloud Admin has noticed a File Drop Automation has been failing on the import File activity. The automation is configured with a filename pattern, so the filename is expected to begin with customer_import_. The import is configured to look for a file named customer_import_%%Year%%%%Month%%%%Day%%.csv, however, the admin notices the filenames include seconds and milliseconds.How should the admin fix the issue?",
+  "oe": [
+   "Make sure the file is placed on the correct subfolder within the SFTP",
+   "Use %%FILENAME_FROM_TRIGGER%% in the import File Activity",
+   "Make sure the filename has a date stamp to avoid duplication",
+   "Use the exact filename used for the trigger in the import File Activity"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、ファイル ドロップオートメーションがファイルのインポート アクティビティで実行されていることに気付きました。自動化ではファイル名パターンが設定されているため、ファイル名はcustomer import_で始まることが想定されています。インポートはCustomer import %%Year%%%% Month%%%%Day%%.csvという名前のファイルを検索するように設定されていますが、管理者はファイル名に秒とミリ秒が含まれていることに気づきました。この問題を修正するにはどうすればよいでしょうか？",
+  "oj": [
+   "ファイルがSFTPサーバ内の正しいサブフォルダに配置されていることを確認してください。",
+   "ファイルのインポートアクティビティで %%FILENAME_FROM_TRIGGER%% を使用します",
+   "重複を避けるために、チームに日付スタンプがあることを確認してください。",
+   "インポートファイルアクティビティのトリガーに使用された正確なファイル名を使用します。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   31
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #31 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    67
+   ],
+   [
+    "v2026-02-19",
+    31
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 15,
+  "qe": "What does Marketing Cloud authenticate when a user logs in through the user interface?",
+  "oe": [
+   "If the user is assigned a role in the parent business unit",
+   "If the user is logging in from a whitelisted IP address",
+   "If the user is an API User on their record",
+   "If the user has login hours enabled on their profile"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "Marketing Cloud は、ユーザー ログイン時に次のようないくつかの要素を認証します。* ホワイトリストに登録されたIPアドレスのチェック：Marketing Cloudは、ユーザーのIPアドレスがIPホワイトリストに登録されているIPアドレスと一致するかどうかを確認します。これは、セキュリティ保護された場所からの承認されたアクセスのみを許可するためのセキュリティ対策の一環です。",
+  "lang": "ja",
+  "qj": "ユーザーがユーザーインターフェースを通じてログインするときに、Marketing Cloud は何を認証しますか?",
+  "oj": [
+   "ユーザーに親ビジネスユニットのロールが割り当てられている場合",
+   "ユーザーがホワイトリストに登録されたIPアドレスからログインしている場合",
+   "ユーザーがレコード上でAPIユーザーである場合",
+   "ユーザーがプロフィールでログイン時間を有効にしている場合"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   58
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #58 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    58
+   ],
+   [
+    "v2025-09-22",
+    19
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 16,
+  "qe": "A Contact Delete request has been processed for subscribers who have been sent to previously in a Northern Trail Outfitters account, the action did NOT target all contacts in their account and significant number of contacts which have been sent to remain, Which two data would still exist in the account? Choose 2 answers",
+  "oe": [
+   "Contact data in sendable data extensions",
+   "Contact data in non-sendable extensions",
+   "Contact-specific data at the job level",
+   "General tracking data at the job level"
+  ],
+  "ans": [
+   1,
+   3
+  ],
+  "ans_raw": "<b>正解：B,D</b>",
+  "expl": "連絡先削除リクエストが処理されると、送信可能なデータ拡張機能内の連絡先データとジョブレベルの連絡先固有のデータが削除されます。ただし、送信不可能なデータ拡張機能内の連絡先データとジョブレベルの一般的なトラッキングデータは保持されます。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfittersアカウントで以前に送信された購読者に対して連絡先削除リクエストが処理されましたが、このアクションはアカウント内のすべての連絡先を対象としておらず、送信された連絡先の多くが残っています。アカウントに残っている2つのデータはどれですか？2つの回答を選択してください。",
+  "oj": [
+   "送信可能なデータ拡張機能内の連絡先データ",
+   "送信できない拡張子の連絡先データ",
+   "ジョブレベルの連絡先固有のデータ",
+   "ジョブレベルの一般的な追跡データ"
+  ],
+  "text_from": [
+   "v2025-09-22",
+   10
+  ],
+  "note_text": "English wording taken from duplicate v2025-09-22 #10 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2025-09-22",
+    10
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2025-09-22 #10 answers Answer: A D"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 17,
+  "qe": "ユーザーがMarketing Cloud管理者にセッションタイムアウト設定の更新と延長を依頼しました。管理者はこの更新を行う前に、どの3つの考慮事項を検討すべきでしょうか？3つの回答を選択してください",
+  "oe": [
+   "タイムアウト時のユーザーのフラストレーション",
+   "ベストプラクティスでは20分のタイムアウト設定が推奨されます",
+   "タイムアウト設定を長くすると、権限のないユーザーがセキュリティリスクにさらされる",
+   "変更はすべてのユーザーに影響します",
+   "ユーザーがマーケティングクラウドで過ごす典型的な時間"
+  ],
+  "ans": [
+   0,
+   2,
+   3
+  ],
+  "ans_raw": "<b>正解：A,C,D</b>",
+  "expl": "セッション タイムアウト設定を更新して増やす前に、管理者は次の 3 つの考慮事項を確認する必要があります。* タイムアウト時のユーザーのフラストレーション。管理者は、セッションが期限切れになり再度ログインしなければならない場合のユーザーの気持ちを考慮する必要があります。セッションタイムアウトの設定を長くすることで、ユーザーのログイン状態を長く維持できるようになり、ユーザーのフラストレーションを軽減し、ユーザーエクスペリエンスを向上させることができます。* タイムアウト設定を長くすると、権限のないユーザーがMarketing Cloudにアクセスするセキュリティリスクが高まります。管理者は、タイムアウト設定を長くすると、権限のないユーザーがMarketing Cloudにアクセスするセキュリティリスクが増大する可能性があることを考慮する必要があります。セッション タイムアウト設定を増やすと、ユーザーがデバイスを放置したり、他のユーザーと共有したりした場合に、ユーザー アカウントとデータが潜在的な脅威にさらされる可能性があります。* 変更はすべてのユーザーに影響します。管理者は、セッションタイムアウト設定の変更がアカウントまたはビジネスユニット内のすべてのユーザーにどのような影響を与えるかを考慮する必要があります。セッションタイムアウト設定の増加は、ロールや権限に関係なく、変更後にMarketing Cloudにログインするすべてのユーザーに適用されます。もう1つの選択肢は、以下の理由により誤りです。* ユーザーがMarketing Cloudで過ごす典型的な時間。これはMarketing Cloudのセキュリティやユーザーエクスペリエンスに影響を与えないため、セッションタイムアウト設定の更新や延長の検討には考慮されません。ユーザーがMarketing Cloudで過ごす典型的な時間は、タスクやニーズによって異なりますが、セッションの有効期限を決定するものではありません。",
+  "lang": "ja",
+  "also": [
+   [
+    "v2026-03-24",
+    64
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-03-24 #64 answers <b>正解：B,C,D</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 18,
+  "qe": "Northern Trail Outfitterは Marketing Cloud 用に Query Studio をインストールしましたが、ユーザーからアクセス権がないという報告があります。Marketing Cloud 管理者はどのようにしてユーザーのアクセス権を確認すればよいですか?",
+  "oe": [
+   "インストール時にパブリックアプリ統合を選択します",
+   "アクセスを拡張するために、アプリに適したビジネスユニットをインストールします。",
+   "インストールされたパッケージ内のすべての適切なユーザーにライセンスを付与します",
+   "API統合を構成して、すべてのユーザーがアクセスできるようにします。"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "ユーザーがMarketing CloudのQuery Studioにアクセスできるようにするには、管理者はインストールされたパッケージ内の適切なユーザー全員にライセンスを付与する必要があります。これには、ユーザー権限の設定と、Query Studioへのアクセスを必要とするユーザーにライセンスが割り当てられていることを確認することが含まれます。このアプローチにより、承認されたユーザーのみがツールを使用でき、組織内のセキュリティとコンプライアンスが維持されます。参考: Salesforce ヘルプ - Marketing Cloud でのアプリのインストールと管理",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 19,
+  "qe": "To prevent retention of stagnant data, Northern Trail Outfitters (NTO) wants any inactive data stored in data extensions to be cleared after 12 months.What action should NTO take?",
+  "oe": [
+   "Configure the business unit data retention setting to 12 months",
+   "Configure the Enterprise-wide default retention to one year",
+   "Set inactive date to be automatically cleared after one year, but is recoverable",
+   "Apply a row-based retention to each data extension as it is created, set to 12 months"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "データ拡張機能内の非アクティブなデータのデータ保持期間を管理するには、各データ拡張機能に行ベースの保持ポリシーを直接適用するのが最適な方法です。この方法により、各行の作成日または変更日に基づいて、データの保持期間を正確に制御できます。* 行ベースの保持：各データ拡張機能の設定時にこれを設定します。12ヶ月間使用されていないデータが削除されるように指定します。このアプローチにより、指定された期間アクセスされていないデータのみが削除されるため、データストレージが最適化され、データ管理ポリシーへのコンプライアンスが維持されます。",
+  "lang": "ja",
+  "qj": "停滞したデータが保持されるのを防ぐため、Northern Trail Outfitters では、データ拡張機能に保存されている非アクティブなデータを 12 か月後に消去することを望んでいます。どのような行動を取るべきでしょうか?",
+  "oj": [
+   "ビジネスユニットのデータ保持設定を12か月に設定します",
+   "エンタープライズ全体のデフォルトの保存期間を1年に設定します",
+   "非アクティブなデータは1年後に自動的に消去されますが、回復可能です。",
+   "作成された各データ拡張機能に行ベースの保持期間を適用し、12か月に設定します。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   76
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #76 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    51
+   ],
+   [
+    "v2026-02-19",
+    76
+   ],
+   [
+    "v2025-09-22",
+    7
+   ],
+   [
+    "v2025-09-22",
+    31
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 20,
+  "qe": "Northern trail Outfitters (NTO) is warming a new Dedicated IP address, and they need to monitor their deliverability across major ISPs.Which bounce type would be indicative of the ISPs view of NTO's sending reputation?",
+  "oe": [
+   "Soft",
+   "Technical",
+   "Block",
+   "Hard"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "ブロックバウンスは、ISPが送信者の評判や内容を理由にメールを拒否した場合に発生するバウンスの一種です。これは、ISPが送信者を潜在的なスパマーと見なしているか、他の受信者から苦情を受けていることを示しています。",
+  "lang": "ja",
+  "qj": "Northern trail Outfitters (NTO) は新しい専用 IP アドレスを準備しており、主要な ISP 全体での配信可能性を監視する必要があります。どのバウンス タイプが、NTO の送信評判に関する ISP の見解を示すでしょうか?",
+  "oj": [
+   "ソフト",
+   "テクニカル",
+   "ブロック",
+   "ハード"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   19
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #19 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    19
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 21,
+  "qe": "Northern Trail Outfitters does NOT want to store email addresses or phone numbers within Marketing Cloud.Which feature should they use?",
+  "oe": [
+   "Tokenized Sending",
+   "Field Level Encryption",
+   "Lookup reference to Contact Object",
+   "Master-detail relationship to Contacts"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "Northern Trail Outfitters では、メールアドレスや電話番号などの機密情報を Marketing Cloud に直接保存することを避けるために、次の機能が推奨されます。トークン化送信：この方法では、機密データをトークンに置き換え、実際のデータ値を公開することなく通信に使用できます。これにより、個人データの機密性と完全性を維持しながら、パーソナライズされたマーケティングコミュニケーションを実現できます。実装：Marketing Cloud Connect または外部トークンプロバイダーを使用してデータリレーションシップを設定し、トークン化送信を設定します。これにより、送信プロセス中に、システムはトークンを使用して実際のデータを一時的に取得し、データベースに保存することなく取り込むことができます。参考: Salesforce Marketing Cloud トークン化送信",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters は、Marketing Cloud 内に電子メール アドレスや電話番号を保存することを望んでいません。どの機能を使用すればよいでしょうか?",
+  "oj": [
+   "トークン化された送信",
+   "フィールドレベルの暗号化",
+   "連絡先オブジェクトへの参照を検索",
+   "連絡先とのマスター詳細関係"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   10
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #10 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    54
+   ],
+   [
+    "v2026-02-19",
+    10
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 22,
+  "qe": "A Marketing Cloud admin is asked to add a set of four tracking parameters automatically to all the links in an email sent via email studio.Which solution should the admin suggest?",
+  "oe": [
+   "AMP script for Marketing Cloud",
+   "Web Analytics Connector",
+   "Google Analytics 360",
+   "Marketing Cloud Connect"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "Email Studio から送信されたメール内のすべてのリンクにトラッキング パラメータを自動的に追加するには、管理者は以下を設定する必要があります。* Web 分析コネクタ: この機能は、メール内の URL に追跡パラメータを自動的に追加し、Google Analytics などの Web 分析ツールと統合します。* 設定手順：Email Studioの設定で必要なトラッキングパラメータを指定して、Web Analytics Connectorを設定します。これにより、手動でコーディングすることなく、すべての送信メールにこれらのパラメータが自動的に含まれるようになります。",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、Email Studio 経由で送信された電子メール内のすべてのリンクに 4 つのトラッキング パラメータのセットを自動的に追加するように求められます。管理者はどの解決策を提案すべきでしょうか?",
+  "oj": [
+   "Marketing Cloud の AMP スクリプト",
+   "Web 分析コネクタ",
+   "Google アナリティクス 360",
+   "マーケティングクラウドコネクト"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   46
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #46 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    46
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 23,
+  "qe": "Northern Trail Outfitters is migrating from a small, in-house email solution to Marketing Cloud.What should the Marketing Cloud admin consider when sending from the new IP Address?",
+  "oe": [
+   "The IP address is on reserve, is already in use, and has an email sending history.",
+   "Building desirable sending history and data will be variable based on list size and engagement.",
+   "Sending in large volumes will alert ISPs the new IP Address is now in use.",
+   "Migration of larger marketing campaigns is necessary prior to bringing on smaller, triggered campaigns."
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "Marketing Cloud で新しい IP アドレスに移行する場合は、次の点を考慮してください。IPウォーミング：新しいIPアドレスから送信されるメールの量を徐々に増やし、インターネットサービスプロバイダー（ISP）における良好な送信者レピュテーションを構築します。これには、リストサイズと購読者のエンゲージメントを慎重に管理し、配信率を最適化することが含まれます。エンゲージメントの監視：新しいIPから送信されたメールに対する購読者の反応を監視します。エンゲージメント率は、ISPが送信者の質を評価する際に影響します。参考: Salesforce Marketing Cloud IP ウォーミングのベストプラクティス",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters は、小規模な社内メール ソリューションから Marketing Cloud に移行しています。新しい IP アドレスから送信する場合、Marketing Cloud 管理者はどのような点を考慮する必要がありますか?",
+  "oj": [
+   "IP アドレスは予約済みで、すでに使用されており、電子メールの送信履歴があります。",
+   "望ましい送信履歴とデータの構築は、リストのサイズとエンゲージメントに基づいて変わります。",
+   "大量に送信すると、新しい IP アドレスが使用中であることが ISP に通知されます。",
+   "小規模なトリガー キャンペーンを開始する前に、大規模なマーケティング キャンペーンを移行する必要があります。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   81
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #81 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    81
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 24,
+  "qe": "出版社からは次のような発表がありました。* サブスクリプションの有効期限が 15 日と 7 日後に切れる顧客に更新リマインダーを送信する必要がある。* キャンペーンは、管理者権限を持たず、技術者でもない一般的なマーケティング ユーザーが作成および管理する必要があります。※データファイルには顧客の有効期限が含まれます。顧客のソリューションにはどのようなコンポーネントを含める必要がありますか?3つの回答を選択してください",
+  "oe": [
+   "抑制リスト",
+   "データフィルター",
+   "トリガー送信",
+   "テンプレートベースのメール",
+   "Automation Studio用語"
+  ],
+  "ans": [
+   1,
+   3,
+   4
+  ],
+  "ans_raw": "<b>正解：B,D,E</b>",
+  "expl": "データフィルター、テンプレートベースのメール、そしてAutomation Studioは、お客様のソリューションに含まれるべきコンポーネントです。データフィルターは、顧客の有効期限などの特定の基準に基づいてデータエクステンションをセグメント化するために使用されます。テンプレートベースのメールは、一般的なマーケティングユーザーが簡単にカスタマイズできる、定義済みのレイアウトとコンテンツブロックを含むメールを作成するために使用されます。Automation Studioは、スケジュールまたはトリガーに基づいてメール送信を自動化するために使用されます。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 25,
+  "qe": "顧客がContact Builderのコンタクトモデルに人口統計情報をリンクさせる必要があります。どのようなタイプの関係性を使用すべきでしょうか？",
+  "oe": [
+   "多対多の関係",
+   "1対多の関係",
+   "1対1の関係",
+   "多対1の関係"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "",
+  "lang": "ja",
+  "also": [
+   [
+    "v2026-03-24",
+    82
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 26,
+  "qe": "A Marketing Cloud admin is setting up Northern Trail Outfitter's newest business units and several users to assign to the new business units.How would the admin assign users to the business units?",
+  "oe": [
+   "Give permissions to users at top-level account to assign their own business units.",
+   "Search for the individual user, select their name, and click Manage Business Units.",
+   "Search for the individual user, select their name and click Edit Business Units.",
+   "Re-import the users to update their assigned business units"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "Salesforce Marketing Cloud の特定のビジネス ユニットにユーザーを割り当てるには、管理者がユーザー構成設定を通じて直接管理できます。個々のユーザーを検索します。セットアップのユーザーセクションに移動します。名前を選択し、\\[ビジネス ユニットの編集\\] をクリックします。このアクションにより、管理者はユーザーがアクセスできるビジネス ユニットを管理し、必要に応じて新規または既存のビジネス ユニットへのアクセスを有効または無効にすることができます。参考資料: Salesforce Marketing Cloud ユーザー管理",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、Northern Trail Outfitter の最新のビジネス ユニットと、新しいビジネス ユニットに割り当てる複数のユーザーを設定しています。管理者はどのようにしてユーザーをビジネス ユニットに割り当てるのでしょうか?",
+  "oj": [
+   "最上位アカウントのユーザーに、独自のビジネスユニットを割り当てる権限を付与します。",
+   "個々のユーザーを検索し、その名前を選択して、「ビジネス ユニットの管理」をクリックします。",
+   "個々のユーザーを検索し、その名前を選択して、「ビジネス ユニットの編集」をクリックします。",
+   "ユーザーを再インポートして、割り当てられたビジネスユニットを更新します。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   30
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #30 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    37
+   ],
+   [
+    "v2026-02-19",
+    30
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-03-24 #37 answers <b>正解：B</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 28,
+  "qe": "A customer is interested in designing a solution to ensure that subscribers only receive categories of emails that they want to receive. The built-in subscription center will be used as part of the solution.Which feature should be utilized to make this happen?",
+  "oe": [
+   "Publication Lists",
+   "Subscriber Keys",
+   "Profile Center",
+   "Send Logging"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "購読者が興味のあるカテゴリのメールのみを受信できるようにするには:配信リスト：配信リストを使用して、メールコンテンツのさまざまなカテゴリを管理できます。購読者は、内蔵の購読センターから購読するリストを選択できるため、自分の興味に合ったメールのみを受信できます。実装：様々なコンテンツカテゴリを表す複数の公開リストを設定します。これらのリストをサブスクリプションセンターに統合し、購読者が好みに合わせて選択できるようにします。参考資料: Salesforce Marketing Cloud サブスクリプション管理",
+  "lang": "ja",
+  "qj": "お客様は、購読者が受信を希望するカテゴリのメールのみを確実に受信できるソリューションの設計に関心を持っています。このソリューションの一部として、組み込みの購読センターが使用されます。これを実現するにはどの機能を利用すべきでしょうか?",
+  "oj": [
+   "出版物リスト",
+   "加入者キー",
+   "プロフィールセンター",
+   "ログ送信"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   18
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #18 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    36
+   ],
+   [
+    "v2026-02-19",
+    18
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 30,
+  "qe": "A customer will provide a single daily file on the Marketing Cloud SFTP at 3 AM and needs an alert if the file is not present on time. The file needs to be: Imported into a staging data extension. Separated into two different data extensions.Which workflow should meet these requirements?",
+  "oe": [
+   "File Drop Automation: Import File Activity > SQL Query Activity1 > SQL Query Activity 2",
+   "Scheduled Automation: File Transfer Activity > Import File Activity > SQL Query Activity 1 > SQL Query Activity 2",
+   "Scheduled Automation: Import File Activity > SQL Query Activity 1 > SQL Query Activity 2",
+   "File Drop Automation: File Transfer Activity > Import File Activity > Filter Activity > SQL Query Activity 1"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "",
+  "lang": "ja",
+  "qj": "顧客は毎日午前3時にMarketing Cloud SFTPに1つのファイルを提供する予定ですが、ファイルが時間どおりに存在しない場合にアラートを受け取る必要があります。ファイルは、ステージングデータエクステンションにインポートする必要があります。また、2つの異なるデータエクステンションに分割する必要があります。どのワークフローがこれらの要件を満たす必要がありますか?",
+  "oj": [
+   "ファイルドロップ自動化: ファイルのインポートアクティビティ > SQLクエリアクティビティ1 > SQLクエリアクティビティ2",
+   "スケジュールされた自動化: ファイル転送アクティビティ > ファイルインポートアクティビティ > SQLクエリアクティビティ1 > SQLクエリアクティビティ2",
+   "スケジュールされた自動化: ファイルのインポートアクティビティ > SQLクエリアクティビティ1 > SQLクエリアクティビティ2",
+   "ファイルドロップ自動化: ファイル転送アクティビティ > ファイルインポートアクティビティ > フィルターアクティビティ > SQLクエリアクティビティ1"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   28
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #28 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    65
+   ],
+   [
+    "v2026-02-19",
+    28
+   ],
+   [
+    "v2025-09-22",
+    26
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-03-24 #65 answers <b>正解：C</b> / Answer differs in duplicate: v2026-02-19 #28 answers <b>Correct Answer: C</b> / Answer differs in duplicate: v2025-09-22 #26 answers Answer: C"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 31,
+  "qe": "Journey Builder 内で多変量コンテンツテストに使用するアクティビティはどれですか?",
+  "oe": [
+   "エンゲージメント分割",
+   "ランダム分割",
+   "コンテンツ分割",
+   "決定分割"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "コンテンツ分割アクティビティは、Journey Builder 内で多変量コンテンツテストを行う際に使用します。このアクティビティを使用すると、ジャーニーにおいて異なるバージョンのメールコンテンツを異なるオーディエンスセグメントに送信し、開封率やクリック率に基づいてパフォーマンスを測定できます。他のアクティビティは多変量コンテンツテストには適していません。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 33,
+  "qe": "Northern Trail Outfitters (NTO) is concerned about unauthorized API access to their Marketing Cloud account.Which feature would NTO enable to assist in reducing threats from malicious API attacks?",
+  "oe": [
+   "IP Whitelisting",
+   "Field Level Encryption",
+   "Advanced Audit Trail",
+   "Single Sign on Authentication"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "IP許可リストは、悪意のあるAPI攻撃による脅威を軽減するためにNTOが有効化すべき機能です。IP許可リストは、特定のIPアドレスからのMarketing CloudへのAPIアクセスを制限する機能です。IP許可リストを作成することで、NTOは許可されたユーザーまたはアプリケーションのみがAPI経由でMarketing Cloudアカウントにアクセスできるようにすることができます。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters (NTO) は、Marketing Cloud アカウントへの不正な API アクセスを懸念しています。悪意のある API 攻撃による脅威を軽減するために、NTO はどの機能を有効にしますか?",
+  "oj": [
+   "IP 許可リスト",
+   "フィールドレベルの暗号化",
+   "高度な監査証跡",
+   "シングルサインオン認証"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   8
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #8 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    57
+   ],
+   [
+    "v2026-02-19",
+    8
+   ],
+   [
+    "v2026-02-19",
+    44
+   ],
+   [
+    "v2025-09-22",
+    23
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 34,
+  "qe": "Northern Trail Outfittersは、Email Studio、Mobile Connect、Social Studioを含むMarketing Cloudインスタンスに新規採用者向けの設定を行っています。採用者の1人は、北米の全事業部門の運用管理を担当する必要があります。要件を満たすために、このユーザーに割り当てることができる 2 つのロール (カスタム ロールと標準ロール) は何ですか。2つの回答を選択してください",
+  "oe": [
+   "マーケティングクラウドチャネルマネージャー",
+   "マーケティングクラウド メールマーケティングマネージャー",
+   "Marketing Cloud の地域またはローカル管理者",
+   "マーケティングクラウド管理者"
+  ],
+  "ans": [
+   1,
+   2
+  ],
+  "ans_raw": "<b>正解：B,C</b>",
+  "expl": "Marketing Cloud Email Marketing ManagerとMarketing Cloud Regional AdministratorまたはLocal Administratorは、要件を満たすためにこのユーザーに割り当てることができる2つのカスタムまたは標準ロールです。Marketing Cloud Email Marketing Managerは、Email Studioとその機能（メールの作成と送信、購読者の管理、メールのパフォーマンスの追跡など）へのアクセスを許可する標準ロールです。Marketing Cloud Regional AdministratorまたはLocal Administratorは、北米などの特定の地域または場所内のすべてのビジネスユニットへのアクセスを許可するカスタムロールです。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 35,
+  "qe": "ユーザーがメールを送信できないため、Marketing Cloud 管理者に権限の確認を依頼しました。管理者はユーザープロファイルを確認し、ユーザーにコンテンツ作成者、データ管理者、Marketing Cloud 閲覧者の 3 つのロールが割り当てられていることに気付きました。ユーザーがメールを送信できるように問題を解決するために管理者は何をすべきでしょうか?",
+  "oe": [
+   "編集権限と送信権限の付与",
+   "権限を編集し、メール送信の拒否を選択解除します。",
+   "Marketing Cloud チャネルマネージャーのロールを追加します。",
+   "Marketing Cloud 閲覧者ロールを削除します"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "問題のユーザーは、メール送信権限を本質的に含まないロールを保持しています。割り当てられたロールは次のとおりです。* コンテンツ作成者: 通常、コンテンツを作成する権限はありますが、必ずしも電子メールを送信する権限があるわけではありません。* データ マネージャー: データを管理しますが、電子メールの送信権限はありません。* Marketing Cloud 閲覧者: キャンペーンとデータを表示することはできますが、実行したり変更したりすることはできません。この問題を解決し、ユーザーがメールを送信できるようにするには、管理者は以下の操作を行う必要があります。A. 権限の編集と送信権限の付与 - この操作では、ユーザーの権限をカスタマイズして、メールを送信する権限を追加します。これは、既存のロールのいずれかの権限を調整するか（カスタマイズが可能で適切な場合）、メール送信機能を含むカスタムロールまたは権限セットを作成することで実行できます。参考文献:* Salesforce Marketing Cloud の「役割と権限」に関するドキュメント",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 38,
+  "qe": "メッセージがスパム フィルターによってブロックされているため、Northern Trail Outfitters の従業員は電子メールを受信できません。Marketing Cloud 管理者はこの問題をどのように解決できるでしょうか?",
+  "oe": [
+   "従業員のメールアドレスを「アクティブ」ステータスの「すべての購読者」にインポートします。",
+   "従業員がテストメールリストまたはデータ拡張機能にオプトインしていることを確認します",
+   "従業員に会社のメールアドレスではなく個人のメールアドレスを使用するように依頼する",
+   "ITチームにスパムフィルターのホワイトリストに追加する関連IPアドレスのリストを提供する"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "Northern Trail Outfittersの従業員がスパムフィルターの影響でメールを受信できないという問題を解決するため、Marketing Cloud管理者はITチームに、スパムフィルターのホワイトリストに登録すべき関連IPアドレスのリストを提供する必要があります。この措置により、Marketing Cloudから送信されたメールが会社のメールセキュリティシステムによってブロックされることがなくなり、配信率が向上し、社内コミュニケーションが意図した受信者に確実に届くようになります。参考: Salesforce ヘルプ - IP アドレスのホワイトリスト",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 39,
+  "qe": "Northern Trail Outfitters (NTO) Is building a journey which randomly sends five different versions of an initial welcome email to new subscribers; however, subscribers receive the same follow-up email two weeks later. To improve maintainability of their email content, NTO wants to use five completely different emails, rather than having one email with dynamic content.Which activity would allow them to build the journey with the fewest activities possible?",
+  "oe": [
+   "Join",
+   "Einstein STO",
+   "Engagement Split",
+   "Wait Until Date"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "!\n\nSalesforce サイドキック\n\nNorthern Trail Outfitters のシナリオでは、ジャーニー内で 3 つの異なるメールのうち 1 つを新規登録者にランダムに送信する必要があるため、これを最も少ない手順で実現するには、次のアクティビティを使用するのが最適です。\n\nB: エンゲージメント分割\n\nしかし、ジャーニー内で異なるバージョンのメールをランダムに配信するための正しい方法は、一般的な使用法で提供されるオプションには記載されていません。通常、エンゲージメント分岐は、購読者のメールへのインタラクション（開封やクリックなど）に基づいてジャーニーを分岐させるために使用されます。\n\nNTOが複数の異なるメールからランダムに1つを送信したいというニーズに最適なソリューションは、Journey Builderの「ランダム分割」アクティビティですが、これは選択肢に含まれていません。最も近い選択肢として、ランダムではないものの、複数のパスを生成できるエンゲージメント分割があるため、検討は可能ですが、記載されている要件を満たしていません。\n\nしたがって、指定されたオプションと実際に必要な機能に基づいて、次のようになります。\n\n- 提供されているオプションについて誤解があるようです。通常、この場合は「ランダム分割」が使用されます。\n\n利用可能なオプションから選択する必要がある場合、可能な限り少ないアクティビティで異なるバージョンの電子メールをランダムに送信するという要件を直接満たすオプションはありません。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters（NTO）は、新規登録者に対し、初回のウェルカムメールをランダムに5種類送信するジャーニーを構築しています。ただし、2週間後には同じフォローアップメールが送信されます。メールコンテンツの保守性を向上させるため、NTOは、動的なコンテンツを含む1通のメールではなく、5種類の全く異なるメールを使い分けたいと考えています。最も少ないアクティビティで旅を構築できるアクティビティはどれでしょうか?",
+  "oj": [
+   "参加",
+   "アインシュタインSTO",
+   "エンゲージメント分割",
+   "日付まで待機"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   27
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #27 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    101
+   ],
+   [
+    "v2026-02-19",
+    27
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-03-24 #101 answers <b>正解：B</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 40,
+  "qe": "顧客は、会員更新のドリップキャンペーンの一環として、3通のメールを自動化したいと考えています。メールメール#1は会員の更新日の1ヶ月前に送信されます。メール#2は会員の更新日の1週間前に送信されます。メール#3は会員の更新日に送信されます。マスターオーディエンスはAPI経由でリアルタイムに更新されます。顧客の自動化にはどのステップを含める必要がありますか？",
+  "oe": [
+   "ファイルのインポート アクティビティ > マスター データ拡張機能への 3 つの送信アクティビティ。",
+   "マスター データ拡張機能への 3 つの送信アクティビティ。",
+   "ファイルのインポート アクティビティ > 3 つのフィルター アクティビティ > フィルターされたオーディエンスへの 3 つの送信アクティビティ。",
+   "3 つのフィルター アクティビティ > フィルターされたオーディエンスへの 3 つの送信アクティビティ。"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "顧客のオートメーションには、3つのフィルターアクティビティと、フィルターされたオーディエンスへの3つの送信アクティビティを含める必要があります。フィルターアクティビティは、メンバーの更新日などの特定の条件に基づいてデータエクステンションをセグメント化するために使用されます。送信アクティビティは、データエクステンションまたはフィルターされたオーディエンスにメールを送信するために使用されます。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 41,
+  "qe": "A Marketing Cloud admin runs the Contacts Counts report and sees there are currently 500,000 contacts in their account. They have a total of 300,000 email subscribers, 200,000 synchronized contacts, and 75,000 mobile subscribers.Why would the total contact count be less than the total number of contacts from all data sources?",
+  "oe": [
+   "Mobile subscribers are not counted as contacts.",
+   "There are overlapping contacts in each of the channel",
+   "Only active email subscriber is counted.",
+   "Synchronized contacts are only counted after sending"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者が連絡先数レポートを実行すると、アカウントに現在 500,000 件の連絡先があることがわかります。メール購読者数は合計 300,000 人、同期済みの連絡先は 200,000 人、モバイル購読者は 75,000 人です。連絡先の合計数が、すべてのデータ ソースからの連絡先の合計数よりも少なくなるのはなぜですか?",
+  "oj": [
+   "モバイル加入者は連絡先としてカウントされません。",
+   "各チャネルに重複した連絡先があります",
+   "アクティブなメール購読者のみがカウントされます。",
+   "同期された連絡先は送信後にのみカウントされます"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   33
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #33 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    33
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-02-19 #33 answers <b>Correct Answer: D</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 42,
+  "qe": "Northern Trail Outfitters wants to segment audiences based on SalesCloud data.Where would their Marketing Cloud admin configure Sales Cloud Objects to be synced and leveraged in Marketing Cloud.",
+  "oe": [
+   "Setup >Data Management > Synchronized Data Extensions",
+   "Contact Builder > Data Extensions > Synchronized Data Extensions",
+   "Contact Builder > Data Sources",
+   "Setup > Apps > Salesforce Integration"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "Sales Cloud オブジェクトを Marketing Cloud で同期して活用できるように設定するには、Marketing Cloud 管理者は Marketing Cloud で「設定 > データ管理 > 同期済みデータエクステンション」に移動する必要があります。このパスにより、管理者は特定の Sales Cloud データオブジェクトとフィールドを Marketing Cloud に同期する設定と管理が可能になり、このデータに基づいてセグメント化されたオーディエンスを作成できます。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters は、SalesCloud データに基づいてオーディエンスをセグメント化したいと考えています。Marketing Cloud 管理者は、Marketing Cloud で同期および活用されるように Sales Cloud オブジェクトをどこで構成するのでしょうか。",
+  "oj": [
+   "設定 > データ管理 > 同期データ拡張機能",
+   "コンタクトビルダー > データ拡張機能 > 同期されたデータ拡張機能",
+   "コンタクトビルダー > データソース",
+   "設定 > アプリ > Salesforce 統合"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   37
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #37 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    37
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 44,
+  "qe": "Marketing Cloud 管理者は、グローバル地域のすべての購読者属性を含むトラッキング抽出を設定しました。しかし、抽出されたファイルでは顧客名のアクセント記号付き文字が文字化けして表示されていることに管理者は気づきました。どの 2 つの設定でこの問題を解決できますか?2つの回答を選択してください",
+  "oe": [
+   "列区切り文字を",
+   "文字エンコーディングを UTF-8 に変更します",
+   "Unicode出力を選択",
+   "フォーマットをxmlに変更"
+  ],
+  "ans": [
+   1,
+   2
+  ],
+  "ans_raw": "<b>正解：B,C</b>",
+  "expl": "アクセント付き文字がトラッキング抽出で乱れて表示される問題を解決するには、文字エンコードと出力形式に関連する正しい設定を調整する必要があります。* 文字エンコードをUTF-8に変更：この設定により、抽出されたファイルはUnicode（アクセント付き文字や世界的に使用されているその他の非標準文字を含む）をサポートします。UTF-8エンコードは、適用可能なデータセット内のあらゆる文字を表現できるため、グローバルアプリケーションに最適です。* Unicode 出力を選択: ファイル出力で Unicode 文字が正しくフォーマットされ、誤って表示されないようにするには、このオプションを有効にする必要があります。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 45,
+  "qe": "Marketing Cloud 管理者は、ハードバウンスされた電子メール アドレスの抑制リストを作成したいと考えています。詳細はどこで確認できますか?",
+  "oe": [
+   "バウンスメールレポートを実行する",
+   "バウンスデータビューをクエリする",
+   "送信ログを照会する",
+   "アカウント送信概要レポートを実行する"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "ハードバウンスしたメールアドレスのサプレッションリストを作成する最も直接的な方法は、SQLでバウンスデータビューをクエリすることです。このデータビューにはバウンス関連のすべての情報が含まれており、管理者はバウンスカテゴリでハードバウンスを絞り込むことができます。クエリアクティビティを使用することで、管理者はすべてのハードバウンスレコードを抽出し、その結果に基づいて動的または静的なサプレッションリストを作成できます。この方法は効率的で、関連データのみがサプレッションリストに含まれるようになります。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 46,
+  "qe": "Which three considerations should be made when setting up Distributed Marketing?Choose 3 answers",
+  "oe": [
+   "Business users can select any email at the time of sending.",
+   "Default options can be set up for the greeting in the email.",
+   "A journey can be connected to one or more Campaigns.",
+   "The DM administrator Profile is required to access Distributed Marketing.",
+   "Messages can be sent to Contacts, Leads, and Person Accounts."
+  ],
+  "ans": [
+   1,
+   2,
+   4
+  ],
+  "ans_raw": "<b>正解：B,C,E</b>",
+  "expl": "Distributed Marketing を設定する場合、管理者は次の点を考慮する必要があります。* メールの挨拶文のデフォルトオプションを設定できます2。これにより、管理者はメールの受信者への宛名（名、姓、敬称など）を定義できます2。* ジャーニーは1つ以上のキャンペーン2に接続できます。これにより、管理者はジャーニーを商談やケースなどのSalesforceオブジェクトに関連付け、キャンペーンのステータス2に基づいてパーソナライズされたメッセージをトリガーできます。* メッセージは、取引先責任者、リード、個人取引先2に送信できます。これらは、Distributed Marketing メッセージ2でサポートされている受信者種別です。その他の選択肢は以下の理由により誤りです。* ビジネスユーザーは送信時に任意のメールを選択することはできません2。Marketing Cloud2で管理者が設定した事前承認済みのメールからのみ選択できます。* Distributed Marketing2へのアクセスにはDM管理者プロファイルは必要ありません。管理者は、Distributed Marketing2の適切な権限と設定を持つ任意のプロファイルを使用できます。",
+  "lang": "ja",
+  "qj": "分散マーケティングを設定する際に考慮すべき 3 つの点は何ですか?3つの回答を選択してください",
+  "oj": [
+   "ビジネス ユーザーは送信時に任意のメールを選択できます。",
+   "電子メールの挨拶のデフォルト オプションを設定できます。",
+   "ジャーニーは 1 つ以上のキャンペーンに接続できます。",
+   "Distributed Marketing にアクセスするには、DM 管理者プロファイルが必要です。",
+   "メッセージは、取引先責任者、リード、個人取引先に送信できます。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   32
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #32 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    32
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 47,
+  "qe": "Northern Trail Outfitters（NTO）は、親会社傘下に多くの子会社ブランドを擁するグローバルブランドです。NTOはエンタープライズ事業部門であり、プロモーションメールの送信に使用される子事業部門も有しています。残りの事業部門はどのように編成すべきでしょうか?",
+  "oe": [
+   "ブランドごとに子ビジネス ユニットを作成し、GEO ごとに別のレベルの子ビジネス ユニットをネストします。",
+   "ブランド資産を追跡するために、現在のアカウントに命名規則を使用してフォルダーを作成して適用します。",
+   "ブランドごとに新しいエンタープライズ ビジネス ユニットを作成し、ブランドの GEO ごとに子ビジネス ユニットを作成します。",
+   "他のブランドと共有するための子ビジネス ユニットを 1 つ作成しますが、フォルダーと命名規則を適用します。"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "複数のブランドを持ち、世界規模で展開している企業の Salesforce Marketing Cloud でビジネス ユニットを編成するには、企業レベルで集中管理を維持しながら、ブランドおよび地域固有の戦略を可能にする構造を作成する必要があります。* ブランドごとに子ビジネス ユニットを作成する: この設定により、Northern Trail Outfitters 傘下の各ブランドは、共有リソースを活用し、包括的なビジネス戦略と連携しながら、マーケティングを自律的に管理できます。* 各ブランドの下に GEO の子ビジネス ユニットをネストします。この詳細な分類により、地理的なニュアンスに合わせたローカライズされたマーケティング戦略が可能になり、ターゲット マーケティングの取り組みと地域のコンプライアンスが強化されます。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 48,
+  "qe": "A Marketing Cloud admin wants to append an Urchin Tracking Module (UTM) variable String to links in emails.Which functionality would allow this?",
+  "oe": [
+   "Parameter Manager",
+   "Web and Mobile Analytics",
+   "Advertising Studio",
+   "Personalization Builder"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "UTM トラッキング パラメータをメール内のリンクに追加するには:* パラメータマネージャの使用：Marketing Cloud のこの機能を使用すると、メール全体のリンクに UTM パラメータを体系的に追加できます。トラッキングパラメータを一元管理できるため、様々なキャンペーンにわたって一貫したトラッキングを簡単に管理・適用できます。* 設定: パラメータ マネージャで UTM パラメータを設定すると、送信される電子メール内のすべてのリンクに自動的に追加されます。",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、電子メール内のリンクに Urchin Tracking Module (UTM) 変数文字列を追加したいと考えています。どの機能がこれを可能にするのでしょうか?",
+  "oj": [
+   "パラメータマネージャ",
+   "ウェブとモバイルの分析",
+   "広告スタジオ",
+   "パーソナライゼーションビルダー"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   12
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #12 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    12
+   ],
+   [
+    "v2025-09-22",
+    16
+   ],
+   [
+    "v2026-02-19",
+    22
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 49,
+  "qe": "Northern Trail Outfitters runs a nightly automation consisting of a File Transfer and a File Import. Following an update from the engineering team, the automation began failing. The Marketing Cloud admin suspects the CSV file now has an invalid format.How could the admin receive a file of the bad data rows to confirm this theory?",
+  "oe": [
+   "Move the File Transfer to its own automation and include a notification email address",
+   "Move the Import definition to its own automation and include a notification email address",
+   "Update the Import definition to include a notification email address",
+   "Update the automation to include a notification email address for Runtime Errors"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "この仮説を裏付けるために、管理者が不良データ行のファイルを受け取るには、インポート定義を更新して通知メールアドレスを設定する必要があります。インポート定義とは、マーケターがファイルからMarketing Cloudのデータエクステンションまたはリストにデータをインポートできるアクティビティの一種です。インポート定義には、インポート完了後に不良データ行のファイルをダウンロードするためのリンクが記載されたメールを受け取る通知メールアドレスを設定することができます。ファイルには、インポートに失敗した行と失敗の理由が含まれます。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfittersでは、ファイル転送とファイルインポートからなる夜間の自動化を実行しています。エンジニアリングチームからのアップデート後、自動化が失敗するようになりました。Marketing Cloud管理者は、CSVファイルの形式が無効になっているのではないかと疑っています。管理者はどのようにしてこの理論を確認するために不良データ行のファイルを受け取ることができるのでしょうか?",
+  "oj": [
+   "ファイル転送を独自の自動化に移動し、通知メールアドレスを追加します。",
+   "インポート定義を独自の自動化に移動し、通知メールアドレスを追加します。",
+   "インポート定義を更新して通知メールアドレスを追加します",
+   "自動化を更新して、ランタイムエラーの通知メールアドレスを追加します。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   16
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #16 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    16
+   ],
+   [
+    "v2025-09-22",
+    15
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 50,
+  "qe": "During discovery, the customer outlines data requirements and the anticipated use of Marketing Cloud with the following criteria:  - Customer data will be fully refreshed every night via Import activity from the customer's data warehouse. - Contact records will be augmented by relational data tables via Contact Builder. - The customer data file will contain 5M records with 40+ attributes. - One attribute will house HTML code, 1000 characters max, that will be used to populate Account Access content areas in emails. - A customer ID will be used as the unique identifier for each contact. Which statement differentiates the use of data extensions over lists?",
+  "oe": [
+   "Data extensions allow for add/update Import activity.",
+   "Data extensions can store HTML code as an attribute.",
+   "Data extensions support Customer ID to be used as Subscriber Key.",
+   "Data extensions are necessary for Contact Builder"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "データ拡張機能はContact Builderに必須である、というのは、データ拡張機能とリストの使用方法を区別する説明です。データ拡張機能は、購読者データを保存するテーブルであり、Contact Builderを介して他のデータ拡張機能やデータソースにリンクできます。Contact Builderは、マーケターが連絡先の統合ビューを作成し、他のデータエンティティとの関係を管理できるツールです。リストは購読者の集合であり、Contact Builderを介して他のデータソースにリンクすることはできません。",
+  "lang": "ja",
+  "qj": "調査中に、顧客は次の基準でデータ要件と Marketing Cloud の予想される使用方法を概説します。* 顧客データは、顧客のデータ ウェアハウスからのインポート アクティビティによって毎晩完全に更新されます。* 連絡先レコードは、Contact Builder を介してリレーショナル データ テーブルによって拡張されます。* 顧客データ ファイルには、40 以上の属性を持つ 500 万件のレコードが含まれます。* 1 つの属性には、電子メールのアカウント アクセス コンテンツ領域に入力するために使用される、最大 1000 文字の HTML コードが格納されます。* 顧客 ID は各連絡先の一意の識別子として使用されます。リストよりもデータ拡張機能の使用を区別する記述はどれですか?",
+  "oj": [
+   "データ拡張機能により、インポート アクティビティの追加/更新が可能になります。",
+   "データ拡張機能は HTML コードを属性として保存できます。",
+   "データ拡張機能は、顧客 ID をサブスクライバー キーとして使用することをサポートします。",
+   "データ拡張機能はコンタクトビルダーに必要です"
+  ],
+  "text_from": [
+   "v2025-09-22",
+   25
+  ],
+  "note_text": "English wording taken from duplicate v2025-09-22 #25 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    88
+   ],
+   [
+    "v2025-09-22",
+    25
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-03-24 #88 answers <b>正解：A</b> / Answer differs in duplicate: v2025-09-22 #25 answers Answer: A"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 52,
+  "qe": "Northern Trail Outfitters (NTO) では、評判向上のため、送信者名と IP アドレスの観点からマーケティング メールとトランザクション メールを区別する必要があります。送信分類を作成するために NTO が実行する必要がある 2 つのアクションはどれですか。2つの回答を選択してください",
+  "oe": [
+   "送信者プロファイルを定義します。",
+   "サブスクライバー固有の送信者名を定義します。",
+   "カスタム返信メール管理を定義します。",
+   "配信プロファイルを定義します。"
+  ],
+  "ans": [
+   0,
+   3
+  ],
+  "ans_raw": "<b>正解：A,D</b>",
+  "expl": "送信分類には、送信者プロファイルと配信プロファイルの定義が必要です。送信者プロファイルでは、メール送信の送信者名、送信元メールアドレス、返信メールアドレスを定義します。配信プロファイルでは、メール送信のIPアドレス、ドメイン、ヘッダーとフッター情報を定義します。送信分類を作成するために、購読者固有の送信者名とカスタム返信メール管理を定義する必要はありません。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 53,
+  "qe": "What are entry source types for Journey Builder?",
+  "oe": [
+   "Data Extension, Cloud Pages, Email List, API Event",
+   "Data Extension, Audience Studio, API Event, Date Based Event",
+   "Data Extension, Email List, API Event, Date Based Event",
+   "Data Extension, Salesforce Community, GA360, Email List"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "Journey Builder のエントリ ソース タイプには次のものがあります。* C. データ拡張機能、メール リスト、API イベント、日付ベースのイベントこれらのソースを使用すると、マーケティング キャンペーンでさまざまなデータ ソースとのやり取りに基づいて連絡先を自動的に開始または移行できます。* データ拡張機能: データ拡張機能内のレコードに基づいて、連絡先をジャーニーに挿入できます。* メール リスト: 特定のメール リストの連絡先をエントリ イベントとして使用できます。* API イベント: これにより、外部システムがジャーニーへのエントリをトリガーできるようになります。* 日付ベースのイベント: 連絡先は、データ拡張機能内の特定の日付または日付属性に基づいてジャーニーを入力できます。",
+  "lang": "ja",
+  "qj": "Journey Builder のエントリ ソース タイプとは何ですか?",
+  "oj": [
+   "データ拡張機能、クラウドページ、メールリスト、API イベント",
+   "データ拡張機能、Audience Studio、API イベント、日付ベースのイベント",
+   "データ拡張、メールリスト、API イベント、日付ベースのイベント",
+   "データ拡張機能、Salesforce コミュニティ、GA360、メールリスト"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   64
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #64 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    64
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 55,
+  "qe": "Where would a Marketing Cloud admin view all verified email addresses?",
+  "oe": [
+   "Identity Verification Log",
+   "From Address Management",
+   "Reply Mail Management",
+   "Sender Profiles"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "Marketing Cloud で検証済みのすべてのメール アドレスを表示するには:* \\[送信元アドレス管理\\] に移動します。Email Studio 内のこのセクションでは、管理者は検証され、メールの送信に使用するために承認されたすべての送信元アドレスを管理および表示できます。* 検証と管理: この領域には、設定および検証された各電子メール アドレスの記録が具体的に保存され、それぞれのステータスも保存されるため、プラットフォームから電子メールを送信する権限があるかどうかが確認できます。",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、検証済みのすべてのメールアドレスをどこで確認できますか?",
+  "oj": [
+   "本人確認ログ",
+   "送信元アドレス管理",
+   "返信メール管理",
+   "送信者プロファイル"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   79
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #79 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    79
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 56,
+  "qe": "Marketing Cloud 管理者は、大量の送信が組織によって設定された送信速度の目標を満たしていないことを発見しました。メッセージをもっと早く届けるにはどのような機能が必要ですか?",
+  "oe": [
+   "バースト送信",
+   "Journey Builder トリガー送信",
+   "送信スロットル",
+   "マーケティングクラウドコネクト"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "バースト送信は、メッセージをより早く送信するための機能です。バースト送信を使用すると、標準的な送信プロセスの一部をバイパスすることで、短時間で大量のメールを送信できます。バースト送信は、時間的制約のあるメッセージや緊急のメッセージを、迅速に多数の宛先に届ける必要がある場合に最適です。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 58,
+  "qe": "Marketing Cloud 管理者は、過去 1 年間にすべてのビジネス ユニットで送信されたメールの合計数を確認するように求められています。管理者はこの情報をどこで取得するのでしょうか。",
+  "oe": [
+   "アナリティクスビルダー > レポート > メール送信レポート",
+   "連絡先ビルダー > すべての連絡先 > メール",
+   "Studio > メール > 購読者 > すべての購読者",
+   "Email Studio > メール > トラッキング > 送信"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 59,
+  "qe": "NTO wants to copy journeys across business units. What could be used to replicate journey structure so it can be easily recreated in another account?",
+  "oe": [
+   "Journey Extracts",
+   "Copy activities",
+   "Journey Templates",
+   "Deployment Manager"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "",
+  "lang": "ja",
+  "qj": "NTO は、ビジネス ユニット間でのジャーニーをコピーしたいと考えています。別のアカウントで簡単に再作成できるように、ジャーニー構造を複製するには何を使用すればよいでしょうか?",
+  "oj": [
+   "旅の抜粋",
+   "コピーアクティビティ",
+   "ジャーニーテンプレート",
+   "デプロイメントマネージャー"
+  ],
+  "text_from": [
+   "v2025-09-22",
+   5
+  ],
+  "note_text": "English wording taken from duplicate v2025-09-22 #5 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    94
+   ],
+   [
+    "v2025-09-22",
+    5
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-03-24 #94 answers <b>正解：A</b> / Answer differs in duplicate: v2025-09-22 #5 answers Answer: A"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 60,
+  "qe": "What should be confirmed to ensure Journey Builder directs the subscribers correctly?",
+  "oe": [
+   "Journey Data is used for the Decision Split.",
+   "Entry Source attributes are available in Journey Settings.",
+   "Contract Data is used for the Decision Split.",
+   "Filter Contacts are enabled to refine the audience."
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "Journey Builder がサブスクライバーを正しく誘導できるようにするには、意思決定の分岐に連絡先データを使用する必要があります。コンタクトデータはコンタクトモデルに保存され、すべてのジャーニーで利用可能なデータです。ジャーニーデータはエントリポイントで取得され、各ジャーニーに固有のデータです。",
+  "lang": "ja",
+  "qj": "Journey Builder がサブスクライバーを正しく誘導するためには、何を確認する必要がありますか?",
+  "oj": [
+   "ジャーニー データは、意思決定分割に使用されます。",
+   "エントリ ソース属性は、ジャーニー設定で使用できます。",
+   "契約データは意思決定分割に使用されます。",
+   "フィルター連絡先が有効になり、対象者を絞り込むことができます。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   7
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #7 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    7
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-02-19 #7 answers <b>Correct Answer: A</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 61,
+  "qe": "Marketing Cloud 管理者は、ビジネス プロセス用のカスタム ロールを作成できます。これを実現するために何を考慮すべきでしょうか?",
+  "oe": [
+   "カスタム ロールは、そのロールを最初に作成したユーザーのみが編集できます。",
+   "カスタム ロールは、作成されたビジネス内でのみ使用できます。",
+   "カスタム ロールは Marketing Cloud アカウントで利用できます。",
+   "カスタム ロールは、個々のユーザーの詳細な権限の割り当てをオーバーライドします。"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "Marketing Cloud でカスタムロールを作成するときは、次の点を考慮することが重要です。* B. カスタムロールは、作成されたビジネスユニット内でのみ利用可能です。つまり、カスタムロールの適用範囲は特定のビジネスユニットに限定され、同じMarketing Cloudアカウント内の他のビジネスユニットには自動的に適用されません。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 62,
+  "qe": "Northern Trail Outfitters (NTO) has expanded its marketing efforts globally and wants to implement a dedicated Sender Authentication Package. They plan to share it across each of their Marketing Cloud accounts Which two considerations would help NTO determine if a Dedicated IP is the right choice?Choose2 answers",
+  "oe": [
+   "All of NTO's accounts should be on the same stack",
+   "Send volume is large enough to maintain a positive or neutral reputation",
+   "Length of time needed to pause sending is greater than one month",
+   "Pre-warmed IP address can be purchased from Salesforce"
+  ],
+  "ans": [
+   0,
+   1
+  ],
+  "ans_raw": "<b>正解：A,B</b>",
+  "expl": "グローバル マーケティング活動のために専用 IP を検討する場合、Northern Trail Outfitters は次の点を考慮する必要があります。スタックの調整: さまざまな地理的な場所で専用 IP を共有できるように、すべてのアカウントが同じスタック上にあることを確認します。送信量：専用IPは、送信量が多く、良好な送信者レピュテーションを維持・構築できる場合に効果的です。IPウォーミングとレピュテーションの向上には、定期的かつ継続的な大量送信が不可欠です。参考: Salesforce Marketing Cloud 送信者認証パッケージのドキュメント",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters（NTO）はマーケティング活動をグローバルに拡大し、専用の送信者認証パッケージを導入したいと考えています。このパッケージを各Marketing Cloudアカウントで共有する予定です。専用IPが適切な選択肢かどうかを判断するために、NTOが考慮すべき2つの点は何でしょうか？2つの回答を選択",
+  "oj": [
+   "NTOのすべてのアカウントは同じスタック上にある必要があります",
+   "送信量は、肯定的または中立的な評判を維持するのに十分な量です",
+   "送信を一時停止するのに必要な時間は1か月以上です",
+   "事前ウォームアップされたIPアドレスはSalesforceから購入できます"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   23
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #23 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    23
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 63,
+  "qe": "A restaurant supply company captures email subscribers and leads through trade shows. They hold a giveaway at each trade show to entice booth visitors to leave their contact information. In the past, they have used a fishbowl to capture business cards, but need to update this to an online sweepstakes entry vehicle displayed on a mounted tablet.Individuals should only be allowed to enter once, and the winner will be selected randomly.All entrants receive a follow-up email after the trade show asking them to confirm their opt-in for a monthly newsletter.Which two components are appropriate for this solution?Choose 2 answers",
+  "oe": [
+   "Microsite with Web Collect to store entrants on a data extension.",
+   "Microsite with Smart Capture to store entrants on a data extension.",
+   "Send Email Activity with a link to a subscription center.",
+   "Data Extension with double opt-in status defined."
+  ],
+  "ans": [
+   1,
+   3
+  ],
+  "ans_raw": "<b>正解：B,D</b>",
+  "expl": "レストラン供給会社では、展示会の連絡先収集方法を更新する必要があります。* B. データ拡張機能にエントリを保存するための Smart Capture を備えたマイクロサイト: マイクロサイト上の Smart Capture フォームは、エントリを効率的に収集し、それらをデータ拡張機能に直接保存するための直接的なデジタル メソッドを提供します。* D. ダブルオプトインステータスが定義されたデータ拡張機能: この設定により、参加者はフォローアップメールを通じてニュースレターの購読を確認できるため、同意の管理と電子メールマーケティング規制への準拠が保証されます。これらのコンポーネントは、マーケティング規制への準拠を確保しながら、展示会の連絡先を取得および管理するための最新かつ効率的な方法を提供します。",
+  "lang": "ja",
+  "qj": "あるレストラン用品会社は、展示会を通じてメール購読者とリードを獲得しています。展示会ごとに景品を配布し、ブース来場者に連絡先情報を登録してもらっています。以前は金魚鉢を使って名刺を集めていましたが、これをタブレット端末に表示するオンライン懸賞応募ツールに更新する必要があります。応募できるのは1人1回のみで、当選者はランダムに選ばれます。すべての参加者には、展示会終了後に月刊ニュースレターの購読登録を確認するためのフォローアップ メールが送信されます。このソリューションに適した 2 つのコンポーネントはどれですか?2つの回答を選択してください",
+  "oj": [
+   "データ拡張機能に参加者を保存するための Web Collect を備えたマイクロサイト。",
+   "データ拡張機能に参加者を保存するためのスマートキャプチャを備えたマイクロサイト。",
+   "サブスクリプション センターへのリンクを含む電子メール アクティビティを送信します。",
+   "ダブルオプトインステータスが定義されたデータ拡張機能。"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   63
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #63 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    63
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 66,
+  "qe": "Northern Trail Outfitters（NTO）には、スタッフに必要なライセンスしかありません。キャンペーンマネージャーが育児休暇中です。NTOはどのようにして新しいユーザーを作成すればよいでしょうか？",
+  "oe": [
+   "キャンペーンマネージャーのライセンスを無効にして、新しいユーザーに割り当てます。",
+   "キャンペーンマネージャーのユーザーを削除し、新しいユーザーを作成します",
+   "キャンペーンマネージャーの権限を新しいユーザーに譲渡する",
+   "キャンペーンマネージャーのユーザーを無効にして、新しいユーザーを作成します"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "",
+  "lang": "ja",
+  "also": [
+   [
+    "v2026-03-24",
+    87
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 68,
+  "qe": "電子メール マーケティング マネージャーは、100 万人の購読者にプロモーション メールを送信することを計画しています。どのデータ構造を使用すべきでしょうか?",
+  "oe": [
+   "データ拡張",
+   "グループ",
+   "出版物リスト",
+   "リスト"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "100万人の購読者にプロモーションメールを送信するには、NTOはデータ構造としてデータ拡張機能を使用する必要があります。データ拡張機能とは、Marketing Cloud内の購読者データを保存するテーブルです。データ拡張機能には、1つのデータ拡張機能あたり最大3,000万件、アカウントあたり最大1億件のレコードを保存できます2。また、データ拡張機能は、メール送信における高度なセグメンテーション、パーソナライゼーション、レポート機能もサポートします。",
+  "lang": "ja",
+  "also": [
+   [
+    "v2026-03-24",
+    100
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 69,
+  "qe": "A Marketing Cloud admin has been asked to grant full administrator permissions to a new user.Which two standard roles should be selected for the new user?Choose 2 answers",
+  "oe": [
+   "Data Manager",
+   "Marketing Cloud Administrator",
+   "Administrator",
+   "Marketing Cloud Security Administrator"
+  ],
+  "ans": [
+   1,
+   2
+  ],
+  "ans_raw": "<b>正解：B,C</b>",
+  "expl": "",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、新しいユーザーに完全な管理者権限を付与するように求められています。新しいユーザーに対して選択する必要がある 2 つの標準ロールはどれですか?2つの回答を選択してください",
+  "oj": [
+   "データマネージャー",
+   "マーケティングクラウド管理者",
+   "管理者",
+   "マーケティングクラウドセキュリティ管理者"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   15
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #15 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    15
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 71,
+  "qe": "Northern Trail Outfitters wants to drive additional online sales. They are interested in using Einstein to recommend similar items to customers during the checkout process. Which two terms would they add to their website to accomplish this? Choose 2 answers",
+  "oe": [
+   "Collect Code",
+   "Recommendation Code",
+   "Conversion/Cart Code",
+   "Email Conversion Code"
+  ],
+  "ans": [
+   0,
+   2
+  ],
+  "ans_raw": "<b>正解：A,C</b>",
+  "expl": "Einstein を活用してチェックアウトプロセス中に顧客に類似商品を推奨するには、NTO はウェブサイトに 2 種類のコード（収集コードとコンバージョン/カートコード2）を追加する必要があります。収集コードはウェブサイトにおける顧客の行動と好みを追跡し、コンバージョン/カートコードは購入とカートへの追加を追跡します2。推奨コードは、チェックアウトプロセスではなく、ウェブサイト上で商品の推奨を表示するために使用されます2。メールコンバージョンコードは、ウェブサイト訪問ではなく、メールキャンペーンからのコンバージョンを追跡するために使用されます2。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfittersは、オンライン売上の拡大を目指しています。Einsteinを活用して、チェックアウト時に顧客に類似商品をおすすめすることに関心を持っています。これを実現するために、どの 2 つの用語を Web サイトに追加するでしょうか。2つの回答を選択してください",
+  "oj": [
+   "コードを収集する",
+   "推奨コード",
+   "コンバージョン/カートコード",
+   "メール変換コード"
+  ],
+  "text_from": [
+   "v2025-09-22",
+   6
+  ],
+  "note_text": "English wording taken from duplicate v2025-09-22 #6 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2025-09-22",
+    6
+   ],
+   [
+    "v2025-09-22",
+    21
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2025-09-22 #6 answers Answer: A B / Answer differs in duplicate: v2025-09-22 #21 answers Answer: A B"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 72,
+  "qe": "Northern Trails Outfitters の Marketing Cloud 管理者は、最も価値のある顧客の特徴を模倣したオーディエンスを Advertising Studio で構築したいと考えています。Advertising Studio から直接類似オーディエンスをサポートしているネットワークはどれですか?",
+  "oe": [
+   "FacebookとTwitter",
+   "フェイスブック",
+   "GoogleとFacebook",
+   "ツイッター"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "Advertising Studio は、Facebook からの類似オーディエンスのみを直接サポートします。Google や Twitter などの他のネットワークの場合、Advertising Studio は Marketing Cloud データに基づいてオーディエンスセグメントを作成し、ネットワークのプラットフォームにエクスポートして、類似オーディエンスを手動で作成できます。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 73,
+  "qe": "When customers use the Marketing Cloud default Profile Center link to unsubscribe it causes users to not receive emails from any other business unit.What could explain this behavior?",
+  "oe": [
+   "The user gets Added to a blocklist that causes an Enterprise level unsubscribe",
+   "The user Is getting deleted from the AN Subscribers list",
+   "Data in data extensions corresponding to the customer",
+   "Is removed Business unit unsubscribe setting causes an Enterprise level unsubscribe"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "顧客が Marketing Cloud のデフォルトのプロファイル センターから登録解除し、他のビジネス ユニットからメールを受信しなくなる動作は、次のように説明されます。* D. ビジネスユニットの購読解除設定により、エンタープライズレベルの購読解除が行われます。この設定により、購読者がデフォルトのプロファイルセンターを使用してオプトアウトすると、エンタープライズレベルで購読解除され、組織内のすべてのビジネスユニットに影響します。",
+  "lang": "ja",
+  "qj": "顧客が Marketing Cloud のデフォルトのプロファイル センター リンクを使用して登録を解除すると、ユーザーは他のビジネス ユニットからのメールを受信できなくなります。この行動を説明できるものは何でしょうか?",
+  "oj": [
+   "ユーザーはブロックリストに追加され、エンタープライズレベルの登録解除が発生します。",
+   "ユーザーは AN 加入者リストから削除されます",
+   "顧客に対応するデータ拡張機能内のデータ",
+   "ビジネスユニットの購読解除設定が削除されると、エンタープライズレベルの購読解除が発生します"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   69
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #69 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    78
+   ],
+   [
+    "v2026-02-19",
+    69
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 74,
+  "qe": "Northern Trails Outfitters uses DoubleClick Bid Manager, Facebook Ads, and Google Analytics to manage advertising spend. They want to combine these data sources with Marketing Cloud's API to identify their most effective campaigns.What feature should be recommended?",
+  "oe": [
+   "Einstein AI",
+   "Interaction Studio",
+   "Datorama",
+   "Google Marketing Platform"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "Datorama は、Marketing Cloud、Google Analytics、Facebook Ads、DoubleClick Bid Manager などのさまざまなソースからのデータを統合し、マーケティング キャンペーンを最適化するための洞察と分析を提供できるマーケティング インテリジェンス プラットフォームです。",
+  "lang": "ja",
+  "qj": "Northern Trails Outfittersは、DoubleClick Bid Manager、Facebook広告、Googleアナリティクスを使用して広告費を管理しています。同社は、これらのデータソースをMarketing CloudのAPIと組み合わせることで、最も効果的なキャンペーンを特定したいと考えています。どのような機能を推奨すべきでしょうか?",
+  "oj": [
+   "アインシュタインAI",
+   "インタラクションスタジオ",
+   "期限",
+   "Google マーケティング プラットフォーム"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   25
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #25 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    25
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 75,
+  "qe": "While setting up Marketing Cloud Connect, a Marketing Cloud admin navigates to the Marketing Cloud tab in Sales Cloud to complete the integration. The admin then receives the following error message: - Insufficient User Permissions. You have not been designated as an integrated Marketing Cloud user. Contact your system administrator The admin notices the Marketing Cloud for AppExchange Admin option is selected when looking at the user settings What action should correct the issue?",
+  "oe": [
+   "Apply the Marketing Cloud for AppExchange User option as well",
+   "Reset al passwords to force new tokens",
+   "Apply the appropriate user mappings in the CRM configuration",
+   "Apply the administrator and Marketing Cloud Administrator permission sets to user"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "統合された Marketing Cloud ユーザーとして指定されない問題を修正するには、管理者はユーザー 5 に管理者権限セットと Marketing Cloud 管理者権限セットを適用する必要があります。管理者権限セットは、Sales Cloud のすべての標準オブジェクトと設定へのアクセス権をユーザーに付与し、Marketing Cloud 管理者権限セットは、Sales Cloud の Marketing Cloud Connect の機能と設定へのアクセス権をユーザーに付与します。これらの権限セットは、Sales Cloud と Marketing Cloud の統合を完了するために必要です。その他のオプションは、以下の理由により正しくありません。* Marketing Cloud for AppExchangeユーザーオプションも適用してください。このオプションでは、ユーザーにMarketing Cloud内のMarketing Cloud Connect機能へのアクセスのみを許可し、Sales Cloudへのアクセスは許可しないため、問題は解決されません。統合を完了するには、ユーザーはSales Cloud内のMarketing Cloud Connect機能にもアクセスする必要があります5。* すべてのパスワードをリセットして新しいトークンを強制的に取得します。このオプションはAPIユーザーの認証トークンにのみ影響し、統合ユーザーには影響しないため、問題は解決しません。Sales Cloud5からMarketing Cloudに認証情報を使用してログインするには、ユーザーが統合ユーザーとして指定されている必要があります。* CRM設定で適切なユーザーマッピングを適用してください。このオプションは、Sales CloudとMarketing Cloud間でユーザーのメールアドレスまたはユーザー名に基づいてマッピングされる方法にのみ影響するため、問題は解決されません。ユーザーを2つのシステム間でマッピングするには、まず統合ユーザーとして指定する必要があります5。",
+  "lang": "ja",
+  "qj": "Marketing Cloud Connect の設定中に、Marketing Cloud 管理者が Sales Cloud の Marketing Cloud タブに移動して連携を完了しようとしました。すると、管理者は次のエラーメッセージを受け取りました。- ユーザー権限が不十分です。Marketing Cloud 統合ユーザーとして指定されていません。システム管理者にお問い合わせください。管理者は、ユーザー設定で Marketing Cloud for AppExchange 管理者オプションが選択されていることに気づきました。この問題を修正するには、どのような操作が必要ですか？",
+  "oj": [
+   "Marketing Cloud for AppExchangeユーザーオプションも適用します",
+   "すべてのパスワードをリセットして新しいトークンを強制する",
+   "CRM設定で適切なユーザーマッピングを適用します",
+   "管理者およびマーケティングクラウド管理者の権限セットをユーザーに適用します"
+  ],
+  "text_from": [
+   "v2025-09-22",
+   17
+  ],
+  "note_text": "English wording taken from duplicate v2025-09-22 #17 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2025-09-22",
+    17
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2025-09-22 #17 answers Answer: C"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 76,
+  "qe": "A new employee is hired into the role of marketing analyst. This user should have access to all tracking data in Marketing Cloud, but no access to any send activities.Which two default User Roles should be applied to this new user which provides this access to all channels, keeping the principle of least privilege in mind?",
+  "oe": [
+   "Data Manager and Analyst",
+   "Analyst and Marketing Cloud Viewer",
+   "Content Creator and Marketing Cloud Viewer"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "",
+  "lang": "ja",
+  "qj": "新しい従業員がマーケティングアナリストとして採用されました。このユーザーにはMarketing Cloud内のすべてのトラッキングデータへのアクセス権が必要ですが、送信アクティビティへのアクセス権はありません。最小権限の原則を念頭に置きながら、すべてのチャネルへのアクセスを提供するこの新しいユーザーに適用する必要がある 2 つのデフォルトのユーザー ロールはどれですか。",
+  "oj": [
+   "データマネージャーおよびアナリスト",
+   "アナリストおよびマーケティングクラウド閲覧者",
+   "コンテンツ作成者および Marketing Cloud 閲覧者"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   60
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #60 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    60
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-02-19 #60 answers <b>Correct Answer: B</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 77,
+  "qe": "A financial services customer states that families often share email addresses across multiple checking, savings, loan, and credit accounts. The customer needs to allow individual accounts to use the same email address in Marketing Cloud but maintain separate subscriber attributes.Which component should be discussed with the customer to allow for this use case?",
+  "oe": [
+   "Subscriber Key",
+   "Contact ID",
+   "Member Record",
+   "Data Extensions"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "サブスクライバー キーは、このユース ケースを可能にするために顧客と話し合う必要があるコンポーネントです。購読者キーは、Marketing Cloud の各購読者を表す一意の識別子であり、メールアドレスとは異なる場合があります。購読者キーを使用すると、複数のレコードで同じメールアドレスを共有しながら、購読者の属性や設定を個別に設定できます。",
+  "lang": "ja",
+  "qj": "ある金融サービスのお客様によると、家族が複数の当座預金口座、普通預金口座、ローン口座、クレジット口座でメールアドレスを共有することがよくあるそうです。このお客様は、Marketing Cloud で各アカウントが同じメールアドレスを使用しながら、購読者属性を個別に管理できるようにする必要があります。このユースケースを可能にするために、どのコンポーネントについて顧客と話し合う必要がありますか?",
+  "oj": [
+   "加入者キー",
+   "連絡先ID",
+   "メンバーレコード",
+   "データ拡張"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   4
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #4 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    4
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 79,
+  "qe": "A customer team wants to retarget subscribers who click on links of key items promoted across email campaigns. The customer has indicated the following:* Emails will be built using a custom dynamic template for these messages.* Links will vary over time and across campaigns.* Click activity will be cross-referenced with subscribers' regional markets on a master subscriber data extension.* Retargeting messages will dynamically populate content based on regional market.In order for this solution to be viable, which skill set does the customer team need to possess?",
+  "oe": [
+   "AMPscript",
+   "SSJS",
+   "SQL",
+   "HTML"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "AMPscript は、このソリューションを実行可能にするために顧客チームが持つ必要のあるスキル セットです。AMPscriptは、マーケターがメール、ランディングページ、モバイルメッセージなど向けにパーソナライズされた動的なコンテンツを作成できるスクリプト言語です。AMPscriptを使用すると、データ拡張機能からデータを取得し、クリックアクティビティを追跡し、コンテンツ領域にデータを入力し、地域市場やその他の属性に基づいて条件付きロジックを適用できます。",
+  "lang": "ja",
+  "qj": "顧客チームは、メールキャンペーンでプロモーションされた主要商品のリンクをクリックした購読者をリターゲティングしたいと考えています。顧客は以下の点を指摘しています。* これらのメッセージ用のカスタム動的テンプレートを使用して電子メールが作成されます。* リンクは時間の経過とともに、またキャンペーンごとに変わります。* クリック アクティビティは、マスター サブスクライバー データ拡張機能上のサブスクライバーの地域市場と相互参照されます。* リターゲティング メッセージでは、地域市場に基づいてコンテンツが動的に入力されます。このソリューションを実現可能にするには、顧客チームがどのようなスキルセットを備えている必要がありますか?",
+  "oj": [
+   "AMPスクリプト",
+   "SSJS",
+   "SQL",
+   "HTML"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   71
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #71 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-03-24",
+    97
+   ],
+   [
+    "v2026-02-19",
+    71
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 80,
+  "qe": "あるお客様は、顧客との交流を目的として、セミナーなどのイベントを頻繁に開催しています。予定されている活動は以下の通りです。- Smart Capture フォームを使用して、イベント登録データ拡張機能にデータを書き込みます。- 各登録データ拡張機能のレコードと対応する招待メールの送信を相互参照します。- 招待メール内の登録リンクをクリックしたが、登録を完了しなかった顧客にフォローアップメールを送信します。効率的なソリューションを構築するにはどのようなスキルが必要ですか?",
+  "oe": [
+   "AMPスクリプト",
+   "SQL",
+   "HTML",
+   "CSS"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "スマートキャプチャフォーム、イベント登録データとメールアクティビティの相互参照、特定のアクション（クリックしたが登録を完了しなかったなど）に基づくフォローアップメールのトリガーといった顧客のニーズに応えるには、SQLスキルが不可欠です。SQLを用いてデータ拡張機能をクエリし、登録リンクをクリックしたものの登録フォームを完了しなかった顧客を特定します。この情報を基に、フォローアップコミュニケーションを効果的にターゲティングできます。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 81,
+  "qe": "An email manager was anticipating a test email to arrive in their inbox.Where in Email Studio should the Marketing Cloud admin look to determine if the test deployed?",
+  "oe": [
+   "My Tracking > Test Send Emails",
+   "My Reports > Administrator Reports > Email Send Report",
+   "My Reports > Administrator Reports > Email Sends By User",
+   "My Tracking > A/B Testing"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "Email Studioから送信されたテストメールを確認するには、Marketing Cloud管理者は「マイトラッキング」>「テスト送信メール」3にアクセスしてください。このページには、件名、送信者名、受信者のメールアドレス、ステータス3など、各テストメールの詳細が表示されます。その他のオプションは、テストメールの表示には関係ありません。",
+  "lang": "ja",
+  "qj": "電子メール管理者は、受信トレイにテスト電子メールが届くことを期待していました。Marketing Cloud 管理者は、テストが展開されたかどうかを確認するために Email Studio のどこを確認すればよいですか?",
+  "oj": [
+   "マイトラッキング > テスト送信メール",
+   "マイレポート > 管理者レポート > メール送信レポート",
+   "マイレポート > 管理者レポート > ユーザー別メール送信",
+   "マイトラッキング > A/Bテスト"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   24
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #24 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    24
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 83,
+  "qe": "ある大学は、Journey Builderを活用して、見込み学生、在学生、卒業生への1対1マーケティングを強化する計画を立てています。現在、大学は学生データをSales Cloudに保存しています。コースカタログ、学生の属性情報、卒業生情報などのその他のデータは外部システムに保存されています。実装コンサルタントが推奨すべき 2 つのアクションはどれですか?2つの回答を選択してください。",
+  "oe": [
+   "Sales Cloud のデータに同期データ ソースを使用します。",
+   "Sales Cloud からの学生データを保存するためのリスト属性を作成します。",
+   "データ デザイナーを使用して、学生と卒業生のデータを連絡先レコードにリンクします。",
+   "卒業生データを Salesforce レポートにインポートするためのインポート アクティビティを作成します。"
+  ],
+  "ans": [
+   0,
+   2
+  ],
+  "ans_raw": "<b>正解：A,C</b>",
+  "expl": "",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 84,
+  "qe": "Northern Trail Outfitters (NTO) has a franchise model which allows locally-owned stores to operate under the corporate umbrell a. They are required by corporate policy to email each franchisee a monthly statement, but the statement cannot be publicly accessible Which Marketing Cloud product should NTO purchase as a solution?",
+  "oe": [
+   "Email Rachments",
+   "Distributed Sending",
+   "Content Syndication",
+   "Analytics Builder"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "NTOがソリューションとして購入すべきMarketing Cloud製品は、メール添付機能です。メール添付機能を使用すると、PDFやCSVなどのファイルをメールメッセージに添付できます。ファイルはMarketing Cloudに安全に保存され、公開されることはありません。分散送信は、フランチャイズ加盟店がNTOのコンテンツを使用して独自のメールを送信できるものの、NTOからのメールを受信できないため、適切なソリューションではありません。コンテンツシンジケーションとAnalytics Builderはこのシナリオには適していません。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters（NTO）は、地域密着型の店舗を企業傘下で運営できるフランチャイズモデルを採用しています。企業方針により、各フランチャイズ加盟店に毎月明細書を電子メールで送信することが義務付けられていますが、この明細書は一般公開されていません。NTOはどのMarketing Cloud製品をソリューションとして購入すべきでしょうか？",
+  "oj": [
+   "メール記録",
+   "分散送信",
+   "コンテンツシンジケーション",
+   "アナリティクスビルダー"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   40
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #40 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    40
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-02-19 #40 answers <b>Correct Answer: B</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 85,
+  "qe": "技術リソースが限られているお客様から、長期にわたって運用する小規模なメール配信システムの構築支援を依頼されました。このメールは、男性向けには男性用の靴、女性向けには女性用の靴を表示します。送信可能なデータ拡張機能には、「男性」または「女性」という値を持つフィールドが含まれています。メール内でコンテンツが適切に表示されるようにするには、コンサルタントはどのような方法を推奨すべきでしょうか。",
+  "oe": [
+   "性別フィールドに対する条件付き AMP スクリプト",
+   "AMP スクリプトの行検索関数",
+   "A/Bテストコンテンツタイプ",
+   "ダイナミックコンテンツウィザード"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "メール内で性別に基づいてコンテンツを表示する場合:Email Studioのダイナミックコンテンツウィザード：このツールを使用すると、購読者の属性に基づいて変化するコンテンツブロックをメール内で直接作成できます。ユーザーフレンドリーで、高度な技術スキルは必要ありません。実装: 送信可能なデータ拡張機能の「性別」フィールドを使用すると、ダイナミック コンテンツ ウィザードは、購読者の性別に基づいて男性用または女性用の靴などの異なるコンテンツを自動的に表示できるため、電子メール コンテンツが適切かつ対象を絞ったものになります。参考: Salesforce Marketing Cloud Email Studio ドキュメント",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 86,
+  "qe": "Northern Trail Outfitters (NTO) has the Discover Reporting Tool.Which two report types could help NTO drive their mobile adoption strategy?Choose 2 answers",
+  "oe": [
+   "Email Performance by Device",
+   "Time Between Send and Engagement",
+   "Deliverability Complaint Rate",
+   "Email Sending Performance Report"
+  ],
+  "ans": [
+   0,
+   1
+  ],
+  "ans_raw": "<b>正解：A,B</b>",
+  "expl": "NTO は、モバイル導入戦略を推進するために、Discover レポート ツールの次の 2 種類のレポートを使用できます。* デバイス別メールパフォーマンス1。このレポートでは、デスクトップ、モバイル、タブレットなどのデバイス別に、メールの開封数とクリック数、および割合が表示されます。このレポートは、NTOが購読者がさまざまなデバイスでどのようにメールを利用しているかを理解するのに役立ち、メールのデザインと配信を最適化するのに役立ちます。* 内容はそれに応じて変更します。* 送信からエンゲージメントまでの時間2。このレポートは、メールの送信から購読者が開封またはクリックするまでの経過時間を表示します。このレポートは、NTOが購読者のデバイス設定や行動パターンに基づいて、最適なメール送信タイミングを特定するのに役立ちます。",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters (NTO) には、Discover Reporting Tool があります。NTO がモバイル導入戦略を推進するのに役立つ 2 つのレポート タイプはどれですか?2つの回答を選択してください",
+  "oj": [
+   "デバイス別のメールパフォーマンス",
+   "送信からエンゲージメントまでの時間",
+   "配信苦情率",
+   "メール送信パフォーマンスレポート"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   26
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #26 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    26
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 89,
+  "qe": "A Marketing Cloud admin has scheduled a query on a daily basis. They notice the query sometimes fails to execute.How would the admin ensure a notification is received when the query fails?",
+  "oe": [
+   "Add their Email Address in the automation \"Runtime Error or Skipped Run Notification Settings",
+   "Install the Marketing Cloud App on phone to receive Push Messages",
+   "Add their Email Address in the Query Activity Notifications Field",
+   "Configure the \"Event Notification Service\" in Setup with their Email Address"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "クエリが失敗したときに通知を確実に受け取るには、管理者はオートメーションの「ランタイムエラーまたはスキップされた実行の通知設定」にメールアドレスを追加する必要があります。この設定により、管理者はオートメーションでランタイムエラーまたはスキップされた実行が発生したときに通知を受け取るメールアドレスまたはデータエクステンションを指定できます。ランタイムエラーは、オートメーション内のアクティビティの実行に失敗した場合（無効な構文を持つクエリや存在しないデータエクステンションを参照するクエリなど）に発生します。スキップされた実行は、オートメーションの実行がスケジュールされているものの、前回の実行がまだ進行中であるため実行されない場合に発生します。その他のオプションは、以下の理由により正しくありません。* プッシュメッセージを受信するには、スマートフォンにMarketing Cloudアプリをインストールしてください。Marketing Cloudアプリはオートメーションエラーやスキップされた実行に関するプッシュ通知をサポートしていないため、このオプションではクエリが失敗した場合に通知を確実に受信することはできません。Marketing Cloudアプリは、Journey Builderのエントリイベントとメール送信に関するプッシュ通知のみをサポートしています。* クエリアクティビティ通知フィールドにメールアドレスを追加します。このオプションでは、クエリが失敗した場合に通知が確実に届くとは限りません。クエリアクティビティ通知フィールドは、クエリが正常に完了した場合にのみ通知を送信します。通知には、処理、追加、更新、スキップ、または失敗したレコードの数などの情報が含まれます。* 設定画面で「イベント通知サービス」にメールアドレスを設定してください。イベント通知サービスは、メールの送信、開封、クリック、バウンス、登録解除など、Marketing Cloud で発生するイベントを外部システムが通知できるようにする機能であるため、このオプションを設定してもクエリが失敗した場合に通知が確実に受信されるわけではありません。イベント通知サービスは、オートメーションエラーや実行のスキップに関連するイベントはサポートしていません。",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は毎日クエリをスケジュールしていますが、クエリの実行に失敗することがあることに気づきました。クエリが失敗したときに管理者はどのようにして通知を確実に受信できるでしょうか?",
+  "oj": [
+   "自動化の「実行エラーまたはスキップされた実行の通知設定」にメールアドレスを追加します。",
+   "プッシュメッセージを受信するために、携帯電話にマーケティングクラウドアプリをインストールします。",
+   "クエリアクティビティ通知フィールドにメールアドレスを追加します。",
+   "セットアップで「イベント通知サービス」をメールアドレスで設定します"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   57
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #57 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    57
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 90,
+  "qe": "A Marketing Cloud admin is configuring a journey using Path Optimizer. they want to hold back 60% of the contacts until a winner has been selected.Which two settings should be selected before the admin can configure the Holdback percentage?Choose 2 answers",
+  "oe": [
+   "Data Extension entry source",
+   "Journey re-entry settings",
+   "Run Once schedule type",
+   "Winner evaluation"
+  ],
+  "ans": [
+   0,
+   3
+  ],
+  "ans_raw": "<b>正解：A,D</b>",
+  "expl": "勝者が選ばれるまで 60% の連絡先を保留する Path Optimizer を使用してジャーニーを構成するには、Marketing Cloud 管理者が以下を設定する必要があります。* A. データ拡張機能エントリ ソース: 実験のために効果的に管理および監視できる特定のデータ拡張機能から連絡先がジャーニーによって取得されていることを確認します。* D. 勝者評価: この設定により、管理者は、ホールドバックとその後のパスの最適化を管理するために重要な、勝者パスを決定する方法とタイミングを指定できます。",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、Path Optimizer を使用してジャーニーを構成しています。勝者が選ばれるまで、連絡先の 60% を保持したいと考えています。管理者がホールドバック率を設定する前に選択する必要がある 2 つの設定はどれですか?2つの回答を選択してください",
+  "oj": [
+   "データ拡張エントリソース",
+   "旅程再入場設定",
+   "一度実行スケジュールタイプ",
+   "勝者評価"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   59
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #59 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    59
+   ],
+   [
+    "v2025-09-22",
+    30
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 91,
+  "qe": "A Marketing Cloud admin is configuring Social Studio to manage Northern Trail Outfitters social media accounts.Which 2 prerequisites for configuring Social Studio should the admin consider? Choose 2 answers",
+  "oe": [
+   "Bitly URL Shortener",
+   "Facebook ad manager",
+   "Login detail for each social media account",
+   "Google URL Shortener"
+  ],
+  "ans": [
+   1,
+   2
+  ],
+  "ans_raw": "<b>正解：B,C</b>",
+  "expl": "ソーシャル メディア アカウントを管理するために Social Studio を構成する前に、次の前提条件が満たされていることを確認してください。Facebook 広告マネージャー: Social Studio から直接 Facebook 広告キャンペーンを管理および監視するには、Facebook 広告マネージャーへのアクセスが不可欠です。ログイン詳細: プラットフォーム間でシームレスな統合と管理を実現するために、Social Studio を通じて管理される各ソーシャル メディア アカウントに必要なログイン資格情報を用意します。参考: Salesforce Social Studio セットアップドキュメント",
+  "lang": "ja",
+  "qj": "Marketing Cloud 管理者は、Northern Trail Outfitters のソーシャル メディア アカウントを管理するために Social Studio を設定しています。Social Studio を構成する際に管理者が考慮すべき 2 つの前提条件はどれですか。2 つの回答を選択してください。",
+  "oj": [
+   "Bitly URL 短縮サービス",
+   "Facebook広告マネージャー",
+   "各ソーシャルメディアアカウントのログイン詳細",
+   "Google URL 短縮サービス"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   50
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #50 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    50
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 92,
+  "qe": "Automation Studio には存在せず、Journey Builder に含まれる機能は何ですか?",
+  "oe": [
+   "サーバー側 JavaScript アクティビティのネイティブ実行。",
+   "適格なリードを連絡先に変換するオプション。",
+   "期間または特定の時間に基づいて待機する柔軟性。",
+   "Salesforce 対象者に電子メールを送信する機能。"
+  ],
+  "ans": [
+   2
+  ],
+  "ans_raw": "<b>正解：C</b>",
+  "expl": "Automation Studio では利用できない、Journey Builder 固有の機能:* 待機アクティビティ: Journey Builder は、固定期間だけでなく特定の日付または時刻までの待機時間を設定する柔軟性を提供します。これは、個々の行動やマイルストーンに基づいて顧客とのやり取りのタイミングをパーソナライズするために不可欠です。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 93,
+  "qe": "Marketing Cloud 管理者は、今後の SMS キャンペーン用に新しいキーワードを設定したいと考えています。希望のキーワード「CELEBRATION」を入力した後、そのキーワードが使用できないことに気付きました。管理者はどのような問題に直面している可能性がありますか?",
+  "oe": [
+   "キーワードは別のビジネスユニット内で使用されています",
+   "キーワードは予約語です",
+   "キーワードの文字数が多すぎます",
+   "キーワードがコンテンツ基準を満たしていません"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "管理者が希望するキーワード「CELEBRATION」を入力する際に直面する可能性のある問題は、そのキーワードが他のビジネスユニットで使用されていることです。キーワードとは、購読者がSMSメッセージを介してNTOとやり取りする際に使用できる単語またはフレーズであり、テキストメッセージプログラムのオプトインまたはオプトアウトなどに役立ちます。キーワードはMarketing Cloud内で1つのビジネスユニットでのみ使用できます。そのため、他のビジネスユニットが既に「CELEBRATION」をキーワードとして申請している場合、他のビジネスユニットではそのキーワードを使用できません1。その他の選択肢は、以下の理由により正しくありません。* キーワードは予約語です。CELEBRATION は Marketing Cloud の予約語ではないため、管理者がキーワードとして CELEBRATION を入力した際にこの問題が発生することはありません。予約語とは、Marketing Cloud において特別な意味や機能を持つ単語またはフレーズであり、どのビジネスユニットでもキーワードとして使用することはできません1。予約語の例としては、HELP、STOP、JOIN、INFO などがあります1。* キーワードの文字数が多すぎます。管理者がキーワード「CELEBRATION」を入力する際に、この問題が発生することはありません。「CELEBRATION」はキーワードとして文字数が多すぎるわけではないからです。Marketing Cloudではキーワードは最大15文字まで使用できますが、「CELEBRATION」は15文字までしか使用できません。11 文字1.* キーワードがコンテンツ基準を満たしていない。管理者がキーワード「CELEBRATION」を入力する際に、この問題が発生する可能性はありません。「CELEBRATION」はキーワードのコンテンツ基準を満たしているからです。コンテンツ基準とは、NTOがキーワードを選択する際に、関連性、適切性、そして業界および市場の規制1に準拠していることを確認するためのガイドラインです。CELEBRATION は、不快、誤解を招く、または違法ではないため、キーワードのコンテンツ基準に違反しません。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 95,
+  "qe": "マーケティングマネージャーは、標準化された形式で、高レベルの指標を記載したメールを週に1回受信することをリクエストしています。具体的には、先週送信されたメールの数を知りたいと考えています。Marketing Cloud 管理者がこのリクエストを完了するには、どのような場所とアクティビティが必要ですか?",
+  "oe": [
+   "Email Studio: 追跡レポートで「アカウント送信サマリー*」を選択し、毎週レポートを送信するようにスケジュールします。",
+   "Analytics Builder: レポートで「アカウント送信サマリー」を選択し、毎週レポートを送信するスケジュールを設定します。",
+   "Automation Studio: クエリ アクティビティを作成して「送信済み」データ ビューからデータをクエリし、電子メール アクティビティを使用してデータの送信を自動化します。"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "",
+  "lang": "ja",
+  "also": [
+   [
+    "v2026-02-19",
+    78
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-02-19 #78 answers <b>Correct Answer: D</b>"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 96,
+  "qe": "Northern Trail Outfitters（NTO）は、ブランディングのためにSender Authentication Package（SAP）を使用しています。同社のドイツ事業部門は、SAPドメインde.ntomarketing.comに設定されています。ドイツの NTO チームはキャンペーンの準備をしており、ドメイン de-special.ntomarketing.com でカスタマイズされた Cloud Pages を使用したいと考えています。Marketing Cloud 管理者はどのようにしてこの要件を満たすことができるでしょうか?",
+  "oe": [
+   "de-special.ntmarketing.com 用の新しい SAP を購入します",
+   "CloudPages で使用するための新しいプライベートドメインを購入する",
+   "CloudPages は SAP ドメインを使用する必要があります",
+   "CloudPages は pages.ntmarketing.com を使用する必要があります"
+  ],
+  "ans": [
+   1
+  ],
+  "ans_raw": "<b>正解：B</b>",
+  "expl": "CloudPagesで使用するために新しいプライベートドメインを購入すると、管理者はCloudPages用にde-special.ntomarketing.comなどのカスタマイズされたドメイン名を使用できます。このドメインは、メールのブランディングと配信品質向上に使用されるSAPドメインとは異なる場合があります。その他の選択肢は実現不可能または適切ではありません。\n\n詳細を見る",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 98,
+  "qe": "Northern Trail Outfitters has Marketing Cloud users who need data extension View and Update permissions for campaigns related to B3C sales, out not any permissions for campaigns related to B2B sales.How should they accomplish this?",
+  "oe": [
+   "Create separate folders and add permissions",
+   "Create a shared data extension",
+   "Update data extension object level permissions",
+   "Create a new business unit"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "Marketing Cloud でさまざまなキャンペーン タイプに対するユーザー権限を効果的に管理するには、次の手順を実行します。フォルダー構造: キャンペーンの種類 (B2C と B2B) に基づいて、データ拡張機能を個別のフォルダーに整理します。フォルダー権限: フォルダー レベルでユーザー権限を割り当て、B3C 販売キャンペーン フォルダーに表示権限と更新権限を付与しながら、B2B 販売キャンペーン フォルダーへのアクセスを制限します。参考資料: Salesforce Marketing Cloud のフォルダとユーザー権限",
+  "lang": "ja",
+  "qj": "Northern Trail Outfitters には、B2B 販売に関連するキャンペーンの権限はなく、B3C 販売に関連するキャンペーンのデータ拡張機能の表示および更新権限が必要な Marketing Cloud ユーザーがいます。どうすればこれを達成できるでしょうか?",
+  "oj": [
+   "別々のフォルダを作成し、権限を追加する",
+   "共有データ拡張機能を作成する",
+   "データ拡張オブジェクトレベルの権限を更新する",
+   "新しいビジネスユニットを作成する"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   77
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #77 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    77
+   ],
+   [
+    "v2025-09-22",
+    34
+   ]
+  ]
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 99,
+  "qe": "A Marketing Cloud admin is asked by the marketing team to ensure a default Header and Footer be added to emails.Where under Setup could this be created?",
+  "oe": [
+   "Content Builder Settings",
+   "Campaign Settings",
+   "Emails Studio Settings",
+   "Account Settings"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "",
+  "lang": "ja",
+  "qj": "マーケティング チームから、Marketing Cloud 管理者は、電子メールにデフォルトのヘッダーとフッターが追加されていることを確認するように依頼されます。これはセットアップのどこに作成できますか?",
+  "oj": [
+   "コンテンツビルダーの設定",
+   "キャンペーン設定",
+   "メールスタジオ設定",
+   "アカウント設定"
+  ],
+  "text_from": [
+   "v2026-02-19",
+   67
+  ],
+  "note_text": "English wording taken from duplicate v2026-02-19 #67 (options reordered to this page's order); ans is this page's answer",
+  "also": [
+   [
+    "v2026-02-19",
+    67
+   ],
+   [
+    "v2025-09-22",
+    4
+   ]
+  ],
+  "note": "Answer differs in duplicate: v2026-02-19 #67 answers <b>Correct Answer: A</b> / Answer differs in duplicate: v2025-09-22 #4 answers Answer: A"
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 102,
+  "qe": "セットアップ アシスタントでは、新しい Marketing Cloud アカウントを構成するための情報とリソースが提供されます。セットアップ アシスタントではどの 2 つのトピックがカバーされますか?2つの回答を選択してください",
+  "oe": [
+   "モバイルコネクトを有効にする",
+   "拡張SFTPの管理",
+   "Journey Builder の設定",
+   "データ構造の設定"
+  ],
+  "ans": [
+   0,
+   2
+  ],
+  "ans_raw": "<b>正解：A,C</b>",
+  "expl": "Marketing Cloud のセットアップ アシスタントでは、新しいアカウントを構成するためのガイド付きのセットアップが提供され、次のようなプロセスを効率化するためのさまざまなトピックが取り上げられています。* A. モバイル コネクトの有効化: このセクションでは、管理者がモバイル デバイスに SMS および MMS メッセージを送信できるようにするモバイル コネクトの設定方法について説明します。* C. Journey Builder の構成: セットアップ アシスタントのこの部分は、Journey Builder のセットアップに役立ち、顧客ジャーニーを効果的に作成および管理する方法をユーザーに案内します。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 103,
+  "qe": "あるエンターテイメント会社は、全国各地の様々な会場でイベントを開催しています。同社は、Contact Builderを使用してJourney Builderにデータを入力したいと考えています。ジャーニーにエントリーしたコンタクトは、イベントの種類に基づいて意思決定分岐を経ます。ジャーニーでは一連のメールが送信され、そのうちの1通にはAMPスクリプトによって動的に入力された会場の詳細が含まれます。当社は以下の情報を収集します。- 顧客データ（メールアドレス、名、姓など）。- イベント登録（メールアドレス、イベントID、イベント名、イベントタイプ、会場IDなど）。- 会場の詳細（会場 ID、会場名、会場住所など）。- 支払いの詳細（メールアドレス、イベント ID、支払い合計など）。当社では、Contact Builder 内のすべてをリンクすることを望んでいません。Contact Builder 内に組み込む必要がある 2 つのデータ ソースはどれですか?2つの回答を選択してください。",
+  "oe": [
+   "顧客データ",
+   "イベント登録",
+   "会場詳細",
+   "支払い詳細"
+  ],
+  "ans": [
+   0,
+   1
+  ],
+  "ans_raw": "<b>正解：A,B</b>",
+  "expl": "Contact Builder と Journey Builder を使用したエンターテイメント会社のセットアップでは、組み込むことが不可欠な 2 つのデータ ソースは次のとおりです。* A. 顧客データ: 電子メールの送信やコミュニケーションのパーソナライズに必要な電子メール アドレスなどの基本的な顧客識別子が含まれるため、非常に重要です。* B. イベント登録: このデータは、イベント ID、イベント タイプ、イベント名など、ジャーニーの意思決定分岐に必要なイベント固有の詳細が含まれているため重要です。これらの詳細によって、AMPscript による動的な会場の詳細など、メールの内容が決まります。これらのデータ ソースにより、顧客の登録イベントに基づいてジャーニーをパーソナライズしてターゲットを絞ることができ、コミュニケーションの関連性と有効性が向上します。",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 104,
+  "qe": "Northern Trail Outfitters は、Marketing Cloud への直接アクセスを許可せずに、Sales Cloud を日常的に利用するビジネス ユーザーに Marketing Cloud の使用を拡大したいと考えています。どのような機能を使用すべきでしょうか?",
+  "oe": [
+   "マーケティングクラウドコネクト",
+   "分散送信",
+   "分散型マーケティング"
+  ],
+  "ans": [
+   0
+  ],
+  "ans_raw": "<b>正解：A</b>",
+  "expl": "",
+  "lang": "ja",
+  "also": []
+ },
+ {
+  "label": "v2026-03-24",
+  "no": 105,
+  "qe": "Northern Trail Outfitter（NTO）の購読者がNTOメール内のリンクをクリックします。クリックする前、購読者のMarketing Cloudでのステータスはバウンスでした。クリックすると購読者のステータスにどのような影響がありますか?",
+  "oe": [
+   "ステータスがアクティブに変更され、バウンス数は変更されません",
+   "ステータスが72時間保留に変更され、バウンスカウントがゼロに設定されます",
+   "ステータスはバウンスのままで、バウンス数は変更されません。",
+   "ステータスがアクティブに変更され、バウンス数がゼロに設定されます"
+  ],
+  "ans": [
+   3
+  ],
+  "ans_raw": "<b>正解：D</b>",
+  "expl": "購読者がメール内のリンクをクリックすると、ステータスが「バウンス」から「アクティブ」に変更され、バウンス回数がゼロにリセットされます。これは、購読者のメールアドレスが有効で、アクセス可能であることを示します。",
+  "lang": "ja",
+  "also": []
+ }
+]

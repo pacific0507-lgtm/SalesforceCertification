@@ -1,0 +1,257 @@
+[
+ {
+  "label": "v2025-09-22",
+  "no": 3,
+  "f": "setup-home",
+  "a": [
+   2
+  ],
+  "q": "Northern Trail Outfitters は Parameter Manager でリンクに自動でタグを付けています。特定のキャンペーンのメッセージのリンクに、キャンペーンの識別子を入れたいと考えています。utm_campaign の値はどのレベルで設定すべきですか?",
+  "o": [
+   "購読者",
+   "リンク",
+   "メール",
+   "アカウント"
+  ],
+  "ex": "原本の解答はメールのレベルです。特定のキャンペーンのメッセージに含まれるすべてのリンクに同じキャンペーンの識別子を付けたいので、メール単位で utm_campaign を設定します。アカウントのレベルだと全メールに、リンクのレベルだと1つのリンクにしか付きません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_wa_web_analytics_connector.htm&type=5",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "Web Analytics Connector は、メールのリンクの遷移先 URL に変数を自動で付け、Web解析ツールでメールからの流入を追跡できるようにします。Web Analytics Connector の設定と有効化は Parameter Manager で行います。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=mktg.mc_wa_web_analytics_connector.htm&type=5",
+   "note": "Connector tags links by automatically including variables in target URLs; configure and activate it using Parameter Manager."
+  }
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 8,
+  "f": "journey",
+  "a": [
+   2,
+   3
+  ],
+  "q": "Northern Trail Outfitters(NTO)は、Journey Builder を使って、顧客の行動をきっかけにしたライフサイクルマーケティングを始めることにしました。購入の頻度を上げるため、顧客ごとに合わせたやり取りをします。この目的に役立つ2つの情報はどれですか?(2つ選択)",
+  "o": [
+   "競合他社から買った商品",
+   "1回の注文あたりの商品数",
+   "顧客が好むチャネル",
+   "最後の購入日"
+  ],
+  "ex": "顧客が好むチャネルがわかれば、反応しやすいチャネルで届けられます。最後の購入日がわかれば、次の購入を促すタイミングでメッセージを送れます。競合他社から買った商品は通常手に入らず、注文あたりの商品数は購入の頻度を上げる働きかけには直接使いにくい情報です。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 9,
+  "f": "security-bp",
+  "a": [
+   0,
+   1,
+   2
+  ],
+  "q": "NTO は、Google Analytics 360 で使えるようにリンクの形式を整えたいと考えています。ただし、リンクに個人を特定できる情報(PII)を含めたくありません。クエリ文字列のパラメーターで差し込み文字列として使える3つの値はどれですか?(3つ選択)",
+  "o": [
+   "商品コード",
+   "アプリケーション ID",
+   "Subscriber ID",
+   "メールアドレス",
+   "氏名"
+  ],
+  "ex": "商品コードやアプリケーション ID は個人を表さず、Subscriber ID もシステム内部の番号なので、それだけでは個人を特定できません。メールアドレスと氏名は個人を特定できる情報なので、URL に入れると解析ツールなどに個人情報が渡ってしまいます。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 12,
+  "f": "reports",
+  "a": [
+   2
+  ],
+  "q": "Northern Trail Outfitters(NTO)のマーケティングアナリストは、四半期の全社会議のためにメールの指標をまとめる必要があります。指標は、NTO の各ビジネスユニットのメールキャンペーンごとに、送信数、配信率、全体のバウンス率、ブロックバウンス率、開封率、クリック率、苦情率、配信停止率です。アナリストが Marketing Cloud から出すべきメールのレポートはどれですか?",
+  "o": [
+   "Campaign Email Tracking レポート",
+   "Email Performance Over Time レポート",
+   "Email Send レポート",
+   "Account Send Summary レポート"
+  ],
+  "ex": "原本の解答は Email Send レポートです。Email Send レポートは、各アカウント(ビジネスユニット)からの送信を、任意の期間で示します。ビジネスユニットごとの送信の結果を一覧で比べる目的に合います。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_re_email_studio_reports.htm&type=5",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "Analytics Builder の Email Send レポートは、各アカウント(ビジネスユニット)から送信したメールの数を、過去を含む任意の期間で示します。Account Send Summary も Analytics Builder のレポートです。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=mktg.mc_re_email_studio_reports.htm&type=5",
+   "note": "Email Send: shows how many emails have been sent from each of your accounts, any time period. Account Send Summary listed in Email Studio Reports in Analytics Builder."
+  }
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 13,
+  "f": "journey",
+  "a": [
+   1,
+   2,
+   3
+  ],
+  "q": "Journey Builder でゴールを使う前に考慮すべき3つの点はどれですか?(3つ選択)",
+  "o": [
+   "ゴールの目標の統計はデータエクステンションに保存される",
+   "ゴールはジャーニーの成果を評価するために作る",
+   "ゴールは終了の条件としても働く",
+   "連絡先は待機アクティビティのあとにゴールに照らして評価される",
+   "連絡先ごとに個別のゴールが割り当てられる"
+  ],
+  "ex": "ゴールは、ジャーニーで促したい行動の達成を測る基準で、達成した連絡先は設定によってはジャーニーから出ます。原本では、待機アクティビティのあとに評価される点も正解とされています。ゴールはジャーニー全体に1つ設定するもので、連絡先ごとに割り当てるものではありません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_jb_exit_criteria.htm&type=5",
+  "v": "原本どおり",
+  "x": "ゴールは、ジャーニーで促したい行動(購入など)の達成を測る基準です。達成した連絡先はゴールの統計に数えられ、設定によってはジャーニーから出ます。"
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 14,
+  "f": "sending",
+  "a": [
+   0,
+   2
+  ],
+  "q": "Northern Trail Outfitters(NTO)に新しく入った Marketing Cloud 管理者は、すべてのメールが info@email.nto.com から送られていると聞きました。前の管理者は資料を残していません。アカウントに Sender Authentication Package(SAP)が設定されていることを確かめられるのはどれですか?(2つ選択)",
+  "o": [
+   "受信したメールのトラッキングされるリンクが、すべて click.email.nto.com で始まる",
+   "Marketing Cloud のログインページが login.email.nto.com で、NTO の色になっている",
+   "CloudPages のパーソナライズされた URL が cloud.email.nto.com から配信されている",
+   "ユーザーが Marketing Cloud のパスワードリセットのメールを help@email.nto.com から受け取る"
+  ],
+  "ex": "SAP のアカウントブランディングでは、トラッキングされるリンクや画像の URL が自社の SAP ドメインになります。SAP には CloudPages のカスタムドメインも含まれるので、CloudPages の URL が自社のドメインなら SAP が設定されているとわかります。ログインページやパスワードリセットのメールは SAP では変わりません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_sender_authentication_package.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "アカウントブランディング「Webページとして表示」のリンク、リンクのトラッキング、画像のURLが、共有ドメインではなく自社のSAPドメインになる"
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 20,
+  "f": "email",
+  "a": [
+   0,
+   2
+  ],
+  "q": "送信時に「Send as Multipart MIME」を選ぶと、どうなりますか?(2つ選択)",
+  "o": [
+   "どちらの版でも開封とクリックが追跡される",
+   "さまざまな迷惑メールフィルターに検出されにくくなる",
+   "自動で作られたテキスト版が HTML メールと一緒に送られる",
+   "独自に作ったテキスト版が HTML メールと一緒に送られる"
+  ],
+  "ex": "原本の解答は A と C です。マルチパート MIME で送ると、HTML 版と自動で作られたテキスト版が1通にまとめて送られ、HTML を表示できないメールソフトでもテキストで読めます。迷惑メールフィルターを避けるための機能ではありません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 24,
+  "f": "email",
+  "a": [
+   0,
+   3,
+   4
+  ],
+  "q": "Northern Trail Outfitters(NTO)のマーケティングチームは、新しいメールキャンペーンを始めます。NTO のメール担当者は、送信前にメールの品質を確認したいと考え、Validate の機能について質問しました。Validate がメールで確認する3つの項目はどれですか?(3つ選択)",
+  "o": [
+   "ダイナミックコンテンツのルールで指定した各コンテンツエリアが存在する",
+   "迷惑メールフィルターにかかりやすい言葉や表現",
+   "本文の文法とつづりが正しい",
+   "メールのコードの AMPscript の構文が正しい",
+   "差し込み文字列が属性やデータエクステンションの項目に対応している"
+  ],
+  "ex": "原本の解答は A、D、E です。Validate は、ダイナミックコンテンツのコンテンツエリア、AMPscript の構文、差し込み文字列と属性の対応など、メールの技術的な正しさを確認します。文法やつづりは確認しません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 28,
+  "f": "data-ext",
+  "a": [
+   0
+  ],
+  "q": "コンサルタントは、現在のすべての商品情報を持つデータエクステンションを管理しています。顧客は、毎朝その日の商品カタログの CSV をインポートしてデータを更新したいと考えています。商品カタログは毎日変わり、商品が追加されることも削除されることもあります。使うべきインポートの種類はどれですか?",
+  "o": [
+   "上書き(Overwrite)",
+   "追加のみ",
+   "追加と更新",
+   "更新のみ"
+  ],
+  "ex": "上書きは、データエクステンションの既存のデータをすべて置き換えるインポートで、データエクステンションだけで使えます。削除された商品の行も消えるので、毎日のカタログと同じ状態になります。追加と更新では、カタログから消えた商品の行が残ってしまいます。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_es_list_versus_data_extension.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "主キーは作成後に変更できません。上書き(Overwrite)はデータエクステンションだけの方法です。"
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 29,
+  "f": "email",
+  "a": [
+   3
+  ],
+  "q": "Northern Trail Outfitters(NTO)では、買い物が集中する日に Webサイトが24時間停止し、ログイン中の多くの顧客の買い物が中断されました。サイトが復旧したら、その顧客にサイトに戻って買い物を続けてもらいたいと考えています。NTO はどうすべきですか?",
+  "o": [
+   "ログイン中だった顧客のファイルを、既存のカゴ落ちのジャーニーに取り込む",
+   "サイトが復旧したら、ログイン中だった顧客にユーザーが開始する送信を行う",
+   "停止で印象が悪くなり配信停止が増えるおそれがあるので、メールは送らない",
+   "全顧客に、次回の購入に使える割引を付けたおわびのメールを送る"
+  ],
+  "ex": "原本の解答は、全顧客への割引付きのおわびのメールです。停止で迷惑をかけたことをわびつつ、割引で再訪を促せば、悪い印象を和らげ、失った売上の一部を取り戻せます。カゴ落ちのジャーニーは中身の入ったカートを前提にしており、この状況には合いません。",
+  "u": null,
+  "v": "原本どおり",
+  "x": null
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 32,
+  "f": "security-bp",
+  "a": [
+   0
+  ],
+  "q": "Northern Trail Outfitters は、顧客データの不正な利用を防ぐため、ガバナンスチームから要件を受け取りました。その1つは、Marketing Cloud のユーザーはガバナンスチームの承認なしにデータをエクスポートしてはならず、システム内でデータを見ることはできるようにする、というものです。この要件を満たせる機能はどれですか?",
+  "o": [
+   "Export Email Allowlist",
+   "IP Allowlist",
+   "Identity Verification",
+   "Audit Trail"
+  ],
+  "ex": "Enforce Export Email Allowlist をオンにすると、データのエクスポートは許可リストにあるメールアドレスとドメインにだけ送られます。承認したアドレスだけを登録すれば、画面での閲覧はそのままに、勝手な持ち出しを防げます。Audit Trail は記録を残すだけで、エクスポート自体は止めません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_overview_security_settings.htm&type=5",
+  "v": "公式で確認済み",
+  "x": "Enforce Export Email Allowlist をオンにすると、許可リストにあるメールアドレスとドメインにだけデータをエクスポートします。顧客情報の不正な持ち出しや、うっかり漏えいを防げます。"
+ },
+ {
+  "label": "v2025-09-22",
+  "no": 33,
+  "f": "products",
+  "a": [
+   3
+  ],
+  "q": "顧客の行動を観察し、好みのプロファイルを作り、次に最適なコンテンツを届けられる製品はどれですか?",
+  "o": [
+   "Content Builder",
+   "Einstein Send Time Optimization",
+   "Audience Builder",
+   "Einstein Email Recommendations"
+  ],
+  "ex": "Einstein Recommendations(メール向けは Einstein Email Recommendations)は、Webサイトでの行動とカタログをもとに一人ひとりの好みのプロファイルを作り、最適な商品やコンテンツをおすすめします。Einstein Send Time Optimization は送る時刻を最適にする機能で、コンテンツは選びません。",
+  "u": "https://help.salesforce.com/s/articleView?id=mktg.mc_pb_personalization_builder_prerequisites.htm&type=5",
+  "v": "原本どおり",
+  "x": null,
+  "add": {
+   "text": "Einstein Recommendations を使うには、商品やコンテンツのカタログと、Webサイトでの行動を記録する Collect Tracking Code が必要です。おすすめのレポートも、Collect Tracking Code で集めたデータにもとづきます。",
+   "source_url": "https://help.salesforce.com/s/articleView?id=mktg.mc_pb_personalization_builder_prerequisites.htm&type=5",
+   "note": "Requirements: catalog of assets + Collect Tracking Code. Reporting comes from Collect Tracking Code."
+  }
+ }
+]
