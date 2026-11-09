@@ -46,27 +46,27 @@ async function loadHist(id){
 /* ---- 記録 ---- */
 var REVK="cs-review-v1",STEPS=[1,3,7,14];
 var lastAt=Date.now(),actT=null;
-function record(q,ok){
+function record(q,ok,sel){sel=Array.isArray(sel)?sel.slice():[];
   var key=q.subj+":q"+q.n,now=Date.now();
-  var p=LS.get("ls-qpend-v1",{});(p[q.subj]=p[q.subj]||[]).push({id:key,ok:ok,t:now});if(p[q.subj].length>500)p[q.subj]=p[q.subj].slice(-500);LS.set("ls-qpend-v1",p);
+  var p=LS.get("ls-qpend-v1",{});(p[q.subj]=p[q.subj]||[]).push({id:key,ok:ok,t:now,s:sel});if(p[q.subj].length>500)p[q.subj]=p[q.subj].slice(-500);LS.set("ls-qpend-v1",p);
   var h=HIST[q.subj][q.n]||(HIST[q.subj][q.n]={n:0,c:0});h.n++;if(ok)h.c++;h.l=ok?"o":"x";h.t=now;
   var rv=LS.get(REVK,{}),r=rv[key]||{step:-1};if(ok){r.step=Math.min(r.step+1,STEPS.length-1);r.due=addDays(STEPS[r.step])}else{r.step=-1;r.due=addDays(1)}rv[key]=r;LS.set(REVK,rv);
   var sec=Math.max(5,Math.min(120,Math.round((now-lastAt)/1000)));lastAt=now;
   var ak="sr-"+q.subj+"-act-v1",act=LS.get(ak,{ts:0,d:{}});if(!act.d)act.d={};var dd=act.d[today()]||(act.d[today()]={q:0,c:0,r:[],t:0});var ca=CLOUD_ACT[q.subj];if(ca){dd.q=Math.max(+dd.q||0,+ca.q||0);dd.c=Math.max(+dd.c||0,+ca.c||0);dd.t=Math.max(+dd.t||0,+ca.t||0)}dd.q=(+dd.q||0)+1;if(ok)dd.c=(+dd.c||0)+1;dd.t=(+dd.t||0)+sec;act.ts=now;LS.set(ak,act);
   clearTimeout(actT);actT=setTimeout(function(){pushAct(q.subj)},2500);
-  pushQuiz(q.subj,q.n,key+"@"+now,ok,now);
+  pushQuiz(q.subj,q.n,key+"@"+now,ok,now,sel);
   var m=LS.get("cs-train-today",{});if(m.date!==today())m={date:today(),n:0,c:0,combo:0};m.n++;if(ok){m.c++;m.combo++}else m.combo=0;LS.set("cs-train-today",m);renderMeter();
 }
 /* 問題集の回答履歴へ、その場で書き込む(端末に関係なく、どこで問題集を開いてもすぐ反映される)。
    取り込み済みの印(pa)も付けるので、ls-qpend-v1 からの取り込み(takePend)と二重には数えない */
-function addHist(st,n,pk,ok,t){if(!st||typeof st!=="object")return false;if(!st.hist)st.hist={};if(!Array.isArray(st.pa))st.pa=[];if(st.pa.indexOf(pk)>=0)return false;
+function addHist(st,n,pk,ok,t,sel){if(!st||typeof st!=="object")return false;if(!st.hist)st.hist={};if(!Array.isArray(st.pa))st.pa=[];if(st.pa.indexOf(pk)>=0)return false;
   st.pa.push(pk);if(st.pa.length>1500)st.pa=st.pa.slice(-1500);var h=st.hist[n]||(st.hist[n]={n:0,c:0});h.n=(+h.n||0)+1;if(ok)h.c=(+h.c||0)+1;if(t>=(+h.t||0)){h.l=ok?"o":"x";h.t=t}st.ts=Math.max(Date.now(),(+st.ts||0)+1);return true}
 var quizQ=Promise.resolve();
-function pushQuiz(id,n,pk,ok,t){
-  try{var lk="sr-"+id+"-quiz-v1",loc=LS.get(lk,null);if(loc&&addHist(loc,n,pk,ok,t))LS.set(lk,loc)}catch(e){}
+function pushQuiz(id,n,pk,ok,t,sel){
+  try{var lk="sr-"+id+"-quiz-v1",loc=LS.get(lk,null);if(loc&&addHist(loc,n,pk,ok,t,sel))LS.set(lk,loc)}catch(e){}
   quizQ=quizQ.then(async function(){try{var cl=await cloud;if(!cl)return;var d=cdoc(cl,id+"-quiz"),sn=await d.get(),st=null;
     if(!sn.exists)return;var v=sn.data();try{st=v&&v.json?JSON.parse(v.json):null}catch(e){st=null}if(!st||!st.answers)return;
-    if(addHist(st,n,pk,ok,t))await d.set({json:JSON.stringify(st),ts:st.ts})}catch(e){}});
+    if(addHist(st,n,pk,ok,t,sel))await d.set({json:JSON.stringify(st),ts:st.ts})}catch(e){}});
 }
 async function pushAct(id){
   try{var cl=await cloud;if(!cl)return;var d=cdoc(cl,id+"-act"),s=await d.get(),rem=s.exists?s.data():{d:{}},loc=LS.get("sr-"+id+"-act-v1",{d:{}}),out={d:{},ts:Date.now()};
@@ -150,7 +150,7 @@ function renderQ(){
   box.innerHTML=h;
 }
 function choose(i){if(!CUR||DONE)return;var multi=CUR.a.length>1,k=SEL.indexOf(i);if(multi){if(k>=0)SEL.splice(k,1);else if(SEL.length<CUR.a.length)SEL.push(i)}else SEL=k>=0?[]:[i];renderQ()}
-function check(){if(!CUR||DONE||!SEL.length)return;if(CUR.a.length>1&&SEL.length!==CUR.a.length)return;DONE=true;var ok=SEL.length===CUR.a.length&&SEL.every(function(i){return CUR.a.indexOf(i)>=0});record(CUR,ok);renderQ();renderFilters()}
+function check(){if(!CUR||DONE||!SEL.length)return;if(CUR.a.length>1&&SEL.length!==CUR.a.length)return;DONE=true;var ok=SEL.length===CUR.a.length&&SEL.every(function(i){return CUR.a.indexOf(i)>=0});record(CUR,ok,SEL);renderQ();renderFilters()}
 function canPrev(){return ST.ord==="order"?deck().length>1:BACK.length>0}
 function prev(){if(!CUR)return;var t=null;
   if(ST.ord==="order"){var d=deck(),i=d.indexOf(CUR);if(d.length>1)t=d[(i-1+d.length)%d.length];if(t)LS.set(posKey(),{s:t.subj,n:t.n})}
