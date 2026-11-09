@@ -4,6 +4,7 @@
   - 仲間になった中から、最大10匹をランダムに選んで庭に出す(ページを開くたびに選び直す)。庭のカード・学習の記録の庭・全画面のどれにも出る
   - 歩く・跳ねる・きょろきょろする・座る。夜は眠って「z」を出し、冬はマフラーを巻く。タップすると跳ねて、名前とひとことを出す(庭の演出は出さない)
   - 学習の記録の草の庭と全画面に「庭の仲間」の一覧(まだの仲間はシルエットと条件・あと何問など)
+  - 一覧の☆でお気に入りにした仲間(cs-pals-fav、アカウントに同期)は、いつも庭に出る(10匹まで)。眠る時刻はキャラごと(21時30分〜23時15分、起きるのは6時〜7時)
   - 新しい仲間が来たら、ホームの草の庭カード(または学習の記録の草の庭)に1回だけお知らせを出す。お知らせ済みは cs-pals-seen(アカウントに同期)
   テスト用: window.__csPalAll=1 ですべての仲間を出せる候補にする
 使い方: python3 patch_garden_pals.py <index.html> <出力>   (patch_garden.py の後に当てる)
@@ -18,7 +19,11 @@ def rep(old, new, count=1):
     s = s.replace(old, new)
 JS = r'''
 /* ==庭の仲間: 達成した成果で生きものが庭にやって来る。最大10匹をランダムに表示== */
-var CS_PALS_MAX=10,CS_PALSEEN="cs-pals-seen";
+var CS_PALS_MAX=10,CS_PALSEEN="cs-pals-seen",CS_PALFAV="cs-pals-fav";
+/* 眠る時刻はキャラごと(21時30分〜23時15分に寝て、6時〜7時に起きる)。テスト用に window.__csSky.hh(時刻の小数)で固定できる。tod だけ固定したときは夜=23時半・それ以外=正午とみなす */
+function csPalHour(){var o=window.__csSky||{};if(typeof o.hh==="number")return o.hh;if(o.tod)return o.tod==="night"?23.5:12;var d=new Date();return d.getHours()+d.getMinutes()/60}
+function csPalSleep(id,hh){var h=0;for(var i=0;i<id.length;i++)h=(h*31+id.charCodeAt(i))>>>0;var bed=21.5+(h%8)*0.25,wake=6+((h>>3)%5)*0.25;return hh>=bed||hh<wake}
+function csPalFav(){var f=csPalLS(CS_PALFAV,{});return f&&typeof f==="object"&&!Array.isArray(f)?f:{}}
 var CS_PALS=[
  {id:"mebuki",nm:"めぶき",pf:"最初の草といっしょに生まれた芽の子。頭の双葉がごきげんのしるし",c:["grass",1],ct:"草を1本生やす",ln:["きょうも のびのび","おひさま すき","いっしょに育とうね"]},
  {id:"koron",nm:"ころん",pf:"庭のすみで見つかった小石の子。のんびり屋で、こけの帽子がお気に入り",c:["q",1],ct:"問題を1問解く",ln:["ころころ…","あわてない あわてない","1問ずつね"]},
@@ -93,9 +98,10 @@ function csPalLeft(P,st){var c=P.c;if(c[0]==="pass")return "";var l=c[1]-(+st[c[
   if(c[0]==="t"){var m=Math.ceil(l/60),h=Math.floor(m/60);return "あと"+(h?h+"時間":"")+(m%60?m%60+"分":"")}
   return "あと"+l+{q:"問",r:"節",grass:"本",best:"日",days:"日",known:"枚",badges:"個"}[c[0]]}
 /* 仲間になった中から最大10匹をランダムに選ぶ。位置・動き方も決めておき、カード・くわしい表示・全画面で同じ顔ぶれにする */
-function csPalsPrep(days){try{var st=csPalStats(days),on=CS_PALS.filter(function(P){return csPalOk(P,st)}).map(function(P){return P.id}),sig=on.join(","),pk=window.__csPalPick;
+function csPalsPrep(days){try{window.__csPalDays=days;var st=csPalStats(days),on=CS_PALS.filter(function(P){return csPalOk(P,st)}).map(function(P){return P.id}),sig=on.join(","),pk=window.__csPalPick;
   window.__csPalSt={st:st,on:on};
-  if(!pk||pk.sig!==sig){var ids=on.slice();for(var i=ids.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),x=ids[i];ids[i]=ids[j];ids[j]=x}ids=ids.slice(0,CS_PALS_MAX);
+  var FV=csPalFav(),fav=on.filter(function(id){return FV[id]}).slice(0,CS_PALS_MAX);sig+="|"+fav.join(",");
+  if(!pk||pk.sig!==sig){var ids=on.filter(function(id){return fav.indexOf(id)<0});for(var i=ids.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),x=ids[i];ids[i]=ids[j];ids[j]=x}ids=fav.concat(ids).slice(0,CS_PALS_MAX);
     var k=ids.length,sl=ids.map(function(_,i){return i});for(i=k-1;i>0;i--){j=Math.floor(Math.random()*(i+1));x=sl[i];sl[i]=sl[j];sl[j]=x}
     var BH=["walk","walk","walk","hop","look","sit"];
     window.__csPalPick={sig:sig,items:ids.map(function(id,i){return {id:id,xf:(sl[i]+0.5+(Math.random()-0.5)*0.5)/k,yf:sl[i]%2?0.83+Math.random()*0.07:0.7+Math.random()*0.07,
@@ -103,8 +109,8 @@ function csPalsPrep(days){try{var st=csPalStats(days),on=CS_PALS.filter(function
   }catch(e){}}
 /* 庭の絵の中に仲間を描く(csGardenSVG から呼ぶ)。夜は眠り、冬はマフラー */
 function csPalsSVG(W,H,fy,q,SK,opt,nb){var pk=window.__csPalPick;if(!pk||!pk.items.length)return "";
-  var sc=opt.fs?Math.min(2.2,q*1.3):Math.max(1.3,q*1.15),night=SK.tod==="night",o={sleep:night,winter:SK.season==="winter"},out=[];
-  pk.items.forEach(function(it,i){var a=CS_PALART[it.id];if(!a)return;var x=12*sc+it.xf*(W-24*sc),y=+fy(nb?(opt.fs?Math.min(it.yf,0.9):it.yf):Math.min(it.yf,0.71)),dx=it.dx,f=it.f,bh=night?"sleep":it.bh;
+  var sc=opt.fs?Math.min(2.2,q*1.3):Math.max(1.3,q*1.15),HH=csPalHour(),out=[];
+  pk.items.forEach(function(it,i){var a=CS_PALART[it.id];if(!a)return;var night=csPalSleep(it.id,HH),o={sleep:night,winter:SK.season==="winter"};var x=12*sc+it.xf*(W-24*sc),y=+fy(nb?(opt.fs?Math.min(it.yf,0.9):it.yf):Math.min(it.yf,0.71)),dx=it.dx,f=it.f,bh=night?"sleep":it.bh;
     if(f<0)dx=-dx;if(x+dx*sc>W-10*sc||x+dx*sc<10*sc)dx=-dx;
     if(bh==="walk")f=dx<0?-1:1;
     var mv=bh==="walk"?' class="gp-mv" style="--dx:'+cpR(dx)+'px;--f:'+f+';animation-duration:'+it.du+'s;animation-delay:-'+it.dl+'s"':bh==="look"?' class="gp-lk" style="animation-duration:'+(it.du/2).toFixed(1)+'s;animation-delay:-'+it.dl+'s"':f<0?' style="transform:scaleX(-1)"':'';
@@ -131,11 +137,12 @@ function csPalTap(pl){try{var sv=pl.ownerSVGElement,id=pl.getAttribute("data-pal
   csAn(g.firstChild.parentNode,[{opacity:0},{opacity:1,offset:.08},{opacity:1,offset:.85},{opacity:0}],2600,0,"linear");
   setTimeout(function(){L.remove()},2700)}catch(e){}}
 /* ---- 一覧(学習の記録の草の庭・全画面) ---- */
-function csPalsList(){var S=window.__csPalSt;if(!S)return "";var st=S.st,on=S.on;
+function csPalsList(){var S=window.__csPalSt;if(!S)return "";var st=S.st,on=S.on,FV=csPalFav();
   return '<ul class="gd-pals">'+CS_PALS.map(function(P){var ok=on.indexOf(P.id)>=0,lf=ok?"":csPalLeft(P,st);
-    return '<li class="'+(ok?"on":"lk")+'">'+csPalIcon(P.id,ok?"":"sil")+'<div><b>'+(ok?P.nm:"？？？")+'</b>'+(ok?'<span>'+P.pf+'</span>':'')+'<small>'+(ok?"仲間になった条件: ":"")+P.ct+(lf?'(<em>'+lf+'</em>)':'')+'</small></div></li>'}).join("")+'</ul>'}
+    var fv=ok&&!!FV[P.id];
+    return '<li class="'+(ok?"on":"lk")+(fv?" fav":"")+'">'+csPalIcon(P.id,ok?"":"sil")+'<div><b>'+(ok?P.nm:"？？？")+'</b>'+(ok?'<span>'+P.pf+'</span>':'')+'<small>'+(ok?"仲間になった条件: ":"")+P.ct+(lf?'(<em>'+lf+'</em>)':'')+'</small></div>'+(ok?'<button type="button" class="gp-fav" data-palfav="'+P.id+'" aria-pressed="'+fv+'" aria-label="'+P.nm+'をお気に入りにする">'+(fv?"★":"☆")+'</button>':'')+'</li>'}).join("")+'</ul>'}
 function csPalsHead(){var S=window.__csPalSt;return S?'仲間 <b>'+S.on.length+'</b> / '+CS_PALS.length+'匹':''}
-function csPalsDetails(){return '<details class="gd-palsd" id="garden-pals"><summary><span class="gd-palsd-k">庭の仲間</span><span class="gd-palsd-n">'+csPalsHead()+'</span></summary><p class="gd-palsd-s">合格した科目や学習の成果で、庭に仲間がやって来ます。庭にいるのは、仲間の中からランダムに選んだ最大10匹です(ページを開くたびに入れ替わります)。タップすると反応します。</p>'+csPalsList()+'</details>'}
+function csPalsDetails(){return '<details class="gd-palsd" id="garden-pals"><summary><span class="gd-palsd-k">庭の仲間</span><span class="gd-palsd-n">'+csPalsHead()+'</span></summary><p class="gd-palsd-s">合格した科目や学習の成果で、庭に仲間がやって来ます。庭にいるのは、仲間の中からランダムに選んだ最大10匹です(ページを開くたびに入れ替わります)。☆を押してお気に入りにした子は、いつも庭に出ます(10匹まで)。タップすると反応します。</p>'+csPalsList()+'</details>'}
 /* 新しい仲間のお知らせ(1回だけ) */
 function csPalsNotice(){try{var S=window.__csPalSt;if(!S||!S.on.length)return "";var seen=csPalLS(CS_PALSEEN,{});if(!seen||typeof seen!=="object")seen={};
   var nw=S.on.filter(function(id){return !seen[id]});if(!nw.length)return "";var now=Date.now();S.on.forEach(function(id){if(!seen[id])seen[id]=now});
@@ -144,14 +151,22 @@ function csPalsNotice(){try{var S=window.__csPalSt;if(!S||!S.on.length)return ""
   return '<p class="gd-new" role="status">'+csPalIcon(nw[0])+'<span><b>新しい仲間が庭に来ました'+(nw.length>1?'('+nw.length+'匹)':'')+'</b>'+(nm.length>4?nm.slice(0,4).join("・")+" ほか":nm.join("・"))+'</span></p>'}catch(e){return ""}}
 /* 全画面: 左上の「庭の仲間」ボタンで一覧を開く */
 function csPalsFSBtn(){var S=window.__csPalSt;return S?'<button type="button" class="gd-fs-pb" aria-haspopup="dialog">庭の仲間 <b>'+S.on.length+'</b>/'+CS_PALS.length+'</button>':''}
-function csPalsSheet(open){if(!csFS)return;var el=csFS.el.querySelector(".gd-fs-pals");if(el)el.remove();if(!open)return;
+function csPalsSheet(open){if(!csFS)return;var el=csFS.el.querySelector(".gd-fs-pals");if(el)el.remove();if(!open){if(window.__csPalDirty){window.__csPalDirty=0;try{csFSDraw()}catch(x){}}return}
   el=document.createElement("div");el.className="gd-fs-pals";el.setAttribute("role","dialog");el.setAttribute("aria-label","庭の仲間");
-  el.innerHTML='<div class="gd-fs-ph"><b>庭の仲間</b><span>'+csPalsHead()+'</span><button type="button" class="gd-fs-pc" aria-label="一覧を閉じる"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="gd-fs-pbd"><p class="gd-palsd-s">庭にいるのは、仲間の中からランダムに選んだ最大10匹です。</p>'+csPalsList()+'</div>';
+  el.innerHTML='<div class="gd-fs-ph"><b>庭の仲間</b><span>'+csPalsHead()+'</span><button type="button" class="gd-fs-pc" aria-label="一覧を閉じる"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="gd-fs-pbd"><p class="gd-palsd-s">庭にいるのは、仲間の中からランダムに選んだ最大10匹です。☆を押してお気に入りにした子は、いつも庭に出ます(10匹まで)。</p>'+csPalsList()+'</div>';
   csFS.el.appendChild(el);try{el.querySelector(".gd-fs-pc").focus({preventScroll:true})}catch(x){}}
 document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;if(t.closest(".gd-fs-pb")){e.preventDefault();csPalsSheet(true);return}if(t.closest(".gd-fs-pc")){e.preventDefault();csPalsSheet(false)}});
 /* 全画面の「庭の仲間」ボタンと下の説明は、開いて5秒でゆっくり消える(patch_garden の gdCapOut)。庭の何もない所をタップすると、また5秒出る */
 document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;var fs=t.closest(".gd-fs");if(!fs||t.closest(".gd-fs-pb,.gd-fs-x,.gd-fs-pals,button"))return;
   [].forEach.call(fs.querySelectorAll(".gd-fs-cap,.gd-fs-pb"),function(el){el.style.animation="none";void el.offsetWidth;el.style.animation=""})},true);
+/* お気に入り(☆): 押すと切り替え。10匹まで。学習の記録ではその場で庭を描き直し、全画面では一覧を閉じたときに描き直す */
+document.addEventListener("click",function(e){var b=e.target&&e.target.closest&&e.target.closest("[data-palfav]");if(!b)return;e.preventDefault();e.stopPropagation();
+  var id=b.getAttribute("data-palfav"),F=csPalFav();if(F[id])delete F[id];else{if(Object.keys(F).length>=CS_PALS_MAX){b.classList.add("gp-full");b.setAttribute("title","お気に入りは10匹までです");setTimeout(function(){b.classList.remove("gp-full")},900);return}F[id]=Date.now()}
+  try{localStorage.setItem(CS_PALFAV,JSON.stringify(F))}catch(x){}
+  [].forEach.call(document.querySelectorAll('[data-palfav="'+id+'"]'),function(x){var on=!!F[id];x.setAttribute("aria-pressed",String(on));x.textContent=on?"★":"☆";x.closest("li").classList.toggle("fav",on)});
+  try{csPalsPrep(window.__csPalDays||[])}catch(x){}
+  if(typeof csFS!=="undefined"&&csFS){window.__csPalDirty=1;return}
+  try{var gd=document.getElementById("garden-detail");if(gd&&typeof csGardenDetail==="function"){var wasOpen=!!(document.getElementById("garden-pals")||{}).open,sy=window.scrollY;csGardenDetail(window.__csPalDays||[]);var d2=document.getElementById("garden-pals");if(d2&&wasOpen)d2.open=true;window.scrollTo(0,sy)}}catch(x){}},true);
 '''
 rep("FAMP.home=function(){setTimeout(csHomeExtra,0);", JS + "\nFAMP.home=function(){setTimeout(csHomeExtra,0);")
 # 庭の絵に仲間を描く(草・季節の小物の後、桜の枝・舞うもの・夜の暗さの前)
@@ -172,7 +187,7 @@ rep("""'<div class="gd-now"><b>'+cur[1]+'</b><span>'+cur[2]+'</span></div>';""",
 rep("""h+='<p class="gd-h">生えた草の種類</p>""", """h+=csPalsDetails();h+='<p class="gd-h">生えた草の種類</p>""")
 rep("右上のボタンで全画面になり、庭をタップすると演出が出ます。</p>", "右上のボタンで全画面になり、庭をタップすると演出が出ます。合格した科目や学習の成果に応じて、庭に仲間(生きもの)がやって来ます。</p>")
 # お知らせ済みの仲間をアカウントに同期する
-rep("`cs-subj-passed`,`cs-term-bm-v1`]", "`cs-subj-passed`,`cs-term-bm-v1`,`cs-pals-seen`]")
+rep("`cs-subj-passed`,`cs-term-bm-v1`]", "`cs-subj-passed`,`cs-term-bm-v1`,`cs-pals-seen`,`cs-pals-fav`]")
 CSS = """
 /* 庭の仲間 */
 /* 夜の暗さ・舞う花びらなどが上に重なっても、仲間をタップできるように(ほかはタップを庭そのものへ通す) */
@@ -222,6 +237,11 @@ CSS = """
 .gd-pals li b{font-size:13.5px}.gd-pals li span{color:var(--ink)}.gd-pals li small{color:var(--sub);font-size:11.5px}
 .gd-pals li em{font-style:normal;color:var(--ok);font-weight:700}
 .gd-pals li.lk b{color:var(--sub)}
+.gd-pals .gp-fav{flex:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--line,#d9d6cc);background:var(--paper,#fff);color:#b8b2a2;font-size:20px;line-height:1;cursor:pointer}
+.gd-pals .gp-fav[aria-pressed=true]{color:#e0a100;border-color:#e0a100;background:color-mix(in srgb,#ffd34d 18%,var(--paper,#fff))}
+.gd-pals .gp-fav.gp-full{animation:gpShake .45s}
+@keyframes gpShake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.gd-pals li.fav{box-shadow:inset 3px 0 0 #e0a100}
 .gd-fs-pb{position:absolute;top:calc(12px + env(safe-area-inset-top));left:calc(12px + env(safe-area-inset-left));height:40px;padding:0 14px;border-radius:99px;border:0;background:rgba(255,255,255,.88);color:#1f2a24;font:inherit;font-size:13px;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.22);cursor:pointer}
 .gd-fs-pb b{color:#2a9765}
 .gd-fs-pb{animation:gdCapOut 1.8s ease 5s forwards}
