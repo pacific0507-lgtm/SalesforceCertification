@@ -1,0 +1,3874 @@
+[
+ {
+  "s": "Trailhead: 取引先と取引先責任者 / 取引先と取引先責任者のリレーションの説明 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/accounts_contacts_lightning_experience/understand-account-and-contact-relationships-lightning",
+  "q": "取引先責任者-to-複数取引先に表示できる、取引先と取引先責任者の 2 種類のリレーションはどれですか?",
+  "o": [
+   "肯定的と否定的",
+   "親と同階層",
+   "幸せと不幸せ",
+   "直接的と間接的",
+   "完全と不完全"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "取引先責任者-to-複数取引先を使うと、1人の取引先責任者を複数の取引先に関連付けられます。主に所属する取引先とは「直接的」なリレーション、それ以外の関連取引先とは「間接的」なリレーションになります。",
+  "qe": "What two types of account-contact relationships can you see in Contacts to Multiple Accounts?",
+  "oe": [
+   "Positive and negative",
+   "Parent and sibling",
+   "Happy and unhappy",
+   "Direct and indirect",
+   "Complete and incomplete"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 取引先と取引先責任者 / 取引先と取引先責任者のリレーションの説明 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/accounts_contacts_lightning_experience/understand-account-and-contact-relationships-lightning",
+  "q": "関係取引先はどのように設定しますか?",
+  "o": [
+   "システム管理者に設定してもらう。",
+   "取引先のレコードに親取引先を追加する。",
+   "取引先のメモに親取引先の名前を記録する。",
+   "付箋に書いて机に張っておく。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "取引先の階層(関係取引先)は、各取引先レコードの「親取引先」項目に親会社を設定して作ります。親取引先を記録しておくと、Salesforce が取引先のファミリーツリーを表示できます。メモや付箋に書いても、システム上の関連付けにはなりません。",
+  "qe": "How do you set up the account hierarchy?",
+  "oe": [
+   "Ask an administrator to set it up for you.",
+   "Add a Parent Account to the account's record.",
+   "Record the parent account's name in a Note on the account.",
+   "Write it on a sticky note and put it on your desk."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 取引先と取引先責任者 / 取引先と取引先責任者のリレーションの説明 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/accounts_contacts_lightning_experience/understand-account-and-contact-relationships-lightning",
+  "q": "あなたの非公開のデフォルト取引先チームのメンバーとなるのは誰ですか?",
+  "o": [
+   "あなたがどのように成功を成し遂げたのか知りたいと思っている同じ部門の同僚",
+   "全取引先のすべての取引先責任者",
+   "通常取引先を担当している同僚",
+   "前回のマーケティングキャンペーンで前向きな反応を示した顧客"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "デフォルトの取引先チームには、いつも一緒にその取引先を担当している同僚を登録します。登録しておくと、新しい取引先にもまとめてチームを追加できます。顧客や取引先責任者はチームメンバーにはなりません。",
+  "qe": "Who should be on your personal Default Account Team?",
+  "oe": [
+   "Coworkers from your department who want to know how you achieve all your success",
+   "All the contacts for all your accounts",
+   "Coworkers you usually work with on your accounts",
+   "Customers who responded positively to the last marketing campaign"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce セールスコーチの設定とカスタマイズ / Agentforce セールスコーチについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-for-sales-coaching-setup-and-customization/get-to-know-agentforce-sales-coach",
+  "q": "Agentforce セールスコーチは、営業担当が見込み客との会議に向けて準備する際に、どのように役立ちますか?",
+  "o": [
+   "マネージャーとの面談の予定を立て、ガイダンスを受けられるようにする。",
+   "見込み客と会う前に、セールストークの練習ができるようにする。",
+   "見込み客についてあまり知られていない情報をインターネットで検索して、雑談に備える。",
+   "人手不足のときに対応要員を補うことができるようにする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Agentforce セールスコーチを使うと、営業担当は見込み客と会う前にセールストークを練習し、商談のフェーズに合ったフィードバックを受けられます。面談の予約やネット検索をしてくれる機能ではありません。",
+  "qe": "How does Agentforce Sales Coach help a sales rep prepare for meetings with prospects?",
+  "oe": [
+   "It helps them schedule time with their manager to get guidance.",
+   "It allows reps to practice pitches before they meet with prospective buyers.",
+   "It searches the web for little-known facts about potential customers so they’re prepared for small talk.",
+   "It helps them with coverage when they’re short-staffed."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "generative",
+  "x": "営業担当者の練習(プレゼンへのフィードバック、ロールプレイ)は Agentforce Sales Coach です。"
+ },
+ {
+  "s": "Trailhead: Agentforce セールスコーチの設定とカスタマイズ / Agentforce セールスコーチについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-for-sales-coaching-setup-and-customization/get-to-know-agentforce-sales-coach",
+  "q": "Agentforce セールスコーチの 3 つの標準機能はどれですか?",
+  "o": [
+   "Agentforce スタジオ、Einstein 生成 AI、プロンプト",
+   "サブエージェント、アクション、プロンプト",
+   "プロンプト、プロンプトテンプレート、ロール",
+   "アクション、プロンプト、Einstein 生成 AI"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Agentforce セールスコーチには、すぐに使えるサブエージェント(旧トピック)、アクション、プロンプトテンプレートが用意されています。この3つを組み合わせて動くので、短期間で導入できます。",
+  "qe": "What are three out-of-the-box features of Agentforce Sales Coach?",
+  "oe": [
+   "Agentforce Studio, Einstein Generative AI, and prompts",
+   "Subagents, actions, and prompts",
+   "Prompts, prompt templates, and roles",
+   "Actions, prompts, and Einstein Generative AI"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "generative",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce セールスコーチの設定とカスタマイズ / Agentforce セールスコーチを有効化して設定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-for-sales-coaching-setup-and-customization/enable-and-set-up-sales-coach",
+  "q": "Agentforce セールスコーチは Salesforce のどこに常駐していますか?",
+  "o": [
+   "リードレコードページ",
+   "セールスレコードページ",
+   "アプリケーションビルダーページ",
+   "商談レコードページ"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Agentforce セールスコーチは、Lightning アプリケーションビルダーで商談レコードページに配置して使います。営業担当は、商談ページ上のコンポーネントからコーチとやり取りします。",
+  "qe": "Where does Agentforce Sales Coach exist within your Salesforce org?",
+  "oe": [
+   "Lead Record Page",
+   "Sales Record Page",
+   "App Builder Page",
+   "Opportunity Record Page"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "generative",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce セールスコーチの設定とカスタマイズ / Agentforce セールスコーチを有効化して設定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-for-sales-coaching-setup-and-customization/enable-and-set-up-sales-coach",
+  "q": "正誤問題: Agentforce セールスコーチは、Salesforce のユーザーとして動作する。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Agentforce セールスコーチは、Salesforce のユーザーとして動きます。そのため専用のユーザーを作り、レポートの作成やレコードの管理に必要な権限セットを割り当てます。",
+  "qe": "True or false: Your Agentforce Sales Coach operates as a user in Salesforce.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "generative",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce セールスコーチの設定とカスタマイズ / Agentforce セールスコーチをカスタマイズする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-for-sales-coaching-setup-and-customization/customize-your-sales-coach-agent",
+  "q": "正誤問題: 前置詞の within (以内) を使用すると、プロンプトモデルにスコープや境界を理解させることができる。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "指示を書くとき、「within(以内)」のような前置詞を使うと、モデルに範囲や境界を伝えやすくなります。たとえば「この商談の情報の範囲内で答える」と書けば、関係ない情報に広がるのを防げます。",
+  "qe": "True or false: Using the preposition “within” helps the prompt model to understand scope or boundaries.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "generative",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce セールスコーチの設定とカスタマイズ / Agentforce セールスコーチをカスタマイズする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-for-sales-coaching-setup-and-customization/customize-your-sales-coach-agent",
+  "q": "セールスコーチをカスタマイズするために使用する主な機能はどれですか?",
+  "o": [
+   "リスト",
+   "Actions (アクション)",
+   "用語",
+   "パフォーマンス"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Agentforce セールスコーチは、指示・アクション・トピック(サブエージェント)を調整してカスタマイズします。選択肢の中で該当するのはアクションです。リストや用語は、カスタマイズの主な手段ではありません。",
+  "qe": "Which of these is a key feature that’s used to customize Sales Coach?",
+  "oe": [
+   "Lists",
+   "Actions",
+   "Terminology",
+   "Performance"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "generative",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce for Sales: クイックルック / Agentforce for Sales について知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-sales-agents-quick-look/discover-agentforce-sales-agents",
+  "q": "Agentforce SDR エージェントはどの 3 つのコンポーネントでグラウンディングされていますか?",
+  "o": [
+   "会社の営業データ、営業担当のコメント、リード",
+   "会社の営業担当フィードバック、リード、商談レコード",
+   "会社の商品、営業、リードレコード",
+   "会社の営業、商品、顧客データ"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Agentforce SDR エージェントは、会社の営業データ・商品データ・顧客データでグラウンディングされています。そのため、リードにパーソナライズした対応をして、ファネルの先へ進められます。",
+  "qe": "Agentforce SDR Agent is grounded in what three components?",
+  "oe": [
+   "A company’s sales data, sales reps comments, and Leads",
+   "A company’s sales reps feedback, Leads, and Opportunity records",
+   "A company’s product, Sales, and Lead records",
+   "A company’s sales, product, and customer data"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "generative",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce for Sales: クイックルック / Agentforce for Sales について知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-sales-agents-quick-look/discover-agentforce-sales-agents",
+  "q": "Agentforce Sales Coach が営業チームに提供するのは次のどれですか?",
+  "o": [
+   "営業チーム全体に対する一般化されたフィードバック",
+   "営業担当に対する商談固有のパーソナライズされたフィードバック",
+   "各営業担当に対する一般化されたフィードバック",
+   "各営業チームに対する商談固有のロールプレイシナリオ"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Agentforce セールスコーチは、商談ごとにパーソナライズされたフィードバックを営業担当に提供します。チーム全体への一般的な助言ではなく、個々の商談に合わせた具体的な内容になるのが特長です。",
+  "qe": "Agentforce Sales Coach provides which of these to a sales team?",
+  "oe": [
+   "Generalized feedback to the entire sales team",
+   "Deal-specific, personalized feedback to sales reps",
+   "Generalized feedback to each sales rep",
+   "Deal-specific role play scenarios for each sales team"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "generative",
+  "x": "営業担当者の練習(プレゼンへのフィードバック、ロールプレイ)は Agentforce Sales Coach です。"
+ },
+ {
+  "s": "Trailhead: Alignment as a Strategic Craft / Learn Why Alignment is Key Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/alignment-as-a-strategic-craft/learn-why-alignment-is-key",
+  "q": "デザインの過程でアラインメント(関係者の足並みをそろえること)を達成するメリットはどれですか?",
+  "o": [
+   "コミュニケーションがよくなる",
+   "結果が不確かになる",
+   "責任感(アカウンタビリティ)が高まる",
+   "B と C",
+   "A と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "デザインの過程で関係者の足並みをそろえる(アラインメント)と、コミュニケーションとチームワークがよくなります。さらに目標を共有するので、お互いに責任を持ち合えるようになります。結果が不確かになるのは、アラインメントが足りない場合です。",
+  "qe": "Which is a benefit of achieving alignment during the design process?",
+  "oe": [
+   "Enhances communication",
+   "Creates uncertain outcomes",
+   "Drives more accountability",
+   "B and C",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Alignment as a Strategic Craft / Learn Why Alignment is Key Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/alignment-as-a-strategic-craft/learn-why-alignment-is-key",
+  "q": "アラインメントが欠けたデザインプロセスで起こりやすい結果はどれですか?",
+  "o": [
+   "試作のための予算が増える",
+   "中心となるデザインチームの士気が上がる",
+   "間違った作業に時間と労力を浪費する",
+   "最終的なサービスを早く市場に出せる"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "アラインメントが欠けたままデザインを進めると、関係者がそれぞれ違う方向に動き、間違ったアイデアや作業に時間と労力を使ってしまいます。予算が増えたり、市場投入が早まったりするわけではありません。",
+  "qe": "Which situation is a consequence of a design process that lacks alignment?",
+  "oe": [
+   "Increased budget for experimental prototyping",
+   "Improved morale among the core design team",
+   "Wasted time and energy on the wrong tasks",
+   "Faster delivery of the final service to market"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Alignment as a Strategic Craft / Gain Alignment Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/alignment-as-a-strategic-craft/gain-alignment",
+  "q": "デザインプロセスのどの時点で、調査インサイトについての合意を得るのが一般的ですか?",
+  "o": [
+   "Discover フェーズの前",
+   "Define フェーズの途中",
+   "Discover フェーズの最後",
+   "Design フェーズの途中"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "調査から得たインサイトは、顧客中心の問題解決の土台になります。そのため、インサイトについての合意は Discover(発見)フェーズの最後に行い、次のフェーズの前提にします。",
+  "qe": "At which point in the design process do you typically gain alignment on research insights?",
+  "oe": [
+   "Before the Discover phase",
+   "During the Define phase",
+   "At the end of the Discover phase",
+   "During the Design phase"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Alignment as a Strategic Craft / Gain Alignment Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/alignment-as-a-strategic-craft/gain-alignment",
+  "q": "批判者(detractor)の説明として最も適切なのはどれですか?",
+  "o": [
+   "会議には出るが、プロジェクトを優先しない",
+   "プロジェクトを前に進めることに積極的に取り組む",
+   "デザインの各フェーズに対して冷笑的なことが多い",
+   "頼まれたときだけ手助けする"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "批判者(detractor)は、表立って、または裏でプロジェクトの成功を妨げる人です。新しいフェーズのたびに冷笑的な態度をとり、うまくいかない理由ばかり挙げます。会議に出るが優先しない人や、頼まれたときだけ手伝う人は「中立」にあたります。",
+  "qe": "Which definition best describes a detractor?",
+  "oe": [
+   "Attend meetings, but don't prioritize the project.",
+   "Actively commit to moving a project forward.",
+   "They are often cynical about each design phase.",
+   "Offer help only when asked."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Alignment as a Strategic Craft / Align the Core Team Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/alignment-as-a-strategic-craft/align-the-core-team",
+  "q": "共通理解を深める方法はどれですか?",
+  "o": [
+   "調査を使って顧客やユーザーへの共感を育てる",
+   "ストーリーを使って感情面の理解を深める",
+   "LinkedIn で仕事上の紹介をする",
+   "A と C",
+   "A と B"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "共通理解を深める方法として、調査や試作を通じて顧客・ユーザーへの共感を育てることと、ストーリーを使って論理面・感情面の理解を深めることが紹介されています。LinkedIn での紹介は、この方法に含まれません。",
+  "qe": "Which is a method to increase shared understanding?",
+  "oe": [
+   "Use research to build compassion for customers and users.",
+   "Use stories to increase emotional understanding.",
+   "Use LinkedIn to make a professional introduction.",
+   "A and C",
+   "A and B"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Alignment as a Strategic Craft / Align the Core Team Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/alignment-as-a-strategic-craft/align-the-core-team",
+  "q": "プロジェクトの中間チェックインで、ムードメーターはどのように使いますか?",
+  "o": [
+   "調査に使った予算の合計を計算する",
+   "最初のフェーズで使った技術ツールを書き出す",
+   "自分の感情の移り変わりを表す線を描く",
+   "中心チームの各メンバーに作業を割り当てる"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ムードメーターでは、チームメンバーにプロジェクト中の気持ちの移り変わりを振り返ってもらい、それを1本の線で描きます。線の上下に嬉しい・つらいのアイコンを置き、感情の強さを表します。予算や作業の割り当てとは関係ありません。",
+  "qe": "How do you use a Mood Meter during a project midpoint check-in?",
+  "oe": [
+   "Calculate the total budget spent on research",
+   "List the technical tools used during the first phase",
+   "Chart a line that represents your emotional journey",
+   "Assign specific tasks to each member of the core team"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Alignment as a Strategic Craft / Make Decisions and Resolve Conflicts Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/alignment-as-a-strategic-craft/make-decisions-and-resolve-conflicts",
+  "q": "チームが意思決定の手法を使うのはどんなときですか?",
+  "o": [
+   "どのクリエイティブの方向性を進めるかを決めるとき",
+   "ユーザー調査のとき",
+   "高いレベルの目標に優先順位を付けるとき",
+   "A と C",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "意思決定の手法は、高いレベルの目標の優先順位付けや、どのクリエイティブの方向性を選ぶかを決める場面で使います。ユーザー調査そのものは、意思決定の手法を使う場面としては挙げられていません。",
+  "qe": "When might teams use decision-making methods?",
+  "oe": [
+   "To decide which creative direction to pursue",
+   "In user research",
+   "To prioritize high-level goals",
+   "A and C",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Alignment as a Strategic Craft / Make Decisions and Resolve Conflicts Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/alignment-as-a-strategic-craft/make-decisions-and-resolve-conflicts",
+  "q": "対立が生産的でなくなり、チームが優先順位で合意できないときは、どうすべきですか?",
+  "o": [
+   "スケジュールを守るために摩擦を無視する",
+   "主要な関係者に最終決定をしてもらう",
+   "いったん問題から離れ、あとで改めて検討する",
+   "部屋を出る前にグループに投票を強制する"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "対立が堂々巡りになり、優先順位で合意できないときは、いったん問題から離れて時間を置き、あとで改めて話し合います(Pause, Then Revisit)。無視したり、無理に投票させたりすると、対立が深まるおそれがあります。",
+  "qe": "What should you do when a conflict becomes less productive and the team can’t agree on priorities?",
+  "oe": [
+   "Ignore the friction to keep the project on schedule",
+   "Ask the lead stakeholder to make the final decision",
+   "Take time away from the problem and revisit it later",
+   "Force a vote before the group can leave the room"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / 顧客起点のディスカバリー入門 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/get-started-customer-centric-discovery",
+  "q": "顧客起点のディスカバリーを実践する最大の理由は何ですか?",
+  "o": [
+   "お客様により多くのソリューションを売る",
+   "お客様と一緒に成功する戦略を立てる",
+   "自社が提供するものを宣伝する",
+   "他のアカウントエグゼクティブと協力する"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "顧客起点のディスカバリーは、お客様の目的や課題について、お客様と共通の理解を深めていく手法です。その目的は、商品を多く売ることではなく、お客様と一緒に成功する戦略を立てることです。",
+  "qe": "What's the best reason for practicing customer-centric discovery?",
+  "oe": [
+   "To sell more solutions to customers",
+   "To co-create successful solutions with customers",
+   "To promote what your company offers",
+   "To partner with more account executives"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / 顧客起点のディスカバリー入門 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/get-started-customer-centric-discovery",
+  "q": "顧客起点のディスカバリーのステップのうち、お客様とインサイトを共有するのはどれですか?",
+  "o": [
+   "お客様を知る。",
+   "お客様になる。",
+   "お客様との関係を構築する。",
+   "お客様と共に作り出す。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "顧客起点のディスカバリーは「知る」「なる」「関係を構築する」「共に作り出す」の4ステップです。3つ目の「お客様との関係を構築する」で、調べて得たインサイトをお客様と共有し、再確認します。",
+  "qe": "Which customer-centric discovery step is about sharing insights with customers?",
+  "oe": [
+   "Know your customer.",
+   "Be your customer.",
+   "Connect with your customer.",
+   "Create with your customer."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / お客様を知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/know-your-customers",
+  "q": "調査の際に尋ねるべきビジネスに焦点を絞った最適な質問はどれですか?",
+  "o": [
+   "現時点における業界の最大のトレンドは何か?",
+   "会社の CEO は誰か?",
+   "現在、会社が直面している課題は何か?",
+   "業界でどのような専門用語が使用されているか?"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "事前調査では、そのお客様の会社がいま直面している課題を把握することが重要です。CEO の名前や業界用語も参考にはなりますが、ビジネスに焦点を絞った質問としては「どのような課題に直面しているか」が最適です。",
+  "qe": "What’s the best business-focused question to ask as you research?",
+  "oe": [
+   "What are the biggest trends for your industry right now?",
+   "Who is the CEO of your business?",
+   "What are the challenges your business is facing today?",
+   "What technical terms do you use in your industry?"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / お客様を知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/know-your-customers",
+  "q": "主要な意思決定者から収集できる最も有益な情報は何ですか?",
+  "o": [
+   "電話番号",
+   "主な優先事項",
+   "趣味",
+   "靴のサイズ"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "主要な意思決定者については、それぞれの主な優先事項を把握することが最も役立ちます。優先事項がわかれば、その人に響く提案ができます。電話番号や趣味は、ビジネスの理解には直接つながりません。",
+  "qe": "What’s the most useful information you can gather from key decision makers?",
+  "oe": [
+   "Their phone numbers",
+   "Their key priorities",
+   "Their hobbies",
+   "Their shoe sizes"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / お客様になる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/be-your-customers",
+  "q": "お客様に対して共感を示す最適な方法はどれですか?",
+  "o": [
+   "「ああ! それは大変でしょう」と言う。",
+   "同じ様な問題を抱える別のお客様をサポートしたときのことを説明する。",
+   "ソリューションを推奨する。",
+   "優れたシステムとはどのようなものかを説明する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロのように共感するには、接点を見つけ、関心を持ち、共通する経験を見つけます。似た問題を抱えていた別のお客様をどう支援したかを話すと、相手の状況を理解していることが伝わります。すぐにソリューションを勧めるのは、共感を示すことにはなりません。",
+  "qe": "How can you best express empathy to a customer?",
+  "oe": [
+   "Say, “Wow! This must be tough for you.”",
+   "Describe a time when you helped another customer solve a similar issue.",
+   "Suggest solutions.",
+   "Talk about what a good system for them looks like."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / お客様になる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/be-your-customers",
+  "q": "お客様のビジネスを最も直接的に学べる方法はどれですか?",
+  "o": [
+   "プロセスを学習する。",
+   "競合他社のビジネスを見学する。",
+   "CIO と会い、さらに質問する。",
+   "お客様の Web サイトを訪問し、お客様の顧客になって実際に確認する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "お客様のビジネスを最も直接的に知るには、お客様自身の顧客になって体験するのが一番です。Web サイトで実際に購入してみると、消費者の立場で課題が見えてきます。",
+  "qe": "What’s the most direct way to learn about your customer’s business?",
+  "oe": [
+   "Study their processes.",
+   "Visit a competitor's business.",
+   "Meet with the CIO and ask more questions.",
+   "Visit your customer’s website to see what it's like to be a customer of theirs."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / お客様との関係を構築する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/connect-with-your-customers-centric",
+  "q": "自身が直面している課題をお客様が整理するときに、レベル 3 の問題になる可能性が最も高いのはどれですか?",
+  "o": [
+   "追跡の問題",
+   "Web サイトの機能の問題",
+   "カスタマーサービスの問題",
+   "流通の問題"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "課題は3つのレベル(3L)に整理します。レベル1は技術的な問題、レベル2はビジネス全般への影響、レベル3は顧客や従業員など個人への影響です。カスタマーサービスの問題は顧客に直接影響するので、レベル3にあたる可能性が最も高いです。",
+  "qe": "As your customer organizes challenges they’re facing, which of the following is most likely a level 3 issue?",
+  "oe": [
+   "Tracking issues",
+   "Website function issues",
+   "Customer service issues",
+   "Distribution issues"
+  ],
+  "v": "要確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / お客様との関係を構築する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/connect-with-your-customers-centric",
+  "q": "ホワイトボードに書き出すときに行うべき最重要事項は何ですか?",
+  "o": [
+   "検討するソリューションがいくつあるかを記憶する。",
+   "主な優先事項のランクを見つける。",
+   "ホワイトボードセッションの結果を記録する。",
+   "ミーティングの結果を身振り手振りで表す。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ホワイトボードを使ったセッションでは、結果を必ず記録します。写真を撮ったりスクリーンショットを保存したりして、あとで見返せるようにしておきます。",
+  "qe": "What’s the most important thing to do when whiteboarding?",
+  "oe": [
+   "Memorize how many solutions they discuss.",
+   "Find out the ranks of the main priorities.",
+   "Record the results of the whiteboard session.",
+   "Translate the results of the meeting into an interpretive dance or play."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / お客様と共に作り出す Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/create-with-your-customers",
+  "q": "お客様に変更を提案するときに重視すべき最重要事項はどれですか?",
+  "o": [
+   "ビジネスへの影響",
+   "ストーリーボード",
+   "競合他社のソリューション",
+   "実演できるシナリオ"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "変更を提案するときは、その課題がお客様の従業員・顧客・収支にどう影響するか、つまりビジネスへの影響を重視します。ストーリーボードや実演は、その影響を伝えるための手段です。",
+  "qe": "What's the most important thing to focus on when creating a case for change for your customer?",
+  "oe": [
+   "Business impact",
+   "Storyboarding",
+   "Competitor solutions",
+   "Scenarios he can act out"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 顧客起点のディスカバリー手法 / お客様と共に作り出す Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-centric-discovery-strategies/create-with-your-customers",
+  "q": "計画を立てるときに行うべき最適な次のステップはどれですか?",
+  "o": [
+   "主な優先事項について話し合う。",
+   "ストーリーボードを作成する。",
+   "提案されたタイムラインを確認する。",
+   "製品デモを見る。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "「お客様と共に作り出す」ステップでは、課題を見直したあと、お客様の将来のビジョンをストーリーボードにします。ストーリーボードは、今の課題と将来の目標を結び付けて図にしたもので、これをもとにプランを作ります。",
+  "qe": "What's the best next step when creating a strategy?",
+  "oe": [
+   "Talk about your main priorities.",
+   "Create a storyboard.",
+   "Review the proposed timeline.",
+   "Watch a product demo."
+  ],
+  "v": "要確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: データ品質 / データ品質の使用開始 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data_quality/data_quality_getting_started",
+  "q": "会社の役員チームのために、データ品質の重要性について概説するプレゼンテーションを作成しています。データ品質を決める主な要因として、何を組み込みますか?",
+  "o": [
+   "時間",
+   "テリトリーの分布",
+   "重複レコードの数",
+   "従業員数",
+   "収益"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "データ品質を下げる代表的な要因として、レコードの重複、不完全なレコード、古いデータなどがあります。選択肢の中では重複レコードの数がデータ品質に直接関わります。時間や従業員数は品質を決める要因ではありません。",
+  "qe": "You're creating a presentation for your company's executive team outlining the importance of data quality. What's one key factor in determining data quality that you might include?",
+  "oe": [
+   "Time",
+   "Territory distribution",
+   "Number of duplicate records",
+   "Number of employees",
+   "Revenue"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "quality",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: データ品質 / データ品質の使用開始 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data_quality/data_quality_getting_started",
+  "q": "プレゼンテーションでは、不適切なデータの落とし穴に言及します。品質が低いデータに一貫して関連する結果は次のうちどれですか?",
+  "o": [
+   "収益の増加",
+   "効率の向上",
+   "評判の低下",
+   "優れたカスタマーサービス",
+   "適切なリード"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "不正なデータは、収益の低下、効率の低下、カスタマーサービス品質の低下、評判の低下などにつながります。収益や効率の「向上」は、適切なデータによる効果のほうです。",
+  "qe": "In your presentation, you note some of the pitfalls of bad data. Which outcome is consistently linked to poor-quality data?",
+  "oe": [
+   "Increased revenue",
+   "Increased efficiency",
+   "Reputational damage",
+   "Excellent customer service",
+   "Better leads"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "quality",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: データ品質 / データ品質の向上 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data_quality/data_quality_improve_quality",
+  "q": "会社の Salesforce システム管理者が、データ管理計画を策定するように依頼されました。この計画に組み込むべきデータ標準は何ですか?",
+  "o": [
+   "個人名",
+   "収益目標",
+   "レコード所有権の条件",
+   "Salesforce ログイン情報",
+   "会社の長期計画"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "データ管理計画には、命名規則や書式、品質、ロールと所有権、監視などの標準を定めます。レコードを誰が所有し、誰が変更に責任を持つかという条件は、計画に含めるべき標準です。",
+  "qe": "As Salesforce admin at your company, you're asked to develop a data management plan. What's one data standard you should include in your plan?",
+  "oe": [
+   "Personal names",
+   "Revenue goals",
+   "Record ownership criteria",
+   "Salesforce login information",
+   "Long-term company plans"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "quality",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: データ品質 / データ品質の向上 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data_quality/data_quality_improve_quality",
+  "q": "営業担当チームは、テリトリーを計画するために、すべての取引先の正確な取引先責任者情報を必要としています。営業担当チームがその情報を確実に得られるようにするため、Salesforce システム管理者はどのようにすればよいですか?",
+  "o": [
+   "スプレッドシートを作成し、営業担当チームが取引先責任者情報を保存できるようにする。",
+   "取引先責任者情報を確実に書き留めることを含む、ベストプラクティスのリストを営業担当チームに送信する。",
+   "すべての営業担当用にカレンダーの ToDo を作成し、営業担当が正確な取引先責任者情報を忘れずに取得するようにする。",
+   "Salesforce で取引先責任者情報を必須項目にする。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "必要な情報を確実に入力させるには、Salesforce 側で項目を必須にするのが確実です。入力規則やページレイアウトで必須にすれば、空のままでは保存できません。メモやリマインダーでは入力漏れを防げません。",
+  "qe": "To plan territories, your sales ops team needs accurate contact information on all accounts. As a Salesforce admin, what’s a great way to ensure they have that information?",
+  "oe": [
+   "Create a spreadsheet for them where they can keep their contact information.",
+   "Send them a list of best practices that includes making sure they write down contact information.",
+   "Create a calendar task for all reps so they remember to get accurate contact information.",
+   "Make sure contact information fields are required in Salesforce."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "quality",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: DevOps センター: クイックルック / 次世代 DevOps Center の紹介 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/devops-center-quick-look/say-hello-to-devops-center",
+  "q": "あなたは今、複雑なマージ競合に直面しているとします。自然言語を使用してこれを解決するのに役立つ Lifecycle Center の機能はどれですか?",
+  "o": [
+   "DX インスペクターからコミット",
+   "変更セットアウトバウンドルール",
+   "Salesforce DX MCP Server の Lifecycle Center MCP ツール",
+   "標準の Salesforce 設定検索"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Lifecycle Center(旧 DevOps センター)は Salesforce DX MCP Server を利用しています。その MCP ツールを使うと、複雑なマージ競合も自然言語で解決できます。",
+  "qe": "You’re facing a complex merge conflict. Which Lifecycle Center capability helps you resolve this using natural language?",
+  "oe": [
+   "Commit from DX Inspector",
+   "Change set outbound rules",
+   "Lifecycle Center MCP Tools in Salesforce DX MCP Server",
+   "Standard Salesforce setup search"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: DevOps センター: クイックルック / 次世代 DevOps Center の紹介 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/devops-center-quick-look/say-hello-to-devops-center",
+  "q": "変更の要件を定義し、関連付けられた変更をリリースライフサイクルを通して追跡する Lifecycle Center 機能はどれですか?",
+  "o": [
+   "パイプラインフェーズ",
+   "変更セット",
+   "作業項目",
+   "DX インスペクター"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "作業項目は、変更を行うための要件を定義し、関連する変更をリリースライフサイクル全体で追跡するものです。DX インスペクターは変更の確認とコミットに使う機能です。",
+  "qe": "Which Lifecycle Center feature defines the requirements for a change and tracks its associated changes through the release lifecycle?",
+  "oe": [
+   "Pipeline stage",
+   "Change sets",
+   "Work item",
+   "DX Inspector"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Sales Engagement の基本 / Agentforce Sales 向け Sales Engagement について学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/get-to-know-high-velocity-sales",
+  "q": "営業担当が選択できるデジタルツールが非常に多いと、購入者にリーチするのが難しいのはなぜですか?",
+  "o": [
+   "連携しない複数のツールを使用すると、維持するのに時間がかかる。",
+   "購入者は、いつ、どのように連絡を受けるかについて強い好みがある。",
+   "新しい携帯電話では、固定電話よりも着信拒否が多い。",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "連携しない複数のツールを使うと、データの維持に手間がかかり、購入者像もばらばらになります。さらに購入者には、いつ・どこで・どのように情報を受け取りたいかの好みがあります。この2つが、リーチを難しくしている理由です。",
+  "qe": "Why is it hard to reach buyers when sales reps have so many digital tools to choose from?",
+  "oe": [
+   "Multiple tools that don’t work together take more time to maintain.",
+   "Buyers have strong preferences for how and when they’re contacted.",
+   "New mobile phones block more calls than landlines do.",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Sales Engagement の基本 / Agentforce Sales 向け Sales Engagement について学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/get-to-know-high-velocity-sales",
+  "q": "Sales Engagement は、営業担当が多数の見込み客を効率的に処理するのにどのように役立ちますか?",
+  "o": [
+   "見込み客が購入するとデータベースから排除される。",
+   "30 日後に取引先責任者の 10% が削除される。",
+   "どのチャネルが最も効率的であるかについての可視性が低下する。",
+   "一貫性があり、更新と測定が可能なケイデンスが使用される。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Sales Engagement では、一貫性があり更新もできるケイデンス(営業活動の手順)を使って、多数の見込み客に効率よく対応できます。結果も測定できるので、どのやり方が効果的かが見えるようになります。",
+  "qe": "How does Sales Engagement help sales reps handle large numbers of prospects efficiently?",
+  "oe": [
+   "It eliminates prospects from the database once they buy.",
+   "It removes 10% of contacts after 30 days.",
+   "It decreases visibility into which channels are most efficient.",
+   "It uses consistent, updateable, and measurable cadences."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Sales Engagement の基本 / コンソールとケイデンスについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/get-to-know-the-console-and-cadences",
+  "q": "正誤問題: 営業担当はアプリケーションランチャーから Sales Engagement にアクセスできる。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "営業担当は、Salesforce のアプリケーションランチャーから Sales Engagement にアクセスできます。",
+  "qe": "True or false: Sales reps can access Sales Engagement from the App Launcher.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Sales Engagement の基本 / コンソールとケイデンスについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/get-to-know-the-console-and-cadences",
+  "q": "標準ケイデンスでは、対象割り当て先は誰ですか?",
+  "o": [
+   "ケイデンスステップを通じて対象を担当する人",
+   "ケイデンスを設定した人",
+   "取引先に割り当てられた営業マネージャー",
+   "組織の Salesforce システム管理者"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "標準ケイデンスの「対象割り当て先」は、ケイデンスのステップに沿って対象(リードや取引先責任者)に対応する人です。ケイデンスを設定した人やシステム管理者のことではありません。",
+  "qe": "In standard cadences, who is the target assignee?",
+  "oe": [
+   "The person responsible for working the target through the cadence steps",
+   "The person who set up the cadence",
+   "The sales manager assigned to the account",
+   "The Salesforce admin for the organization"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Sales Engagement の基本 / 生産性機能と分析機能について学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/boost-productivity-with-high-velocity-sales",
+  "q": "営業担当が顧客エンゲージメントのリアルタイムアラートを表示できるのは、Sales Cloud Everywhere のどの機能ですか?",
+  "o": [
+   "フィード",
+   "ワークスペース",
+   "ToDo リスト",
+   "コンテキストに沿ったインサイト"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Sales Cloud Everywhere(ブラウザー拡張機能)のフィードは、エンゲージメントアラートを表示するリストです。顧客がメールを開いた、リンクをクリックしたといった反応をリアルタイムに確認できます。",
+  "qe": "Which feature in Sales Cloud Everywhere can sales reps use to view real-time alerts of customer engagements?",
+  "oe": [
+   "The Feed",
+   "Workspace",
+   "To Do List",
+   "Contextual Insights"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Sales Engagement の基本 / 生産性機能と分析機能について学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/boost-productivity-with-high-velocity-sales",
+  "q": "メールテンプレートを使用して多数の対象とエンゲージする利点は何ですか?",
+  "o": [
+   "テンプレートはパーソナライズできないため、より迅速に使用できる。",
+   "メールは対象に電話をかけるよりも効果的である。",
+   "営業担当は気に入らないテンプレートを標準ケイデンスから削除できる。",
+   "営業担当は同じ情報を何度も入力する時間を減らせる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "メールテンプレートを使うと、同じ情報を何度も入力し直さずに済みます。テンプレートにはパーソナライズも加えられるので、多くの対象に効率よく、かつ個別に合わせて連絡できます。",
+  "qe": "What’s the advantage of using email templates to engage large numbers of targets?",
+  "oe": [
+   "Templates don’t allow personalization, which makes them faster to use.",
+   "Email is more effective than calling a target.",
+   "Reps can delete templates they don’t like from standard cadences.",
+   "Reps spend less time typing the same information over and over."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Sales Engagement の基本 / Sales Engagement を使用してビジネスを変革する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/manage-successfully-with-high-velocity-sales",
+  "q": "セールスプロセス中に会社とエンゲージするために、平均的な法人購入者はチャネルをいくつ使用していますか?",
+  "o": [
+   "2",
+   "6",
+   "8",
+   "10"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Salesforce の調査によると、法人購入者は平均10個のチャネルで企業とやり取りしています。チャネルが多いほど、一貫した営業活動を管理するツールが重要になります。",
+  "qe": "How many channels does the average business buyer use to engage with a company during the sales process?",
+  "oe": [
+   "2",
+   "6",
+   "8",
+   "10"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Sales Engagement の基本 / Sales Engagement を使用してビジネスを変革する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/high-velocity-sales/manage-successfully-with-high-velocity-sales",
+  "q": "営業チームがより効果的に仕事をするのに役立つ Sales Engagement ツールはどれですか?",
+  "o": [
+   "ケイデンスと ToDo リスト",
+   "スプレッドシートと活動ログ",
+   "自動化、インサイト、パフォーマンスレポート",
+   "A と C",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Sales Engagement には、ケイデンスや ToDo リストに加えて、自動化、インサイト、パフォーマンスレポートがあります。スプレッドシートや手作業の活動ログは Sales Engagement のツールではありません。",
+  "qe": "Which Sales Engagement tools help sales teams work more effectively?",
+  "oe": [
+   "Cadences and the To Do List",
+   "Spreadsheets and call logs",
+   "Automation, insights, and performance reports",
+   "A and C",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 顧客に共感する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_empathize",
+  "q": "デザインリサーチで顧客に共感する方法を見つける必要があるのはなぜですか?",
+  "o": [
+   "人々は型にはまらないアイデアに関心があることをチームに納得させるため",
+   "顧客を本当に理解してソリューションがその生活に違いをもたらすかどうかを判断するため",
+   "予算要求の裏付けとなる証拠を集めるため",
+   "顧客の人生が非常に興味深く、あなたがそれを疑似体験できるため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ソリューションが顧客の生活に違いをもたらすかを最終的に判断するのは顧客です。だからこそデザインリサーチでは顧客に共感し、顧客を本当に理解する必要があります。",
+  "qe": "Why should you find ways to empathize with your customer through design research?",
+  "oe": [
+   "To convince your team that people care about your unconventional ideas",
+   "To truly understand your customer and judge if your solution will make a difference in their lives",
+   "To collect evidence that supports budget requests",
+   "Because their lives are super interesting and you can live vicariously through them"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 顧客に共感する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_empathize",
+  "q": "顧客に関する深い洞察を得るための 3 つの一般的な共感的調査手法の形式はどれですか?",
+  "o": [
+   "エンボディ、シャドウイング、インタビュー",
+   "釣り、オンライン調査レポート、ソーシャルメディアアカウントの分析",
+   "ワークショップ、データマイニング、インタビュー",
+   "ソーシャルメディアで友達になる、オンライン調査、暗黒 Web サイトの荒し"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "共感的な調査手法としてまず勧められているのは、エンボディ(顧客の体験を自分で追体験する)、シャドウイング(そばで観察する)、インタビューの3つです。",
+  "qe": "What are three common forms of empathic research methods to gain deep insight into your customers?",
+  "oe": [
+   "Embodying, shadowing, and interviewing",
+   "Fishing, online research reports, and analyzing their social media accounts",
+   "Workshops, data mining, and interviewing",
+   "Friending them on social media, online surveys, and trolling the dark web"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 顧客に共感する Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_empathize",
+  "q": "シャドウイングをするときに必要なことは次のどれですか?",
+  "o": [
+   "最初に許可を得ずに人物を調査する",
+   "デジタルなプレゼンスを対応付ける",
+   "仕事を手伝うことで共感を培う",
+   "相手の行動を直接対面で観察する"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "シャドウイングは、顧客のそばで実際の行動を観察し、その行動やコメントについて質問して、理由を深く掘り下げる手法です。直接対面で観察することが前提になります。",
+  "qe": "You should shadow someone to:",
+  "oe": [
+   "Study the person without having to get permission first",
+   "Map their digital presence",
+   "Develop empathy by helping them do their work",
+   "Directly observe their behavior in person"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 顧客のアーキタイプを作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_archetypes",
+  "q": "調査から深い洞察を明らかにする調査結果の統合アプローチはどれですか?",
+  "o": [
+   "多様な発言をレビューし、全員を表す 1 つの発言として書き直してみる",
+   "友人と夕食に行き、対象者のロールプレーをして友人がどう反応するかを確認する",
+   "驚かされたことすべてを挙げ、なぜ驚かされたかを分析する",
+   "不満を含め、繰り返し発生するテーマを探す (人々の認識と語られた現実との食い違い)"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "調査結果を統合するときは、複数の行動や意見、課題に繰り返し出てくるテーマを探します。不満や、人々の認識と現実の食い違いからも、深い洞察が見つかります。",
+  "qe": "What approach to synthesizing your research may reveal deep insight from your research?",
+  "oe": [
+   "Review diverse quotes and try to rewrite them as one quote that represents everyone",
+   "Go to dinner with a friend and role play your subjects to see how your friend reacts",
+   "List all the things that surprised you and analyze why you were surprised by them",
+   "Seek out recurring themes, including pain points (discrepancies between people's perceptions and their expressed reality)"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 顧客のアーキタイプを作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_archetypes",
+  "q": "メモを収集してクラスター化するときに常に行うべきことはどれですか?",
+  "o": [
+   "最初に収集とクラスター化のみを行い、その後で同僚に提示して検証する",
+   "既存の仮説を確認または覆すデータを探す",
+   "プロセスでのインタビュー相手による支援を求める",
+   "すぐに役に立たないものはすべて仕分けて破棄する"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "メモを集めてクラスター化するときは、以前の仮説を裏付ける、または覆す証拠を探します。すぐに役立たないものを捨ててしまうと、盲点になっている新しい機会を見逃すおそれがあります。",
+  "qe": "When capturing and clustering your notes always...",
+  "oe": [
+   "Capture and cluster alone first, then present to your colleagues for validation",
+   "Look for data that confirms or upsets your existing hypotheses",
+   "Enlist the help of your interviewees in the process",
+   "Sort and discard anything that isn't immediately useful"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 顧客のアーキタイプを作成する Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_archetypes",
+  "q": "アーキタイプとペルソナの主な違いは何ですか?",
+  "o": [
+   "ペルソナには一般的な通名があるが、アーキタイプには洗練された名前が付けられる",
+   "アーキタイプは、ユーザー種別の特性を説明するのに対し、ペルソナは市場セグメントの人格を表す",
+   "ペルソナは人口統計を表し、アーキタイプは行動を表す",
+   "違いはない — 組織ではこれらの用語を入れ替えて使うことができる"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ペルソナは主に年齢や性別などの人口統計的な特性を表す架空の人物です。一方アーキタイプは、年齢も性別も持たず、行動の特性で人の「タイプ」を表します。",
+  "qe": "What is the core difference between archetypes and personas?",
+  "oe": [
+   "Personas have common household names, while archetypes have cool names",
+   "Archetypes describe characteristics of a user type, while personas express the personality of a market segment",
+   "Personas represent demographics, and archetypes represent behavior",
+   "There is no difference—organizations use these terms interchangeably"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 顧客のアーキタイプを作成する Q4",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_archetypes",
+  "q": "アーキタイプの主要な目的は何ですか?",
+  "o": [
+   "デザインプロセス全体を通して市場セグメントが示す行動と習慣を表す",
+   "馴染みのある架空のキャラクターを使用して関係者に機会に関する英雄的なストーリーを話す",
+   "秘密にインタビューした人の身元がわからないように手がかりを残すことを避ける",
+   "誰でも理解できるように発見事項を 1 つの強力なキャラクターにまとめる"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "イノベーションのアーキタイプは市場セグメントを表し、そのセグメントが示す行動の特性を強調します。デザインの過程全体で、誰のために作るのかを共有する目的で使います。",
+  "qe": "What is the core purpose of an archetype?",
+  "oe": [
+   "To represent behaviors and habits exhibited by a market segment throughout the design process",
+   "To tell stakeholders heroic stories about the opportunity with familiar fictional characters",
+   "To avoid leaving clues that might reveal the identity of the people you interviewed in confidence",
+   "To summarize your findings into one powerful character that anyone can understand"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 将来のカスタマーエクスペリエンスを検討する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_future_now",
+  "q": "将来予測を説明する最適な方法は次のどれですか?",
+  "o": [
+   "将来を予測する",
+   "作りたい将来のビジョンを描く",
+   "競争優位をもたらす将来の機会を探る",
+   "緊張感や変化への切迫感を最小化するプロセス"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "将来予測は、未来を言い当てることではありません。先のトレンドや技術を追いかけ、競争優位をもたらす画期的な機会を見つけるための方法です。また、変化への切迫感を「高める」ものなので、切迫感を減らすプロセスではありません。",
+  "qe": "Which of the following is the best way to describe futurecasting?",
+  "oe": [
+   "Predicting the future",
+   "Envisioning the future we want to create",
+   "Fishing for future opportunities that will give us a competitive advantage",
+   "A process that minimizes the sense of urgency and burning case for change"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 将来のカスタマーエクスペリエンスを検討する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_future_now",
+  "q": "アイデア創出の前に将来予測が必要なのはなぜですか?",
+  "o": [
+   "数年後に問題が存在さえしなくなった場合に時間とリソースの無駄を避けるため",
+   "イノベーションの取り組みが将来も耐えられることを保証するため",
+   "解決すべき新しい課題を見つけるため",
+   "自分のオピニオンリーダーとしての信頼性を確実にするため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "アイデアを出す前に将来予測をしておくと、数年後にも通用するイノベーションにできます。つまり、イノベーションの取り組みを将来に耐えられるもの(フューチャープルーフ)にするためです。",
+  "qe": "Why should you futurecast before you start ideating?",
+  "oe": [
+   "To avoid wasting time and resources if the problem won't even exist in a few years",
+   "To future-proof your innovation work",
+   "To find new challenges to solve",
+   "To ensure that you have credibility as thought-leaders"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 将来のカスタマーエクスペリエンスを検討する Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_future_now",
+  "q": "将来予測に役立つ活動のよい例は次のどれですか?",
+  "o": [
+   "街で最新の一風変わった斬新な文化的エクスペリエンスを収集する",
+   "予測をツイートして、人々がリツイートするかどうか、報道で取り上げられるかどうか確認する",
+   "将来の製品およびエクスペリエンスのモックアップを作成し、E コマースサイトに掲載して買う人がいるかどうか確認する",
+   "バーニングマン (スピリチュアルイベント) に参加する"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "将来予測の力を伸ばす習慣として、「現場でエクスペリエンスを収集する」ことが挙げられています。Excel や検索エンジンの中ではなく、街に出て新しい文化的な体験を集めることが役立ちます。",
+  "qe": "Which of the following is a good example of an activity that helps you futurecast?",
+  "oe": [
+   "Collect the latest weird and wacky cultural experiences in your city",
+   "Tweet predictions to see if people retweet them—or if the press picks them up",
+   "Create mockups of future products and experiences, then put them on an e-commerce site to see if anyone will buy them",
+   "Attend Burning Man"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: イノベーションでの顧客発見 / 将来のカスタマーエクスペリエンスを検討する Q4",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/innovation_customer_discovery/innovation_discov_future_now",
+  "q": "将来予測はイノベーションプロセスにどのような影響を与えますか?",
+  "o": [
+   "将来のビジョンを共有しないチームメイトを排除できる",
+   "現在の課題にこだわりつづけていても、新しいトレンドがわかると期待できる",
+   "チームの能力を拡大してより大胆で関連性の高い「私たちに実施可能な方法」形式の質問を作れるようにし、イノベーションを促進できる",
+   "この分野の素晴らしいソリューションをすでに持っている新興企業を見つけて買収できる"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "将来予測で得た展望を使うと、元の「私たちに実施可能な方法(How Might We)」の問いを書き直し、より大胆で関連性の高い問いを作れます。これがイノベーションを後押しします。",
+  "qe": "How will your futurecast impact your innovation process?",
+  "oe": [
+   "It will weed out the teammates who don't share our vision for the future",
+   "It will manage the expectation that you will know the emerging trends even while you're obsessively focused on today's challenges",
+   "It will stretch your team to create a bolder and more relevant \"How Might We\" Quest to drive innovation",
+   "It will find startups that the company should acquire that already have an amazing solution in this space"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 大量データ / データモデルの設計 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/design-your-data-model",
+  "q": "レコード所有権を設定するときに、データスキューを回避するために親あたりの子レコードに関して推奨されるパラメーターは何ですか?",
+  "o": [
+   "親あたりの子レコード数を 2 千件以下にする。",
+   "親あたりの子レコード数を 1 万件以下にする。",
+   "親あたりの子レコード数を 10 万件以下にする。",
+   "親-子リレーションでデータスキューが生じることはないため、パラメーターはない。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "1つの親レコードに1万件を超える子レコードが関連付けられると、データスキューが起きます。子レコードが複数の親に分散するように、十分な数の取引先を用意してデータモデルを設計します。",
+  "qe": "When architecting record ownership, what's the suggested parameter for child records per parent to avoid data skew?",
+  "oe": [
+   "No more than 2,000 child records per parent",
+   "No more than 10,000 child records per parent",
+   "No more than 100,000 child records per parent",
+   "There isn't one—parent-child relationships don't cause data skew."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "scale",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 大量データ / データモデルの設計 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/design-your-data-model",
+  "q": "所有者スキューと参照スキューの違いは何ですか?",
+  "o": [
+   "所有者スキューではレコードのロックが生じる可能性があり、参照スキューではパフォーマンス全般の問題が生じる可能性がある。",
+   "所有者スキューが生じるのは 1 人のユーザーが同じオブジェクト種別のレコードを大量に所有している場合であり、参照スキューが生じるのは参照オブジェクトの単一のレコードに膨大な数のレコードが関連付けられている場合である。",
+   "所有者スキューが生じる可能性があるのは自動化プロセスでカスタムコードと大量データを同時に追加した場合であるが、参照スキューが生じる可能性があるのは未割り当てのレコードを汎用所有者にまとめた場合である。",
+   "両方は本質的に同じであるが、関連付けられている組織内のオブジェクトが異なる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "所有者スキューは、1人のユーザーが同じオブジェクトのレコードを大量に所有しているときに起きます。参照スキューは、参照先の1つのレコードに非常に多くのレコードが関連付けられているときに起きます。どちらもパフォーマンスやロックの問題の原因になります。",
+  "qe": "What's the difference between ownership skew and lookup skew?",
+  "oe": [
+   "Ownership skew can cause record locking, while lookup skew can cause overall performance issues.",
+   "Ownership skew involves a large number of records with the same object type being owned by a single user, while lookup skew occurs when a large number of records are associated with a single record in the lookup object.",
+   "Ownership skew can be caused by adding custom code and a large data volume simultaneously in an automated process, while lookup skew can be caused by parking unassigned records under a generic owner.",
+   "They're essentially the same, but they're associated with different objects within an org."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "scale",
+  "x": "所有権データスキューの対策は、所有者を分散するか、そのユーザーをロールなしにするか、最上位の独立したロールに置くことです。"
+ },
+ {
+  "s": "Trailhead: 大量データ / データのクエリおよび検索の実行 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/conduct-data-queries-and-searches",
+  "q": "Salesforce の一括クエリが 2 分間の標準タイムアウトまでに完了しないとどうなりますか?",
+  "o": [
+   "自動的にクエリが無期限に再試行される。",
+   "ジョブに失敗し、QUERY_TIMEOUT エラーが表示される。",
+   "クエリ結果の一部が返される。",
+   "Salesforce が自動的に queryAll 操作に切り替える。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "一括クエリが標準のタイムアウト(2分)内に終わらないと、ジョブは失敗し QUERY_TIMEOUT エラーが返されます。自動で再試行されたり、一部の結果だけが返されたりはしません。大きなテーブルでは PK Chunking などの対策を使います。",
+  "qe": "What happens if a bulk query in Salesforce does not complete within the standard two-minute timeout?",
+  "oe": [
+   "The query is automatically retried indefinitely.",
+   "The job fails with a QUERY_TIMEOUT error.",
+   "The query result is partially returned.",
+   "Salesforce switches to using the queryAll operation automatically."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "scale",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 大量データ / データのクエリおよび検索の実行 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/conduct-data-queries-and-searches",
+  "q": "スキニーテーブルを使用する利点は何ですか?",
+  "o": [
+   "スキニーテーブルにより、大量データに対するクエリのパフォーマンスが加速する。",
+   "スキニーテーブルは、Salesforce カスタマーサポートに連絡することなく、いつでも有効にできる。",
+   "スキニーテーブルには論理削除されたレコードが含まれる。",
+   "スキニーテーブルは Sandbox 組織にコピーされない。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "スキニーテーブルは、よく使う項目だけを集めた特別なテーブルで、大量データへのクエリを速くします。有効化には Salesforce カスタマーサポートへの連絡が必要で、論理削除されたレコードは含まれません。",
+  "qe": "What's an advantage to using skinny tables?",
+  "oe": [
+   "Skinny tables speed up query performance with large data volumes.",
+   "You can enable skinny tables any time without contacting Salesforce Customer Support.",
+   "Skinny tables include soft-deleted records.",
+   "Skinny tables get copied over to your sandbox org."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "scale",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 大量データ / データの読み込み Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/load-your-data",
+  "q": "次のうち、大量データをアップロードする場合に Bulk API を使用する利点の 1 つはどれですか?",
+  "o": [
+   "Bulk API は、データを小分けにしてロードするため、ジョブが加速する。",
+   "Bulk API はリアルタイムのクライアントアプリケーション向けに最適化されている。",
+   "Bulk API ではバッチを逐次的にのみ処理できる。",
+   "Bulk API によって機能および作業がクライアントアプリケーションからサーバーに移される。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Bulk API は、処理と作業をクライアントアプリケーションからサーバー側に移します。リアルタイムで少数のレコードを扱うのに向いているのは SOAP API のほうです。大量データを扱うなら Bulk API が適しています。",
+  "qe": "Which of these is one of the advantages of using Bulk API when uploading large volumes of data?",
+  "oe": [
+   "Bulk API loads data in bite-size chunks, increasing the speed of jobs.",
+   "Bulk API is optimized for real-time client applications.",
+   "Bulk API only allows batches to be processed serially.",
+   "Bulk API moves the functionality and work from your client application to the server."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "scale",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 大量データ / データの読み込み Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/load-your-data",
+  "q": "通常の操作時は入力規則、ワークフロールール、トリガーによってデータの整合性が保たれますが、これらのツールによって他にどのようなことが生じますか?",
+  "o": [
+   "大量データの処理が加速する。",
+   "大量データの処理が遅くなる。",
+   "処理速度にはほとんど影響がない。",
+   "無効にできない。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "入力規則やワークフロールール、トリガーは通常時のデータの整合性を守りますが、大量データの読み込み中に有効にしておくと処理がかなり遅くなります。そのため、事前・事後の処理を計画したうえで、読み込み中は一時的に無効にする方法があります。",
+  "qe": "While validation rules, workflow rules, and triggers allow you to preserve data integrity during normal operation, these tools can also:",
+  "oe": [
+   "Speed up processing of large data volumes",
+   "Slow down processing of large data volumes",
+   "Have little to no effect on processing speed",
+   "Not be disabled"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "scale",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 大量データ / データの削除および抽出の実行 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/perform-data-deletes-and-extracts",
+  "q": "Bulk API の物理削除機能に関する説明はどれですか?",
+  "o": [
+   "デフォルトで無効になっている。",
+   "削除されたレコードをごみ箱に 15 日間保管できる。",
+   "10,000 件未満のレコードを削除する場合にのみ使用できる。",
+   "大量データの削除に推奨される方法ではない。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Bulk API の物理削除オプションは、レコードをごみ箱に入れずにすぐ削除します。デフォルトでは無効なので、システム管理者が有効にする必要があります。大量データの削除にはむしろ推奨される方法です。",
+  "qe": "The hard delete function in the Bulk API:",
+  "oe": [
+   "Is disabled by default",
+   "Allows deleted records to stay in the Recycle Bin for 15 days",
+   "Can be used only when deleting fewer than 10,000 records",
+   "Is not a recommended strategy for deleting large data volumes"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "scale",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 大量データ / データの削除および抽出の実行 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/large-data-volumes/perform-data-deletes-and-extracts",
+  "q": "PK Chunking の有効化が推奨されるのは、一括クエリが絶えずタイムアウトする場合と、どのような場合ですか?",
+  "o": [
+   "テーブルのレコードが 1 万件を超える場合",
+   "テーブルのレコードが 5 万件を超える場合",
+   "テーブルのレコードが 10 万件を超える場合",
+   "テーブルのレコードが 1,000 万件を超える場合"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "PK Chunking は、大きなテーブルへの一括クエリをレコード ID の範囲で分割する機能です。レコード数が1,000万件を超えるテーブルを照会する場合や、一括クエリが何度もタイムアウトする場合に有効にします。",
+  "qe": "It's recommended that you enable PK chunking when bulk queries consistently time out and when:",
+  "oe": [
+   "A table exceeds 10,000 records.",
+   "A table exceeds 50,000 records.",
+   "A table exceeds 100,000 records.",
+   "A table exceeds 10 million records."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "scale",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Account Engagement でのリード生成 / リード生成を定義する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-generation-for-marketers/define-lead-generation",
+  "q": "リード生成でできることはどれですか?",
+  "o": [
+   "営業部門をアウトソーシングする。",
+   "類似する業界組織とつながり、リードや販売履歴を共有する。",
+   "顧客からの否定的なフィードバックを除外する。",
+   "潜在的な顧客が購入やサービスに関して決心する前に、潜在顧客にリーチする。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "リード生成は、潜在顧客が購入を決める前の早い段階で接点を作り、ファネルの入口(TOFU)を質の高いリードで満たす活動です。営業のアウトソーシングや否定的な声の除外とは関係ありません。",
+  "qe": "What does lead generation let you do?",
+  "oe": [
+   "Outsource your sales department.",
+   "Connect with similar industry organizations to share leads and sales history.",
+   "Eliminate negative customer feedback.",
+   "Reach potential customers before they’ve made up their minds about a purchase or service."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Account Engagement でのリード生成 / リード生成を定義する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-generation-for-marketers/define-lead-generation",
+  "q": "セールスリードと呼ばれることもあるリードの種別はどれですか?",
+  "o": [
+   "New (新規)",
+   "Working (処理中)",
+   "育成中",
+   "未評価",
+   "評価済み"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "評価済み(Qualified)のリードは、取引を希望しているリードで、セールスリードとも呼ばれます。New や Working は、まだ評価が終わっていない段階の状況です。",
+  "qe": "What type of lead is sometimes also referred to as a sales lead?",
+  "oe": [
+   "New",
+   "Working",
+   "Nurturing",
+   "Unqualified",
+   "Qualified"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Account Engagement でのリード生成 / インバウンドマーケティングを理解する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-generation-for-marketers/understand-inbound-marketing",
+  "q": "インバウンドマーケティングの例はどれですか?",
+  "o": [
+   "印刷広告",
+   "ソーシャルメディア",
+   "調査研究",
+   "A と B",
+   "上記のすべて"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "インバウンドマーケティングは、役立つコンテンツで顧客を引き付ける手法です。ユニットでは、インバウンドに使えるコンテンツの例として、印刷広告、ソーシャルメディア、調査などが並んでいます。",
+  "qe": "Which are examples of inbound marketing?:",
+  "oe": [
+   "Print advertisements",
+   "Social media",
+   "Research studies",
+   "A and B",
+   "All of the above"
+  ],
+  "v": "要確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Account Engagement でのリード生成 / インバウンドマーケティングを理解する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-generation-for-marketers/understand-inbound-marketing",
+  "q": "正誤問題: できるだけ多くのソーシャルメディアプラットフォームでプレゼンスを維持することがベストプラクティスであると考えられている。",
+  "o": [
+   "True",
+   "False"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "すべてのソーシャルメディアにプロファイルを持つ必要はありません。オーディエンスが最もよく反応しているプラットフォームに絞って力を入れるのがよいとされています。",
+  "qe": "True or false: It’s considered best practice to maintain a presence on as many social media platforms as possible.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Account Engagement でのリード生成 / リードを管理する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-generation-for-marketers/manage-leads",
+  "q": "マーケティングと営業の架け橋は何と呼ばれることがありますか?",
+  "o": [
+   "リード放棄",
+   "リード管理",
+   "リード収集",
+   "ゴールデンゲート"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "リード管理は、リード生成のあとに行う作業で、マーケティングと営業の橋渡しの役割を担います。リードを特定し、評価し、営業の商談として扱うまでのプロセスです。",
+  "qe": "What is the bridge between marketing and sales sometimes called?",
+  "oe": [
+   "Lead abandon",
+   "Lead management",
+   "Lead roundup",
+   "Golden Gate"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Account Engagement でのリード生成 / リードを管理する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-generation-for-marketers/manage-leads",
+  "q": "リードがセールスパイプラインに入ると、何を行うことができますか?",
+  "o": [
+   "あとはオートメーションに任せる。",
+   "プロセス完了と見なす。",
+   "さらに新しいリードを求めて Web を見て回る。",
+   "リードのスコアリング、グレーディング、転送を行う。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "リードがセールスパイプラインに入ったら、スコアリングとグレーディングで評価し、質の高いリードを営業チームに渡します。パイプラインに入っただけでプロセスが終わるわけではありません。",
+  "qe": "What can you do once leads are in the sales pipeline?",
+  "oe": [
+   "Let automation do the rest.",
+   "Consider the process complete.",
+   "Surf the web for more new leads.",
+   "Score, grade, and route them."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lead Qualification with Scoring and Grading / Create a Lead Qualification Model Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-qualification-with-scoring-and-grading/create-a-lead-qualification-model",
+  "q": "リード評価モデルを作るときの最初のステップはどれですか?",
+  "o": [
+   "自社にとって理想的な、または評価済みの見込み客を定義する条件を決める",
+   "リードに電話をかけて購入意欲を測る",
+   "見込み客の活動だけをもとに購入意欲を判断する",
+   "見込み客のリードスコアを決める"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "リード評価モデルを作る最初のステップは、営業とマーケティングが集まり、自社にとって理想的な(評価済みの)見込み客の条件を決めることです。スコアの計算は、この条件を決めたあとに行います。",
+  "qe": "What is the first step in creating a lead qualification model?",
+  "oe": [
+   "Determine the criteria that define the ideal or qualified prospect for their company.",
+   "Cold-calling leads to gauge their purchasing intent.",
+   "Determine a prospect’s intent to purchase based only on their activities.",
+   "Determine a prospect’s lead score."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lead Qualification with Scoring and Grading / Create a Lead Qualification Model Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-qualification-with-scoring-and-grading/create-a-lead-qualification-model",
+  "q": "見込み客のデータを収集できる場所の例はどれですか?",
+  "o": [
+   "Web サイトの閲覧",
+   "Web サイトのトラッキング",
+   "ソーシャルメディアサイトのトラッキング",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "見込み客のデータは、Web サイトのトラッキングやソーシャルメディアのトラッキングなど、マーケティングデータを集められるあらゆる場所から収集します。単なる「Web 閲覧」ではなく、トラッキングによって行動を記録するのがポイントです。",
+  "qe": "Which is an example of where your company can collect prospect data from?",
+  "oe": [
+   "Website browsing",
+   "Website tracking",
+   "Social media site tracking",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lead Qualification with Scoring and Grading / Support a Lead Qualification Model with Account Engagement Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-qualification-with-scoring-and-grading/support-a-lead-qualification-model-with-account-engagement",
+  "q": "マーケティング活動を自動化するために使える機能の例はどれですか?",
+  "o": [
+   "キャンペーン",
+   "自動化ルール",
+   "見込み客データ",
+   "メールテンプレート"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Account Engagement では、Engagement プログラムや自動化ルールを使ってマーケティングを自動化できます。自動化ルールは条件を満たした見込み客を継続的に処理し、たとえば評価済みの見込み客を営業に渡せます。",
+  "qe": "What is an example of a feature you can use to automate your marketing efforts?",
+  "oe": [
+   "Campaigns",
+   "Automation Rule",
+   "Prospect data",
+   "Email Templates"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lead Qualification with Scoring and Grading / Support a Lead Qualification Model with Account Engagement Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-qualification-with-scoring-and-grading/support-a-lead-qualification-model-with-account-engagement",
+  "q": "リード評価のしきい値を設定する目的は何ですか?",
+  "o": [
+   "営業が年間目標を設定するのに役立つ",
+   "見込み客の割り当てに必須である",
+   "見込み客が自社に合っているかを判断する基準になる",
+   "マーケティングが年間目標を設定するのに役立つ"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "スコアとグレードのしきい値を決めておくと、見込み客が十分に評価され、営業に渡す準備ができているかを判断する基準になります。年間目標を決めるためのものではありません。",
+  "qe": "What purpose does setting a lead qualification threshold serve?",
+  "oe": [
+   "It helps sales set their yearly targets.",
+   "It is required for prospect assignment.",
+   "It establishes a benchmark for judging prospects as a good fit.",
+   "It helps Marketing set yearly targets."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lead Qualification with Scoring and Grading / Explore Lead Qualification Models Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-qualification-with-scoring-and-grading/explore-lead-qualification-models",
+  "q": "Account Engagement でリードの割り当てを行える方法はどれですか?",
+  "o": [
+   "見込み客レポートから手動で割り当てる",
+   "メールリスト経由",
+   "フォーム送信経由",
+   "完了アクション経由"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Account Engagement では、ページアクション、完了アクション、自動化ルール、または見込み客レコードからの手動割り当てでリードを割り当てられます。選択肢の中では完了アクションが該当します。",
+  "qe": "Where can lead assignment be performed in Account Engagement?",
+  "oe": [
+   "By manually assigning them from the prospect report",
+   "Via email lists",
+   "Via form completion",
+   "Via completion actions"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lead Qualification with Scoring and Grading / Explore Lead Qualification Models Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lead-qualification-with-scoring-and-grading/explore-lead-qualification-models",
+  "q": "見込み客の優先順位付けが、リード評価で重要な要素とされるのはなぜですか?",
+  "o": [
+   "営業が年間目標を設定するのに役立つから",
+   "見込み客の割り当てに必須だから",
+   "データベースの中で最も営業に渡せる状態の見込み客を見つけられるから",
+   "マーケティングがスコアとグレードのしきい値を設定するのに役立つから"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "見込み客に優先順位を付けると、データベースの中から最も商談化しやすい(営業に渡す準備ができた)見込み客を見つけられます。そのため、リード評価で重要な要素になっています。",
+  "qe": "Why is prioritizing prospects a key aspect of lead qualification?",
+  "oe": [
+   "It helps sales set yearly targets.",
+   "It is required for prospect assignment.",
+   "It helps identify the most sales-ready prospects in your database.",
+   "It helps Marketing set scoring and grading thresholds."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "leads",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: リードと商談 / チームでの販売とクレジットの分割 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/sell-as-a-team-and-split-the-credit",
+  "q": "次のうち、商談チームに期待できることはどれですか?",
+  "o": [
+   "商談チームはお客様と長期的な関係を築く",
+   "商談チームは商談成立に役立つ情報、ヒント、または取引先責任者を共有する",
+   "商談チームは商談でクレジットを均等に分割する",
+   "B と C"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "商談チームは、特定の商談の成立を支援するための一時的なグループです。メンバーは商談成立に役立つ情報や取引先責任者を共有します。顧客との長期的な関係は取引先チームの役割で、クレジットも均等に分けるとは限りません。",
+  "qe": "Which of the following can you expect from opportunity teams?",
+  "oe": [
+   "They form long-term relationships with customers",
+   "They share information, tips, or contacts that help close the deal",
+   "They split credit equally on opportunities",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: リードと商談 / チームでの販売とクレジットの分割 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/sell-as-a-team-and-split-the-credit",
+  "q": "商談の収益に直接関与していないものの、サポートしてくれるチームメンバーにクレジットを提供する場合、どの種別の分割を使用しますか?",
+  "o": [
+   "なし",
+   "収益分割",
+   "オーバーレイ分割",
+   "商談商品分割"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "オーバーレイ分割は、収益に直接関与していないサポートメンバーにクレジットを付けるときに使います。合計が100%を超えてもかまいません。収益分割は合計が必ず100%になり、直接貢献したメンバーに配分します。",
+  "qe": "What type of split do you use to credit a supporting team member who wasn’t directly responsible for the revenue on an opportunity?",
+  "oe": [
+   "None",
+   "A revenue split",
+   "An overlay split",
+   "An opportunity product split"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": "収益分割は合計100%、オーバーレイ分割は100%でなくてよい、が定番の論点です。"
+ },
+ {
+  "s": "Trailhead: リードと商談 / パスと Kanban による成功の視覚化 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/visualize-success-with-path-and-kanban",
+  "q": "次のうち、リードの状況を更新するのに有効ではないアクションはどれですか?",
+  "o": [
+   "パスで [Mark Status as Complete (状況を完了としてマーク)] をクリックする。",
+   "パスで目的のステップをクリックし、[Mark Current Status. (現在の状況としてマーク)] をクリックする。リードレコードを表示し、[Edit (編集)] をクリックして [Status (状況)] 項目を変更する。",
+   "[Kanban settings (Kanban 設定)] の [Group By (グループ化単位)] を [Status (状況)] に変更する。レコードを別の列にドラッグする。",
+   "リストビューで、[Shuffle (入れ替え)] をクリックしてすべてのレコードの状況を切り替える。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "リードの状況は、パスでの完了マークや現在の状況としてのマーク、レコードの編集、Kanban ビューでのドラッグで更新できます。「Shuffle(入れ替え)」ですべての状況を切り替えるような機能はありません。",
+  "qe": "Which of these actions isn’t a valid way to update the status of a lead?",
+  "oe": [
+   "In Path, click Mark Status as Complete.",
+   "Click the desired step on the Path, then click Mark Current Status. View the Lead Record, click Edit, and change the Status field.",
+   "Change the Kanban settings Group By to status. Drag the record to a different column.",
+   "In any list view, click Shuffle to change up every record’s status."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: リードと商談 / パスと Kanban による成功の視覚化 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/leads_opportunities_lightning_experience/visualize-success-with-path-and-kanban",
+  "q": "あなたはさまざまな企業の進行中の商談を 10 件ほど担当しています。ところが、すべての進行中の商談リストの Kanban ビューを確認すると、ある取引先の商談しか表示されません。どうすべきですか?",
+  "o": [
+   "パニック状態になる。",
+   "[最近参照したデータ] など、別のリストビューを選択する。",
+   "検索条件パネルでレコードが絞り込まれていないか確認する。",
+   "検索ボックスを使用して、表示されていない商談を検索する。",
+   "夜の間、デスクにキャンディのボウルを置いて、さらに多くの商談を引き付けようとする。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Kanban ビューで一部のレコードしか表示されないときは、検索条件(フィルター)で絞り込まれていないかを確認します。絞り込みを使ったあとは、忘れずに検索条件を外しておきます。",
+  "qe": "You have a dozen open opportunities from different companies. But when you check the Kanban view of your All Open Opportunities list, you only see opportunities for one account. What should you do?",
+  "oe": [
+   "Panic!",
+   "Select a different list view, such as Recently Viewed.",
+   "Check the filter panel to see if records are being filtered out.",
+   "Use the search box to search for the opportunities that went missing.",
+   "Try to attract more opportunities by leaving a bowl of candy on your desk overnight."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 組織開発モデル / 組織への変更を計画する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/org-development-model/plan-for-changes-to-your-org2",
+  "q": "組織開発モデルについて、正しい説明はどれですか?",
+  "o": [
+   "パッケージを使用して、環境間でメタデータを移動する。",
+   "すべてのカスタマイズを Sandbox で作成することが必要である。",
+   "ソース制御リポジトリで変更を外部化して、環境を常時同期する。",
+   "ソース制御リポジトリを使用するため、開発者は手動で変更を追跡する必要がない。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "組織開発モデルでは、変更をソース制御リポジトリに外部化(保存)して、環境間の同期を保ちやすくします。ただし、設定画面で行った変更などは、変更リストなどで引き続き追跡する必要があります。",
+  "qe": "The org development model:",
+  "oe": [
+   "Uses packages to move metadata between environments.",
+   "Requires that you develop all customizations in your sandbox.",
+   "Externalizes changes in a source control repository to keep environments in sync.",
+   "Uses a source control repository so developers don't have to track changes manually."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 組織開発モデル / 組織への変更を計画する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/org-development-model/plan-for-changes-to-your-org2",
+  "q": "組織開発モデルでソース制御システムを使用する利点の 1 つはどれですか?",
+  "o": [
+   "開発者が同じファイルセットで同時に作業できる。",
+   "Sandbox で行われた変更を追跡する必要がなくなる。",
+   "特定の時点における本番環境のスナップショットが提供される。",
+   "他のユーザーが作成した変更とメタデータをデベロッパーが表示できないようにする。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "ソース制御システムを使うと、変更の上書きや作業の消失を心配せずに、チームで同じファイルを同時に作業できます。本番環境のスナップショットを取る機能ではありません。",
+  "qe": "What is one benefit of using a source control system with the org development model?",
+  "oe": [
+   "It allows developers to work on the same set of files at the same time.",
+   "You no longer need to track changes made in the sandbox.",
+   "It provides a snapshot of your production org at a specific point in time.",
+   "It prohibits a developer from seeing changes and metadata created by others"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 組織開発モデル / ローカルで変更を開発してテストする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/org-development-model/develop-and-test-changes-locally2",
+  "q": "プロジェクトが開始されると、デベロッパーは変更を行う前にどの重要な手順を実行する必要がありますか?",
+  "o": [
+   "コード用に新しい GitHub リポジトリを作成してから、ブランチを作成する。",
+   "リポジトリの変更を Developer Sandbox にリリースする。",
+   "独自の Salesforce DX プロジェクトを作成する。",
+   "他の開発者から提供されたコードをすべてリファクタリングする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロジェクトが進行中のときは、変更を始める前にリポジトリの最新の変更を自分の Developer Sandbox にリリースし、ほかのメンバーと環境をそろえます。こうしておくと、古い状態のまま作業して競合が起きるのを防げます。",
+  "qe": "Once a project is underway, what important step must a developer do before making changes?",
+  "oe": [
+   "Create a new GitHub repo for their code, then create a branch.",
+   "Deploy any changes from the repository into their Developer sandbox.",
+   "Create their own Salesforce DX project.",
+   "Refactor all the code provided by other developers."
+  ],
+  "v": "要確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 組織開発モデル / ローカルで変更を開発してテストする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/org-development-model/develop-and-test-changes-locally2",
+  "q": "デベロッパーが Sandbox 組織で変更を行った後、その変更を他のユーザーと共有するにはどの手順が必要ですか?",
+  "o": [
+   "新しいブランチの作成をソース制御システムで行い、新しい DX プロジェクトを作成する。",
+   "変更をテストする前に、クリーンなテスト組織にプッシュする。",
+   "変更をすべてのチームメイトの各 Sandbox にリリースする。",
+   "変更を Sandbox からソースリポジトリのプロジェクトに取り込む。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Sandbox で行った変更は、ローカルの DX プロジェクト(ソースリポジトリ)に取り込んでから共有します。リポジトリにコミットすれば、ほかのメンバーもその変更を受け取れます。",
+  "qe": "After a developer makes a change in a sandbox org, what step is required to share it with others?",
+  "oe": [
+   "Create a new branch in the source control system and a new DX project.",
+   "Test the changes after pushing them to a clean testing org.",
+   "Deploy the changes to every teammate's sandbox.",
+   "Retrieve the changes from their sandbox to the project in the source repository."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 組織開発モデル / 変更をテストしてリリースする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/org-development-model/test-and-deploy-changes",
+  "q": "マニフェストファイル (package.xml) とは何ですか?",
+  "o": [
+   "組織にリリースするすべてのオブジェクトとコンポーネントを含む .zip ファイル。",
+   "組織にリリース (または組織から取得) するメタデータコンポーネントをリストした XML ファイル。",
+   "開発チームがこのリリースで行った変更のパッケージバージョン。",
+   "Juan が本番環境にリリースする受信変更セット。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "マニフェストファイル(package.xml)は、組織にリリースする、または組織から取得するメタデータコンポーネントを並べた XML ファイルです。.zip ファイルや変更セットそのものではありません。",
+  "qe": "What is a manifest file (package.xml)?",
+  "oe": [
+   "A .zip file that contains all the objects and components to deploy to an org.",
+   "An XML file that lists the metadata components to deploy to (or retrieve from) an org.",
+   "A package version of the changes that the development team has made in this release.",
+   "The inbound change set that Juan deploys to the production environment."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 組織開発モデル / 変更をテストしてリリースする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/org-development-model/test-and-deploy-changes",
+  "q": "project deploy validate コマンドを使用するメリットは何ですか?",
+  "o": [
+   "本番組織へのクイックリリースを設定できるため、ユーザーに対する中断を最小限に抑えることができる。",
+   "実際に組織に変更をコミットせずに、リリースで実行されるテストの結果を検証できる。",
+   "自分が CLI コマンドに精通していることを確認できる。",
+   "A と B。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "project deploy validate は検証リリースを行うコマンドで、変更をコミットせずにテストの結果を確かめられます。検証が通れば、あとでクイックリリースを使ってすばやく本番に反映できます。",
+  "qe": "What is a benefit of using the 'project deploy validate' command?",
+  "oe": [
+   "It sets up a quick deploy to your production org, which minimizes disruption to users.",
+   "It verifies the results of tests that would be executed in a deployment without actually committing any changes to the org.",
+   "You feel validated that your CLI command knowledge is excellent.",
+   "A and B."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理の基本 / プロジェクト管理の基本事項について学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-essentials/get-to-know-project-management-fundamentals",
+  "q": "プロジェクトの開始、計画、実行、監視・管理、完了は、何と呼ばれていますか?",
+  "o": [
+   "プロジェクトのタイムライン",
+   "プロジェクトスケジュール",
+   "プロジェクトの範囲",
+   "プロジェクトのライフサイクル"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "開始・計画・実行・監視/管理・完了という一連のフェーズを、プロジェクトのライフサイクルと呼びます。範囲(スコープ)やスケジュールは、このライフサイクルの中で作る要素の一部です。",
+  "qe": "The initiating, planning, executing, monitoring and controlling, and closing of a project are referred to as what?",
+  "oe": [
+   "Project Timeline",
+   "Project Schedule",
+   "Project Scope",
+   "Project Lifecycle"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": "プロジェクト管理のライフサイクルは、立ち上げから終結までの流れです。スコープ、日程、コストを守りながら成果を届けるための型です。"
+ },
+ {
+  "s": "Trailhead: プロジェクト管理の基本 / プロジェクト管理の基本事項について学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-essentials/get-to-know-project-management-fundamentals",
+  "q": "プロジェクトの開始フェーズで、プロジェクトマネージャーは何を作成する責任がありますか?",
+  "o": [
+   "プロジェクトチャーター",
+   "プロジェクト計画",
+   "リソース計画",
+   "プロジェクトスケジュール"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "開始フェーズでは、プロジェクトマネージャーがステークホルダーと協力してプロジェクトチャーターを作ります。チャーターはスポンサーの承認を受け、その後の計画フェーズでプロジェクト計画やスケジュールを作ります。",
+  "qe": "In the initiating phase of a project, the project manager is responsible for developing what?",
+  "oe": [
+   "Project charter",
+   "Project plan",
+   "Resource plan",
+   "Project schedule"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": "スコープと目的を定め、スポンサーが承認する文書はプロジェクト憲章です。立ち上げフェーズで作ります。"
+ },
+ {
+  "s": "Trailhead: プロジェクト管理の基本 / プロジェクト管理手法について知識を深める Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-essentials/explore-project-management-methodologies",
+  "q": "プロジェクト管理の方法とは?",
+  "o": [
+   "プロジェクトの管理を導く一連の原則と慣行",
+   "プロジェクト間の一貫性を確保するために作成されたルール",
+   "プロジェクト変更を回避するために作成されたガイドライン",
+   "プロジェクト要件を満たすために必要なスキル、ツール、テクニック"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "プロジェクト管理の方法(手法)とは、プロジェクトの管理を導く一連の原則と慣行のことです。従来型(ウォーターフォール)やアジャイル型などがあります。",
+  "qe": "Project management methods are what?",
+  "oe": [
+   "Sets of principles and practices that guide the management of projects",
+   "Rules established to ensure consistency among projects",
+   "Guidelines established to help avoid project changes",
+   "Skills, tools, and techniques needed to meet project requirements"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理の基本 / プロジェクト管理手法について知識を深める Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-essentials/explore-project-management-methodologies",
+  "q": "次のうち、手法の選択について正しい文はどれですか?",
+  "o": [
+   "従来型の方法は、範囲、時間、コストの要件が確定しているプロジェクトに最適である。",
+   "アジャイル型の方法は、小規模で予測可能なプロジェクトに最適である。",
+   "アジャイル型のアプローチでは、プロジェクト開始後のステークホルダーからのフィードバックが回避される。",
+   "従来型のアプローチでは、範囲を柔軟に変更できることが求められる。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "従来型の手法は、範囲・時間・コストの要件が最初から確定しているプロジェクトに向いています。範囲を柔軟に変えたい場合や、ステークホルダーのフィードバックを取り入れながら進めたい場合は、アジャイル型が向いています。",
+  "qe": "Which of the following is true regarding the selection of a methodology?",
+  "oe": [
+   "Traditional methods are best suited for projects with fixed scope, time, and cost requirements.",
+   "Agile methods are best suited for small and predictable projects.",
+   "Agile approaches avoid stakeholder feedback once the project begins.",
+   "Traditional approaches require flexibility to change scope."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理の基本 / ソフトウェア以外のプロジェクトにアジャイルを使用する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-essentials/use-agile-for-non-software-projects",
+  "q": "アジャイル型の方法に共通する特徴は?",
+  "o": [
+   "計画と文書化は綿密に行われる",
+   "要件が静的である",
+   "プロジェクトへのアプローチが直線的である",
+   "プロジェクトへのアプローチが反復的である"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "アジャイル型の手法は、短いサイクルを繰り返す反復的なアプローチが特徴です。変化を歓迎し、顧客への価値提供に集中します。綿密な事前計画や静的な要件、直線的な進め方は従来型の特徴です。",
+  "qe": "What is a characteristic shared by Agile methods?",
+  "oe": [
+   "Extensive planning and documentation",
+   "Static requirements",
+   "A linear project approach",
+   "An iterative project approach"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理の基本 / ソフトウェア以外のプロジェクトにアジャイルを使用する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-essentials/use-agile-for-non-software-projects",
+  "q": "アジャイルアプローチを使用する利点は?",
+  "o": [
+   "確実に期待事項に応えることができるように、複数サイクルでフィードバックを受け取りやすくなる。",
+   "顧客とのコラボレーションニーズを排除することでコストが減る。",
+   "プロセスとツールが優先される。",
+   "包括的なドキュメントが優先される。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "アジャイルでは作業を短いサイクルに分けて進めるので、サイクルごとにフィードバックを受けて期待に合っているかを確かめられます。アジャイルの価値観では、プロセスやツールより個人と対話を、包括的なドキュメントより動くものを重視します。",
+  "qe": "What is a benefit of using an Agile approach?",
+  "oe": [
+   "Agile helps you get feedback in multiple cycles to ensure expectations are met.",
+   "Agile reduces costs by eliminating the need for collaboration with the customer.",
+   "Agile prioritizes processes and tools.",
+   "Agile prioritizes comprehensive documentation."
+  ],
+  "v": "要確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理の基本 / プロジェクト管理を通して価値を提供する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-essentials/deliver-value-through-project-management",
+  "q": "正誤問題: ビジネス価値は、金銭で厳密に測定される。",
+  "o": [
+   "True",
+   "False"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ビジネス価値は、利益のような金銭的な価値だけでなく、顧客満足度やロイヤルティのような相対的な価値でも表されます。そのため「金銭で厳密に測定される」は誤りです。",
+  "qe": "True or false: Business value is strictly measured in money.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理の基本 / プロジェクト管理を通して価値を提供する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-essentials/deliver-value-through-project-management",
+  "q": "組織がプロジェクトの価値の可視性を高めるには、どのようにプロジェクト管理を利用すればよいでしょうか?",
+  "o": [
+   "ビジネスケースを含める",
+   "保証を含める",
+   "プロジェクト計画を作成する",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "プロジェクトの価値を見えるようにするには、ビジネスケースやプロジェクトチャーター、プロジェクト管理計画に、意図するビジネス価値とその測り方を書いておきます。保証(ワランティ)は、価値の可視化の手段として挙げられていません。",
+  "qe": "How can organizations use project management to increase visibility into the value of their projects?",
+  "oe": [
+   "Including a business case",
+   "Including a guarantee",
+   "Development of a project plan",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Project Management Plan Lite / Discover Project Management Plan Lite Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-plan-lite/discover-pm-plan-lite",
+  "q": "プロジェクトスケジュールとプロジェクト管理計画の違いは何ですか?",
+  "o": [
+   "プロジェクトスケジュールはコンプライアンス対策を扱い、プロジェクト管理計画はプロジェクトで使う用語の定義だけを扱う",
+   "プロジェクトスケジュールは作業・リソース・期間を扱い、プロジェクト管理計画はプロジェクトの管理方法を定める",
+   "プロジェクトスケジュールは顧客の Salesforce Platform の設定や拡張を扱い、プロジェクト管理計画は費用を追跡する",
+   "この2つの文書に違いはない"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロジェクトスケジュールは、作業・リソース・期間を表すものです。プロジェクト管理計画は、プロジェクトをどのように管理・文書化・進行するかを定める文書です。目的が違うので、同じものではありません。",
+  "qe": "What’s the difference between a project schedule and a project management plan?",
+  "oe": [
+   "A project schedule focuses on compliance measures, and a project management plan focuses solely on the definition of terms used in the project.",
+   "A project schedule is about the work, resources, and time frames for the project, and a project management plan defines how the project is managed.",
+   "A project schedule refers to the configurations and enhancements to the customer’s Salesforce Platform, and a project management plan tracks the expenses of the project.",
+   "There is no difference between these two documents."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": "計画(Plan)プロジェクト管理計画書を作る。スコープ、スケジュール、コスト、品質、リスクなどを含み、実行から終結までの拠り所になる"
+ },
+ {
+  "s": "Trailhead: Project Management Plan Lite / Discover Project Management Plan Lite Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-plan-lite/discover-pm-plan-lite",
+  "q": "プロジェクト管理計画は、どのように成果を高めますか?",
+  "o": [
+   "顧客との期待をそろえ、その期待を実現できるようにする",
+   "大まかなビジョンとミッションを作り、プロジェクトの目的と組織での位置付けを全員に示す",
+   "期限に間に合わせるために、必要なら手順を省くようにする",
+   "すべての決定の費用内訳を示し、全員の認識をそろえる"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "プロジェクト管理計画は、顧客との期待をそろえ、その期待を実現するための最も重要なツールです。変更への対応や顧客とのコミュニケーションにも役立ちます。手を抜いて期限を守るためのものではありません。",
+  "qe": "How do project management plans improve outcomes?",
+  "oe": [
+   "They set expectations with your customer and allow you to achieve these expectations.",
+   "They create a high-level vision and mission statement so everyone knows the purpose of the project and how it fits into the larger organization.",
+   "They make sure the process cuts corners if needed in order to meet deadlines.",
+   "They provide a cost breakdown for all decisions that are made to make sure everyone is aligned."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Project Management Plan Lite / Get to Know the Template Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-plan-lite/get-to-know-the-template",
+  "q": "プロジェクト管理における制約はどれですか?",
+  "o": [
+   "エネルギー",
+   "範囲(スコープ)",
+   "人",
+   "コンピューター"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロジェクト管理の4つの制約は、範囲(スコープ)・時間・コスト・品質です。この4つはお互いに影響し合うので、どれかが変わればほかも見直す必要があります。",
+  "qe": "Which is a constraint in project management?",
+  "oe": [
+   "Energy",
+   "Scope",
+   "People",
+   "Computers"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Project Management Plan Lite / Get to Know the Template Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-plan-lite/get-to-know-the-template",
+  "q": "Salesforce Adaptive Methodology の説明として正しいのはどれですか?",
+  "o": [
+   "プロジェクトのニーズに合わせて柔軟に対応できる",
+   "ウォーターフォール手法だけに従う",
+   "アジャイル手法だけに従う",
+   "すべての Salesforce プロジェクトのためのコミュニケーション・マーケティング計画である"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Salesforce Adaptive Methodology は、価値の高い機能を求める顧客の要望に応えながら、プロジェクトのニーズに合わせて柔軟に対応できる手法です。範囲や設計の確認にはウォーターフォール、開発にはアジャイルを使うなど、両方を組み合わせます。",
+  "qe": "What is an accurate description of the Salesforce Adaptive Methodology?",
+  "oe": [
+   "It maintains the ability to adapt with the project’s needs.",
+   "It follows the waterfall methodology exclusively.",
+   "It follows the agile methodology exclusively.",
+   "It is a communication and marketing plan for all Salesforce projects."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Project Management Plan Lite / Use Project Management Plan Lite Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-plan-lite/use-pm-plan-lite",
+  "q": "範囲管理(スコープ管理)の正しい定義はどれですか?",
+  "o": [
+   "プロジェクトの納品スケジュールをどう作成・監視・維持するかを文書にする",
+   "プロジェクト予算を監視し、基準コストからのずれを管理する手順を文書にする",
+   "範囲を定義・管理し、顧客をプロジェクトの目標に集中させ、範囲の変更を管理する手順を文書にする",
+   "顧客の優先事項を理解し、範囲・コスト・時間・品質の間で優先順位を付けられるよう支援する"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "範囲管理(スコープ管理)では、範囲を定義・管理し、顧客がプロジェクトの目標に集中できるようにする手順と、範囲の変更を管理する手順を文書にします。スケジュールや予算の管理は、それぞれ別の項目です。",
+  "qe": "What is the correct definition for scope management?",
+  "oe": [
+   "Document how the schedule for delivery of the project is developed, monitored, and maintained.",
+   "Document the process to monitor the project budget and manage variations to the baseline cost.",
+   "Document the processes to determine or define, manage, or keep the customer focused on project goals, and control or manage changes in scope.",
+   "Understand the customer’s priorities and help the customer prioritize between scope, cost, time, or quality to meet their business priorities."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Project Management Plan Lite / Use Project Management Plan Lite Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/project-management-plan-lite/use-pm-plan-lite",
+  "q": "プロジェクトの範囲・スケジュール・予算・契約条件に変更があったとき、プロジェクトマネージャーは何をしますか?",
+  "o": [
+   "変更管理のプロセスに従う",
+   "知識移転のセッションを行う",
+   "プロジェクトの組織計画とマーケティング予算を見直す",
+   "作業範囲記述書(SOW)を検証する"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "範囲・スケジュール・予算・契約条件に変更が生じたときは、変更管理(チェンジコントロール)のプロセスに従います。プロジェクト管理計画には、変更が提案されたときの扱い方を前もって定めておきます。",
+  "qe": "What activity does a project manager do when there’s a change to the scope, schedule, budget, or contract terms of a project?",
+  "oe": [
+   "Follows the change control process.",
+   "Conducts a knowledge transfer session.",
+   "Reviews the project’s organization plan and marketing budget.",
+   "Validates the statement of work."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "pmlife",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 人工知能の責任ある作成 / テクノロジーの倫理的な使用について Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/responsible-creation-of-artificial-intelligence/understand-the-ethical-use-of-technology",
+  "q": "バイアスの 1 つの定義に該当するものはどれですか?",
+  "o": [
+   "利己心、先入観、偏重などが一切ない状態で行われた判断",
+   "情報を処理して迅速な判断を下すために用いる短絡的な思考回路"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Salesforce は、バイアスを「情報を処理して迅速な判断を下すために用いる短絡的な思考回路」ととらえています。「利己心や先入観のない判断」は、公平性の定義です。",
+  "qe": "What's one definition of bias?",
+  "oe": [
+   "Decision made free of self-interest, prejudice, or favoritism",
+   "The automatic mental shortcuts we use to process information and make decisions quickly"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 人工知能の責任ある作成 / テクノロジーの倫理的な使用について Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/responsible-creation-of-artificial-intelligence/understand-the-ethical-use-of-technology",
+  "q": "さまざまな体験や視点を反映するチームを編成することが重要なのはなぜですか?",
+  "o": [
+   "一部のユーザーだけでなく、すべてのユーザーのニーズを満たす受容性の高い商品を製作できるようになるため",
+   "倫理の推進は数人のみが責任を負うため",
+   "一定のユーザーにとって害悪を及ぼす可能性のある先入観や思い込みを特定しやすくなるため",
+   "A と C",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "多様な経験や視点を持つチームなら、一部ではなくすべてのユーザーのニーズに合う製品を作りやすくなります。また、特定のユーザーを傷つけるような思い込みにも気付きやすくなります。倫理の推進は一部の人だけの責任ではありません。",
+  "qe": "Why is it important to build teams that reflect multiple experiences and perspectives?",
+  "oe": [
+   "They enable you to create more inclusive products that meet the needs of all your users, not just some of them.",
+   "Only a few individuals are responsible for promoting ethics.",
+   "They help you identify preconceived notions or assumptions that can be harmful for some users.",
+   "A and C",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 人工知能の責任ある作成 / 人工知能のバイアスの認識 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/responsible-creation-of-artificial-intelligence/recognize-bias-in-ai",
+  "q": "次のうち、関連付けバイアスの結果はどれですか?",
+  "o": [
+   "データセットの男性は医師、女性は看護師とラベル付けされる。",
+   "データセットのコヨーテはすべてオレンジ色で、オレンジ色の猫がいなかったため、オレンジ色の猫の画像がコヨーテと予測される。",
+   "ある人がシステムに返済不能と誤って予測されたため、ローン申請が却下される。",
+   "企業で現在、ある大学出身の従業員が成功を収めているため、その大学出身の応募者のみを雇用する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "関連付けバイアスは、ステレオタイプに基づいてラベルが付けられたデータから生まれます。「男性は医師、女性は看護師」というラベル付けはその典型例です。",
+  "qe": "Which of the following is a result of association bias?",
+  "oe": [
+   "Men being labeled as doctors and women being labelled as nurses in a dataset",
+   "An image of an orange cat being predicted to be a coyote because all the coyotes in the dataset were orange and none of the cats were orange",
+   "A person being denied a loan because the system inaccurately predicted they would be unable to repay it",
+   "A company hiring only candidates from a particular university because it currently has successful employees from that university"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 人工知能の責任ある作成 / 人工知能のバイアスの認識 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/responsible-creation-of-artificial-intelligence/recognize-bias-in-ai",
+  "q": "どのようにしてシステムにバイアスが入り込みますか?",
+  "o": [
+   "制作者の価値や思い込み経由",
+   "トレーニングデータ経由",
+   "プロジェクトに費やす時間が多すぎた場合",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "バイアスは、製品を作る人の価値観や思い込みを通じて、またトレーニングデータを通じて AI システムに入り込みます。プロジェクトにかけた時間の長さは原因ではありません。",
+  "qe": "How can bias enter a system?",
+  "oe": [
+   "Through the values or assumptions of the creators",
+   "From the training data",
+   "From spending too much time on the project",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 人工知能の責任ある作成 / データやアルゴリズムからのバイアスの排除 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/responsible-creation-of-artificial-intelligence/remove-bias-from-your-data-and-algorithms",
+  "q": "事前策を立てておくことの利点は何ですか?",
+  "o": [
+   "過去の失敗から学び、成功を祝い、プロジェクトを終結できる。",
+   "プロジェクトの潜在的なリスクを特定できる。",
+   "チームとのオープンなコミュニケーションが促進される。",
+   "A と C",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "事前策(プレモーテム)は、問題が起きる前に対処できるようにする取り組みです。計画段階で懸念を率直に話し合うことで、潜在的なリスクを見つけられ、チーム内のオープンなコミュニケーションも進みます。振り返りや成功のお祝いは、事後に行うものです。",
+  "qe": "What are the advantages to holding a premortem?",
+  "oe": [
+   "Learn from past mistakes, celebrate successes, and provide closure to a project.",
+   "Identify potential risks in a project.",
+   "Foster open communication with the team.",
+   "A and C",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 人工知能の責任ある作成 / データやアルゴリズムからのバイアスの排除 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/responsible-creation-of-artificial-intelligence/remove-bias-from-your-data-and-algorithms",
+  "q": "データを定期的に評価することが重要なのはなぜですか?",
+  "o": [
+   "社会的価値は時間とともに変化するため。",
+   "データモデルが不適切な情報を「学習」し、データセットが歪められることがあるため。",
+   "データを一度評価すれば、「設定して放置」できるため。",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "社会や文化の価値観は時間とともに変わり、モデルが不適切な情報を学習してデータセットが歪むこともあります。そのため、データは一度評価して終わりではなく、定期的に見直す必要があります。",
+  "qe": "Why is it important to regularly evaluate your data?",
+  "oe": [
+   "Societal values change over time.",
+   "Your data model can \"learn\" unsavory information that skews the dataset.",
+   "You can \"set and forget\" your data after evaluating it once.",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 人工知能の責任ある作成 / 責任ある生成 AI の作成 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/responsible-creation-of-artificial-intelligence/create-responsible-generative-ai",
+  "q": "生成 AI を使用することでどのようなリスクがありますか?",
+  "o": [
+   "ロボットが Salesforce を乗っ取る。",
+   "モデルがコンテンツを生成するために収集されるデータを制限できない。",
+   "今日の巨大なモデルほど正確な小さなモデルを作成することはできない。",
+   "有害性とバイアスによって大規模な害を及ぼす可能性がある。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "生成 AI には、有害性(人を傷つける表現)やバイアスを大規模に広めてしまうリスクがあります。人間のやり取りに含まれる有害性を学習すると、AI がそれを再現してしまうためです。",
+  "qe": "What are the risks of using generative AI?",
+  "oe": [
+   "Robots might take over Salesforce.",
+   "You cannot limit the data the model gathers to generate content.",
+   "You cannot create smaller models that are as accurate as the massive models available today.",
+   "Toxicity and bias can cause harm at scale."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 人工知能の責任ある作成 / 責任ある生成 AI の作成 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/responsible-creation-of-artificial-intelligence/create-responsible-generative-ai",
+  "q": "Salesforce の AI に対する信頼されるアプローチの例は次のどれですか?",
+  "o": [
+   "プライバシー保護を製品に組み込むロボットを採用する。",
+   "モデルのレッドチーム演習をお客様に行ってもらう。",
+   "モデルのトレーニングのために Web からデータをかき集める。",
+   "リリース前にモデルのレッドチーム演習を行って、脆弱性を特定して対策を講じる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Salesforce はリリース前にモデルのレッドチーム演習を行い、脆弱性を見つけて対策しています。お客様に演習を任せたり、同意なく Web からデータを集めたりすることは、信頼されるアプローチではありません。",
+  "qe": "Which of the following is an example of Salesforce's trusted approach to AI?",
+  "oe": [
+   "Hire robots to build privacy protections into products.",
+   "Rely on customers to red team models.",
+   "Scrape data off the web to train models.",
+   "Red-team models before release to identify and address vulnerabilities."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Sales の基本 / Agentforce Sales CRM で営業の生産性を高める Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-platform-quick-look/get-to-know-the-sales-cloud-platform",
+  "q": "次のうち、CRM、Agentforce Sales、Salesforce の最も適切な定義はどれですか?",
+  "o": [
+   "CRM は企業で、Agentforce Sales はその企業が提供する製品である",
+   "Salesforce は CRM のクラウド運用の先駆的な企業で、Agentforce Sales は営業チーム向けに設計された製品である",
+   "CRM は Companies (企業)、Relationships (関係)、Making money (収益) の略語である",
+   "Salesforce は、営業担当のみを対象とした製品である"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "CRM は顧客との関係を管理するシステムの考え方、Salesforce はクラウドで CRM を提供してきた先駆的な企業です。Agentforce Sales(旧 Sales Cloud)は、Salesforce が提供する営業チーム向けの製品です。",
+  "qe": "Which of the following best defines CRM, Agentforce Sales, and Salesforce?",
+  "oe": [
+   "CRM is a company, and Agentforce Sales is a product it offers.",
+   "Salesforce is the company that pioneered CRM in the cloud, and Agentforce Sales is a product designed for sales teams.",
+   "CRM stands for companies, relationships, and making money.",
+   "Salesforce is a product made only for salespeople."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "lifecycle",
+  "x": "Agentforce Sales(旧称 Sales Cloud)は、リードの獲得から商談、売上予測までを支える営業向けの製品です。コンサルタントは、お客様の課題とKPIに合う機能を組み合わせて提案します。"
+ },
+ {
+  "s": "Trailhead: Agentforce Sales の基本 / Agentforce Sales CRM で営業の生産性を高める Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-platform-quick-look/get-to-know-the-sales-cloud-platform",
+  "q": "営業で従うべきベストプラクティスはどれですか?",
+  "o": [
+   "優秀な営業担当が各自の顧客情報を記憶している",
+   "ビジネスの成長期にすべき一番大切なことは、同一のセールスプロセスを使いながら、営業担当を増員することである",
+   "営業支援ソフトウェアのことはその作成者が熟知しているため、自身のニーズに応じてソリューションをカスタマイズできなくても心配ない",
+   "顧客情報を 1 か所に集約し、チームの全員がアクセスできるようにすれば、スピーディかつスマートに販売でき、成長に備えることができる"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "顧客情報を1か所に集めてチーム全員が使えるようにすると、顧客の履歴を踏まえて速く的確に営業でき、成長にも対応しやすくなります。付箋や個人の記憶、スプレッドシートに情報が散らばっていると全体像がつかめません。",
+  "qe": "Which sales best practice should you follow?",
+  "oe": [
+   "The best sales reps memorize their customer information.",
+   "When your business grows, the best thing to do is use the same sales processes but hire more reps.",
+   "The creator of your sales software knows best, so don't worry about being able to customize a solution to your needs.",
+   "You should keep your customer information in one place, accessible by your whole team, so you can sell faster and smarter and be prepared to grow."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "lifecycle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Sales の基本 / Agentforce Sales を使用したビジネスの成長 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-platform-quick-look/grow-your-business-with-the-sales-cloud-platform",
+  "q": "Agentforce Sales でリードを管理するのに最適な方法はどれですか?",
+  "o": [
+   "営業担当が最寄りの最大規模の企業のリードを優先する",
+   "Sales Operations 部門のみがパイプラインの追跡を担当する",
+   "顧客情報を付箋紙、Excel、マーケティングオートメーションシステムなどの数か所に保存して、利用しやすいようにする",
+   "営業担当は、成立する可能性の最も高い最上位のリードを優先する"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Agentforce Sales は、リードに順位を付けて、成立の見込みが高いリードから対応できるようにします。近くの大企業を優先したり、情報を複数の場所に分けて保存したりするのは非効率です。",
+  "qe": "Which of these is the best way to manage leads in Agentforce Sales?",
+  "oe": [
+   "Reps should prioritize leads with companies that are the largest and closest to them.",
+   "Sales Operations should be solely responsible for keeping track of the pipeline.",
+   "Store customer information in several places for easy access, like sticky notes and Excel and a marketing automation system.",
+   "Reps should prioritize the leads that are ranked the highest and are most likely to close."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "lifecycle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Sales の基本 / Agentforce Sales を使用したビジネスの成長 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-platform-quick-look/grow-your-business-with-the-sales-cloud-platform",
+  "q": "営業チームの生産性を最大限に高めるためにできることは何ですか?",
+  "o": [
+   "販売サイクルの各ステップでガイダンスを提供する",
+   "デスクで業務に取り組む文化を構築して、仕事に集中させる",
+   "終業時に営業担当から営業部長に商談サマリーをメールで送るようにする",
+   "すべてのメールを Agentforce Sales に手動入力することをチームに奨励する"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "パス(セールスパス)を使うと、販売サイクルの各ステップにガイダンスを表示でき、営業担当が迷わず進められます。メールを手作業で入力させるより、メール連携や自動化を使うほうが生産性は上がります。",
+  "qe": "How can you help make your sales team most productive?",
+  "oe": [
+   "Give them guidance at every step of the sales cycle.",
+   "Keep them on task by creating a culture where work takes place at the desk.",
+   "Have reps email a sales deal summary to the Sales Director at the end of each day.",
+   "Encourage your team to manually enter all their emails into Agentforce Sales."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "lifecycle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Sales の基本 / 重要なセールスメトリクスの測定 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-platform-quick-look/measure-sales-metrics-that-matter",
+  "q": "レポートやダッシュボードでの進行状況の追跡について、正しい記述はどれですか?",
+  "o": [
+   "ダッシュボードは、レポートを視覚的に表現したものである",
+   "基本的なコーディングの経験があれば、ダッシュボードを簡単に作成できる",
+   "羞恥心や競争意識を煽らないように、営業担当の進行状況はマネージャーのみが確認できるようにする",
+   "商談が成立したら、すぐに営業担当はその商談を Salesforce に入力する必要がある"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "ダッシュボードは、重要なレポートを視覚化して共有するためのものです。クリック操作で作成でき、コードは不要です。",
+  "qe": "Which of the following is true of tracking progress with reports and dashboards?",
+  "oe": [
+   "A dashboard is a visual representation of reports.",
+   "Dashboards are easy to create if the person has basic coding experience.",
+   "A rep's progress should be visible only to their manager, to avoid embarrassment or competition between reps.",
+   "Reps should enter an opportunity into Salesforce as soon as the deal closes."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "reports",
+  "x": "営業のKPIとビジネスの成果を、レポートで数字にし、ダッシュボードでひと目で分かる形にすることです。"
+ },
+ {
+  "s": "Trailhead: Agentforce Sales の基本 / 重要なセールスメトリクスの測定 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-platform-quick-look/measure-sales-metrics-that-matter",
+  "q": "Agentforce Sales の売上予測について、正しい記述はどれですか?",
+  "o": [
+   "売上予測は、週が終了した時点で Agentforce Sales で確認できるようになる",
+   "優秀な営業担当は、販売サイクルの各フェーズが意味するところを直感的に理解する",
+   "営業担当は、Kanban で商談を新しいフェーズにドラッグできる",
+   "実際のところ売上予測はさほど重要でない。物事の流れを直感的に読んで、決断を下すべきである"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "営業担当は Kanban ビューで商談をドラッグして新しいフェーズに移せます。更新はすぐに反映されるので、売上予測をリアルタイムに保てます。フェーズの定義はチームで共通の認識を持つことが大切で、直感に頼るものではありません。",
+  "qe": "Which of the following is true of forecasting in Agentforce Sales?",
+  "oe": [
+   "Forecasts are ready in Agentforce Sales as soon as the business week ends.",
+   "Good reps will intuitively understand what each stage in your sales cycle means.",
+   "Reps can drag deals into new stages with Opportunity Kanban.",
+   "Forecasting isn't really important, and you should make decisions based on your gut feeling of how things are going."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "reports",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Sales のロールアウト戦略 / Agentforce Sales で効果的なビジネス計画を作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-rollout-strategy/position-your-business",
+  "q": "Sales Cloud 実装全体においてエンドユーザーをエンゲージさせるための良い戦略は次のどれですか?",
+  "o": [
+   "Sales Cloud を使い始めるその日に Sales Cloud について教える。",
+   "実装期間を通して継続的にチームからのフィードバックを求める。",
+   "エンドユーザーへの利点を考える前に Sales Cloud を実装する。",
+   "非常に技術的な言葉を使って Sales Cloud の機能を伝える。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "導入の計画段階だけでなく、実装期間を通してチームのフィードバックを集め続けると、ユーザーの仕事に役立っているかを確かめて調整できます。使い始めの当日に教えるだけでは、エンゲージメントは高まりません。",
+  "qe": "What's a good strategy for keeping your end users engaged throughout your Sales Cloud implementation?",
+  "oe": [
+   "Tell them about Sales Cloud on the same day they are expected to start using it.",
+   "Continue to ask for feedback from your team throughout the implementation.",
+   "Implement Sales Cloud before considering how end users can benefit from it.",
+   "Communicate features of Sales Cloud in very technical terms."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Sales のロールアウト戦略 / Agentforce Sales で効果的なビジネス計画を作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-rollout-strategy/position-your-business",
+  "q": "ビジネス目標と指標を Sales Cloud 実装にマッピングする際に優先されるのは次のどれですか?",
+  "o": [
+   "Sales Cloud の基本設定に合わせて営業プロセスを構築し直す。",
+   "常に変化する目標や指標を定義する。",
+   "目標を考える前に Sales Cloud をできるだけ迅速に実装する。",
+   "ビジネス目標や指標によって Sales Cloud を方向付ける (その逆ではない)。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ビジネスの目標と指標に合わせて Sales Cloud を設定するのが基本です。製品の初期設定に合わせて営業プロセスを作り直すのは逆の順序です。",
+  "qe": "What's the key priority as you're mapping your business's goals and metrics to your Sales Cloud implementation?",
+  "oe": [
+   "To redefine your entire sales process to fit what comes with Sales Cloud out of the box.",
+   "To create goals and metrics that are always changing.",
+   "To implement Sales Cloud as quickly as possible before considering your goals.",
+   "To create business goals and metrics that steer your Sales Cloud implementation, not the other way around."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Sales のロールアウト戦略 / 実装計画の立案 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-rollout-strategy/chart-your-course",
+  "q": "Sales Cloud の設定と使用に役立つ自己学習リソースは次のどれですか?",
+  "o": [
+   "Trailhead とアクセラレーター",
+   "Trailhead と Trailblazer Community",
+   "ヘルプポータルと Wikipedia",
+   "あなたの親友と Trailblazer Community"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "自分で学べるリソースとして、Trailhead(ガイド付きの学習とハンズオン)と Trailblazer Community(質問やヒントの共有)が紹介されています。",
+  "qe": "What are two do-it-yourself resources that can help guide you as you set up and use Sales Cloud?",
+  "oe": [
+   "Trailhead and Accelerators",
+   "Trailhead and Trailblazer Community",
+   "Help Portal and Wikipedia",
+   "Your Best Friend and Trailblazer Community"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Sales のロールアウト戦略 / 実装計画の立案 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-cloud-rollout-strategy/chart-your-course",
+  "q": "Sales Cloud の実装における主要なマイルストーンは次のどれですか?",
+  "o": [
+   "ユーザーのトレーニング",
+   "データのインポート",
+   "営業プロセスの変更",
+   "A と B"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "実装のマイルストーンとして、データのインポートやユーザーのトレーニングなどが勧められています。立ち上げ日から逆算して、現実的なマイルストーンを置きます。",
+  "qe": "Which of the following is a key milestone for your Sales Cloud implementation?",
+  "oe": [
+   "Train your users",
+   "Import your data",
+   "Change your sales process",
+   "A and B"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 営業パフォーマンス計画 / 営業パフォーマンス目標を設定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-performance-strategies/set-sales-performance-goals",
+  "q": "活動の基準は、どのように結果の基準と関連付けるべきですか?",
+  "o": [
+   "関連付けるべきではない。それぞれ別々に扱うべきである。",
+   "活動の基準は収益を上げ、結果の基準は収益について報告するものである。",
+   "活動の基準は、結果の基準を達成するステップと考えられる。",
+   "活動の基準は、結果の基準より営業担当の仕事への意欲を高める。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "活動の基準(電話やメールの件数など)は、結果の基準(売上など)を達成するためのステップです。活動の基準を継続して達成すれば、最終的に結果の基準も達成できると考えます。",
+  "qe": "How should activity measures relate to outcome measures?",
+  "oe": [
+   "They shouldn't. They should be treated separately.",
+   "Activity measures make the money, outcome measures report on the money.",
+   "Activity measures can be considered as steps to achieving outcome measures.",
+   "Activity measures motivate sales reps to work harder than outcome measures do."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "lifecycle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 営業パフォーマンス計画 / 営業パフォーマンス目標を設定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-performance-strategies/set-sales-performance-goals",
+  "q": "KPI の変更が必要である場合、どのようなことが役立ちますか?",
+  "o": [
+   "変更されやすい KPI と変更されない KPI を示す。",
+   "変更は、営業チームのモチベーションと結び付けて明確かつ計画的に伝える。",
+   "すべての KPI を早い段階および頻繁に変更する。そうすることで、営業担当はチャレンジを楽しめる。",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "KPI を変えるときは、変わりやすい KPI と変えない KPI を示し、営業チームのモチベーションに結び付けて計画的に伝えます。KPI を頻繁に変えると、営業担当は何を目指せばよいかわからなくなります。",
+  "qe": "When changes to KPIs are needed, what can help?",
+  "oe": [
+   "An outline of what KPIs can be changed easily, and what should remain the same",
+   "Clear and intentional messaging about the change, tied to sales teams' motivations",
+   "Changing all the KPIs early and often—salespeople will enjoy the challenge",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "lifecycle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 営業パフォーマンス計画 / 営業チームにインセンティブを設定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-performance-strategies/incentivize-sales-teams",
+  "q": "正誤問題: どの営業組織も、内発的なインセンティブと外発的なインセンティブのいずれかを選ぶ必要がある。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "内発的なインセンティブ(やりがいや称賛)と外発的なインセンティブ(金銭や物品)は、どちらか一方を選ぶものではありません。両方のバランスを取って使うことが大切です。",
+  "qe": "True or false: every sales organization needs to choose between intrinsic and extrinsic incentives.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "lifecycle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 営業パフォーマンス計画 / 営業チームにインセンティブを設定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-performance-strategies/incentivize-sales-teams",
+  "q": "あまり成果を上げていない営業チームメンバーへの対応方法は?",
+  "o": [
+   "ランキング表に目立つように表示する。",
+   "フィードバックを与える。",
+   "成功できるようにする。",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "成果が上がっていないメンバーには、事実を配慮して伝え、フィードバックや成功するための仕組みを用意します。ランキングで目立たせて恥をかかせると、やる気をかえって下げてしまいます。",
+  "qe": "Low performing sales team members should be:",
+  "oe": [
+   "Highlighted on the leaderboard",
+   "Given feedback",
+   "Enabled to succeed",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "lifecycle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 営業チームコラボレーション / チームでの販売 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-team-collaboration/sell-as-a-team",
+  "q": "チームセリングから最大のメリットが得られると思われるのはどのような場合ですか?",
+  "o": [
+   "複雑な商談で最大のメリットが得られる。",
+   "担当者が説明する商品のエキスパートである場合に最大のメリットが得られる。",
+   "メリットはない! 販売は単独で行うに限るため、チームプレーよりも個人プレーを重視してもらいたい。",
+   "簡単な更新で最大のメリットが得られる。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "チームセリングはどの商談でも使えますが、特に複雑な商談で効果が大きくなります。担当者がすでにその商品のエキスパートなら、チームの助けの必要性は小さくなります。",
+  "qe": "When can you most benefit from team selling?",
+  "oe": [
+   "You benefit most on complex deals.",
+   "You benefit most when the rep is an expert on the products being discussed.",
+   "Never! We wish there was an \"I\" in team because solo is the only way to go.",
+   "You get the greatest benefit on simple renewals."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 営業チームコラボレーション / チームでの販売 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-team-collaboration/sell-as-a-team",
+  "q": "Salesforce 取引先チームを使用して、担当者に提供できるものはどれですか?",
+  "o": [
+   "明確に定義されたチーム上のロール",
+   "商談に取り組むために必要なレコードへのアクセス権",
+   "取引先に対応するための戦略",
+   "A と B"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "取引先チームでは、各メンバーに明確なロールを定義でき、商談などの関連レコードへのアクセス権も付与できます。取引先への対応戦略そのものを作る機能ではありません。",
+  "qe": "Salesforce Account Teams can help give your reps:",
+  "oe": [
+   "Clearly defined roles on the team",
+   "Access to the records necessary to work the deal",
+   "A strategy for working an account",
+   "A and B"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 営業チームコラボレーション / 成功のためのコラボレーション Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-team-collaboration/collaborate-your-way-to-success",
+  "q": "営業チームはコラボレーションのためにどのように Slack を使用することができますか?",
+  "o": [
+   "電話をかける。",
+   "複数のチーム間でリアルタイムでコラボレーションし、情報を共有する。",
+   "チームにカレンダー招待を送信する。",
+   "顧客にメールを送信する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Slack は Salesforce のコラボレーションプラットフォームで、複数のチームがリアルタイムで会話し、情報を共有できます。専用のチャンネルを作って商談ごとに協力することもできます。",
+  "qe": "How can sales teams use Slack to collaborate?",
+  "oe": [
+   "Make phone calls.",
+   "Collaborate and share information in real time across teams.",
+   "Send calendar invitations to teams.",
+   "Send emails to customers."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 営業チームコラボレーション / 成功のためのコラボレーション Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales-team-collaboration/collaborate-your-way-to-success",
+  "q": "営業チームにとって Quip が役に立つのは、何が提供されるためですか?",
+  "o": [
+   "オフライン時を含め、任意のデバイスからのドキュメントへのアクセス",
+   "無料の校閲サービス",
+   "添付ファイルをチームにメール送信して、後から各バージョンをまとめる手段",
+   "顧客への連絡手段"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Quip では、ドキュメントやスプレッドシート、チャットを1か所にまとめ、権限があれば誰でも、どのデバイスからでもアクセスできます。添付ファイルをメールで回してバージョンをまとめる手間がなくなります。",
+  "qe": "Quip is useful to sales teams because it provides which of the following?",
+  "oe": [
+   "Access to documents from any device, even offline",
+   "A free copyediting service",
+   "A way to email attachments to your team and later consolidate versions",
+   "A way to contact customers"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "opps",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 重複管理 / Salesforce でデータ品質を向上させる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_1",
+  "q": "重複レコードについて正しいものはどれですか?",
+  "o": [
+   "営業担当は同じデータに対する複数のレコードを信頼できる。",
+   "営業担当の時間を無駄にする可能性がある。",
+   "チームの一員が間違って一致するレコードを更新してしまった場合のセーフティネットになる。",
+   "会社の評判に悪影響を与える。",
+   "B と D"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "重複レコードは、営業担当や顧客の時間を無駄にし、会社がきちんと管理できていない印象を与えて評判を下げます。どのレコードが正しいかわからず、信頼もできなくなります。",
+  "qe": "What's true about duplicate records?",
+  "oe": [
+   "Reps can rely on multiple records for the same data.",
+   "They can waste your reps' time.",
+   "They're a safety net in case teammates inadvertently update a matching record.",
+   "They negatively affect your company's reputation.",
+   "B and D"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "quality",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 重複管理 / Salesforce でデータ品質を向上させる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_1",
+  "q": "重複レコードを制御してシステム管理者を支援する方法を挙げてください。",
+  "o": [
+   "営業チームは、チームの成功を念頭に置いて CRM システムを管理していると信じている。",
+   "営業担当の重複するメールアドレスにアラートを送信することについて心配する必要はない。",
+   "Salesforce ユーザーを複数回追加するリスクを冒さない。",
+   "調査によると、重複レコードのないシステム管理者の方が安眠できることが示されている。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "重複レコードを制御すると、営業チームはシステム管理者が信頼と成功を考えて CRM を管理していると信じられるようになります。重複があると、営業チームは CRM への信頼を失ってしまいます。",
+  "qe": "How can controlling duplicate records help admins?",
+  "oe": [
+   "Sales teams trust that you manage your CRM system with their success in mind.",
+   "You don't worry about sending alerts to duplicate email addresses for your sales reps.",
+   "You don't run the risk of adding Salesforce users more than one time.",
+   "Studies show that admins without duplicate records sleep better."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "quality",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 重複管理 / Salesforce でデータ品質を向上させる Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_1",
+  "q": "重複データの排除とは、",
+  "o": [
+   "手作業の非常に時間がかかるプロセスである。",
+   "見込み客がもう顧客になっているのでは、という迷いをなくすことである。",
+   "ある営業担当がすでに所有しているリードを、別の営業担当が評価することのないようにすることである。",
+   "A と C",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "重複のないデータなら、営業担当は同僚がすでにその見込み客を評価していないか、すでに顧客になっていないかと迷わずに済みます。Salesforce の重複管理を使えば、手作業だけに頼らずに重複を防げます。",
+  "qe": "Eliminating duplicate data:",
+  "oe": [
+   "Is a manual and time-intensive process",
+   "Takes the guesswork out of wondering whether a prospect is already a customer",
+   "Ensures that one rep doesn't try to qualify a lead that a colleague already owns",
+   "A and C",
+   "B and C"
+  ],
+  "v": "要確認",
+  "f": "quality",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 重複管理 / Salesforce でデータ品質を向上させる Q4",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_1",
+  "q": "標準重複ルールは次のように使用できます。",
+  "o": [
+   "先着順に使用できる。",
+   "Salesforce 組織が Spring '15 以降に作成された場合に使用できる。",
+   "Salesforce 組織が Winter '15 以前に作成された場合に使用できる。",
+   "Unlimited Edition ユーザーのみ使用できる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Spring '15 以降に Salesforce を使い始めた組織には、法人取引先・取引先責任者・リード・個人取引先の標準重複ルールが用意されています。Winter '15 以前の組織では、自分でルールを作成します。",
+  "qe": "Standard duplicate rules are available:",
+  "oe": [
+   "On a first-come, first-served basis",
+   "If your Salesforce org was created in Spring '15 or later",
+   "If your Salesforce org was created in Winter '15 or earlier",
+   "For Unlimited Edition customers only"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "quality",
+  "x": "重複ルール(Duplicate Rule)ユーザーが重複を作ろうとしたとき、または重複のあるレコードを見たときにどうするかを決める取引先、個人取引先、取引先責任者、リードの標準重複ルール"
+ },
+ {
+  "s": "Trailhead: 重複管理 / Salesforce でデータ品質を向上させる Q5",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_1",
+  "q": "重複管理は次のように営業担当を支援します。",
+  "o": [
+   "重複候補レコードが作成されたときを認識する。",
+   "見込み客をリードと取引先責任者の両方として同時に追加する。",
+   "取引先責任者をケースにマージする。",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "重複管理は、重複候補のレコードを識別し、作成しようとしたときにアラートを出したり作成を防いだりできます。リードと取引先責任者を同時に作ったり、取引先責任者をケースにマージしたりする機能ではありません。",
+  "qe": "Duplicate Management helps sales reps:",
+  "oe": [
+   "Know when they're creating a potential duplicate record",
+   "Add a prospect as both a lead and a contact simultaneously",
+   "Merge a contact with a case",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "quality",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce 採用の促進 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/accelerate-salesforce-adoption",
+  "q": "テクノロジーの採用とは何ですか?",
+  "o": [
+   "新しいテクノロジーをあなたの会社に導入すること",
+   "会社がユーザーのために購入したソリューションやソフトウェアを使用してもらうこと",
+   "適切なテクノロジーを選択すること",
+   "不可能であるため回避すべき作業"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ビジネスでいう採用(アダプション)とは、会社が用意したソリューションを実際にユーザーに使ってもらうことです。導入や選定だけでは、採用されたとはいえません。",
+  "qe": "What is technology adoption?",
+  "oe": [
+   "When you introduce a new technology to your company",
+   "Getting people to use the solution or software that their company has purchased for them",
+   "Choosing just the right technology solution",
+   "An impossible task you should avoid"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce 採用の促進 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/accelerate-salesforce-adoption",
+  "q": "会社が採用率の向上に取り組むべきであるのはなぜですか?",
+  "o": [
+   "Salesforce の採用率が向上すれば、それを推奨したあなたの評判が守られるため",
+   "営業担当が時間を費やす新たな方法が必要なため",
+   "採用率が上昇すれば、ROI も上昇するため",
+   "Salesforce がユーザー数を増やすことができるため"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Salesforce を導入してもチームが使わなければ、投資の見返り(ROI)は得られません。採用率が上がれば ROI も上がるので、会社は採用率の向上に取り組むべきです。",
+  "qe": "Why should your company focus on improving its adoption rate?",
+  "oe": [
+   "Improving adoption rates protects your reputation because you recommended Salesforce",
+   "Because sales reps need another way to use their time",
+   "Because high adoption leads to high ROI",
+   "So Salesforce can have more users"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce 採用の促進 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/accelerate-salesforce-adoption",
+  "q": "会社の採用問題に取り組む適切なタイミングはいつですか?",
+  "o": [
+   "適切なタイミングは Salesforce の稼働開始前のみ",
+   "稼働開始時のみ",
+   "採用が問題になった後のみ",
+   "今すぐ 大半の戦術は Salesforce のジャーニーのどの時点でも実施できる"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "採用を高める戦術の多くは、導入の検討中、ロールアウト中、何年も使っている段階など、Salesforce のジャーニーのどの時点でも実施できます。つまり、取り組むのに最適なのは「今すぐ」です。",
+  "qe": "What is the right time to tackle your company's adoption problem?",
+  "oe": [
+   "The right time is only before you launch Salesforce",
+   "It is only at launch",
+   "It is only after adoption has become a problem",
+   "Right now. You can use most tactics at any point in your Salesforce journey"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce ジャーニー作成の準備 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/prepare-to-build-your-salesforce-journey",
+  "q": "Salesforce 組織を構築し始める前に、役員に依頼すべきことは何ですか?",
+  "o": [
+   "Salesforce がうまくいくかどうか、ラスベガス流の大きな賭けをしてもらう。",
+   "コミュニケーションに加わったり、チームの参加を義務付けたりする方法で、Salesforce に対する支援に尽力してもらう。",
+   "Salesforce にかかりきりになってもらう。",
+   "各営業担当とミーティングをして、Salesforce について話し合ってもらう。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "役員が計画に前向きになったら、新しい Salesforce の実装への支援を頼みます。たとえば、社内コミュニケーションに加わってもらったり、チームの参加を義務付けてもらったりします。役員の支援は早い段階から得ておくのが大切です。",
+  "qe": "What is something you should ask your executives to do before you start building your Salesforce org?",
+  "oe": [
+   "Make a large Vegas-style bet with you that Salesforce will work",
+   "Commit to supporting Salesforce by being part of communications or requiring participation from their teams",
+   "Make Salesforce their full-time job",
+   "Sit down with each sales rep to discuss Salesforce with them"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce ジャーニー作成の準備 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/prepare-to-build-your-salesforce-journey",
+  "q": "現行のセールスプロセスの文書化から学ぶ一番重要なことは何ですか?",
+  "o": [
+   "最高の営業担当は誰か",
+   "セールスプロセスのどこが他の組織と異なっているか",
+   "プロセスのどこを改善する必要があるか",
+   "メールに実際に返信しているのはどの営業リーダーか"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "現在のセールスプロセスを文書化すると、何がうまくいっていて、どこを改善すべきかがわかります。テクノロジーを変える時期は、プロセスを見直して合理化する良い機会です。",
+  "qe": "What's the most important thing you will learn from documenting your current sales processes?",
+  "oe": [
+   "Who your best sales reps are",
+   "How your sales process differs from other organizations",
+   "Where your process needs improvement",
+   "Which sales leaders actually answer their emails"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / 会社に最適な Salesforce 組織の作成 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/create-the-ideal-salesforce-org-for-your-company",
+  "q": "Salesforce の営業担当が必要とする機能を判断する適切な方法はどれですか?",
+  "o": [
+   "前職で使用した機能を基に判断する。",
+   "営業担当に対する直観と知識を用いる。",
+   "他のシステム管理者にどの機能を使用しているか尋ねる。",
+   "調査やフォーカスグループの手法で営業担当に質問する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "営業担当が必要とする機能は、アンケートやフォーカスグループで営業担当本人に聞いて判断します。さまざまな部門や役職の人、さらに導入に前向きでない人の声も集めると、実際に使われるシステムになります。",
+  "qe": "Which is a good way to determine what features your salespeople will need in Salesforce?",
+  "oe": [
+   "Base it on what features you used at your last company",
+   "Use your intuition and knowledge about salespeople",
+   "Ask a fellow admin what features they use",
+   "Ask your salespeople via surveys or focus groups"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / 会社に最適な Salesforce 組織の作成 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/create-the-ideal-salesforce-org-for-your-company",
+  "q": "パイロットプロジェクトがうまくいった場合にはどのような成果がありますか?",
+  "o": [
+   "自身のキャリア形成に役立つ可能性がある同僚と交流することができる。",
+   "パイロットプロジェクトを実施したと正式に発表できる。",
+   "稼働開始に先駆けて、改善の余地のある事項に関してユーザーからフィードバックが得られる。",
+   "あなたが誰なのかが営業チームにわかる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "パイロットプロジェクトがうまくいくと、本番稼働の前に、改善すべき点についてユーザーからフィードバックを得られます。適切な人を参加させることが、有意義なパイロットにするコツです。",
+  "qe": "What is an outcome of a successful pilot?",
+  "oe": [
+   "You get to network with colleagues who can help your career",
+   "You can officially say you did a pilot",
+   "You get feedback from your end users about what can be improved before launch",
+   "The sales team knows who you are"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce テクノロジーのリリース Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/deploy-your-salesforce-technology",
+  "q": "稼働開始の資料に含める必要があるのはどの要素ですか?",
+  "o": [
+   "CRM などの略語",
+   "Salesforce によって営業担当にどのようなメリットがあるか",
+   "担当者はどこでトレーニングを確認できるか",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "稼働開始の案内には、Salesforce が営業担当にどんなメリットをもたらすかと、トレーニングの日時や場所(またはリンク)を含めます。CRM のような略語や専門用語は避けて説明します。",
+  "qe": "Which elements should be included in your launch materials?",
+  "oe": [
+   "Acronyms like CRM",
+   "How Salesforce will benefit your sales reps",
+   "Where reps can find training",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce テクノロジーのリリース Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/deploy-your-salesforce-technology",
+  "q": "初回のトレーニングを実施した後に保存して、その後採用された担当者のために再利用できる方法はどれですか?",
+  "o": [
+   "対面トレーニング",
+   "トレーニング講師の養成",
+   "動画",
+   "上記のいずれも該当しない"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Web セミナーや動画は録画として保存できるので、あとから入社した人のトレーニングにも再利用できます。対面トレーニングや講師の養成は、その場で行う方法です。",
+  "qe": "Which training method can be saved and used again for reps who are hired after you do your initial training?",
+  "oe": [
+   "In-person training",
+   "Train the trainer",
+   "Video",
+   "None of the above"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce テクノロジーのリリース Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/deploy-your-salesforce-technology",
+  "q": "役員はどのような形で Salesforce を支援し、採用を推進することができますか?",
+  "o": [
+   "Salesforce に一度もログインしない。",
+   "レポート作成に Salesforce のみを使用し、チームにも同じことをするよう指示する。",
+   "稼働開始中は沈黙を守る。",
+   "すでに販売方法を確立している担当者は、Salesforce を使用する必要がないことを明らかにする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "役員自身がレポート作成に Salesforce だけを使い、チームにも同じことを求めると、Salesforce を使うのが当たり前になります。役員が使わなかったり、例外を認めたりすると、採用は進みません。",
+  "qe": "How can executives sponsor Salesforce and support adoption?",
+  "oe": [
+   "Never log in to Salesforce",
+   "Use Salesforce exclusively for reporting, and ask their teams to do the same",
+   "Stay silent during launch",
+   "Make it known that reps who already have a sales method don't have to use Salesforce"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / Salesforce テクノロジーのリリース Q4",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/deploy-your-salesforce-technology",
+  "q": "Salesforce の使用を担当者に奨励するにはどうすればよいですか?",
+  "o": [
+   "Salesforce を頻繁に使用している担当者を公表して評価する。",
+   "ログイン数が上位 10 位に入っていない担当者を公然と非難する。",
+   "好きなようにやらせ、誰が Salesforce を使用しているかは気にしない。",
+   "トレーニングは実施せず、担当者が実務で実践的に学べるようにする。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Salesforce をよく使っている担当者を見つけて、みんなの前で評価すると、ほかの担当者の利用も促せます。使っていない人を公に非難するのは逆効果です。",
+  "qe": "How can you encourage reps to use Salesforce?",
+  "oe": [
+   "Publicly recognize reps who use Salesforce frequently",
+   "Publicly humiliate reps who aren't in your top 10 for logins",
+   "Let everyone do their own thing, and don't bother yourself with who is using Salesforce",
+   "Offer no training so reps can learn to use it on the job"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "prepare",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / 長期的な採用の促進 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/drive-longterm-adoption",
+  "q": "Salesforce に関するフィードバックはどのような方法で収集すべきですか?",
+  "o": [
+   "廊下で担当者を呼び止め、どう思っているか確認する。",
+   "アイデアが浮かんだらメールで連絡するようチームに依頼する。",
+   "フィードバックなどいらない。すでに完璧である。",
+   "調査など、簡単に管理および追跡できるプロセスを設ける。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "フィードバックは、アンケートのように管理・追跡しやすいプロセスを決めて集めます。廊下での立ち話や思いつきのメールでは、記録が残らず対応が漏れてしまいます。",
+  "qe": "How should you gather feedback on Salesforce?",
+  "oe": [
+   "Stop reps in the hallway to see what they think",
+   "Request that the team email you with any ideas",
+   "Don't bother. It's already perfect",
+   "Create a process that you can easily manage and track, such as a survey"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce 採用戦略 / 長期的な採用の促進 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-adoption-strategies/drive-longterm-adoption",
+  "q": "新機能を追加した後、何をすべきですか?",
+  "o": [
+   "その機能を提案したユーザーのみに連絡する。",
+   "自身の上司に告げる。",
+   "ニュースを発表して盛り上げ、その機能の使い方のトレーニングをユーザーに実施する。",
+   "休暇に出かける。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "新機能を追加したら大きくアナウンスし、使い方をトレーニングします。「何か」「担当者にどんなメリットがあるか」「どう使うか」を伝えることが、採用につながります。",
+  "qe": "What should you do after adding a new feature?",
+  "oe": [
+   "Contact only the person who suggested that feature",
+   "Tell your boss",
+   "Generate excitement by announcing the news, and train users how to use the feature",
+   "Go on vacation"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Maps Basics / Get to Know Salesforce Maps Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-maps-basics/get-to-know-salesforce-maps",
+  "q": "Salesforce Maps の4つの主なカテゴリーのうち、3つはどれですか?",
+  "o": [
+   "データの視覚化、リアルタイムの位置追跡、ルートとスケジュールの最適化",
+   "制約に基づくルート、高度な設定、スケジュールの最適化",
+   "高度なマップ、ジオフェンスの有効化、検索の有効化",
+   "生産性、自動化、視覚化"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Salesforce Maps の主な機能は、データの視覚化、テリトリーの計画、リアルタイムの位置追跡、スケジュールとルートの最適化です。選択肢の中では「データの視覚化・位置追跡・ルートとスケジュールの最適化」がこれにあたります。",
+  "qe": "Three of the four main categories of Salesforce Maps are:",
+  "oe": [
+   "Visualizing data, tracking live locations, and optimizing routes and schedules",
+   "Constraint-based routes, advanced configuration, and schedule optimization",
+   "Advanced maps, enabled geofencing, enabled search",
+   "Productivity, automation, visualization"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Maps Basics / Get to Know Salesforce Maps Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-maps-basics/get-to-know-salesforce-maps",
+  "q": "Live Tracking が必要になるシナリオはどれですか?",
+  "o": [
+   "別々の都市で始まり終わるルートを最適化する",
+   "許可されていない移動があったときにアラートや通知を送る",
+   "郵便番号でテリトリーの境界を作る",
+   "配車アプリの代わりにする"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Live Tracking は、車両や資産の位置をリアルタイムで追跡するアドオンです。ジオフェンスを設定して、許可されていない移動があったときにアラートを出せます。ルートの最適化やテリトリーの作成は、Live Tracking がなくてもできます。",
+  "qe": "Select the scenario that requires Live Tracking.",
+  "oe": [
+   "Optimize routes starting and ending in different cities.",
+   "Send alerts or notifications of any unauthorized travel or movement.",
+   "Create territory boundaries using zip codes.",
+   "Replace a rideshare app."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Maps Basics / Explore Mapping Solutions for Teams Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-maps-basics/explore-mapping-solutions-for-teams",
+  "q": "Salesforce Maps は、営業チームが売上を増やすのにどう役立ちますか?",
+  "o": [
+   "距離の近さをもとにルートを計画する",
+   "キャンセルが出たときに、モバイルアプリで近くの取引先を探す",
+   "営業担当の現在地をリアルタイムで確認する",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Salesforce Maps を使うと、顧客の位置と移動時間をもとにルートを計画でき、キャンセルが出たときもモバイルで近くの取引先を探して予定を埋められます。営業担当の現在地をリアルタイムで見るのは Live Tracking の機能で、売上を増やす使い方としては挙げられていません。",
+  "qe": "How can Salesforce Maps help sales teams increase sales?",
+  "oe": [
+   "Plan routes based on proximity.",
+   "Utilize the mobile app to find nearby accounts when there is a cancellation.",
+   "Get a real-time view of sales reps' locations.",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Maps Basics / Explore Mapping Solutions for Teams Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-maps-basics/explore-mapping-solutions-for-teams",
+  "q": "Salesforce Maps は、サービスチームのフィールドサービス管理にどう役立ちますか?",
+  "o": [
+   "Google 検索エンジンとデータレイヤーを使う",
+   "訪問予定のチェックイン・チェックアウトを行う",
+   "ユーザー権限を割り当てる",
+   "営業ルートを最適化する"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "フィールドサービスのチームは、Salesforce Maps のモバイルアプリから訪問予定のチェックイン・チェックアウトや、記録の更新ができます。営業ルートの最適化は営業チーム向けの使い方です。",
+  "qe": "How can Salesforce Maps help service teams with field service management?",
+  "oe": [
+   "Use Google search engine and data layers",
+   "Check in and check out of appointments",
+   "Assign user permissions",
+   "Optimize sales routes"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ユーザー採用メトリクス / Salesforce の使用状況を測定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/user-adoption-metrics/measure-salesforce-usage",
+  "q": "ユーザーによる Salesforce の採用を測定するときに、初期の達成指標であるものはどれですか?",
+  "o": [
+   "ログイン率と ROI の増加",
+   "ログイン率とレコード更新",
+   "レコード更新と ROI の増加",
+   "Trailhead の使用状況とレコード更新",
+   "ログイン率と Trailhead の使用状況"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Salesforce の採用を測る初期の指標には、ログイン率、レコード作成、レコード更新があります。ROI の増加は、もっとあとに現れるビジネス成果の指標です。",
+  "qe": "What are some early indicators of success when measuring user adoption of Salesforce?",
+  "oe": [
+   "Login rates and ROI increase",
+   "Login rates and record updates",
+   "Record updates and ROI increase",
+   "Trailhead usage and record updates",
+   "Login rates and Trailhead usage"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ユーザー採用メトリクス / Salesforce の使用状況を測定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/user-adoption-metrics/measure-salesforce-usage",
+  "q": "ユーザー満足度を評価するときに避けるべきものはどれですか?",
+  "o": [
+   "アンケートを配布する",
+   "ビジネスプロセスレビューを実装する",
+   "ユーザーのフィードバックを無視する",
+   "Slack コラボレーションを評価する"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ユーザー満足度を評価するときは、アンケートやビジネスプロセスのレビュー、Slack でのやり取りなどでフィードバックを集めます。ユーザーの声を無視するのは避けるべきです。",
+  "qe": "Which of these should you avoid when assessing user satisfaction?",
+  "oe": [
+   "Distributing a survey",
+   "Implementing a business process review",
+   "Ignoring user feedback",
+   "Assessing Slack collaboration"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "adoption",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ユーザー採用メトリクス / ビジネス成果を追跡する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/user-adoption-metrics/track-business-outcomes",
+  "q": "Salesforce でビジネスパフォーマンスを測定可能な方法の例はどれですか?",
+  "o": [
+   "商談成立/不成立率",
+   "有効なライセンス数",
+   "ユーザー数",
+   "有効な取引先"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "ビジネスパフォーマンスは、商談の成立/不成立率のような成果の指標で測ります。ライセンス数やユーザー数は、ビジネスの成果を表すものではありません。",
+  "qe": "What are examples of how you can measure business performance in Salesforce?",
+  "oe": [
+   "Opportunity Win/Loss Ratio",
+   "Number of active licenses",
+   "Number of Users",
+   "Active Accounts"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "reports",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ユーザー採用メトリクス / ビジネス成果を追跡する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/user-adoption-metrics/track-business-outcomes",
+  "q": "AgentExchange ダッシュボードをダウンロードするときに、避けるべきことは何ですか?",
+  "o": [
+   "ダッシュボードの使用法を習得する非公式のトレーニングセッション",
+   "ダッシュボードを開発者組織にインストールする",
+   "各自のニーズに合わないダッシュボードを削除する",
+   "ダッシュボードをすぐに本番インスタンスにインストールする"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "AgentExchange のダッシュボードは、まず Sandbox や開発者組織にインストールして試してから、本番に入れます。いきなり本番インスタンスにインストールするのは避けます。",
+  "qe": "What should you avoid doing when downloading an AgentExchange dashboard?",
+  "oe": [
+   "Informal training sessions to learn how to use the dashboards",
+   "Installing the dashboard in a developer org",
+   "Deleting dashboards if they don't fit your needs",
+   "Installing the dashboard immediately into your production instance"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "reports",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ユーザーストーリーの作成 / ユーザーストーリーについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/user-story-creation/learn-about-user-stories",
+  "q": "ユーザーストーリーの「何」では何を説明しますか?",
+  "o": [
+   "ユーザーが必要とする機能",
+   "ユーザーに適用される制限",
+   "ユーザーの目標",
+   "ユーザーの視点"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "ユーザーストーリーは「誰」「何」「なぜ」で構成されます。「何」は、そのストーリーによって Salesforce 組織で何が実現・実装されるか、つまりユーザーが必要とする機能を表します。",
+  "qe": "What does “the what” in a user story describe?",
+  "oe": [
+   "The feature the user needs.",
+   "The limitations placed on the user.",
+   "The user’s goal.",
+   "The user’s perspective."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ユーザーストーリーの作成 / ユーザーストーリーについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/user-story-creation/learn-about-user-stories",
+  "q": "ユーザーストーリーは何に役立ちますか?",
+  "o": [
+   "プロジェクトの開始時にすべての仕様と詳細が確実にリストされるようにする。",
+   "コラボレーションの必要性を抑える。",
+   "将来の間違いを避けるために制限を追加する。",
+   "お客様/エンドユーザーの成功に重点を置く。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ユーザーストーリーは、プロジェクトがお客様やエンドユーザーにどう価値を届けるかに焦点を当てるのに役立ちます。最初にすべての仕様を決め切るためのものではなく、コラボレーションを減らすものでもありません。",
+  "qe": "What’s one thing user stories help you do?",
+  "oe": [
+   "Ensure all specifications and details are listed at the beginning of the project.",
+   "Decrease the need for collaboration.",
+   "Add restrictions that avoid future mistakes.",
+   "Focus on customer/end-user success."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ユーザーストーリーの作成 / ユーザーストーリーを作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/user-story-creation/construct-a-user-story",
+  "q": "受け入れ条件の特徴はどれですか?",
+  "o": [
+   "テストステートメントは 3 つまでに制限されている。",
+   "true または false で答えられる。",
+   "簡単なものから難しいものへの順にリストされる。",
+   "否定的なフレーズでのみ記述される。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "受け入れ条件の各項目は、単独でテストでき、true か false で答えられる必要があります。数の上限や並び順、否定形で書くといった決まりはありません。",
+  "qe": "What is a characteristic of acceptance criteria?",
+  "oe": [
+   "Limited to three testing statements.",
+   "Answered with only a true or false.",
+   "Listed from easiest to hardest.",
+   "Only written in negative phrasing."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ユーザーストーリーの作成 / ユーザーストーリーを作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/user-story-creation/construct-a-user-story",
+  "q": "ユーザーストーリーの「誰」として未定義のユーザーを使用するのが有害なのはなぜですか?",
+  "o": [
+   "未定義のユーザーには複数のユーザーストーリーが必要なため。",
+   "ユーザーが未定義であると受け入れ条件に余分な作業が必要なため。",
+   "ユーザーの意図が明確に定義できないため。",
+   "ユーザーストーリーは社外のユーザー向けに作成されるものではないため。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "「誰」があいまいだと、開発チームはそのユーザーの動機やニーズを理解できず、意図した結果が得られません。ユーザーストーリーでは、具体的なユーザー(役割)を書くことが大切です。",
+  "qe": "Why is it detrimental to use an undefined user as the who in a user story?",
+  "oe": [
+   "Undefined users require multiple user stories.",
+   "Acceptance criteria for an undefined user requires extra work.",
+   "Intention of the user can’t be clearly defined.",
+   "User stories aren’t meant to be written for users outside of the company."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "discovery",
+  "x": ""
+ }
+]

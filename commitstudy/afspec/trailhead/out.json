@@ -1,0 +1,4428 @@
+[
+ {
+  "s": "Trailhead: エージェントの分析と監視 / エージェントモニタリングを使ってみる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-analytics-and-monitoring/get-started-with-agent-monitoring",
+  "q": "エージェントのオブザーバビリティに付属する機能のうち、継続的な改善を直接サポートするものはどれですか?",
+  "o": [
+   "エージェントの実際の動作に基づいて、期待を下回る結果を特定し、重点的な改善策を実施する機能",
+   "直接的な介入や分析は行わず、すべてのエージェントの問題を自動的に修復する機能",
+   "エージェント開発ライフサイクルの「テスト」フェーズを不要にする機能",
+   "データ収集コストを削減するために、営業時間内のみエージェントを監視する機能"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "オブザーバビリティは、稼働中のエージェントの実際の動作を測って把握することです。実際の動作から期待を下回る部分を見つけ、そこに絞って改善することで、継続的な改善につながります。問題を自動で直したり、テストを不要にしたりする機能ではありません。",
+  "qe": "Which capability does agent observability provide that directly supports continuous improvement?",
+  "oe": [
+   "The ability to identify underperforming outcomes and implement targeted improvements based on real agent behavior.",
+   "The ability to automatically fix all agent issues without direct intervention or analysis.",
+   "The ability to eliminate the need for the Test phases of the Agent Development Lifecycle.",
+   "The ability to monitor agents exclusively during business hours to reduce data collection costs."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "observe",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの分析と監視 / エージェントモニタリングを使ってみる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-analytics-and-monitoring/get-started-with-agent-monitoring",
+  "q": "エージェントのデフレクション率、エスカレーション率、放棄率を測定するときは、どのようなメトリクスを使用しますか?",
+  "o": [
+   "エージェントの健全性",
+   "エージェントの品質",
+   "エージェントの有効性",
+   "エージェントの利用状況"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "デフレクション率、エスカレーション率、放棄率は、エージェントがどれだけ用件を解決できたかを表す「有効性」のメトリクスです。健全性はエラーや遅延、品質は応答の関連性など、利用状況は使われ方を表します。",
+  "qe": "When you measure an agent’s rate of deflections, escalations, and abandonment, what kind of metric are you using?",
+  "oe": [
+   "Agent health",
+   "Agent quality",
+   "Agent effectiveness",
+   "Agent usage"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "observe",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの分析と監視 / エージェントのメトリクスとスコアを監視する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-analytics-and-monitoring/monitor-agent-metrics-and-scores",
+  "q": "エージェント分析で、エージェントのパフォーマンスのインテント別の内訳はどこで検討できますか?",
+  "o": [
+   "ディメンションタブ",
+   "テーブルビュー",
+   "パフォーマンスのインサイト",
+   "有効性メトリクス"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "エージェント分析の[パフォーマンスのインサイト]タブでは、サブエージェント・インテント・アクションごとにパフォーマンスの内訳を比べられます。どのインテントで結果が悪いのかを見つけるのに使います。",
+  "qe": "In Agent Analytics, where can you explore agent performance breakdowns by intents?",
+  "oe": [
+   "Dimension tabs",
+   "Table View",
+   "Performance Insights",
+   "Effectiveness metrics"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "observe",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの分析と監視 / エージェントのメトリクスとスコアを監視する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-analytics-and-monitoring/monitor-agent-metrics-and-scores",
+  "q": "ユーザー数は 2 日間同じであると仮定します。2 日目にデフレクション率が上昇した場合、どのようなことを意味しますか?",
+  "o": [
+   "エージェントの回答に誤った詳細が多数含まれていた。",
+   "回答を得ることを諦めたユーザーが増えた。",
+   "サポート担当者にエスカレーションしたユーザーが増えた。",
+   "エージェントが解決することができるユーザーリクエストが増えた。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "デフレクション率は、人間や別のエージェントにエスカレーションせずに終わったセッションの割合です。ユーザー数が同じでこの率が上がったなら、エージェントが自分で解決できたリクエストが増えたことを意味します。",
+  "qe": "Assume that the number of users remains the same over 2 days. If the deflection rate increased on the second day, it means that:",
+  "oe": [
+   "The agent responded with too many incorrect details.",
+   "More users gave up trying to get an answer.",
+   "More users escalated to a support representative.",
+   "The agent successfully resolved more user requests."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "observe",
+  "x": "Effectiveness タブでは、Deflection Rate(エスカレーションなしで終わったセッションの割合)、Escalation Rate、Abandonment Rate などを見ます。"
+ },
+ {
+  "s": "Trailhead: エージェントの分析と監視 / エージェントのセッションとインテントを調査する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-analytics-and-monitoring/investigate-agent-sessions-and-intents",
+  "q": "[Sessions & Intents (セッションとインテント)] ページに移動したところ、一部のセッションが [Unprocessed (未処理)] と表示されていることに気がつきました。これはどういう意味でしょうか?",
+  "o": [
+   "これらのセッションは品質スコアの評価で不合格であったため、手作業で確認する必要がある。",
+   "これらのセッションは現在進行中か、終了したばかりで、インテントパイプラインやクラスタリングパイプラインによる処理が完了していない。",
+   "これらのセッションは、エージェントが応答する前にユーザーに放棄された。",
+   "これらのセッションにはエラーが含まれ、エージェントが会話を完了できなかった。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "[未処理]のセッションは、進行中か終わったばかりで、インテントやクラスタリングの処理がまだ終わっていないものです。処理済みセッションに見つからないときは、未処理セッションを確認します。",
+  "qe": "You navigate to the Sessions & Intents page and notice some sessions are labeled as “Unprocessed.” What does this mean?",
+  "oe": [
+   "These sessions have failed quality score evaluation and need manual review.",
+   "These sessions are still active or recently closed and haven’t been fully processed by the intent and clustering pipelines.",
+   "These sessions were abandoned by users before the agent could respond.",
+   "These sessions contain errors that prevented the agent from completing the conversation."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "observe",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの分析と監視 / エージェントのセッションとインテントを調査する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-analytics-and-monitoring/investigate-agent-sessions-and-intents",
+  "q": "エージェントがオプショナルツアーの予約に失敗した理由を理解したいと思い、セッションの [Trace (トレース)] タブを確認しています。トレースではどのような情報を確認できますか?",
+  "o": [
+   "エージェントが試行した一連のアクション、各アクションへの入力、返された出力",
+   "ユーザーのデモグラフィック情報と購入履歴",
+   "同じユーザーのほかの全セッションのサマリー",
+   "エージェントの応答時間を最適化するための提案"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "[トレース]タブには、エージェントが実行した処理のステップが時系列で表示されます。どのアクションを試し、何を入力し、何が返ってきたかを確認できるので、予約に失敗した原因を調べるのに役立ちます。",
+  "qe": "While reviewing the Trace tab for a session, you want to understand why the agent failed to book an excursion. What information can you find in the trace?",
+  "oe": [
+   "The sequence of actions the agent attempted, the inputs provided to each action, and the outputs returned.",
+   "The user’s demographic information and purchase history.",
+   "A summary of all other sessions from the same user.",
+   "Suggestions for how to optimize the agent's response time."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "observe",
+  "x": "Agentforce セッショントレース(Session Tracing)セッションごとのターン、推論の手順、アクション、メッセージ、エラーエージェントが何を判断し、何をしたか"
+ },
+ {
+  "s": "Trailhead: エージェントの分析と監視 / エージェント健全性を監視する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-analytics-and-monitoring/monitor-agent-health",
+  "q": "プロアクティブなエージェント健全性監視によって可能になることは何ですか?",
+  "o": [
+   "毎月末に 1 つのダッシュボードを確認する。",
+   "影響が広がる前に、エラーや遅延の急増をいち早く検知する。",
+   "ADLC のすべてのテスト活動を置き換える。",
+   "セッションレベルの分析が不要になる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロアクティブな健全性監視を使うと、エラーや遅延の急増をほぼリアルタイムで検知し、影響が広がる前に対応できます。月末にダッシュボードを見るだけでは、問題に気付くのが遅れます。",
+  "qe": "What can proactive Agent Health Monitoring enable you to do?",
+  "oe": [
+   "Review one dashboard at the end of each month.",
+   "Detect error and latency spikes quickly before impact spreads.",
+   "Replace all testing activities in the ADLC.",
+   "Eliminate the need for session-level analysis."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "observe",
+  "x": "Agent Health Monitoring のアラートは、1つのエージェントの1つの指標を監視します。毎分、直近15分のデータで評価し、通知したあと30分は同じアラートから再通知しません。"
+ },
+ {
+  "s": "Trailhead: エージェントの分析と監視 / エージェント健全性を監視する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-analytics-and-monitoring/monitor-agent-health",
+  "q": "通知に基づいて関連するセッションを詳しく調べる最大の目的は何ですか?",
+  "o": [
+   "過去のすべてのトラフィックを公平に比較するため",
+   "アラート違反の発生期間に関連するインタラクションを特定するため",
+   "トレース分析を省略して時間を節約するため",
+   "対話量が膨大なセッションのみを優先するため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "通知から関連するセッションを掘り下げると、アラートの条件に当てはまる期間のインタラクションに絞り込めます。その会話やトレースを調べて、問題の原因を特定します。",
+  "qe": "What’s the most effective reason to drill into associated sessions from a notification?",
+  "oe": [
+   "To compare all historical traffic equally",
+   "To isolate interactions tied to the alert breach window",
+   "To skip trace analysis and save time",
+   "To prioritize only sessions with high volume"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "observe",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェント API: クイックルック / エージェント API を使用してカスタム AI エージェントを作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-api-quick-look/build-custom-ai-agents-with-agent-api",
+  "q": "エージェント API へのコールを実行するには何が必要ですか?",
+  "o": [
+   "外部クライアントアプリケーションを作成する",
+   "OAuth 設定を有効にする。",
+   "コンシューマー鍵とコンシューマーの秘密を取得する。",
+   "新しいモデルを設定する。",
+   "A と B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "エージェント API を呼び出すには、外部クライアントアプリケーションを作り、OAuth 設定を有効にして、コンシューマー鍵とコンシューマーの秘密を取得します。新しいモデルの設定は不要です。",
+  "qe": "What is required to make calls to the Agent API?",
+  "oe": [
+   "Create an external client app.",
+   "Enable OAuth settings.",
+   "Obtain the consumer key and consumer secret.",
+   "Configure a new model.",
+   "‌A, B, and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェント API: クイックルック / エージェント API を使用してカスタム AI エージェントを作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-api-quick-look/build-custom-ai-agents-with-agent-api",
+  "q": "正誤問題: エージェント API では、同期メッセージ処理とストリーミングメッセージ処理の両方がサポートされている。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "エージェント API は、同期メッセージとストリーミングメッセージの両方に対応しています。1回で完全な応答が必要なら同期、チャットのようにリアルタイムで返したいならストリーミングを使います。",
+  "qe": "True or false: The Agent API supports both synchronous and streaming message handling.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの動作の基本 / エージェントの動作と会話デザインを検討する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-basics/explore-agent-behavior-and-conversation-design",
+  "q": "次のうち、従来の電話自動応答システムや基本的なチャットボットなど、ルールベースのスクリプト型対話システムの主な制限事項はどれですか?",
+  "o": [
+   "応答の生成を大規模言語モデルに依存している。",
+   "人間のパートナーが補佐できる場合にのみ機能する。",
+   "適切なツールとアクションの選択に自律型エージェントを必要とする。",
+   "事前定義されたパスを忠実にたどり、ユーザーがスクリプトから逸脱すると行き詰まる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ルールベースの対話システムは、あらかじめ決めたパスをそのままたどります。ユーザーがスクリプトから外れると、行き止まりになってしまうのが大きな制限です。LLM や自律型エージェントを使うのは、新しいタイプのエージェントの特徴です。",
+  "qe": "Which of these is a key limitation of rule-based, scripted interaction systems, like traditional phone trees and basic chatbots?",
+  "oe": [
+   "They rely on large language models to generate responses.",
+   "They can only function when a human copilot is available to assist.",
+   "They require autonomous agents to select the appropriate tools and actions.",
+   "They follow a rigid, predefined path and reach a dead-end when users veer off script."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの動作の基本 / エージェントの動作と会話デザインを検討する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-basics/explore-agent-behavior-and-conversation-design",
+  "q": "次のうち、インテントの失敗の例に該当するものはどれですか?",
+  "o": [
+   "エージェントがお得なプランを尋ねられたときに、存在しないリゾートパッケージのオプションのハルシネーションを生成する。",
+   "ユーザーが注文をキャンセルしたいときに、代わりにキャンセルポリシーに関する情報を提示する。",
+   "ユーザーが否定的なセンチメントを示した後でエージェントが応答を拒否する。",
+   "エージェントがユーザーに肯定的なセンチメントを促すために、会社のポリシーに違反する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "インテントの失敗とは、エージェントは指示どおりに動いているのに、ユーザーの本当の用件が解決されない状況です。キャンセルしたいユーザーにキャンセルポリシーの説明だけを返すのが、その典型です。",
+  "qe": "Which of these is an example of an intent failure?",
+  "oe": [
+   "An agent hallucinates a resort package option that doesn’t exist when asked about deals.",
+   "A user wants to cancel an order and is offered information on cancellation policies instead.",
+   "An agent refuses to respond after a user expresses negative sentiment.",
+   "An agent violates company policy in order to encourage positive sentiment in a user."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの動作の基本 / 信頼できる動作をデザインする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-basics/design-trusted-behavior",
+  "q": "ユーザーがエージェントとやり取りするときに、正しい答えが示されますが、その結論に至った経緯や参照した情報源が説明されません。信頼できる動作を支える領域のうち、ユーザーの不安を軽減するために改善が必要なものはどれですか?",
+  "o": [
+   "尊重",
+   "コンテキストの認識",
+   "明確性",
+   "拡張性"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "信頼できる動作の原則の1つ「明確さ」では、回答だけでなく根拠となる情報源も示し、透明性を高めます。正しい答えでも経緯や情報源が示されなければ、明確さが欠けていることになります。",
+  "qe": "A user interacts with an agent that provides a correct answer but fails to explain how it reached that conclusion or what sources it used. According to the pillars of trusted behavior, which area needs improvement to reduce user anxiety?",
+  "oe": [
+   "Respect",
+   "Context Awareness",
+   "Clarity",
+   "Scalability"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの動作の基本 / 信頼できる動作をデザインする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-basics/design-trusted-behavior",
+  "q": "スムーズで敬意あるユーザーエクスペリエンスを維持するために、エージェントから人間への引き継ぎを優先すべきタイミングはいつですか?",
+  "o": [
+   "エージェントの処理能力を節約するために、エージェントにシンプルな「はい」/「いいえ」の質問をする場合。",
+   "ユーザーのセンチメントが著しく否定的になった場合、またはタスクに人間レベルの権限が必要な場合。",
+   "エージェントが応答できない技術的なループエラーに遭遇した場合のみ。",
+   "エージェントが保証ポリシーまたはナレッジベースの記事を参照する必要がある場合。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ユーザーの感情が強く否定的になったときや、人間の権限が必要なタスクのときは、人間への引き継ぎを優先します。エスカレーションすべき状況を見極めることが、敬意ある動作の一部です。",
+  "qe": "When should an agent-to-human hand-off be prioritized to maintain a respectful and smooth user experience?",
+  "oe": [
+   "Whenever the agent is asked a simple Yes/No question to save the agent’s processing power.",
+   "When the user’s sentiment becomes highly negative or the task requires human-level permissions.",
+   "Only when the agent encounters a technical loop error that prevents it from responding.",
+   "When the agent needs to cite a warranty policy or a knowledge base article."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの動作の評価 / AI エージェントの価値を評価する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-evaluation/evaluate-ai-agent-value",
+  "q": "エージェントは特定のデータベースにアクセスできないことを正確に認識し、ユーザーが手動で情報を確認できるダッシュボードへのリンクを提供しました。ユーザーはエージェントが機能しないと報告します。システム管理者はこのフィードバックをどのように分類すべきですか?",
+  "o": [
+   "Agentforce レイヤーの技術的な再起動が必要なシステムクラッシュ",
+   "ユーザーエクスペリエンスの失敗をもたらした技術的に成功したインタラクション",
+   "エージェントは常にユーザーが満足する回答を生成すべきであるため、P0 システム障害",
+   "エージェントがセキュリティプロトコルに完全に従い、ユーザーをリソースに誘導したため、ユーザーエクスペリエンスの成功"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "エージェントがアクセスできないことを正しく伝えてダッシュボードに案内したのは、技術的には成功です。しかしユーザーは必要な答えを得られなかったので、ユーザーエクスペリエンスとしては失敗です。技術的な成否とユーザーの体験は分けて考えます。",
+  "qe": "An agent correctly identifies that it doesn’t have access to a specific database and provides a link to a dashboard where the user can find the information manually. The user reports that the agent doesn’t work. How should an admin categorize this feedback?",
+  "oe": [
+   "A system crash that requires a technical reboot of the Agentforce layer",
+   "A successful technical interaction that resulted in a failed user experience",
+   "A P0 System Failure because the agent should always produce an answer to satisfy the user",
+   "A successful user experience because the agent followed its security protocols perfectly and directed the user to a resource"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの動作の評価 / AI エージェントの価値を評価する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-evaluation/evaluate-ai-agent-value",
+  "q": "セールス業務エージェントは機能していて正確ですが、単純なデータ要求に対して 500 語の説明を提供するため、ユーザーはスクロールして実際の数値を探さなければなりません。失敗ポイント分類によると、この問題の優先度レベルまたはランクは何ですか?",
+  "o": [
+   "P0: システム障害",
+   "P1: ユーザーインテントが満たされない",
+   "P2: 価値が限られている",
+   "P3: 運用上の成功"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "機能していて正確だが、冗長すぎてユーザーに余計な手間をかけさせる状態は、P2(価値が限られている)にあたります。P0 はシステム障害、P1 はユーザーインテントが満たされない状態です。",
+  "qe": "A Sales Operations agent is functional and accurate, but it provides a 500-word explanation for a simple data request, forcing the user to scroll and hunt for the actual number. According to the Failure Points Taxonomy, what is the priority level or tier of this issue?",
+  "oe": [
+   "P0: System Failure",
+   "P1: User Intent Not Met",
+   "P2: Limited Value",
+   "P3: Operational Success"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの動作の評価 / エージェント応答をトリアージする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-evaluation/triage-agent-responses",
+  "q": "エージェントの動作の設計において、評価はどのような役割を果たしますか?",
+  "o": [
+   "的を絞った評価により、設計担当者はユーザーインテントを達成するための介入をトリアージし、優先度を付けることができる。",
+   "既存のエージェントの評価により、設計担当者は同じエラーを繰り返さない新しいエージェントを構築できる。",
+   "評価により、ユーザーは自分のエクスペリエンスについて直接フィードバックする機会が得られる。",
+   "設計担当者は評価を活用して、エージェントに自身の応答を評価させ、改善方法を検討させることができる。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "評価(ヒューリスティックと重大度ランク)を使うと、設計担当者はどこで価値が失われているかを把握し、ユーザーインテントを満たすための改善に優先度を付けられます。",
+  "qe": "What role do evaluations play in agent behavior design?",
+  "oe": [
+   "Targeted evaluations help designers triage and prioritize interventions that achieve a user’s intent.",
+   "Evaluations of existing agents help designers build new ones that won’t repeat the same errors.",
+   "Evaluations give users an opportunity for direct feedback on their experiences.",
+   "Designers can use evaluations to have agents assess their own responses and reflect on ways to improve them."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントの動作の評価 / エージェント応答をトリアージする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-evaluation/triage-agent-responses",
+  "q": "ヒューリスティックが評価された後、設計担当者はエージェントの会話ログ全体にどのようにスコアを付けるべきですか?",
+  "o": [
+   "最終的な優先度マッピングのためにすべてのヒューリスティックを平均する。",
+   "ユーザーインテントに基づいて最も重要なヒューリスティックを主観的に評価する。",
+   "会話は個々のヒューリスティックの観点からのみ評価される。",
+   "最終的な優先度は、ほかのヒューリスティックにかかわらず、最も重大な失敗に基づいて評価される。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "会話の最終スコアは平均では決めません。1つの重大な失敗が体験全体を損なうことがあるため、観察された最も重い重大度ランク(P0、P1、P2)でスコアを付けます。",
+  "qe": "After heuristics are evaluated, how should a designer score the overall log of an agent conversation?",
+  "oe": [
+   "Average all heuristics scored for a final priority mapping",
+   "Subjectively assess which heuristic is most important based on user intent.",
+   "Conversations are only evaluated in terms of individual heuristics.",
+   "The final priority is assessed based on the most severe failure, regardless of other heuristics."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / Agentforce のトラブルシューティング入門 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/get-started-with-agentforce-troubleshooting",
+  "q": "エージェントルーターではどのようなことができますか?",
+  "o": [
+   "サブエージェントの選択を確認する。",
+   "システムの制約を確認する。",
+   "ナレッジの出力を確認する。",
+   "組織を再起動する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "エージェントルーターは、ユーザーの発話に合うサブエージェントを選ぶ部分です。トラブルシューティングでは、想定どおりのサブエージェントが選ばれたかを確認します。",
+  "qe": "What does the Agent Router allow you to do?",
+  "oe": [
+   "Check subagent selection.",
+   "Check system constraints.",
+   "Check Knowledge output.",
+   "Restart the org."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / Agentforce のトラブルシューティング入門 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/get-started-with-agentforce-troubleshooting",
+  "q": "Agentforce の予期しない動作の一般的な根本原因はどれですか?",
+  "o": [
+   "最近アップグレードされたブラウザー",
+   "Salesforce ライセンスが多すぎる",
+   "範囲が不明確で、重複しているサブエージェント",
+   "無効な Sandbox"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ルーティングがうまくいかない原因として多いのは、サブエージェント同士の重複、汎用的な名前、あいまいで広すぎる説明です。範囲を明確にして重ならないようにすると、エージェントが正しく選べます。",
+  "qe": "Which of these is a common root cause of unexpected Agentforce behavior?",
+  "oe": [
+   "A recently upgraded browser",
+   "Too many Salesforce licenses",
+   "Overlapping subagents with unclear scope",
+   "An inactive sandbox"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / 設定とデータの問題を修正する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/fix-configuration-and-data-issues",
+  "q": "データエラーではなく設定エラーを最も直接的に示す症状はどれですか?",
+  "o": [
+   "AI が生成したインサイトが不正確または混乱を招く内容に見える。",
+   "必要な値が欠落しているため自動化処理が失敗する。",
+   "応答が不完全、またはランダムに途中で切れる。",
+   "エージェントがワークフローを実行すると、「Access Denied (アクセスが拒否されました)」または「Insufficient Privileges (アクセス権がありません)」と表示される。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "「Access Denied」や「Insufficient Privileges」のエラーは、権限などの設定エラーを示します。不正確な内容や必要な値の欠落は、データエラーの症状です。",
+  "qe": "Which symptom points most directly to a configuration error rather than a data error?",
+  "oe": [
+   "AI-generated insights look inaccurate or confusing.",
+   "Automations fail on missing required values.",
+   "Responses are incomplete or truncated randomly.",
+   "Access Denied or Insufficient Privileges appears when the agent runs a workflow."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / 設定とデータの問題を修正する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/fix-configuration-and-data-issues",
+  "q": "Data Cloud を基盤とした応答が古いまたは不完全に見える場合、最初に何を確認すべきですか?",
+  "o": [
+   "ユーザーの権限セットグループ",
+   "データストリームの同期状況と項目の対応付け",
+   "指定ログイン情報",
+   "フローデバッガー"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Data 360(旧 Data Cloud)を使った応答が古い・不完全なときは、データストリームの同期状況と項目の対応付けをまず確認します。同期の遅れや停止、対応付けの誤りがよくある原因です。",
+  "qe": "What should you check first if a Data Cloud-backed response looks stale or incomplete?",
+  "oe": [
+   "The user’s permission set group",
+   "Data Stream sync status and field mappings",
+   "Named Credentials",
+   "Flow Debugger"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / ルーティング、アクション、プロンプト作文の問題を解決する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/resolve-routing-action-and-prompting-issues",
+  "q": "エージェントが確実に使用できるようにコンテキスト変数を設定するには、どうすればよいですか?",
+  "o": [
+   "サブエージェントの指示に記載する。",
+   "ユーザーにチャットに入力するよう求める。",
+   "サブエージェントの名前を変更する。",
+   "アクション出力の対応付け、変数の対応付け、またはフローロジックを使用して設定する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "コンテキスト変数は、アクション出力の対応付け、設定での変数の対応付け、フローなどのロジックで直接設定します。エージェントがプロンプトの指示から変数の値を推測してくれると考えてはいけません。",
+  "qe": "How should you set a context variable so an agent can reliably use it?",
+  "oe": [
+   "Mention it in the subagent's instructions.",
+   "Ask the learner to type it into the chat.",
+   "Rename the subagent.",
+   "Set them through action output mapping, variable mapping, or flow logic."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / ルーティング、アクション、プロンプト作文の問題を解決する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/resolve-routing-action-and-prompting-issues",
+  "q": "プロンプト作文の問題による予測不能な動作を軽減するプラクティスはどれですか?",
+  "o": [
+   "複数のサブエージェントを 1 つの広範なサブエージェントにまとめる。",
+   "アクションを使用すべき状況と使用すべきでない状況を明確に定義する。",
+   "複雑さにかかわらず、サブエージェントの指示をより長く、詳細に記述する。",
+   "コンテキストからのビジネスルールの推測を LLM に任せる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "LLM ベースのエージェントは、プロンプトが不明確だと予測しにくい動きをします。アクションを使うべき状況と使うべきでない状況をはっきり書き、ビジネスルールも推測させずに明示すると、動作が安定します。",
+  "qe": "Which practice reduces unpredictable behavior caused by prompting issues?",
+  "oe": [
+   "Combine multiple Subagents into one broad Subagent.",
+   "Clearly define when an action should and shouldn’t be used.",
+   "Write longer, more detailed Subagent instructions regardless of complexity.",
+   "Let the LLM infer business rules from context."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / グラウンディング、制限、一般的なエラーをトラブルシューティングする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/troubleshoot-grounding-limits-and-common-errors",
+  "q": "Agentforce の応答に引用を表示するために必要な条件は何ですか?",
+  "o": [
+   "ユーザーがサポートされている言語で質問する。",
+   "エージェントが人間にエスカレーションした。",
+   "ナレッジアクションが引用を返し、そのアクションで引用が有効になっている。",
+   "組織に有効なナレッジアクションが複数ある。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "応答に引用が表示されるのは、ナレッジアクションが引用を返し、そのアクションで引用が有効になっている場合だけです。引用が出ないときは、まずアクションの設定を確認します。",
+  "qe": "What must be true for citations to appear in an Agentforce response?",
+  "oe": [
+   "The learner asks a question in a supported language.",
+   "The agent has escalated to a human.",
+   "The Knowledge Action returns citations and citations are enabled for it.",
+   "The org has more than one active Knowledge Action."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / グラウンディング、制限、一般的なエラーをトラブルシューティングする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/troubleshoot-grounding-limits-and-common-errors",
+  "q": "Agentforce の応答が途中で切れないようにするための推奨方法は何ですか?",
+  "o": [
+   "ターンごとの LLM コール数を増やす。",
+   "大きな出力を埋め込む代わりに、[Show in Conversation (会話に表示)] を使用する。",
+   "すべてのアクション出力にさらに項目を追加する。",
+   "グラウンディングチェックを無効にする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "大きな出力を応答に直接埋め込むと、応答が途中で切れることがあります。代わりに[Show in Conversation(会話に表示)]を使って出力を表示するのが推奨される方法です。",
+  "qe": "What's a recommended way to avoid truncated Agentforce responses?",
+  "oe": [
+   "Increase the number of LLM calls per turn.",
+   "Use Show in Conversation instead of embedding large outputs.",
+   "Add more fields to every Action output.",
+   "Disable groundedness checks."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / インテグレーションエラーとランタイムエラーを解決する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/resolve-integration-and-runtime-errors",
+  "q": "エージェントが外部 API を呼び出すときに、「401 Unauthorized」エラーが発生します。最初に何を確認すべきですか?",
+  "o": [
+   "ガバナ制限",
+   "データストリームの同期状況",
+   "指定ログイン情報と OAuth トークンの状況",
+   "権限セットグループ"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "外部 API で「401 Unauthorized」が出るのは認証の問題です。期限切れの OAuth トークンや無効な API キーがよくある原因なので、指定ログイン情報と OAuth トークンの状況をまず確認します。",
+  "qe": "An agent throws a \"401 Unauthorized\" error calling an external API. What should you check first?",
+  "oe": [
+   "Governor limits.",
+   "Data Stream sync status.",
+   "Named Credentials and OAuth token status.",
+   "The permission set group."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のエージェント動作のトラブルシューティング / インテグレーションエラーとランタイムエラーを解決する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-behavior-troubleshooting-in-agentforce/resolve-integration-and-runtime-errors",
+  "q": "インテグレーションエラーではなく、ランタイムエラーであることを示すものはどれですか?",
+  "o": [
+   "外部 API からの 500 Internal Server Error",
+   "再帰的なトリガーによる、自動化処理の予期しないループ",
+   "サードパーティのサービスからの応答の遅延",
+   "期限切れの API キー"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ランタイムエラーは、処理の途中停止や例外、終わらない自動化のループなど、Salesforce 内部の処理で起きるエラーです。再帰的なトリガーによるループはその例です。外部 API の 500 エラーや期限切れの API キーは、インテグレーションエラーにあたります。",
+  "qe": "What's a sign of a runtime error rather than an integration error?",
+  "oe": [
+   "A 500 Internal Server Error from an external API.",
+   "An automation loops unexpectedly due to a recursive trigger.",
+   "Slow responses from a third-party service.",
+   "An expired API key."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントのカスタマイズ: クイックルック / エージェントをカスタマイズする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-customization-quick-look/customize-your-agents",
+  "q": "複雑な自動化 (プロンプトの一部として外部サービスからデータを取得するなど) に最適なカスタマイズの種別はどれですか?",
+  "o": [
+   "フロー",
+   "プロンプト",
+   "Apex",
+   "アプリケーション"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "フローやプロンプトでできるのは、自然言語の指示や通常のフローで自動化できる業務までです。外部サービスからデータを取ってくるような複雑な自動化には、Apex でのカスタマイズが向いています。",
+  "qe": "Which type of customization is best for complex automation, like retrieving data from a third-party service as part of a prompt?",
+  "oe": [
+   "Flows",
+   "Prompts",
+   "Apex",
+   "Apps"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "actions",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントのカスタマイズ: クイックルック / エージェントをカスタマイズする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-customization-quick-look/customize-your-agents",
+  "q": "フローを使用すると、AI エージェントは何を実行できますか?",
+  "o": [
+   "Salesforce データを変更する",
+   "以前に成功したプロンプトを繰り返す",
+   "顧客を適切なエージェントにつなぐルートを指定する",
+   "カスタムコードを使用して、簡単にリリースできる高度なエージェントアクションを作成する"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "フローを使うと、エージェントは顧客レコードの変更など、Salesforce のデータを変更する業務を実行できます。カスタムコードで高度なアクションを作るのは Apex の役割です。",
+  "qe": "What do flows allow AI agents to do?",
+  "oe": [
+   "Make changes to your Salesforce data.",
+   "Repeat previously successful prompts.",
+   "Designate pathways for customers to interact with the right agent.",
+   "Use custom code to create advanced agent actions that you can easily deploy."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "actions",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: フローを使用したエージェントのカスタマイズ / フローをエージェント対応にする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-customization-with-flows/learn-how-to-make-agent-ready-flows",
+  "q": "エージェントアクションで必要なフロー変数の種類はどれですか?",
+  "o": [
+   "レコード変数とテキスト変数",
+   "入力変数",
+   "出力変数",
+   "入力変数と出力変数"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "フローを使ったエージェントアクションには、フロー内に入力変数と出力変数がそれぞれ1つ以上必要です。渡すデータがない場合でも、エラーメッセージを返す出力変数を用意することを検討します。",
+  "qe": "What kind of flow variable is required by an agent action?",
+  "oe": [
+   "Record variable and text variable",
+   "Input variable",
+   "Output variable",
+   "Input variable and output variable"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "actions",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: フローを使用したエージェントのカスタマイズ / フローをエージェント対応にする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agent-customization-with-flows/learn-how-to-make-agent-ready-flows",
+  "q": "エージェントに送信されるデータを制限する場合に選択するべき [Get Records (レコードを取得)] オプションはどれですか?",
+  "o": [
+   "Automatically store all fields (すべての項目を自動的に保存)",
+   "Choose fields and let Salesforce do the rest (項目を選択して後は Salesforce に任せる)",
+   "Choose fields and assign variables (項目を選択して変数を割り当てる)",
+   "Only the first record (最初のレコードのみ)"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "[Get Records]のデフォルトはすべての項目を保存する設定ですが、エージェントに送るデータを絞るには[Choose fields and assign variables(項目を選択して変数を割り当てる)]を選びます。必要な項目だけを個別の変数で渡せます。",
+  "qe": "Which Get Records option should you select to limit the data going to your agent?",
+  "oe": [
+   "Automatically store all fields",
+   "Choose fields and let Salesforce do the rest",
+   "Choose fields and assign variables",
+   "Only the first record"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "actions",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: AgentExchange: クイックルック / 新しい AgentExchange を体験する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentexchange-quick-look/experience-the-new-agentexchange",
+  "q": "新しいブラウザータブを開いたり、新しい URL を入力したりせずに、AgentExchange で見つけたエージェントとの互換性のある Slack ツールを見つけるには、Slack アプリケーションでどのように操作しますか?",
+  "o": [
+   "画面上部のナビゲーションバーにある Slack タブをクリックする。",
+   "パートナーマーケットプレイスアプリケーションを開き、必要な Slack インテグレーションをディレクトリで検索する。",
+   "セマンティック検索バーに要求を入力すると、新しいタブが自動的に開き、外部の Slack App Directory にリダイレクトされる。",
+   "Agentforce Builder を起動し、カスタム Slack アクションをゼロから手動でコーディングする。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "新しい AgentExchange には固定のナビゲーションバーがあり、Salesforce アプリケーション、エージェント、Slack Marketplace のインテグレーションを同じタブのまま切り替えられます。Slack のツールが必要なら、ナビゲーションバーの Slack タブをクリックします。",
+  "qe": "Without opening a new browser tab or typing a new URL, how do you navigate to Slack apps to find a Slack tool that’s compatible with the agent you just found on AgentExchange?",
+  "oe": [
+   "You click the Slack pill located in the navigation bar at the top of the screen.",
+   "You open the Partner Marketplace app and search the directory for the Slack integration you need.",
+   "You type your request into the semantic search bar, which automatically opens a new tab and redirects you to the external Slack App Directory.",
+   "You launch Agentforce Builder and manually code a custom Slack action from scratch."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: AgentExchange: クイックルック / 新しい AgentExchange を体験する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentexchange-quick-look/experience-the-new-agentexchange",
+  "q": "Agentforce Builder から離れずに、カスタムエージェント用に AgentExchange の事前構築済みスキルを見つけて統合するにはどうすればよいですか?",
+  "o": [
+   "AgentExchange は Agentforce Builder に直接組み込まれているため、作業フロー内で事前構築済みのエージェントスキルを簡単に見つけて統合できる。マーケットプレイスはコンテキストを理解し、適切なソリューションをプロアクティブにマッチングする。",
+   "作業内容を保存し、新しいブラウザータブを開いて AgentExchange Web サイトに移動し、正確な商品名で検索して適切なコンポーネントを見つける。",
+   "画面上部の切り替えボタンを使用して Slack マーケットプレイスに切り替え、認定 Salesforce パートナーにボットのカスタム開発を依頼する。",
+   "サードパーティアプリケーションは Agentforce Builder に統合できないため、Apex コードを使用して請求書の異議申し立てスキルをゼロから手動で構築する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "AgentExchange は Agentforce Builder に組み込まれているので、作成中のエージェントに合った事前構築済みのスキルを、作業の流れの中で見つけて追加できます。別のタブを開いて探したり、ゼロからコードを書いたりする必要はありません。",
+  "qe": "How can you find and integrate pre-built skills from AgentExchange for your custom agent without leaving Agentforce Builder?",
+  "oe": [
+   "AgentExchange is embedded directly into Agentforce Builder, allowing you to easily discover and integrate pre-built agent skills right in your flow of work. The marketplace understands the context to proactively match you with the right solutions.",
+   "You must save your progress, open a new browser tab to navigate to the AgentExchange website, and search using the exact product name to find the right component.",
+   "You use the toggle at the top of your screen to switch over to the Slack Marketplace and request a custom-coded bot from a certified Salesforce partner.",
+   "Third-party apps can’t be integrated into Agentforce Builder, so you must manually build the invoice dispute skill from scratch using Apex code."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / エージェントのユースケースを特定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/identify-the-agent-use-case",
+  "q": "次の要因のうち、自律型 AI のユースケースの成功に貢献するものはどれですか?",
+  "o": [
+   "ポリシー、ルール、制約が明確に定義され、AI エージェントが独力で従うことができる作業",
+   "道徳面の複雑さと感情面の深い知性が求められるタスク",
+   "膨大ながら、不完全なデータ",
+   "ミスがほとんど許されない重要な判断を伴う作業"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "自律型 AI に向いているのは、ポリシー・ルール・制約がはっきり決まっていて、AI エージェントが自分で従える作業です。道徳的な判断や深い感情面の理解が必要な仕事、ミスが許されない重大な判断は向いていません。",
+  "qe": "Which of these factors can contribute to a successful autonomous AI use case?",
+  "oe": [
+   "The work involves well-defined policies, rules, and constraints that the AI agent can follow alone.",
+   "The tasks require moral complexity and deep emotional intelligence.",
+   "There’s a large quantity of data, but the data is incomplete.",
+   "The work involves high-stakes decisions with little room for error."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / エージェントのユースケースを特定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/identify-the-agent-use-case",
+  "q": "自律型 AI のユースケースのうち、範囲が限定的なものから始めることが推奨されるのはなぜですか?",
+  "o": [
+   "テストや検証の必要がないため",
+   "最初から AI が洗練され複雑であるため",
+   "どの AI ユースケースも限定的な範囲を設定する必要があるため",
+   "仮説を検証し、価値を実証して、リスクレベルを管理し、計画を立てることができるため"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "範囲を限定したユースケースから始めると、仮説を検証し、価値を示し、リスクを管理しながら、拡張の計画を立てられます。テストが不要になるわけではありません。",
+  "qe": "Why is it a good idea to start with a limited scope for your autonomous AI use case?",
+  "oe": [
+   "It eliminates the need for any testing or validation.",
+   "It makes the AI more sophisticated and complex from the very beginning.",
+   "All AI use cases should have a limited scope.",
+   "It helps validate your assumptions, demonstrate value, manage the level of risk, and plan for scale."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / 適切なソリューションを設計する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/architect-the-right-solution",
+  "q": "組織で会話が AI エージェントから人間のサービス担当にエスカレーションされる可能性があるのはなぜですか?",
+  "o": [
+   "ケース処理時間を短縮するため",
+   "規制や会社のポリシーを遵守するため",
+   "AI モデルのトレーニングを加速するため",
+   "顧客のフィードバックを収集しないようにするため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "AI エージェントから人間の担当者にエスカレーションする理由には、会社のポリシー、ブランドの要件、セキュリティ、リスク管理、規制の遵守などがあります。",
+  "qe": "Why might an organization escalate a conversation from the AI agent to a live service rep?",
+  "oe": [
+   "To increase the case handling time",
+   "To comply with regulations or company policy",
+   "To increase the AI model’s training speed",
+   "To avoid collecting customer feedback"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / 適切なソリューションを設計する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/architect-the-right-solution",
+  "q": "Salesforce 組織における AI エージェントのデフォルトのアクセスと権限に関する次の文のうち、正しいものはどれですか?",
+  "o": [
+   "AI エージェントは、そのエージェントのアクションの影響を受けるすべてのオブジェクトと項目に自動的にアクセスできる。",
+   "AI エージェントはシステム管理者と同じ権限を有する。",
+   "AI エージェントのデフォルトの権限はごく限られているため、ジョブの実行に必要なデータへのアクセス権を明示的に付与する必要がある。",
+   "AI エージェントの権限を編集することはできない。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "エージェントユーザーには、デフォルトで限られた権限しか付与されていません。これは最小権限の原則に沿った安全な状態なので、仕事に必要なデータへのアクセス権は明示的に付与します。",
+  "qe": "Which of these statements is true about the default access and permissions of an AI agent in a Salesforce org?",
+  "oe": [
+   "The AI agent automatically has access to all the objects and fields affected by the agent’s actions.",
+   "The AI agent has the same permissions as a system admin.",
+   "The AI agent has very limited permissions by default, and you must explicitly grant access to the data it needs to do its job.",
+   "It’s not possible to edit the permissions of the AI agent."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / エージェントのガードレールを定義する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/define-the-agent-guardrails",
+  "q": "正誤問題: AI エージェントの安全性を確保する場合、テクノロジー面のガードレールだけで十分である。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "AI エージェントの安全性は、テクノロジー面のガードレールだけでは守れません。人(コミュニケーション計画など)、ビジネス(安全性レビューやエスカレーション条件など)、データの面のガードレールも組み合わせます。",
+  "qe": "True or false: Technology guardrails alone are sufficient for ensuring the safety of an AI agent.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / エージェントのガードレールを定義する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/define-the-agent-guardrails",
+  "q": "自律型 AI のユースケースに付随するリスクと懸念事項を評価する際に役立つフレームワークはどれですか?",
+  "o": [
+   "企業、競合、顧客",
+   "強み、弱み、機会、脅威",
+   "構造、計画、スキル、システム",
+   "人、ビジネス、テクノロジー、データ"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "自律型 AI のリスクや懸念事項を評価するには、「人、ビジネス、テクノロジー、データ」のフレームワークが勧められています。ガードレールもこの4つのどれに関わるかで分類します。",
+  "qe": "What framework is helpful for evaluating the risks and concerns for an autonomous AI use case?",
+  "oe": [
+   "Corporation, Competition, and Customers",
+   "Strengths, Weaknesses, Opportunities, and Threats",
+   "Structures, Strategy, Skills, and Systems",
+   "People, Business, Technology, and Data"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / エージェントの作業の概要を定める Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/outline-the-agents-work",
+  "q": "プロセスマッピングとは何ですか?",
+  "o": [
+   "ビジネスプロセスの手順の視覚表現で、開始から終了までの流れを示す",
+   "ビジネスプロセスの財務実績に関する詳細なレポート",
+   "人間の介入なしでビジネスプロセスを自動化するために使用するソフトウェアツール",
+   "従業員にタスクを割り当てる方法"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "プロセスマッピングは、ビジネスプロセスの手順を開始から終了まで図で表したものです。エージェントに任せる作業を明確にするのに役立ちます。",
+  "qe": "What is process mapping?",
+  "oe": [
+   "A visual representation of the steps in a business process, showing how it's done from start to finish",
+   "A detailed report on the financial performance of a business process",
+   "A software tool used to automate business processes without human intervention",
+   "A method for assigning tasks to employees"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / エージェントの作業の概要を定める Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/outline-the-agents-work",
+  "q": "AI エージェントのビジネスプロセスの定義に関する次の文のうち、正しいものはどれですか?",
+  "o": [
+   "ビジネスプロセスの定義が必要なのは、法令遵守のためだけであり、AI の設定には必要ない。",
+   "AI エージェントは、ビジネスプロセスについて漠然とした指示が与えられ、即興で対応する必要がある場合のほうが優れたパフォーマンスを発揮する。",
+   "ビジネスプロセスを定義できなければ、作業を実行するように AI を設定することは難しい。",
+   "AI エージェントは、人間の入力がなくてもビジネスプロセスを理解できる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "組織が作業の進め方を説明できなければ、その作業を AI エージェントに設定するのはほぼ不可能です。そのため、エージェントに任せるビジネスプロセスを先に定義しておきます。",
+  "qe": "Which of these statements is true about defining your business processes for an AI agent?",
+  "oe": [
+   "Defining business processes is only necessary for legal compliance, not for AI configuration.",
+   "AI agents perform better when they are given vague instructions about business processes and have to improvise.",
+   "If you can’t define your business processes, it’s hard to configure an AI to do the work.",
+   "AI agents can figure out business processes without any human input."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / エージェントのプロトタイプを作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/prototype-the-agent",
+  "q": "自然言語プロンプトとプログラムロジックの両方が含まれるサブエージェントの要素はどれですか?",
+  "o": [
+   "名前",
+   "説明",
+   "指示",
+   "カスタムアクション"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "サブエージェントの指示には、Agent Script で書くプログラムロジックと自然言語のプロンプトの両方を含められます。名前や説明は、ルーティングの手がかりになる情報です。",
+  "qe": "Which part of a subagent contains both natural language prompts and programmatic logic?",
+  "oe": [
+   "Name",
+   "Description",
+   "Instructions",
+   "Custom Action"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": "Agent Script(エージェントを作るための言語)で、全体の業務の流れと会話の柔軟さを分けます。決定的なルールとLLMの推論を同じエンジンで組み合わせることを、ハイブリッド推論と呼びます。"
+ },
+ {
+  "s": "Trailhead: Agentforce: エージェントプランニング / エージェントのプロトタイプを作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-planning/prototype-the-agent",
+  "q": "毎回実行時に一貫した出力を生成する参照アクションはどのように説明されますか?",
+  "o": [
+   "アトミック",
+   "確定的",
+   "複合的",
+   "プロンプトベース"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "フローや Apex に基づくアクションは「確定的(決定論的)」で、ビジネスロジックとルールに従って毎回一貫した結果を出します。プロンプトベースのアクションは、ある程度のランダム性を伴います。",
+  "qe": "How would you describe a reference action that produces a consistent output every time it runs?",
+  "oe": [
+   "Atomic",
+   "Deterministic",
+   "Composite",
+   "Prompt-Based"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce テストセンター / エージェントを信頼する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-testing/trust-your-agents",
+  "q": "パフォーマンステストについて最も適切な説明はどれですか?",
+  "o": [
+   "特定の機能のみをテストする。",
+   "同じテストを何度も実行する。",
+   "多数のテストを同時に実行する。",
+   "手動テストよりも長い時間がかかる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "パフォーマンステストは、テスト環境で大量のテストを同時に実行して、負荷がかかったときの動きを確かめるテストです。Agentforce テストセンターで実施できます。",
+  "qe": "Which option best describes performance testing?",
+  "oe": [
+   "Its tests cover only a specific unit of functionality.",
+   "It runs the same test over and over again.",
+   "It runs many tests at one time.",
+   "It takes longer than manual testing."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": "Agentforce Testing Center(テストセンター)は、エージェントに多数のテストケースを一括で投げ、回答や選んだサブエージェント、アクションを自動で評価する機能です。"
+ },
+ {
+  "s": "Trailhead: Agentforce テストセンター / エージェントを信頼する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-testing/trust-your-agents",
+  "q": "手動でエージェントのテストとトラブルシューティングを行うのに最適なツールはどれですか?",
+  "o": [
+   "Agentforce Builder",
+   "Agentforce テストセンター",
+   "Test Builder",
+   "受け入れテストセンター"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Agentforce Builder では、エージェントを作成・更新しながら、会話プレビューで手動テストとトラブルシューティングができます。大量のテストを自動で実行するのは Agentforce テストセンターの役割です。",
+  "qe": "Which tool is best when manual testing and troubleshooting an agent?",
+  "oe": [
+   "Agentforce Builder",
+   "Agentforce Testing Center",
+   "Test Builder",
+   "Acceptance Test Center"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": "不合格の発話はAgentforce Builderで手動で再テストし、推論の流れを確認してから、サブエージェントの指示、アクション、ナレッジを直します。"
+ },
+ {
+  "s": "Trailhead: Agentforce テストセンター / テスト結果を確認する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-testing/view-test-results",
+  "q": "[Actual Actions (実際のアクション)] はテスト結果のどの部分を表していますか?",
+  "o": [
+   "予期されるアクション",
+   "実際のアクションが一致したかによって合格または不合格",
+   "エージェントが実行したアクション",
+   "エージェントが選択したサブエージェント"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "テスト結果の[Actual Actions(実際のアクション)]には、エージェントがサブエージェントから実際に実行したアクションが表示されます。予期されるアクションとの比較結果は[Action Evaluation]に表示されます。",
+  "qe": "Which part of the test results does Actual Actions represent?",
+  "oe": [
+   "The expected action",
+   "Pass or fail if the actual action matched",
+   "The actions the agent ran",
+   "The subagent the agent chose"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce テストセンター / テスト結果を確認する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-agent-testing/view-test-results",
+  "q": "Agentforce Builder ではどの種類のテストを実施できますか?",
+  "o": [
+   "手動テスト",
+   "単一アクションテスト",
+   "一括テスト",
+   "単一サブエージェントのテスト"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Agentforce Builder で発言を試して、選ばれたサブエージェントやアクションを確認するのは手動テストです。一括テストは Agentforce テストセンターで行います。",
+  "qe": "Agentforce Builder allows for conducting which type of testing?",
+  "oe": [
+   "Manual testing",
+   "Single action testing",
+   "Batch testing",
+   "Single subagent testing"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": "不合格の発話はAgentforce Builderで手動で再テストし、推論の流れを確認してから、サブエージェントの指示、アクション、ナレッジを直します。"
+ },
+ {
+  "s": "Trailhead: Slack にリリースする Agentforce の設定 / Agentforce と Slack が連携するしくみ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-configuration-for-slack-deployment/learn-how-agentforce-and-slack-work-together",
+  "q": "Slack ユーザーは使用可能なエージェントをどこで参照できますか?",
+  "o": [
+   "Agentforce Builder",
+   "Slack の [Home (ホーム)] タブ",
+   "Slack の Agentforce ハブ",
+   "Salesforce エージェント設定"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Slack ユーザーは、Slack の Agentforce ハブで使えるエージェントを探し、どう役立つかを確認できます。",
+  "qe": "Where does a Slack user go to browse the agents available to them?",
+  "oe": [
+   "Agentforce Builder",
+   "Slack Home tab",
+   "Slack Agentforce Hub",
+   "Salesforce agent setup"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Slack にリリースする Agentforce の設定 / Agentforce と Slack が連携するしくみ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-configuration-for-slack-deployment/learn-how-agentforce-and-slack-work-together",
+  "q": "従業員が Slack の人事エージェントに今年の福利厚生について問い合わせます。エージェントが従業員とやり取りするのに必要なアクションはどれですか?",
+  "o": [
+   "ダイレクトメッセージ (DM) を送信する。",
+   "Slack キャンバスを作成する。",
+   "Slack アプリケーションを構築する。",
+   "ケースコメントを追加する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Slack のエージェントは、従業員とダイレクトメッセージ(DM)でやり取りします。エージェントに「Slack ダイレクトメッセージを送信」アクションを追加すると、特定のユーザーに DM で回答や通知を送れます。",
+  "qe": "An employee asks the HR agent in Slack about their benefits this year. What action is needed for the agent to interact with the employee?",
+  "oe": [
+   "Send a direct message (DM).",
+   "Create a Slack canvas.",
+   "Build a Slack app.",
+   "Add a case comment."
+  ],
+  "v": "要確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce データライブラリの基礎 / 実世界のデータで AI をアップグレードする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-data-library-basics/upgrade-ai-with-real-world-data",
+  "q": "非構造化データを AI 機能に統合するうえでの主な課題は何ですか?",
+  "o": [
+   "非構造化データは、スプレッドシートやデータベースに埋もれている。",
+   "非構造化データは、検索が容易ではないが、貴重なインサイトが含まれている。",
+   "非構造化データは、構造化データよりも価値が低い。",
+   "非構造化データは、AI システムと互換性がない。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "非構造化データ(動画、画像、ドキュメント、メールなど)は企業データの約90%を占め、貴重なインサイトを含んでいますが、検索しにくいのが課題です。スプレッドシートやデータベースに入っているのは構造化データのほうです。",
+  "qe": "What is the main challenge in integrating unstructured data into AI features?",
+  "oe": [
+   "Unstructured data is buried in spreadsheets and databases.",
+   "Unstructured data is harder to search but contains valuable insights.",
+   "Unstructured data is less valuable than structured data.",
+   "Unstructured data is not compatible with AI systems."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "datalib",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce データライブラリの基礎 / 実世界のデータで AI をアップグレードする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-data-library-basics/upgrade-ai-with-real-world-data",
+  "q": "ユーザーが Agentforce データライブラリに接続されたエージェントに質問すると、実行時にどのような処理が行われますか?",
+  "o": [
+   "データの再チャンク化と再インデックス化が行われる。",
+   "ユーザーのクエリがプロンプトテンプレートに追加され、レトリーバーが最も関連性の高いデータを取得する。",
+   "データストリームが作成される。",
+   "質問が LLM に直接送信される。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "実行時には、ユーザーの質問がプロンプトテンプレートに追加され、データライブラリのリトリーバーが最も関連性の高いデータを取得します。データの再インデックス化やデータストリームの作成は、設定時に行われる処理です。",
+  "qe": "When a user asks an agent a question that is connected to an Agentforce Data Library, what occurs at runtime?",
+  "oe": [
+   "The data is rechunked and reindexed.",
+   "The user’s query is added to the prompt template, and the retriever fetches the most relevant data.",
+   "The data stream is created.",
+   "The question is sent directly to the LLM."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "datalib",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce データライブラリの基礎 / エージェントのファイルベースライブラリを構築する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-data-library-basics/build-a-file-based-data-library-for-an-agent",
+  "q": "Agentforce Builder ワークフローでデータライブラリに加えた変更をテストするには、どうしたらよいですか?",
+  "o": [
+   "設定を保存する。",
+   "会話プレビューを再起動し、エージェントとチャットする。",
+   "新しいファイルをアップロードする。",
+   "自分の Web サイトでケースを登録する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "データライブラリの変更をテストするには、検索インデックスとライブラリの準備ができたことを確認してから、会話プレビューを再起動してエージェントとチャットします。",
+  "qe": "What should you do to test out changes made to a data library in the Agentforce Builder workflow?",
+  "oe": [
+   "Save your configuration.",
+   "Restart the preview conversation and chat with your agent.",
+   "Upload new files.",
+   "Log a case on your own website."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "datalib",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce データライブラリの基礎 / エージェントのファイルベースライブラリを構築する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-data-library-basics/build-a-file-based-data-library-for-an-agent",
+  "q": "テスト中にエージェントが応答で使用した情報源を調べたい場合、 どこで見つけることができますか?",
+  "o": [
+   "応答自体",
+   "エージェントの推論ウィンドウ",
+   "データライブラリ",
+   "その情報にはアクセスできない"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "テスト中にエージェントが使った情報源は、エージェントの推論(インタラクションの詳細)で確認できます。データライブラリにアップロードしたファイルが引用されているかを、そこで確かめます。",
+  "qe": "You’re testing and want to see which sources of information your agent uses for its responses. Where can you find this?",
+  "oe": [
+   "In the response itself.",
+   "In the agent reasoning window.",
+   "From the data library.",
+   "You can’t access the information."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "datalib",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / リリースプロセスについて学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/learn-about-the-deployment-process",
+  "q": "エージェント開発ライフサイクルにおいて、リリースフェーズの主な目標は何ですか?",
+  "o": [
+   "エージェントの目標、実行すべき作業、および利用者を定義する",
+   "エージェントのサブエージェントとアクションを設定する",
+   "ユーザーがやり取りするチャネルにエージェントを接続する",
+   "リリース後にエージェントのパフォーマンスをトラッキングする"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "エージェント開発ライフサイクルのリリースフェーズでは、ユーザーがやり取りするチャネルにエージェントを接続します。サブエージェントやアクションの設定は構築フェーズ、パフォーマンスの追跡は監視フェーズです。",
+  "qe": "In the agent development lifecycle, what is the primary goal of the deploy stage?",
+  "oe": [
+   "Define the goals, jobs-to-be-done, and audience for the agent.",
+   "Configure the agent's subagents and actions.",
+   "Connect the agent to the channels where users interact with it.",
+   "Track the agent's performance after launch."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / リリースプロセスについて学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/learn-about-the-deployment-process",
+  "q": "エージェントのリリース戦略を定義する際、どのコンポーネントを含める必要がありますか?",
+  "o": [
+   "ロールアウトプラン、変更管理、ガバナンス",
+   "サブエージェント、アクション、指示",
+   "監査履歴とトレースログ",
+   "フィジビリティスタディとカスタマージャーニーマップ"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "リリース戦略には、ロールアウト計画(小さなパイロットから始めるなど)、変更管理、ガバナンスを含めます。サブエージェントやアクションは、構築フェーズで設定するものです。",
+  "qe": "When defining a deployment strategy for your agent, which components should you include?",
+  "oe": [
+   "A rollout plan, change management, and governance",
+   "Subagents, actions, and instructions",
+   "Audit trails and trace logs",
+   "A feasibility study and customer journey map"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / メッセージング接続を設定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/set-up-the-messaging-connection",
+  "q": "メッセージング接続において、インバウンドのオムニチャネルフローはどのような役割を果たしますか?",
+  "o": [
+   "会話を AI エージェントから人間のキューにエスカレーションする",
+   "新しい会話を AI エージェントに転送する",
+   "各サービス担当者の業務量を定義する",
+   "チャットウィンドウを Web サイトに公開する"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "インバウンドのオムニチャネルフローは、新しい会話が始まったときに、その会話を AI エージェントにルーティングします。人間の担当者へのエスカレーションには、アウトバウンドフローを使います。",
+  "qe": "What is the role of the inbound Omni-Channel flow in a Messaging connection?",
+  "oe": [
+   "It escalates a conversation from the agent to a human queue.",
+   "It routes a new conversation to the AI agent.",
+   "It defines how much capacity each service rep has.",
+   "It publishes the chat window to the website."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / メッセージング接続を設定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/set-up-the-messaging-connection",
+  "q": "Escalation (エスカレーション) サブエージェントはいつ AI エージェントからサービス担当者へのハンドオフをトリガーしますか?",
+  "o": [
+   "顧客が会話を開始するたびに",
+   "エージェントが質問への回答を終えたときのみ",
+   "エージェントの範囲外の要求など、顧客にサービス担当者が必要だと指示が判断したとき",
+   "サブエージェントの指示にエラーが発生したとき"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Escalation サブエージェントは、エージェントの範囲外の要求など、人間の担当者が必要だと指示に基づいて判断したときに引き継ぎを始めます。引き継ぎでは、アウトバウンドのオムニチャネルフローが会話を担当者のキューに転送します。",
+  "qe": "When does the Escalation subagent trigger a handoff from the AI agent to a service rep?",
+  "oe": [
+   "Every time a customer starts a conversation",
+   "Only when the agent finishes answering a question",
+   "When its instructions determine the customer needs a service rep, such as a request outside the agent's scope",
+   "When there’s an error in the subagent’s instructions"
+  ],
+  "v": "要確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / メッセージング接続を Web サイトにリリースする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/deploy-the-messaging-connection-to-a-website",
+  "q": "事前チャットフォームでできることは何ですか?",
+  "o": [
+   "AI エージェントからサービス担当者のキューにエスカレーションをルーティングする",
+   "チャットウィンドウを Web サイトに追加する",
+   "Web サイトのドメインを CORS 許可リストに追加する",
+   "会話が始まる前に顧客の詳細を収集し、既存の Salesforce レコードを見つけようと試みる"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "事前チャットフォームは、会話の前に顧客の名前やメールアドレスなどを集めます。エージェントはその情報で既存の Salesforce レコードを探せるので、最初から顧客に合わせた対応ができます。",
+  "qe": "What does a pre-chat form let you do?",
+  "oe": [
+   "Route escalations from the AI agent to a service rep queue.",
+   "Add the chat window to a website.",
+   "Add a website domain to the CORS allowlist.",
+   "Collect customer details to try locating an existing Salesforce record before the conversation starts."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / メッセージング接続を Web サイトにリリースする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/deploy-the-messaging-connection-to-a-website",
+  "q": "Experience Cloud サイトのドメインを CORS 許可リストに追加する必要があるのはなぜですか?",
+  "o": [
+   "エスカレーションされた会話をサービス担当者のキューにルーティングするため",
+   "会話が始まる前に顧客の詳細を収集するため",
+   "Salesforce がサイトのドメインを信頼して呼び出せるようにするため",
+   "メッセージングチャネルの電話番号をプロビジョニングするため"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "サイトのドメインを CORS 許可リストに追加すると、Salesforce がそのサイトからの呼び出しを信頼できるようになります。これをしないと、埋め込んだチャットが正しく動きません。",
+  "qe": "Why is it necessary to add the Experience Cloud site's domain to the CORS allowlist?",
+  "oe": [
+   "To route escalated conversations to a queue of service reps",
+   "To collect customer details before a conversation begins",
+   "So Salesforce trusts the site's domain to call it",
+   "To provision a phone number for the messaging channel"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / 音声接続のセットアップ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/set-up-the-voice-connection",
+  "q": "Agentforce Voice は何をしますか?",
+  "o": [
+   "サービスエージェント向けの音声ベースの会話型 AI を有効にする",
+   "Experience Cloud サイトに埋め込みチャットウィンドウを公開する",
+   "受信メールをサービス担当者のケースキューにルーティングする",
+   "本番組織へのリリースのためにエージェントのメタデータをパッケージ化する"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Agentforce Voice は、顧客とサービスエージェントの間で自然な音声の会話を実現する機能です。通話のルーティングにはオムニチャネルフローを使います。",
+  "qe": "What does Agentforce Voice do?",
+  "oe": [
+   "Enables voice-based conversational AI for service agents",
+   "Publishes an embedded chat window on an Experience Cloud site",
+   "Routes inbound email to a case queue for service reps",
+   "Packages agent metadata for deployment to a production org"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / 音声接続のセットアップ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/set-up-the-voice-connection",
+  "q": "PSTN 音声チャネルを設定する場合、関連付けられる電話番号はどれですか?",
+  "o": [
+   "プロビジョニング済みかどうかにかかわらず、検索した任意の番号",
+   "ロードバランシングのために複数のチャネルで共有される単一の番号",
+   "[Live (ライブ)] の状況の番号のみ。各番号は 1 つのチャネルにのみ使用できる",
+   "サービス担当者にすでに割り当て済みの番号のみ"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "PSTN の音声チャネルに関連付けられるのは、状況が[Live(ライブ)]になっている番号だけです。また、1つの番号は1つのチャネルにしか使えません。",
+  "qe": "When configuring a PSTN voice channel, which phone numbers can you associate with it?",
+  "oe": [
+   "Any number you search for, whether or not it's provisioned",
+   "A single number shared across several channels for load balancing",
+   "Only numbers with a Live status, and each number can be used for one channel",
+   "Only numbers already assigned to a service rep"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / エージェントを本番環境にリリースする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/deploy-an-ai-agent-with-agentforce",
+  "q": "サービスエージェントを本番組織にリリースする前の前提条件として正しいものはどれですか?",
+  "o": [
+   "少なくとも 100 人の顧客によるパイロットプログラム",
+   "適切なプロファイルと権限を持つ専用のエージェントユーザー",
+   "エージェントの公開済みリリースノート",
+   "エージェントの音声ペルソナに定義された発音辞書"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "サービスエージェントは専用のエージェントユーザーとして動きます。そのユーザーのプロファイルと権限が、エージェントのアクセスできる範囲を決めるので、本番リリース前に適切に用意しておく必要があります。",
+  "qe": "Which of these is a prerequisite before deploying a service agent to a production org?",
+  "oe": [
+   "A pilot program of at least 100 customers",
+   "A dedicated agent user with the right profile and permissions",
+   "A published release note for the agent",
+   "A pronunciation dictionary defined for the agent's voice persona"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスエージェントのための Agentforce リリース / エージェントを本番環境にリリースする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-deployment-quick-look/deploy-an-ai-agent-with-agentforce",
+  "q": "Sandbox からエージェントのメタデータを取得して対象組織にリリースするには、何を使用しますか?",
+  "o": [
+   "エクスペリエンスビルダーの [Components (コンポーネント)] タブ",
+   "サービスコンソールの [Omni-Channel (オムニチャネル)] サイドバー",
+   "事前チャットフォームのパラメーターの対応付け",
+   "Salesforce CLI"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Salesforce CLI を使って Sandbox からエージェントのメタデータを取得し、パッケージを作って対象組織にリリースします。アクションで使う Apex やフロー、プロンプトテンプレート、権限セットも含めます。",
+  "qe": "What do you use to retrieve the agent's metadata from the sandbox and deploy it to the target org?",
+  "oe": [
+   "The Components tab in Experience Builder",
+   "The Omni-Channel sidebar in the Service Console",
+   "The pre-chat form parameter mappings",
+   "Salesforce CLI"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": "メタデータでの移行(API v68以降)Winter ’27 からの AiAgentDefinition と AiAgentDefinitionVersion を使うと、Salesforce CLI がエージェントと依存関係をまとめて取得する。移行元と移行先の両方が v68 であることが条件"
+ },
+ {
+  "s": "Trailhead: Agentforce を使用した設定: クイックルック / Agentforce を使用した設定について知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-for-setup-quick-look/get-to-know-setup-with-agentforce",
+  "q": "「Agentforce を使用した設定」をシステム管理者が利用する主なメリットは何ですか?",
+  "o": [
+   "ストラテジーや意思決定タスクが処理される。",
+   "高度なデータ視覚化ツールを備えている。",
+   "ユーザーライセンスの管理が自動化される。",
+   "タスクが簡潔になり、反復作業が減るため、生産性が向上する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "「Agentforce を使用した設定」では、システム管理者が[設定]の中で AI エージェントと会話しながら作業できます。タスクが簡単になり反復作業が減るので、生産性が上がります。",
+  "qe": "What is the primary benefit of using Setup with Agentforce for an admin?",
+  "oe": [
+   "It handles strategy and decision-making tasks.",
+   "It provides advanced data visualization tools.",
+   "It automates user license management.",
+   "It increases productivity by simplifying tasks and reducing repetitive work."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce を使用した設定: クイックルック / Agentforce を使用した設定について知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-for-setup-quick-look/get-to-know-setup-with-agentforce",
+  "q": "[Setup (設定)] のタスクのうち、Agentforce がその実行をサポートできるものはどれですか?",
+  "o": [
+   "ユーザーがレコードにアクセスできない原因をトラブルシューティングする。",
+   "ソーシャルメディアアカウントを管理する。",
+   "ユーザーの代わりにメールを送信する。",
+   "会社の年間予算を立てる。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "「Agentforce を使用した設定」は、オブジェクト・項目・レコードへのアクセスの問題のトラブルシューティングなど、[設定]でよく行う作業を手伝います。予算作成やソーシャルメディアの管理はできません。",
+  "qe": "Which of these Setup tasks could Agentforce help you perform?",
+  "oe": [
+   "Troubleshooting why a user can’t access a record.",
+   "Managing your social media accounts.",
+   "Sending emails on your behalf.",
+   "Planning the company's annual budget."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce モバイルアプリケーションの Agentforce: クイックルック / Salesforce モバイルアプリケーションで Agentforce を使用して時間を節約する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-on-the-salesforce-mobile-app-quick-look/save-time-with-agentforce-on-the-salesforce-mobile-app",
+  "q": "Agentforce が Salesforce モバイルアプリケーションで動作するには、どのようなステップを追加で実行する必要がありますか?",
+  "o": [
+   "Salesforce の [Setup (設定)] にある [Agentforce] ページの [Mobile Setup (モバイル設定)] を使用する。",
+   "何も行わない。Agentforce の設定時にすべて完了している。",
+   "モバイル AgentExchange パッケージ内の Agentforce をインストールする。",
+   "Apex を使用して、モバイルデバイスに Agentforce を設定する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Salesforce モバイルアプリケーション用に、Agentforce の追加設定は必要ありません。組織で Agentforce を有効にしてエージェントを設定してあれば、モバイルアプリからそのまま使えます。",
+  "qe": "What additional steps do you need to take so that Agentforce works on the Salesforce mobile app?",
+  "oe": [
+   "Use the Mobile Setup in Agentforce page in Salesforce Setup.",
+   "Nothing. It’s all done for you when you set up Agentforce.",
+   "Install the Agentforce in Mobile AgentExchange Package.",
+   "Use Apex to set up Agentforce on your mobile device."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce モバイルアプリケーションの Agentforce: クイックルック / Salesforce モバイルアプリケーションで Agentforce を使用して時間を節約する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-on-the-salesforce-mobile-app-quick-look/save-time-with-agentforce-on-the-salesforce-mobile-app",
+  "q": "iOS デバイス上の Agentforce で音声制御を有効化するにはどうすればよいですか?",
+  "o": [
+   "デバイスの Bluetooth 設定を有効にする。",
+   "外付けマイクロフォンを取り付ける。",
+   "音声認識とマイクロフォンへのアクセス権を付与する。",
+   "デスクトップで組織のマイクロフォン設定を有効化する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "iOS で音声入力を使うには、アプリに音声認識とマイクへのアクセスを許可します。そのうえでマイクのアイコンをタップすれば、話しかけて操作できます。",
+  "qe": "How can you turn on voice controls in Agentforce on your iOS device?",
+  "oe": [
+   "Enable the Bluetooth setting on your device.",
+   "Attach an external microphone.",
+   "Give access to speech recognition and your microphone.",
+   "Enable the microphone setting in your org on your desktop."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Agentforce / サービス向け Agentforce 入門 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-agent-quick-look/get-started-with-agentforce-service-agent",
+  "q": "正誤問題: Agentforce for Service は、カスタマーチャネルで自律的に動作するが、断定的なダイアログになりがちである。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "硬直した決まりきったダイアログになりがちなのは、従来のチャットボットのほうです。サービス向け Agentforce の自律型エージェントは、生成 AI を使って柔軟に会話し、カスタマーチャネルで自律的に動きます。",
+  "qe": "True or false: Agentforce for Service relies solely on declarative dialogs to operate autonomously on customer channels.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Agentforce / サービス向け Agentforce 入門 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-agent-quick-look/get-started-with-agentforce-service-agent",
+  "q": "次のうち、自律型エージェントと従来のボットとの違いについての最も適切な説明はどれですか?",
+  "o": [
+   "自律型エージェントは、ケースなど信頼できるソースに基づく自然言語モデルを使用する。",
+   "自律型エージェントには、ダイアログ、インテント、言語トレーニングが必要である。",
+   "自律型エージェントは判断を下し、生成 AI を使用してコンテキストを理解したうえで応答を作成する。",
+   "自律型エージェントはお客様の最新の質問のみに応答する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "自律型エージェントは、生成 AI でコンテキストを理解し、判断して応答を作ります。ダイアログやインテントのトレーニングが必要なのは従来のボットです。",
+  "qe": "Which of these best describes how autonomous agents differ from traditional bots?",
+  "oe": [
+   "They use natural language models from trusted sources like cases.",
+   "They require dialog, intent, and language training.",
+   "They make decisions and use generative AI to create responses that understand context.",
+   "They only respond to the most recent customer question."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Agentforce / サービス向け Agentforce のユースケースを確認する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-agent-quick-look/explore-use-cases-for-agentforce-for-service",
+  "q": "エージェントのカスタムサブエージェントとアクションを作成する主なメリットは何ですか?",
+  "o": [
+   "エージェントがサブエージェントなしでタスクを実行できるようになる。",
+   "エージェントが操作の精度を高めて効率的に作業を完了したり、会社のブランドやボイスに合致する応答を提示したりできるようになる。",
+   "標準サブエージェントとアクションが不要になる。",
+   "お客様の問い合わせに回答するプロセスが自動化され、エージェントの介入が不要になる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "カスタムのサブエージェントやアクションを作ると、業務に合わせて精度高く効率的に作業でき、会社のブランドやトーンに合った応答も返せます。標準のサブエージェントやアクションが不要になるわけではありません。",
+  "qe": "What is the main advantage of creating custom subagents and actions for agents?",
+  "oe": [
+   "They allow agents to perform tasks without needing a subagent.",
+   "They enable agents to precisely operate, complete tasks efficiently, and deliver responses that match the company’s brand and tone.",
+   "They make standard subagents and actions obsolete.",
+   "They automate the process of answering customer queries without any agent involvement."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Agentforce / サービス向け Agentforce のユースケースを確認する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-agent-quick-look/explore-use-cases-for-agentforce-for-service",
+  "q": "正誤問題: サービス向け Agentforce は、カスタムと標準の両方のサブエージェントやアクションを同時にサポートできる。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "サービス向け Agentforce では、標準とカスタムのサブエージェントやアクションを同時に使えます。標準のものをそのまま、または編集して使い、足りない部分をカスタムで補います。",
+  "qe": "True or false: Agentforce for Service can support both custom and standard subagents or actions simultaneously.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Agentforce / サービス向け Agentforce でナレッジを使用する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-agent-quick-look/use-knowledge-in-agentforce-for-service",
+  "q": "Agentforce データライブラリは、どのようなデータソースをサポートしていますか?",
+  "o": [
+   "すべてのナレッジレコードと項目",
+   "レポートとダッシュボード",
+   "アップロードされたファイル",
+   "A と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Agentforce データライブラリは、ナレッジ記事(レコードと項目)、アップロードしたファイル、Web 検索、カスタムリトリーバーに対応しています。レポートやダッシュボードはデータソースではありません。",
+  "qe": "What types of data sources do Agentforce Data Libraries support?",
+  "oe": [
+   "Knowledge records and fields",
+   "Reports and dashboards",
+   "Uploaded files",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Agentforce / サービス向け Agentforce でナレッジを使用する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-agent-quick-look/use-knowledge-in-agentforce-for-service",
+  "q": "非構造化データの処理に Agentforce データライブラリを統合する主なメリットは何ですか?",
+  "o": [
+   "データを取得するために、ナレッジ記事の項目を手動で対応付ける必要がある。",
+   "非構造化データと構造化データの自動インデックス付けが可能になり、迅速で正確な応答が実現する。",
+   "スプレッドシートやデータベースなど、構造化データのみを処理できる。",
+   "適切に機能させるには、特定の質問にどのように答えるかについての広範な事前トレーニングを要する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "データライブラリを追加すると、Salesforce が RAG の仕組みを自動で作り、ナレッジ記事や PDF の内容をインデックス化します。手作業の対応付けや事前トレーニングなしで、すばやく正確な応答を返せます。",
+  "qe": "What’s the primary benefit of integrating the Agentforce Data Library for handling unstructured data?",
+  "oe": [
+   "It requires manual mapping of fields in Knowledge Articles for data retrieval.",
+   "It allows for the automatic indexing of unstructured and structured data, ensuring fast and accurate responses",
+   "It can only process structured data, such as spreadsheets and databases.",
+   "It requires extensive training on how to answer specific questions before it can function properly."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce サービスアシスタント / サービスアシスタントを準備する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-assistant/plan-for-service-assistant",
+  "q": "サービス担当者が作業負荷をより効果的に管理するのに役立つ、サービスアシスタントの主要な機能はどれですか?",
+  "o": [
+   "顧客の渡航手配を自動的に予約する。",
+   "渡航先のリアルタイムの天気情報を提供する。",
+   "ケースに対して迅速なサマリーとステップバイステップの解決ガイダンスを提供する。",
+   "顧客メッセージを複数の言語に翻訳する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "サービスアシスタントは、サービス担当者にケースのサマリーと、サービスプランと呼ばれるステップバイステップの解決ガイダンスを示します。担当者はケースをより速く解決できます。",
+  "qe": "What’s a key feature of Service Assistant that helps service reps manage their workload more effectively?",
+  "oe": [
+   "It automatically books travel arrangements for customers.",
+   "It provides real-time weather updates for travel destinations.",
+   "It offers quick summaries and step-by-step resolution guidance for cases.",
+   "It translates customer messages into multiple languages."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": "Service Assistantサービス担当者に、ケースの要約と解決までの手順を示す"
+ },
+ {
+  "s": "Trailhead: Agentforce サービスアシスタント / サービスアシスタントを準備する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-assistant/plan-for-service-assistant",
+  "q": "サービスアシスタントのグラウンディングが重要なのはなぜですか?",
+  "o": [
+   "サービスアシスタントが次善アクションを予測できるようにするから。",
+   "サービスアシスタントが過去のケースデータを使用してサービスプランを作成できるようにするから。",
+   "サービスアシスタントが会社のサービスポリシーとプラクティスに準拠するようにするから。",
+   "人の介入なしにサービスアシスタントが顧客の問題を自律的に解決できるようにするから。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "サービスアシスタントを自社のデータでグラウンディングすると、会社のサービスポリシーや基準に沿ったサービスプランを作れます。人の介入なしに問題を解決するためのものではなく、担当者を支援するものです。",
+  "qe": "Why is grounding Service Assistant important?",
+  "oe": [
+   "It allows Service Assistant to predict the next best action.",
+   "It allows Service Assistant to use historical case data to create a service plan.",
+   "It ensures Service Assistant is compliant with your company’s service policies and practices.",
+   "It allows Service Assistant to autonomously resolve customer issues without human intervention."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce サービスアシスタント / サービスアシスタントをテストする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-assistant/test-service-assistant",
+  "q": "ケースを最初に開くと、サービスアシスタントはサービス担当者に何を提供しますか?",
+  "o": [
+   "詳細なサービスプラン",
+   "過去 1 年間の類似ケースの一覧。",
+   "関連するナレッジ記事へのリンク",
+   "ケースサマリーとサマリー手順"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ケースを開くと、サービスアシスタントはまずケースのサマリーとサマリー手順を作ります。詳細なサービスプランは、[Draft Plan]をクリックしてから作成されます。",
+  "qe": "What does Service Assistant provide service reps when the Case is first opened?",
+  "oe": [
+   "A detailed service plan",
+   "A list of similar cases from the past year.",
+   "Links to related knowledge articles",
+   "A case summary and summary steps"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": "Service Assistantサービス担当者に、ケースの要約と解決までの手順を示す"
+ },
+ {
+  "s": "Trailhead: Agentforce サービスアシスタント / サービスアシスタントをテストする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-service-assistant/test-service-assistant",
+  "q": "[Help with Travel Documentation (渡航書類の支援)] ケースページを開くと、サービスアシスタントがサマリーとサマリー手順を生成していることに気付きました。このケースについて、より詳細なステップバイステップの解決ガイドを表示するにはどうすればよいですか?",
+  "o": [
+   "ケースをマネージャーに送信して承認を依頼する。",
+   "ケースの詳細を編集して情報を追加する。",
+   "サービスアシスタントコンポーネントで [Draft Plan (プランのドラフトを作成)] ボタンをクリックする。",
+   "ケースを閉じて 10 分後に再び開く。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "サマリーができたら、サービスアシスタントのコンポーネントで[Draft Plan(プランのドラフトを作成)]をクリックしてサービスプランを作ります。ケースの内容を変えた場合は[Redraft Plan]で作り直せます。",
+  "qe": "You’re on the Help with Travel Documentation case page and notice that Service Assistant has generated a summary and summary steps. What should you do to view a more detailed step-by-step resolution guide for the case?",
+  "oe": [
+   "Submit the case to a manager for approval.",
+   "Edit the case details and add more information.",
+   "Click the Draft Plan button in the Service Assistant component.",
+   "Close the case and reopen it after 10 minutes."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "stdagents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のテストツールと計画 / エージェントのテストツールと考慮事項を確認する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-testing-tools-and-strategies/explore-agent-testing-tools-and-considerations",
+  "q": "エージェントのテストが「確率的」と考えられ、従来のアプリケーションのテストよりも予測しにくいのはなぜですか?",
+  "o": [
+   "結果の一貫性を確保するために、エージェントがルールに基づくロジックに厳密に従うから。",
+   "Agentforce Builder のテストツールは確定的な結果を得るために設計されているから。",
+   "生成 AI にはルールに基づくロジックが欠けているため、さまざまな、ときには驚くような応答を返すことがあるから。",
+   "開発者が意図的にランダム性をエージェントの動作に組み込むから。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "生成 AI にはルールに基づくロジックがないので、同じ入力でも違う応答や意外な応答が返ることがあります。そのため、エージェントのテストは確定的ではなく「確率的」と考えます。",
+  "qe": "Why is agent testing considered “probabilistic” and less predictable compared to traditional application testing?",
+  "oe": [
+   "Because agents strictly follow rules-based logic, ensuring consistent outcomes.",
+   "Because the testing tools in Agentforce Builder are designed for deterministic results.",
+   "Because generative AI lacks rules-based logic, leading to varied and sometimes surprising responses.",
+   "Because developers intentionally introduce randomness into agent behavior."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のテストツールと計画 / エージェントのテストツールと考慮事項を確認する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-testing-tools-and-strategies/explore-agent-testing-tools-and-considerations",
+  "q": "エージェントが応答を生成するために通ったサブエージェント、アクション、指示のパスは、Agentforce Builder のどこで確認できますか?",
+  "o": [
+   "設定",
+   "サブエージェント",
+   "プランキャンバス",
+   "会話プレビュー"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Agentforce Builder のプランキャンバスでは、エージェントが応答に至るまでに通ったサブエージェント、アクション、指示のパスを確認できます。テストで不合格になった入力をプレビューに貼り付けて、原因を調べるのに使います。",
+  "qe": "Where in Agentforce Builder can you see the path your agent took through the subagents, actions, and instructions to generate a response?",
+  "oe": [
+   "Settings",
+   "Subagents",
+   "The plan canvas",
+   "Conversation Preview"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のテストツールと計画 / 5 ステップのテスト計画を使用してエージェントを調整する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-testing-tools-and-strategies/refine-your-agents-using-a-five-step-testing-strategy",
+  "q": "テストのシナリオに基づいて、Maria が本格稼働前に包括的なテスト計画を採用する最も重要な理由は何ですか?",
+  "o": [
+   "エージェントの今後の更新のコストを最小限に抑えるため。",
+   "エージェントが既知のエラーメッセージの包括的なリストに対応できるようにするため。",
+   "ユーザーがエージェントとやり取りする予測可能なさまざまな方法に対応するため。",
+   "すべての開発の反復作業の履歴レコードを提供するため。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ユーザーがエージェントとやり取りする方法はさまざまです。本格稼働の前に包括的なテスト計画を使い、予想できる多様な入力に対応できるかを確かめることが最も重要です。",
+  "qe": "Based on the quiz scenario, what is the most important reason for Maria to adopt a comprehensive testing strategy before a full launch?",
+  "oe": [
+   "To minimize the cost of future updates to the agent.",
+   "To ensure the agent can handle an exhaustive list of known error messages.",
+   "To account for the wide range of unpredictable ways users might interact with the agent.",
+   "To provide a historical record of all development iterations."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce のテストツールと計画 / 5 ステップのテスト計画を使用してエージェントを調整する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-testing-tools-and-strategies/refine-your-agents-using-a-five-step-testing-strategy",
+  "q": "テストスイート (ベータ) で Global Stay Resorts エージェントの一括テストを実行したところ、Maria はいくつかのテストが失敗しているのを確認しました。5 ステップ計画によれば、失敗したテストに対処し、エージェントをさらに改善するために Maria が取るべき次の論理的なステップは何ですか?",
+  "o": [
+   "すぐにエージェントを本番環境に再リリースする。",
+   "問題は軽微であると判断し、最終の反復ステップをスキップする。",
+   "テスト結果を確認し、テストが失敗した原因を理解するために人間による検証を行う。",
+   "現在の失敗の内容を確認せずに、新しいテストケースを自動生成する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "一括テストで失敗があったら、結果を確認し、人間が失敗の原因を検証します。そのうえで指示などを調整して再テストします。原因を確かめずにリリースしたり、手順を飛ばしたりしてはいけません。",
+  "qe": "After running a batch test in Test Suites (Beta) for the Global Stay Resorts agent, Maria sees several failed tests. According to the five-step strategy, what is the next logical step Maria should take to address these failures and further improve the agent?",
+  "oe": [
+   "Immediately redeploy the agent to the production environment.",
+   "Skip to the final iteration step, assuming the issue is minor.",
+   "Review the test results and perform human validation to understand why the tests failed.",
+   "Automatically generate a new set of test cases without reviewing the current failures."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "testing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Voice / Agentforce Voice の概要 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-voice-quick-look/meet-agentforce-voice",
+  "q": "Agentforce Voice の主な機能は何ですか?",
+  "o": [
+   "顧客の請求処理を管理する",
+   "AI エージェントが顧客を理解し、会話できるようにする",
+   "マーケティングキャンペーンを作成する",
+   "予約をスケジュールする"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Agentforce Voice は、AI エージェントが音声で顧客を理解し、自然に会話できるようにする機能です。",
+  "qe": "What’s the primary function of Agentforce Voice?",
+  "oe": [
+   "To manage customer billing",
+   "To enable AI agents to understand and speak with customers",
+   "To create marketing campaigns",
+   "To schedule appointments"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Voice / Agentforce Voice の概要 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-voice-quick-look/meet-agentforce-voice",
+  "q": "テレフォニーオプションを比較する場合、コンテキストの保持に関して Salesforce Voice (ネイティブテレフォニー) の主な利点は何ですか?",
+  "o": [
+   "冗長性を保つためにデータが複数のシステムに分割される",
+   "トランスクリプトは顧客担当者が通話に参加した後にのみ作成される",
+   "最初から最後までの会話全体のトランスクリプトが含まれた 1 つの完全なレコードが維持される。",
+   "プライバシーを保護するために、引き継ぎ中にコンテキストは意図的に削除される"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Salesforce Voice(ネイティブテレフォニー)では、転送時も含めて通話全体のトランスクリプトとセッションのコンテキストが保持されます。最初から最後までの会話が1つの完全なレコードに残ります。",
+  "qe": "When comparing telephony options, what’s a primary advantage of Salesforce Voice (Native Telephony) regarding context preservation?",
+  "oe": [
+   "Data is split between multiple systems for redundancy.",
+   "Transcripts are only created once a customer representative joins the call.",
+   "A complete, single record is maintained, including the full conversation transcript from beginning to end.",
+   "Context is intentionally cleared during handoffs to protect privacy."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Voice / 音声対応エージェントを作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-voice-quick-look/build-your-voice-enabled-agent",
+  "q": "カスタマーサービスの着信通話を処理するための新しいエージェントを作成する場合、どのテンプレートを選択しますか?",
+  "o": [
+   "Agentforce Service エージェント",
+   "Agentforce セールスエージェント",
+   "テレフォニールーティングエージェント",
+   "空のエージェントシェル"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "カスタマーサービスの着信通話を処理するエージェントは、[Agentforce Service Agent]テンプレートから作成します。そのあと、テレフォニーのルーティングにつなぐフローを作ります。",
+  "qe": "Which specific template should you select when creating a new agent intended to handle inbound customer service calls?",
+  "oe": [
+   "Agentforce Service Agent",
+   "Agentforce Sales Agent",
+   "Telephony Routing Agent",
+   "Empty Agent Shell"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Voice / 音声対応エージェントを作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-voice-quick-look/build-your-voice-enabled-agent",
+  "q": "会社独自の用語をエージェントが正しく発音するようにするには、どのツールを使用できますか?",
+  "o": [
+   "キータームプロンプト",
+   "類似性スライダー",
+   "安定性スライダー",
+   "発音辞書"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "会社独自の用語を正しく発音させるには、発音辞書を定義します。キータームプロンプトは用語の「認識」を高めるためのもの、類似性や安定性のスライダーは声の調整に使います。",
+  "qe": "What tool can be used to ensure the agent correctly pronounces unique company terminology?",
+  "oe": [
+   "Key-term prompting",
+   "Similarity slider",
+   "Stability slider",
+   "Pronunciation dictionary"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Voice / 着信通話ルーティングを管理する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-voice-quick-look/manage-inbound-call-routing-agenforce-voice",
+  "q": "音声通話を転送する新しいオムニチャネルフローを作成する場合、音声通話レコード ID を保存するためにどのリソースを作成する必要がありますか?",
+  "o": [
+   "出力が数値の Call_ID という数式リソース",
+   "API 参照名が recordId で、データ型がテキストの変数",
+   "サービスチャネル ID を表す定数値",
+   "複数の通話 ID を保存するコレクション変数"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "音声通話を転送するオムニチャネルフローには、音声通話のレコード ID を受け取る入力変数が必要です。API 参照名を recordId、データ型をテキストにして作成します。",
+  "qe": "When creating a new Omni-Channel flow to route voice calls, which specific resource must be created to store the voice call record ID?",
+  "oe": [
+   "A formula resource named Call_ID with a Number output",
+   "A variable with the API Name recordId and Data Type “Text”",
+   "A constant value representing the Service Channel ID",
+   "A collection variable to store multiple call IDs"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Voice / 着信通話ルーティングを管理する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/agentforce-voice-quick-look/manage-inbound-call-routing-agenforce-voice",
+  "q": "着信音声ルーティングフローを実装中の顧客が、通話が Agentforce Service エージェントに転送されていないことに気付きました。フローを電話番号にリンクする前に [Setup (設定)] メニューで完了する必要がある一般的な前提条件は何ですか?",
+  "o": [
+   "フローを有効化する前に [Screen Pop (画面ポップ)] アクションを追加する必要がある。",
+   "新しい VoiceCall レコードを検出するためにフローをレコードトリガーフローに変換する必要がある。",
+   "recordId 変数のデータ型をテキストからレコードに変更する必要がある。",
+   "[Communication Channels (コミュニケーションチャネル)] の下の特定の音声チャネル内でフローを対応付ける必要がある。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "フローを作って有効化しただけでは、通話は転送されません。[コミュニケーションチャネル]で目的の音声チャネルを開き、[フロー定義]に作成したフローを設定して、チャネルとフローを対応付ける必要があります。",
+  "qe": "A customer is implementing an Inbound Voice Routing flow but notices that calls are not being directed to the Agentforce service agent. What’s a common prerequisite in the Setup menu that must be completed before the flow can be linked to a phone number?",
+  "oe": [
+   "A Screen Pop action must be added to the flow before it can be activated.",
+   "The flow must be converted into a Record-Triggered Flow to detect new VoiceCall records.",
+   "The recordId variable must be changed from Text to Record data type.",
+   "The flow must be mapped within the specific Voice Channel settings under Communication Channels."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "channels",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: データ + AI + CRM: クイックルック / データ + AI + CRM が連携するしくみを学習する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/ai-data-crm-quick-look/learn-how-ai-data-crm-work-together",
+  "q": "次のうち、マーケティングでの AI の活用法の一例はどれですか?",
+  "o": [
+   "毎日、顧客ごとに新しいマーケティング計画を立てる。",
+   "顧客の好みに基づいて顧客の買い物を代行する AI プロファイルを作成する。",
+   "通話を分析して、サービス疲れの兆候がないか確認する。",
+   "顧客用のカスタムランディングページを作成する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "マーケティングでは、CRM の購入履歴や閲覧履歴を AI で分析して、顧客の興味に合わせたランディングページを自動で作れます。通話からサービス疲れの兆候を見つけるのは、サービス分野での活用例です。",
+  "qe": "Which of these is an example of how you can use AI in Marketing?",
+  "oe": [
+   "Generate a new marketing strategy for each customer on a daily basis.",
+   "Create AI profiles that shop on a customer’s behalf based on their preferences.",
+   "Analyze phone calls for signs of service fatigue.",
+   "Create custom landing pages for your customers."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: データ + AI + CRM: クイックルック / データ + AI + CRM が連携するしくみを学習する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/ai-data-crm-quick-look/learn-how-ai-data-crm-work-together",
+  "q": "成功する AI 戦略の基盤を築くのは何ですか?",
+  "o": [
+   "イノベーション",
+   "信頼",
+   "処理能力",
+   "調査"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "信頼は、成功する AI 戦略の基盤です。データを安全に扱い、責任を持って AI を導入することで、顧客やチームとの信頼を築けます。",
+  "qe": "What forms the foundation of a successful AI strategy?",
+  "oe": [
+   "Innovation",
+   "Trust",
+   "Processing Power",
+   "Research"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 自律型エージェント / 自律型エージェントについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/autonomous-agents/get-to-know-autonomous-agents",
+  "q": "自律型エージェントの主な機能は何ですか?",
+  "o": [
+   "人間の従業員にとって代わること",
+   "時間とリソースを節約し、カスタマーエクスペリエンスを向上させること",
+   "カスタマーサービスへのすべての問い合わせを処理すること",
+   "人間の従業員には複雑すぎるタスクのみを実行すること"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "自律型エージェントの主な役割は、時間とリソースを節約し、カスタマーエクスペリエンスを高めることです。人間の従業員に取って代わるものではなく、空いた時間で人間はより価値の高い仕事に集中できます。",
+  "qe": "What is the primary function of an autonomous agent?",
+  "oe": [
+   "It replaces human employees entirely.",
+   "It saves time and resources and enhances the customer experience.",
+   "It handles all customer service inquiries.",
+   "It performs only tasks that are too complex for human employees."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 自律型エージェント / 自律型エージェントについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/autonomous-agents/get-to-know-autonomous-agents",
+  "q": "次の機能のうち、自律型エージェントとチャットボットを区別するものはどれですか?",
+  "o": [
+   "自律型エージェントは事前定義されたルールに従う。",
+   "自律型エージェントはチャットボットよりも構築に時間がかかる。",
+   "自律型エージェントはタスクを完了するのに人間の助けを必要とする。",
+   "自律型エージェントはタスクを独立して実行できる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "自律型エージェントは、目標を与えれば人間の助けなしにタスクを独立して実行できます。事前定義されたルールに従うのは従来のチャットボットの特徴で、自律型エージェントは従来のボットほど構築に時間もかかりません。",
+  "qe": "Which of these features distinguish autonomous agents from chatbots?",
+  "oe": [
+   "Autonomous agents follow predefined rules.",
+   "Autonomous agents take longer to build than chatbots.",
+   "Autonomous agents need human help to complete tasks.",
+   "Autonomous agents can execute tasks independently."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 自律型エージェント / 自律型エージェントと信頼関係を確立する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/autonomous-agents/establish-trust-with-autonomous-agents",
+  "q": "次のうち、自律型エージェントを構築して統合する際に検討すべき重要なガードレールはどれですか?",
+  "o": [
+   "エージェントのテストに成功したら、それ以上進化しないようにする。",
+   "複雑なやり取りや機密性の高い取引には人間による監視を実施する。",
+   "エージェントがお客様と直接コミュニケーションをとる能力を制限する。",
+   "エージェントが絶対に金融取引を処理しないようにする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "自律型エージェントは多くのタスクを独立して処理できますが、複雑なやり取りや機密性の高い取引には人間による監視を入れるのが重要なガードレールです。金融取引を一切禁止するのではなく、金額の上限などで制御します。",
+  "qe": "Which of the following is an important guardrail to consider when building and integrating autonomous agents?",
+  "oe": [
+   "After successfully testing your agent, keep it from evolving any further.",
+   "Provide human oversight for more complex or sensitive interactions.",
+   "Limit your agent's ability to communicate directly with customers.",
+   "Never allow your agent to handle financial transactions."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 自律型エージェント / 自律型エージェントと信頼関係を確立する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/autonomous-agents/establish-trust-with-autonomous-agents",
+  "q": "お客様とやり取りする自律型エージェントをリリースするときは、何に対して透明性を確保することが重要ですか?",
+  "o": [
+   "顧客が自律型エージェントとどのように、いつやり取りしているか",
+   "エージェントの名前",
+   "エージェントが使用する大規模言語モデル",
+   "エージェントのテストメカニズム"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "顧客が自律型エージェントとやり取りしているときは、そのことを伝え、必要なら人間の担当者と話せるようにします。いつ・どのように AI とやり取りしているかを透明にすることが信頼につながります。",
+  "qe": "When you deploy an autonomous agent to interact with customers, it’s important to be transparent about what?",
+  "oe": [
+   "How and when customers are interacting with an autonomous agent",
+   "The agent’s name",
+   "The large language model the agent uses",
+   "The agent’s testing mechanism"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 自律型エージェント / 自律型エージェントでビジネストランスフォーメーションを実現する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/autonomous-agents/transform-your-business-with-autonomous-agents",
+  "q": "カスタマーサポートで自律型エージェントを使用する主なメリットは何ですか?",
+  "o": [
+   "お客様に会社のあらゆる FAQ を送信できる。",
+   "人間の担当者が複雑な問題に集中して取り組める。",
+   "人間の介入なしにお客様のすべての問題を処理できる。",
+   "お客様向けの新しい商品やサービスを作成できる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "自律型エージェントが FAQ から比較的複雑な問い合わせまでを処理するので、人間の担当者は人ならではの対応が必要な難しい案件に集中できます。すべての問題を人間なしで処理するわけではありません。",
+  "qe": "What is a key benefit of using autonomous agents in customer support?",
+  "oe": [
+   "They can send customers all of the company’s FAQs.",
+   "Human representatives can focus on more complex issues.",
+   "They can handle all customer issues without any human intervention.",
+   "They can create new products and services for customers."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 自律型エージェント / 自律型エージェントでビジネストランスフォーメーションを実現する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/autonomous-agents/transform-your-business-with-autonomous-agents",
+  "q": "Agentforce が会社のデータを保護し、有害性を検出することを保証するものは何ですか?",
+  "o": [
+   "Data 360",
+   "Einstein Trust Layer",
+   "外部 API",
+   "人間による外部監査"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Einstein Trust Layer は、セキュアなゲートウェイとデータ保持ゼロの合意で会社のデータを守り、有害性の検出も行います。Data 360 はグラウンディングに使うデータ基盤です。",
+  "qe": "What ensures that Agentforce protects your company’s data and detects toxicity?",
+  "oe": [
+   "Data 360",
+   "Einstein Trust Layer",
+   "External APIs",
+   "External human audits"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 Sandbox / Data 360 Sandbox を設定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-360-sandboxes/set-up-your-data-360-sandbox",
+  "q": "Jamal が Cloud Kicks の本番組織で直接テストするのではなく、Data 360 Sandbox を使用するのはなぜですか?",
+  "o": [
+   "ID 解決ルールの処理速度を向上させるため",
+   "ライブ本番データに影響を与えることなく、安全に設定を構築およびテストするため",
+   "24 時間ごとに本番データを自動的にバックアップするため",
+   "ID 解決の権限に関する要件を回避するため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "何百万件もの顧客データがある本番環境で Data 360 の設定を直接試すのはリスクがあります。Data 360 Sandbox なら、本番データに影響を与えずに設定を作ってテストできます。",
+  "qe": "Why does Jamal use a Data 360 sandbox instead of testing directly in the Cloud Kicks production org?",
+  "oe": [
+   "To increase the processing speed of identity resolution rules",
+   "To build and test configurations safely without impacting live production data",
+   "To automatically back up production data every 24 hours",
+   "To bypass the requirement for identity resolution permissions"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 Sandbox / Data 360 Sandbox を設定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-360-sandboxes/set-up-your-data-360-sandbox",
+  "q": "Data 360 Sandbox を作成する最初のプロセスはどこから始まりますか?",
+  "o": [
+   "本番環境の [Setup (設定)] メニュー",
+   "Data 360 の開発者コンソール",
+   "Salesforce ヘルプ & トレーニングポータル",
+   "対象 Sandbox インスタンスの設定内"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Data 360 Sandbox は、本番環境の[設定]からプロビジョニングして作成します。事前に、本番組織で Data 360 がプロビジョニングされていることを確認しておきます。",
+  "qe": "Where does the initial process of creating a Data 360 sandbox begin?",
+  "oe": [
+   "In the production environment's Setup menu",
+   "In the Data 360 Developer Console",
+   "On the Salesforce Help and Training portal",
+   "Within the target sandbox instance's settings"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 Sandbox / Data 360 Sandbox を更新して同期する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-360-sandboxes/refresh-and-synchronize-your-data-360-sandbox",
+  "q": "Data 360 Sandbox を更新した場合の主な結果は何ですか?",
+  "o": [
+   "Sandbox のすべてのデータが自動的に本番環境に転送される。",
+   "Sandbox のメタデータが本番組織の現在の状態と一致するように更新される。",
+   "Sandbox が自動的に上位のランクにアップグレードされる。",
+   "Sandbox 内のすべてのユーザーのパスワードが本番環境と一致するようにリセットされる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Data 360 Sandbox を更新すると、データストリーム、計算済みインサイト、セグメントなどの設定(メタデータ)が本番組織の現在の状態に合わせてコピーされます。Sandbox のデータが本番に送られるわけではありません。",
+  "qe": "What is the primary result of refreshing a Data 360 sandbox?",
+  "oe": [
+   "All sandbox data is automatically pushed to production.",
+   "The sandbox metadata is updated to match the current state of the production org.",
+   "The sandbox is automatically upgraded to a higher tier.",
+   "All user passwords in the sandbox are reset to match production."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": "Data 360 の Sandboxメタデータだけが複製され、データはコピーされない(Partial Copy や Full Copy でも同じ)。接続の認証情報も複製されないので、Sandbox で設定し直す"
+ },
+ {
+  "s": "Trailhead: Data 360 Sandbox / Data 360 Sandbox を更新して同期する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-360-sandboxes/refresh-and-synchronize-your-data-360-sandbox",
+  "q": "Vijay が更新後に不要になった孤立したメタデータを削除するには、どのツールを使用すればよいですか?",
+  "o": [
+   "Salesforce CLI",
+   "Data 360 設定のクリーンアッププロセス",
+   "メタデータ API",
+   "標準 Salesforce レポートビルダー"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "更新後に残った孤立したデータストリームなどの古いメタデータは、[Data Cloud 設定]メニューを使ってクリーンアップします。",
+  "qe": "Which tool should Vijay use to remove orphaned metadata that is no longer needed after a refresh?",
+  "oe": [
+   "The Salesforce CLI",
+   "The Data 360 Setup cleanup process.",
+   "The Metadata API",
+   "Standard Salesforce Report Builder"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 Sandbox / Data 360 の設定を DevOps データキットにバンドルする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-360-sandboxes/bundle-data-360-configurations-into-a-devops-data-kit",
+  "q": "Data 360 の展開ライフサイクルにおける DevOps データキットの主な機能は何ですか?",
+  "o": [
+   "24 時間ごとにすべての Data 360 本番データを自動的にバックアップする。",
+   "複数の Data 360 設定を 1 つの移植可能なリリース成果物にバンドルする。",
+   "Sandbox を更新し、本番環境からすべてのメタデータとデータを同期する。",
+   "パフォーマンステスト用のコストを抑えた環境を提供する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "DevOps データキットは、複数の Data 360 コンポーネントを1つのまとまりにバンドルし、環境間で繰り返し・安全にリリースできるようにする成果物です。バックアップや Sandbox の更新のための機能ではありません。",
+  "qe": "What is the primary function of a DevOps data kit in the Data 360 deployment lifecycle?",
+  "oe": [
+   "To automatically back up all Data 360 production data every 24 hours",
+   "To bundle multiple Data 360 configurations into a single, transportable release artifact",
+   "To refresh a sandbox and synchronize all metadata and data from production",
+   "To provide a lower-cost environment for performance testing"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 Sandbox / Data 360 の設定を DevOps データキットにバンドルする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-360-sandboxes/bundle-data-360-configurations-into-a-devops-data-kit",
+  "q": "DevOps データキットにバンドルできる 3 つの Data 360 コアコンポーネントはどれですか?",
+  "o": [
+   "データレイクオブジェクト (DLO)、統合プロファイル、Data 360 設定",
+   "データストリーム、データスペース、本番ユーザーのログイン情報",
+   "Salesforce CRM コネクタ、データスペース、Marketing Cloud エンゲージメント同期",
+   "データストリーム、計算済みインサイト、ID 解決ルール"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "DevOps データキットには、データストリーム、計算済みインサイト、ID 解決ルールなどのコアメタデータをバンドルできます。ログイン情報のような認証情報は含めません。",
+  "qe": "Which three core Data 360 components can be bundled into a DevOps data kit?",
+  "oe": [
+   "Data lake objects (DLOs), unified profiles, and Data Cloud setup configuration",
+   "Data streams, data spaces, and production user credentials",
+   "Salesforce CRM connectors, data spaces, and Marketing Cloud Engagement syncs",
+   "Data streams, calculated insights, and identity resolution rules"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 Sandbox / Data 360 設定を展開して検証する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-360-sandboxes/deploy-and-validate-your-data-360-configurations",
+  "q": "データキットを展開した後、CRM データストリームの展開に失敗した場合、何をする必要がありますか?",
+  "o": [
+   "Sandbox を更新して、再試行する。",
+   "対象の組織でコネクタを有効化してから、データキットを再度展開する。",
+   "データキットを削除し、本番環境でストリームを手動で再構築する。",
+   "再展開せずに、[Data Streams (データストリーム)] タブで [activate (有効化)] をクリックする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "CRM データストリームの展開に失敗した場合は、対象組織でコネクタを手動で有効化してから、データキットを再展開します。CRM 以外のデータストリームなら、コネクタで[activate]をクリックするだけで対応できます。",
+  "qe": "After deploying a data kit, what must you do if your CRM data streams fail to deploy?",
+  "oe": [
+   "Refresh the sandbox and try again.",
+   "Activate the connector in the target org, and then deploy the data kit again.",
+   "Delete the data kit and manually rebuild the streams in production.",
+   "Simply click activate on the data streams tab without redeploying."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 Sandbox / Data 360 設定を展開して検証する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-360-sandboxes/deploy-and-validate-your-data-360-configurations",
+  "q": "Sandbox から移行した ID 解決ルールが本番環境で意図したとおりに機能していることを、アーキテクトはどのように確認できますか?",
+  "o": [
+   "本番環境でルールをゼロから再作成する。",
+   "Salesforce のシステム状況ページを確認する。",
+   "マーケティングチームのログイン履歴を確認する。",
+   "ルールセットを手動で実行した後にメトリクスをレビューし、サンプルテストプロファイルを監査する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "移行した ID 解決ルールは、ルールセットを実行してから[メトリクス]で処理件数や統合プロファイルの数が想定どおりかを確認し、サンプルのプロファイルを監査して検証します。",
+  "qe": "How can an architect verify that the identity resolution rules moved from a sandbox are working as intended in production?",
+  "oe": [
+   "By re-creating the rules from scratch in production.",
+   "By checking the Salesforce system status page.",
+   "By viewing the login history of the marketing team.",
+   "By reviewing the metrics after manually running the ruleset and auditing a sample test profile."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を活用した Agentforce / Data 360 と Agentforce について検討する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/explore-data-cloud-and-agentforce",
+  "q": "Data 360 の堅牢なデータ基盤にアクセスするためには、どの手順に従う必要がありますか?",
+  "o": [
+   "Data 360 を組織にプロビジョニングして有効にする。",
+   "Data 360 を購入し、メールでシステム管理者に設定を依頼する。",
+   "Agentforce を Data 360 に接続するゼロコピー接続を作成する。",
+   "Data 360 を実装するためにプロビジョニングして有効にしてから、データを接続して変換し、マッピングする。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Data 360 には「有効化」と「実装」の2段階があります。堅牢なデータ基盤を使うには、プロビジョニングして有効にしたうえで、データを接続し、変換し、データモデルにマッピングする「実装」まで行う必要があります。",
+  "qe": "What steps do you need to follow to have access to Data 360’s robust data foundation?",
+  "oe": [
+   "Enable Data 360 by provisioning and enabling it in your org.",
+   "Purchase Data 360 and email your admins to set it up.",
+   "Create a Zero Copy connection to connect Agentforce to Data 360.",
+   "Implement Data 360 by provisioning and enabling it, then connecting, transforming, and mapping data."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を活用した Agentforce / Data 360 と Agentforce について検討する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/explore-data-cloud-and-agentforce",
+  "q": "Data 360 の一元化された Customer 360 データがエージェントにとって有益なのはなぜですか?",
+  "o": [
+   "エージェントが構造化された CRM データのみを使用するように制限されるため",
+   "エージェントが、お客様のアクションとコンテキスト全体を考慮してパーソナライズした応答を示すことができるため",
+   "データのクレンジングと変換の必要性が完全に排除されるため",
+   "エージェントが、その履歴に関係なく、すべてのお客様に一般的な応答を示すことができるため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Data 360 で一元化された Customer 360 データを使うと、エージェントは顧客の会社全体でのアクションやコンテキストを踏まえて、パーソナライズした応答を返せます。一般的で断片的な応答にならずに済みます。",
+  "qe": "Why is unified customer 360 data in Data 360 beneficial for agents?",
+  "oe": [
+   "It restricts agents to only using structured CRM data.",
+   "It enables agents to provide personalized responses that consider a customer’s actions and full context.",
+   "It completely eliminates the need for data cleansing and transformation.",
+   "It enables agents to offer generic responses to all customers, regardless of their history."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を活用した Agentforce / Data 360 を使用して信頼できるエージェントを実現する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/enable-trusted-agents-with-data-cloud",
+  "q": "検索拡張生成 (RAG) に Agentforce データライブラリ (ADL) を使用する場合と、フルカスタマイズが可能な Data 360 設定を使用する場合の主な違いは何ですか?",
+  "o": [
+   "ADL が事前構成されたクイックスタートソリューションであるのに対し、カスタマイズ可能な設定ではデータの取り込みや処理を細かく管理できる。",
+   "ADL はゼロコピーデータをサポートするが、カスタマイズ可能な設定ではデータの物理的なダウンロードが必要になる。",
+   "ADL は構造化データと非構造化データの両方をサポートするが、カスタマイズ可能な設定は非構造化データのみをサポートする。",
+   "ADL では複数のソースからのデータを統合できるのに対し、フルカスタマイズが可能な設定では 1 つのソースに限定される。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Agentforce データライブラリ(ADL)は、事前に構成された RAG のクイックスタートです。Data 360 で直接 RAG を組むと時間はかかりますが、データの取り込みや処理を細かく管理でき、扱えるデータソースも増えます。",
+  "qe": "What is the primary difference between using Agentforce Data Library (ADL) and fully customizable Data 360 setup for retrieval augmented generation (RAG)?",
+  "oe": [
+   "The ADL is a preconfigured, quick-start solution, while the customizable setup provides greater control over data ingestion and processing.",
+   "The ADL supports zero-copy data, but the customizable setup requires a physical download of the data.",
+   "The ADL supports both structured and unstructured data, but the customizable setup only supports unstructured data.",
+   "The ADL can integrate data from multiple sources, while a fully customizable setup is limited to a single source."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を活用した Agentforce / Data 360 を使用して信頼できるエージェントを実現する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/enable-trusted-agents-with-data-cloud",
+  "q": "次のうち、Data 360 を活用した生成 AI 監査とフィードバック履歴の主な機能はどれですか?",
+  "o": [
+   "Einstein Trust Layer を使用して、安全スコアが低いエージェントの応答をすべて自動的に修正する。",
+   "各応答に対する上向き親指と下向き親指の反応や安全スコアなどのフィードバックデータをログに記録する。",
+   "エージェントのやり取りのライブビデオフィードを表示して、リアルタイムで監視できるようにする。",
+   "マーケティングキャンペーンのパフォーマンスとお客様のトレンドを視覚化するダッシュボードが事前構築されている。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "生成 AI 監査とフィードバック履歴では、応答ごとの高評価・低評価や安全スコアなどのフィードバックをログに記録できます。応答を自動で修正する機能ではありません。",
+  "qe": "Which of the following is a key feature of the Generative AI Audit and Feedback Trail, as powered by Data 360?",
+  "oe": [
+   "It uses the Einstein Trust Layer to automatically correct any agent response with a low safety score.",
+   "It logs feedback data, such as thumbs-up or thumbs-down reactions and a safety score for each response.",
+   "It provides a live video feed of agent interactions for real-time monitoring.",
+   "It provides a prebuilt dashboard to visualize marketing campaign performance and customer trends."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を活用した Agentforce / Agentforce に Data 360 を実装する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/implement-data-cloud-for-agentforce",
+  "q": "NTO の例を参考に、Agentforce プロジェクトのデータを準備する正しい手順はどれですか?",
+  "o": [
+   "データストリームを作成し、検索インデックスを作成してから、ID 解決ルールセットを実行する。",
+   "ID 解決ルールセットを実行し、一括処理データ変換を使用してから、データストリームを作成する。",
+   "一括処理データ変換を使用し、データストリームを作成してから、ID 解決ルールセットを実行する。",
+   "データストリームを作成し、一括処理データ変換を使用してから、ID 解決ルールセットを実行する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "NTO の例では、まずデータストリームでケースデータを取り込み、一括処理データ変換で名前や形式の不一致を直し、最後に ID 解決ルールセットを実行してケースを統合プロファイルにつなげます。",
+  "qe": "Based on the NTO example, which of the following is the correct order of data preparation steps for an Agentforce project?",
+  "oe": [
+   "Create a data stream, create a search index, and then run an identity resolution ruleset.",
+   "Run an identity resolution ruleset, use a batch data transform, and then create a data stream.",
+   "Use a batch data transform, create a data stream, and then run an identity resolution ruleset.",
+   "Create a data stream, use a batch data transform, and then run an identity resolution ruleset."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を活用した Agentforce / Agentforce に Data 360 を実装する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-agentforce/implement-data-cloud-for-agentforce",
+  "q": "データを準備した後で、Data 360 で一元化されたデータや変換されたデータを基盤にエージェントを作成する正しい手順はどれですか?",
+  "o": [
+   "エージェントアクションを作成し、検索インデックスを作成してから、プロンプトテンプレートを作成する。",
+   "エージェントにトピックを追加し、プロンプトテンプレートを作成してから、エージェントアクションを作成する。",
+   "検索インデックスを作成し、レトリーバーをコールするプロンプトテンプレートを作成してから、そのプロンプトテンプレートを使用するエージェントアクションを作成する。",
+   "プロンプトテンプレートを作成し、検索インデックスを作成してから、エージェントアクションでそのプロンプトを使用する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "まず検索インデックスを作ると、Data 360 がレトリーバーを自動作成します。次にそのレトリーバーを呼ぶプロンプトテンプレートを作り、最後にそのテンプレートを使うエージェントアクションを作ります。",
+  "qe": "After preparing data, what is the correct sequence of steps for creating an agent built on unified and transformed data from Data 360?",
+  "oe": [
+   "Create an agent action, create a search index, then create a prompt template.",
+   "Add a topic to the agent, create a prompt template, and then create an agent action.",
+   "Create a search index, create a prompt template that calls a retriever, then create an agent action that uses the prompt template.",
+   "Create a prompt template, create a search index, then use the prompt in an agent action."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を駆使したエクスペリエンス / Data 360 のしくみを学習する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-experiences/learn-how-data-cloud-works",
+  "q": "Data 360 は、データを統合して個人の統合プロファイルを作成する際に、どれを使用しますか?",
+  "o": [
+   "Customer 360 データモデル",
+   "Tableau ダッシュボード",
+   "ID 解決ルールセット",
+   "データの変換"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Data 360 は、データを Customer 360 データモデルにマッピングしたあと、ID 解決ルールセットで一致するレコードを見つけて統合し、個人の統合プロファイルを作ります。",
+  "qe": "How does Data 360 unify data to create a unified profile of an individual?",
+  "oe": [
+   "Customer 360 Data Model",
+   "Tableau dashboards",
+   "Identity Resolution rulesets",
+   "Data transformation"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を駆使したエクスペリエンス / Data 360 のしくみを学習する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-experiences/learn-how-data-cloud-works",
+  "q": "顧客は Customer 360 アプリケーションで Data 360 のデータをどのように活用できますか?",
+  "o": [
+   "MuleSoft からデータを取り込む",
+   "データアクションを使用してフローをトリガーする",
+   "Journey Builder でセグメントを有効化する",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "Data 360 のデータは、データアクションでフローをトリガーしたり、Journey Builder でセグメントを有効化してパーソナライズしたキャンペーンに使ったりできます。MuleSoft からの取り込みは、データを入れる側の話です。",
+  "qe": "How can a customer act on data from Data 360 in a Customer 360 app?",
+  "oe": [
+   "Ingest data from MuleSoft.",
+   "Use data actions to trigger flows.",
+   "Activate a segment to Journey Builder.",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を駆使したエクスペリエンス / Data 360 の活用例を見る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-experiences/see-data-cloud-in-action",
+  "q": "次の回答のうち、優れた倫理的ベストプラクティスの例ではないものはどれですか?",
+  "o": [
+   "データガバナンス機能を使用する",
+   "必要なデータのみを収集する",
+   "全ユーザーに機密データへのアクセスを付与する",
+   "コミュニケーションに関する顧客のオプトインを尊重する"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "倫理的なデータの使い方では、必要なデータだけを集め、機密データは慎重に扱い、顧客のオプトインを尊重します。全ユーザーに機密データへのアクセスを与えるのは、ベストプラクティスに反します。",
+  "qe": "Which of these answers isn’t an example of a good ethical best practice?",
+  "oe": [
+   "Use data governance features.",
+   "Only collect the data you need.",
+   "Give all users access to sensitive data.",
+   "Respect customer opt-ins to communications."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 を駆使したエクスペリエンス / Data 360 の活用例を見る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/data-cloud-powered-experiences/see-data-cloud-in-action",
+  "q": "営業担当が連絡しようとしている顧客について詳しく知るために役立つユースケースはどれですか?",
+  "o": [
+   "データクリック数",
+   "ID 解決",
+   "一括インサイト",
+   "データ強化"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "データ強化(Data Enrichment)を使うと、Data 360 のデータやインサイトを取引先責任者などのレコードの関連リストや項目に表示できます。営業担当は、連絡する前に顧客の見込みや購入傾向を確認できます。",
+  "qe": "Which use case helps a sales rep learn more about the customer they're contacting?",
+  "oe": [
+   "Data clicks",
+   "Identity resolution",
+   "Batch insights",
+   "Data Enrichments"
+  ],
+  "v": "要確認",
+  "f": "d360ai",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce の基本 / はじめての Agentforce Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-copilot-basics/get-started-with-einstein-copilot",
+  "q": "Agentforce とは何ですか?",
+  "o": [
+   "大規模言語モデル",
+   "AI エージェントを構築およびリリースするための、完全で拡張可能なオープンプラットフォーム",
+   "Einstein ボットのスイート",
+   "Lightning Web コンポーネント"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Agentforce は、既存のワークフロー・データ・インテグレーションを使って AI エージェントを構築・リリースできる、完全で拡張可能なオープンプラットフォームです。LLM そのものではありません。",
+  "qe": "What is Agentforce?",
+  "oe": [
+   "A large language model",
+   "A complete, extensible, and open platform for building and deploying AI agents",
+   "A suite of Einstein bots",
+   "A Lightning web component"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce の基本 / はじめての Agentforce Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-copilot-basics/get-started-with-einstein-copilot",
+  "q": "Agentforce を Trust Layer と統合するメリットはどれですか?",
+  "o": [
+   "サードパーティ LLM プロバイダーがデータを保持することがない。",
+   "AI エージェントとエンドユーザーとのやり取りをすべて人間が確認する必要がある。",
+   "AI のやり取りを手動でログに入力する必要がある。",
+   "エージェントにガードレールを設定する必要がない。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Agentforce は Einstein Trust Layer と統合されているので、ユーザーのデータがサードパーティの LLM プロバイダーに保持されません。すべてのやり取りを人間が確認する必要はなく、ガードレールも引き続き設定します。",
+  "qe": "Which of these is a benefit of Agentforce being integrated with the Trust Layer?",
+  "oe": [
+   "Third-party LLM providers never retain your data.",
+   "A human must review every interaction that an AI agent has with an end user.",
+   "AI interactions need to be manually entered in logs.",
+   "You don’t have to set up guardrails for your agent."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce の基本 / Agentforce を試す Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-copilot-basics/explore-einstein-copilot",
+  "q": "Agentforce における標準アクションとカスタムアクションの主な違いは何ですか?",
+  "o": [
+   "標準アクションは Salesforce によって作成されるのに対し、カスタムアクションはお客様によって特定のビジネスニーズに合わせて作成される。",
+   "標準アクションは社内のエージェントでのみ使用できるのに対し、カスタムアクションはお客様に対応するエージェント向けである。",
+   "標準アクションはより複雑で追加のライセンスが必要であるのに対し、カスタムアクションはよりシンプルで追加のライセンスが不要である。",
+   "標準アクションはデータの取得に使用されるのに対し、カスタムアクションはデータの操作に使用される。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "標準アクションは Salesforce が用意しているもので、一般的なユースケースに使えます。カスタムアクションは、自社固有のプロセスに合わせてお客様が作るもので、Apex、フロー、プロンプトテンプレートなどを基にします。",
+  "qe": "What’s the primary difference between standard and custom actions in Agentforce?",
+  "oe": [
+   "Standard actions are built by Salesforce, while custom actions are built by customers to meet specific business needs.",
+   "Standard actions can only be used with internal agents, while custom actions are for customer-facing agents.",
+   "Standard actions are more complex and require additional licenses, while custom actions are simpler, and do not.",
+   "Standard actions are used for data retrieval, while custom actions are used for data manipulation."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce の基本 / Agentforce を試す Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-copilot-basics/explore-einstein-copilot",
+  "q": "Agentforce におけるサブエージェントの役割の最も適切な説明はどれですか?",
+  "o": [
+   "サブエージェントは事前定義されたスクリプトで、エージェントが逸脱することなく実行する。",
+   "サブエージェントは、特定のタスクを実行するための一連のアクションと指示をエージェントに示す。",
+   "サブエージェントは、ユーザーデータや好みを保存するために使用する。",
+   "サブエージェントは新しいタイプの AI モデルです。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "サブエージェント(旧トピック)は、特定のジョブを実行するためのアクションと指示をまとめたものです。エージェントは、ユーザーのリクエストに合うサブエージェントを選んで、その中のアクションを使います。",
+  "qe": "Which of these best describes the role of subagents in Agentforce?",
+  "oe": [
+   "Subagents are predefined scripts that the agent follows without deviation.",
+   "Subagents provide the agent with a set of actions and instructions to perform specific tasks.",
+   "Subagents are used to store user data and preferences.",
+   "Subagents are a new type of AI model."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce の基本 / 推論エンジンの概要 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-copilot-basics/enable-customize-copilot",
+  "q": "Agentforce における推論エンジンの主な役割は何ですか?",
+  "o": [
+   "ユーザーデータを保存する",
+   "ユーザーリクエストを解釈し、適切なサブエージェントとアクションを選択する",
+   "ユーザーインターフェースを設計する",
+   "エージェントのスケジュールを管理する"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "推論エンジン(Atlas 推論エンジン)は、ユーザーのリクエストを解釈し、どのサブエージェントとアクションを使うかを決めます。オーケストラの指揮者のように全体をまとめる役割です。",
+  "qe": "What’s the primary role of the reasoning engine in Agentforce?",
+  "oe": [
+   "To store user data",
+   "To interpret user requests and select the right subagents and actions",
+   "To design the user interface",
+   "To manage the agent’s schedule"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce の基本 / 推論エンジンの概要 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-copilot-basics/enable-customize-copilot",
+  "q": "Agentforce Builder のエクスプローラーではどのようなことができますか?",
+  "o": [
+   "AI エージェントをテストしてデバッグする。",
+   "スクリプトビューとキャンバスビューを切り替える。",
+   "AI エージェントの構築を支援してくれる AI アシスタントと対話する。",
+   "AI エージェントのすべてのアセットを表示して操作する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Agentforce Builder のエクスプローラーでは、エージェントのすべてのアセットやコンポーネントを1か所で表示して操作できます。ビューの切り替えや AI アシスタントは、別のパネルの機能です。",
+  "qe": "What does the Explorer in Agentforce Builder allow you to do?",
+  "oe": [
+   "Test and debug your AI agent.",
+   "Switch between Script View and Canvas View.",
+   "Interact with an AI assistant that can help you build your AI agent.",
+   "View and navigate all the assets of your AI agent."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Models API 入門 / Models API の基本を学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/get-started-with-einstein-models-api/learn-the-basics-of-models-api",
+  "q": "次のうち、Models API に最適なユースケースはどれですか?",
+  "o": [
+   "組織のデータでグラウンディングされた汎用 AI チャットボット",
+   "カスタマーサービスシナリオへの対応とエスカレーションを行う自動サービスエージェント",
+   "カスタム UI と外部 API インテグレーションを備えた AI ダッシュボード",
+   "検索クエリを満たす結果を特定する検索サービス"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Models API は、Apex などからパートナーの LLM に接続し、独自の AI アプリケーションを作るための API です。外部 API のデータを分析・要約するカスタム UI のダッシュボードが典型的な使い方です。",
+  "qe": "Which of the following is the best use case for the Models API?",
+  "oe": [
+   "A general-purpose AI chatbot grounded in your org’s data",
+   "An automated service agent for addressing and escalating customer service scenarios",
+   "An AI dashboard with custom UI and external API integration",
+   "A search service that identifies results that satisfy a search query"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "models",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Models API 入門 / Models API の基本を学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/get-started-with-einstein-models-api/learn-the-basics-of-models-api",
+  "q": "Models API は LLM に加えてエンベディングモデルもサポートしている。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Models API は、LLM によるテキスト生成に加えて、エンベディング(テキストをベクトルに変換する機能)や履歴を使ったチャット生成もサポートしています。",
+  "qe": "The Models API supports embedding models in addition to LLMs.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "models",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントをデータでグラウンディングする / グラウンディングの基本を学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/grounding-an-agent-with-data/learn-the-basics-of-grounding",
+  "q": "LLM プロンプトをグラウンディングする目的は何ですか?",
+  "o": [
+   "プロンプトに対する LLM の応答をあらかじめ指定しておくため",
+   "LLM の応答の関連性と正確性を高めるため",
+   "LLM から迅速に応答を得るため",
+   "正確性は低くても、興味深い創造的な応答を得るため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "グラウンディングの目的は、LLM に考慮してほしい情報をプロンプトに加えて、応答の正確性と関連性を高めることです。応答をあらかじめ決めておくことではありません。",
+  "qe": "What’s the goal of grounding an LLM prompt?",
+  "oe": [
+   "To pre-specify the LLM’s response to the prompt",
+   "To improve the relevance and accuracy of the LLM’s response",
+   "To get a quicker response from the LLM",
+   "To get a creative response that’s more interesting even if it’s less accurate"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "grounding",
+  "x": "グラウンディングは、プロンプトに組織の正確で最新のデータを加えて、LLM に文脈を与えることです。Prompt Template Workspace の「Insert Resource」ボタンから、差し込み項目として追加します。"
+ },
+ {
+  "s": "Trailhead: エージェントをデータでグラウンディングする / グラウンディングの基本を学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/grounding-an-agent-with-data/learn-the-basics-of-grounding",
+  "q": "AI エージェントに RAG を使用するのはどのような場合ですか?",
+  "o": [
+   "非構造化データに保存されている知識で AI エージェントをグラウンディングする場合",
+   "構造化データで AI エージェントをグラウンディングする場合",
+   "LLM のハルシネーションを排除する場合",
+   "使用しない。AI エージェントに RAG は使用できない"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "RAG(検索拡張生成)は、ドキュメントなどの非構造化データから知識を取り出してグラウンディングする方法です。構造化データは、レコードの項目などを直接使ってグラウンディングできます。RAG はハルシネーションを減らせますが、完全になくせるわけではありません。",
+  "qe": "When would you use RAG with an AI agent?",
+  "oe": [
+   "To ground the AI agent with knowledge stored in unstructured data",
+   "To ground the AI agent with structured data",
+   "To eliminate LLM hallucinations",
+   "Never - you can’t use RAG with AI agents"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "grounding",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントをデータでグラウンディングする / エージェントをデータでグラウンディングするためのオプションを確認する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/grounding-an-agent-with-data/review-options-to-ground-an-agent-with-data",
+  "q": "形式があらかじめ定義されているため、Agentforce と統合しやすいデータの種類はどれですか?",
+  "o": [
+   "構造化データ",
+   "オープンソースデータ",
+   "外部データ",
+   "顧客データ"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "構造化データは、項目や型などの形式があらかじめ決まっているので、Agentforce と統合しやすいデータです。標準オブジェクトの構造化データには、エージェントアクションから直接アクセスできます。",
+  "qe": "Which type of data is easier to integrate with Agentforce due to its predefined format?",
+  "oe": [
+   "Structured data",
+   "Open-source data",
+   "External data",
+   "Customer data"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "grounding",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: エージェントをデータでグラウンディングする / エージェントをデータでグラウンディングするためのオプションを確認する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/grounding-an-agent-with-data/review-options-to-ground-an-agent-with-data",
+  "q": "Agentforce アクションを Salesforce データに接続するために使用される方法はどれですか?",
+  "o": [
+   "Salesforce データローダー",
+   "オープンソース API",
+   "Flow Builder",
+   "非構造化データライブラリ"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ローコード・ノーコードでエージェントアクションを Salesforce データにつなぐには、Flow Builder でフローを作ります。データローダーはデータの抽出や読み込みに使うツールです。",
+  "qe": "What is one method used to connect Agentforce actions to Salesforce data?",
+  "oe": [
+   "Salesforce Data Loader",
+   "Open Source APIs",
+   "Flow Builder",
+   "Unstructured Data Libraries"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "grounding",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Builder の概要 / Agentforce Builder について知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/introduction-to-agent-builder/get-to-know-agent-builder",
+  "q": "エージェントに関連付けられているサブエージェントやアクションに影響するものは何ですか?",
+  "o": [
+   "設定した変数",
+   "選択したテンプレートまたは記述したエージェントの説明",
+   "データソース",
+   "エージェントがやり取りに使用する言語の設定"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "エージェントを作るときに選んだテンプレートや書いた説明によって、関連付けられるサブエージェントやアクションが決まります。",
+  "qe": "What influences the subagents and actions that are associated with your agent?",
+  "oe": [
+   "The variables you set",
+   "The template you choose or the description of the agent you write",
+   "Data sources",
+   "The language settings your agent interacts in"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "builder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Builder の概要 / Agentforce Builder について知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/introduction-to-agent-builder/get-to-know-agent-builder",
+  "q": "エージェントのパフォーマンスはどこでテストできますか?",
+  "o": [
+   "[Language (言語)] 設定パネル",
+   "定義済みテンプレート",
+   "[Preview (プレビュー)] モード",
+   "エージェントルーター"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "エージェントのパフォーマンスは[Preview(プレビュー)]モードでテストできます。会話の裏側の詳細も表示されるので、エージェントがどう判断したかを確認できます。",
+  "qe": "Where can you test your agent’s performance?",
+  "oe": [
+   "In the Language settings panel",
+   "In a predefined template",
+   "In Preview mode",
+   "In the Agent Router"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "builder",
+  "x": "Preview発話を入力してテストし、どのサブエージェントやアクションが選ばれたかを確認する"
+ },
+ {
+  "s": "Trailhead: Agentforce の概要 / Agentforce の機能について知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/introduction-to-agentforce/get-to-know-agentforce-functionality",
+  "q": "Agentforce が会話の変化に応じて異なるサブエージェントやアクションをコールできるようにするものはどれですか?",
+  "o": [
+   "Trust Layer",
+   "Atlas 推論エンジン",
+   "会話に使用するチャネル",
+   "既存のガードレール"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Atlas 推論エンジンは、ユーザーの意図を理解し、会話の流れに合わせてアクションを実行します。会話が変われば、それに応じて別のサブエージェントやアクションを呼び出せます。",
+  "qe": "What allows Agentforce to call different subagents and actions as a conversation shifts?",
+  "oe": [
+   "The Trust Layer",
+   "The Atlas Reasoning Engine",
+   "The channels used in the conversation",
+   "The guardrails that exist"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": "推論エンジン会話をサブエージェントへ振り分け、LLMと推論して次の手を決める"
+ },
+ {
+  "s": "Trailhead: Agentforce の概要 / Agentforce の機能について知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/introduction-to-agentforce/get-to-know-agentforce-functionality",
+  "q": "エージェントが実行するように設定されている個々のタスクを何と言いますか?",
+  "o": [
+   "サブエージェント",
+   "大規模言語モデル (LLM)",
+   "アクション",
+   "エージェント種別"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "アクションは、エージェントがジョブを行うときの個々のタスク(取引先番号を尋ねるなど)です。サブエージェントは、関連するアクションと指示をまとめた単位です。",
+  "qe": "What are the individual tasks an agent is configured to do?",
+  "oe": [
+   "Subagents",
+   "The large language model (LLM)",
+   "Actions",
+   "The agent type"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 新しい Agentforce Builder: クイックルック / 新しいエージェントビルダーについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/new-agentforce-builder-quick-look/explore-the-new-agentforce-builder",
+  "q": "Agentforce エージェントを管理するための新しい場所は何ですか?",
+  "o": [
+   "Service Cloud",
+   "Data 360",
+   "Agentforce スタジオ",
+   "プロンプトビルダー"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Agentforce スタジオは、AI エージェントを作成・管理するための中心となる場所です。アプリケーションランチャーや[設定]から開けます。",
+  "qe": "What’s the new location for managing Agentforce agents?",
+  "oe": [
+   "Service Cloud",
+   "Data 360",
+   "Agentforce Studio",
+   "Prompt Builder"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "builder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 新しい Agentforce Builder: クイックルック / 新しいエージェントビルダーについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/new-agentforce-builder-quick-look/explore-the-new-agentforce-builder",
+  "q": "次のうち、キャンバスビューの正しい定義はどれですか?",
+  "o": [
+   "構文の強調表示とリアルタイム検証を備えたスクリプト言語。",
+   "エージェントを作成するためのドキュメントスタイルのエディター。",
+   "エージェントのすべてのアセットに 1 か所でアクセスできるファイルエクスプローラー。",
+   "エージェントの会話をプレビューしてテストするためのモード。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "キャンバスビューは、自然言語でエージェントを作成・変更できるドキュメント形式のエディターです。構文の強調表示やリアルタイム検証があるのはスクリプトビューのほうです。",
+  "qe": "Which of these is the correct definition of the Canvas view?",
+  "oe": [
+   "A scripting language with syntax highlighting and real-time validation.",
+   "A document-style editor for building agents.",
+   "A file explorer where you can access all of an agent’s assets in one place.",
+   "A mode for previewing and testing agent conversations."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "builder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce でのプログラムによる指示 / フロー、アクション、権限を使用してエージェントに追加情報を提供する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/programmatic-instructions-in-agentforce/give-your-agent-more-information-with-flows-actions-and-permissions",
+  "q": "お客様の誕生日を返すように [Get Customer Details (顧客の詳細を取得)] フローを更新するには、どうすればよいですか?",
+  "o": [
+   "[Get Contact by Email and Member Number (メールとメンバー番号で取引先責任者を取得)] 要素で、[Add Field (項目を追加)] をクリックし、[Date (日付)] を選択する。",
+   "[Get Contact by Email and Member Number (メールとメンバー番号で取引先責任者を取得)] 要素で、[Add Field (項目を追加)] をクリックし、[Birthdate (誕生日)] を選択する。",
+   "取引先を返す新しい要素を作成する。次に、[Add Field (項目を追加)] をクリックし、[Birthdate (誕生日)] を選択する。",
+   "誰もが平等に扱われるように誕生日をハードコードする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "フローで誕生日を返すには、取引先責任者を取得している[Get Contact by Email and Member Number]要素を開き、[Add Field]で[Birthdate(誕生日)]項目を追加します。そのあと新しいバージョンとして保存して有効化します。",
+  "qe": "How can you update the Get Customer Details flow to return a customer's birthdate?",
+  "oe": [
+   "In the Get Contact by Email and Member Number element, click Add Field, then select Date.",
+   "In the Get Contact by Email and Member Number element, click Add Field, then select Birthdate.",
+   "Create a new element that returns an Account. Then, click Add Field and select Birthdate.",
+   "Hard-code a birthdate so everyone is treated equally."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce でのプログラムによる指示 / フロー、アクション、権限を使用してエージェントに追加情報を提供する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/programmatic-instructions-in-agentforce/give-your-agent-more-information-with-flows-actions-and-permissions",
+  "q": "あなたは取引先責任者オブジェクトに新しい項目 Preferred_Name__c を追加しました。お客様にプリファードネームで挨拶するようにエージェントを更新したいと思います。エージェントが新しい項目にアクセスできるようにするには、どうすればよいですか?",
+  "o": [
+   "追加ステップは必要ない。エージェントはすでに取引先責任者オブジェクト全体に対して参照アクセス権を持っている。",
+   "エージェントに取引先責任者オブジェクトの Preferred_Name__c に対する参照アクセス権を付与する。",
+   "Preferred_Name__c の出力を保存する変数を作成する。",
+   "エージェントに CustomerNames オブジェクトに対するユーザー参照アクセス権を付与する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "新しいカスタム項目へのアクセス権は自動では付与されません。エージェントがプリファードネームを使えるように、エージェントユーザーに Preferred_Name__c 項目の参照アクセス権を付与します。",
+  "qe": "You've added a new field, Preferred_Name__c, to your Contact object. You want to update your agent to ensure customers are always greeted by their preferred name. How do you ensure your agent can access the new field?",
+  "oe": [
+   "No extra steps required! Your agent user already has read access to the entire Contact object.",
+   "Grant your agent user read access to Preferred_Name__c on the Contact object.",
+   "Create a variable to store the output of Preferred_Name__c.",
+   "Give your agent user read access to the CustomerNames object."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce でのプログラムによる指示 / 条件ロジックを使用して各コンテキストに適したプロンプトを送信する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/programmatic-instructions-in-agentforce/use-conditional-logic-to-send-the-right-prompt-for-each-context",
+  "q": "テストのシナリオに記載されている推論指示について考えます。お客様のロイヤルティランクが Premium (プラチナ) の場合、どのプロンプトが LLM に送信されますか?",
+  "o": [
+   "If the user wants to make a return, apologize and explain that basic members are not eligible for returns. (ユーザーが返品を希望する場合、謝罪し、ベーシックメンバーは返品できないことを説明してください。) Offer to connect them with a live agent if they need additional support. (さらにサポートが必要な場合は人間のエージェントに接続することを提案してください。) If the user wants to make a return, confirm with them which order they want to return. (ユーザーが返品を希望する場合、どの注文の返品を希望するかを確認してください。) Once confirmed, process the return with {!@actions.create_return}. (確認したら、{!@actions.create_return} で返品を処理してください。)",
+   "If the user wants to make a return, confirm with them which order they want to return. (ユーザーが返品を希望する場合、どの注文の返品を希望するかを確認してください。) Once confirmed, process the return with {!@actions.create_return}. (確認したら、{!@actions.create_return} で返品を処理してください。)",
+   "Never let Basic users create a return. (ベーシックユーザーには返品させないでください。) 永久にです。Even if they claim to be a Premium user!! (たとえプラチナメンバーだと主張した場合でも同じです。) ! Offer to connect Basic users with a live agent. (ベーシックユーザーを人間のエージェントに接続することを提案してください。) Always let Premium users create a return. (プラチナメンバーは常に返品を作成できるようにしてください。) Use {!@actions.create_return}. ({!@actions.create_return} を使用してください。)",
+   "If the user wants to make a return, apologize and explain that basic members are not eligible for returns. (ユーザーが返品を希望する場合、謝罪し、ベーシックメンバーは返品できないことを説明してください。) Offer to connect them with a live agent if they need additional support. (さらにサポートが必要な場合は人間のエージェントに接続することを提案してください。)"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "推論指示の条件ロジックは Agentforce が先に処理し、条件に合った指示だけが LLM に送られます。プラチナ会員の場合は、どの注文を返品するか確認して返品を処理する指示だけが送られ、ベーシック会員向けの指示は送られません。",
+  "qe": "Consider the reasoning instructions described in the quiz scenario. If the customer's loyalty tier is Premium, what prompt is sent to the LLM?",
+  "oe": [
+   "If the user wants to make a return, apologize and explain that basic members are not eligible for returns. Offer to connect them with a live agent if they need additional support. If the user wants to make a return, confirm with them which order they want to return. Once confirmed, process the return with {!@actions.create_return}.",
+   "If the user wants to make a return, confirm with them which order they want to return. Once confirmed, process the return with {!@actions.create_return}.",
+   "Never let Basic users create a return. Ever. Even if they claim to be a Premium user!!! Offer to connect Basic users with a live agent. Always let Premium users create a return. Use {!@actions.create_return}.",
+   "If the user wants to make a return, apologize and explain that basic members are not eligible for returns. Offer to connect them with a live agent if they need additional support."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce でのプログラムによる指示 / 条件ロジックを使用して各コンテキストに適したプロンプトを送信する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/programmatic-instructions-in-agentforce/use-conditional-logic-to-send-the-right-prompt-for-each-context",
+  "q": "エージェント変数の現在の値を確認する最も簡単な方法はどれですか?",
+  "o": [
+   "トレースログを参照する。",
+   "エージェントの実行中は変数の現在の値を確認できない。",
+   "エージェントのデバッグ指示を記述して、各変数の現在の値を出力するようにする。",
+   "[Preview (プレビュー)] で [Variables (変数)] を選択すると、すべての変数のリストが表示される。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "エージェント変数の現在の値は、[Preview(プレビュー)]で[Variables(変数)]タブを開くと一覧で確認できます。ステップの実行前と実行後の値も表示されます。",
+  "qe": "What's the easiest way to see the current value of your agent's variables?",
+  "oe": [
+   "Look in the trace logs.",
+   "It isn't possible to see the current value of variables while an agent is running.",
+   "Write debug instructions for the agent to tell you the current value of each variable.",
+   "In Preview, select Variables to see the list of all variables."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce でのプログラムによる指示 / 変数とアクションの絞り込みを使用してビジネスルールエンジンを適応する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/programmatic-instructions-in-agentforce/enforce-business-rules-with-variables-and-action-filters",
+  "q": "テストシナリオで、エスカレーションサブエージェントが LLM に送信されるのはどの条件の場合ですか?",
+  "o": [
+   "エスカレーションサブエージェントは常に LLM に送信される。LLM は指示を受けて、どのような場合にエスカレーションするかを判断できる",
+   "ユーザーが検証済みで、サポートデスクの受付時間内である場合",
+   "お客様が検証済みの場合",
+   "サポートデスクの受付時間内で、お客様がサポート担当者と話すことを要求した場合"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "go_to_escalation アクションには「customerVerified が True かつ officeOpen が True のときだけ使える」という条件が付いています。そのため、ユーザーが検証済みで、サポートの受付時間内のときだけ LLM に送られます。",
+  "qe": "In the quiz scenario, under what conditions is the escalation subagent sent to the LLM?",
+  "oe": [
+   "The escalation subagent is always sent to the LLM. The LLM has instructions and can figure out when to escalate.",
+   "When the user is verified and the support desk is open.",
+   "When the customer is verified.",
+   "When the support desk is open, and the customer has demanded to speak to a support rep."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce でのプログラムによる指示 / 変数とアクションの絞り込みを使用してビジネスルールエンジンを適応する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/programmatic-instructions-in-agentforce/enforce-business-rules-with-variables-and-action-filters",
+  "q": "条件付きチェックを行うために変数を使用している場合に変数のデフォルト値を設定すべきなのはなぜですか?",
+  "o": [
+   "条件付きステートメントが正しく機能し、エージェントを更新するほかのユーザーがロジックを理解しやすくするため。",
+   "デフォルト値は設定すべきではない。指定しなければ Agentforce によってデフォルト値が設定される。",
+   "Agentforce がプロンプトを処理するときに条件チェックを必ず実行するようにするため。",
+   "変数を作成するときにはデフォルト値が必須であるため。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Boolean 変数は、デフォルト値を指定しないと自動で False になりますが、明確にデフォルト値を設定しておくべきです。条件チェックが正しく動き、あとからエージェントを編集する人にもロジックがわかりやすくなります。",
+  "qe": "If you're using a variable to make a conditional check, why should you set the variable's default value?",
+  "oe": [
+   "To ensure the conditional statements work correctly, and so other people who update your agent can easily understand your logic.",
+   "You shouldn't set the default value, because Agentforce sets a default value if you don't provide one.",
+   "To ensure Agentforce runs your conditional checks when it processes the prompt.",
+   "Because default values are required when you create a variable."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトビルダーの基本 / プロンプトビルダーについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-builder-basics/get-to-know-prompt-builder",
+  "q": "プロンプトに具体的な要件とコンテキストを指示すると、応答にどのような影響がありますか?",
+  "o": [
+   "プロンプトの応答には何の影響もない。",
+   "予測可能な反復的な応答が生成される。",
+   "指定した要件に合わせて出力が調整され強化される。",
+   "応答に時間がかかる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "プロンプトに具体的な要件やコンテキストを書くと、出力はその要件に合わせて調整され、質が上がります。指示しない場合とでは、生成される内容が大きく変わります。",
+  "qe": "How do specificity and context impact prompt responses?",
+  "oe": [
+   "They have no effect on prompt responses.",
+   "They lead to predictable and repetitive responses.",
+   "They enhance the output by tailoring it to your requirements.",
+   "They slow down the response time."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbuilder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトビルダーの基本 / プロンプトビルダーについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-builder-basics/get-to-know-prompt-builder",
+  "q": "顧客向けにパーソナライズされたメールの生成を支援するプロンプトテンプレート種別はどれですか?",
+  "o": [
+   "画像生成プロンプトテンプレート",
+   "セールスメールプロンプトテンプレート",
+   "チャットボット生成プロンプトテンプレート",
+   "項目生成プロンプトテンプレート"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "セールスメールプロンプトテンプレートは、レコードのデータをもとに顧客ごとにパーソナライズされたメールを作成します。項目生成プロンプトテンプレートは、レコードの項目に AI の生成結果を入れるためのものです。",
+  "qe": "Which prompt template type assists in generating personalized emails for customers?",
+  "oe": [
+   "Image Generation prompt templates.",
+   "Sales Email prompt templates.",
+   "Chatbot Generation prompt templates.",
+   "Field Generation prompt templates."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbuilder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトビルダーの基本 / プロンプトテンプレートを作成してグラウンディングする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-builder-basics/create-and-ground-prompt-templates",
+  "q": "正誤問題: グラウンディングは、プロンプトの応答にコンテキストや具体的な情報を示すために使用する手法である。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "グラウンディングは、プロンプトに具体的な情報やコンテキストを加える手法です。プロンプトビルダーでは、差し込み項目などで CRM のデータを取り込んでグラウンディングします。",
+  "qe": "True or false: Grounding is a technique used to provide context and specificity to prompt responses.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbuilder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトビルダーの基本 / プロンプトテンプレートを作成してグラウンディングする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-builder-basics/create-and-ground-prompt-templates",
+  "q": "セールスメールプロンプトテンプレートで、顧客ごとにメールをパーソナライズするための Name、Title、MailingCity などの差し込み項目を提供するリソースはどれですか?",
+  "o": [
+   "送信者",
+   "グラウンディング",
+   "受信者",
+   "ChatGPT-4 プロンプト"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "セールスメールプロンプトテンプレートでは、[Recipient(受信者)]リソースから Name、Title、MailingCity などの差し込み項目を選び、メールの宛先ごとにパーソナライズします。[Sender(送信者)]は送る側の情報です。",
+  "qe": "In a sales email prompt template, which resource provides merge fields like Name, Title, and MailingCity to personalize the email for each customer?",
+  "oe": [
+   "Sender",
+   "Grounding",
+   "Recipient",
+   "ChatGPT-4 Prompt"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbuilder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトビルダーの基本 / 項目生成プロンプトテンプレートを構築する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-builder-basics/build-a-field-generation-prompt-template",
+  "q": "プロンプトビルダーを使用して項目生成プロンプトテンプレートを作成するために必要なものはどれですか?",
+  "o": [
+   "テンプレート名",
+   "受信者オブジェクト",
+   "オブジェクト",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "項目生成プロンプトテンプレートを作るときは、テンプレート名と、対象のオブジェクト(およびオブジェクト項目)を指定します。受信者オブジェクトはセールスメールテンプレートで使う設定です。",
+  "qe": "What is required to create a field generation prompt template using Prompt Builder?",
+  "oe": [
+   "Template Name",
+   "Recipient Object",
+   "Object",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbuilder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトビルダーの基本 / 項目生成プロンプトテンプレートを構築する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-builder-basics/build-a-field-generation-prompt-template",
+  "q": "項目生成プロンプトテンプレートはどの種別のフローを使用しますか?",
+  "o": [
+   "Generated Field Flow (生成項目フロー)",
+   "テンプレートトリガープロンプトフロー",
+   "Field Prompt Template Flow (項目プロンプトテンプレートフロー)",
+   "Flow Prompt Template Capability (フロープロンプトテンプレート機能)"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロンプトテンプレートにフローでデータを渡すときは、テンプレートトリガープロンプトフローを使います。この種別のフローは、プロンプトテンプレートからだけ実行されます。",
+  "qe": "What type of flow do you use with a field generation prompt template?",
+  "oe": [
+   "Generated Field Flow",
+   "Template-Triggered Prompt Flow",
+   "Field Prompt Template Flow",
+   "Flow Prompt Template Capability"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbuilder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトビルダーの基本 / プロンプトテンプレートを確認して修正し、保存する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-builder-basics/review-revise-and-repeat-testing-prompt-templates",
+  "q": "プロンプトの応答を確認するときに、正確性を確保し、意図しない情報が含まれないようにするために検討すべき点はどれですか?",
+  "o": [
+   "バイアス",
+   "アクション/目標完了",
+   "繰り返し",
+   "事実の正確度"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "応答を確認するときは、事実が正しいか(事実の正確度)をチェックし、意図しない情報が混ざっていないかを確かめます。バイアスや目標の達成度も、それぞれ別の観点として確認します。",
+  "qe": "When reviewing a prompt response, which consideration ensures accuracy and avoids including unintended information?",
+  "oe": [
+   "Bias",
+   "Action/Goal Completion",
+   "Repetition",
+   "Factual Accuracy"
+  ],
+  "v": "要確認",
+  "f": "promptbuilder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトビルダーの基本 / プロンプトテンプレートを確認して修正し、保存する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-builder-basics/review-revise-and-repeat-testing-prompt-templates",
+  "q": "ユーザーがプロンプトの応答をプレビューできるプロンプトビルダーの 2 つの機能はどれですか?",
+  "o": [
+   "応答とプレビュー",
+   "解決済みプロンプトと応答",
+   "プレビューと修正",
+   "具体的な情報と解決"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロンプトビルダーのプレビューでは、[Resolved Prompt(解決済みプロンプト)]と[Response(応答)]を確認できます。解決済みプロンプトでは、特定のレコードで差し込み項目がどう置き換わったかがわかります。",
+  "qe": "What are the two Prompt Builder features that allow users to preview prompt responses?",
+  "oe": [
+   "Response and Preview",
+   "Resolved Prompt and Response",
+   "Preview and Revise",
+   "Specifics and Resolution"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbuilder",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトエンジニアリングのテクニック / いろいろなプロンプト手法を利用してプロンプトを改善しましょう。 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-engineering-techniques/improve-prompts-using-different-prompt-techniques",
+  "q": "クイズのシナリオに基づき、Janina が使用する高度なプロンプトエンジニアリング手法はどれですか?",
+  "o": [
+   "フューショットプロンプト",
+   "CoT プロンプト",
+   "ロールベースのプロンプト",
+   "ライフサイクルプロンプト"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Janina は、昨年の販売データの確認、今年のプロモーションと遅延の分析、需要の予測という順に、段階を踏んで考えるよう AI に頼んでいます。途中の推論ステップをたどらせるこの手法は、CoT(思考の連鎖)プロンプトです。",
+  "qe": "Based on the quiz scenario, which advanced prompt engineering technique is Janina using?",
+  "oe": [
+   "Few-shot prompting",
+   "Chain-of-thought prompting",
+   "Role-based prompting",
+   "Lifecycle prompting"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトエンジニアリングのテクニック / いろいろなプロンプト手法を利用してプロンプトを改善しましょう。 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-engineering-techniques/improve-prompts-using-different-prompt-techniques",
+  "q": "プロンプトのライフサイクルにおいて、レポート機能や信頼機能を使用してプロンプトのパフォーマンスを追跡することに焦点を当てるフェーズはどれですか?",
+  "o": [
+   "開発",
+   "テスト",
+   "監視",
+   "反復"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "プロンプトのライフサイクルの「監視」では、プロンプトを使い始めたあと、Data 360 の AI レポートや Einstein Trust Layer などからセキュリティと分析の情報を集め、パフォーマンスを追跡します。",
+  "qe": "Which phase in a prompt’s lifecycle focuses on using reporting and trust features to track a prompt’s performance?",
+  "oe": [
+   "Development",
+   "Testing",
+   "Monitoring",
+   "Iteration"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / プロンプト入門 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/get-started-with-prompts",
+  "q": "プロンプトの品質は、AI モデルの応答にどのような影響を与えますか?",
+  "o": [
+   "影響しない。モデルのサイズが品質を決定する",
+   "より明確で具体的なプロンプトほど、より良い応答が得られる",
+   "プロンプトが長いほど、常により正確な応答が得られる",
+   "専門的な言葉を多く使うほど、常により良い応答が得られる"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロンプトが明確で具体的なほど、AI モデルの回答の質は高くなります。長さや専門用語の多さで良くなるわけではありません。",
+  "qe": "How does the quality of your prompt affect the AI model's response?",
+  "oe": [
+   "It doesn't; the model's size determines quality.",
+   "A clearer, more specific prompt produces a better response.",
+   "A longer prompt always produces a more accurate response.",
+   "Using more technical language always produces a better response."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / プロンプト入門 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/get-started-with-prompts",
+  "q": "次のうち、効果的なプロンプトの 6 つの主要な構成要素の 1 つはどれですか?",
+  "o": [
+   "予算",
+   "沿革",
+   "ロール",
+   "承認"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "効果的なプロンプトには最大6つの構成要素があり、その1つが「ロール(AI にどの役割を担わせるか)」です。予算や承認は構成要素ではありません。",
+  "qe": "Which of the following is one of the six core components of an effective prompt?",
+  "oe": [
+   "Budget",
+   "Timeline",
+   "Role",
+   "Approval"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / より良いプロンプトを書く Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/write-better-prompts",
+  "q": "プロンプトでトリプルクォート (\"\"\") を使用する主な目的は何ですか?",
+  "o": [
+   "指示とデータを明確に区別すること",
+   "プロンプトをより専門的に見せること",
+   "プロンプトの語数を増やすこと",
+   "プロンプトの終わりを示すこと"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "トリプルクォート(\"\"\")でデータを囲むと、指示とデータをはっきり分けられます。指示と情報が混ざっていると、モデルが情報を追加の指示と勘違いすることがあります。",
+  "qe": "What is the primary purpose of using triple quotes (\"\"\") in a prompt?",
+  "oe": [
+   "To clearly separate instructions from data",
+   "To make the prompt look more professional",
+   "To increase the word count of the prompt",
+   "To indicate the end of the prompt"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / より良いプロンプトを書く Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/write-better-prompts",
+  "q": "「一度だけ参照する」原則によると、プロンプトで避けるべきことは何ですか?",
+  "o": [
+   "専門用語を使用すること",
+   "多すぎるコンテキストを提供すること",
+   "指示に箇条書きを使用すること",
+   "同じデータを 1 つのプロンプトで複数回繰り返すこと"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "「一度だけ参照する」原則では、同じデータを1つのプロンプトで何度も繰り返さないようにします。繰り返すと、予期しない結果や一貫性のない結果につながることがあります。",
+  "qe": "According to the reference-once principle, what should you avoid doing in prompts?",
+  "oe": [
+   "Using technical terminology",
+   "Providing too much context",
+   "Using bullet points in instructions",
+   "Repeating the same data multiple times in a single prompt"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / プロンプト設計パターンを確認する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/explore-prompt-design-patterns",
+  "q": "長いメールスレッドを要点にまとめるには、どのプロンプト設計パターンを使用しますか?",
+  "o": [
+   "変換",
+   "コンテンツ生成",
+   "要約",
+   "抽出"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "長いメールスレッドを要点にまとめるなら「要約」のパターンを使います。必要な情報だけを取り出すのは「抽出」、別の形に作り変えるのは「変換」です。",
+  "qe": "Which prompt design pattern would you use to condense a lengthy email thread into key points?",
+  "oe": [
+   "Transformation",
+   "Content Generation",
+   "Summarization",
+   "Extraction"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / プロンプト設計パターンを確認する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/explore-prompt-design-patterns",
+  "q": "マーケティングチームが、1 つの商品説明をもとに、新商品に関するソーシャルメディア投稿を 10 種類作成する必要があります。どのパターンを使用すべきですか?",
+  "o": [
+   "抽出",
+   "変換",
+   "コンテンツ生成",
+   "要約"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "既存の商品説明をもとに、ソーシャルメディア向けに形を変えて投稿を作るのは「変換」のパターンです。変換は、既存のコンテンツを別の対象者やトーン、プラットフォームに合わせて作り変えるときに使います。ゼロから新しい内容を作るなら「コンテンツ生成」です。",
+  "qe": "Your marketing team needs to create 10 different social media posts about a new product based on a single product description. Which pattern should you use?",
+  "oe": [
+   "Extraction",
+   "Transformation",
+   "Content Generation",
+   "Summarization"
+  ],
+  "v": "要確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / モデルの適合性が重要な理由を学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/learn-why-model-fit-matters",
+  "q": "ユースケースに合わせて AI モデルを選択する際に最も重要な要素は何ですか?",
+  "o": [
+   "モデルのリリース日",
+   "モデルのパラメーター数",
+   "モデルの人気度",
+   "特定のタスクでどの程度のパフォーマンスを発揮するか"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "モデル選びで最も重要なのは、その特定のタスクでどれだけ良い結果を出せるかです。リリース日の新しさや人気、パラメーター数で決めるのではなく、実際のユースケースで試して選びます。",
+  "qe": "What is the most important factor when selecting an AI model for your use case?",
+  "oe": [
+   "The release date of the model",
+   "The number of parameters in the model",
+   "The popularity of the model",
+   "How well it performs on your specific task"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / モデルの適合性が重要な理由を学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/learn-why-model-fit-matters",
+  "q": "コストと精度のトレードオフの原則に基づくと、モデルを選択する際に何を考慮すべきですか?",
+  "o": [
+   "常に最も高価なモデルを選ぶ",
+   "テストして、ニーズに合ったコストと品質のバランスを見つける",
+   "常に最も安価なモデルを選ぶ",
+   "テストを避けて時間とリソースを節約する"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "高性能なモデルほどコストが高い傾向があります。いつも最高価格や最安値を選ぶのではなく、テストしてニーズに合うコストと品質のバランスを見つけます。",
+  "qe": "According to the cost vs. accuracy trade-off principle, what should you consider when choosing your model?",
+  "oe": [
+   "Always choose the most expensive model",
+   "Test to find the balance between cost and quality for your needs",
+   "Always choose the cheapest model",
+   "Avoid testing to save time and resources"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / プロンプトのテストと改善 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/test-and-improve-prompts",
+  "q": "プロンプトが汎用的で役に立たない出力を生成する場合、推奨される修正方法は何ですか?",
+  "o": [
+   "より新しい AI モデルに切り替える",
+   "文字数制限を増やす",
+   "プロンプトからすべての制約を削除する",
+   "タスクと指示にさらに具体的な内容を追加する"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "出力が汎用的で役に立たないときは、タスクと指示をもっと具体的にします。対象、目的、形式、制約などを明確に書くと、要点を押さえた出力になります。",
+  "qe": "What is the recommended fix when your prompt produces generic, unhelpful output?",
+  "oe": [
+   "Switch to a newer AI model.",
+   "Increase the character limit.",
+   "Remove all constraints from the prompt.",
+   "Add more specifics to your task and instructions."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロンプトの基本事項 / プロンプトのテストと改善 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/prompt-fundamentals/test-and-improve-prompts",
+  "q": "7 ステップの反復サイクルにおいて、プロンプトをテストした直後に行うべきことは何ですか?",
+  "o": [
+   "成功基準に照らして結果を評価する",
+   "本番環境にリリースする",
+   "新しいプロンプトをゼロから作成する",
+   "関係者と共有して承認を得る"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "7ステップの反復サイクルでは、プロンプトをテストしたら、次に成功基準に照らして結果を評価します。その評価をもとに改善を繰り返し、準備ができてから本番にリリースします。",
+  "qe": "In the seven-step iteration cycle, what should you do immediately after testing your prompt?",
+  "oe": [
+   "Evaluate the results against your success criteria.",
+   "Deploy it to production.",
+   "Write a new prompt from scratch.",
+   "Share it with stakeholders for approval."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "promptbp",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 検索拡張生成: クイックルック / 関連ビジネスナレッジを使用したエージェントとプロンプトの拡張 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/retrieval-augmented-generation-quick-look/augment-prompts-with-relevant-knowledge",
+  "q": "プロンプトで RAG を使用する理由はどれですか?",
+  "o": [
+   "RAG によって LLM 応答の正確性と関連性が高まるため。",
+   "RAG によって LLM 応答の遅延が短縮されるため。",
+   "RAG によって LLM がすでに認識していることを確認できるため。",
+   "RAG がナレッジストアの非構造化データをクリーンアップするため。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "RAG を使うと、ドメイン固有の最新情報をプロンプトに加えられるので、LLM の応答の正確性と関連性が高まります。応答速度を上げたり、データをクリーンアップしたりする仕組みではありません。",
+  "qe": "Why might you want to use RAG in your prompts?",
+  "oe": [
+   "Because RAG improves the accuracy and relevance of your LLM responses.",
+   "Because RAG reduces the latency of LLM responses.",
+   "Because RAG verifies what the LLM already knows.",
+   "Because RAG cleans the unstructured data in a knowledge store."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "datalib",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 検索拡張生成: クイックルック / 関連ビジネスナレッジを使用したエージェントとプロンプトの拡張 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/retrieval-augmented-generation-quick-look/augment-prompts-with-relevant-knowledge",
+  "q": "プロンプトテンプレートで、特定の情報を検索するために RAG をトリガーするには何を追加しますか?",
+  "o": [
+   "Data 360",
+   "レトリーバー",
+   "データスペース",
+   "検索インデックス"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "レトリーバーは、ナレッジストアから関連情報を検索して返すリソースで、プロンプトテンプレートに組み込んで使います。テンプレートが実行されるたびに、レトリーバーが検索インデックスから情報を取得します。",
+  "qe": "In a prompt template, what do you add to trigger RAG to search for specific information?",
+  "oe": [
+   "Data 360",
+   "Retriever",
+   "Data space",
+   "Search index"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "datalib",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Data 360 の検索インデックス種別: クイックルック / Data 360 の 検索インデックス種別について知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/search-index-types-data-cloud-quick-look/get-to-know-search-index-types-in-data-cloud",
+  "q": "ハイブリッド検索インデックスの主なコンポーネントは何ですか?",
+  "o": [
+   "ハイブリッド検索インデックスとキーワード検索インデックス",
+   "ベクトル検索インデックス、キーワード検索インデックス、融合ランカーサービス",
+   "キーワード検索インデックスと融合ランカーサービス",
+   "チャンクとベクトルエンベディング"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ハイブリッド検索インデックスは、ベクトル検索インデックスとキーワード検索インデックスを組み合わせ、両方の結果を融合ランカーで並べ替えます。意味の近さと用語の一致の両方を生かせます。",
+  "qe": "What are the key components of a hybrid search index?",
+  "oe": [
+   "Vector search index and keyword search index",
+   "Vector search index, keyword search index, and the fusion ranker service",
+   "Keyword search index and a fusion ranker service",
+   "Chunks and vector embeddings"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "retriever",
+  "x": "ハイブリッド検索(Hybrid Search)ベクトル検索とキーワード検索の両方で探し、結果をまとめて順位をつける「LaserPrinter TX 400」と「TX 440」のような型番の違いにも強い"
+ },
+ {
+  "s": "Trailhead: Data 360 の検索インデックス種別: クイックルック / Data 360 の 検索インデックス種別について知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/search-index-types-data-cloud-quick-look/get-to-know-search-index-types-in-data-cloud",
+  "q": "検索クエリで意味一致とキーワード一致の両方の長所を生かすのに最も効率的な検索種別はどれですか?",
+  "o": [
+   "ベクトル検索",
+   "ハイブリッド検索",
+   "キーワード検索",
+   "強化検索"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ハイブリッド検索は、意味を理解するベクトル検索の強みと、専門用語などを正確に扱うキーワード検索の強みを組み合わせたものです。意味の一致とキーワードの一致の両方を生かしたいときに最適です。",
+  "qe": "Which search type is the most efficient to get the best of both a semantic match and a keyword match for a search query?",
+  "oe": [
+   "Vector search",
+   "Hybrid search",
+   "Keyword search",
+   "Enriched search"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "retriever",
+  "x": "ハイブリッド検索(Hybrid Search)ベクトル検索とキーワード検索の両方で探し、結果をまとめて順位をつける「LaserPrinter TX 400」と「TX 440」のような型番の違いにも強い"
+ },
+ {
+  "s": "Trailhead: Agentforce Trust Layer / Agentforce Trust Layer の概要 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer",
+  "q": "Salesforce が Einstein Trust Layer を作成した理由は何ですか?",
+  "o": [
+   "各自の会社で独自の LLM を作成できるようにするため",
+   "データセキュリティとプライバシーコントロールを実装するため",
+   "プロンプトを作成できるようにするため",
+   "各自の組織のすべてのデータにアクセスできるようにするため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Einstein Trust Layer は、データのセキュリティとプライバシーを守りながら生成 AI を使えるようにするために作られました。データマスキングやデータ保持ゼロなどの仕組みで顧客データを保護します。",
+  "qe": "Why did Salesforce create the Einstein Trust Layer?",
+  "oe": [
+   "To help your company make its own LLM",
+   "To provide data security and privacy controls",
+   "To help you build prompts",
+   "To help you access all data in your org"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": "Einstein Trust Layer は、生成AIとAgentforceの機能に組み込まれた、データのプライバシーを守り、AIを安全に使うための機能・プロセス・ポリシーの集まりです。"
+ },
+ {
+  "s": "Trailhead: Agentforce Trust Layer / Agentforce Trust Layer の概要 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer",
+  "q": "Salesforce の最大の価値は何ですか?",
+  "o": [
+   "CRM",
+   "幸福",
+   "信頼",
+   "AI"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Salesforce の最大の価値は「信頼」です。生成 AI のツールを作るときも、この価値を常に意識しています。",
+  "qe": "What is the #1 Salesforce value?",
+  "oe": [
+   "CRM",
+   "Happiness",
+   "Trust",
+   "AI"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Trust Layer / プロンプトジャーニーをたどる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/follow-the-prompt-journey",
+  "q": "動的グラウンディングによってプロンプトのコンテキストがどのように改善されますか?",
+  "o": [
+   "プロンプトテンプレートが上書きされる。",
+   "顧客データが非表示になる。",
+   "エージェントがその組織のすべてのデータに全面的にアクセスできるようになる。",
+   "組織から直接、承認済みの安全な関連データが取り込まれ、プロンプトテンプレートに追加される。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "動的グラウンディングでは、ユーザーがアクセスを許可されている関連データを組織から取り込み、プロンプトテンプレートに追加します。そのため、1つのテンプレートをさまざまなレコードで再利用でき、文脈に合ったプロンプトになります。",
+  "qe": "How does dynamic grounding improve a prompt’s context?",
+  "oe": [
+   "It overrides a prompt template.",
+   "It hides any customer data.",
+   "It gives an agent full access to all data in a customer’s org.",
+   "It pulls authorized, secure, relevant data directly from the customer’s org, and includes it in the prompt template."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Trust Layer / プロンプトジャーニーをたどる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/follow-the-prompt-journey",
+  "q": "Trust Layer のプロンプト防御ガードレールは、何から保護する場合に役立ちますか?",
+  "o": [
+   "データマスキング",
+   "プロンプトインジェクション攻撃",
+   "トークン化されたデータ",
+   "新しいプロンプトテンプレート"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プロンプト防御は、システムポリシーで LLM の応答範囲を制限し、プロンプトインジェクション攻撃などから守るガードレールです。データマスキングは機密データを隠す別の仕組みです。",
+  "qe": "What do the Trust Layer’s prompt defense guardrails help protect against?",
+  "oe": [
+   "Data masking",
+   "Prompt injection attacks",
+   "Tokenized data",
+   "New prompt templates"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Trust Layer / 応答ジャーニーをたどる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/follow-the-response-journey",
+  "q": "データ保持ゼロとはどういう意味ですか?",
+  "o": [
+   "応答を受け取った人がプロンプトとそのデータをすべて手作業で削除する。",
+   "応答をマスクしたままにする。",
+   "プロンプトをマスクしたままにする。",
+   "プロンプト、その応答、すべての関連データを LLM が忘れ去る。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "データ保持ゼロとは、プロンプト、応答、関連データを LLM 側が一切保持しないことです。応答が Salesforce に返されたら、外部のモデルはその内容を忘れます。",
+  "qe": "What does zero data retention mean?",
+  "oe": [
+   "The person who receives the response manually deletes the prompt and all its data.",
+   "The response remains masked.",
+   "The prompt remains masked.",
+   "The prompt, its responses, and all related data are forgotten by the LLM."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": "ゼロデータ保持により、外部のLLMはデータを保存せず、学習にも使いません。"
+ },
+ {
+  "s": "Trailhead: Agentforce Trust Layer / 応答ジャーニーをたどる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/follow-the-response-journey",
+  "q": "応答の有害な言葉はどのようにスキャンされますか?",
+  "o": [
+   "エンドユーザーが応答を確認する。",
+   "応答が審査委員会に送信される。",
+   "機械学習モデルは有害なコンテンツの識別に使用される。",
+   "サードパーティの LLM が応答をチェックして保存する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Trust Layer は機械学習モデルを使って、プロンプトや応答に含まれる有害なコンテンツ(暴力的、性的、冒涜的など)を検出し、スコアを付けます。",
+  "qe": "How is a response scanned for toxic language?",
+  "oe": [
+   "The end user reviews the response.",
+   "The response is sent to a panel of reviewers.",
+   "The machine learning models are used to identify toxic content.",
+   "A third-party LLM checks and stores the response."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "trust",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: AI エージェントの脅威モデリング / AI エージェントの使用に伴うリスクを認識する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/threat-modeling-for-ai-agents/know-the-risks-when-using-ai-agents",
+  "q": "次のうち、AI エージェントの動作に影響を及ぼす一般的なリスクを説明しているものはどれですか?",
+  "o": [
+   "表示テーマの変更により、インターフェースが使用するカラーパレットが変わる。",
+   "メモリ汚染により、エージェントが誤ったコンテキストに基づいてアクションを実行する。",
+   "ファイルの命名方法のばらつきにより、ドキュメントがアルファベット順に並んでいない。",
+   "ネットワーク帯域幅の使用の増大により、一時的な輻輳が発生する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "メモリ汚染は、攻撃者がエージェントの短期・長期メモリに偽のコンテキストを仕込み、エージェントが誤った前提で安全でないアクションを続けてしまうリスクです。表示テーマや帯域幅の問題は、エージェント特有のリスクではありません。",
+  "qe": "Which of the following describes a common risk that affects how an AI agent operates?",
+  "oe": [
+   "Display theme changes that cause the interface to use a different color palette",
+   "Memory poisoning that causes an agent to act on false context",
+   "File-naming inconsistencies that cause documents to sort alphabetically out of order",
+   "Increased network bandwidth usage that causes temporary congestion"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "access",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: AI エージェントの脅威モデリング / AI エージェントの使用に伴うリスクを認識する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/threat-modeling-for-ai-agents/know-the-risks-when-using-ai-agents",
+  "q": "次のリスクのうち、意図していたものより広範なアクセス権限がエージェントに付与され、リスクの高いアクションの実行が可能になるものはどれですか?",
+  "o": [
+   "権限の侵害",
+   "連鎖的なハルシネーション",
+   "人間が関与するプロセスへの過剰負荷",
+   "ツールの悪用"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "設定ミスでエージェントに必要以上のアクセス権限が与えられ、承認などのリスクの高いアクションができてしまうのが「権限の侵害」です。ツールの悪用は、許可された範囲内の承認済みツールが悪用されるリスクです。",
+  "qe": "Which of the following risks can give an agent broader access than intended, letting it perform high-risk actions?",
+  "oe": [
+   "Privilege compromise",
+   "Cascading hallucinations",
+   "Overwhelming human-in-the-loop",
+   "Tool misuse"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "access",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: AI エージェントの脅威モデリング / AI エージェントのリスクを特定して管理する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/threat-modeling-for-ai-agents/identify-and-manage-ai-agent-risks",
+  "q": "あるビジネスワークフローでは、エージェントが API に接続します。これはどの種類の関与ですか?",
+  "o": [
+   "People (人間)",
+   "データ",
+   "システム",
+   "文化"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "脅威モデリングでは、エージェントが人、データ、システムに関わる時点を洗い出します。API への接続は、システムへの関与にあたります。",
+  "qe": "In a business workflow, an agent connects with an API. What type of interaction is this?",
+  "oe": [
+   "People",
+   "Data",
+   "System",
+   "Culture"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "access",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: AI エージェントの脅威モデリング / AI エージェントのリスクを特定して管理する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/threat-modeling-for-ai-agents/identify-and-manage-ai-agent-risks",
+  "q": "次のシナリオのうち、脅威モデリングを使用して AI エージェントのリスクを軽減するものはどれですか?",
+  "o": [
+   "色の変更でインターフェースが明るくなったため、テーマを切り替える。",
+   "アイコンの更新でメニューの表示が変わったため、古いアイコンに戻す。",
+   "エージェントが許可されていないデータにアクセス可能になる過剰なアクセス権限を特定して、不必要な権限を削除する。",
+   "サウンドの変更でアラートの再生音が大きくなったため、音量を下げる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "脅威モデリングでは、エージェントが関わる時点のリスクを見つけて対策します。許可されていないデータにアクセスできる過剰な権限を特定して削除するのは、その典型的な例です。色やアイコンの変更は、セキュリティのリスクとは関係ありません。",
+  "qe": "Which scenario demonstrates the use of threat modeling to reduce an AI agent risk?",
+  "oe": [
+   "Spotting a color change that causes the interface to look brighter, then switching themes",
+   "Checking an icon update that causes menus to look different, then restoring the old icons",
+   "Identifying over-permissive access that causes an agent to reach data it shouldn’t, then removing unnecessary permissions",
+   "Noticing a sound change that causes alerts to play louder, then lowering the volume"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "access",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 信頼できるエージェント型 AI / Salesforce が信頼できるエージェント型 AI を構築する方法を確認する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/trusted-agentic-ai/discover-how-salesforce-builds-trusted-agentic-ai",
+  "q": "エージェント型 AI に付随する主なリスクは何ですか?",
+  "o": [
+   "タスクのパフォーマンスのばらつき",
+   "予期しない動作や意図しない結果",
+   "ユーザーのやり取りのパターンの変化",
+   "データ処理の正確性の変動"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "AI エージェントは自律的に動くため、予期しない動作や意図しない、ときに有害な結果を招くおそれがあります。自律性が高まるほど、このリスクも大きくなります。",
+  "qe": "What key risk is associated with agentic AI?",
+  "oe": [
+   "Variability in task performance",
+   "Unexpected behavior and unintended consequences",
+   "Changes in user interaction patterns",
+   "Fluctuations in data processing accuracy"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "access",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 信頼できるエージェント型 AI / Salesforce が信頼できるエージェント型 AI を構築する方法を確認する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/trusted-agentic-ai/discover-how-salesforce-builds-trusted-agentic-ai",
+  "q": "次の原則のうち、責任あるエージェント型 AI の基本原則の一部であるものはどれですか?",
+  "o": [
+   "正確さ",
+   "安全性",
+   "収益性",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Salesforce の責任あるエージェント型 AI の原則には、正確さ、安全性、誠実性などがあります。収益性は原則に含まれません。",
+  "qe": "Which of these principles are part of the guiding principles of responsible agentic AI?",
+  "oe": [
+   "Accuracy",
+   "Safety",
+   "Profitability",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "access",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 信頼できるエージェント型 AI / Agentforce のガードレールと信頼パターンを検討する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/trusted-agentic-ai/explore-agentforce-guardrails-and-trust-patterns",
+  "q": "Agentforce でエージェントの動作を調整するにはどうすればよいですか?",
+  "o": [
+   "エージェントのコードを直接変更する。",
+   "エージェントの名前とプロファイル写真を変更する。",
+   "トピックの指示とアクションを調整する。",
+   "エージェントの話し方や語調を変更する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "エージェントの動作は、トピック(現在のサブエージェント)の指示とアクションを調整して変えます。標準トピックの指示を変更したり、カスタムトピックを作ったりできます。",
+  "qe": "How can you adjust the agent’s behavior in Agentforce?",
+  "oe": [
+   "Modify the agent’s code directly.",
+   "Change the agent’s name and profile picture.",
+   "Adjust topic instructions and actions.",
+   "Alter the agent’s voice and tone."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": "サブエージェント(旧称 トピック)は、エージェントができる「1つの仕事」です。会話の進め方を決める指示(インストラクション)と、仕事に使うアクションをまとめて持ちます。"
+ },
+ {
+  "s": "Trailhead: 信頼できるエージェント型 AI / Agentforce のガードレールと信頼パターンを検討する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/trusted-agentic-ai/explore-agentforce-guardrails-and-trust-patterns",
+  "q": "正誤問題: トピック分類は、ユーザー入力を特定のトピックにマッピングするために使用する。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "トピック分類は、ユーザーの入力を特定のトピック(現在のサブエージェント)に割り当てる仕組みです。正しく分類されると、エージェントはそのトピックの指示とアクションを使います。",
+  "qe": "True or false: Topic classification is used to map user inputs to specific topics.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "topics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 信頼できるエージェント型 AI / 責任ある倫理的なエージェントを推進する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/trusted-agentic-ai/promote-responsible-and-ethical-agents",
+  "q": "Salesforce は AI 製品のレッドチーミングに対してどのようなアプローチを採用していますか?",
+  "o": [
+   "手動テストのみを重視する。",
+   "レッドチーミングの手動と自動の両方の手法を使用する。",
+   "年に 1 度テストを実施する。",
+   "外部のエキスパートに全面的に委託する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Salesforce は、AI 製品の安全性を高めるために、手動と自動の両方のレッドチーミング手法を使っています。",
+  "qe": "How does Salesforce approach red-teaming for its AI products?",
+  "oe": [
+   "By focusing only on manual testing",
+   "By using both manual and automated red-teaming methods",
+   "By conducting tests once a year",
+   "By relying solely on external experts"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "access",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 信頼できるエージェント型 AI / 責任ある倫理的なエージェントを推進する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/trusted-agentic-ai/promote-responsible-and-ethical-agents",
+  "q": "正誤問題: AI システムの整合性を維持するためには、継続的な改善とイノベーションが不可欠である。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Salesforce は、継続的な改善とイノベーションの文化を育てることで、信頼できる AI を提供し続けようとしています。AI システムの整合性を保つには、一度作って終わりではなく、改善し続けることが欠かせません。",
+  "qe": "True or false: Continuous improvement and innovation are crucial for maintaining the integrity of AI systems.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "access",
+  "x": ""
+ }
+]
