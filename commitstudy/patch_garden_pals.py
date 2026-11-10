@@ -230,7 +230,8 @@ function csPalTap(pl){try{var sv=pl.ownerSVGElement,id=pl.getAttribute("data-pal
   var g=document.createElementNS(CS_NS,"g");L.appendChild(g);var bh=nl*LH+5;
   g.innerHTML='<path class="gp-bt"/><rect class="gp-bb" rx="6" ry="6"/>'+ls.map(function(t,k){return '<text class="gp-bx'+(k?'':' gp-bn')+'" text-anchor="middle" y="'+cpR(-bh/2+2.5+LH*k+9)+'">'+t.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</text>'}).join("");
   var tw=40;[].forEach.call(g.querySelectorAll("text"),function(e){try{tw=Math.max(tw,e.getComputedTextLength())}catch(x){}});
-  var bw=tw+14,H=vb.height,hw=bw*s/2,hh=bh*s/2,r2=sv.getBoundingClientRect(),kk=r2.width?W/r2.width:1,tm=sv.closest(".gd-fs")?64*kk:2;
+  var bw=tw+14;/* セリフは左揃え(名前の行も同じ位置から) */[].forEach.call(g.querySelectorAll("text"),function(e){e.setAttribute("text-anchor","start");e.setAttribute("x",cpR(-bw/2+7))});
+  var H=vb.height,hw=bw*s/2,hh=bh*s/2,r2=sv.getBoundingClientRect(),kk=r2.width?W/r2.width:1,tm=sv.closest(".gd-fs")?64*kk:2;
   var bx=Math.max(hw+3,Math.min(W-hw-3,x)),pb=iv?(function(){var q2=sv.createSVGPoint();q2.x=r.left+r.width/2;q2.y=r.bottom;return q2.matrixTransform(iv).y})():y+20*s;
   var up=y-6*s-hh,dn=pb+6*s+hh,blk=function(c){return c-hh<tm||(!sv.closest(".gd-fs")&&bx+hw>W-50&&c-hh<48)},below=false,sy=up;
   if(blk(up)){if(dn+hh<=H-2){sy=dn;below=true}else sy=Math.max(tm+hh,Math.min(H-hh-2,up))}
