@@ -1,0 +1,783 @@
+[
+ {
+  "s": "Trailhead: 準備: Marketing Cloud Engagement アドミニストレーター: セットアップ、データ / 認定 Marketing Cloud Engagement アドミニストレーター試験対策の開始 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-setup-and-data/get-started-with-the-marketing-cloud-administrator-certification-prep",
+  "q": "Salesforce 認定資格プログラムの参加者として、忘れてはならない重要なことは何ですか?",
+  "o": [
+   "インターネットで見つけたフラッシュカードサイトで練習問題を勉強する。",
+   "Trailhead で見つけた学習資料 (受験ガイドや Trailhead モジュールなど) を使用する。",
+   "認定資格のセキュリティを損ねる行動を目撃した場合は、Credential Security チームにケースを送信する。",
+   "特定の試験問題に解答するのに友人に助けてもらう。"
+  ],
+  "a": [
+   1,
+   2
+  ],
+  "ex": "認定資格の勉強には、受験ガイドや Trailhead モジュールなど、Salesforce が認めた Trailhead の学習資料を使います。試験のセキュリティを損なう行動を見かけたら、Certification Security チームにケースを送ります。ネットで拾った問題集や、試験中に人に助けてもらうことは規約で禁止されています。",
+  "qe": "As a participant in the Salesforce Certification Program, what is important to remember?",
+  "oe": [
+   "Study practice questions on a flashcard site you found on the internet.",
+   "Use study materials found on Trailhead, like exam guides and Trailhead modules.",
+   "Submit a case with the Certification Security Team if you see any activity that undermines certification security.",
+   "Ask a friend for help answering specific exam questions."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 準備: Marketing Cloud Engagement アドミニストレーター: セットアップ、データ / 認定 Marketing Cloud Engagement アドミニストレーター試験対策の開始 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-setup-and-data/get-started-with-the-marketing-cloud-administrator-certification-prep",
+  "q": "認定 Marketing Cloud Engagement アドミニストレーター試験の合格点はどれですか?",
+  "o": [
+   "70%",
+   "67%",
+   "65%",
+   "62%"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "合格点は、ユニットからリンクされている公式の受験ガイドに書かれています。試験の配点や合格点は改定されることがあるので、受験前に最新の受験ガイドで確かめましょう。",
+  "qe": "What's the passing score for the Marketing Cloud Engagement Administrator Certification exam?",
+  "oe": [
+   "70%",
+   "67%",
+   "65%",
+   "62%"
+  ],
+  "v": "要確認: ユニット本文に合格点の記載がなく(「受験ガイドを確認」とだけある)、受験ガイドのページもスクリプトで描画されるため取得できなかった。正解は 67% と推定しているが、公式の受験ガイドで確認が必要。",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 準備: Marketing Cloud Engagement アドミニストレーター: セットアップ、データ / セットアップの学習 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-setup-and-data/study-up-on-setup",
+  "q": "Salesforce 認定 Marketing Cloud Engagement アドミニストレーター試験のうち、「セットアップ」セクションが占める割合は何パーセントですか?",
+  "o": [
+   "38%",
+   "19%",
+   "15%",
+   "14%"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "「セットアップ」は試験全体の 38% を占め、5つのセクションの中でいちばん大きな割合です。ビジネスユニット、権限、セキュリティ、連携、Setup の機能、拡張製品がここに入ります。ほかの数字は別のセクションの割合と混同しやすいので注意しましょう。",
+  "qe": "The setup section makes up what percentage of the Marketing Cloud Engagement Administrator Certification exam?",
+  "oe": [
+   "38%",
+   "19%",
+   "15%",
+   "14%"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "account",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 準備: Marketing Cloud Engagement アドミニストレーター: セットアップ、データ / セットアップの学習 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-setup-and-data/study-up-on-setup",
+  "q": "試験の「セットアップ」セクションの主なトピックはどれですか?",
+  "o": [
+   "ビジネスユニット、権限、セキュリティ",
+   "連絡先モデル",
+   "データ品質とメール管理",
+   "権限とメール管理"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "セットアップのセクションでは、ビジネスユニット、権限、セキュリティの設定が主なトピックです。ほかに連携の設定、拡張製品、Setup の機能も含まれます。連絡先モデルやデータ品質とメール管理は「購読者データの管理」セクションのトピックです。",
+  "qe": "The setup section of the exam covers which key topics?",
+  "oe": [
+   "Business units, permissions, and security",
+   "Contact model",
+   "Data quality and mail management",
+   "Permissions and mail management"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "account",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 準備: Marketing Cloud Engagement アドミニストレーター: セットアップ、データ / 購読者データの管理の確認 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-setup-and-data/review-subscriber-data-management",
+  "q": "認定 Marketing Cloud Engagement アドミニストレーター試験のうち、「購読者データの管理」セクションが占める割合は何パーセントですか?",
+  "o": [
+   "20%",
+   "18%",
+   "10%",
+   "5%"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "「購読者データの管理」は試験全体の 18% です。プロファイルセンターとプリファレンス属性、データ品質とメール管理、連絡先モデルがこのセクションで問われます。",
+  "qe": "The subscriber data management section makes up what percentage of the Marketing Cloud Engagement Administrator Certification exam?",
+  "oe": [
+   "20%",
+   "18%",
+   "10%",
+   "5%"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "subscribers",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 準備: Marketing Cloud Engagement アドミニストレーター: セットアップ、データ / 購読者データの管理の確認 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-setup-and-data/review-subscriber-data-management",
+  "q": "試験の「購読者データの管理」セクションの主なトピックはどれですか?",
+  "o": [
+   "ビジネスユニットとセキュリティ",
+   "データ品質とメール管理",
+   "インテグレーションとデータ品質",
+   "Marketing Cloud Engagement エクステンション製品"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "購読者データの管理のセクションには、データ品質とメール管理が含まれます。ほかにプロファイルセンターとプリファレンス属性、連絡先モデルもこのセクションです。ビジネスユニットとセキュリティ、連携、拡張製品は「セットアップ」セクションで扱います。",
+  "qe": "The subscriber data management section of the exam covers which key topics?",
+  "oe": [
+   "Business units and security",
+   "Data quality and mail management",
+   "Integrations and data quality",
+   "Marketing Cloud Engagement extension products"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "subscribers",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 認定試験の準備: Marketing Cloud Engagement アドミニストレーター: マーケティング、チャネル、メンテナンス / デジタルマーケティングの学習 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-marketing-channels-maintenance/study-up-on-digital-marketing",
+  "q": "Salesforce 認定 Marketing Cloud Engagement アドミニストレーター試験のうち、「デジタルマーケティング」セクションが占める割合は何パーセントですか?",
+  "o": [
+   "35%",
+   "18%",
+   "15%",
+   "13%"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "「デジタルマーケティング」は試験全体の 13% で、5つのセクションの中でいちばん小さな割合です。データを守るベストプラクティス、製品の提供内容、デジタルマーケティングのコンプライアンスが範囲です。",
+  "qe": "The digital marketing section makes up what percentage of the Marketing Cloud Engagement Administrator Certification exam?",
+  "oe": [
+   "35%",
+   "18%",
+   "15%",
+   "13%"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 認定試験の準備: Marketing Cloud Engagement アドミニストレーター: マーケティング、チャネル、メンテナンス / デジタルマーケティングの学習 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-marketing-channels-maintenance/study-up-on-digital-marketing",
+  "q": "試験の「デジタルマーケティング」セクションの主なトピックはどれですか?",
+  "o": [
+   "製品の提供内容",
+   "連絡先モデル",
+   "データ品質とメール管理",
+   "Advertising Studio の設定"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "デジタルマーケティングのセクションでは、製品の提供内容(どの製品で何ができるか)が問われます。ほかにデータのセキュリティのベストプラクティスとコンプライアンスも含まれます。連絡先モデルやデータ品質は購読者データ、Advertising Studio はチャネル管理のトピックです。",
+  "qe": "The digital marketing section of the exam covers which key topic?",
+  "oe": [
+   "Product offerings",
+   "Contact model",
+   "Data quality and mail management",
+   "Advertising Studio configurations"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 認定試験の準備: Marketing Cloud Engagement アドミニストレーター: マーケティング、チャネル、メンテナンス / チャネル管理の復習 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-marketing-channels-maintenance/review-channel-management",
+  "q": "Salesforce 認定 Marketing Cloud Engagement アドミニストレーター試験のうち、「チャネル管理」セクションが占める割合は何パーセントですか?",
+  "o": [
+   "38%",
+   "35%",
+   "16%",
+   "15%"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "「チャネル管理」は試験全体の 16% です。Mobile Studio、Email Studio、Advertising Studio、Journey Builder の設定がこのセクションで問われます。38% はセットアップの割合なので取り違えないようにしましょう。",
+  "qe": "The channel management section makes up what percentage of the Marketing Cloud Engagement Administrator Certification exam?",
+  "oe": [
+   "38%",
+   "35%",
+   "16%",
+   "15%"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "email",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 認定試験の準備: Marketing Cloud Engagement アドミニストレーター: マーケティング、チャネル、メンテナンス / チャネル管理の復習 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-marketing-channels-maintenance/review-channel-management",
+  "q": "試験の「チャネル管理」セクションの主なトピックはどれですか?",
+  "o": [
+   "Email Studio の設定",
+   "データコンプライアンス",
+   "製品の提供内容",
+   "データフィルター、フィルターアクティビティ、データエクステンション"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "チャネル管理のセクションは、各チャネルのアプリの設定がテーマです。Email Studio の設定のほか、Mobile Studio、Advertising Studio、Journey Builder の設定が含まれます。データコンプライアンスや製品の提供内容はデジタルマーケティングのセクションです。",
+  "qe": "The channel management section of the exam covers which key topics?",
+  "oe": [
+   "Configuration of Email Studio",
+   "Data compliance",
+   "Product offerings",
+   "Data filters, filter activities, and data extensions"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "email",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 認定試験の準備: Marketing Cloud Engagement アドミニストレーター: マーケティング、チャネル、メンテナンス / メンテナンスの最新情報の確認 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-marketing-channels-maintenance/keep-up-with-maintenance",
+  "q": "Salesforce 認定 Marketing Cloud Engagement アドミニストレーター試験のうち、「メンテナンス」セクションが占める割合は何パーセントですか?",
+  "o": [
+   "20%",
+   "15%",
+   "10%",
+   "5%"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "「メンテナンス」は試験全体の 15% です。データのクリーンアップ、レポート、ほかの Marketing Cloud 製品、アカウントの管理が範囲に入ります。",
+  "qe": "The maintenance section makes up what percentage of the Marketing Cloud Engagement Administrator Certification exam?",
+  "oe": [
+   "20%",
+   "15%",
+   "10%",
+   "5%"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "maintenance",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 認定試験の準備: Marketing Cloud Engagement アドミニストレーター: マーケティング、チャネル、メンテナンス / メンテナンスの最新情報の確認 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-admin-certification-prep-marketing-channels-maintenance/keep-up-with-maintenance",
+  "q": "試験の「メンテナンス」セクションの主なトピックはどれですか?",
+  "o": [
+   "データクリーンアップ",
+   "データ品質とメール管理",
+   "インテグレーションの構成",
+   "デジタルマーケティングのコンプライアンス"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "メンテナンスのセクションの主なトピックは、データのクリーンアップです。ほかにレポート、ほかの Marketing Cloud 製品、アカウントの管理が含まれます。「データ品質とメール管理」は購読者データの管理、「インテグレーションの構成」はセットアップのトピックなので、似た言葉に惑わされないようにしましょう。",
+  "qe": "The maintenance section of the exam covers which key topics?",
+  "oe": [
+   "Data cleanup",
+   "Data quality and mail management",
+   "Configuring integrations",
+   "Digital marketing compliance"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "maintenance",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement の基本 / Marketing Cloud Engagement でパーソナライズされた顧客とのつながりを構築する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/mrkt_cloud_basics/mrkt_cloud_basics_get_started",
+  "q": "Marketing Cloud Engagement プラットフォームの製品である 3 つは次のどれですか?",
+  "o": [
+   "クラウド、製品、チャネル",
+   "Journey Builder、Marketing Cloud Connect、チャネル。",
+   "Web サイト、Marketing Cloud Connect、モバイル。",
+   "Email Studio、Mobile Studio、Journey Builder。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ユニットの製品一覧には、Email Studio、Mobile Studio、Journey Builder がそれぞれ製品として載っています。Marketing Cloud Connect は Salesforce の CRM とつなぐ連携機能で、「チャネル」や「Web サイト」は製品名ではありません。",
+  "qe": "What are three of the products in the Marketing Cloud Engagement platform?",
+  "oe": [
+   "Clouds, products, and channels",
+   "Journey Builder, Marketing Cloud Connect, and channels.",
+   "Websites, Marketing Cloud Connect, and Mobile.",
+   "Email Studio, Mobile Studio, and Journey Builder."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": "Marketing Cloud Engagement は、チャネルごとの「スタジオ」と、データやコンテンツを扱う「ビルダー」の組み合わせでできています。さらに、目的に応じて拡張製品を追加します。"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement の基本 / Marketing Cloud Engagement でデジタルマーケティング計画を定義する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/mrkt_cloud_basics/mrkt_cloud_basics_most",
+  "q": "Marketing Cloud Engagement を使用すると何ができますか?",
+  "o": [
+   "すべてのインタラクションをパーソナライズする。",
+   "成功の条件をその場で決定する。",
+   "顧客がどこにいても顧客とエンゲージする。"
+  ],
+  "a": [
+   0,
+   2
+  ],
+  "ex": "ユニットでは、Marketing Cloud Engagement でできることを「顧客を知る」「インテリジェンスでパーソナライズする」「ジャーニー全体でエンゲージする」の3つに分けて説明しています。つまり、やり取りのパーソナライズと、顧客がいる場所でのエンゲージが正解です。成功の条件は、戦略づくりの段階で前もって決めるものです。",
+  "qe": "Marketing Cloud Engagement empowers you to do what?",
+  "oe": [
+   "Personalize every interaction.",
+   "Determine your success criteria on the fly.",
+   "Engage customers wherever they are."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "products",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement の基本 / Marketing Cloud Engagement で顧客とのやり取りを自動化する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/mrkt_cloud_basics/mrkt_cloud_basics_products",
+  "q": "Marketing Cloud Engagement と Agentforce Sales および Agentforce Service を統合する製品はどれですか?",
+  "o": [
+   "Marketing Cloud Engagement Integrator",
+   "Marketing Cloud Engagement Binder",
+   "Marketing Cloud Engagement Rocket",
+   "Marketing Cloud Connect"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Marketing Cloud Connect は、Marketing Cloud Engagement を Agentforce Sales(Sales Cloud)や Agentforce Service(Service Cloud)とつなぐ連携機能です。CRM のデータをメールのパーソナライズに使ったり、CRM での動きをきっかけにジャーニーを始めたりできます。ほかの選択肢は実在しない製品名です。",
+  "qe": "Which product integrates Marketing Cloud Engagement with Agentforce Sales and Agentforce Service?",
+  "oe": [
+   "Marketing Cloud Engagement Integrator",
+   "Marketing Cloud Engagement Binder",
+   "Marketing Cloud Engagement Rocket",
+   "Marketing Cloud Connect"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "connect",
+  "x": "Marketing Cloud Connectは、Marketing Cloud EngagementとSales Cloud、Service Cloudをつなぐ連携機能です。CRMのデータをマーケティングに使い、メールの反応をCRMに戻せます。"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement の基本 / Marketing Cloud Engagement で顧客とのやり取りを自動化する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/mrkt_cloud_basics/mrkt_cloud_basics_products",
+  "q": "https://status.salesforce.com/products/Marketing_Cloud にアクセスする理由は何ですか?",
+  "o": [
+   "過去のインシデント、それがパフォーマンスに及ぼす影響、および更新に関するインサイトを得るため",
+   "Marketing Cloud Engagement システムのパフォーマンスとセキュリティに関するリアルタイムの情報を得るため",
+   "キャンペーンの状況を追跡するため",
+   "Marketing Cloud Connect が機能しているかどうかを確認するため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "status.salesforce.com の Marketing Cloud のページは、システムのパフォーマンスとセキュリティについてリアルタイムの情報を見るためのサイトです。現在のインシデントとその影響も確認できます。キャンペーンの状況は Marketing Cloud の中で見るもので、このサイトの用途ではありません。",
+  "qe": "Why would you go to https://status.salesforce.com/products/Marketing_Cloud?",
+  "oe": [
+   "For insight into past incidents, their impact on performance, and updates",
+   "For real-time information on Marketing Cloud Engagement system performance and security",
+   "To track the status of your campaigns",
+   "To see if Marketing Cloud Connect is working"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "maintenance",
+  "x": "Trust Status(status.salesforce.com)全Salesforce製品のインスタンスの稼働状況。メールやSMSで通知を購読できる"
+ },
+ {
+  "s": "Trailhead: Journey Builder の基本 / Journey Builder アクセス権の設定 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/journey-builder-basics/configure-journey-builder-access",
+  "q": "マーケティング担当者は、Journey Builder を使用して、どのようなキャンペーンを設計できますか?",
+  "o": [
+   "すべてがメールチャネル経由で行われる",
+   "メールを読んだり、モバイルアプリケーションをダウンロードするなどのリアルタイムイベントに基づく",
+   "旅行商品およびサービスに関連する",
+   "すべての顧客に使用する同じジャーニーに基づく"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Journey Builder は「レスポンシブ」で、購入、モバイルアプリのダウンロード、メールの閲覧などのリアルタイムのイベントに合わせてジャーニーを変えられます。メール以外にも SMS、プッシュ通知、広告などに対応するマルチチャネルのツールです。全員に同じジャーニーではなく、行動に応じて道筋を変えるのが特長です。",
+  "qe": "Journey Builder enables marketers to design campaigns that are:",
+  "oe": [
+   "Conducted entirely via email channels",
+   "Based on real-time events such as reading an email or downloading a mobile app",
+   "Related to travel products and services",
+   "Based on the same journey for all customers"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "journey",
+  "x": "Journey Builder は、顧客のデータや行動に合わせて、メール、SMS、プッシュ通知などを順番に届ける「ジャーニー」を作るアプリです。"
+ },
+ {
+  "s": "Trailhead: Journey Builder の基本 / Journey Builder アクセス権の設定 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/journey-builder-basics/configure-journey-builder-access",
+  "q": "Journey Builder ツールを使用するデジタルマーケティングマネージャーに付与する必要があるデフォルトのユーザーロールは何ですか?",
+  "o": [
+   "Marketing チャネルマネージャーまたは Marketing Cloud Engagement コンテンツエディター/パブリッシャー",
+   "Marketing Cloud Engagement ビューアー",
+   "データ管理者",
+   "システム管理者"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "ユニットの手順では、Journey Builder を使うユーザーに Marketing Cloud Channel Manager か Content Editor/Publisher のロールを選んで付けます。そのうえで、Journey Builder の権限にチェックを入れます。Viewer は見るだけ、Data Manager はデータ管理が中心で、Administrator は権限が広すぎます。",
+  "qe": "What default user roles should you grant to a digital marketing manager who will use the Journey Builder tool?",
+  "oe": [
+   "Marketing Channel Manager or Marketing Cloud Engagement Content Editor/Publisher",
+   "Marketing Cloud Engagement Viewer",
+   "Data Manager",
+   "Administrator"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "users",
+  "x": "Marketing Cloud Channel Manager(チャネルマネージャー)クロスチャネルのキャンペーンを作って実行し、特定のチャネルを管理する。ジャーニーやメッセージの作成、送信、監視とレポートができる"
+ },
+ {
+  "s": "Trailhead: Journey Builder の基本 / Journey Builder の使用開始 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/journey-builder-basics/get-started-with-journey-builder",
+  "q": "作成したジャーニーは、ダッシュボードのどの部分を使用して整理することができますか?",
+  "o": [
+   "ジャーニーテンプレート",
+   "エントリソース",
+   "ジャーニー履歴",
+   "分析ダッシュボード",
+   "ジャーニーフォルダー"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "ジャーニーフォルダーに入れておくと、作ったジャーニーを見つけやすくなります。作成して保存した直後でも、あとからダッシュボードでも、フォルダーに整理できます。ジャーニー履歴は連絡先キーで個人の経路を見る機能、エントリソースはジャーニーに入るデータの一覧です。",
+  "qe": "What part of the dashboard can you use to organize journeys after you create them?",
+  "oe": [
+   "Journey Templates",
+   "Entry Sources",
+   "Journey History",
+   "Analytics Dashboard",
+   "Journey Folders"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "journey",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Journey Builder の基本 / Journey Builder の使用開始 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/journey-builder-basics/get-started-with-journey-builder",
+  "q": "カスタマージャーニーの顧客のパスを管理するために Journey Builder で提供されるフローコントロール活動はどれですか?。",
+  "o": [
+   "分岐、インポート、待機",
+   "合流、分岐、タスク",
+   "分岐、合流、待機",
+   "合流と待機"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "フローコントロールのアクティビティは、分岐(Split)、合流(Join)、待機(Wait)です。分岐で道を分け、合流で元の道に戻し、待機で次のアクティビティまで時間を置きます。インポートやタスクはフローコントロールのアクティビティではありません。",
+  "qe": "Journey Builder provides the following flow control activities for managing a customer's path through the customer journey.",
+  "oe": [
+   "Split, Import, and Wait",
+   "Join, Split and Task",
+   "Split, Join, and Wait",
+   "Join and Wait"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "journey",
+  "x": "フロー制御決定分岐(データで分ける)、エンゲージメント分岐(開封やクリックで分ける)、ランダム分岐、結合、待機"
+ },
+ {
+  "s": "Trailhead: Journey Builder の基本 / Journey Builder で 1 通のメッセージの送信 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/journey-builder-basics/send-a-single-message-with-journey-builder",
+  "q": "単一送信ジャーニーにはどのステップが含まれますか?",
+  "o": [
+   "データセットを削除する。",
+   "メッセージをランダムに選択する。",
+   "1 つのジャーニーで複数のメッセージを送信する。",
+   "送信をスケジュールする。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "単一送信ジャーニーは、メッセージ、データソース、送信のタイミングを選ぶだけで作れます。最後に「今すぐ送る」か「日時を指定してスケジュールする」かを選びます。1回で1通を送る仕組みなので、複数のメッセージを送ったりランダムに選んだりはしません。",
+  "qe": "Which step is a part of Single Send Journey?",
+  "oe": [
+   "Delete a data source.",
+   "Randomly select a message.",
+   "Send multiple messages in a single journey.",
+   "Schedule a send."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "journey",
+  "x": "シングルセンド1回だけ送るシンプルなジャーニー。対象者とメッセージを決めて、送信か予約をする"
+ },
+ {
+  "s": "Trailhead: Journey Builder の基本 / Journey Builder で 1 通のメッセージの送信 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/journey-builder-basics/send-a-single-message-with-journey-builder",
+  "q": "正誤問題: 単一送信ジャーニーは検証する必要がある。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "単一送信ジャーニーも、送信前に「Validate(検証)」をクリックして、すべての設定が正しいか確かめます。たとえば有効な件名がないと、エラーメッセージが出ます。検証が済んでから送信やスケジュールをします。",
+  "qe": "True or false: You need to validate single send journeys.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "journey",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / データモデルの設計 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/design-your-mc-data-model",
+  "q": "正誤問題: レコードのデータベース (DBOR) とは、顧客の購読者ステータスの情報源である。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "DBOR(Database of Record)は、購読者のオプトイン状況や基本情報について「正しい情報はここ」と決めたデータベースです。最新の顧客情報はここにあります。DBOR を決めると、どのデータをどのくらいの頻度で Marketing Cloud と出し入れするかも決めやすくなります。",
+  "qe": "True or false: A database of record (DBOR) is the source of truth for a customer's subscriber status.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "contacts",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / データモデルの設計 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/design-your-mc-data-model",
+  "q": "Contact Builder での外部キーの目的は何ですか?",
+  "o": [
+   "データポイントを一意に識別する。",
+   "データエクステンションのプライマリキーとして使用する。",
+   "外部データのロックを解除する。",
+   "リレーショナルデータベース内の異なるソース間でデータを関連付ける。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "外部キーは、リレーショナルデータベースで、別々のテーブルやデータソースのデータをつなぐための項目です。たとえば顧客データの CustomerID と POS データの PurchaserID が同じ顧客を指すなら、それが外部キーになります。データを一意に識別するのはプライマリキーの役割です。",
+  "qe": "What is the purpose of a foreign key in Contact Builder?",
+  "oe": [
+   "To uniquely identify data points",
+   "To serve as a primary key for your data extension",
+   "To unlock external data",
+   "To connect data between different sources in a relational database"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "contacts",
+  "x": "Data Designer は、データエクステンションどうし、またはデータエクステンションと連絡先レコードの関係を定義するツールです。"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / データモデルの構築 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/build-your-data-model",
+  "q": "正誤問題: 属性をリンクするには、同じデータ型である必要がある。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Contact Builder でデータエクステンションをリンクするとき、つなぐ属性(外部キー)は同じデータ型でなければなりません。そのため、外部キーに使う項目は、データエクステンションを作る段階でデータ型を確認しておきます。",
+  "qe": "True or false: To link attributes, they need to be the same data type.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "contacts",
+  "x": "外部システムの顧客IDが数値でも、連絡先キーには文字列型の項目を使います。数値型の項目は、連絡先キーに直接リンクできません。"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / データモデルの構築 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/build-your-data-model",
+  "q": "各顧客に複数の購入が存在する可能性がある場合に、顧客データエクステンションを購入データエクステンションに関連付ける濃度はどれですか?",
+  "o": [
+   "1 対 1",
+   "1 対多",
+   "多対多",
+   "多対 1"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "1人の顧客が何度も購入し、購入データの中に何回も出てくる関係は「1対多」です。1対1は顧客がデータエクステンションに1回だけ出てくる場合、多対多は1つの購入に複数の商品が入るような場合で、連絡先には使いません。",
+  "qe": "What is the cardinality for connecting a customer data extension to a purchases data extension, where each customer can have multiple purchases?",
+  "oe": [
+   "One-to-one",
+   "One-to-many",
+   "Many-to-many",
+   "Many-to-one"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "contacts",
+  "x": "1対多の例は、1人の連絡先と、その人の複数の注文データをつなぐ関係です。"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / データの移動 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/move-your-data",
+  "q": "正誤問題: Marketing Cloud Engagement はファイルを 21 日後に SFTP と Safehouse から削除する。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "SFTP と Safehouse は一時的な置き場です。Marketing Cloud Engagement は、21日たったファイルをここから削除します。置いたファイルは、それまでにデータエクステンションへ取り込んでおきます。",
+  "qe": "True or false: Marketing Cloud Engagement removes files from the SFTP and the safehouse after 21 days.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / データの移動 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/move-your-data",
+  "q": "外部 FTP から暗号化されたファイルをインポートする場合に、2 つのファイル転送アクティビティが必要なのはなぜですか?",
+  "o": [
+   "1 つはファイルをデスクトップにダウンロードするためで、もう 1 つはファイルを Safehouse に転送するため。",
+   "1 つはファイルを復号化するためで、もう 1 つはデータをインポートするため。",
+   "1 つはデータを Safehouse に転送するためで、もう 1 つはデータをインポートするため。",
+   "1 つはファイルを Safehouse に転送するためで、もう 1 つはファイルを復号化するため。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "暗号化されたファイルが外部の FTP にあるときは、Automation Studio にファイル転送アクティビティを2つ置きます。1つ目でファイルを Safehouse に移し、2つ目で復号します。データの取り込みは、そのあとのインポートアクティビティが担当します。",
+  "qe": "When you import an encrypted file from an external FTP, why are two File Transfer activities needed?",
+  "oe": [
+   "One to download the file to your desktop and one to transfer to the safehouse.",
+   "One to decrypt the file and one to import the data.",
+   "One to transfer to the safehouse and one to import the data.",
+   "One to transfer to the safehouse and one to decrypt the file."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": "File Transferファイルの解凍、復号や、Safehouseから指定のFTPの場所へのファイル移動を行う"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / 送信ログを使用したデータの収集 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/collect-data-with-a-send-log",
+  "q": "送信ログを構成する前に検討する必要があるのはどれですか?",
+  "o": [
+   "送信ログの場所",
+   "データ保持ポリシー",
+   "Journey Builder アクティビティ"
+  ],
+  "a": [
+   0,
+   1
+  ],
+  "ex": "送信ログを作る前に、置き場所(Enterprise の親アカウントか、子のビジネスユニットか)を決めます。また送信ログはすぐ大きくなるので、データ保持ポリシーを設定することが強く勧められています。Journey Builder のアクティビティは、送信ログの準備で検討する項目ではありません。",
+  "qe": "What should you consider before configuring your send log?",
+  "oe": [
+   "Location of the send log",
+   "Data retention policy",
+   "Journey Builder activities"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "maintenance",
+  "x": "送信ログのデータエクステンションは30日以下、トリガー送信のデータエクステンションは7日の保持期間が推奨されています。"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / 送信ログを使用したデータの収集 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/collect-data-with-a-send-log",
+  "q": "構成後に送信ログに追加できるのはどれですか?",
+  "o": [
+   "より良いエンゲージメントデータ",
+   "履歴データ",
+   "新しいカスタムフィールド",
+   "Content Builder のテスト送信の結果"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "送信ログには、作ったあとでも新しいカスタム項目を追加できます。ただし、作る前の送信の履歴データはあとから入れられません。そのため、必要な項目は最初にできるだけそろえておくのがよいとされています。",
+  "qe": "What can be added to a send log once configured?",
+  "oe": [
+   "Better engagement data",
+   "Historical data",
+   "New custom fields",
+   "Content Builder test send results"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "email",
+  "x": "Send Logging は、送信時の値(ジョブや購読者の情報など)をデータエクステンションに記録する機能です。標準のトラッキングでは取れないデータを残せます。"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / SQL を使用したデータのクエリ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/query-data-with-sql",
+  "q": "正誤問題: データビューはカスタマイズできる。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "システムデータビュー(_Bounce、_Open など)は Salesforce があらかじめ用意したもので、中身を変更することはできません。使うときは、結果を入れるデータエクステンションを作り、Automation Studio のクエリアクティビティで照会します。",
+  "qe": "True or false: Data views can be customized.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "reports",
+  "x": "データビューSQL Queryアクティビティで、送信、開封、クリック、バウンスなどの記録を最大6か月分照会する"
+ },
+ {
+  "s": "Trailhead: Marketing Cloud Engagement データ管理 / SQL を使用したデータのクエリ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/marketing-cloud-data-management/query-data-with-sql",
+  "q": "大きな SQL クエリは、どれだけの時間が経つとタイムアウトしますか?",
+  "o": [
+   "15 分",
+   "30 分",
+   "45 分",
+   "60 分"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "SQL クエリは 30 分でタイムアウトします。処理するデータが多いほどタイムアウトしやすいので、SELECT * は避け、必要な項目だけを指定するのが効果的です。",
+  "qe": "Large SQL queries time-out after how long?",
+  "oe": [
+   "15 minutes",
+   "30 minutes",
+   "45 minutes",
+   "60 minutes"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": "SQL Queryデータエクステンションやデータビューから、SQLで条件に合うデータを取り出し、データエクステンションに入れる"
+ }
+]
