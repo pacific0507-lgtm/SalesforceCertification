@@ -5,6 +5,10 @@ import sys
 src, out = sys.argv[1:3]
 s = open(src, encoding="utf-8").read()
 NEWS = [
+ ("2026-11-10", "新機能", "Data 360 にオリジナル問題・MuleSoft の過去問に図", [
+   "Data 360 コンサルタントに、公式ヘルプにもとづくオリジナル問題150問を追加しました。テキストの全18項目から出題します。問題集の絞込の「出典」で「オリジナル問題」を選べます",
+   "MuleSoft Platform Architect の過去問12問に、原本の図を入れました。図の内容は文章でも読めます",
+ ]),
  ("2026-11-10", "新機能", "Trailhead のクイズを追加・過去問を読みやすく", [
    "Marketing Cloud Administrator(32問)・Agentforce Sales コンサルタント(154問)・Agentforce スペシャリスト(178問)・MuleSoft Platform Architect(35問)に、Trailhead のモジュールのクイズを追加しました。問題集の絞込の「出典」で「Trailhead のクイズ」を選べます。正解はそのユニットの本文で確かめ、元のユニットへのリンクを付けています",
    "Salesforce 系の過去問で、長い問題文に改行を入れ、「1. 2. 3.」のように項目が並ぶ選択肢は1項目1行にしました。原本の図の印が文字のまま出ていたのを直し、取り込める図は画像で表示します",
