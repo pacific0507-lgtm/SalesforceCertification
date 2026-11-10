@@ -192,11 +192,11 @@
   "o": [
    "Mule アプリケーションの HTTP リスナーで HTTPS プロトコルを設定する",
    "設定した API エンドポイントへのアクセスを制御するため、送受信する HTTP リクエストに適用するカスタムポリシーを作る",
-   "VPC のファイアウォールルールからエントリを削除する",
+   "VPC のファイアウォールルールからエントリを削除する\n(原本の図: ファイアウォールルールの2つのエントリ。CIDR Block「0.0.0.0/0」(どこからでも)・Protocol「TCP」・From port「8081」と、CIDR Block「10.111.0.0/24」(VPC 内)・Protocol「TCP」・From port「8091」)",
    "IP Blocklist ポリシーを設定し、1つの IP アドレスや IP アドレスの範囲から設定した API エンドポイントへのアクセスを制御する",
-   "VPC のファイアウォールルールにエントリを追加する"
+   "VPC のファイアウォールルールにエントリを追加する\n(原本の図: ファイアウォールルールのエントリ。CIDR Block「0.0.0.0/0」(どこからでも)・Protocol「TCP」・From port「8081」)"
   ],
-  "ex": "(原本の図は表示できません)CloudHub(1.0)が前提の問題です。HTTP リスナーを HTTPS で待ち受けるように設定し、VPC の既定のファイアウォールルールから HTTP 用のポート(8081 など)のエントリを削除すれば、HTTP のトラフィックが届かなくなります。カスタムポリシーや IP Blocklist は送信元を制御するもので、HTTP そのものを禁止できません。エントリを追加すると、受け付ける通信が増えるだけです。",
+  "ex": "CloudHub(1.0)が前提の問題です。HTTP リスナーを HTTPS で待ち受けるように設定し、VPC の既定のファイアウォールルールから HTTP 用のポート(8081 など)のエントリを削除すれば、HTTP のトラフィックが届かなくなります。カスタムポリシーや IP Blocklist は送信元を制御するもので、HTTP そのものを禁止できません。エントリを追加すると、受け付ける通信が増えるだけです。",
   "u": "https://docs.mulesoft.com/cloudhub/vpc-firewall-rules-concept",
   "v": "公式で確認済み",
   "x": null,
@@ -270,14 +270,14 @@
   "a": [
    0
   ],
-  "q": "図を参照してください。(原本の図は表示できません。図がなくても答えられます)\n新しい Promotions Process API の RAML 定義が提案され、Anypoint Exchange に公開されました。\nPromotions API の重要な利用者になるマーケティング部門には、満たすべき重要な要件と期待があります。\n\nAnypoint Platform の機能を使って、この初期の API 設計の段階にマーケティング部門を参加させる最も効果的な方法はどれですか?",
+  "q": "図を参照してください。\n〔図:mulepa_v20260130_q16_w320.webp〕図: Developer が RAML を書いて(writes RAML)Proposed API(提案中の API)を作り、Marketing がそれをレビューする(review)。Marketing は Developer に要件(requirements)を伝え、Anypoint Platform で課題を挙げ(issues)、Anypoint Platform から Developer へフィードバック(feedback)が届く。\n新しい Promotions Process API の RAML 定義が提案され、Anypoint Exchange に公開されました。\nPromotions API の重要な利用者になるマーケティング部門には、満たすべき重要な要件と期待があります。\n\nAnypoint Platform の機能を使って、この初期の API 設計の段階にマーケティング部門を参加させる最も効果的な方法はどれですか?",
   "o": [
-   "自動生成された API コンソールを使って、API のモック実装を試してもらうようマーケティング部門に頼む",
+   "自動生成された API コンソールを使って、API のモック実装を試してもらうようマーケティング部門に頼む\n(原本の図: Developer が API Spec を書き(writes)、API Spec が Mocking Service を有効にし(enables)、Mocking Service が API Console を提供し(provides)、Marketing が API Console にアクセスする(accesses))",
    "マーケティング部門の DBA と設計ワークショップを開き、マーケティングの IT システムのデータベーススキーマを RAML に変換する",
    "Anypoint Studio で API を Mule アプリケーションとして実装し、CloudHub にデプロイしてから、マーケティング部門に試してもらう",
-   "API Designer から統合テストスイートをエクスポートし、マーケティング部門にそのスイートでテストを実行して合格を確認してもらう"
+   "API Designer から統合テストスイートをエクスポートし、マーケティング部門にそのスイートでテストを実行して合格を確認してもらう\n(原本の図: Developer が API Designer で設計し(designs)、Integration Test Suite をエクスポートし(exports)、テストスイートが API をテストする(tests)。Marketing はテストスイートを実行し(executes)、テスト結果を確かめる(verifies test results))"
   ],
-  "ex": "(原本の図は表示できません)モックサービスは、仕様に定義した例のペイロードを返して API の動きをまねるので、実装の前に利用者に試してもらいフィードバックを得られます。Exchange の API ポータルには対話型のコンソールが自動で作られます。実装してから試してもらうと手戻りが大きく、データベーススキーマの変換や利用者にテストスイートを渡すことは設計段階の参加方法として適切ではありません。",
+  "ex": "モックサービスは、仕様に定義した例のペイロードを返して API の動きをまねるので、実装の前に利用者に試してもらいフィードバックを得られます。Exchange の API ポータルには対話型のコンソールが自動で作られます。実装してから試してもらうと手戻りが大きく、データベーススキーマの変換や利用者にテストスイートを渡すことは設計段階の参加方法として適切ではありません。",
   "u": "https://docs.mulesoft.com/design-center/design-mocking-service",
   "v": "公式で確認済み",
   "x": "モックサービス(mocking service)は、仕様に定義したステータスコードと例(example)のペイロードを返して、API の動きをまねる機能です。実装する前に API を試せます。"
@@ -466,14 +466,14 @@
   "a": [
    1
   ],
-  "q": "Order API は、バックエンドの在庫データベースで注文の商品の詳細を調べるため、一連の API 呼び出しを起こします。\nOrder API が OrderItems Process API を呼び、OrderItems Process API が Inventory System API を呼びます。\nInventory System API は、バックエンドの在庫データベースでデータベース操作を行います。\nInventory System API とデータベースの間のネットワーク接続は不安定で、予期しないときに止まることが知られています。\n\nOrder API が OrderItems Process API からの応答を2秒より長く待たないようにするには、API の処理の流れのどこに2秒のタイムアウトを設定すべきですか?",
+  "q": "Order API は、バックエンドの在庫データベースで注文の商品の詳細を調べるため、一連の API 呼び出しを起こします。\nOrder API が OrderItems Process API を呼び、OrderItems Process API が Inventory System API を呼びます。\nInventory System API は、バックエンドの在庫データベースでデータベース操作を行います。\nInventory System API とデータベースの間のネットワーク接続は不安定で、予期しないときに止まることが知られています。\n〔図:mulepa_v20260130_q41_w340.webp〕図: Order API → OrderItems process API → Inventory system API → Database と、左から右へ矢印でつながる。\n\nOrder API が OrderItems Process API からの応答を2秒より長く待たないようにするには、API の処理の流れのどこに2秒のタイムアウトを設定すべきですか?",
   "o": [
    "OrderItems Process API の実装",
    "Order API の実装",
    "Inventory System API の実装",
    "在庫データベース"
   ],
-  "ex": "(原本の図は表示できません)「Order API が OrderItems Process API からの応答を待つ時間」を2秒に制限するので、タイムアウトは呼び出す側である Order API の実装で、OrderItems Process API を呼ぶ HTTP Request 操作に設定します。下流の OrderItems や Inventory、データベースに設定しても、その間のネットワークの遅れや下流の処理時間を合わせた待ち時間は保証できません。原本の解答は「OrderItems Process API の実装」でしたが、待ち時間を制限したいのは呼び出し元の Order API なので「Order API の実装」が正解です。(タイムアウトをどちらに設定するかを直接述べた公式の記述は見つけられなかったため、要確認としています。)",
+  "ex": "「Order API が OrderItems Process API からの応答を待つ時間」を2秒に制限するので、タイムアウトは呼び出す側である Order API の実装で、OrderItems Process API を呼ぶ HTTP Request 操作に設定します。下流の OrderItems や Inventory、データベースに設定しても、その間のネットワークの遅れや下流の処理時間を合わせた待ち時間は保証できません。原本の解答は「OrderItems Process API の実装」でしたが、待ち時間を制限したいのは呼び出し元の Order API なので「Order API の実装」が正解です。(タイムアウトをどちらに設定するかを直接述べた公式の記述は見つけられなかったため、要確認としています。)",
   "u": "https://docs.mulesoft.com/http-connector/latest/http-request-ref",
   "v": "要確認(矛盾あり)",
   "x": null

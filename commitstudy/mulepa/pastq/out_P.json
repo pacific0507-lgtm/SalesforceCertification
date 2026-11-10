@@ -144,14 +144,14 @@
   "a": [
    0
   ],
-  "q": "Anypoint Platform によって、公開しているエンドポイントに API ポリシーを適用できる Mule アプリケーションはどれですか。",
+  "q": "Anypoint Platform によって、公開しているエンドポイントに API ポリシーを適用できる Mule アプリケーションはどれですか。\n〔図:mulepa_v20260509_q8_w300.webp〕図: 左の Client Application から、右の Mule App へ「HTTP 1.x」と書いた矢印が向かう。",
   "o": [
    "HTTP/1.x でリクエストを受け付ける Mule アプリケーション",
    "TCP で JSON のリクエストを受け付けるが、応答を返す必要はない Mule アプリケーション",
    "WebSocket で JSON のリクエストを受け付ける Mule アプリケーション",
    "HTTP/2 で gRPC のリクエストを受け付ける Mule アプリケーション"
   ],
-  "ex": "(原本の図は表示できません)Mule Gateway のポリシーを適用するには、HTTP Listener を使うフローを持つ Mule アプリケーションを自動検出で API に結び付ける必要があります。HTTP を下で使うほかのコネクターではポリシーは適用されないため、TCP、WebSocket、HTTP/2 の gRPC で受け付けるアプリケーションは対象外です。正解は HTTP/1.x でリクエストを受け付けるアプリケーションです。",
+  "ex": "Mule Gateway のポリシーを適用するには、HTTP Listener を使うフローを持つ Mule アプリケーションを自動検出で API に結び付ける必要があります。HTTP を下で使うほかのコネクターではポリシーは適用されないため、TCP、WebSocket、HTTP/2 の gRPC で受け付けるアプリケーションは対象外です。正解は HTTP/1.x でリクエストを受け付けるアプリケーションです。",
   "u": "https://docs.mulesoft.com/mule-gateway/policies-included-apply",
   "v": "公式で確認済み",
   "x": "flowRef で指すフローは HTTP Listener を使う必要があります。HTTP を下で使う別のコネクターでは、ポリシーは適用されません。"
@@ -404,11 +404,11 @@
   "q": "ある EC 企業の事業部門(LoB)が、顧客のモバイルアプリケーションまたは社内の Web アプリケーションで新しい注文が処理されるたびに、メールで自動通知を送る処理を求めています。\n将来は、テキストメッセージやプッシュ通知など、通知のチャネルが増える可能性があります。\n\nこのシナリオに対して最も効果的な API 主導の接続のアプローチはどれですか。",
   "o": [
    "Web アプリケーション用とモバイルアプリケーション用に Experience API を1つずつ作る。\nオーケストレーションを行い、データベースからメールのテンプレートを取得する Process API を作る。\nAnypoint Connector for Email でメールを送る System API を作る。",
-   "Web アプリケーション用とモバイルアプリケーション用に Experience API を1つずつ作る。\nオーケストレーションを行い、データベースからメールのテンプレートを取得し、Anypoint Connector for Email でメールを送る Process API を作る。",
+   "Web アプリケーション用とモバイルアプリケーション用に Experience API を1つずつ作る。\nオーケストレーションを行い、データベースからメールのテンプレートを取得し、Anypoint Connector for Email でメールを送る Process API を作る。\n(原本の図: Experience APIs の層に Mobile API と Web app API があり、どちらも Process APIs の層の Order Notification につながる。Order Notification は、System APIs の層を通らずに、直接データベースとメールにつながる)",
    "Web アプリケーションとモバイルアプリケーションの両方に Experience API を作る。\nオーケストレーションを行い、データベースからメールのテンプレートを取得し、Anypoint Connector for Email でメールを送る Process API を作る。",
    "Web アプリケーションとモバイルアプリケーションの両方に Experience API を作る。\nオーケストレーションを行い、データベースからメールのテンプレートを取得する Process API を作る。\nAnypoint Connector for Email でメールを送る System API を作る。"
   ],
-  "ex": "(原本の図は表示できません)メールの送信のようにバックエンドとのやり取りは System API に切り出し、Process API はオーケストレーションに専念させると、将来 SMS やプッシュ通知の System API を足すだけで済みます。B と C は Process API が直接メールを送るため、チャネルの追加に弱くなります。原本の選択肢 A は同じ文が2回繰り返されていたため1回分にまとめ、D は崩れていた表記を直しました。A と D は文章上ほぼ同じ構成ですが、原本の解答の A を正解としています。",
+  "ex": "メールの送信のようにバックエンドとのやり取りは System API に切り出し、Process API はオーケストレーションに専念させると、将来 SMS やプッシュ通知の System API を足すだけで済みます。B と C は Process API が直接メールを送るため、チャネルの追加に弱くなります。原本の選択肢 A は同じ文が2回繰り返されていたため1回分にまとめ、D は崩れていた表記を直しました。A と D は文章上ほぼ同じ構成ですが、原本の解答の A を正解としています。",
   "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
   "v": "原本どおり",
   "x": "System APIデータベース、ERP、CRM などの基幹システムに直接つながり、閉じ込められていたデータを公開する。基幹システムを混乱から守るSalesforce の顧客データを、CRM の動作に影響を与えずにほかのアプリから使えるようにする"
@@ -482,14 +482,14 @@
   "a": [
    2
   ],
-  "q": "図を参照してください。(原本の図は表示できません。図がなくても答えられます)\nAPI 主導の接続のアーキテクチャスタイルと両立するアーキテクチャ上の制約はどれですか。",
+  "q": "図を参照してください。\n〔図:mulepa_v20260509_q25_w340.webp〕図: 左の API Consumer から、右の大きな枠「Business process」へ矢印が向かう。枠の中には System API(s)、Process API(s)、Experience API(s) の3つの部品がある。枠の下に「Decompose business process into APIs(業務プロセスを API に分解する)」というメモが付いている。\nAPI 主導の接続のアーキテクチャスタイルと両立するアーキテクチャ上の制約はどれですか。",
   "o": [
-   "3つの層(Experience、Process、System)それぞれにちょうど1つずつ API を作る階層型のアプローチを常に使う",
+   "3つの層(Experience、Process、System)それぞれにちょうど1つずつ API を作る階層型のアプローチを常に使う\n(原本の図: API Consumer → Experience API(s) → Process API(s) → System API(s) が1列につながる)",
    "Process API は複数の System API の呼び出しのオーケストレーションに使い、ほかの Process API の呼び出しには使わない",
-   "特定済みの Process API や Experience API が今は必要としていないデータも、System API が返すことを認める",
+   "特定済みの Process API や Experience API が今は必要としていないデータも、System API が返すことを認める\n(原本の図: API Consumer → Experience API(s) → Process API(s) とつながり、Process API(s) は2つの System API(s) を呼ぶ。2つの System API(s) はそれぞれ Data Object A・B につながり、「May return data needed by future APIs(将来の API が必要とするデータも返すことがある)」というメモが付く。下の Future APIs も2つめの System API(s) を呼ぶ)",
    "エンドユーザーのアプリケーション向けのカスタマイズは、Experience 層ではなく Process 層で扱う"
   ],
-  "ex": "(原本の図は表示できません)Trailhead では、Process API は複数の System API とほかの Process API のデータをまとめるものと説明されており、Process API がほかの Process API を呼ぶことは禁じられていません。各層の API は必要に応じて複数あってよく、利用者向けのカスタマイズは Experience 層で行います。System API が今は使われていないデータも返せば、将来の Process API が System API を作り直さずに再利用できます。原本の解答は B でしたが、Process API はほかの Process API も呼び出せるため、C が正解です(同じ問題の別の回の原本も、この選択肢を正解としています)。",
+  "ex": "Trailhead では、Process API は複数の System API とほかの Process API のデータをまとめるものと説明されており、Process API がほかの Process API を呼ぶことは禁じられていません。各層の API は必要に応じて複数あってよく、利用者向けのカスタマイズは Experience 層で行います。System API が今は使われていないデータも返せば、将来の Process API が System API を作り直さずに再利用できます。原本の解答は B でしたが、Process API はほかの Process API も呼び出せるため、C が正解です(同じ問題の別の回の原本も、この選択肢を正解としています)。",
   "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
   "v": "解答を修正(公式にもとづく)",
   "x": "Process API複数の System API やほかの Process API のデータを組み合わせ、再利用できる業務ロジックにする。変換、集約、補強を担うSalesforce の顧客データと EC サイトの注文データをまとめ、1つのレポート用のビューにする"
@@ -520,14 +520,14 @@
   "a": [
    1
   ],
-  "q": "図を参照してください。(原本の図は表示できません。図がなくても答えられます)\n1つのエンドツーエンドの業務プロセスを、Experience API、Process API、System API の連携に分解する最もよい方法はどれですか。",
+  "q": "図を参照してください。\n〔図:mulepa_v20260509_q27_w340.webp〕図: API Consumer → Experience API(s) → Process API(s) と矢印でつながり、その Process API(s) から2つの System API(s) へ点線の矢印が向かう。その下に、どこともつながっていない別の Process API(s) がある。\n1つのエンドツーエンドの業務プロセスを、Experience API、Process API、System API の連携に分解する最もよい方法はどれですか。",
   "o": [
    "エンドユーザーのアプリケーション向けのカスタマイズは、Experience API ではなく Process API で扱う",
    "特定済みの Process API や Experience API が今は必要としていないデータも、System API が返すことを認める",
    "3つの層(Experience、Process、System API)それぞれにちょうど1つずつ API を作る階層型のアプローチを常に使う",
    "Process API は複数の System API の呼び出しのオーケストレーションに使い、ほかの Process API の呼び出しには使わない"
   ],
-  "ex": "(原本の図は表示できません)System API が今は使われていないデータも返せるようにしておけば、将来の Process API がそのまま再利用でき、System API を何度も作り直さずに済みます。利用者向けのカスタマイズは Experience 層で行い、各層の API は必要に応じて複数あってよいものです。Trailhead では Process API は System API とほかの Process API のデータをまとめるものと説明されており、Process API がほかの Process API を呼ぶことは禁じられていません。",
+  "ex": "System API が今は使われていないデータも返せるようにしておけば、将来の Process API がそのまま再利用でき、System API を何度も作り直さずに済みます。利用者向けのカスタマイズは Experience 層で行い、各層の API は必要に応じて複数あってよいものです。Trailhead では Process API は System API とほかの Process API のデータをまとめるものと説明されており、Process API がほかの Process API を呼ぶことは禁じられていません。",
   "u": "https://trailhead.salesforce.com/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
   "v": "公式で確認済み",
   "x": "Process API複数の System API やほかの Process API のデータを組み合わせ、再利用できる業務ロジックにする。変換、集約、補強を担うSalesforce の顧客データと EC サイトの注文データをまとめ、1つのレポート用のビューにする"

@@ -44,14 +44,14 @@
   "a": [
    3
   ],
-  "q": "図を参照してください。(原本の図は表示できません。図がなくても答えられます)\nAPI 主導の接続とアプリケーションネットワークの意味で、有効な API はどれですか?",
+  "q": "図を参照してください。\n〔図:mulepa_v20260130_q51_w320.webp〕図: CLIENT と SERVER が、それぞれ XML(真ん中の層)と HTTP(下の層)を重ね、いちばん下の NETWORK でつながる。CLIENT から SERVER へ operation()、SERVER から CLIENT へ reply の矢印があり、点線で Top Layer、Middle Layer、Bottom Layer に区切られている。\nAPI 主導の接続とアプリケーションネットワークの意味で、有効な API はどれですか?",
   "o": [
    "TCP 上の Java RMI",
    "TCP 上の JMS",
    "IIOP 上の CORBA",
    "HTTP 上の XML"
   ],
-  "ex": "(原本の図は表示できません)原本の選択肢は読み取りが崩れていて(A と B が同じ「Java RMI over TCP」で、B を推定で「TCP 上の JMS」に直しました。「HOP」は IIOP、D は「XML over UDP」)、原本の解説が正解を「XML over HTTP」としているため、C を「IIOP 上の CORBA」、D を「HTTP 上の XML」に復元しました。API 主導の接続でいう API は HTTP ベースの API で、API Manager のポリシーなどで非機能要件を満たせるのも HTTP の API だからです。Java RMI や CORBA は HTTP ではない独自のプロトコルの上で動くため、ここでいう API には当たりません。",
+  "ex": "原本の選択肢は読み取りが崩れていて(A と B が同じ「Java RMI over TCP」で、B を推定で「TCP 上の JMS」に直しました。「HOP」は IIOP、D は「XML over UDP」)、原本の解説が正解を「XML over HTTP」としているため、C を「IIOP 上の CORBA」、D を「HTTP 上の XML」に復元しました。API 主導の接続でいう API は HTTP ベースの API で、API Manager のポリシーなどで非機能要件を満たせるのも HTTP の API だからです。Java RMI や CORBA は HTTP ではない独自のプロトコルの上で動くため、ここでいう API には当たりません。",
   "u": "https://docs.mulesoft.com/mule-gateway/mule-gateway-autodiscovery-overview",
   "v": "原本どおり",
   "x": "flowRef で指すフローは HTTP Listener を使う必要があります。HTTP を下で使う別のコネクターでは、ポリシーは適用されません。",
