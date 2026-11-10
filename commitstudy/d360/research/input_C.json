@@ -44,7 +44,7 @@
     "Fuzzy Name and Normalized Phone名: あいまい一致(中精度)、姓: 完全一致、電話(E.164形式): 正規化一致",
     "Fuzzy Name and Normalized Address名: あいまい一致(中精度)、姓: 完全一致、住所1: 正規化一致、市: 完全一致、国: 正規化一致",
     "Fuzzy Name and Normalized Phone and Normalized Email上の電話とメールを、両方満たす",
-    "照合方法は3つです。完全一致(Exact)、あいまい一致(Fuzzy。「太郎」と「タロウ」のような表記ゆれを許す)、正規化一致(Exact Normalized。メール、電話、住所で、大文字小文字や記号の違いを吸収して比べる)。",
+    "照合方法は3つです。完全一致(Exact)、あいまい一致(Fuzzy。「Jon」と「John」のような綴りのゆれを許す。精度は高・中・低から選べ、取引先〔Account〕の項目には使えない)、正規化一致(Exact Normalized。メール、電話、住所で、大文字小文字や記号の違いを吸収して比べる)。",
     "カスタムルールでは、会員番号などのパーティIDや、デバイスの広告主ID(IDFA、AAID)も使えます。",
     "「空欄でも一致させる(Match on Blank)」は、品質低下や巨大プロフィールのリスクがあるため、慎重に使います。",
     "同じ個人ID(Individual.Id)のレコードは、ルールがなくても一致します。",
