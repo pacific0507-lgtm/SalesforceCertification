@@ -42,3 +42,4 @@ python3 $C/patch_mcadmin_past.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_hist_train.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_no_reduced_motion.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_garden_pals.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_badge_told.py $OUT $OUT.tmp; mv $OUT.tmp $OUT

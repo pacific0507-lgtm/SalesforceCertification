@@ -2,7 +2,8 @@
   原因: iPhone でアプリを開き直すと端末の保存が消えることがあり、アカウントの記録(fam-ls)を読み終える前に
   バッジを計算すると、獲得済みのバッジを「今とった」と判定していた。
   - アカウントの記録との突き合わせでは、獲得日時は早い方を残す
-  - お知らせは、アカウントの記録を読み終えてから、このページを開いたあとに獲得したものだけを出す
+  - お知らせは、アカウントの記録を読み終えてから、このページを開いたあとに獲得したものだけを出す(読み終えないうちは出さない)
+  - 一度知らせたバッジは cs-badge-told(アカウントに同期)に控え、二度と出さない
 使い方: python3 patch_badge_toast.py <index.html> <出力>
 """
 import sys
@@ -20,9 +21,14 @@ rep("}catch{}})();return Promise.race([r,new Promise(e=>setTimeout(e,2500))])}",
 GATE = r'''
 /* ==バッジ獲得のお知らせは、アカウントの記録を読み終えてから、このページを開いたあとに獲得したものだけ== */
 window.__famStart=window.__famStart||Date.now();
-function csBadgeGate(list,fn){var n=0;(function wait(){if(!window.__famLsReady&&n++<40){setTimeout(wait,200);return}
-  var b={};try{b=JSON.parse(localStorage.getItem("ls-badges-v1")||"{}")||{}}catch(e){}
-  var f=list.filter(function(x){return (+b[x.id]||0)>=window.__famStart-60000});f.__ok=1;if(f.length)fn(f)})()}
+function csBadgeGate(list,fn){var n=0;(function wait(){if(!window.__famLsReady){if(n++<100){setTimeout(wait,200);return}return}
+  /* アカウントの記録を読み終えないうちは出さない(読み込みが遅いと、獲得済みのバッジを「今とった」と判定してしまうため)。
+     一度知らせたバッジは cs-badge-told(アカウントに同期)に控え、二度と出さない */
+  var b={},told={};try{b=JSON.parse(localStorage.getItem("ls-badges-v1")||"{}")||{}}catch(e){}try{told=JSON.parse(localStorage.getItem("cs-badge-told")||"{}")||{}}catch(e){}
+  var lim=window.__famStart-60000,ch=false;Object.keys(b).forEach(function(k){if(!told[k]&&(+b[k]||0)<lim){told[k]=+b[k]||1;ch=true}});
+  var f=list.filter(function(x){return (+b[x.id]||0)>=lim&&!told[x.id]});f.forEach(function(x){told[x.id]=Date.now();ch=true});
+  if(ch)try{localStorage.setItem("cs-badge-told",JSON.stringify(told))}catch(e){}
+  f.__ok=1;if(f.length)fn(f)})()}
 '''
 rep("FAMP.record=function(){", GATE + "\nFAMP.record=function(){")
 rep("function bt(e){if(!e.length)return;", "function bt(e){if(!e.length)return;if(!e.__ok)return csBadgeGate(e,bt);")
