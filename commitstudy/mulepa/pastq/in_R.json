@@ -200,9 +200,9 @@
   "oe": [
    "Mule アプリケーションの HTTP リスナーで HTTPS プロトコルを設定します。",
    "設定されたAPIエンドポイントへのアクセスを制御するために、送信および受信HTTPリクエストに適用するカスタムポリシーを作成します。",
-   "VPCファイアウォールルールからエントリを削除します [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/3d54c640e62e8a0f88f13f888d5fb085.jpg]",
+   "VPCファイアウォールルールからエントリを削除します",
    "IP ブロックリスト ポリシーを構成して、構成された API エンドポイントへの単一の IP アドレスまたは IP アドレスの範囲からのアクセスを制御します。",
-   "VPC ファイアウォール ルールにエントリを追加します。 [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/4932447e331e53a67bc77559963d6f65.jpg]"
+   "VPC ファイアウォール ルールにエントリを追加します。"
   ],
   "ans": [
    0,
@@ -288,7 +288,7 @@
  {
   "label": "v2026-01-30",
   "no": 16,
-  "qe": "展示品を参照してください。新しいプロモーション プロセス API 用の RAML 定義が提案され、Anypoint Exchange に公開されました。プロモーション API の重要な消費者となるマーケティング部門には、満たさなければならない重要な要件と期待があります。Anypoint Platform の機能を活用して、マーケティング部門をこの初期の API 設計フェーズに参加させる最も効果的な方法は何ですか? [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/ec9f29e5b6ffb2b96e1d2847d5c9e2f7.jpg] [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/37d9f0d4bceb97d1c0d529bf48e4ce0c.jpg] [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/306871fa4a901f271b43cac97f8f02b8.jpg]",
+  "qe": "展示品を参照してください。新しいプロモーション プロセス API 用の RAML 定義が提案され、Anypoint Exchange に公開されました。プロモーション API の重要な消費者となるマーケティング部門には、満たさなければならない重要な要件と期待があります。Anypoint Platform の機能を活用して、マーケティング部門をこの初期の API 設計フェーズに参加させる最も効果的な方法は何ですか?",
   "oe": [
    "マーケティング部門に、自動生成されたAPIコンソールを使用してAPIのモック実装を操作するように依頼します。",
    "マーケティング部門のDBAと設計ワークショップを開催し、マーケティングITシステムのデータベーススキーマをRAMLに変換する",
@@ -515,7 +515,7 @@
  {
   "label": "v2026-01-30",
   "no": 41,
-  "qe": "Order APIは、バックエンドの在庫データベースで注文の商品の詳細を参照するための一連のAPI呼び出しをトリガーします。Order APIはOrderItemsプロセスAPIを呼び出し、OrderItemsプロセスAPIはInventoryシステムAPIを呼び出します。InventoryシステムAPIは、バックエンドの在庫データベースでデータベース操作を実行します。Inventory システム API とデータベース間のネットワーク接続は信頼性が低く、予期しない時間にハングすることが知られています。Order API が Orderltems プロセス API からの応答を 2 秒以上待たないように、API 処理シーケンスのどこに 2 秒のタイムアウトを構成する必要がありますか? [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/9e73fa958c4e50d1f98a81503c7c262e.jpg]",
+  "qe": "Order APIは、バックエンドの在庫データベースで注文の商品の詳細を参照するための一連のAPI呼び出しをトリガーします。Order APIはOrderItemsプロセスAPIを呼び出し、OrderItemsプロセスAPIはInventoryシステムAPIを呼び出します。InventoryシステムAPIは、バックエンドの在庫データベースでデータベース操作を実行します。Inventory システム API とデータベース間のネットワーク接続は信頼性が低く、予期しない時間にハングすることが知られています。Order API が Orderltems プロセス API からの応答を 2 秒以上待たないように、API 処理シーケンスのどこに 2 秒のタイムアウトを構成する必要がありますか?",
   "oe": [
    "OrderltemsプロセスAPI実装内",
    "Order API実装では",
@@ -568,7 +568,7 @@
  {
   "label": "v2026-01-30",
   "no": 43,
-  "qe": "Refer to the exhibit. [FIGURE: https://selfexamtraining.com/uploadimages/MuleSoft-Platform-Architect-I-Q-46.png] Three business processes need to be implemented, and the implementations need to communicate with several different SaaS applications. These processes are owned by separate (siloed) LOBs and are mainly independent of each other, but do share a few business entities. Each LOB has one development team and their own budget In this organizational context, what is the most effective approach to choose the API data models for the APIs that will implement these business processes with minimal redundancy of the data models?",
+  "qe": "Refer to the exhibit. Three business processes need to be implemented, and the implementations need to communicate with several different SaaS applications. These processes are owned by separate (siloed) LOBs and are mainly independent of each other, but do share a few business entities. Each LOB has one development team and their own budget In this organizational context, what is the most effective approach to choose the API data models for the APIs that will implement these business processes with minimal redundancy of the data models?",
   "oe": [
    "Build several Bounded Context Data Models that align with coherent parts of the business processes and the definitions of associated business entities",
    "Build distinct data models for each API to follow established micro-services and Agile API-centric practices",

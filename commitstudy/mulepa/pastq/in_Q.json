@@ -167,7 +167,7 @@
  {
   "label": "v2026-05-09",
   "no": 37,
-  "qe": "Refer to the exhibit.A developer is building a client application to invoke an API deployed to the STAGING environment that is governed by a client ID enforcement policy.What is required to successfully invoke the API? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/ff80a4e40f32d62fa924d240d6c39594.jpg]",
+  "qe": "Refer to the exhibit.A developer is building a client application to invoke an API deployed to the STAGING environment that is governed by a client ID enforcement policy.What is required to successfully invoke the API?",
   "oe": [
    "The client ID and secret for the Anypoint Platform account owning the API in the STAGING environment",
    "The client ID and secret for the Anypoint Platform account's STAGING environment",
@@ -207,7 +207,7 @@
  {
   "label": "v2026-05-09",
   "no": 39,
-  "qe": "Refer to the exhibit.An organization uses one specific CloudHub (AWS) region for all CloudHub deployments.How are CloudHub workers assigned to availability zones (AZs) when the organization's Mule applications are deployed to CloudHub in that region? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/2dac2e724d00d56dc416c32e0dac3e17.jpg]",
+  "qe": "Refer to the exhibit.An organization uses one specific CloudHub (AWS) region for all CloudHub deployments.How are CloudHub workers assigned to availability zones (AZs) when the organization's Mule applications are deployed to CloudHub in that region?",
   "oe": [
    "Workers belonging to a given environment are assigned to the same AZ within that region",
    "AZs are selected as part of the Mule application's deployment configuration",
@@ -507,7 +507,7 @@
  {
   "label": "v2026-05-09",
   "no": 54,
-  "qe": "An organization uses various cloud-based SaaS systems and multiple on-premises systems. The on-premises systems are an important part of the organization's application network and can only be accessed from within the organization's intranet.What is the best way to configure and use Anypoint Platform to support integrations with both the cloud-based SaaS systems and on-premises systems? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/dedb4365569d7960fcc7f96323ff72e9.jpg]",
+  "qe": "An organization uses various cloud-based SaaS systems and multiple on-premises systems. The on-premises systems are an important part of the organization's application network and can only be accessed from within the organization's intranet.What is the best way to configure and use Anypoint Platform to support integrations with both the cloud-based SaaS systems and on-premises systems?",
   "oe": [
    "Use CloudHub-deployed Mule runtimes in an Anypoint VPC managed by Anypoint Platform Private Cloud Edition control plane",
    "Use CloudHub-deployed Mule runtimes in the shared worker cloud managed by the MuleSoft-hosted Anypoint Platform control plane",

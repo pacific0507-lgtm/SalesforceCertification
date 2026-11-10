@@ -91,7 +91,7 @@
   "a": [
    2
   ],
-  "q": "Northern Trail Outfitters は、レコードが二重、三重に重複しない Marketing Cloud のデータモデルにしたいと考えています。同じアカウントで MobilePush とメールのチャネルを使う場合、データモデルの一意の識別子はどう設定すべきですか?",
+  "q": "Northern Trail Outfitters は、レコードが二重、三重に重複しない Marketing Cloud のデータモデルにしたいと考えています。\n\n同じアカウントで MobilePush とメールのチャネルを使う場合、データモデルの一意の識別子はどう設定すべきですか?",
   "o": [
    "チャネルごとに、レコード作成時に Marketing Cloud が自動で付けるキーを使う",
    "外部のシステムで、重複した連絡先キーを見つけて削除する",
@@ -110,7 +110,7 @@
   "a": [
    0
   ],
-  "q": "Northern Trail Outfitters は、Synchronized Data Sources で Salesforce の取引先責任者のデータを同期したいと考えています。ただし、マーケティングに使えると判断したレコードだけを同期したいとのことです。取引先責任者の同期の設定で使える絞り込みの方法はどれですか?",
+  "q": "Northern Trail Outfitters は、Synchronized Data Sources で Salesforce の取引先責任者のデータを同期したいと考えています。\nただし、マーケティングに使えると判断したレコードだけを同期したいとのことです。\n\n取引先責任者の同期の設定で使える絞り込みの方法はどれですか?",
   "o": [
    "カスタムのブール型項目が true のレコードをすべて選ぶ",
    "メールアドレスのあるレコードをすべて選ぶ",
@@ -129,7 +129,7 @@
    1,
    3
   ],
-  "q": "Northern Trail Outfitters は、Synchronized Data Sources で Salesforce の取引先責任者のデータを同期したいと考えています。ただし、取り込むデータを減らすため、送信できるレコードだけを同期したいとのことです。取引先責任者の同期の設定で使える2つの絞り込みの方法はどれですか?(2つ選択)",
+  "q": "Northern Trail Outfitters は、Synchronized Data Sources で Salesforce の取引先責任者のデータを同期したいと考えています。\nただし、取り込むデータを減らすため、送信できるレコードだけを同期したいとのことです。\n\n取引先責任者の同期の設定で使える2つの絞り込みの方法はどれですか?(2つ選択)",
   "o": [
    "過去6か月にメールを開封したレコードをすべて選ぶ",
    "メールアドレスのあるレコードをすべて選ぶ",
@@ -148,7 +148,7 @@
   "a": [
    2
   ],
-  "q": "Marketing Cloud 管理者は、Marketing Cloud Connect のマルチ組織(Multi-Org)の有効化を依頼する担当になりました。この連携で、プロファイルセンター、プリファレンスセンターについて考慮すべきことはどれですか?",
+  "q": "Marketing Cloud 管理者は、Marketing Cloud Connect のマルチ組織(Multi-Org)の有効化を依頼する担当になりました。\n\nこの連携で、プロファイルセンター、プリファレンスセンターについて考慮すべきことはどれですか?",
   "o": [
    "各ビジネスユニットのプロファイルセンターのブランディングは、既定のビジネスユニットの設定を引き継ぐ",
    "マルチ組織でつないだビジネスユニットごとに、プロファイルセンターが自動で作られる",
@@ -167,7 +167,7 @@
   "a": [
    0
   ],
-  "q": "Northern Trail Outfitters は、顧客の購入履歴を持つ新しいデータエクステンションを Marketing Cloud に追加したいと考えています。Data Designer で新しいデータエクステンションを既存の連絡先レコードにつなぐのに使うべき値はどれですか?",
+  "q": "Northern Trail Outfitters は、顧客の購入履歴を持つ新しいデータエクステンションを Marketing Cloud に追加したいと考えています。\n\nData Designer で新しいデータエクステンションを既存の連絡先レコードにつなぐのに使うべき値はどれですか?",
   "o": [
    "連絡先を一意に識別する値(連絡先キー)",
    "主キー",
@@ -208,7 +208,7 @@
    3,
    4
   ],
-  "q": "Northern Trail Outfitters(NTO)は、最も価値の高いアウトドアスポーツの顧客に、ドリップキャンペーンを行いたいと考えています。大幅な割引を出すので、優良顧客であるだけでなく、反応する見込みの高い顧客に絞りたいとのことです。オーディエンスを作る3つの条件はどれですか?(3つ選択)",
+  "q": "Northern Trail Outfitters(NTO)は、最も価値の高いアウトドアスポーツの顧客に、ドリップキャンペーンを行いたいと考えています。\n大幅な割引を出すので、優良顧客であるだけでなく、反応する見込みの高い顧客に絞りたいとのことです。\n\nオーディエンスを作る3つの条件はどれですか?(3つ選択)",
   "o": [
    "店舗までの距離",
    "世帯の年齢構成",
@@ -228,7 +228,7 @@
   "a": [
    0
   ],
-  "q": "Northern Trail Outfitters は、ビジネスアナリストに連絡先のリストをインポートしてもらいたいと考えています。アナリストには Marketing Cloud Channel Manager と Marketing Cloud Viewer のロールがあります。ログインはできますが、連絡先のリストをインポートできません。適切な権限を与えるには、ユーザーをどう変更すべきですか?",
+  "q": "Northern Trail Outfitters は、ビジネスアナリストに連絡先のリストをインポートしてもらいたいと考えています。\nアナリストには Marketing Cloud Channel Manager と Marketing Cloud Viewer のロールがあります。\nログインはできますが、連絡先のリストをインポートできません。\n\n適切な権限を与えるには、ユーザーをどう変更すべきですか?",
   "o": [
    "Marketing Cloud Viewer を外す",
    "Marketing Cloud Security Administrator を加える",
@@ -267,7 +267,7 @@
    0,
    2
   ],
-  "q": "Marketing Cloud 管理者は、初めて Marketing Cloud のデータモデルを設定しています。Journey Builder では、注文があったかどうかで送るメッセージを変えます。既存のデータは次の2つです。・Customers: メールアドレス、名、姓などの購読者の情報 ・Orders: 注文の情報と、顧客の一意の識別子。ジャーニーでこのデータを使えるようにするため、Data Designer をどう設定すべきですか?(2つ選択)",
+  "q": "Marketing Cloud 管理者は、初めて Marketing Cloud のデータモデルを設定しています。\nJourney Builder では、注文があったかどうかで送るメッセージを変えます。\n既存のデータは次の2つです。\n・Customers: メールアドレス、名、姓などの購読者の情報\n・Orders: 注文の情報と、顧客の一意の識別子。\n\nジャーニーでこのデータを使えるようにするため、Data Designer をどう設定すべきですか?(2つ選択)",
   "o": [
    "Customers のデータエクステンションを、Customer ID でデータモデルにつなぐ",
    "Orders を Customers に多対多の関係でつなぐ",
@@ -286,7 +286,7 @@
   "a": [
    0
   ],
-  "q": "Northern Trail Outfitters は、販促メールから、購読者のメールアドレスを URL のパラメーターでランディングページに渡したいと考えています。メールアドレスを安全に渡せる Marketing Cloud の機能はどれですか?",
+  "q": "Northern Trail Outfitters は、販促メールから、購読者のメールアドレスを URL のパラメーターでランディングページに渡したいと考えています。\n\nメールアドレスを安全に渡せる Marketing Cloud の機能はどれですか?",
   "o": [
    "AMPscript の CloudPagesURL 関数",
    "Web Analytics Connector",
@@ -304,7 +304,7 @@
   "a": [
    1
   ],
-  "q": "Northern Trail Outfitters は All Subscribers にファイルをインポートしました。その後届いた結果ファイルには、admin@example.com をインポートできなかったと書かれていました。このレコードの理由として書かれているのはどれですか?",
+  "q": "Northern Trail Outfitters は All Subscribers にファイルをインポートしました。\nその後届いた結果ファイルには、admin@example.com をインポートできなかったと書かれていました。\n\nこのレコードの理由として書かれているのはどれですか?",
   "o": [
    "Restricted Values",
    "List Detective",
@@ -347,7 +347,7 @@
   "a": [
    1
   ],
-  "q": "Northern Trail Outfitters(NTO)は、メールのオーディエンスにすべてデータエクステンションを使っています。ある顧客から、数週間前に配信停止したのに、古いアドレスに毎日のダイジェストが届き続けると報告がありました。NTO の管理者は、該当のデータエクステンションから確かに削除しています。この状況を説明できるのはどれですか?",
+  "q": "Northern Trail Outfitters(NTO)は、メールのオーディエンスにすべてデータエクステンションを使っています。\nある顧客から、数週間前に配信停止したのに、古いアドレスに毎日のダイジェストが届き続けると報告がありました。\nNTO の管理者は、該当のデータエクステンションから確かに削除しています。\n\nこの状況を説明できるのはどれですか?",
   "o": [
    "データエクステンションのデータ保持の設定が間違っていた",
    "All Subscribers にあるメールアドレスの状態が優先される",
@@ -385,7 +385,7 @@
   "a": [
    0
   ],
-  "q": "Northern Trail Outfitters(NTO)は、ブランドのガイドラインで、すべての印刷物に独自のブランドフォントを使っています。メールでもこのフォントを使いたいと考えています。メールのフォントについての推奨されるベストプラクティスはどれですか?",
+  "q": "Northern Trail Outfitters(NTO)は、ブランドのガイドラインで、すべての印刷物に独自のブランドフォントを使っています。メールでもこのフォントを使いたいと考えています。\n\nメールのフォントについての推奨されるベストプラクティスはどれですか?",
   "o": [
    "ブランドのフォントに近い Webセーフフォントを本文に使う",
    "すべての文字をブランドのフォントにして、メール全体を1枚の画像にする",
@@ -405,7 +405,7 @@
    1,
    3
   ],
-  "q": "ある顧客は EC サイトを運営し、毎日3つのデータエクステンションにデータを取り込んでいます。・Orders: OrderId、CustomerID、OrderNumber、OrderDate、OrderTotal、GrandTotal ・Order_Details: ProductId、OrderID、Qty、UnitPrice、ExtendedPrice、Discount ・Products: ProductId、SKU、Name、Description、Cost、Price。Data Designer で行うべき2つの設定はどれですか?(2つ選択)",
+  "q": "ある顧客は EC サイトを運営し、毎日3つのデータエクステンションにデータを取り込んでいます。\n・Orders: OrderId、CustomerID、OrderNumber、OrderDate、OrderTotal、GrandTotal\n・Order_Details: ProductId、OrderID、Qty、UnitPrice、ExtendedPrice、Discount\n・Products: ProductId、SKU、Name、Description、Cost、Price。\n\nData Designer で行うべき2つの設定はどれですか?(2つ選択)",
   "o": [
    "連絡先レコードと Order_Details を1対1の関係でつなぐ",
    "Orders と Order_Details を1対多の関係でつなぐ",
@@ -445,7 +445,7 @@
    1,
    2
   ],
-  "q": "Marketing Cloud 管理者は、エンタープライズのデータモデルを作り直す担当になりました。今のデータモデルはメールのチャネルだけですが、近いうちに SMS とプッシュにも広げる予定です。新しいモデルでデータの質を高く保つために、行うべき3つの準備はどれですか?(3つ選択)",
+  "q": "Marketing Cloud 管理者は、エンタープライズのデータモデルを作り直す担当になりました。今のデータモデルはメールのチャネルだけですが、近いうちに SMS とプッシュにも広げる予定です。\n\n新しいモデルでデータの質を高く保つために、行うべき3つの準備はどれですか?(3つ選択)",
   "o": [
    "マーケティングに不要なデータを除く",
    "レコードをつなぐための適切なキーを決めて割り当てる",
@@ -484,7 +484,7 @@
   "a": [
    0
   ],
-  "q": "Northern Trail Outfitters のセキュリティチームには、Marketing Cloud で守らせたいパスワードのポリシーがあります。Marketing Cloud 管理者が Setup で設定できるポリシーはどれですか?",
+  "q": "Northern Trail Outfitters のセキュリティチームには、Marketing Cloud で守らせたいパスワードのポリシーがあります。\n\nMarketing Cloud 管理者が Setup で設定できるポリシーはどれですか?",
   "o": [
    "パスワードの最小文字数、パスワードの複雑さ、パスワードの履歴、有効期間",
    "パスワードの最小文字数、強力なパスフレーズの使用、パスワードの履歴、秘密の質問の数",
@@ -523,7 +523,7 @@
   "a": [
    3
   ],
-  "q": "Northern Trail Outfitters は、Customers、Orders、Products の3つのデータエクステンションの顧客データを使うウェルカムジャーニーを作りたいと考えています。Contact Builder でこれを実現する最もよい方法はどれですか?",
+  "q": "Northern Trail Outfitters は、Customers、Orders、Products の3つのデータエクステンションの顧客データを使うウェルカムジャーニーを作りたいと考えています。\n\nContact Builder でこれを実現する最もよい方法はどれですか?",
   "o": [
    "Customers を連絡先に、Orders を Customers に、Products を Orders につなぐ、3つの別々の属性グループを作る",
    "連絡先を Customers に、Orders を Products に、Products を Customers につなぐ、1つの属性グループを作る",
@@ -543,7 +543,7 @@
    2,
    3
   ],
-  "q": "Northern Trail Outfitters は、データウェアハウスの購読者データを Marketing Cloud に取り込みたいと考えています。データエクステンションを作るとき、サイズや拡張性の点であまり気にしなくてよい2つの項目の型はどれですか?(2つ選択)",
+  "q": "Northern Trail Outfitters は、データウェアハウスの購読者データを Marketing Cloud に取り込みたいと考えています。\n\nデータエクステンションを作るとき、サイズや拡張性の点であまり気にしなくてよい2つの項目の型はどれですか?(2つ選択)",
   "o": [
    "Text",
    "Decimal",
@@ -586,7 +586,7 @@
   "a": [
    0
   ],
-  "q": "Northern Trail Outfitters は販促メールを送る準備をしています。オーディエンスのファイルをデータエクステンションに取り込みましたが、送信を予約する Marketing Cloud 管理者の画面に表示されません。何を確認すべきですか?",
+  "q": "Northern Trail Outfitters は販促メールを送る準備をしています。\nオーディエンスのファイルをデータエクステンションに取り込みましたが、送信を予約する Marketing Cloud 管理者の画面に表示されません。\n\n何を確認すべきですか?",
   "o": [
    "データエクステンションが送信可能(Sendable)に設定されている",
    "データエクステンションに Salesforce ID がある",
@@ -642,7 +642,7 @@
   "a": [
    2
   ],
-  "q": "Northern Trail Outfitters は、この1年に送ったマーケティングコミュニケーションに顧客がどう反応しているかを知りたいと考えています。Einstein Engagement Scoring のダッシュボードにデータを表示するには、どうすべきですか?",
+  "q": "Northern Trail Outfitters は、この1年に送ったマーケティングコミュニケーションに顧客がどう反応しているかを知りたいと考えています。\n\nEinstein Engagement Scoring のダッシュボードにデータを表示するには、どうすべきですか?",
   "o": [
    "予測アルゴリズムを1つ選び、Deploy をクリックする",
    "Deploy をクリックすれば、すぐに結果が表示される",
@@ -661,7 +661,7 @@
   "a": [
    2
   ],
-  "q": "Northern Trail Outfitters は、Marketing Cloud Connect で Sales Cloud のデータをジャーニーに使っています。あるユーザーから、Sales Cloud から来るデータが最新ではないと報告がありました。Marketing Cloud 管理者は、どこから調べ始めるべきですか?",
+  "q": "Northern Trail Outfitters は、Marketing Cloud Connect で Sales Cloud のデータをジャーニーに使っています。\nあるユーザーから、Sales Cloud から来るデータが最新ではないと報告がありました。\n\nMarketing Cloud 管理者は、どこから調べ始めるべきですか?",
   "o": [
    "Contact Builder > Synchronized Data Extensions",
    "Automation Studio > File Transfers",

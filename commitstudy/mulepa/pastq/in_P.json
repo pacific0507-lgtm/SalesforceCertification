@@ -2,7 +2,7 @@
  {
   "label": "v2026-05-09",
   "no": 1,
-  "qe": "Which APIs can be used with DataGraph to create a unified schema? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/055e6cad37154851841c3c14b0816713.jpg]",
+  "qe": "Which APIs can be used with DataGraph to create a unified schema?",
   "oe": [
    "APIs 1, 3, 5",
    "APIs 2, 4 ,6",
@@ -157,7 +157,7 @@
  {
   "label": "v2026-05-09",
   "no": 8,
-  "qe": "What Mule application can have API policies applied byAnypoint Platform to the endpoint exposed by that Mule application? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/a21b97297817f3719e7617fc939668a2.jpg]",
+  "qe": "What Mule application can have API policies applied byAnypoint Platform to the endpoint exposed by that Mule application?",
   "oe": [
    "A Mule application that accepts requests over HTTP/1.x",
    "A Mule application that accepts JSON requests over TCP but is NOT required to provide a response",
@@ -444,7 +444,7 @@
   "qe": "The Line of Business (LoB) of an eCommerce company is requesting a process that sends automated notifications via email every time a new order is processed through the customer's mobile application or through the internal company's web application. In the future, multiple notification channels may be added: for example, text messages and push notifications.What is the most effective API-led connectivity approach for the scenario described above?",
   "oe": [
    "Create one Experience API for the web application and one for the mobile application.Create a Process API to orchestrate and retrieve the email template from = database.Create a System API that sends the email using the Anypoint Connector for Email.Create one Experience API for the web application and one for the mobile application.Create a Process API to orchestrate and retrieve the email template from = database.Create a System API that sends the email using the Anypoint Connector for Email.",
-   "Create one Experience API for the web application and one for the mobile application, Create a Process API to orchestrate, retrieve the email template from a database, and send the email using the Anypoint Connector for Email. [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/ca51c6e82d88e5b71373bf3336ff7b95.jpg]",
+   "Create one Experience API for the web application and one for the mobile application, Create a Process API to orchestrate, retrieve the email template from a database, and send the email using the Anypoint Connector for Email.",
    "Create Experience APIs for both the web application and mobile application.Create a Process API ta orchestrate, retrieve the email template from e database, and send the email using the Anypoint Connector for Email.\\\\",
    "Create Experience APIs for both the web application and mobile application.(Create 3 Process API to orchestrate and retrieve the email template from 2 databese.Create a System API that sends the email using the Anypoint Connector for Email."
   ],
@@ -515,11 +515,11 @@
  {
   "label": "v2026-05-09",
   "no": 25,
-  "qe": "Refer to the exhibits.Which architectural constraint is compatible with the API-led connectivity architectural style? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/1541a8c3eac36ccacdbee08cb569cc28.jpg]",
+  "qe": "Refer to the exhibits.Which architectural constraint is compatible with the API-led connectivity architectural style?",
   "oe": [
-   "Always use a tiered approach by creating exactly one API for each of the three layers (Experience, Process, and System) [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/8eb1fdfb626e4514d954f5104ed1851a.jpg]",
+   "Always use a tiered approach by creating exactly one API for each of the three layers (Experience, Process, and System)",
    "Use a Process API to-orchestrate calls to multiple System APIs but not to other Process APIs:",
-   "Allow System APIs to return data that is not currently required by the identified Process or Experience APIs [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/90ae1572173ac97a298f11f16595314f.jpg]",
+   "Allow System APIs to return data that is not currently required by the identified Process or Experience APIs",
    "Handle customizations for the end-user application at the Process layer rather than at the Experience layer"
   ],
   "ans": [
@@ -559,7 +559,7 @@
  {
   "label": "v2026-05-09",
   "no": 27,
-  "qe": "Refer to the exhibit.What is the best way to decompose one end-to-end business process into a collaboration of Experience, Process, and System APIs? [FIGURE: https://www.freecram.net/uploads/Mule-Arch-201/121f489d539963f80d822beb4a493ca8.jpg]",
+  "qe": "Refer to the exhibit.What is the best way to decompose one end-to-end business process into a collaboration of Experience, Process, and System APIs?",
   "oe": [
    "Handle customizations for the end-user application at the Process API level rather than the Experience API level",
    "Allow System APIs to return data that is NOT currently required by the identified Process or Experience APIs",

@@ -54,7 +54,7 @@
  {
   "label": "v2026-01-30",
   "no": 51,
-  "qe": "展示品を参照してください。API 主導の接続性とアプリケーション ネットワークの意味で有効な API とは何でしょうか? [FIGURE: https://www.jpnshiken.com/uploads/MuleSoft-Platform-Architect-I/19cbf9cf6eb39bb4a69dac25c211b5bc.jpg]",
+  "qe": "展示品を参照してください。API 主導の接続性とアプリケーション ネットワークの意味で有効な API とは何でしょうか?",
   "oe": [
    "TCP 経由の Java RMI",
    "TCP 経由の Java RMI",
