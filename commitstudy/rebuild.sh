@@ -44,3 +44,4 @@ python3 $C/patch_no_reduced_motion.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_garden_pals.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_badge_told.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_trailhead_src.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_d360_orig.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
