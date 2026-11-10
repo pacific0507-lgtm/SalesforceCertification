@@ -1,0 +1,879 @@
+[
+ {
+  "s": "Trailhead: Anypoint Platform の基本 / Anypoint Platform について知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-basics/get-to-know-anypoint-platform",
+  "q": "チームがアプリケーション、データ、デバイスを効率的に接続するのに役立つ Anypoint Platform のメリットはどれですか?",
+  "o": [
+   "ビジネス上の意思決定に重要な情報をリアルタイムで表示するビジュアルダッシュボード",
+   "すべての役割の効率化を実現するハードウェアの自動プロビジョニング",
+   "シームレスに通信する事前インストール済みのサードパーティアプリケーション",
+   "インテグレーションの設計、構築、管理を行うための一元化されたツールスイート"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Anypoint Platform は、API とインテグレーションの設計、構築、管理、デプロイをまとめて行えるツール群です。これ1つでアプリケーション、データ、デバイスをつなげられることが利点です。ダッシュボードやハードウェアの自動準備、事前インストールのアプリは、この製品の説明には出てきません。",
+  "qe": "Which benefit of Anypoint Platform helps teams connect apps, data, and devices efficiently?",
+  "oe": [
+   "Real-time visual dashboards exposing critical information for business decisions",
+   "Automated hardware provisioning that creates efficiencies in all roles",
+   "Preinstalled third-party applications that communicate seamlessly",
+   "A unified suite of tools for designing, building, and managing integrations"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "platform",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Anypoint Platform の基本 / Anypoint Platform について知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-basics/get-to-know-anypoint-platform",
+  "q": "Anypoint エコシステムの中核をなす REST API 仕様は、デフォルトでどのスタイルを使用しますか?",
+  "o": [
+   "WSDL",
+   "OAS",
+   "JSON",
+   "XML"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Anypoint の中心にあるのは API 仕様で、ふつうは OAS(OpenAPI Specification)で書きます。WSDL は SOAP の Web サービスを記述する形式です。JSON や XML はデータの書き方で、API 仕様のスタイルではありません。",
+  "qe": "By default, the REST API specification at the heart of the Anypoint ecosystem utilizes which style?",
+  "oe": [
+   "WSDL",
+   "OAS",
+   "JSON",
+   "XML"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": "OAS(OpenAPI Specification)2.0 / 3.0REST API の仕様。JSON または YAML で書ける"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform の基本 / Anypoint Platform を操作する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-basics/navigate-anypoint-platform",
+  "q": "Anypoint Platform を使用している組織にとって、MuleSoft Catalyst の中核的なメリットはどれですか?",
+  "o": [
+   "ビジネス目標をテクノロジーデリバリーおよびチームのイネーブルメントと整合させるのに役立つ。",
+   "ドラッグアンドドロップのインターフェースを使用して API 開発を自動化する。",
+   "API エコシステム外の Web アプリケーションのホスティングを提供する。",
+   "Center for Enablement (C4E) の必要性をなくす。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "MuleSoft Catalyst は、Anypoint Platform を計画的に使いこなすための方法論です。ビジネス成果、テクノロジーの提供、組織のイネーブルメントの3つの柱で、ビジネスの目標と技術の取り組みとチームづくりをそろえます。C4E をなくすものではなく、C4E は組織のイネーブルメントの中心になる考え方です。",
+  "qe": "Which of these is a core benefit of MuleSoft Catalyst for organizations using Anypoint Platform?",
+  "oe": [
+   "Helps align business goals with technical delivery and team enablement.",
+   "Automates API development using drag-and-drop interfaces.",
+   "Provides hosting for web applications outside the API ecosystem.",
+   "Replaces the need for a Center for Enablement (C4E)."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "c4e",
+  "x": "MuleSoft Catalyst は、MuleSoft の導入の方法論です。3つの柱は、ビジネス成果の特定、組織のイネーブルメント(実現力づくり)、テクノロジーの提供です。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform の基本 / Anypoint Platform を操作する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-basics/navigate-anypoint-platform",
+  "q": "Anypoint Management Center を使用して実行できるタスクはどれですか?",
+  "o": [
+   "API 仕様を Exchange にパブリッシュする。",
+   "OAS を使用して RESTful API を設計する。",
+   "Mule アプリケーションの MUnit テストを作成する。",
+   "アプリケーションのパフォーマンスを監視する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Anypoint Management Center は、API とアプリケーションを動かし始めたあとの管理、監視、保護を受け持つツール群です。アプリケーションのパフォーマンスの監視はここで行います。仕様の公開、OAS での設計、MUnit のテスト作成は、設計や開発の段階の作業です。",
+  "qe": "Which of these tasks can be performed using Anypoint Management Center?",
+  "oe": [
+   "Publish API specifications to Exchange.",
+   "Design RESTful APIs using OAS.",
+   "Write MUnit tests for Mule applications.",
+   "Monitor application performance."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "platform",
+  "x": "Anypoint Monitoring は、アプリケーションネットワーク内の連携、Mule フロー、コンポーネントの状態を見える化します。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform の基本 / Anypoint Exchange を探索する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-basics/explore-anypoint-exchange",
+  "q": "Anypoint Exchange がチームの作業効率を高める方法の 1 つは何ですか?",
+  "o": [
+   "Mule アプリケーションを作成するための専用環境を提供する。",
+   "新しく作成されたすべての API を CloudHub に自動的にデプロイする。",
+   "厳格なバージョン管理を強制し、有効な API バージョンを 1 つに限定する。",
+   "チームが API、テンプレート、コネクタを検索、共有、再利用できるようにする。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Anypoint Exchange は、API、コネクタ、テンプレートを集めた共有の図書館のような場所です。チームは一から作らずに、既存のアセットを見つけて再利用できます。Mule アプリを書く環境は Anypoint Code Builder です。Exchange が CloudHub へ自動でデプロイしたり、使えるバージョンを1つに限ったりすることはありません。",
+  "qe": "What’s one way Anypoint Exchange helps teams work more efficiently?",
+  "oe": [
+   "It provides a dedicated environment for writing Mule applications.",
+   "It automatically deploys all newly created APIs to CloudHub.",
+   "It enforces strict version control, allowing only a single active API version.",
+   "It enables teams to discover, share, and reuse APIs, templates, and connectors"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "exchange",
+  "x": "Anypoint Exchange は、API 仕様やフラグメント、コネクタなどを登録して探し、再利用するためのカタログです。アセットのバージョンごとにライフサイクル状態を持ちます。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform の基本 / Anypoint Exchange を探索する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-basics/explore-anypoint-exchange",
+  "q": "REST API が Anypoint Exchange にパブリッシュされると、何が起こりますか?",
+  "o": [
+   "API ポータルが自動的に作成され、ドキュメント、API コンソール、モッキングサービスが提供される。",
+   "API は内部使用のためにロックされ、外部と共有することはできない。",
+   "API が、削除された以前のすべてのバージョンの API に取って代わる。",
+   "API は即時使用できるよう、自動的に CloudHub にデプロイされる。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "REST API を Exchange にパブリッシュすると、そのアセットの API ポータルが自動で作られます。ポータルにはドキュメント、対話型の API コンソール、モックサービスが入っています。ポータルは社内向けにも社外向けにもでき、パブリッシュしただけで CloudHub にデプロイされることもありません。",
+  "qe": "What happens when a REST API is published to Anypoint Exchange?",
+  "oe": [
+   "An API portal is automatically created, providing documentation, an API console, and a mocking service.",
+   "The API is locked for internal use and cannot be shared externally.",
+   "The API replaces all previous versions of the API that were deleted.",
+   "The API is automatically deployed to CloudHub for immediate use."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "c4e",
+  "x": "REST API をパブリッシュすると、ドキュメント、対話型のコンソール、モックサービスを備えた API ポータルが自動で作られます。ポータルは社内向けの非公開にも、外部向けの公開にもできます。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform の基本 / Anypoint コードビルダーを使って作業する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-basics/work-with-anypoint-code-builder",
+  "q": "API 開発で Anypoint コードビルダーが果たす役割を最もよく表しているのはどれですか?",
+  "o": [
+   "API を一元的に共有し、本番環境に直接デプロイするためのツール。",
+   "API の設計、実装、インテグレーション開発のための統合開発環境。",
+   "オペレーションチームがデプロイ済みアプリケーションを管理し、監視するためのツール。",
+   "開発者がインテグレーションロジックを記述できるツールであるが、API の設計はサポートしていない。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Anypoint Code Builder は、Visual Studio Code をもとにした MuleSoft の統合開発環境(IDE)です。API の設計、実装、インテグレーションの開発を1つの作業場所で行えます。API の共有は Exchange、デプロイ後の管理と監視は Runtime Manager などの役割です。",
+  "qe": "Which of these best describes the role of Anypoint Code Builder in API development?",
+  "oe": [
+   "It’s a tool that serves as a central place to share and deploy APIs directly to production.",
+   "It’s an integrated development environment for API designs, implementations, and integration development.",
+   "It allows the operations team to manage and monitor deployed applications.",
+   "It's a tool that helps developers write integration logic but doesn’t support designing APIs."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "impl",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Anypoint Platform の基本 / Anypoint コードビルダーを使って作業する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-basics/work-with-anypoint-code-builder",
+  "q": "Anypoint コードビルダーでデザインファーストのアプローチを取る場合の出発点を最もよく表しているのはどのステップですか?",
+  "o": [
+   "バックエンドの実装コードの記述",
+   "エンドポイントの動作のシミュレーション",
+   "API の構造と動作の定義",
+   "ステークホルダーからのユーザーフィードバックの収集"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "デザインファーストとは、API がどう動くかを作る前に、API が何をするかを先に決める進め方です。出発点は、API の構造と動作を定義することです。バックエンドの実装はそのあと、エンドポイントのシミュレーション(モック)は仕様ができてから行います。",
+  "qe": "Which step best reflects the starting point of a design-first approach in Anypoint Code Builder?",
+  "oe": [
+   "Writing backend implementation code",
+   "Simulating endpoint behavior",
+   "Defining the API’s structure and behavior",
+   "Gathering user feedback from stakeholders"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": "API 仕様は、API の入口と出口を決める契約書です。Design Center の API Designer で RAML や OAS で書き、モックサービスで実装前に動きを試します。"
+ },
+ {
+  "s": "Trailhead: MuleSoft のアプリケーションネットワークと API 主導の接続 / アプリケーションネットワークについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/discover-application-networks",
+  "q": "アプリケーションネットワークの主な利点はどれですか?",
+  "o": [
+   "API がまったく不要になる",
+   "新しいプロジェクトのたびに、チームが専用の連携を作れるようになる",
+   "システム間のつながりを再利用でき、時間と資源を節約できる",
+   "あまり統制しなくても、すぐに拡張できることが保証される"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "アプリケーションネットワークは、API を再利用できる部品としてシステムをつなぐ考え方です。一度作った API をほかのプロジェクトでも使えるので、時間と費用を節約できます。API が不要になるわけではなく、プロジェクトごとに専用の連携を作るのはむしろ避けたいやり方です。",
+  "qe": "Which of the following is a key benefit of application networks?",
+  "oe": [
+   "They remove the need for APIs entirely",
+   "They help teams create custom integrations for every new project",
+   "They allow for reusable connections between systems, saving time and resources",
+   "They guarantee instant scalability without a lot of governance."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "appnet",
+  "x": "再利用性一度設計した API を、複数のプロジェクトやチームで使える"
+ },
+ {
+  "s": "Trailhead: MuleSoft のアプリケーションネットワークと API 主導の接続 / アプリケーションネットワークについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/discover-application-networks",
+  "q": "アプリケーションネットワークは、現代の IT のどの課題の解決に役立ちますか?",
+  "o": [
+   "部署をまたいだ情報の共有を難しくするデータのサイロ",
+   "システムごとに API を独自のコードに置き換える必要があること",
+   "古いデータによる過剰なストレージ",
+   "レガシーシステムがモバイル端末に対応していないこと"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "アプリケーションネットワークが解決する代表的な課題は、データのサイロです。システムや部署がばらばらに動いていると、部署をまたいだ情報の共有が難しくなります。API で再利用できる形につなぐことで、この壁を取り除きます。",
+  "qe": "Which modern IT challenge does an application network help solve?",
+  "oe": [
+   "Data silos that make it hard to share information across departments",
+   "The need to replace APIs with custom code for each system",
+   "Excess storage caused by outdated data",
+   "Lack of mobile device support across legacy systems"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "appnet",
+  "x": "データのサイロシステムや部署が別々に動き、協力の壁ができる"
+ },
+ {
+  "s": "Trailhead: MuleSoft のアプリケーションネットワークと API 主導の接続 / API 主導の接続について学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+  "q": "API 主導の接続の主な目的は何ですか?",
+  "o": [
+   "基幹システム(systems of record)へのアクセスを閉ざす",
+   "システム間に柔軟性のない1回限りの接続を作る",
+   "俊敏性とセルフサービスを支える、構造化された再利用できる連携を作る",
+   "既存の IT インフラをすべて置き換える"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "API 主導の接続は、API を3つの層に整理し、再利用できる連携の仕組みを作る考え方です。その結果、再利用、俊敏性、セルフサービスが実現します。システムを閉じ込めたり、1回限りの固い連携を作ったりするのは、その反対です。",
+  "qe": "What is the primary purpose of API-led connectivity?",
+  "oe": [
+   "To lock down access to systems of record",
+   "To build rigid, one-off connections between systems",
+   "To create structured, reusable integrations that support agility and self-service",
+   "To replace all existing IT infrastructure"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "appnet",
+  "x": "API 主導の接続の利点として、再利用、俊敏性(アジリティ)、セルフサービス、セキュリティとガバナンスの4つが挙げられています。"
+ },
+ {
+  "s": "Trailhead: MuleSoft のアプリケーションネットワークと API 主導の接続 / API 主導の接続について学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/explore-api-led-connectivity",
+  "q": "特定のデバイスやユーザーインターフェースに最適化した形式でデータを届けるのは、どの API の層ですか?",
+  "o": [
+   "Experience API",
+   "System API",
+   "Process API",
+   "Core API"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "特定のデバイスや画面に合った形でデータを届けるのは Experience API です。System API は基幹システムのデータを公開し、Process API は複数の API のデータを組み合わせて業務の処理を作ります。Core API という層は API 主導の接続にはありません。",
+  "qe": "Which API layer is responsible for delivering data in formats optimized for specific devices or user interfaces?",
+  "oe": [
+   "Experience API",
+   "System API",
+   "Process API",
+   "Core API"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "layers",
+  "x": "Experience API特定の画面やデバイスに合った形式でデータを届けるモバイルアプリに、注文の追跡と配送状況をリアルタイムに渡す"
+ },
+ {
+  "s": "Trailhead: MuleSoft のアプリケーションネットワークと API 主導の接続 / API と Web サービスを調べる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/examine-apis-and-web-services",
+  "q": "API で、既存のフライト予約の詳細を更新するときに使う HTTP メソッドはどれですか?",
+  "o": [
+   "GET",
+   "POST",
+   "PUT",
+   "DELETE"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "既存のリソースを更新するときは PUT を使います。GET はデータの取得、POST は新しいリソースの作成、DELETE は削除です。一部だけを更新するなら PATCH もあります。",
+  "qe": "Which of these HTTP methods would you use to update the details of an existing flight booking in an API?",
+  "oe": [
+   "GET",
+   "POST",
+   "PUT",
+   "DELETE"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "appnet",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft のアプリケーションネットワークと API 主導の接続 / API と Web サービスを調べる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/examine-apis-and-web-services",
+  "q": "安全な API の主な特徴はどれですか?",
+  "o": [
+   "すばやく使えるように、認証も暗号化も求めない",
+   "HTTPS などの暗号化プロトコルで、通信中のデータを守る",
+   "必ず SOAP の Web サービスである",
+   "負荷を減らすため、監視をしない"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "安全な API は、認証、認可、暗号化によって大事な情報を守ります。通信中のデータは HTTPS で暗号化します。認証も暗号化もしない、監視をしないのは安全とは反対で、SOAP かどうかも安全性とは関係ありません。",
+  "qe": "What is a key characteristic of a secure API?",
+  "oe": [
+   "It requires no authentication or encryption for quick access",
+   "It uses encryption protocols like HTTPS to protect data in transit",
+   "It is always a SOAP-based web service",
+   "It avoids monitoring to minimize overhead"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "nfr",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft のアプリケーションネットワークと API 主導の接続 / API コールを実行する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/perform-api-calls",
+  "q": "データを変更せずに取得するときに使う HTTP メソッドはどれですか?",
+  "o": [
+   "GET",
+   "POST",
+   "PUT",
+   "DELETE"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "データを変更せずに取得するときは GET を使います。POST は作成、PUT は更新、DELETE は削除で、どれもデータを変えます。",
+  "qe": "Which HTTP method is used to retrieve data without modifying it?",
+  "oe": [
+   "GET",
+   "POST",
+   "PUT",
+   "DELETE"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "appnet",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft のアプリケーションネットワークと API 主導の接続 / API コールを実行する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/application-networks-and-api-led-connectivity-in-mulesoft/perform-api-calls",
+  "q": "API の応答の「Content-Type」ヘッダーは何を示しますか?",
+  "o": [
+   "要求を送るのに使われた HTTP メソッドの種類",
+   "application/json など、応答の本文の形式",
+   "要求を処理した API のエンドポイント",
+   "サーバーが返した HTTP 状態コード"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Content-Type ヘッダーは、応答の本文がどの形式かを示します。たとえば application/json なら、本文は JSON です。HTTP メソッド、エンドポイント、状態コードは、それぞれ別の場所で示されます。",
+  "qe": "What does the \"Content-Type\" header in an API response indicate?",
+  "oe": [
+   "The type of HTTP method used to send the request.",
+   "The format of the response body, such as application/json.",
+   "The API endpoint that handled the request.",
+   "The HTTP status code returned by the server."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "appnet",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / アプリケーションネットワークについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/discover-application-networks-1",
+  "q": "わかりやすい名前が付いている API エンドポイントの最適な例はどれですか?",
+  "o": [
+   "/fetchFlightDataByID?flightID=123",
+   "/v1/getFlightInfo/123",
+   "/flights/{id}",
+   "/flights-ID-123/lookup"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "エンドポイントの名前は、見ただけで意味がわかるようにします。ユニットでは /flights/{id} のように、名詞のリソースと ID の形にする例が挙げられています。getFlightInfo のような動詞入りの名前や、ID を名前に埋め込む形はわかりにくくなります。",
+  "qe": "Which is the best example of a clearly named API endpoint?",
+  "oe": [
+   "/fetchFlightDataByID?flightID=123",
+   "/v1/getFlightInfo/123",
+   "/flights/{id}",
+   "/flights-ID-123/lookup"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / アプリケーションネットワークについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/discover-application-networks-1",
+  "q": "API 設計のベストプラクティスに従う主な利点は何ですか?",
+  "o": [
+   "認証とセキュリティ対策の必要性がなくなる。",
+   "API の統合、再利用、拡張を簡単に行えるようになる。",
+   "開発者がバージョン管理を行わずに API 構造を頻繁に変更できるようになる。",
+   "API が管理しにくい場合でも、一貫性よりスピードが優先される。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "API 設計のベストプラクティスに従うと、API が使いやすく、再利用しやすく、将来に向けて拡張しやすくなります。認証が不要になることはありません。バージョン管理なしで構造を頻繁に変えたり、一貫性よりスピードを優先したりするのは、ベストプラクティスに反します。",
+  "qe": "What is a key benefit of following API design best practices?",
+  "oe": [
+   "It eliminates the need for authentication and security measures.",
+   "It ensures APIs are easy to integrate, reuse, and scale.",
+   "It allows developers to change API structures frequently without versioning.",
+   "It prioritizes speed over consistency, even if the API is difficult to maintain."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / OAS を使用して API を定義する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/define-apis-with-oas",
+  "q": "次のベストプラクティスのうち、API におけるパラメーターの役割を説明するものはどれですか?",
+  "o": [
+   "API のパフォーマンスとアップタイムを決定する。",
+   "エンドポイントを再利用可能なフラグメントに整理する。",
+   "特定のデータを返すために API 要求を調整する。",
+   "API の認証プロトコルを定義する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "パラメーターは、要求を絞り込んで特定のデータを返すために使います。たとえば /flights/{id} の id はパスパラメーター、/flights?destination=LAX はクエリパラメーターです。性能や認証の方式を決めるものではありません。",
+  "qe": "Which of the following best practices describes the role of parameters in an API?",
+  "oe": [
+   "They determine the performance and uptime of an API.",
+   "They organize endpoints into reusable fragments.",
+   "They refine API requests to return specific data.",
+   "They define authentication protocols for an API."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / OAS を使用して API を定義する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/define-apis-with-oas",
+  "q": "次の手法のうち、長期的に再利用できる API を作成するものはどれですか?",
+  "o": [
+   "わかりやすく一貫性のあるエンドポイントの命名を使用する。",
+   "すべての操作にモック応答を記述する。",
+   "ビジネスロジックを API に直接組み込む。",
+   "要件が変わるたびに API を書き直す。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "長く再利用できる API にするには、エンドポイントの名前をわかりやすく、一貫した形にそろえます。形が予測できれば、開発者は迷わずに使えます。ビジネスロジックを API に直接入れたり、要件が変わるたびに作り直したりすると、再利用しにくくなります。",
+  "qe": "Which of these practices creates an API that’s reusable over time?",
+  "oe": [
+   "Use descriptive and consistent endpoint naming.",
+   "Write mock responses for all operations.",
+   "Embed business logic directly in the API.",
+   "Rewrite the API each time requirements change."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / モック対応 API について詳しく学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/explore-a-mock-ready-api",
+  "q": "OpenAPI 仕様におけるパスセクションの目的は何ですか?",
+  "o": [
+   "すべての API ユーザーに認証ログイン情報を設定する。",
+   "バックエンドデータベースの構造を定義する。",
+   "公開するエンドポイントとメソッドを定義する。",
+   "API パフォーマンスメトリクスを追跡する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "OAS の paths セクションには、API が公開するエンドポイントと、それぞれで使えるメソッドを書きます。ユニットの例では、paths の下に /flights と get が定義されています。認証の資格情報やデータベースの構造、性能の指標を書く場所ではありません。",
+  "qe": "What is the purpose of the paths section in OpenAPI Specification?",
+  "oe": [
+   "It sets authentication credentials for all API users.",
+   "It defines the structure of a backend database.",
+   "It defines the endpoints and the methods they expose.",
+   "It tracks API performance metrics."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / モック対応 API について詳しく学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/explore-a-mock-ready-api",
+  "q": "API 定義に応答例を含める必要があるのはなぜですか?",
+  "o": [
+   "バックエンドロジックがスキップされ、リリース時間が短縮する。",
+   "API で何が想定されているかをコンシューマーが理解するのに役立つ。",
+   "応答ペイロードの機密項目が暗号化される。",
+   "クエリパラメーターが不要になる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "応答例を仕様に入れておくと、API がどんな形のデータを返すかを利用者が理解できます。また、モックサービスはこの例を使って応答を返すので、実装前の確認にも役立ちます。暗号化やクエリパラメーターの代わりになるものではありません。",
+  "qe": "Why should you include example responses in your API definition?",
+  "oe": [
+   "They skip backend logic and reduce deployment time.",
+   "They help consumers understand what to expect from the API.",
+   "They encrypt sensitive fields in the response payload.",
+   "They eliminate the need for query parameters."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": "モックサービス(mocking service)は、仕様に定義したステータスコードと例(example)のペイロードを返して、API の動きをまねる機能です。実装する前に API を試せます。"
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / API をモックしてテストする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/mock-and-test-apis",
+  "q": "設計フェーズ中、メソッドがテストされたときに API コンソールで結果を返すことができるようにするものはどれですか?",
+  "o": [
+   "バックエンドサーバーとテストデータ",
+   "要求ヘッダーの有効な認証トークン",
+   "API 定義内の応答のデータ例",
+   "Anypoint Exchange にパブリッシュされたモックエンドポイント"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "設計の段階で API コンソールが結果を返せるのは、API 定義の中に応答のデータ例があるからです。モックサービスは応答を自動で作るのではなく、仕様に書かれた例を返します。バックエンドのサーバーはまだなくてもかまいません。",
+  "qe": "During the design phase, what allows the API console to return results when a method is tested?",
+  "oe": [
+   "A backend server with test data",
+   "A valid authorization token in the request header",
+   "Example data for the response in the API definition",
+   "A mock endpoint published to Anypoint Exchange"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": "モックサービス(mocking service)は、仕様に定義したステータスコードと例(example)のペイロードを返して、API の動きをまねる機能です。実装する前に API を試せます。"
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / API をモックしてテストする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/mock-and-test-apis",
+  "q": "関係者が内部開発システムにアクセスせずに、モックされた API を操作するにはどうすればよいですか?",
+  "o": [
+   "ローカルサーバーに API をリリースする。",
+   "Anypoint Exchange で API アセットを共有する。",
+   "Anypoint Code Builder から内部モック URL を共有する。",
+   "モックテストのカスタム認証ポリシーを作成する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "モックした API を Anypoint Exchange にパブリッシュすると、API コンソールつきのポータルが作られます。関係者は内部の開発システムに入らなくても、共有されたリンクから例のデータで試せます。内部のモック URL は認可が必要なため、社外の関係者との共有には向きません。",
+  "qe": "How can you help stakeholders interact with a mocked API without access to internal development systems?",
+  "oe": [
+   "Deploy the API to a local server.",
+   "Share the API asset in Anypoint Exchange.",
+   "Share the internal mock URL from Anypoint Code Builder.",
+   "Create a custom authentication policy for mock testing."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "spec",
+  "x": "内部 URL を呼ぶには、リクエストに認可ヘッダーが必要です。Anypoint Platform の外の人と共有するときは、Mocking Service Configuration で Make Public をオンにして公開 URL を作ります。"
+ },
+ {
+  "s": "Trailhead: MuleSoft を使用した API デザイン / API をパブリッシュして共有する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-design-with-mulesoft/publish-and-share-apis",
+  "q": "外部の開発者が簡単に API にアクセスして採用できるようにするアクションはどれですか?",
+  "o": [
+   "PDF 形式で未加工の OpenAPI 仕様を共有する。",
+   "API を内部専用のタグを使用して非公開表示に設定する。",
+   "例と連絡先情報を含むようカスタマイズされた API ポータルを作成する。",
+   "パブリッシュ前に、すべてのメタデータを API から削除する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "外部の開発者に API を使ってもらうには、例や連絡先を入れてカスタマイズした API ポータルを用意します。ドキュメントと試せるコンソールがあれば、すぐに使い始められます。PDF の仕様を配ったり、非公開にしたり、メタデータを消したりすると、かえって見つけにくく使いにくくなります。",
+  "qe": "Which action makes it easier for external developers to access and adopt your API?",
+  "oe": [
+   "Share the raw OpenAPI spec in a PDF format.",
+   "Set the API to private visibility with internal-only tags.",
+   "Create a customized API portal with examples and contact info.",
+   "Remove all metadata from the API before publishing."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "exchange",
+  "x": "Exchange 公開ポータル(public portal)は、インターネット上の誰でもログインなしで見られます。組織外の開発者に REST、SOAP、HTTP の API を見せるためのもので、以前の開発者ポータル(developer portals)の後継です。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform による API のデプロイメントと管理 / Mule アプリケーションのデプロイメントモデルについて学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-deployment-and-management-of-apis/learn-deployment-models-for-mule-applications",
+  "q": "インフラストラクチャとネットワーク設定を完全に制御したいチームに最も適したデプロイメントモデルは、次のうちどれですか?",
+  "o": [
+   "CloudHub",
+   "CloudHub 2.0",
+   "Runtime Fabric",
+   "Anypoint Exchange"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Runtime Fabric は顧客が管理するデプロイモデルで、自社のクラウドやオンプレミスのインフラで Mule アプリを動かします。インフラやネットワークの設定を自分で決められるのが特徴です。CloudHub と CloudHub 2.0 は MuleSoft がインフラを管理し、Anypoint Exchange はデプロイ先ではありません。",
+  "qe": "Which of these deployment models is best suited for teams that want full control over infrastructure and network configuration?",
+  "oe": [
+   "CloudHub",
+   "CloudHub 2.0",
+   "Runtime Fabric",
+   "Anypoint Exchange"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deployopts",
+  "x": "Kubernetes クラスターを運用する知見があり、自社が管理するインフラでコンテナとして動かしたい場合は、Runtime Fabric が候補です。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform による API のデプロイメントと管理 / Mule アプリケーションのデプロイメントモデルについて学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-deployment-and-management-of-apis/learn-deployment-models-for-mule-applications",
+  "q": "Anypoint Runtime Manager を使用する主な利点は何ですか?",
+  "o": [
+   "インポートされたデータに基づいて API を自動的に構築する。",
+   "セキュリティポリシーをデータソースに直接適用する。",
+   "顧客管理型インフラストラクチャの必要性をなくす。",
+   "さまざまな環境にわたって、デプロイ済みの Mule アプリケーションを監視して管理する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Anypoint Runtime Manager は、デプロイ済みの Mule アプリケーションを監視し運用するための中心となるツールです。複数の環境をまとめて見渡し、ログ、アラート、再起動、スケールなどを行えます。API を自動で作ったり、顧客管理のインフラを不要にしたりはしません。",
+  "qe": "What is a key benefit of using Anypoint Runtime Manager?",
+  "oe": [
+   "It builds APIs automatically based on imported data.",
+   "It applies security policies directly to data sources.",
+   "It replaces the need for customer-managed infrastructure.",
+   "It monitors and manages deployed Mule applications across environments."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "platform",
+  "x": "Runtime Manager は、Mule アプリケーションをデプロイし、動いているアプリケーションを管理、監視する画面です。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform による API のデプロイメントと管理 / API プロキシの役割を確認する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-deployment-and-management-of-apis/explore-the-role-of-api-proxies",
+  "q": "Anypoint Platform での API プロキシの主な機能は何ですか?",
+  "o": [
+   "バックエンド API 実装を置き換えること",
+   "API 応答を保存してキャッシュすること",
+   "クライアントとバックエンドサービスの間で要求をルーティングして管理すること",
+   "API 仕様の新しいバージョンを生成すること"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "API プロキシは、クライアントからの要求を受け取り、ポリシーで確認してからバックエンドへ転送します。つまり、クライアントとバックエンドの間で要求をルーティングし管理する役目です。実装を置き換えたり、仕様の新しいバージョンを作ったりするものではありません。",
+  "qe": "What is the primary function of an API proxy in Anypoint Platform?",
+  "oe": [
+   "To replace the backend API implementation",
+   "To store and cache API responses",
+   "To route and manage requests between clients and backend services",
+   "To generate new versions of an API specification"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "apimgr",
+  "x": "プロキシアプリケーションをデプロイ(Deploy a proxy application)自動検出を設定していない Mule アプリや、Mule 以外のアプリの前に API プロキシを置いて守る"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform による API のデプロイメントと管理 / API プロキシの役割を確認する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-deployment-and-management-of-apis/explore-the-role-of-api-proxies",
+  "q": "API Manager で管理される API プロキシを使用するメリットの 1 つは何ですか?",
+  "o": [
+   "ポリシーを更新することなく、API 仕様を書き換えられる。",
+   "バックエンドを変更することなく、API 使用状況を監視し、ポリシーを適用できる。",
+   "認証にクライアントログイン情報を使用することを避けられる。",
+   "実装 URI をコンシューマーに直接公開できる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "API Manager で管理するプロキシを使うと、バックエンドに手を入れずに、利用状況を監視したりポリシーを適用したりできます。プロキシが公開の入口になり、実装と利用者の間を切り離します。実装の URI を利用者に直接見せないことも、プロキシを使う理由の1つです。",
+  "qe": "What is one advantage of using an API proxy managed in API Manager?",
+  "oe": [
+   "You can rewrite API specifications without updating policies.",
+   "You can monitor API usage and apply policies without changing the backend.",
+   "You can avoid using client credentials for authentication.",
+   "You can expose the implementation URI directly to consumers."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "apimgr",
+  "x": "API Manager は、API インスタンスにポリシーを適用し、分析データを集め、クライアントアプリケーションとの契約を管理する Anypoint Platform のコンポーネントです。API インスタンスは、ゲートウェイ上にデプロイされた API の1つの構成を表します。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform による API のデプロイメントと管理 / API ポリシーを使用してアクセスを管理する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-deployment-and-management-of-apis/manage-access-with-api-policies",
+  "q": "トラフィックの急増によって公開 API に過剰な負荷がかからないようにするために最も適したポリシーは、次のうちどれですか?",
+  "o": [
+   "クライアント ID 適用",
+   "レート制限",
+   "スパイク制御",
+   "OAuth 2.0 アクセストークン適用"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "急なトラフィックの増加からバックエンドを守るのは Spike Control(スパイク制御)です。短い時間に集中した要求を、遅らせたり拒否したりしてならします。Rate Limiting は一定時間の上限を決めるもので、クライアント ID の強制や OAuth 2.0 は呼び出し元を確かめるためのものです。",
+  "qe": "Which policy would be most appropriate for preventing a public API from being overwhelmed during sudden traffic spikes?",
+  "oe": [
+   "Client ID Enforcement",
+   "Rate Limiting",
+   "Spike Control",
+   "OAuth 2.0 Access Token Enforcement"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "policies",
+  "x": "Spike Control(スパイク制御)急な増加をならす。枠がないリクエストは待たせて再試行し、それでも枠がなければ拒否する429"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform による API のデプロイメントと管理 / API ポリシーを使用してアクセスを管理する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-deployment-and-management-of-apis/manage-access-with-api-policies",
+  "q": "Anypoint API Manager でアクセス制御ポリシーがプロキシレベルで適用されるのはなぜですか?",
+  "o": [
+   "新しい API 仕様を自動的に生成するため",
+   "バックエンドコードを変更することなく適用を可能にするため",
+   "内部ネットワーク接続を直接管理するため",
+   "実装 URI を API コンシューマーに公開するため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "アクセス制御のポリシーをプロキシで適用するのは、バックエンドのコードを変えずにルールを適用できるからです。ルールの追加や変更も API Manager だけで済みます。仕様の自動生成や実装 URI の公開とは関係ありません。",
+  "qe": "Why are access control policies applied at the proxy level in Anypoint API Manager?",
+  "oe": [
+   "To automatically generate new API specifications",
+   "To allow enforcement without modifying backend code",
+   "To manage internal network connections directly",
+   "To expose the implementation URI to API consumers"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "policies",
+  "x": "ポリシーは、API のコードを変えずに、セキュリティ、流量の制御、SLA などのルールを API インスタンスに適用する仕組みです。API Manager で設定すると、ゲートウェイがダウンロードして適用します。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform による API のデプロイメントと管理 / 本番環境で API を監視して管理する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-deployment-and-management-of-apis/monitor-and-govern-apis-in-production",
+  "q": "バックエンド処理の遅延によるパフォーマンスの問題を検出するのに最も役立つメトリクスは、次のうちどれですか?",
+  "o": [
+   "エラー率",
+   "スループット",
+   "クライアント ID",
+   "応答時間"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "バックエンドの処理が遅いと、API が結果を返すまでの時間、つまり応答時間が長くなります。エラー率は失敗の割合、スループットは処理量を表し、遅さそのものは測りません。クライアント ID はメトリクスではありません。",
+  "qe": "Which metric would best help you detect performance issues caused by slow backend processing?",
+  "oe": [
+   "Error rate",
+   "Throughput",
+   "Client ID",
+   "Response time"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "monitoring",
+  "x": "API の組み込みダッシュボードは、API の自動検出(Autodiscovery)を有効にした管理対象の API で使えます。リクエスト量、失敗、4xx と 5xx のエラー数、ポリシー違反、平均応答時間などを見られます。"
+ },
+ {
+  "s": "Trailhead: Anypoint Platform による API のデプロイメントと管理 / 本番環境で API を監視して管理する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/anypoint-platform-deployment-and-management-of-apis/monitor-and-govern-apis-in-production",
+  "q": "複数の環境にまたがる複数の API を管理する場合に、チームが Anypoint API Governance を使用する理由は何ですか?",
+  "o": [
+   "使用状況に基づいて API を自動的に拡張するため",
+   "チーム間で標準を適用するため",
+   "本番環境の問題に関するアラートのしきい値を設定するため",
+   "公開された API 向けのクライアントアプリケーションを生成するため"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Anypoint API Governance は、ルールセットで標準を決め、チームや環境をまたいで API がそれに沿っているかを確かめます。共通の標準があると、API の拡張、再利用、保護がしやすくなります。自動スケーリングやアラートの設定、クライアントアプリの生成は API Governance の役割ではありません。",
+  "qe": "Why would a team use Anypoint API Governance when managing multiple APIs across environments?",
+  "oe": [
+   "To automatically scale APIs based on usage",
+   "To apply and enforce standards across teams",
+   "To configure alert thresholds for production issues",
+   "To generate client applications for published APIs"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "governance",
+  "x": "クライアントアプリケーションは API を呼ぶ側のアプリで、契約によって API インスタンスを使えるようになります。API Governance は、API がルールセット(社内の標準)に準拠しているかを続けて検証する Anypoint Platform のコンポーネントです。"
+ },
+ {
+  "s": "Trailhead: ビジネス変革のための API 主導の連携 / 連携データの可能性を想像する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-led-integration-for-business-reinvention/imagine-the-potential-of-connected-data",
+  "q": "組織がエンドツーエンドのカスタマーエクスペリエンスを一連の統合された API 主導のインタラクションとして見直した場合、主な成果の 1 つはどれですか?",
+  "o": [
+   "幅広いステークホルダーが関与するエコシステム",
+   "高価なメインフレームシステムが時代遅れになる",
+   "顧客ロイヤルティを向上させるためのゲーミフィケーション",
+   "データをクラウドに保存することの価値の低下"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "カスタマーエクスペリエンスを API でつながったやり取りの連なりとして考え直すと、多くの関係者が加わるエコシステムが生まれます。ユニットの例では、スマートウォッチのデータが医療機関や保険会社、ジムなどにも広がっていきます。メインフレームが古くなることやゲーミフィケーションは、ここで挙げられた成果ではありません。",
+  "qe": "When organizations rethink their end-to-end customer experiences as a chain of integrated, API driven interactions, one of the key outcomes can be:",
+  "oe": [
+   "Ecosystems that involve a wide spectrum of stakeholders",
+   "Expensive mainframe systems becoming outdated",
+   "Gamification for improved customer loyalty",
+   "The diminishing value of keeping data in the cloud"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "appnet",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ビジネス変革のための API 主導の連携 / 連携データの可能性を想像する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/api-led-integration-for-business-reinvention/imagine-the-potential-of-connected-data",
+  "q": "次のうち、API 主導の接続性の主要な属性はどれですか?",
+  "o": [
+   "ステークホルダーのエコシステム全体で向上する価値",
+   "アプリケーション、データ、デバイスのコンテキスト内の連携",
+   "1 回限りの連携を容易にする複数の基準",
+   "「ステークホルダーのエコシステム全体で向上する価値」と「アプリケーション、データ、デバイスのコンテキスト内の連携」の両方",
+   "「アプリケーション、データ、デバイスのコンテキスト内の連携」と「1 回限りの連携を容易にする複数の基準」の両方"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "このユニットでは、API 主導の接続の5つの属性として、文脈に沿った接続、くり返せること、目的に合わせた標準、拡張性、価値の交換が挙げられています。関係者のエコシステム全体で価値が高まることと、アプリケーション、データ、デバイスを文脈に沿ってつなぐことがこれに当たるので、この2つの両方を選んだ選択肢が正解です。標準がばらばらで1回限りの連携を増やすことは、「目的に合わせて合意した標準」とは反対です。",
+  "qe": "Which of these are key attributes of API-led connectivity?",
+  "oe": [
+   "Improved value across an ecosystem of stakeholders",
+   "Contextual integration of applications, data, and devices",
+   "Multiple standards that facilitate one off integrations",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "appnet",
+  "x": ""
+ }
+]
