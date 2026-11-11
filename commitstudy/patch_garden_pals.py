@@ -1,15 +1,17 @@
 """草の庭に「庭の仲間」(達成した成果でやって来る小さな生きもの)を追加する。
-  - 28種類。合格した科目(7科目それぞれ・2科目合格)・庭の段階・連続学習・学習した日数・解いた問題数・覚えた用語カード・勉強時間・バッジで仲間になる
+  - 50種類(2026-11-11 に22種類を追加)。合格した科目(7科目それぞれ・2〜3科目合格)・庭の段階・連続学習・学習した日数・解いた問題数・覚えた用語カード・勉強時間・バッジで仲間になる
     (どれも、すでにある記録 = 日ごとの記録・cs-subj-passed・cs-term-known-v1・ls-badges-v1 から数える)
-  - うち7種類(sky:1)は空を飛ぶ。地平線より上・上のボタンより下で、太陽・月・ほかの仲間と重ならない場所に出し、ふわふわ・ぱたぱた・宙返り・滑空・左右にゆっくり流れる。
+  - うち11種類(sky:1)は空を飛ぶ。地平線より上・上のボタンより下で、太陽・月・ほかの仲間と重ならない場所に出し、ふわふわ・ぱたぱた・宙返り・滑空・左右にゆっくり流れる。
     眠る時刻になると雲の上で眠る。昼は地面に小さな影。いれば1〜3匹を出す(お気に入りが優先、合わせて10匹まで)
   - キャラごとに口調・性格(方言・毒舌・理屈屋・脳天気など)があり、ひとこと(ln)と寝言(sl)は複数行(\n で改行)
   - 仲間になった中から、最大10匹をランダムに選んで庭に出す(ページを開くたびに選び直す)。庭のカード・学習の記録の庭・全画面のどれにも出る
   - 歩く・跳ねる・きょろきょろする・座る。夜は眠って「z」を出し、冬はマフラーを巻く。タップすると跳ねて、名前とひとこと(複数行の吹き出し。長いほど長く出す)を出す(庭の演出は出さない)
   - 学習の記録の草の庭と全画面に「庭の仲間」の一覧(まだの仲間はシルエットと条件・あと何問など)
-  - 一覧の☆でお気に入りにした仲間(cs-pals-fav、アカウントに同期)は、いつも庭に出る(10匹まで)。眠る時刻はキャラごと(21時30分〜23時15分、起きるのは6時〜7時)
+  - 一覧の☆でお気に入りにした仲間(cs-pals-fav、アカウントに同期)は、いつも庭に出る(10匹まで)。眠る時刻はキャラごと(21時30分〜23時15分、起きるのは6時〜7時。zz:[寝る,起きる] で個別に決めた子もいる: 早寝のねこ・早起きのかめ・夜型のふくろう/ほたる/ハムスター)
   - 新しい仲間が来たら、ホームの草の庭カード(または学習の記録の草の庭)に1回だけお知らせを出す。お知らせ済みは cs-pals-seen(アカウントに同期)
-  テスト用: window.__csPalAll=1 ですべての仲間を出せる候補にする
+  - 仲間どうしの交流: 近くの2匹が向き合って2行のかけあいをする(決まった組み合わせには専用のせりふ)・いっしょに跳ねる・追いかけっこ・空の子が地面の子のまわりを回る。
+    眠っている子には小声で話しかけ、寝言が返る。前の交流が終わってから20〜40秒あけ、同時には1つまで。タップすると交流をやめてタップに応える
+  テスト用: window.__csPalAll=1 ですべての仲間を出せる候補にする。window.__csPalTalk(id1,id2,種類) で交流をすぐ起こす
 使い方: python3 patch_garden_pals.py <index.html> <出力>   (patch_garden.py の後に当てる)
 """
 import json, sys
@@ -222,7 +224,35 @@ var CS_PALART={
  pikon:[function(o){return cpFt("#8a63c4")+'<path d="M0 -15.6 L1.6 -20.6" stroke="#8a63c4" stroke-width=".9" stroke-linecap="round"/><circle class="gp-glow" cx="1.8" cy="-21.8" r="3.6" fill="#fff2a8" opacity=".55"/><circle cx="1.8" cy="-21.8" r="1.9" fill="#ffd84d"/>'+'<ellipse cy="-8" rx="8.6" ry="8" fill="#cbb2ee" stroke="#8a63c4" stroke-width=".8"/>'+cpF(0,-8,o)},-4,8,-25],
  musubin:[function(o){return cpFt("#4f7fc4")+'<circle cx="-2" cy="-19.6" r="2.8" fill="none" stroke="#4f7fc4" stroke-width="1.4"/><circle cx="2" cy="-19.6" r="2.8" fill="none" stroke="#f2a33c" stroke-width="1.4"/>'+cpB(0,-8.6,8.6,"#9cc0ef","#4f7fc4")+cpF(0,-8.6,o)},-4.4,8.2,-24],
  kakumochi:[function(o){return cpFt("#7f9a3a")+'<path d="M0 -16.8 V-19.6" stroke="#6a8a2a" stroke-width="1" stroke-linecap="round"/><rect x="-4.4" y="-22.8" width="3.4" height="3.4" rx=".6" fill="#8fbf3a"/><rect x="1" y="-22.8" width="3.4" height="3.4" rx=".6" fill="#8fbf3a"/><rect x="-9" y="-17" width="18" height="16.4" rx="5" fill="#d6e8a4" stroke="#7f9a3a" stroke-width=".8"/>'+cpF(0,-9,o)},-4.4,8.6,-24],
- mamorun:[function(o){return cpFt("#c45a8c")+cpB(0,-8.6,8.4,"#f5b0cf","#c45a8c")+'<path d="M-8 -12.4 Q0 -21.8 8 -12.4 Q0 -14.2 -8 -12.4Z" fill="#cfd8e2" stroke="#8d9aa8" stroke-width=".7"/><rect x="-.7" y="-20.6" width="1.4" height="3" rx=".7" fill="#e8574a"/><g transform="translate(-8.4,-5.6)"><path d="M0 -4.2 L3.8 -3 Q3.8 2 0 4.2 Q-3.8 2 -3.8 -3Z" fill="#fff" stroke="#8d9aa8" stroke-width=".7"/><path d="M0 -2.2 V2.2 M-1.8 -.4 H1.8" stroke="#c45a8c" stroke-width=".9"/></g>'+cpF(.4,-8.2,o)},0,0,-22]};
+ mamorun:[function(o){return cpFt("#c45a8c")+cpB(0,-8.6,8.4,"#f5b0cf","#c45a8c")+'<path d="M-8 -12.4 Q0 -21.8 8 -12.4 Q0 -14.2 -8 -12.4Z" fill="#cfd8e2" stroke="#8d9aa8" stroke-width=".7"/><rect x="-.7" y="-20.6" width="1.4" height="3" rx=".7" fill="#e8574a"/><g transform="translate(-8.4,-5.6)"><path d="M0 -4.2 L3.8 -3 Q3.8 2 0 4.2 Q-3.8 2 -3.8 -3Z" fill="#fff" stroke="#8d9aa8" stroke-width=".7"/><path d="M0 -2.2 V2.2 M-1.8 -.4 H1.8" stroke="#c45a8c" stroke-width=".9"/></g>'+cpF(.4,-8.2,o)},0,0,-22],
+ pocchi:[function(o){return '<path d="M0 -20.5 C2.4 -16 9.2 -11.4 9.2 -6 C9.2 -1.8 5.2 0 0 0 C-5.2 0 -9.2 -1.8 -9.2 -6 C-9.2 -11.4 -2.4 -16 0 -20.5Z" fill="#c4e8fb" stroke="#6fb3dc" stroke-width=".8"/><ellipse cx="-4.4" cy="-10.4" rx="1.2" ry="2.6" transform="rotate(26 -4.4 -10.4)" fill="#fff" opacity=".85"/>'+cpF(0,-6.4,o)},0,0,-21],
+ nigiri:[function(o){return '<path d="M0 -18.6 Q2.2 -18.6 3.6 -16.4 L9.8 -5.6 Q11.6 -1 6.8 -.4 L-6.8 -.4 Q-11.6 -1 -9.8 -5.6 L-3.6 -16.4 Q-2.2 -18.6 0 -18.6Z" fill="#fffdf7" stroke="#cfc6b2" stroke-width=".8" stroke-linejoin="round"/><rect x="-5.2" y="-5.6" width="10.4" height="5.2" rx="1" fill="#33423a"/><path d="M-3.4 -4 h2 M1.4 -2.4 h2" stroke="#4f6457" stroke-width=".5"/><circle cx="-2.4" cy="-14.4" r=".35" fill="#e0d6c0"/><circle cx="3.4" cy="-12.6" r=".35" fill="#e0d6c0"/>'+cpF(0,-10,o,.86)},0,0,-19],
+ tsukushi:[function(o){return '<rect x="-6.2" y="-17" width="12.4" height="17" rx="5.8" fill="#f0d6a8" stroke="#bf9358" stroke-width=".8"/><path d="M-5.6 -4 l1.9 1.4 l1.9 -1.4 l1.9 1.4 l1.9 -1.4 l1.9 1.4 l1.9 -1.4" fill="none" stroke="#bf9358" stroke-width=".7" stroke-linejoin="round"/><ellipse cy="-19.4" rx="5.4" ry="5.6" fill="#b8844a" stroke="#946634" stroke-width=".7"/><path d="M-3.8 -21.8 h7.6 M-5 -19.4 h10 M-3.8 -17 h7.6" stroke="#d9a868" stroke-width=".6"/>'+cpF(0,-9.6,o,.74)},0,0,-25],
+ shiratama:[function(o){return '<path d="M-9.2 -3 q-4.8 -1 -3.8 -5.6" fill="none" stroke="#d6cdd8" stroke-width="2.8" stroke-linecap="round"/><path d="M-9.2 -3 q-4.8 -1 -3.8 -5.6" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M-7.8 -11.4 L-6.8 -18.6 L-2.2 -14.4Z M7.8 -11.4 L6.8 -18.6 L2.2 -14.4Z" fill="#fff" stroke="#d6cdd8" stroke-width=".8" stroke-linejoin="round"/><path d="M-6.5 -13 L-6.2 -16.4 L-4 -14.4Z M6.5 -13 L6.2 -16.4 L4 -14.4Z" fill="#ffc9d6"/><ellipse cy="-7.6" rx="10" ry="7.8" fill="#fff" stroke="#d6cdd8" stroke-width=".8"/><path d="M-7.6 -6.4 h-3.4 M-7.6 -5 l-3.2 .9 M10 -6.4 h3 M10 -5 l2.8 .9" stroke="#c9c0cc" stroke-width=".5" stroke-linecap="round"/>'+cpF(0,-7.4,o)},-3.4,9,-19],
+ kerosuke:[function(o){return cpFt("#4f9a3a",4.6)+'<circle cx="-4.4" cy="-13.2" r="3.6" fill="#8fd06a" stroke="#4f9a3a" stroke-width=".8"/><circle cx="4.4" cy="-13.2" r="3.6" fill="#8fd06a" stroke="#4f9a3a" stroke-width=".8"/><ellipse cy="-7" rx="10.4" ry="7.2" fill="#8fd06a" stroke="#4f9a3a" stroke-width=".8"/><circle cx="-4.4" cy="-13.2" r="2.8" fill="#8fd06a"/><circle cx="4.4" cy="-13.2" r="2.8" fill="#8fd06a"/><ellipse cy="-3.2" rx="6" ry="2.8" fill="#d8f0b8"/>'+cpF(0,-12.2,o)},-3,9.6,-17],
+ purin:[function(o){return '<ellipse cy="-.6" rx="11.6" ry="1.8" fill="#fff" stroke="#cdd5de" stroke-width=".7"/><path d="M-9 -1 L-7.2 -12 Q0 -13.8 7.2 -12 L9 -1 Q0 .4 -9 -1Z" fill="#ffe18c" stroke="#e2ae46" stroke-width=".8" stroke-linejoin="round"/><path d="M-7.3 -11.4 Q-7 -15.8 0 -16 Q7 -15.8 7.3 -11.4 Q5.6 -10 4.6 -11 Q3.6 -9 2.4 -10.8 Q0 -10.2 -2.4 -10.8 Q-3.8 -9.2 -4.8 -11 Q-6 -10 -7.3 -11.4Z" fill="#a8622c"/><ellipse cx="-3" cy="-14.2" rx="2" ry=".7" fill="#d58a4a" opacity=".8"/>'+cpF(0,-5.8,o,.9)},0,0,-17],
+ chikuri:[function(o){var p="";for(var i=0;i<=14;i++){var a=Math.PI+i*Math.PI/14,r=i%2?8.4:12;p+=(i?"L":"M")+cpR(Math.cos(a)*r)+" "+cpR(-7.2+Math.sin(a)*r)}
+   return cpFt("#9a7350",3.4)+'<path d="'+p+'Z" fill="#9a7350" stroke="#75553a" stroke-width=".7" stroke-linejoin="round"/><ellipse cx=".6" cy="-6.4" rx="8.2" ry="6.2" fill="#f4dfc2" stroke="#c9a27a" stroke-width=".8"/>'+cpF(0,-6.6,o,.9)},0,0,-20],
+ noro:[function(o){return '<path d="M-11.6 0 Q-12 -3.4 -8 -3.4 L8.4 -3.4 Q12.4 -3.4 12.4 -1.4 Q12.4 0 10 0Z" fill="#dfe9b8" stroke="#a5b875" stroke-width=".8"/><path d="M5.4 -16.4 L8.6 -20.2 M2.4 -17.8 L3.4 -21.8" stroke="#a5b875" stroke-width=".8" stroke-linecap="round"/><circle cx="8.6" cy="-20.4" r="1.1" fill="#a5b875"/><circle cx="3.4" cy="-22" r="1.1" fill="#a5b875"/>'+cpB(-.6,-10.6,8.6,"#f6cf98","#c58a4a")+'<path d="M-.6 -10.6 m-6 0 a6 6 0 1 1 6 6 a4 4 0 1 1 -4 -4" fill="none" stroke="#e8b878" stroke-width="1"/>'+cpF(-.6,-9.8,o)},0,0,-22],
+ hirari:[function(o){var w=function(s){return '<g class="gp-w'+(s<0?"l":"r")+'"><ellipse cx="'+(7.8*s)+'" cy="-13.8" rx="5.2" ry="5.8" transform="rotate('+(20*s)+' '+(7.8*s)+' -13.8)" fill="#ffc2da" stroke="#e58ab0" stroke-width=".7"/><ellipse cx="'+(6.6*s)+'" cy="-6.2" rx="3.6" ry="3.4" fill="#ffd9a8" stroke="#e8a964" stroke-width=".7"/><circle cx="'+(8.6*s)+'" cy="-14.8" r="1.5" fill="#fff" opacity=".85"/></g>'};
+   return w(-1)+w(1)+'<path d="M-1.6 -15.4 q-1.4 -3.8 -3.6 -4.4 M2.4 -15.4 q1.4 -3.8 3.6 -4.4" fill="none" stroke="#8a6a4a" stroke-width=".7" stroke-linecap="round"/><circle cx="-5.2" cy="-19.8" r=".9" fill="#8a6a4a"/><circle cx="6" cy="-19.8" r=".9" fill="#8a6a4a"/>'+cpB(0,-9.4,6.6,"#fff3d0","#d8b06a")+cpF(0,-9.4,o,.8)},0,0,-21],
+ hoobuku:[function(o){return cpFt("#f0a0a0",4)+'<circle cx="-6.2" cy="-14.6" r="2.8" fill="#f2b877" stroke="#cf9150" stroke-width=".7"/><circle cx="6.2" cy="-14.6" r="2.8" fill="#f2b877" stroke="#cf9150" stroke-width=".7"/><circle cx="-6.2" cy="-14.6" r="1.4" fill="#ffc9c0"/><circle cx="6.2" cy="-14.6" r="1.4" fill="#ffc9c0"/><ellipse cy="-8" rx="10" ry="8" fill="#f2b877" stroke="#cf9150" stroke-width=".8"/><ellipse cx=".4" cy="-4.8" rx="7.6" ry="4.6" fill="#fff6ea"/><circle cx="-6.6" cy="-5.6" r="3" fill="#fff6ea"/><circle cx="7.6" cy="-5.6" r="3" fill="#fff6ea"/>'+cpF(0,-8.6,o)},0,0,-18],
+ tenton:[function(o){return cpFt("#3a2e2a",3.6)+'<path d="M-2 -15.2 q-1.4 -3 -3.4 -3.4 M2 -15.2 q1.4 -3 3.4 -3.4" fill="none" stroke="#3a2e2a" stroke-width=".7" stroke-linecap="round"/><circle cx="-5.6" cy="-18.6" r=".9" fill="#3a2e2a"/><circle cx="5.6" cy="-18.6" r=".9" fill="#3a2e2a"/><ellipse cy="-8" rx="10" ry="8" fill="#ec5a52" stroke="#b8363a" stroke-width=".8"/><g fill="#3a2e2a"><circle cx="-6.4" cy="-11.4" r="1.6"/><circle cx="6.8" cy="-11.6" r="1.6"/><circle cx="-2.4" cy="-14" r="1.2"/><circle cx="3" cy="-14.2" r="1.2"/><circle cx="-8.6" cy="-6" r="1.1"/><circle cx="9" cy="-6.2" r="1.1"/></g><ellipse cx="1" cy="-6" rx="6.6" ry="5" fill="#fff1e2"/>'+cpF(0,-6.6,o,.82)},0,0,-20],
+ bunta:[function(o){var w=function(s){return '<g class="gp-w'+(s<0?"l":"r")+'"><ellipse cx="'+(6.4*s)+'" cy="-16.4" rx="3.4" ry="4.8" transform="rotate('+(30*s)+' '+(6.4*s)+' -16.4)" fill="#fff" fill-opacity=".9" stroke="#b9d3e6" stroke-width=".7"/></g>'};
+   return w(-1)+w(1)+'<path d="M-1 -.6 L0 1.4 L1 -.6Z" fill="#5a4630"/><path d="M-2 -17.2 q-1 -2.6 -2.6 -3.2 M2 -17.2 q1 -2.6 2.6 -3.2" fill="none" stroke="#5a4630" stroke-width=".7" stroke-linecap="round"/><circle cx="-4.8" cy="-20.4" r=".9" fill="#5a4630"/><circle cx="4.8" cy="-20.4" r=".9" fill="#5a4630"/><ellipse cy="-9" rx="8.8" ry="8.6" fill="#ffd84d" stroke="#d9a520" stroke-width=".8"/><path d="M-7.9 -4.8 Q0 -2.6 7.9 -4.8 L7 -2.8 Q0 -.6 -7 -2.8Z M-6.4 -15.2 Q0 -13.8 6.4 -15.2 L4.8 -16.8 Q0 -15.8 -4.8 -16.8Z" fill="#5a4630"/>'+cpF(0,-9.6,o)},0,0,-22],
+ fukumaru:[function(o){var w=function(s){return '<g class="gp-w'+(s<0?"l":"r")+'"><ellipse cx="'+(8.6*s)+'" cy="-8" rx="2.8" ry="5" transform="rotate('+(-14*s)+' '+(8.6*s)+' -8)" fill="#8f6642"/></g>'};
+   return w(-1)+w(1)+'<path d="M-7.2 -15 L-7.6 -20.4 L-3.6 -16.8Z M7.2 -15 L7.6 -20.4 L3.6 -16.8Z" fill="#a37850" stroke="#7c5634" stroke-width=".7" stroke-linejoin="round"/><ellipse cy="-9.2" rx="8.8" ry="9.2" fill="#b98b5e" stroke="#7c5634" stroke-width=".8"/><ellipse cy="-4.4" rx="5.4" ry="4" fill="#ecd9b8"/><path d="M-2.4 -5.2 q.8 .8 1.6 0 M.8 -5.2 q.8 .8 1.6 0 M-.8 -3.2 q.8 .8 1.6 0" fill="none" stroke="#c19a6c" stroke-width=".5"/><circle cx="-2" cy="-11" r="3.6" fill="#f3e3c6"/><circle cx="4.4" cy="-11" r="3.6" fill="#f3e3c6"/>'+cpF(0,-11,o)+'<path d="M.3 -10.1 L2.1 -10.1 L1.2 -8.3Z" fill="#f2a33c" stroke="#d98a24" stroke-width=".3" stroke-linejoin="round"/>'},0,0,-21],
+ kuroba:[function(o){var l="";[[-4.8,-14.4],[4.8,-14.4],[-4.8,-5],[4.8,-5]].forEach(function(c){l+='<circle cx="'+c[0]+'" cy="'+c[1]+'" r="5.2" fill="#9ad478" stroke="#4f9a3a" stroke-width=".8"/>'});
+   return l+'<path d="M-6.6 -16.2 L-3 -12.6 M6.6 -16.2 L3 -12.6 M-6.6 -3.2 L-3 -6.8 M6.6 -3.2 L3 -6.8" stroke="#6cb84a" stroke-width=".6"/>'+cpB(0,-9.7,6.4,"#c4eba6","#4f9a3a")+cpF(0,-9.6,o,.78)},0,0,-20],
+ rara:[function(o){return cpFt("#7a70c8",3.6)+'<rect x="6.6" y="-23" width="1.8" height="16" rx=".9" fill="#7a70c8"/><path d="M8.4 -23 q5 2.4 3.6 8.4 q-.4 -3.6 -3.6 -4.6Z" fill="#7a70c8"/><ellipse cx="-.6" cy="-7.4" rx="9.4" ry="7.2" transform="rotate(-14 -.6 -7.4)" fill="#d6d0fa" stroke="#7a70c8" stroke-width=".8"/>'+cpF(-.6,-7.4,o,.92)},0,0,-24],
+ matsubokkun:[function(o){return cpFt("#7d5228",3)+'<path d="M0 -17.8 l-2.6 -3.6 M0 -17.8 l0 -4.4 M0 -17.8 l2.6 -3.6" stroke="#5a9a4a" stroke-width="1" stroke-linecap="round"/><ellipse cy="-9.2" rx="8" ry="9.2" fill="#b47c46" stroke="#7d5228" stroke-width=".8"/><path d="M-6.6 -13.6 q1.65 1.6 3.3 0 q1.65 1.6 3.3 0 q1.65 1.6 3.3 0 q1.65 1.6 3.3 0 M-4.2 -16.4 q1.4 1.4 2.8 0 q1.4 1.4 2.8 0 q1.4 1.4 2.8 0 M-7.4 -3.8 q1.85 1.6 3.7 0 q1.85 1.6 3.7 0 q1.85 1.6 3.7 0 q1.85 1.6 3.7 0" fill="none" stroke="#7d5228" stroke-width=".6"/><ellipse cx=".8" cy="-8.6" rx="6.6" ry="3.8" fill="#e6c08c"/>'+cpF(0,-8.8,o,.86)},0,0,-22],
+ yukinko:[function(o){return '<ellipse cx="-3.4" cy="-15" rx="1.8" ry="4.6" transform="rotate(-16 -3.4 -15)" fill="#6cb84a" stroke="#4f8f36" stroke-width=".6"/><ellipse cx="3.4" cy="-15" rx="1.8" ry="4.6" transform="rotate(16 3.4 -15)" fill="#6cb84a" stroke="#4f8f36" stroke-width=".6"/><path d="M-10.4 0 Q-11.6 -12.4 0 -13 Q11.6 -12.4 10.4 0Z" fill="#fbfdff" stroke="#c4d2e4" stroke-width=".8"/><path d="M9.2 -16 l.5 1.3 l1.3 .5 l-1.3 .5 l-.5 1.3 l-.5 -1.3 l-1.3 -.5 l1.3 -.5Z" fill="#9fd0f0"/>'+cpF(0,-6,o)},-2.4,9.8,-20],
+ tomori:[function(o){var w=function(s){return '<g class="gp-w'+(s<0?"l":"r")+'"><ellipse cx="'+(6*s)+'" cy="-16.4" rx="3" ry="4.4" transform="rotate('+(30*s)+' '+(6*s)+' -16.4)" fill="#fff" fill-opacity=".85" stroke="#c8d6e0" stroke-width=".6"/></g>'};
+   return w(-1)+w(1)+'<circle class="gp-glow" cy="-3.4" r="6.6" fill="#f4ffa8" opacity=".6"/><ellipse cy="-3.4" rx="5" ry="3.4" fill="#e6ff6a" stroke="#b8cc3a" stroke-width=".6"/><path d="M-1.8 -17.6 q-1 -2.6 -2.6 -3 M1.8 -17.6 q1 -2.6 2.6 -3" fill="none" stroke="#8a5a4a" stroke-width=".7" stroke-linecap="round"/><circle cx="-4.6" cy="-20.6" r=".9" fill="#8a5a4a"/><circle cx="4.6" cy="-20.6" r=".9" fill="#8a5a4a"/>'+cpB(0,-11.4,7,"#ffc4ae","#d9785a")+cpF(0,-11.2,o,.86)},0,0,-22],
+ penta:[function(o){return cpFt("#f2a33c",3.4)+'<ellipse cx="-8.4" cy="-8" rx="2" ry="4.6" transform="rotate(16 -8.4 -8)" fill="#3d4f6e"/><ellipse cx="8.4" cy="-8" rx="2" ry="4.6" transform="rotate(-16 8.4 -8)" fill="#3d4f6e"/><ellipse cy="-9" rx="8.6" ry="9" fill="#46597a" stroke="#2f3e58" stroke-width=".8"/><ellipse cx=".6" cy="-7.4" rx="6.6" ry="6.8" fill="#fff"/>'+cpF(0,-9.4,o,.9)+'<path d="M.4 -8.4 L2.4 -8.4 L1.4 -6.8Z" fill="#f2a33c" stroke="#d98a24" stroke-width=".3" stroke-linejoin="round"/>'},-4.4,8.4,-19],
+ kanmurin:[function(o){return cpFt("#e07aa0")+cpB(0,-8.6,8.6,"#ffd3e3","#e07aa0")+'<path d="M-5.6 -15.4 L-6.4 -21.4 L-3 -18.4 L0 -22.6 L3 -18.4 L6.4 -21.4 L5.6 -15.4Z" fill="#f6c843" stroke="#d29a1e" stroke-width=".7" stroke-linejoin="round"/><circle cy="-17.4" r="1.1" fill="#e8574a"/><circle cx="-6.4" cy="-21.6" r=".8" fill="#7cc5f0"/><circle cx="6.4" cy="-21.6" r=".8" fill="#7cc5f0"/><circle cy="-22.8" r=".8" fill="#7cc5f0"/>'+cpF(0,-8.2,o)},-4.4,8.2,-24],
+ kamejii:[function(o){return '<ellipse cx="-8.6" cy="-.6" rx="2.2" ry="1.3" fill="#a9cf7c"/><ellipse cx="2.4" cy="-.6" rx="2.2" ry="1.3" fill="#a9cf7c"/><path d="M-12 -1 Q-12.4 -13.6 -3 -13.8 Q4.6 -13.6 5 -1Z" fill="#7fb85a" stroke="#4a7f36" stroke-width=".8" stroke-linejoin="round"/><path d="M-6 -10.6 L-2.6 -10.6 L-1 -7.6 L-2.6 -4.6 L-6 -4.6 L-7.6 -7.6Z M-7.6 -7.6 L-11.4 -7.6 M-1 -7.6 L3.6 -7.6 M-6 -10.6 L-7.6 -13 M-2.6 -10.6 L-1.2 -13.4" fill="none" stroke="#4a7f36" stroke-width=".6"/><path d="M-12.6 -1 H5.6" stroke="#c9a46a" stroke-width="1.8" stroke-linecap="round"/><circle cx="7.6" cy="-7.8" r="5.2" fill="#cfe6a6" stroke="#8fb460" stroke-width=".8"/><path d="M6.6 -3.4 q1.3 3.2 2.6 0Z" fill="#fff" stroke="#d6d6d6" stroke-width=".4"/>'+cpF(6.6,-8.2,o,.6)},0,0,-15],
+ pipo:[function(o){return cpFt("#6f8aa3",3.8)+'<path d="M0 -16 V-19.4" stroke="#6f8aa3" stroke-width="1" stroke-linecap="round"/><circle class="gp-glow" cy="-20.8" r="1.8" fill="#ff6a6a"/><rect x="-10.8" y="-11.4" width="2.4" height="4.4" rx="1" fill="#9fb3c6"/><rect x="8.4" y="-11.4" width="2.4" height="4.4" rx="1" fill="#9fb3c6"/><rect x="-8.8" y="-16" width="17.6" height="15.2" rx="4.2" fill="#d6e2ec" stroke="#6f8aa3" stroke-width=".8"/><rect x="-6.6" y="-13.6" width="13.2" height="8.6" rx="2.6" fill="#f4f9fd" stroke="#b8c8d6" stroke-width=".5"/><circle cx="-4.4" cy="-2.9" r=".8" fill="#5ac48a"/><circle cx="-2" cy="-2.9" r=".8" fill="#f2c94c"/>'+cpF(0,-9.4,o,.86)},0,0,-23]};
 var CS_PALSCARF=["#e05a5a","#4f7fc4","#f2a33c","#3f9a6e","#b05ac4"];
 function csPalArt(id,o){var a=CS_PALART[id];if(!a)return "";var s=a[0](o||{});
   if(o&&o.winter&&a[2]){var y=a[1],w=a[2],c=CS_PALSCARF[id.length%CS_PALSCARF.length];s+='<path d="M'+(-w)+' '+cpR(y-1.4)+' Q0 '+cpR(y+1.6)+' '+w+' '+cpR(y-1.4)+' L'+w+' '+cpR(y+1)+' Q0 '+cpR(y+4)+' '+(-w)+' '+cpR(y+1)+'Z" fill="'+c+'"/><path d="M'+cpR(-w*0.45)+' '+cpR(y+1.6)+' l-1.4 4.4 l2.2 .4 l.9 -4.2Z" fill="'+c+'" opacity=".85"/>'}
@@ -265,7 +295,7 @@ function csPalsSVG(W,H,fy,q,SK,opt,nb,av){var pk=window.__csPalPick;if(!pk||!pk.
     gb.push([x-12*sc+Math.min(0,bh==="walk"?dx*sc:0),y+a[3]*sc,x+12*sc+Math.max(0,bh==="walk"?dx*sc:0),y]);
     var mv=bh==="walk"?' class="gp-mv" style="--dx:'+cpR(dx)+'px;--f:'+f+';animation-duration:'+it.du+'s;animation-delay:-'+it.dl+'s"':bh==="look"?' class="gp-lk" style="animation-duration:'+(it.du/2).toFixed(1)+'s;animation-delay:-'+it.dl+'s"':f<0?' style="transform:scaleX(-1)"':'';
     var inn=bh==="walk"?"gp-b":bh==="hop"?"gp-hp":"gp-br",zz=night?'<g class="gp-zz" transform="translate(5,'+(a[3]+1)+')"><text class="gp-z">z</text><text class="gp-z gp-z2" x="4" y="-3">z</text></g>':'';
-    out.push([y,'<g class="gd-pal'+(night?" zz":"")+'" data-pal="'+it.id+'" data-ln="'+it.ln+'" transform="translate('+cpR(x)+','+cpR(y)+') scale('+cpR(sc)+')"><g'+mv+'><ellipse rx="8" ry="1.7" fill="#203018" opacity=".14"/><g class="'+inn+'" style="animation-delay:-'+(i*0.37).toFixed(2)+'s"><g class="gp-t">'+csPalArt(it.id,o).replace('class="gp-eye"','class="gp-eye" style="animation-delay:-'+(i*1.3).toFixed(1)+'s"')+'</g></g>'+zz+'<rect x="-12" y="'+(a[3]-2)+'" width="24" height="'+(-a[3]+4)+'" fill="#000" fill-opacity="0"/></g></g>'])});
+    out.push([y,'<g class="gd-pal'+(night?" zz":"")+'" data-pal="'+it.id+'" data-ln="'+it.ln+'" transform="translate('+cpR(x)+','+cpR(y)+') scale('+cpR(sc)+')"><g class="gp-iv"><g'+mv+'><ellipse rx="8" ry="1.7" fill="#203018" opacity=".14"/><g class="'+inn+'" style="animation-delay:-'+(i*0.37).toFixed(2)+'s"><g class="gp-t"><g class="gp-fc">'+csPalArt(it.id,o).replace('class="gp-eye"','class="gp-eye" style="animation-delay:-'+(i*1.3).toFixed(1)+'s"')+'</g></g></g>'+zz+'<rect x="-12" y="'+(a[3]-2)+'" width="24" height="'+(-a[3]+4)+'" fill="#000" fill-opacity="0"/></g></g></g>'])});
   out.sort(function(a,b){return a[0]-b[0]});var fo=[];
   /* 空の仲間: 地平線より上、上のボタンより下。太陽・月・ボタン・地面の仲間・ほかの空の仲間と重ならない場所を選ぶ */
   if(fly.length){var HY=av.hy||+fy(0.64),kk=opt.fs?W/(window.innerWidth||W):1,top=opt.fs?72*kk:5,hs=function(n){var v=Math.sin(n*12.9898+78.233)*43758.5453;return v-Math.floor(v)},box=[],hit=function(b,c){return b[0]<c[2]&&c[0]<b[2]&&b[1]<c[3]&&c[1]<b[3]};
@@ -281,41 +311,210 @@ function csPalsSVG(W,H,fy,q,SK,opt,nb,av){var pk=window.__csPalPick;if(!pk||!pk.
       var mo=sl?"gp-fz":"gp-f"+it.mo,md=sl?5:{float:2.8,flutter:1.6,loop:8,loopr:9,glide:4.2}[it.mo]*it.md;
       var cu=sl&&it.id!=="fuwawa"?'<g class="gp-cu"><g fill="#aeb9cf"><circle cx="-7.4" cy="1.6" r="3.9"/><circle cx="-2" cy="-.4" r="4.6"/><circle cx="3.8" cy=".2" r="4.2"/><circle cx="8.4" cy="1.8" r="3.4"/></g><g fill="#eef2fb"><circle cx="-7.4" cy="1.2" r="3.3"/><circle cx="-2" cy="-.8" r="4"/><circle cx="3.8" cy="-.2" r="3.6"/><circle cx="8.4" cy="1.4" r="2.8"/><rect x="-10" y="1" width="20" height="3.6" rx="1.8"/></g></g>':'';
       var zz=sl?'<g class="gp-zz" transform="translate(6,'+(a[3]+1)+')"><text class="gp-z">z</text><text class="gp-z gp-z2" x="4" y="-3">z</text></g>':'';
-      fo.push('<g class="gd-pal gd-fly'+(sl?" zz":"")+'" data-pal="'+it.id+'" data-ln="'+it.ln+'" transform="translate('+cpR(x)+','+cpR(y)+') scale('+cpR(fs2)+')"><g'+wr+'>'+shd+'<g class="'+mo+'" style="animation-duration:'+md.toFixed(2)+'s;animation-delay:-'+(i*0.53).toFixed(2)+'s"><g class="gp-t">'+csPalArt(it.id,o).replace('class="gp-eye"','class="gp-eye" style="animation-delay:-'+(i*1.3).toFixed(1)+'s"')+cu+'</g>'+zz+'<rect x="-14" y="'+(a[3]-2)+'" width="28" height="'+(-a[3]+6)+'" fill="#000" fill-opacity="0"/></g></g></g>')})}
+      fo.push('<g class="gd-pal gd-fly'+(sl?" zz":"")+'" data-pal="'+it.id+'" data-ln="'+it.ln+'" transform="translate('+cpR(x)+','+cpR(y)+') scale('+cpR(fs2)+')"><g class="gp-iv"><g'+wr+'>'+shd+'<g class="'+mo+'" style="animation-duration:'+md.toFixed(2)+'s;animation-delay:-'+(i*0.53).toFixed(2)+'s"><g class="gp-t"><g class="gp-fc">'+csPalArt(it.id,o).replace('class="gp-eye"','class="gp-eye" style="animation-delay:-'+(i*1.3).toFixed(1)+'s"')+cu+'</g></g>'+zz+'<rect x="-14" y="'+(a[3]-2)+'" width="28" height="'+(-a[3]+6)+'" fill="#000" fill-opacity="0"/></g></g></g></g>')})}
   return '<g class="gd-pals-l">'+out.map(function(x){return x[1]}).join("")+fo.join("")+'</g>'}
-/* タップ: 跳ねて、ハートと名前・ひとことの吹き出し(眠っているときは、むにゃむにゃ) */
-function csPalTap(pl){try{var sv=pl.ownerSVGElement,id=pl.getAttribute("data-pal"),P=CS_PALS.filter(function(x){return x.id===id})[0];if(!sv||!P)return;
-  var t=pl.querySelector(".gp-t"),sleep=pl.classList.contains("zz"),m=sv.getScreenCTM(),vb=sv.viewBox.baseVal;if(!m||!vb)return;
-  if(sleep)csAn(t,[{transform:"rotate(0deg)"},{transform:"rotate(-8deg)",offset:.25},{transform:"rotate(7deg)",offset:.6},{transform:"rotate(0deg)"}],600,0,"ease-in-out");
-  else csAn(t,[{transform:"translateY(0px) scale(1,1)"},{transform:"translateY(0px) scale(1.14,.84)",offset:.15},{transform:"translateY(-9px) scale(.92,1.1)",offset:.45},{transform:"translateY(0px) scale(1.08,.9)",offset:.75},{transform:"translateY(0px) scale(1,1)"}],650,0,"ease-out");
+/* 吹き出し(タップと、仲間どうしの交流で使う)。o.ix=交流の吹き出し、o.side=-1/1 で左右に少し寄せる */
+function csPalBub(sv,pl,nm,line,o){o=o||{};var t=pl.querySelector(".gp-t"),m=sv.getScreenCTM(),vb=sv.viewBox.baseVal;if(!t||!m||!vb)return null;
   var r=t.getBoundingClientRect(),iv=m.inverse(),pt=sv.createSVGPoint();pt.x=r.left+r.width/2;pt.y=r.top;pt=pt.matrixTransform(iv);
-  var W=vb.width,u=+sv.getAttribute("data-u")||1,s=Math.min(1.8,Math.max(1.2,Math.sqrt(u))),x=pt.x,y=pt.y,n=sv.getAttribute("data-tod")==="night";
-  sv.querySelectorAll(".gd-palbub").forEach(function(e){e.remove()});
-  var L=document.createElementNS(CS_NS,"g");L.setAttribute("class","gd-tapfx gd-palbub");sv.appendChild(L);
-  if(!sleep)for(var k=0;k<2;k++)csAn(csFxEl(L,x+(k?6:-4)*s,y,s,'<path d="M0 2.6 C-4.5 -.6 -3.6 -4.4 -1.4 -4.4 C-.5 -4.4 0 -3.6 0 -3 C0 -3.6 .5 -4.4 1.4 -4.4 C3.6 -4.4 4.5 -.6 0 2.6Z" fill="#ff6f91"/>'),[{transform:"translate(0px,0px) scale(.3)",opacity:0},{transform:"translate(0px,-6px) scale(1)",opacity:1,offset:.25},{transform:"translate("+(k?4:-3)+"px,-22px) scale(.8)",opacity:0}],1300,k*180,"ease-out");
-  var cnt=+pl.getAttribute("data-tc")||0;pl.setAttribute("data-tc",cnt+1);
-  var LS=sleep?(P.sl||["むにゃむにゃ…","すやすや…"]):P.ln,line=LS[((+pl.getAttribute("data-ln")||0)+cnt)%LS.length],ls=[P.nm].concat(line.split("\n")),nl=ls.length,LH=12;
+  var W=vb.width,u=+sv.getAttribute("data-u")||1,s=Math.min(1.8,Math.max(1.2,Math.sqrt(u)))*(o.ix?0.9:1),x=pt.x,y=pt.y,n=sv.getAttribute("data-tod")==="night";
+  var L=document.createElementNS(CS_NS,"g");L.setAttribute("class",o.ix?"gd-palbub gd-palix":"gd-tapfx gd-palbub");sv.appendChild(L);
+  var ls=[nm].concat(line.split("\n")),nl=ls.length,LH=12;
   var g=document.createElementNS(CS_NS,"g");L.appendChild(g);var bh=nl*LH+5;
   g.innerHTML='<path class="gp-bt"/><rect class="gp-bb" rx="6" ry="6"/>'+ls.map(function(t,k){return '<text class="gp-bx'+(k?'':' gp-bn')+'" text-anchor="middle" y="'+cpR(-bh/2+2.5+LH*k+9)+'">'+t.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</text>'}).join("");
   var tw=40;[].forEach.call(g.querySelectorAll("text"),function(e){try{tw=Math.max(tw,e.getComputedTextLength())}catch(x){}});
   var bw=tw+14;/* セリフは左揃え(名前の行も同じ位置から) */[].forEach.call(g.querySelectorAll("text"),function(e){e.setAttribute("text-anchor","start");e.setAttribute("x",cpR(-bw/2+7))});
   var H=vb.height,hw=bw*s/2,hh=bh*s/2,r2=sv.getBoundingClientRect(),kk=r2.width?W/r2.width:1,tm=sv.closest(".gd-fs")?64*kk:2;
-  var bx=Math.max(hw+3,Math.min(W-hw-3,x)),pb=iv?(function(){var q2=sv.createSVGPoint();q2.x=r.left+r.width/2;q2.y=r.bottom;return q2.matrixTransform(iv).y})():y+20*s;
+  var bx=Math.max(hw+3,Math.min(W-hw-3,x+(o.side||0)*hw*0.6)),pb=(function(){var q2=sv.createSVGPoint();q2.x=r.left+r.width/2;q2.y=r.bottom;return q2.matrixTransform(iv).y})();
   var up=y-6*s-hh,dn=pb+6*s+hh,blk=function(c){return c-hh<tm||(!sv.closest(".gd-fs")&&bx+hw>W-50&&c-hh<48)},below=false,sy=up;
   if(blk(up)){if(dn+hh<=H-2){sy=dn;below=true}else sy=Math.max(tm+hh,Math.min(H-hh-2,up))}
   g.setAttribute("transform","translate("+cpR(bx)+","+cpR(sy)+") scale("+cpR(s)+")");var rc=g.querySelector("rect");rc.setAttribute("x",cpR(-bw/2));rc.setAttribute("y",cpR(-bh/2));rc.setAttribute("width",cpR(bw));rc.setAttribute("height",cpR(bh));
   var dx=Math.max(-bw/2+7,Math.min(bw/2-7,(x-bx)/s)),ty=below?-1:1;g.querySelector(".gp-bt").setAttribute("d","M"+cpR(dx-3)+" "+cpR(ty*(bh/2-1))+" L"+cpR(dx)+" "+cpR(ty*(bh/2+4))+" L"+cpR(dx+3)+" "+cpR(ty*(bh/2-1))+"Z");
   if(n)g.setAttribute("class","n");
-  var dur=Math.min(7000,2200+line.length*120);
+  var dur=o.ix?Math.min(4600,1900+line.length*90):Math.min(7000,2200+line.length*120);
   csAn(g,[{opacity:0},{opacity:1,offset:.06},{opacity:1,offset:.9},{opacity:0}],dur,0,"linear");
-  setTimeout(function(){L.remove()},dur+100)}catch(e){}}
+  setTimeout(function(){L.remove()},dur+100);return {L:L,g:g,dur:dur,x:x,y:y,s:s}}
+/* タップ: 跳ねて、ハートと名前・ひとことの吹き出し(眠っているときは、むにゃむにゃ)。交流の途中なら、交流をやめてからタップに応える */
+function csPalTap(pl){try{if(csIx)csIxEnd(1);var sv=pl.ownerSVGElement,id=pl.getAttribute("data-pal"),P=CS_PALMAP[id];if(!sv||!P)return;
+  var t=pl.querySelector(".gp-t"),sleep=pl.classList.contains("zz");if(!t)return;
+  if(sleep)csAn(t,[{transform:"rotate(0deg)"},{transform:"rotate(-8deg)",offset:.25},{transform:"rotate(7deg)",offset:.6},{transform:"rotate(0deg)"}],600,0,"ease-in-out");
+  else csAn(t,[{transform:"translateY(0px) scale(1,1)"},{transform:"translateY(0px) scale(1.14,.84)",offset:.15},{transform:"translateY(-9px) scale(.92,1.1)",offset:.45},{transform:"translateY(0px) scale(1.08,.9)",offset:.75},{transform:"translateY(0px) scale(1,1)"}],650,0,"ease-out");
+  sv.querySelectorAll(".gd-palbub").forEach(function(e){e.remove()});
+  var cnt=+pl.getAttribute("data-tc")||0;pl.setAttribute("data-tc",cnt+1);
+  var LS=sleep?(P.sl||["むにゃむにゃ…","すやすや…"]):P.ln,line=LS[((+pl.getAttribute("data-ln")||0)+cnt)%LS.length];
+  var B=csPalBub(sv,pl,P.nm,line,{});if(!B)return;
+  if(!sleep){for(var k=0;k<2;k++)csAn(csFxEl(B.L,B.x+(k?6:-4)*B.s,B.y,B.s,'<path d="M0 2.6 C-4.5 -.6 -3.6 -4.4 -1.4 -4.4 C-.5 -4.4 0 -3.6 0 -3 C0 -3.6 .5 -4.4 1.4 -4.4 C3.6 -4.4 4.5 -.6 0 2.6Z" fill="#ff6f91"/>'),[{transform:"translate(0px,0px) scale(.3)",opacity:0},{transform:"translate(0px,-6px) scale(1)",opacity:1,offset:.25},{transform:"translate("+(k?4:-3)+"px,-22px) scale(.8)",opacity:0}],1300,k*180,"ease-out");B.L.appendChild(B.g)}
+  }catch(e){}}
+/* ==仲間どうしの交流: 近くの2匹が向き合って話す・いっしょに跳ねる・追いかけっこ・空の子が地面の子のまわりを回る。眠っている子は寝言だけ ==
+   ・2秒ごとに見て、前の交流が終わってから20〜40秒たったら(最初は庭が見えてから6〜12秒)、見えている庭で1回だけ起こす。同時には1つまで
+   ・テスト用: window.__csPalTalk(id1,id2,種類) ですぐ起こす(種類: talk/hop/chase/circle/whisper/murmur。省略可) */
+var CS_PALTALK={
+ mebuki:[["{n}さん、\nきょうも\nのびてますか？","{n}さん、\nおはようございます！"],["はいっ！\nめぶきです！","わあ、\nうれしいです！"]],
+ koron:[["…{n}か。","…うむ。\n{n}。"],["…うむ。","…なんだ。"]],
+ fumi:[["{n}さん、\n新しい章の\nはじまりですね","{n}さん、\n今日は何を\nお読みに？"],["ふふ、\nいらっしゃい","しおりを挟んで…\nはい、\nなんでしょう"]],
+ mittsun:[["{n}〜！\n元気しとった？","おっ{n}やん！\n今日もええ顔\nしとるで"],["なんやなんや、\nうれしいやん！","おう、\nどないしたん？"]],
+ hidamari:[["{n}、\nひなたぼっこ\nせん？","あら{n}、\nぬくかね〜"],["はいは〜い、\nどげんしたと？","よう来たね〜"]],
+ donguri:[["べ、べつに\n{n}に会いに\n来たわけじゃ…","…よ、よう、\n{n}"],["な、なんだよ…\n…こんにちは","…べつに、\nうれしくないし"]],
+ hanamaru:[["{n}、\nはなまる\nあげるでよ〜","あら{n}、\nええ子だがね"],["はいはい、\nなんだがね","まあ、\nうれしいがや"]],
+ poko:[["{n}、\nゆっくり\nしてけ〜","んだ、{n}で\nねぇか"],["んだんだ、\nこんにちは","なんだべ？"]],
+ yamabiko:[["おーい{n}ー！\n…{n}ー…","{n}！\n元気かー！\n…かー…"],["おう！\n…おう…","なんだー！\n…だー…"]],
+ fuwawa:[["あ、{n}だ〜…\nなんだっけ〜","{n}〜\nふわ〜"],["ふわ…？\nよんだ〜？","あれ〜？\nなんだっけ〜"]],
+ mameta:[["{n}先輩！\n押忍！","押忍！\n{n}、一本\nどうっすか！"],["押忍！\nなんすか！","押忍っ！"]],
+ ichimochi:[["あら{n}、\nちゃんと\nやってる？","{n}、\n夜ふかしは\nだめよ"],["なによ、\n…べつに\nいいけど","ふん、\nこんにちは"]],
+ nijimaru:[["{n}か。\n観測を\n開始する","{n}、\n今日の調子を\n分析しよう"],["ふむ。\n興味深い","結論から\n言ってくれ"]],
+ kotonoha:[["ちなみに{n}、\n知ってました？","{n}さん、\n豆知識を\nひとつ…"],["ちなみに、\nこんにちはの\n語源は…","おや、\nなんでしょう"]],
+ chikutaku:[["{n}、\n3秒遅刻です","{n}、\n定刻どおりの\nご到着です"],["はい、\n現在時刻\n確認しました","用件は\n手短にどうぞ"]],
+ kirari:[["{n}！\nあたしを\n見に来たのね？","きらーん！\n{n}、\n見て見て！"],["なになに？\nサイン？","きらーん☆\nなあに？"]],
+ watapo:[["{n}〜\n風、\n吹いてる〜？","やっほ〜\n{n}〜"],["ふわ〜、\nなに〜？","いいね〜\nいいね〜"]],
+ pukari:[["{n}、\nうれしゅうて\nふくらむわ","おお{n}、\n元気しとった？"],["なんね？\nうれしいのう","ぷかっ！\nこんにちは"]],
+ chunmaru:[["速報です！\n{n}が\n来ています！","{n}、\nインタビュー\nいいですか！"],["ちゅん！\n取材ですか！","はい、こちら\nちゅんまる！"]],
+ matataki:[["{n}、\nそこに\nいたのですね","{n}、\nきょうも\n見ていますよ"],["ふふ、\nこんにちは","ちゃんと、\n見ていますよ"]],
+ suisui:[["こちら機長。\n{n}を\n確認しました","{n}、\n搭乗を\n歓迎します"],["こちら機長、\n応答します","了解、\nどうぞ"]],
+ kururin:[["{n}、\nプロファイル\n統合しよ！","ぐるっと一周、\n{n}みっけ！"],["くるりん！\nつながった！","データ、\n受け取ったよ"]],
+ futon:[["{n}さんへ、\nお手紙です！","おとどけです！\n宛先は\n{n}さん！"],["受け取り\nました！","開封しました！"]],
+ chobitai:[["{n}様、\nお世話に\nなっております","{n}様、\n本日は\nお日柄もよく"],["恐れ入ります、\nちょびタイです","はい、\nいかがなさい\nましたか"]],
+ pikon:[["ぴこーん！\n{n}に\nご提案です","{n}、\nおてつだい\nしましょうか？"],["ぴこん！\nご用件を\nどうぞ","承知しました！"]],
+ musubin:[["{n}はん、\nおこしやす","あら{n}はん、\nつながりましたなあ"],["おおきに、\nうれしおす","へえ、\nなんどす？"]],
+ kakumochi:[["hello({n});","ping {n}"],["return\n\"こんにちは\";","pong!"]],
+ mamorun:[["{n}、\n知らない人に\nついてっちゃ\nだめですよ","{n}、\n本人確認\nさせてください"],["は、はい！\n異常なし\nです","ど、どなたですか？\n…あ、どうも"]],
+ pocchi:[["…{n}さん…\nこ、こんにちは…","…{n}さん…\nあの…いえ…"],["…ど、どうも…\nです…","…ひゃっ…\nこ、こんにちは…"]],
+ nigiri:[["あら{n}、\nちゃんと\n食べてる？","{n}、\nおにぎり\nいる？"],["あらあら、\nこんにちは","はいはい、\nなあに？"]],
+ tsukushi:[["{n}！\n背比べ\nしよ！","{n}、\nぼく、また\nのびたもん"],["なになに？\nぼくに用？","えへへ、\nやっほー！"]],
+ shiratama:[["…{n}。\nなでて\nいいよ","ふぁ…\n{n}、\nいたんだ"],["…ん。\nなに？","ふぁ〜あ…\nやあ"]],
+ kerosuke:[["よう{n}！\n元気\nしてたかい","おっ、{n}じゃ\nねぇか！"],["おうよ！\n何でぇ何でぇ","へいへい、\nこちとら\n元気よ！"]],
+ purin:[["{n}〜！\nあそぼでちゅ","ぷるぷる、\n{n}、\nこんにちは"],["ぷるん！\nこんにちは\nでちゅ","わーい、\nぷるぷる"]],
+ chikuri:[["{n}、\nちょっと\n寝ぐせ\nついてるよ","あ、{n}。\nちくっと\nいい？"],["…なに？\n手短にね","ふうん、\nこんにちは"]],
+ noro:[["{n}…\nこ…ん…に…\nち…は…","や…あ…\n{n}…"],["…は…い…\n…な…に…","…や…あ…"]],
+ hirari:[["まあ{n}、\nすてきな\n日ね","{n}、\nいっしょに\n踊らない？"],["まあ、\nすてき！","うふふ、\nこんにちは"]],
+ hoobuku:[["{n}、\nたね\nたべる？","もぐ…\nあ、{n}！"],["もぐもぐ…\nなあに？","ほっぺ\nいっぱいで\nしゃべれ…もご"]],
+ tenton:[["{n}や、\n今日は\nいい日じゃよ","ほう、{n}。\n占って\nしんぜよう"],["おや、\nこんにちは\nじゃ","ふむ、\n吉と出た"]],
+ bunta:[["{n}どん、\nきばっちょっか？","おお、{n}！\nよか日じゃ"],["ぶんぶん、\nなんな？","おう、\nよかよか！"]],
+ fukumaru:[["ほう、{n}。\n今夜も\n元気かね","{n}、\nよい夜だね"],["ほう…\nこんばんは","ほう、ほう。\nなにかね"]],
+ kuroba:[["{n}〜！\nまじ\nひさしぶり〜","え、{n}じゃん！\nアゲ〜"],["え、うれし！\nやっほ〜","まじ？\nいいじゃん！"]],
+ rara:[["♪{n}〜\nこんにちは〜","♪ら〜ら〜\n{n}〜"],["♪は〜い〜","♪やあ〜\nやあ〜"]],
+ matsubokkun:[["{n}よ\nけふも元気か\n秋の風","こんにちは\n{n}と\n松の下"],["こんにちは\n松もそよぐや\n風の中","うむと言う\nそれが返事の\nすべてなり"]],
+ yukinko:[["{n}、\nなまら\nひさしぶり！","おっ、{n}！\nげんきかい？"],["なんもなんも、\nこんにちは〜","したっけ、\nなにさ？"]],
+ tomori:[["{n}！\n照らして\nあげる！","ぴかっ、\n{n}\nみーつけた！"],["ぴかぴか！\nこんばんは！","わあ、\nなになに？"]],
+ penta:[["{n}！\n元気しよった？","おお{n}、\nええ日ぜよ"],["おう！\nなんぜよ？","まっこと、\nひさしぶりや"]],
+ kanmurin:[["ごきげんよう、\n{n}","あら{n}、\nお元気？"],["おーっほっほ！\nごきげんよう","あら、\nわたくしに\nご用？"]],
+ kamejii:[["ふぉっふぉっ、\n{n}や","{n}、\nわしの話を\n聞いてくれるか"],["ふぉっふぉっ、\nなんじゃ","おお、\nよう来たのう"]],
+ pipo:[["ピポ。\n{n}ヲ\nケンシュツ","{n}、\nコンニチハ。\nピポ"],["ピポ？\nヨウケン ヲ\nドウゾ","ピポパ！\nコンニチハ"]]};
+/* 決まった組み合わせのかけあい: [先に話す子, 返す子, [せりふ, 返事], ...] */
+var CS_PALPAIR=[
+ ["mebuki","tsukushi",["つくしん先輩、\nどうしたら\nそんなに\nのびますか？","毎日\nちょっとずつ\nだもん！"]],
+ ["koron","kamejii",["…じい。","ふぉっふぉっ、\nころんや、\nまた苔が\nのびたのう"],["…千年。","わしは百年じゃ。\nまだまだ\n若いのう"]],
+ ["ichimochi","purin",["あんた、\nぷるぷる\nしすぎよ","甘いものどうし、\nなかよく\nするでちゅ"]],
+ ["mameta","penta",["押忍！\n朝練\nいくっす！","まっこと、\nえい心がけ\nぜよ！"]],
+ ["hoobuku","donguri",["どんぐり…\nおいしそう…","た、食べるなよ！\n…帽子もな！"]],
+ ["bunta","hanamaru",["よか花じゃ！\n蜜、もらうど","はなまるも\n蜜も\nあげるでよ〜"]],
+ ["hirari","hanamaru",["なんて\nすてきな\nお花…","あら、\n照れるがね〜"]],
+ ["fukumaru","tomori",["ほう、\n今夜も\n明るいね","先生の足もと、\n照らすよっ！"],["ほう…\nふたりとも\n夜ふかしだね","夜は\nぼくらの\n時間だもん！"]],
+ ["kakumochi","pipo",["if(ロボ){\n  友だち();\n}","ピポ。\nトモダチ トウロク\nカンリョウ"]],
+ ["kakumochi","mamorun",["password\n= \"1234\";","だ、だめです！\nすぐ変えて\nください！"]],
+ ["chikutaku","noro",["のろりさん、\n予定より\n3時間遅れです","じ…か…ん…\nは…\nた…っ…ぷ…り…"]],
+ ["kotonoha","matsubokkun",["ちなみに俳句は\n世界一短い詩\nなんですよ","知っている\n言うてくれるな\n秋の風"]],
+ ["chunmaru","fukumaru",["速報です！\nふくまる先生、\n夜に出没！","ほう…\n昼は\n寝ているのでね"]],
+ ["kerosuke","pocchi",["おっ、\nいい水たまりが\nあるじゃねぇか","…み、\n水たまりじゃ\nないです…"]],
+ ["shiratama","hoobuku",["…おいしそう…\nじゃなくて、\nかわいいね","ひいっ！\nほっぺの中、\nなんにもないよ！"]],
+ ["kanmurin","chobitai",["そこのあなた、\nお茶をいれて\nくださる？","かしこまりました。\n少々お待ち\nくださいませ"]],
+ ["yukinko","hidamari",["ちょっと、\nあったかすぎて\nとけるべさ…","あらあら、\n日かげに\nおいで〜"]],
+ ["rara","yamabiko",["♪ら〜ら〜","らー！\n…らー…\n…らー…"]],
+ ["musubin","kururin",["ほな、うちらも\nつながり\nましょか","統合かんりょう！\nなかよし！"]],
+ ["mamorun","tenton",["その占い、\nあやしく\nないですか？","わしのは\n手作りじゃ。\n安心せい"]],
+ ["fuwawa","watapo",["ねえ、\nどこ行くんだっけ〜","さあ〜？\n風しだい〜"]],
+ ["kuroba","tenton",["四つ葉と\nてんとう虫とか、\nラッキーすぎ！","今日は大吉、\nまちがいなしじゃ"]],
+ ["nigiri","mittsun",["みっつん、\nちゃんと\n食べてる？","食べとる食べとる！\nおにぎり\nほしいわ〜"]],
+ ["ichimochi","nijimaru",["あんた、また分析？\n少しは\n休みなさい","睡眠の重要性は\n統計的にも…\n…はい、休みます"]],
+ ["kirari","matataki",["あたしのほうが\n光ってるわよね？","ふふ、\nどちらも\nすてきですよ"]],
+ ["futon","chunmaru",["速達です！\nちゅんまるさんへ","ちゅん！\n速報より\n速いとは…！"]]];
+var CS_PALPLAY={hop:[["{n}、\nいっしょに\nはねよ！","いいよ！\nせーの！"],["ぴょんぴょん\nしよ！","ぴょーん！"]],
+ chase:[["{n}、\nまてまて〜！","つかまらない\nよ〜！"],["おにごっこ\nしよ！\n{n}がにげて！","わーい！\nにげろ〜！"]],
+ whisper:["しーっ…\n{n}、\n寝てるみたい","{n}、\nおやすみ…","起こさないように\nしなきゃ…"]};
+var csIx=null,csIxNext=0;
+function csIxPick(a){return a[Math.floor(Math.random()*a.length)]}
+function csIxPair(a,b){for(var i=0;i<CS_PALPAIR.length;i++){var p=CS_PALPAIR[i];if(p[0]===a&&p[1]===b)return {f:0,l:p.slice(2)};if(p[0]===b&&p[1]===a)return {f:1,l:p.slice(2)}}return null}
+function csIxNm(s,n){return s.split("{n}").join(n)}
+function csIxSc(pl){try{return pl.transform.baseVal.consolidate().matrix.a||1}catch(e){return 1}}
+/* 足元の位置(庭の座標)と大きさ */
+function csIxPos(sv,pl){var t=pl.querySelector(".gp-t"),r=t.getBoundingClientRect(),iv=sv.getScreenCTM().inverse(),p=sv.createSVGPoint(),q=sv.createSVGPoint();p.x=r.left+r.width/2;p.y=r.bottom;p=p.matrixTransform(iv);q.x=r.left+r.width/2;q.y=r.top;q=q.matrixTransform(iv);var s=csIxSc(pl);return {x:p.x,y:p.y,top:q.y,s:s,w:24*s}}
+function csIxAnim(el,fr,d,dl,ez,it,fill){if(!el||!csIx)return null;try{var a=el.animate(fr,{duration:d,delay:dl||0,easing:ez||"ease-in-out",fill:fill||"forwards",iterations:it||1});csIx.an.push(a);return a}catch(e){return null}}
+function csIxT(fn,ms){var x=csIx;if(!x)return;x.tm.push(setTimeout(function(){if(csIx!==x)return;if(!x.sv.isConnected){csIxEnd();return}try{fn()}catch(e){csIxEnd()}},ms))}
+function csIxEnd(tap){var x=csIx;if(!x)return;csIx=null;x.tm.forEach(clearTimeout);x.an.forEach(function(a){try{a.cancel()}catch(e){}});
+  x.ps.forEach(function(e){e.style.animationPlayState=""});x.fc.forEach(function(e){e.style.transform=""});x.pl.forEach(function(p){p.__ixo=null});
+  if(tap||!x.sv.isConnected)[].forEach.call(x.sv.querySelectorAll(".gd-palix"),function(e){e.remove()});
+  csIxNext=Date.now()+20000+Math.random()*20000}
+function csIxHold(pl){csIx.pl.push(pl);[].forEach.call(pl.querySelectorAll(".gp-mv,.gp-lk,.gp-dr"),function(e){e.style.animationPlayState="paused";csIx.ps.push(e)})}
+/* dir の向きを向く(絵は右向き。いまの向きは画面上の変換から求める) */
+function csIxFace(pl,dir){var t=pl.querySelector(".gp-t"),f=pl.querySelector(".gp-fc");if(!t||!f)return;f.style.transform="";var m=t.getScreenCTM(),cur=m&&m.a<0?-1:1;if(cur!==dir)f.style.transform="scaleX(-1)";if(csIx.fc.indexOf(f)<0)csIx.fc.push(f)}
+/* 庭の座標で (dx,dy) だけ動く。地面の子は歩くように小さく弾む */
+function csIxMove(pl,dx,dy,dur,dl){var iv=pl.querySelector(".gp-iv"),s=csIxSc(pl),o=pl.__ixo||[0,0],n=[o[0]+dx/s,o[1]+dy/s];pl.__ixo=n;
+  csIxAnim(iv,[{transform:"translate("+cpR(o[0])+"px,"+cpR(o[1])+"px)"},{transform:"translate("+cpR(n[0])+"px,"+cpR(n[1])+"px)"}],dur,dl,"ease-in-out");
+  if(!pl.classList.contains("gd-fly"))csIxAnim(pl.querySelector(".gp-t"),[{transform:"translateY(0px)"},{transform:"translateY(-1.8px)"},{transform:"translateY(0px)"}],240,dl,"ease-in-out",Math.max(1,Math.round(dur/240)),"none")}
+function csIxBack(pl,dur,dl){var o=pl.__ixo;if(!o||(!o[0]&&!o[1]))return 0;var s=csIxSc(pl);csIxFace(pl,o[0]>0?-1:1);csIxMove(pl,-o[0]*s,-o[1]*s,dur,dl);return dur}
+function csIxSay(pl,line,side,nm){if(!pl.isConnected)return 0;var x=csIx,o=x.lb;if(o&&o.isConnected){try{o.animate([{opacity:1},{opacity:0}],{duration:220,fill:"forwards"})}catch(e){}setTimeout(function(){o.remove()},240)}
+  var P=CS_PALMAP[pl.getAttribute("data-pal")],B=csPalBub(x.sv,pl,P.nm,csIxNm(line,nm||""),{ix:1,side:side});x.lb=B&&B.L;return B?B.dur:0}
+function csIxHop(pl,dl,n){csIxAnim(pl.querySelector(".gp-t"),[{transform:"translateY(0px) scale(1,1)"},{transform:"translateY(0px) scale(1.12,.86)",offset:.15},{transform:"translateY(-8px) scale(.94,1.08)",offset:.45},{transform:"translateY(0px) scale(1.06,.92)",offset:.75},{transform:"translateY(0px) scale(1,1)"}],560,dl,"ease-out",n||1,"none")}
+/* A が B のとなりまで歩いて、向き合う。歩いた時間を返す */
+function csIxMeet(A,B,pa,pb){var dir=pb.x>=pa.x?1:-1,gap=(pa.w+pb.w)*0.55,tx=pb.x-dir*gap,dx=tx-pa.x,dy=pb.y-pa.y,d=Math.sqrt(dx*dx+dy*dy),t=0;
+  csIxFace(A,dir);if(d>pa.w*0.25){t=Math.min(2600,Math.max(600,d/pa.w*480));csIxMove(A,dx,dy,t,0)}
+  csIxT(function(){csIxFace(A,dir);csIxFace(B,-dir)},t);return {t:t,dir:dir}}
+function csIxStart(sv,kind,A,B){csIx={sv:sv,an:[],tm:[],ps:[],fc:[],pl:[],kind:kind};var x=csIx;csIxT(csIxEnd,16000);
+  var ia=A.getAttribute("data-pal"),PA=CS_PALMAP[ia],ib=B&&B.getAttribute("data-pal"),PB=ib&&CS_PALMAP[ib],TA=CS_PALTALK[ia]||[["{n}、\nこんにちは！"],["こんにちは！"]],TB=ib&&CS_PALTALK[ib]||[["{n}、\nこんにちは！"],["こんにちは！"]];
+  var fin=function(at){csIxT(csIxEnd,at)};
+  if(kind==="murmur"){var d0=csIxSay(A,csIxPick(PA.sl||["むにゃ…"]),0);fin(d0+200);return kind}
+  csIxHold(A);if(B)csIxHold(B);var pa=csIxPos(sv,A),pb=csIxPos(sv,B);
+  if(kind==="circle"){/* 空の子 A が、地面の子 B の頭の上まで来て、まわりを回る */
+    var s=pa.s,VW=sv.viewBox.baseVal.width,R=Math.max(pb.w*0.5,Math.min(pb.w*0.95,pb.x-pa.w*0.6,VW-pa.w*0.6-pb.x)),tx=pb.x-R*(pa.x<pb.x?1:-1)-pa.x,ty=(pb.y-pb.w*0.25)-pa.y,fr=[],o=[tx/s,ty/s],cw=pa.x<pb.x?1:-1;csIxFace(A,tx>=0?1:-1);csIxMove(A,tx,ty,1500,0);
+    /* 地面の子のまわりを横長の輪で1周(横から近づいて、向こう側を通って戻る) */for(var k=0;k<=12;k++){var a=k/12*Math.PI*2;fr.push({transform:"translate("+cpR(o[0]+cw*(1-Math.cos(a))*R/s)+"px,"+cpR(o[1]-Math.sin(a)*R*0.35/s)+"px)"})}
+    csIxT(function(){csIxSay(A,csIxPick(TA[0]),pa.x<pb.x?-1:1,PB.nm);csIxAnim(A.querySelector(".gp-iv"),fr,2600,0,"linear");csIxFace(B,pa.x<pb.x?-1:1)},1500);
+    csIxT(function(){csIxHop(B,0,2);csIxSay(B,csIxPick(TB[1]),pa.x<pb.x?1:-1,PA.nm)},3300);
+    csIxT(function(){A.__ixo=o;csIxBack(A,1600,0)},4300);fin(6200);return kind}
+  if(kind==="whisper"){/* B は眠っている。A がそばに行って小声で。B は寝言 */
+    var m=csIxMeet(A,B,pa,pb);csIxT(function(){var f=B.querySelector(".gp-fc");if(f)f.style.transform=""},m.t+10);
+    csIxT(function(){csIxSay(A,csIxPick(CS_PALPLAY.whisper),-m.dir,PB.nm)},m.t+300);
+    csIxT(function(){csIxSay(B,csIxPick(PB.sl||["むにゃ…"]),m.dir)},m.t+2600);
+    csIxT(function(){csIxBack(A,Math.max(700,m.t),0)},m.t+5200);fin(m.t*2+5600);return kind}
+  if(kind==="chase"){/* A がおにで、B が逃げる。少し走ってつかまえたら、もとの場所へ */
+    var m2=csIxMeet(A,B,pa,pb),vb=sv.viewBox.baseVal,run=pb.w*2.2,bx=Math.max(pb.w,Math.min(vb.width-pb.w,pb.x+m2.dir*run))-pb.x,L=CS_PALPLAY.chase[Math.floor(Math.random()*CS_PALPLAY.chase.length)];
+    csIxT(function(){csIxSay(A,L[0],-m2.dir,PB.nm)},m2.t+200);
+    csIxT(function(){csIxFace(B,bx>=0?1:-1);csIxMove(B,bx,0,1100,0);csIxSay(B,L[1],m2.dir,PA.nm);csIxFace(A,bx>=0?1:-1);csIxMove(A,bx,0,1300,250)},m2.t+1700);
+    csIxT(function(){csIxFace(B,bx>=0?-1:1);csIxHop(A,0,1);csIxHop(B,120,1)},m2.t+3300);
+    csIxT(function(){csIxBack(B,1200,0);csIxBack(A,Math.max(1200,m2.t+800),150)},m2.t+4200);fin(m2.t*2+6400);return kind}
+  var m3=csIxMeet(A,B,pa,pb),sa=-m3.dir,sb=m3.dir,pr=csIxPair(ia,ib),la,lb,X=A,Y=B,nx=PB.nm,ny=PA.nm;
+  if(kind==="hop"){var H=CS_PALPLAY.hop[Math.floor(Math.random()*CS_PALPLAY.hop.length)];la=H[0];lb=H[1];
+    csIxT(function(){csIxHop(A,0,3);csIxHop(B,90,3)},m3.t+2000)}
+  else if(pr){var pl2=csIxPick(pr.l);la=pl2[0];lb=pl2[1];if(pr.f){X=B;Y=A;sa=m3.dir;sb=-m3.dir;nx=PA.nm;ny=PB.nm}}
+  else{la=csIxPick(TA[0]);lb=csIxPick(TB[1])}
+  var da=0;csIxT(function(){da=csIxSay(X,la,sa,nx);csIxT(function(){csIxSay(Y,lb,sb,ny)},Math.max(1500,da*0.62))},m3.t+250);
+  csIxT(function(){csIxBack(A,Math.max(700,m3.t),0)},m3.t+250+6200);fin(m3.t*2+6900);return kind}
+/* 見えている庭(全画面が開いていればそれ)と、その中の候補を選ぶ */
+function csIxSvg(){if(typeof csFS!=="undefined"&&csFS)return csFS.el.querySelector("svg.garden");var vh=window.innerHeight||700,c=[].filter.call(document.querySelectorAll("svg.garden"),function(sv){var r=sv.getBoundingClientRect();return r.width>40&&r.bottom>20&&r.top<vh-20&&sv.querySelector(".gd-pal")});return c.length?csIxPick(c):null}
+function csIxGo(force){var sv=csIxSvg();if(!sv||sv.querySelector(".gd-tapfx"))return "";var all=[].filter.call(sv.querySelectorAll(".gd-pal"),function(p){return CS_PALMAP[p.getAttribute("data-pal")]});
+  var G=[],F=[],Z=[];all.forEach(function(p){if(p.classList.contains("zz")){if(!p.classList.contains("gd-fly"))Z.push(p)}else if(p.classList.contains("gd-fly"))F.push(p);else G.push(p)});
+  var by=function(id){return all.filter(function(p){return p.getAttribute("data-pal")===id})[0]};
+  if(force&&force.a){var A=by(force.a),B=force.b&&by(force.b);if(!A)return "";var k=force.k;
+    if(!k)k=!B?"murmur":B.classList.contains("zz")?"whisper":A.classList.contains("gd-fly")&&!B.classList.contains("gd-fly")?"circle":"talk";
+    if(k==="circle"&&B&&B.classList.contains("gd-fly")&&!A.classList.contains("gd-fly")){var t=A;A=B;B=t}
+    if(k!=="murmur"&&!B)return "";return csIxStart(sv,k,A,B)}
+  var pos=function(p){return p.__pp||(p.__pp=csIxPos(sv,p))};all.forEach(function(p){p.__pp=null});
+  var pairs=[];for(var i=0;i<G.length;i++)for(var j=i+1;j<G.length;j++){var a=pos(G[i]),b=pos(G[j]),dx=Math.abs(a.x-b.x);if(dx<a.w*5){var ia=G[i].getAttribute("data-pal"),ib=G[j].getAttribute("data-pal"),w=(csIxPair(ia,ib)?4:1)*(dx<a.w*2?2:1);for(var q=0;q<w;q++)pairs.push(Math.random()<0.5?[G[i],G[j]]:[G[j],G[i]])}}
+  var r=Math.random();
+  if(F.length&&G.length&&(r<0.22||!pairs.length&&r<0.6))return csIxStart(sv,"circle",csIxPick(F),csIxPick(G));
+  if(pairs.length){var pp=csIxPick(pairs),sp=csIxPair(pp[0].getAttribute("data-pal"),pp[1].getAttribute("data-pal")),r2=Math.random();
+    return csIxStart(sv,sp&&r2<0.75?"talk":r2<0.6?"talk":r2<0.8?"hop":"chase",pp[0],pp[1])}
+  if(G.length&&Z.length&&r<0.7){var A2=csIxPick(G),near=Z.filter(function(z){return Math.abs(pos(z).x-pos(A2).x)<pos(A2).w*5});if(near.length)return csIxStart(sv,"whisper",A2,csIxPick(near))}
+  if(!G.length&&!F.length&&Z.length&&r<0.5)return csIxStart(sv,"murmur",csIxPick(Z));
+  return ""}
+setInterval(function(){try{if(csIx){if(!csIx.sv.isConnected)csIxEnd();return}if(document.hidden)return;var now=Date.now();
+  if(!csIxNext){if(csIxSvg())csIxNext=now+6000+Math.random()*6000;return}
+  if(now<csIxNext)return;if(!csIxGo())csIxNext=now+8000}catch(e){csIx=null}},2000);
+window.__csPalTalk=function(a,b,k){try{if(csIx)csIxEnd(1);return csIxGo({a:a,b:b,k:k})}catch(e){return "err:"+e.message}};
 /* ---- 一覧(学習の記録の草の庭・全画面) ---- */
 function csPalsList(){var S=window.__csPalSt;if(!S)return "";var st=S.st,on=S.on,FV=csPalFav();
   return '<ul class="gd-pals">'+CS_PALS.map(function(P){var ok=on.indexOf(P.id)>=0,lf=ok?"":csPalLeft(P,st);
     var fv=ok&&!!FV[P.id];
     return '<li class="'+(ok?"on":"lk")+(fv?" fav":"")+'">'+csPalIcon(P.id,ok?"":"sil")+'<div><b>'+(ok?P.nm:"？？？")+(P.sky?'<i class="gp-sk">空</i>':'')+'</b>'+(ok?'<span>'+P.pf+'</span>':'')+'<small>'+(ok?"仲間になった条件: ":"")+P.ct+(lf?'(<em>'+lf+'</em>)':'')+'</small></div>'+(ok?'<button type="button" class="gp-fav" data-palfav="'+P.id+'" aria-pressed="'+fv+'" aria-label="'+P.nm+'をお気に入りにする">'+(fv?"★":"☆")+'</button>':'')+'</li>'}).join("")+'</ul>'}
 function csPalsHead(){var S=window.__csPalSt;return S?'仲間 <b>'+S.on.length+'</b> / '+CS_PALS.length+'匹':''}
-function csPalsDetails(){return '<details class="gd-palsd" id="garden-pals"><summary><span class="gd-palsd-k">庭の仲間</span><span class="gd-palsd-n">'+csPalsHead()+'</span></summary><p class="gd-palsd-s">合格した科目や学習の成果で、庭に仲間がやって来ます。庭にいるのは、仲間の中からランダムに選んだ最大10匹です(ページを開くたびに入れ替わります)。☆を押してお気に入りにした子は、いつも庭に出ます(10匹まで)。「空」の印の子は庭の空を飛びます。タップすると、その子らしいひとことを話します。</p>'+csPalsList()+'</details>'}
+function csPalsDetails(){return '<details class="gd-palsd" id="garden-pals"><summary><span class="gd-palsd-k">庭の仲間</span><span class="gd-palsd-n">'+csPalsHead()+'</span></summary><p class="gd-palsd-s">合格した科目や学習の成果で、庭に仲間がやって来ます。庭にいるのは、仲間の中からランダムに選んだ最大10匹です(ページを開くたびに入れ替わります)。☆を押してお気に入りにした子は、いつも庭に出ます(10匹まで)。「空」の印の子は庭の空を飛びます。タップすると、その子らしいひとことを話します。近くにいる仲間どうしで、話したり遊んだりもします。</p>'+csPalsList()+'</details>'}
 /* 新しい仲間のお知らせ(1回だけ) */
 function csPalsNotice(){try{var S=window.__csPalSt;if(!S||!S.on.length)return "";var seen=csPalLS(CS_PALSEEN,{});if(!seen||typeof seen!=="object")seen={};
   var nw=S.on.filter(function(id){return !seen[id]});if(!nw.length)return "";var now=Date.now();S.on.forEach(function(id){if(!seen[id])seen[id]=now});
