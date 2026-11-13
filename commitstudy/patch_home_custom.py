@@ -26,7 +26,7 @@ var csHC=(function(){
   var KEY="cs-home-layout",P='body[data-page="home"] ';
   var G=[
     {k:"sec",h:"まとまりの順番",ids:["hero","today","news","points","closing"],mv:1},
-    {k:"card",h:"きょうの一歩のカード",ids:["cont","daily","rev","streak","exam","rank","garden"],mv:1},
+    {k:"card",h:"きょうの一歩のカード",ids:["cont","streak","rank","garden"],mv:1},
     {k:"ex",h:"そのほかの表示",ids:["letter","banner"],mv:0}];
   var N={hero:["見出しとキャラ","タイトル・紹介文・キャラ・「科目を選ぶ」"],today:["きょうの一歩","続き・今日の1問・復習などのカード"],news:["更新情報","さいきんの更新"],
     points:["3つの特徴","読みながら覚える・その場で問題・草が生える"],
@@ -61,7 +61,8 @@ var csHC=(function(){
   function css(L){var c=[],H=L.hidden,G0=G[0].ids,o=L.order;
     if(!same(o.sec,G0)){c.push(P+"main{display:flex;flex-direction:column}",P+"main>*{order:50}",P+"main>.nbn-w{order:-2}",P+"main>.hc-bar{order:100}");
       o.sec.forEach(function(id,i){c.push(P+SEL[id]+"{order:"+(i+1)+"}")})}
-    var MAIN=["cont","daily"],SIDE=["rev","streak","exam","rank","garden"],cd=o.card;
+    /* 今日の1問・今日の復習・本試験まではこのアプリでは出さない(社労士版の名残り。CSS で常に非表示)ので、一覧にも入れない */
+    var MAIN=["cont"],SIDE=["streak","rank","garden"],cd=o.card;
     Object.keys(H).forEach(function(id){if(H[id]&&SEL[id])c.push(P+SEL[id]+"{display:none!important}")});
     Object.keys(L.shown||{}).forEach(function(id){if(L.shown[id]&&SEL[id])c.push("@media (max-width:560px){body.ret[data-page=\"home\"] "+SEL[id]+"{display:block!important}}")});
     var mainOff=MAIN.every(function(id){return H[id]}),sideOff=SIDE.every(function(id){return H[id]});
