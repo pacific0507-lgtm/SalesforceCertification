@@ -1,7 +1,7 @@
 """ホーム画面を、ユーザーごとに好きにカスタマイズできるようにする。
   - ホームのいちばん下(とメニューの「表示」)の「ホームをカスタマイズ」で、編集シート(スマホは下から出るシート)を開く
   - まとまり(きょうの一歩・更新情報・3つの特徴・みんなで合格まで)と、きょうの一歩のカードを、表示/非表示と ↑↓ で並べ替えできる
-    (カードは「大きいカード」「小さいカード」それぞれの中で並べ替え。PC の2列の形をくずさないため)
+    (カードは大きさに関係なく1つの並びで並べ替える。既定の並びのときは元の2列の形のまま、変えたときは列をほどいて並べる)
   - お便り・いちばん上のお知らせの帯・「使い方を見る」の案内は、表示/非表示だけ
   - 見出しの真ん中に大きく出るキャラ(クラウドちゃん・まなびん・コミットくん・ランダム)を選べる
   - 見出しと「ホームをカスタマイズ」のボタンは隠せない(いつでも元に戻せるように)
@@ -26,8 +26,7 @@ var csHC=(function(){
   var KEY="cs-home-layout",P='body[data-page="home"] ';
   var G=[
     {k:"sec",h:"まとまりの順番",ids:["today","news","points","closing"],mv:1},
-    {k:"main",h:"きょうの一歩: 大きいカード",ids:["cont","daily"],mv:1},
-    {k:"side",h:"きょうの一歩: 小さいカード",ids:["rev","streak","exam","rank","garden"],mv:1},
+    {k:"card",h:"きょうの一歩のカード",ids:["cont","daily","rev","streak","exam","rank","garden"],mv:1},
     {k:"ex",h:"そのほかの表示",ids:["letter","banner","guide"],mv:0}];
   var N={today:["きょうの一歩","続き・今日の1問・復習などのカード"],news:["更新情報","さいきんの更新"],
     points:["3つの特徴","読みながら覚える・その場で問題・草が生える(スマホでは学習を始めると自動でしまわれます)"],
@@ -57,15 +56,22 @@ var csHC=(function(){
   function css(L){var c=[],H=L.hidden,G0=G[0].ids,o=L.order;
     if(!same(o.sec,G0)){c.push(P+"main{display:flex;flex-direction:column}",P+"main>*{order:50}",P+"main>.nbn-w{order:-2}",P+"main>.hero{order:-1}",P+"main>.hc-bar{order:100}");
       o.sec.forEach(function(id,i){c.push(P+SEL[id]+"{order:"+(i+1)+"}")})}
-    ["main","side"].forEach(function(k){o[k].forEach(function(id,i){c.push(P+SEL[id]+"{order:"+(i+1)+"}")})});
+    var MAIN=["cont","daily"],SIDE=["rev","streak","exam","rank","garden"],cd=o.card;
     Object.keys(H).forEach(function(id){if(H[id]&&SEL[id])c.push(P+SEL[id]+"{display:none!important}")});
-    var mainOff=o.main.every(function(id){return H[id]}),sideOff=o.side.every(function(id){return H[id]});
-    if(mainOff)c.push(P+".bento>.col:not(.side){display:none}");
-    if(sideOff)c.push(P+".bento>.col.side{display:none}");
-    if(mainOff||sideOff)c.push(P+".bento{grid-template-columns:1fr}");
-    if(mainOff&&!sideOff)c.push("@media (min-width:861px){"+P+".bento .col.side{grid-template-columns:1fr 1fr;grid-auto-flow:row dense}}");
-    /* 小さいカードを並べ替えたり隠したりしたら、スマホでは1枚ずつ横いっぱいに(半分の幅のカードがひとりで残らないように) */
-    if(!same(o.side,G[2].ids)||o.side.some(function(id){return H[id]}))c.push("@media (max-width:860px){"+P+".bento .col.side>.bx{grid-column:1/-1}}");
+    var mainOff=MAIN.every(function(id){return H[id]}),sideOff=SIDE.every(function(id){return H[id]});
+    if(same(cd,G[1].ids)){
+      /* 既定の並び: 元の2列(大きいカード|小さいカード)のまま */
+      if(mainOff)c.push(P+".bento>.col:not(.side){display:none}");
+      if(sideOff)c.push(P+".bento>.col.side{display:none}");
+      if(mainOff||sideOff)c.push(P+".bento{grid-template-columns:1fr}");
+      if(mainOff&&!sideOff)c.push("@media (min-width:861px){"+P+".bento .col.side{grid-template-columns:1fr 1fr;grid-auto-flow:row dense}}");
+      if(SIDE.some(function(id){return H[id]}))c.push("@media (max-width:860px){"+P+".bento .col.side>.bx{grid-column:1/-1}}");
+    }else{
+      /* 大きい・小さいに関係なく並べ替えたとき: 列をほどいて1つの並びにする。スマホは1列、PC は左上から順に2列(並べた順のとおりに見えるよう、横いっぱいのカードは作らない) */
+      c.push(P+".bento{display:grid!important;grid-template-columns:1fr!important;grid-auto-flow:row}",P+".bento>.col{display:contents!important}",P+".bento .bx{grid-column:auto;min-width:0}");
+      c.push("@media (min-width:861px){"+P+".bento{grid-template-columns:1fr 1fr!important;grid-auto-flow:row}}",P+".bento .bx{grid-column:auto!important}");
+      cd.forEach(function(id,i){c.push(P+SEL[id]+"{order:"+(i+1)+"}")});
+    }
     if(mainOff&&sideOff){c.push(P+"#bento{display:none!important}");
       c.push(H.letter?P+"#today{display:none!important}":"@supports selector(:has(*)){"+P+"#today:not(:has(#bx-letter:not([hidden]))){display:none!important}}")}
     var ch=L.chara;if(ch==="rand")ch=window.__hcRand||"rou";
