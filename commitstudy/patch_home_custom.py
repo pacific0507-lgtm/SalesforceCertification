@@ -25,24 +25,29 @@ JS = r'''
 var csHC=(function(){
   var KEY="cs-home-layout",P='body[data-page="home"] ';
   var G=[
-    {k:"sec",h:"まとまりの順番",ids:["today","news","points","closing"],mv:1},
+    {k:"sec",h:"まとまりの順番",ids:["hero","today","news","points","closing"],mv:1},
     {k:"card",h:"きょうの一歩のカード",ids:["cont","daily","rev","streak","exam","rank","garden"],mv:1},
-    {k:"ex",h:"そのほかの表示",ids:["letter","banner","guide"],mv:0}];
-  var N={today:["きょうの一歩","続き・今日の1問・復習などのカード"],news:["更新情報","さいきんの更新"],
-    points:["3つの特徴","読みながら覚える・その場で問題・草が生える(スマホでは学習を始めると自動でしまわれます)"],
-    closing:["みんなで合格まで","締めのひとこと(スマホでは学習を始めると自動でしまわれます)"],
+    {k:"ex",h:"そのほかの表示",ids:["letter","banner"],mv:0}];
+  var N={hero:["見出しとキャラ","タイトル・紹介文・キャラ・「科目を選ぶ」"],today:["きょうの一歩","続き・今日の1問・復習などのカード"],news:["更新情報","さいきんの更新"],
+    points:["3つの特徴","読みながら覚える・その場で問題・草が生える"],
+    closing:["みんなで合格まで","締めのひとこと"],
     cont:["前回の続き",""],daily:["今日の1問",""],rev:["今日の復習",""],streak:["連続学習",""],exam:["本試験まで",""],rank:["いまの称号",""],garden:["草の庭",""],
     letter:["キャラからのお便り","届いたときだけ出ます"],banner:["いちばん上のお知らせ","新しい更新があるときの帯"],guide:["「使い方を見る」の案内","はじめての方への案内"]};
-  var SEL={today:"#today",news:"main>section.news",points:"main>section.points",closing:"main>section.closing",
+  var SEL={hero:"main>.hero",today:"#today",news:"main>section.news",points:"main>section.points",closing:"main>section.closing",
     cont:"#bx-cont",daily:"#bx-daily",rev:"#bx-rev",streak:"#bx-streak",exam:"#bx-exam",rank:"#bx-rank",garden:"#bx-garden",
     letter:"#bx-letter",banner:"main>.nbn-w",guide:"#guide-cta"};
   var CH=[["rou","クラウドちゃん","pose-rou-laugh"],["pote","まなびん","pose-pote-pc"],["pen","コミットくん","pose-pen-smile"],["rand","ランダム",""]];
   var FIG={rou:"a1",pote:"a2",pen:"a3"};
+  /* スマホ(560px以下)では、学習を始めた人(body.ret)には自動で隠れていた2つ。表示にすると出す */
+  var AUTO=["points","closing"];
+  function autoOff(id){try{return AUTO.indexOf(id)>=0&&document.body.classList.contains("ret")&&matchMedia("(max-width:560px)").matches}catch(e){return false}}
+  function isOn(L,id){return !L.hidden[id]&&(!!L.shown[id]||!autoOff(id))}
   function raw(){try{return localStorage.getItem(KEY)||""}catch(e){return ""}}
   /* 保存の中身をいつも正しい形に。知らない id は捨て、足りない id は既定の位置へ */
   function norm(d){if(!d||typeof d!=="object"||Array.isArray(d))d={};
     var ord=Array.isArray(d.order)?d.order.filter(function(x){return typeof x==="string"}):[],hid=(d.hidden&&typeof d.hidden==="object"&&!Array.isArray(d.hidden))?d.hidden:{};
-    var r={v:1,ts:+d.ts||0,order:{},hidden:{},chara:"rou"};
+    var shw=(d.shown&&typeof d.shown==="object"&&!Array.isArray(d.shown))?d.shown:{};
+    var r={v:1,ts:+d.ts||0,order:{},hidden:{},shown:{},chara:"rou"};AUTO.forEach(function(id){if(shw[id]&&!hid[id])r.shown[id]=1});
     G.forEach(function(g){var seen={},l=[];ord.forEach(function(id){if(g.ids.indexOf(id)>=0&&!seen[id]){seen[id]=1;l.push(id)}});
       g.ids.forEach(function(id,i){if(seen[id])return;var at=0;for(var j=i-1;j>=0;j--){var p=l.indexOf(g.ids[j]);if(p>=0){at=p+1;break}}l.splice(at,0,id);seen[id]=1});
       r.order[g.k]=g.mv?l:g.ids.slice();g.ids.forEach(function(id){if(hid[id])r.hidden[id]=1})});
@@ -50,14 +55,15 @@ var csHC=(function(){
     return r}
   function load(){var v=null;try{v=JSON.parse(raw())}catch(e){v=null}return norm(v)}
   function save(L){var o={v:1,order:[],hidden:{},chara:L.chara,ts:Date.now()};G.forEach(function(g){o.order=o.order.concat(L.order[g.k])});
-    Object.keys(L.hidden).forEach(function(id){if(L.hidden[id])o.hidden[id]=1});
+    Object.keys(L.hidden).forEach(function(id){if(L.hidden[id])o.hidden[id]=1});o.shown={};Object.keys(L.shown||{}).forEach(function(id){if(L.shown[id])o.shown[id]=1});
     try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}apply()}
   function same(a,b){return a.join()===b.join()}
   function css(L){var c=[],H=L.hidden,G0=G[0].ids,o=L.order;
-    if(!same(o.sec,G0)){c.push(P+"main{display:flex;flex-direction:column}",P+"main>*{order:50}",P+"main>.nbn-w{order:-2}",P+"main>.hero{order:-1}",P+"main>.hc-bar{order:100}");
+    if(!same(o.sec,G0)){c.push(P+"main{display:flex;flex-direction:column}",P+"main>*{order:50}",P+"main>.nbn-w{order:-2}",P+"main>.hc-bar{order:100}");
       o.sec.forEach(function(id,i){c.push(P+SEL[id]+"{order:"+(i+1)+"}")})}
     var MAIN=["cont","daily"],SIDE=["rev","streak","exam","rank","garden"],cd=o.card;
     Object.keys(H).forEach(function(id){if(H[id]&&SEL[id])c.push(P+SEL[id]+"{display:none!important}")});
+    Object.keys(L.shown||{}).forEach(function(id){if(L.shown[id]&&SEL[id])c.push("@media (max-width:560px){body.ret[data-page=\"home\"] "+SEL[id]+"{display:block!important}}")});
     var mainOff=MAIN.every(function(id){return H[id]}),sideOff=SIDE.every(function(id){return H[id]});
     if(same(cd,G[1].ids)){
       /* 既定の並び: 元の2列(大きいカード|小さいカード)のまま */
@@ -91,8 +97,7 @@ var csHC=(function(){
     h+='<section class="hc-g"><h3>まんなかのキャラ</h3><div class="hc-ch" role="radiogroup" aria-label="まんなかのキャラ">'+CH.map(function(c){var on=L.chara===c[0];
       return '<button type="button" role="radio" data-ch="'+c[0]+'" aria-checked="'+on+'">'+(c[2]?'<img src="chars/'+c[2]+'.webp" alt="" width="40" height="40">':'<span class="hc-q" aria-hidden="true">?</span>')+'<span>'+c[1]+'</span></button>'}).join("")+'</div></section>';
     G.forEach(function(g){var l=L.order[g.k];h+='<section class="hc-g"><h3>'+g.h+'</h3><ol class="hc-l">';
-      if(g.k==="sec")h+='<li class="hc-r fx"><span class="hc-n"><b>見出しとキャラ</b><small>いつもいちばん上に出ます</small></span><span class="hc-fx">固定</span></li>';
-      l.forEach(function(id,i){var on=!L.hidden[id],n=N[id];
+      l.forEach(function(id,i){var on=isOn(L,id),n=N[id];
         h+='<li class="hc-r'+(on?"":" off")+'" data-id="'+id+'" data-g="'+g.k+'"><span class="hc-n"><b>'+esc(n[0])+'</b>'+(n[1]?'<small>'+esc(n[1])+'</small>':'')+'</span>'+
           '<button type="button" class="hc-sw" role="switch" aria-checked="'+on+'" aria-label="'+esc(n[0])+'を表示"><i></i></button>'+
           (g.mv?'<button type="button" class="hc-mv" data-mv="-1"'+(i===0?" disabled":"")+' aria-label="'+esc(n[0])+'を上へ">↑</button><button type="button" class="hc-mv" data-mv="1"'+(i===l.length-1?" disabled":"")+' aria-label="'+esc(n[0])+'を下へ">↓</button>':'')+'</li>'});
@@ -113,7 +118,7 @@ var csHC=(function(){
       var L=load(),c=t.closest("[data-ch]");
       if(c){L.chara=c.dataset.ch;if(L.chara==="rand")window.__hcRand=CH[Math.floor(Math.random()*3)][0];save(L);draw('[data-ch="'+L.chara+'"]');return}
       var r=t.closest(".hc-r[data-id]");if(!r)return;var id=r.dataset.id,g=r.dataset.g;
-      if(t.closest(".hc-sw")){if(L.hidden[id])delete L.hidden[id];else L.hidden[id]=1;save(L);draw('.hc-r[data-id="'+id+'"] .hc-sw');return}
+      if(t.closest(".hc-sw")){if(isOn(L,id)){L.hidden[id]=1;delete L.shown[id]}else{delete L.hidden[id];if(AUTO.indexOf(id)>=0)L.shown[id]=1}save(L);draw('.hc-r[data-id="'+id+'"] .hc-sw');return}
       var m=t.closest(".hc-mv");if(m){var l=L.order[g],i=l.indexOf(id),j=i+(+m.dataset.mv);if(i<0||j<0||j>=l.length)return;l[i]=l[j];l[j]=id;save(L);
         draw('.hc-r[data-id="'+id+'"] .hc-mv[data-mv="'+m.dataset.mv+'"]');
         var nr=bd.querySelector('.hc-r[data-id="'+id+'"]');if(nr){nr.classList.add("mv");setTimeout(function(){nr.classList.remove("mv")},900);
