@@ -53,3 +53,4 @@ python3 $C/patch_practice_return.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_home_custom.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_card_star.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_pal_card.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_card_known.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
