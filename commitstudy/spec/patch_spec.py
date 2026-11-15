@@ -66,7 +66,7 @@ MARKUP = f"""
     [C("data/&lt;科目&gt;/qrows.json"), "問題の索引(出典の種類・項目・問題文)。ホームや記録の集計に使う"],
     [C("data/&lt;科目&gt;/sections.json"), "項目の一覧(章・番号・題名)"],
     [C("data/&lt;科目&gt;/terms.json"), "用語カード(項目・用語・説明)"],
-    [C("data/&lt;科目&gt;/img/"), "問題の図(webp)。IPA と MuleSoft の過去問で使う"],
+    [C("data/&lt;科目&gt;/img/"), "問題の図(webp)。IPA と MuleSoft の過去問で使う。scr_*.webp はテキストの「実際の画面」(screens/apply_screens.py が切り出し・赤枠を付けて差し込む。表示と拡大は patch_scr.py)"],
     [C("data/catalog.json"), "科目カードのタグに出す、出典ごとの問題数と用語カードの枚数"],
     [C("brand/"), "キャラの顔・使い方ページの画面写真"],
   ])}
