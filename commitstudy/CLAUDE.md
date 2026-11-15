@@ -8,3 +8,4 @@
 - 端末の「視差効果を減らす」(prefers-reduced-motion)は無視する方針(ユーザーの希望)。新しい動きにも reduced-motion 用の指定は付けない。
 - ユーザーへの報告・返信は日本語で書く(ユーザーの希望)。
 - 公開先では index.html 全体が claude.ai のページの body の中に入り、科目を開くと body が作り直される。足す CSS は `<style>` をファイルに置かず、スクリプトで `document.head` に入れる。テストもこの形(ページを body に包む)で行う。
+- テキスト(`<科目>/data/chapters.json`)の本文を変えたら、その章の `ts` を必ず上げる(`python3 bump_chapters_ts.py <科目>`)。アプリは章の ts が変わったときだけ端末の控えを描き直すので、上げないと一度開いた端末には古い本文が出続ける。

@@ -5,7 +5,7 @@
   - 表示の CSS・拡大・画像の URL は patch_scr.py(rebuild.sh)
 使い方: python3 screens/apply_screens.py d360
 """
-import html, json, os, re, sys
+import html, json, os, re, sys, time
 from PIL import Image, ImageDraw
 subj = sys.argv[1]
 here = os.path.dirname(os.path.abspath(__file__)); root = os.path.join(here, "..")
@@ -44,7 +44,8 @@ for c in C:
         k = art.find('<div class="co memo"><p><b class="lab">試験ポイント</b>')
         art2 = art[:k] + blk + art[k:] if k >= 0 else art.replace("</article>", blk + "</article>")
         h = h.replace(art, art2); done.add(sec)
-    c["data"]["html"] = h
+    if c["data"]["html"] != h:
+        c["data"]["html"] = h; c["data"]["ts"] = max(int(time.time()), int(c["data"].get("ts") or 0) + 1)  # 端末の控えを描き直させる
 missing = set(by_sec) - done
 if missing: sys.exit("項目が見つからない: " + ", ".join(sorted(missing)))
 json.dump(C, open(CH, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
