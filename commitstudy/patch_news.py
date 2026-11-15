@@ -5,7 +5,8 @@ import sys
 src, out = sys.argv[1:3]
 s = open(src, encoding="utf-8").read()
 NEWS = [
- ("2026-11-15", "新機能", "テキストに実際の Salesforce の画面を追加(Data 360・Agentforce Sales)", [
+ ("2026-11-15", "新機能", "テキストに実際の Salesforce の画面を追加(Data 360・Agentforce Sales・Agentforce スペシャリスト)", [
+   "Agentforce スペシャリストのテキストの17項目(Agentforce Builder・サブエージェント・アクション・Prompt Builder・グラウンディング・データライブラリ・テストセンター・Einstein Trust Layer など)にも、実際の設定画面を42枚入れました",
    "Agentforce Sales コンサルタントのテキストの12項目(営業テリトリー・売上予測・リード・商談・見積・セキュリティ・データ品質・Einstein Trust Layer など)にも、実際の設定画面を29枚入れました",
    "Data 360 のテキストの9項目(データストリーム・データカテゴリ・データレイクオブジェクト・データマッピング・データスペース・ID解決・計算済みインサイト・セグメント・有効化)に、実際の設定画面(日本語表示)を16枚入れました。説明する箇所に赤枠を付け、押すと拡大できます。ほかの科目にも順に広げます",
  ]),
