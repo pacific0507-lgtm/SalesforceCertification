@@ -4,7 +4,7 @@
 - 保存先: `commitstudy/screens/raw/afspec/`、manifest も `commitstudy/screens/raw/afspec/manifest.json`
 - 組織: Data 360 と同じ Developer Edition(Agentforce と Data Cloud 付き、日本語表示)
 - コミットメッセージ: 「Salesforce の設定画面(Agentforce スペシャリスト)を撮る」
-- エージェントの有効化・公開、プロンプトテンプレートの有効化はしない。編集画面は開いて見るだけ。新規作成はウィザードの途中まで進めてキャンセル(保存が必要なときは、ユーザーに許可をもらってから「CommitStudy撮影用」という名前で作る)
+- 撮影用の Developer Edition なので、エージェント・トピック・アクション・プロンプトテンプレート・データライブラリなどを作成・保存・有効化してよい(名前は「CommitStudy撮影用」で始める)。中身が伝わるように、指示や説明もそれらしく入れて撮る
 
 ## 撮る画面(項目id: 内容)
 1. `agents`: 設定 > Agentforce エージェント(エージェントの一覧)、Agentforce の有効化の設定ページ

@@ -4,7 +4,7 @@
 - 保存先: `commitstudy/screens/raw/afsales/`、manifest も `commitstudy/screens/raw/afsales/manifest.json`
 - 組織: Data 360 と同じ Developer Edition(日本語表示)でよい。営業の機能(Sales Cloud)が入っている組織
 - コミットメッセージ: 「Salesforce の設定画面(Agentforce Sales)を撮る」
-- 組織のデータを変える操作はしない(テリトリーモデルの有効化・売上予測の有効化など、元に戻しにくい設定は特に)。設定ページは開いて見るだけ。新規作成画面は開いて「キャンセル」
+- 撮影用の Developer Edition なので、保存・有効化(テリトリー管理・売上予測・パスなど)をしてよい。画面の中身が伝わるよう、必要ならサンプルの商談・リード・テリトリーなどを作って撮る(名前は「CommitStudy撮影用」で始める)
 
 ## 撮る画面(項目id: 内容。見つからない・ライセンスがないものは manifest に missing で)
 1. `territory`: 設定 > テリトリー設定(エンタープライズテリトリー管理)。テリトリーモデルの一覧、テリトリー種別の一覧
