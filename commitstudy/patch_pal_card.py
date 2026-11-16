@@ -34,7 +34,7 @@ function csPalCard(id){try{var P=CS_PALMAP[id];if(!P)return;csPalCardClose();var
   h+='</div>';
   if(ok){h+='<p class="pc-pf">'+e(P.pf)+'</p>';
     var ln=(P.ln||[]).slice();for(var i=ln.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=ln[i];ln[i]=ln[j];ln[j]=t}
-    if(ln.length)h+='<div class="pc-sec"><h3>ひとこと</h3><div class="pc-lns">'+ln.slice(0,3).map(function(l){return '<p class="pc-ln">'+e(l).replace(/\n/g,"<br>")+'</p>'}).join("")+'</div></div>'}
+    if(ln.length)h+='<div class="pc-sec"><h3>ひとこと</h3><div class="pc-lns">'+ln.slice(0,3).map(function(l){return '<p class="pc-ln">'+e(String(l).replace(/([ぁ-んァ-ヶー一-龠々、。！？…」）])\n(?=[ぁ-んァ-ヶー一-龠々「（])/g,"$1").replace(/\n/g," "))+'</p>'}).join("")+'</div></div>'}
   var dt=ok&&seen[id]?new Date(+seen[id]):null,lf=ok?"":(typeof csPalLeft==="function"?csPalLeft(P,S.st):"");
   var rows=[[ok?"仲間になった条件":"仲間になる条件",e(P.ct)+(lf?'<br><em>'+e(lf)+'</em>':'')]];
   if(dt&&!isNaN(dt))rows.push(["仲間になった日",dt.getFullYear()+"年"+(dt.getMonth()+1)+"月"+dt.getDate()+"日"]);
@@ -75,8 +75,8 @@ CSS = """
 .pc-fav[aria-pressed=true]{color:#e0a100;border-color:#e0a100;background:color-mix(in srgb,#e0a100 10%,var(--paper,#fff))}
 .pc-pf{margin:14px 0 0;font-size:14.5px;line-height:1.8}
 .pc-sec h3,.pc-dl dt{font-size:12px;font-weight:700;color:var(--sub,#666);margin:16px 0 6px;letter-spacing:.04em}
-.pc-lns{display:flex;flex-direction:column;gap:8px}
-.pc-ln{margin:0;align-self:flex-start;max-width:92%;background:var(--sun-soft,#fff6d8);border-radius:14px 14px 14px 4px;padding:8px 12px;font-size:14px;line-height:1.6;text-align:left}
+.pc-lns{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+.pc-ln{margin:0;max-width:100%;background:var(--sun-soft,#fff6d8);border-radius:14px 14px 14px 4px;padding:8px 12px;font-size:14px;line-height:1.6;text-align:left}
 .pc-dl{margin:6px 0 0}
 .pc-dl>div{border-top:1px solid var(--line,#eee);padding:2px 0 8px}
 .pc-dl dd{margin:0;font-size:14px;line-height:1.7}
