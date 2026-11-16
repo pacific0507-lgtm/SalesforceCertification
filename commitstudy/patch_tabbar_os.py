@@ -16,10 +16,12 @@ css = (
  # ---- iOS: 浮かべたすりガラスのバー ----
  "html.os-ios .tabbar{left:12px!important;right:12px!important;bottom:calc(max(10px,env(safe-area-inset-bottom,0px) - 6px) + var(--vb-hide,0px))!important;"
  "padding:6px!important;border:1px solid color-mix(in srgb,var(--line) 70%,transparent)!important;border-radius:32px;"
- "background:color-mix(in srgb,var(--paper) 42%,transparent)!important;-webkit-backdrop-filter:blur(16px) saturate(190%) brightness(1.04);backdrop-filter:blur(16px) saturate(190%) brightness(1.04);"
+ "background:color-mix(in srgb,var(--paper) 22%,transparent)!important;-webkit-backdrop-filter:blur(12px) saturate(200%) brightness(1.06);backdrop-filter:blur(12px) saturate(200%) brightness(1.06);"
  "box-shadow:0 12px 32px -14px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12)}"
- "html.os-ios .tabbar a{border-radius:26px;padding:6px 0 5px;font-size:10.5px;font-weight:600}"
- "html.os-ios .tabbar .tb-ind{border-radius:26px;background:color-mix(in srgb,var(--paper) 55%,color-mix(in srgb,var(--brand) 18%,transparent))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)!important}"
+ "html.os-ios .tabbar a{border-radius:26px;padding:6px 0 5px;font-size:10.5px;font-weight:700;color:color-mix(in srgb,var(--ink) 78%,var(--sub))!important;text-shadow:0 0 1px var(--paper),0 0 6px var(--paper),0 0 10px var(--paper)}"
+ "html.os-ios .tabbar a svg{filter:drop-shadow(0 0 2px var(--paper)) drop-shadow(0 0 5px var(--paper))}"
+ "html.os-ios .tabbar a[aria-current=page] svg,html.os-ios .tabbar a[aria-current=page]{opacity:1}"
+ "html.os-ios .tabbar .tb-ind{border-radius:26px;background:color-mix(in srgb,var(--paper) 40%,color-mix(in srgb,var(--brand) 18%,transparent))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)!important}"
  "html.os-ios .tabbar a[aria-current=page]{color:var(--brand)!important}"
  "html.os-ios body{padding-bottom:calc(96px + var(--vb-hide,0px) + env(safe-area-inset-bottom,0px))!important}"
  # ---- Android: Material 3 のナビゲーションバー ----
