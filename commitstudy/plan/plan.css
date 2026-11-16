@@ -62,15 +62,15 @@
 /* 計画のカード */
 .pl-card{border-top:5px solid var(--c);scroll-margin-top:90px;transition:box-shadow .4s}
 .pl-card.here{box-shadow:0 0 0 3px var(--sun)}
-.pc-h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center}
-.pc-h h3{margin:0;font-size:16px;line-height:1.4;overflow-wrap:anywhere}
-.pc-h p{margin:2px 0 0;font-size:12.5px;color:var(--sub);display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
-.pc-h .st{font-size:11px;font-weight:800;border-radius:999px;padding:1px 8px;background:var(--bg);border:1px dashed var(--hair);color:var(--sub)}
-.pc-h .st.fx{border:1px solid var(--c);color:var(--c);background:var(--cs)}
-.pc-h .cd{text-align:right;line-height:1.1;white-space:nowrap}
-.pc-h .cd b{font-size:26px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums}
-.pc-h .cd small{font-size:11px;color:var(--sub);font-weight:700}
-.pc-p{margin:0;display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--sub);line-height:1.6}
+.plc-h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center}
+.plc-h h3{margin:0;font-size:16px;line-height:1.4;overflow-wrap:anywhere}
+.plc-h p{margin:2px 0 0;font-size:12.5px;color:var(--sub);display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.plc-h .st{font-size:11px;font-weight:800;border-radius:999px;padding:1px 8px;background:var(--bg);border:1px dashed var(--hair);color:var(--sub)}
+.plc-h .st.fx{border:1px solid var(--c);color:var(--c);background:var(--cs)}
+.plc-h .cd{text-align:right;line-height:1.1;white-space:nowrap}
+.plc-h .cd b{font-size:26px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums}
+.plc-h .cd small{font-size:11px;color:var(--sub);font-weight:700}
+.plc-p{margin:0;display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--sub);line-height:1.6}
 .pace{flex:none;display:inline-block;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:800;background:var(--bg);color:var(--ink);white-space:nowrap}
 .pace.ahead,.pace.ok,.pace.done{background:color-mix(in srgb,var(--ok) 18%,var(--paper));color:var(--ok)}
 .pace.slow{background:var(--sun-soft);color:var(--ink)}
@@ -82,7 +82,7 @@
 .pbb{position:relative;height:9px;border-radius:9px;background:var(--bg);border:1px solid var(--line)}
 .pbb i{display:block;height:100%;border-radius:9px;background:var(--c);transition:width .8s var(--ease)}
 .pbb b{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1.5px;border-radius:2px;background:var(--ink);opacity:.55}
-.pc-n{line-height:1.7}
+.plc-n{line-height:1.7}
 .wk-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 .wk-list li{border-radius:12px;padding:8px 12px;background:var(--bg);font-size:13.5px}
 .wk-list li.cur{box-shadow:0 0 0 2px var(--sun)}

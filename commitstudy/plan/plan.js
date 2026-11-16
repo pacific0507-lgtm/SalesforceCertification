@@ -32,6 +32,7 @@ function md(s){var d=pd(s);return (d.getMonth()+1)+"/"+d.getDate()}
 function mdw(s){return md(s)+"("+WD[dow(s)]+")"}
 function ymdJ(s){var d=pd(s);return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"}
 function K(m){m=Math.max(0,Math.round(m));var h=Math.floor(m/60),r=m%60;return h?h+"時間"+(r?r+"分":""):r+"分"}
+function KS(m){m=Math.max(0,Math.round(m));return m<60?m+"分":Math.floor(m/60)+":"+p2(m%60)}
 function HR(h){return (Math.round(h*10)/10).toLocaleString("ja-JP")+"時間"}
 function clamp(v,a,b){v=+v;if(!isFinite(v))v=a;return Math.max(a,Math.min(b,v))}
 function LSj(k,d){try{var v=JSON.parse(localStorage.getItem(k)||"null");return v==null?d:v}catch(e){return d}}
@@ -225,8 +226,8 @@ function stripHTML(R){var T=R.today,st=wk(T),cells='',max=1,map={};R.days.forEac
   var tg=LSj(TGK,{});if(!obj(tg))tg={};var exams={};R.list.forEach(function(x){if(x.state!=="fin")(exams[x.P.exam]=exams[x.P.exam]||[]).push(x)});
   for(var i=0;i<14;i++){var d=add(st,i),c=map[d],cls=d===T?" now":d<T?" past":"",inner='',lab='';
     if(d<T){var a=0;R.list.forEach(function(x){if(x.state!=="fin")a+=(x.st.days[d]||0)/60});var g=0;if(obj(tg[d]))Object.keys(tg[d]).forEach(function(k){g+=+tg[d][k]||0});
-      lab=a>=1?K(a):'—';if(g>0&&a>=g)cls+=" met";inner='<i class="act" style="height:'+Math.min(100,Math.round(a/Math.max(max,g,1)*100))+'%"></i>'}
-    else if(c){lab=c.tot>=1?K(c.tot):'休み';inner=c.parts.map(function(p){return '<i class="pc" style="'+cv(p.x.s.id)+';height:'+Math.max(4,Math.round(p.m/max*100))+'%"></i>'}).join("")}
+      lab=a>=1?KS(a):'—';if(g>0&&a>=g)cls+=" met";inner='<i class="act" style="height:'+Math.min(100,Math.round(a/Math.max(max,g,1)*100))+'%"></i>'}
+    else if(c){lab=c.tot>=1?KS(c.tot):'休み';inner=c.parts.map(function(p){return '<i class="pc" style="'+cv(p.x.s.id)+';height:'+Math.max(4,Math.round(p.m/max*100))+'%"></i>'}).join("")}
     else lab='';
     var ex=exams[d]?'<em class="ex pc" style="'+cv(exams[d][0].s.id)+'">試験</em>':'';
     cells+='<li class="'+cls.trim()+'"><span class="dw">'+WD[dow(d)]+'</span><span class="dt">'+pd(d).getDate()+'</span><div class="cb">'+inner+'</div><small>'+lab+'</small>'+ex+'</li>'}
@@ -234,13 +235,13 @@ function stripHTML(R){var T=R.today,st=wk(T),cells='',max=1,map={};R.days.forEac
 function bar(lbl,now,tot,exp,unit){var r=tot>0?Math.min(100,now/tot*100):0,e=tot>0&&exp!=null?Math.min(100,exp/tot*100):null;
   return '<div class="pb"><div class="pbh"><span>'+lbl+'</span><span>'+now+(tot?' / '+tot:'')+unit+'</span></div><div class="pbb"><i style="width:'+r.toFixed(1)+'%"></i>'+(e!=null&&e>0.5?'<b style="left:'+e.toFixed(1)+'%" title="予定ではここまで"></b>':'')+'</div></div>'}
 function planHTML(x,R){var P=x.P,s=x.s,h='',open=PG.open[P.id];
-  h+='<section class="bx pl-card pc" style="'+cv(s.id)+'" data-pid="'+P.id+'"><div class="pc-h"><b class="sj">'+esc(s.short)+'</b><div><h3>'+esc(s.title)+'</h3><p>'+ymdJ(P.exam)+'('+WD[dow(P.exam)]+') <span class="st'+(P.fixed?' fx':'')+'">'+(P.fixed?'申込済み':'予定')+'</span></p></div>'+
+  h+='<section class="bx pl-card pc" style="'+cv(s.id)+'" data-pid="'+P.id+'"><div class="plc-h"><b class="sj">'+esc(s.short)+'</b><div><h3>'+esc(s.title)+'</h3><p>'+ymdJ(P.exam)+'('+WD[dow(P.exam)]+') <span class="st'+(P.fixed?' fx':'')+'">'+(P.fixed?'申込済み':'予定')+'</span></p></div>'+
     '<div class="cd">'+(x.state==="exam"?'<b>今日</b>':'<small>あと</small><b>'+x.left+'</b><small>日</small>')+'</div></div>';
   if(x.state==="on"||x.state==="wait"){var pc=PACE[x.pace]||PACE.ok;
-    h+='<p class="pc-p">'+paceChip(x)+'<span>'+pc[1]+'</span></p>';
+    h+='<p class="plc-p">'+paceChip(x)+'<span>'+pc[1]+'</span></p>';
     var hn=Math.round((x.doneH+x.todaySec/3600)*10)/10;
     h+='<div class="pbs">'+bar("読んだ節",x.nRead,x.secsN,x.exp>0?x.eR:null,"節")+bar("解いた問題",x.ans,x.qn,x.exp>0?x.eQ:null,"問")+bar("勉強時間",hn,P.goalH,x.exp>0?x.eH:null,"時間")+'</div>'+
-      '<p class="bx-s pc-n">'+(x.state==="wait"?md(P.start)+' から開始・':'')+'残り '+HR(x.remainH)+'・1日あたり約 '+K(x.needPerDay)+(x.rv?'・総復習は '+md(x.revStart)+' から':'')+(x.exp>0?'・目盛りは予定ではここまで':'')+'</p>';
+      '<p class="bx-s plc-n">'+(x.state==="wait"?md(P.start)+' から開始・':'')+'残り '+HR(x.remainH)+'・1日あたり約 '+K(x.needPerDay)+(x.rv?'・総復習は '+md(x.revStart)+' から':'')+(x.exp>0?'・目盛りは予定ではここまで':'')+'</p>';
     h+='<div class="pf-btns"><button type="button" class="bx-go" data-act="weeks" aria-expanded="'+(open?"true":"false")+'">'+(open?'週ごとの計画を閉じる':'週ごとの計画')+'</button><button type="button" class="bx-go" data-act="edit">変更・削除</button></div>';
     if(open)h+=weeksHTML(x,R)}
   else h+='<div class="pf-btns"><button type="button" class="bx-go" data-act="edit">変更・削除</button></div>';

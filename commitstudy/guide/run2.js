@@ -9,7 +9,7 @@ await p.addInitScript(()=>{addEventListener('DOMContentLoaded',()=>{const st=doc
 await p.go('/');await p.evaluate(()=>scrollTo(0,0));await shot('home',['.tabbar']);
 await p.evaluate(()=>{const h=[...document.querySelectorAll('h2')].find(x=>/きょうの一歩/.test(x.textContent));h&&h.scrollIntoView({block:'start'});scrollBy(0,-80)});await shot('home2',['#bx-letter','#bx-cont']);
 await p.go('/plan/');await p.evaluate(()=>{document.querySelector('.pl-today').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('plan',['.pl-today .td-list>li']);
-await p.click('.pl-card [data-act="weeks"]');await p.waitForTimeout(400);await p.evaluate(()=>{document.querySelector('.pl-card').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('plan2',['.pl-card .pc-p ~~ .pl-card .pbs']);
+await p.click('.pl-card [data-act="weeks"]');await p.waitForTimeout(400);await p.evaluate(()=>{document.querySelector('.pl-card').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('plan2',['.pl-card .plc-p ~~ .pl-card .pbs']);
 await p.go('/texts/');await p.evaluate(()=>{document.querySelector('#groups').scrollIntoView({block:'start'});scrollBy(0,-80)});await shot('texts',['#t-d360 .acts']);
 await p.go('/d360/');await p.evaluate(()=>localStorage.setItem('sr-d360-view','text'));await p.go('/d360/#f-stream',5500);
 await p.evaluate(()=>{const e=document.getElementById('f-stream');e.scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('text',['#f-stream .co.talk']);
