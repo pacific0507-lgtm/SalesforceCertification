@@ -58,3 +58,4 @@ python3 $C/patch_ask_marker.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_qx_return.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_qhead.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_scr.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/plan/patch_plan.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
