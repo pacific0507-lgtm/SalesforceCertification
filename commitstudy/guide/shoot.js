@@ -8,7 +8,7 @@ try{if(!localStorage.getItem('demo-seeded')){const D=(k)=>{const d=new Date();d.
  localStorage.setItem('sr-d360-act-v1',JSON.stringify(act));
  localStorage.setItem('sr-afsales-act-v1',JSON.stringify({ts:Date.now(),d:{[D(0)]:{q:6,c:5,r:['lifecycle'],t:700},[D(1)]:{q:4,c:3,r:[],t:400}}}));
  localStorage.setItem('sr-d360-study-v1',JSON.stringify({last:{ts:Date.now()-3600e3,title:'カテゴリ(プロファイル / エンゲージメント / 「その他」)',id:'f-category'},done:{intro:1,stream:1,category:1},read:{intro:1,stream:1,category:1,refresh:1}}));
- localStorage.setItem('cs-plan-v1',JSON.stringify({v:1,wk:1,week:[120,45,45,45,45,45,120],plans:[{id:'pd',subj:'d360',exam:D(-45),fixed:true,goalH:60,snap:{d:D(14),h:0,r:0,a:0}},{id:'pa',subj:'afsales',exam:D(-75),goalH:40,snap:{d:D(3),h:0,r:0,a:0}}]}));
+ localStorage.setItem('cs-plan-v1',JSON.stringify({v:1,wk:1,week:[180,75,75,75,75,75,180],plans:[{id:'pd',subj:'d360',exam:D(-45),fixed:true,goalH:60,snap:{d:D(3),h:2,r:2,a:0}},{id:'pa',subj:'afsales',exam:D(-75),goalH:40,snap:{d:D(3),h:0,r:0,a:0}}]}));
  localStorage.setItem('sr-theme','light');localStorage.setItem('demo-seeded','1');localStorage.setItem('cs-guide-seen','1')}}catch(e){}
 })();`;
 const U=r=>'http://localhost:8771/index.html#!'+encodeURIComponent(r);

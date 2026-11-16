@@ -28,5 +28,5 @@ await p.click('#t-q');await p.waitForTimeout(400);await p.click('#p-q [data-up]'
 await p.keyboard.press('Escape');
 await p.go('/record/');await p.evaluate(()=>scrollTo(0,0));await shot('record',['.kpi','#cal']);
 await p.evaluate(()=>{document.querySelector('#subj').closest('.bx').scrollIntoView({block:'start'});scrollBy(0,-70)});await shot('record2',['#subj .r']);
-await p.go('/');await p.evaluate(()=>document.getElementById('menu-btn').click());await p.waitForTimeout(600);await shot('menu',['.who','.dr-s .lk ~~ #sitemap']);
+await p.go('/');await p.evaluate(()=>document.getElementById('menu-btn').click());await p.waitForTimeout(600);await shot('menu',['.who','.dr-s .lk ~~ .dr-s .lk[href="/spec/"]']);
 require('fs').writeFileSync(O+'/rects.json',JSON.stringify(RECTS));console.log(p.errs);await b.close()})();
