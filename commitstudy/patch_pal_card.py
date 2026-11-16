@@ -40,7 +40,7 @@ function csPalCard(id){try{var P=CS_PALMAP[id];if(!P)return;csPalCardClose();var
   if(dt&&!isNaN(dt))rows.push(["仲間になった日",dt.getFullYear()+"年"+(dt.getMonth()+1)+"月"+dt.getDate()+"日"]);
   if(ok){var bw=csPalBed(id),day=bw[0]<bw[1];rows.push(["眠る時刻",(day?"昼に眠る子です。":"")+csPalHM(bw[0])+"ごろ寝て、"+csPalHM(bw[1])+"ごろ起きます"]);
     var fr=[];(typeof CS_PALPAIR!=="undefined"?CS_PALPAIR:[]).forEach(function(p){var o=p[0]===id?p[1]:p[1]===id?p[0]:null;if(o&&fr.indexOf(o)<0)fr.push(o)});
-    if(fr.length)rows.push(["なかよしの仲間",fr.map(function(o){var Q=CS_PALMAP[o];if(!Q)return "";var on=S.on.indexOf(o)>=0;return on?'<button type="button" class="pc-fr" data-palcard="'+o+'">'+csPalIcon(o)+e(Q.nm)+'</button>':'<span class="pc-fr lk">'+csPalIcon(o,"sil")+'？？？</span>'}).join("")+'<small>庭で近くにいると、特別なかけあいをします</small>'])}
+    if(fr.length)rows.push(["なかよしの仲間",fr.map(function(o){var Q=CS_PALMAP[o];if(!Q)return "";var on=S.on.indexOf(o)>=0;return on?'<button type="button" class="pc-fr" data-palcard="'+o+'">'+csPalIcon(o)+e(Q.nm)+'</button>':'<span class="pc-fr pc-frl">'+csPalIcon(o,"sil")+'？？？</span>'}).join("")+'<small>庭で近くにいると、特別なかけあいをします</small>'])}
   h+='<dl class="pc-dl">'+rows.map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join("")+'</dl>';
   if(!ok)h+='<p class="pc-lk">まだ仲間になっていません。条件を満たすと庭にやって来ます。</p>';
   var ov=document.createElement("div");ov.id="pc-ov";ov.className="pc-ov";
@@ -84,7 +84,7 @@ CSS = """
 .pc-dl small{display:block;font-size:12px;color:var(--sub,#666);margin-top:4px}
 .pc-fr{display:inline-flex;align-items:center;gap:4px;margin:2px 6px 2px 0;padding:3px 10px 3px 4px;border:1px solid var(--line,#ddd);border-radius:999px;background:var(--surface,#fafafa);color:inherit;font:inherit;font-size:13px;cursor:pointer}
 .pc-fr svg{width:24px;height:24px;overflow:visible}
-.pc-fr.lk{cursor:default;color:var(--sub,#888)}
+.pc-fr.pc-frl{cursor:default;color:var(--sub,#888)}
 .pc-fr svg.sil g{filter:brightness(0) opacity(.35)}
 .pc-lk{margin:14px 0 0;font-size:13.5px;color:var(--sub,#666)}
 li[data-palcard]{cursor:pointer}
