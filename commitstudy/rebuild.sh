@@ -60,3 +60,4 @@ python3 $C/patch_qhead.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_scr.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/plan/patch_plan.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_qact_fixed.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_vbottom.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
