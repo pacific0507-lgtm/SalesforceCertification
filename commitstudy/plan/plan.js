@@ -166,6 +166,9 @@ function prLink(x){var f=x.newQ>0?"new":x.wrong>0?"wrong":"all";if(x.today&&x.to
 function secLink(sid,c){return "/"+sid+"/#f-"+encodeURIComponent(c.k)}
 function secName(c){var no=c.no?c.no.replace(/^Ch/,""):"";return (no?'<small>'+esc(no)+'</small>':'')+'<span>'+esc(c.t)+'</span>'}
 /* 今日やることの1行(資格ごと) */
+/* 今日の状態(目立つ帯): 達成=緑、あと少し(8割以上)=黄、まだ=灰青 */
+function stTag(dn,goal){var ok=dn>=goal,near=!ok&&goal>0&&dn>=goal*0.8;
+  return '<p class="pl-st '+(ok?'ok':near?'near':'todo')+'" role="status"><b>'+(ok?'✓ 今日の目安を達成':near?'あと少し':'今日の勉強')+'</b><span>'+(ok?'今日 '+K(dn)+' 勉強しました':'今日 '+K(dn)+' / 目安 '+K(goal)+'(あと '+K(Math.max(0,goal-dn))+')')+'</span></p>'}
 function todoHTML(x,mini){var z=x.today,s=x.s,h='';
   var items=z.secs.slice(0,mini?2:6),more=z.secs.length-items.length;
   var nq=z.qNew+z.qRev;if(nq<1&&z.qM>=x.s.qm*.6)nq=1;
@@ -208,8 +211,7 @@ function drawMain(R){var el=document.getElementById("pl-main");if(!el)return;var
   h+='<section class="bx pl-today" aria-labelledby="h-td"><p class="bx-k" id="h-td">今日やること<span>'+mdw(T)+'</span></p>';
   exams.forEach(function(x){h+='<p class="pl-exam pc" style="'+cv(x.s.id)+'"><b>'+esc(x.s.short)+'</b> 今日は試験の日です。落ち着いて、がんばってください!</p>'});
   if(R.todo.length){var dn=R.todaySec/60;
-    h+='<h3 class="bx-t">目安 '+K(R.todayMin)+'</h3>'+meter(dn,R.todayMin)+'<p class="bx-s">今日 '+K(dn)+' 勉強しました'+(dn>=R.todayMin?'。今日の目安は達成です!':'(あと '+K(R.todayMin-dn)+')')+
-      (R.todayMin>(+R.week[dow(T)]||0)+1?'。使える時間('+K(+R.week[dow(T)]||0)+')より多めの目安です':'')+'</p><ul class="td-list">'+R.todo.map(function(x){return todoHTML(x)}).join("")+'</ul>';
+    h+='<h3 class="bx-t">目安 '+K(R.todayMin)+'</h3>'+meter(dn,R.todayMin)+stTag(dn,R.todayMin)+(R.todayMin>(+R.week[dow(T)]||0)+1?'<p class="bx-s">使える時間('+K(+R.week[dow(T)]||0)+')より多めの目安です</p>':'')+'<ul class="td-list">'+R.todo.map(function(x){return todoHTML(x)}).join("")+'</ul>';
     var lt=0,la=0;R.on.forEach(function(x){lt+=x.lastT;la+=x.lastA});
     if(lt>0)h+='<p class="bx-s pl-last">この1週間: 目安 '+K(lt)+' に対して '+K(la)+'。'+(la>=lt?'予定どおり進んでいます。':'足りなかった '+K(lt-la)+' は、残りの日に振り分け直しました。')+'</p>'}
   else if(!exams.length){var w=R.on.filter(function(x){return x.state==="wait"});
@@ -426,7 +428,7 @@ function homeDraw(el,R){var T=R.today,h='<p class="bx-k">今日の計画<a href=
   var ask=R.list.filter(function(x){return x.state==="ask"}),ex=R.list.filter(function(x){return x.state==="exam"});
   ask.forEach(function(x){h+='<p class="hp-ask pc" style="'+cv(x.s.id)+'"><b>'+esc(x.s.short)+'</b> '+md(x.P.exam)+'の試験の結果を教えてください<a href="/plan/">結果を入れる'+ARR+'</a></p>'});
   ex.forEach(function(x){h+='<p class="hp-ask pc" style="'+cv(x.s.id)+'"><b>'+esc(x.s.short)+'</b> 今日は試験の日です。がんばって!</p>'});
-  if(R.todo.length){var dn=R.todaySec/60;h+='<h3 class="bx-t">目安 '+K(R.todayMin)+'</h3>'+meter(dn,R.todayMin)+'<p class="bx-s">今日 '+K(dn)+(dn>=R.todayMin?'。今日の目安は達成です!':'(あと '+K(R.todayMin-dn)+')')+'</p><ul class="hp-l">'+R.todo.map(function(x){return todoHTML(x,true)}).join("")+'</ul>'}
+  if(R.todo.length){var dn=R.todaySec/60;h+='<h3 class="bx-t">目安 '+K(R.todayMin)+'</h3>'+meter(dn,R.todayMin)+stTag(dn,R.todayMin)+'<ul class="hp-l">'+R.todo.map(function(x){return todoHTML(x,true)}).join("")+'</ul>'}
   else if(R.on.length&&!ex.length)h+='<h3 class="bx-t sm">'+((+R.week[dow(T)]||0)?'今日の目安は終わっています':'今日はお休みの日です')+'</h3>';
   if(R.on.length)h+='<ul class="hp-pace">'+R.on.map(function(x){return '<li class="pc" style="'+cv(x.s.id)+'"><b>'+esc(x.s.short)+'</b>'+paceChip(x)+'<small>試験まで あと'+x.left+'日</small></li>'}).join("")+'</ul>';
   h+='<a class="bx-go pri" href="/plan/">今日の計画を見る'+ARR+'</a>';el.innerHTML=h}

@@ -44,6 +44,11 @@ HOME_CSS = """
 #bx-plan.cta{border-style:dashed}
 #bx-plan .pl-meter{height:9px;border-radius:9px;background:var(--bg);border:1px solid var(--line);overflow:hidden}
 #bx-plan .pl-meter i{display:block;height:100%;background:var(--sun);border-radius:9px;transition:width .8s var(--ease)}
+.pl-st{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 4px;padding:10px 14px;border-radius:12px;font-size:14px;line-height:1.5;border:1.5px solid}
+.pl-st b{font-size:15px;font-weight:800;white-space:nowrap}
+.pl-st.ok{background:color-mix(in srgb,#16a34a 14%,var(--paper));border-color:color-mix(in srgb,#16a34a 55%,var(--paper));color:color-mix(in srgb,#15803d 90%,var(--ink))}
+.pl-st.near{background:color-mix(in srgb,#f59e0b 16%,var(--paper));border-color:color-mix(in srgb,#f59e0b 55%,var(--paper));color:color-mix(in srgb,#b45309 90%,var(--ink))}
+.pl-st.todo{background:color-mix(in srgb,var(--brand) 9%,var(--paper));border-color:color-mix(in srgb,var(--brand) 35%,var(--paper));color:var(--ink)}
 .hp-l,.hp-pace{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 .hp-l li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:baseline;font-size:13.5px;line-height:1.55;padding:7px 10px;border-radius:12px;background:var(--bg);border-left:4px solid var(--c)}
 .hp-l li b{color:var(--c);white-space:nowrap}
