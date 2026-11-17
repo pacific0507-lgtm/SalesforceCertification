@@ -1,6 +1,6 @@
 """テキストの上のメニューに「いまの節の表示」の細い帯を足す(別のアプリから移植)。
   - 上のメニュー(#mbar)のボタンの列のすぐ下に、高さ22pxの帯(11.5px・太さ600・薄い色・上に1pxの線)。
-  - 左に「Chapter 2 取り込む > Ch2·1 データストリーム」(章・節の番号はこのアプリの見出しの書き方のまま)。1行で、はみ出す分は「…」。
+  - 左に「Chapter 2 取り込む > 1 データストリーム」(章・節の番号はこのアプリの見出しの書き方のまま)。1行で、はみ出す分は「…」。
     画面の幅が760px未満のときは、章は番号だけ(「Chapter 2」)にして、節の名前に場所を空ける。
   - 右に「3 / 88」(等幅の字・アクセントの色)。全体の数は、すべての節(data-sec のある項目)を数える。
     いまの番号は、読んでいる位置(メニューの下端+24px)より上に頭がある最後の節が、全体の何番目か。
@@ -57,7 +57,7 @@ function secbTop(){var b=0;try{b=bar.getBoundingClientRect().bottom}catch(e){}re
   function build(){var es=$$("#tv .chap[id],#tv .feat[id]").filter(function(e){return !e.closest(".csloc")}),n=0;
     list=es.map(function(e){var o={e:e,c:e.classList.contains("chap")};
       if(o.c){o.t=titleOf(e);var m=/^(Chapter\s*\d+|第\s*\d+\s*章|Ch\s*\d+)/.exec(o.t);o.s=m?m[1]:o.t}
-      else if(e.dataset.sec){n++;o.i=n;var h=e.querySelector(":scope>h3"),no=h&&h.querySelector(".no");o.t=((no?no.textContent.trim()+" ":"")+(txt(h)||TITLES[e.dataset.sec]||"")).trim()}
+      else if(e.dataset.sec){n++;o.i=n;var h=e.querySelector(":scope>h3"),no=h&&h.querySelector(".no");o.t=((no?no.textContent.trim().replace(/^Ch\s*\d+\s*[·・.\-]\s*/,"")+" ":"")+(txt(h)||TITLES[e.dataset.sec]||"")).trim()}
       return o});
     secs=n;listT=Date.now()}
   function stale(){return !list.length||!list[0].e.isConnected||!list[list.length-1].e.isConnected||Date.now()-listT>3000}
