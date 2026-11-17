@@ -143,12 +143,16 @@ function cslDraw(){var C=CSL;if(!C.el||!C.el.isConnected)return;var win=C.win,ar
   var pad=3,fl=x0+ax*s-pad,ft=(ay-Y)*s-pad,fw=aw*s+pad*2,fh=ah*s+pad*2;
   if(fl<2){fw-=2-fl;fl=2}if(fl+fw>winW-2)fw=winW-2-fl;if(ft<2){fh-=2-ft;ft=2}if(ft+fh>winH-2)fh=winH-2-ft;
   var fr=C.fr;fr.style.left=fl+"px";fr.style.top=ft+"px";fr.style.width=Math.max(8,fw)+"px";fr.style.height=Math.max(8,fh)+"px";
-  if(fr.style.visibility!=="visible"){fr.style.visibility="visible";if(!C.pulsed){C.pulsed=true;fr.classList.add("csloc-pulse")}}
+  if(fr.style.visibility!=="visible"){fr.style.visibility="visible";if(C.seen&&!C.pulsed)cslPulse(C)}
   cslPaint(C.bands,cslBands(art),H);
   var v0=Math.max(0,Y/H),v1=Math.min(1,(Y+winH/s)/H);C.vf.style.top=(v0*100)+"%";C.vf.style.height=(Math.max(0.02,v1-v0)*100)+"%";
   var p=Math.max(0,Math.min(1,(ay+ah/2)/H));C.dot.style.top=(p*100)+"%";
   var w=cslWhere(art,C.blk||C.rg.startContainer.parentElement,p);if(C.wh.textContent!==w)C.wh.textContent=w}
-function cslObs(){var C=CSL;if(!window.ResizeObserver){cslDraw();return}if(C.ro)C.ro.disconnect();C.ro=new ResizeObserver(function(){cslDraw()});C.ro.observe(C.win);C.ro.observe(C.art)}
+/* 赤枠の点滅は、場所の絵が画面に入ってきたときに出す(見る前に終わらないように)。いったん画面から出て、また入ってきたらもう一度 */
+function cslPulse(C){var fr=C.fr;if(!fr||fr.style.visibility!=="visible")return;C.pulsed=true;fr.classList.remove("csloc-pulse");void fr.offsetWidth;fr.classList.add("csloc-pulse")}
+function cslSee(){var C=CSL;if(C.io)C.io.disconnect();C.seen=false;C.pulsed=false;if(!window.IntersectionObserver){C.seen=true;cslPulse(C);return}
+  C.io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>=0.6){if(!C.seen){C.seen=true;cslPulse(C)}}else if(!e.isIntersecting){C.seen=false;C.pulsed=false}})},{threshold:[0,0.6]});C.io.observe(C.win)}
+function cslObs(){var C=CSL;cslSee();if(!window.ResizeObserver){cslDraw();return}if(C.ro)C.ro.disconnect();C.ro=new ResizeObserver(function(){cslDraw()});C.ro.observe(C.win);C.ro.observe(C.art)}
 function cslVer(a){return a.innerHTML.length+":"+a.childElementCount}
 function cslMount(q){var slot=byId("csloc-slot");if(!slot||!q||!q.x)return false;var sec=q.xs||q.s,src=byId("f-"+sec);if(!src)return false;
   if(CSL.el&&CSL.n===q.n&&CSL.src===src&&CSL.ver===cslVer(src)){slot.appendChild(CSL.el);CSL.fr.style.visibility="hidden";var w=cslColW();if(Math.abs(w-CSL.colW)>0.5){CSL.colW=w;CSL.art.style.width=w+"px"}cslObs();return true}
@@ -170,7 +174,7 @@ function cslMount(q){var slot=byId("csloc-slot");if(!slot||!q||!q.x)return false
   var fr=box.querySelector(".csloc-fr");fr.addEventListener("animationend",function(){fr.classList.remove("csloc-pulse")});
   function go(e){if(e)e.preventDefault();goText(sec,q)}
   win.addEventListener("click",go);win.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" ")go(e)});
-  if(CSL.ro)CSL.ro.disconnect();
+  if(CSL.ro)CSL.ro.disconnect();if(CSL.io)CSL.io.disconnect();
   CSL={el:box,n:q.n,src:src,ver:cslVer(src),link:CSL.link,ro:null,colW:colW,win:win,art:c,fr:fr,rg:rg,blk:bN||(sN.nodeType===1?sN:sN.parentElement),tw:null,
     bands:box.querySelector(".csmap-bands"),vf:box.querySelector(".csmap-vf"),dot:box.querySelector(".csmap-dot"),wh:box.querySelector(".csloc-where"),pulsed:false};
   var tw=CSL.blk&&CSL.blk.closest?CSL.blk.closest(".tw,.qb-tw"):null;CSL.tw=tw&&c.contains(tw)?tw:null;
