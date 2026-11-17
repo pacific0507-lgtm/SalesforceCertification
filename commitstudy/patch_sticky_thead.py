@@ -14,7 +14,7 @@ css = ("#cs-sth{position:fixed;z-index:55;overflow:hidden;pointer-events:none;bo
        "#cs-sth[hidden]{display:none}"
        "#cs-sth .tw,#cs-sth .qb-tw{margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:none!important}"
        "#cs-sth table{margin:0!important;table-layout:fixed;border-collapse:collapse}"
-       "#cs-sth th{box-sizing:border-box;background:var(--surface,#fff)}")
+       "#cs-sth th{box-sizing:border-box}")
 JS = r"""(function(){if(window.__csSth)return;window.__csSth=1;
 var st=document.createElement('style');st.id='cs-sticky-thead';st.textContent=__CSS__;document.head.appendChild(st);
 var box=null,cur=null,curW=null,raf=0;
@@ -27,7 +27,11 @@ function build(t,w){var b=ensure(t.closest('.feat')||t.closest('.qc')||document.
   var tb=document.createElement('table');tb.className=t.className;var th=t.tHead.cloneNode(true);tb.appendChild(th);wrap.appendChild(tb);
   b.innerHTML='';b.appendChild(wrap);
   var src=t.tHead.rows[0]?t.tHead.rows[0].cells:[],dst=th.rows[0]?th.rows[0].cells:[];
-  for(var i=0;i<dst.length&&i<src.length;i++){var cw=src[i].getBoundingClientRect().width;dst[i].style.width=cw+'px';dst[i].style.minWidth=cw+'px';dst[i].style.maxWidth=cw+'px'}
+  for(var i=0;i<dst.length&&i<src.length;i++){var cw=src[i].getBoundingClientRect().width;dst[i].style.width=cw+'px';dst[i].style.minWidth=cw+'px';dst[i].style.maxWidth=cw+'px';
+    /* 色は元の見出しのセルと同じにする(セルが透明なら、行・表・項目と上へたどって最初に色のある背景) */
+    var cs=getComputedStyle(src[i]),bg=cs.backgroundColor,el=src[i];
+    while((!bg||bg==='transparent'||/rgba\([^)]*,\s*0\)$/.test(bg))&&el.parentElement){el=el.parentElement;bg=getComputedStyle(el).backgroundColor}
+    dst[i].style.backgroundColor=bg;dst[i].style.color=cs.color;dst[i].style.borderBottom=cs.borderBottom}
   tb.style.width=t.getBoundingClientRect().width+'px'}
 function tick(){raf=0;try{
   var off=topOff(),list=document.querySelectorAll('.feat .tw > table, .qb-tw > table'),hit=null,hw=null;
