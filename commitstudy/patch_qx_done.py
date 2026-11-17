@@ -17,4 +17,12 @@ s = s.replace("</head>", js + "</head>")
 old = 'b.setAttribute("aria-label","この箇所の問題 "+ns.length+"問");'
 if s.count(old) != 1: sys.exit("aria-label の置換対象が見つからない")
 s = s.replace(old, 'b.setAttribute("aria-label","この箇所の問題 "+ns.length+"問"+(done?"(すべて正解)":""));')
+# 印の色(すべて正解)を、回答履歴が変わったら(アカウントの記録を読み込んだあと・問題を解いたあと)作り直さずに更新する。
+# これまでは本文を描いたときの履歴で決めていたので、アカウントの記録があとから届くと、全問正解でも緑にならなかった
+old2 = 'function closeQx(){qxp.hidden=true;qxAt=null}'
+if s.count(old2) != 1: sys.exit("closeQx の置換対象が見つからない")
+s = s.replace(old2, old2 + """
+function qxRefresh(){try{$$("#chapters .qx-b").forEach(function(b){var ns=QXM[b.dataset.qx]||[];if(!ns.length)return;
+  var d=ns.every(function(n){var h=histOf(n);return h&&h.l==="o"});if(b.classList.contains("done")!==d){b.classList.toggle("done",d);b.setAttribute("aria-label","この箇所の問題 "+ns.length+"問"+(d?"(すべて正解)":""))}})}catch(e){}}
+setInterval(qxRefresh,2000);document.addEventListener("visibilitychange",function(){if(!document.hidden)qxRefresh()});""")
 open(out, "w", encoding="utf-8").write(s); print("ok")
