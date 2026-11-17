@@ -133,6 +133,7 @@ MARKUP = f"""
    <li>本文の該当箇所には「問題 N」の印が付き、押すとその箇所の問題を一覧します(全問正解なら緑)。</li>
    <li>答え合わせのあとの「テキストのこの場所」は、節の article を <code>cloneNode(true)</code> で写して約0.56倍に縮め、高さ230pxの窓に x の文が真ん中に来るよう置きます。赤枠の点滅(2回)は、場所の絵が画面に6割以上入ってきたとき(IntersectionObserver)に出し、いったん画面から出てまた入るともう一度出します。写しからは id・data-sec・マーカーの data-k/h/t などを外し、inert・aria-hidden を付けます(マーカー・暗記・検索・目次の追跡・表の見出しの追従に数えない)。列の幅は、テキストを見たときの幅を画面の幅ごとに <code>cs-csloc-w-v1</code>(端末だけ)に控えて使い、ない幅は同じ種類の画面の幅から見積もります。窓と写しを ResizeObserver で見て描き直します(<code>patch_csloc.py</code>)。</li>
    <li>テキストの右端の「節の地図」は、いまの節の直下の要素を色の帯にし、見えている範囲を枠で出します。表示の設定 <code>prefs.csmap</code>(on/off)はほかの表示の設定と同じく保存・同期します。</li>
+   <li>上のメニューの下の「いまの節の表示」(<code>patch_secband.py</code>)は、テキストの章(<code>.chap</code>)と項目(<code>.feat</code>)を上から見て、メニューの下端+24px より上に頭がある最後のものを選びます。それが節(<code>data-sec</code>)なら、全体の節(ロックの有無に関係なくすべて)の中の何番目かを「n / 全体」で出し、節でなければ「– / 全体」と章だけを出します。スクロールは requestAnimationFrame でまとめ、文字が変わったときだけ書き換えます。帯で増えたメニューの高さは、ResizeObserver で測る <code>--barh</code> に入り、本文の上の余白・項目と章の <code>scroll-margin-top</code>(<code>--barh</code> + 14px)・PC の左の目次・節の地図の上端・表の見出しの追従がそれに合わせて動きます。表示の設定 <code>prefs.secb</code>(on/off、はじめは on)。</li>
   </ul>
  </section>
  <section class="bx gd" id="sp-sync">{H(7, "記録の保存と同期")}

@@ -67,3 +67,4 @@ python3 $C/patch_tq_src.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_toc_nodone.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_sticky_thead.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_csloc.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_secband.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
