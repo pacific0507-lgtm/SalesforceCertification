@@ -1,0 +1,570 @@
+{
+ "chapter": 5,
+ "chapter_title": "コンタクトセンター分析とインテグレーション",
+ "chapter_sub": "関係者ごとのレポートとダッシュボード、Omni Supervisor などのリアルタイム監視、外部データ・電話・Slack との主要なインテグレーションを学びます。",
+ "sections": [
+  {
+   "id": "reports",
+   "no": "Ch5·1",
+   "title": "サービスのレポートとダッシュボード",
+   "tag": "Reports & Dashboards",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>なぞなぞです。同じダッシュボードなのに、見る人によって中身が変わるものは何でしょう?</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>えっ、見る人の気分で変わるとか?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>気分ではない。権限だ。if (viewer) のように、見る人ごとにデータを選んでいる。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>正解は動的ダッシュボードです。実行ユーザーを「ダッシュボードの閲覧者」にすると、そうなります。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>じゃあ担当者ごとにダッシュボードを何十個も作らなくていいんだ!</p></div><p class=\"one\">Agentforce Service(旧 Service Cloud)では、ケースやナレッジのデータをレポートで集計し、ダッシュボードで関係者に見せます。サポート向けの標準のカスタムレポートタイプと、ダッシュボードの実行ユーザーの設定がポイントです。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>ダッシュボードは学校の掲示板です。全員に同じ時間割を貼るのが「実行ユーザーを固定」、生徒ごとに自分の成績表だけが見えるのが「動的ダッシュボード」です。</p></div><h4>サポート向けの標準のカスタムレポートタイプ</h4><div class=\"tw\"><table><thead><tr><th>レポートタイプ</th><th>わかること</th><th>使える条件</th></tr></thead>\n<tr><td>ケース履歴(Case History)</td><td>項目履歴管理を設定したケース項目の、変更前と変更後の値</td><td>追跡する項目に項目履歴管理を設定する</td></tr>\n<tr><td>Case Lifecycle</td><td>Range 項目で、ケースの状況か所有者が最後に変わってからの経過時間を見る。変わるたびに0から数え直す</td><td>標準で使える</td></tr>\n<tr><td>Cases and Emails</td><td>ケースごとの受信メールと送信メールの一覧</td><td>Email-to-Case か On-Demand Email-to-Case が有効</td></tr>\n<tr><td>Cases with Articles</td><td>ケースに添付されたナレッジ記事</td><td>Salesforce Knowledge が有効</td></tr>\n<tr><td>Cases with Milestones</td><td>ケースとマイルストンの一覧</td><td>エンタイトルメント管理が有効</td></tr>\n<tr><td>Cases with Historical Trending</td><td>ケースのデータが時間とともにどう変わったか</td><td>履歴トレンドレポートが有効</td></tr>\n</table></div><h4>履歴とトレンドのしくみ</h4><ul>\n<li>項目履歴管理で追跡できる項目は、1オブジェクトにつき最大20個です。履歴データは最大18か月(APIでは24か月)保持されます。</li>\n<li>Case History レポートでは、Old Value と New Value の項目を検索条件(フィルタ)に使えません。</li>\n<li>履歴トレンドレポートは、前の3か月と当月のデータを保持し、最大5つのスナップショット日付を比べられます。履歴フィルタは最大4つです。</li>\n<li>マイルストンの状況は、エンタイトルメントプロセスの終了時刻をもとに表示されます。プロファイルに「Entitlement Process End Time」項目へのアクセスがないユーザーには、レポートやリストビューで正しくない状況が表示されることがあります。</li>\n</ul><h4>ナレッジのレポート</h4><ul>\n<li>ケースで使われた記事は、Customer Support Reports フォルダにある標準の Cases with Articles レポートで確認できます。</li>\n<li>記事の閲覧数・投票・検索は、Knowledge Article Views、Knowledge Article Votes、Knowledge Article Searches のカスタムレポートタイプで集計します。1行は「日付・チャネル・ロール」の組み合わせです。</li>\n</ul><h4>ダッシュボードのデータ表示(実行ユーザー)</h4><div class=\"tw\"><table><thead><tr><th>「View Dashboard As」の設定</th><th>見えるデータ</th></tr></thead>\n<tr><td>自分(Me)</td><td>作成者である自分のアクセス権で、すべての閲覧者に同じデータを見せる</td></tr>\n<tr><td>別のユーザー(Another person)</td><td>指定したユーザーのアクセス権で、すべての閲覧者に同じデータを見せる</td></tr>\n<tr><td>ダッシュボードの閲覧者(The dashboard viewer)</td><td>閲覧者それぞれのアクセス権でデータを見せる。これを動的ダッシュボードと呼ぶ</td></tr>\n</table></div><ul>\n<li>動的ダッシュボードを作るには「Manage Dynamic Dashboards」権限が必要です。上限は Enterprise Edition で5個、Unlimited と Performance Edition で10個、Developer Edition で3個です。</li>\n<li>動的ダッシュボードは非公開フォルダに保存できません。更新のスケジュールも購読もできないので、手動で更新します。</li>\n<li>実行ユーザーを管理者などにすると、閲覧者が本来は見られないデータ(個人を特定できる情報など)まで見えてしまうおそれがあります。</li>\n<li>「View My Team's Dashboards」権限を持つユーザーは、ロール階層で自分より下のユーザーとしてダッシュボードを表示できます。「View All Data」権限があれば、組織の誰としても表示できます。</li>\n</ul><h4>関係者ごとの見せ方</h4><div class=\"tw\"><table><thead><tr><th>関係者</th><th>見せ方の例</th></tr></thead>\n<tr><td>サービス担当者</td><td>動的ダッシュボードにすると、1つのダッシュボードで各自が自分のアクセスできるデータだけを見られる。人ごとにダッシュボードやフォルダを作らなくてよい</td></tr>\n<tr><td>スーパーバイザー</td><td>動的ダッシュボードに担当者などのフィルタを付けると、チーム全体と個人ごとの両方の成績を見られる</td></tr>\n<tr><td>経営層</td><td>全員に同じ全体の数字を見せたいときは、実行ユーザーを固定したダッシュボードにする。閲覧者の権限に関係なく同じデータが表示される</td></tr>\n</table></div><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"smile\"><b class=\"who\">まなびん</b>動的ダッシュボードを毎朝メールで届けてもらおうっと。</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>エラーだ。動的ダッシュボードは購読できない。更新も手動だ。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>定期配信が必要なら、実行ユーザーを固定したダッシュボードを使いましょう。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>実行ユーザーを「ダッシュボードの閲覧者」にしたものが動的ダッシュボードです。閲覧者ごとに見えるデータが変わります。</li>\n<li>動的ダッシュボードはエディションごとに数の上限があり、購読・スケジュール更新・非公開フォルダへの保存ができません。</li>\n<li>ケース項目の変更前後の値は Case History、状況や所有者が変わってからの時間は Case Lifecycle、時間による変化は Cases with Historical Trending で見ます。</li>\n<li>Cases and Emails、Cases with Articles、Cases with Milestones は、関連する機能を有効にすると使えます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "あるコンタクトセンターのマネージャーは、ケースの「優先度」項目が誰によって、どの値からどの値に変わったかをレポートで確認したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "優先度項目に項目履歴管理を設定し、Case History レポートタイプで集計する",
+      "Case Lifecycle レポートタイプで Range 項目を集計する",
+      "Cases with Historical Trending レポートタイプでスナップショットを比べる",
+      "Cases and Emails レポートタイプで送信メールを集計する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Case History レポートタイプは、項目履歴管理を設定した項目の変更前と変更後の値を表示します。Case Lifecycle は状況や所有者が最後に変わってからの経過時間、履歴トレンドは数日・数週間単位のスナップショットの比較で、個々の変更内容の確認には向きません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.reports_support_crts.htm&type=5",
+     "x": "ケース履歴(Case History)項目履歴管理を設定したケース項目の、変更前と変更後の値追跡する項目に項目履歴管理を設定する"
+    },
+    {
+     "q": "あるサポート部門は、ケースの状況や所有者が最後に変わってから、どれだけ時間がたっているかを把握して、止まっているケースを見つけたいと考えています。どのレポートタイプを使うべきですか?",
+     "o": [
+      "Case Lifecycle",
+      "Case History",
+      "Cases with Milestones",
+      "Contact Role"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Case Lifecycle レポートの Range 項目は、ケースの状況か所有者が最後に変わってからの経過時間を示し、変わるたびに0から数え直します。Case History は変更前後の値、Cases with Milestones はマイルストンの一覧で、目的が違います。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.reports_support_crts.htm&type=5",
+     "x": "Case LifecycleRange 項目で、ケースの状況か所有者が最後に変わってからの経過時間を見る。変わるたびに0から数え直す標準で使える"
+    },
+    {
+     "q": "ある会社の管理者が、ケースごとの受信メールと送信メールの一覧を出そうとしましたが、Cases and Emails レポートタイプが見つかりません。最も考えられる原因はどれですか?",
+     "o": [
+      "Email-to-Case も On-Demand Email-to-Case も有効になっていない",
+      "項目履歴管理が設定されていない",
+      "Salesforce Knowledge が有効になっていない",
+      "履歴トレンドレポートが有効になっていない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Cases and Emails レポートタイプは、Email-to-Case か On-Demand Email-to-Case が有効なときに使えます。Knowledge は Cases with Articles、履歴トレンドは Cases with Historical Trending の条件です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.reports_support_crts.htm&type=5",
+     "x": "Cases and Emailsケースごとの受信メールと送信メールの一覧Email-to-Case か On-Demand Email-to-Case が有効"
+    },
+    {
+     "q": "あるサービス担当者は、ケースのマイルストンが本当は守られているのに、レポートでは違う状況で表示されると報告しました。ケースレコードの Case Milestones 関連リストでは正しく表示されています。コンサルタントは何を確認すべきですか?",
+     "o": [
+      "担当者のプロファイルに「Entitlement Process End Time」項目へのアクセスがあるか",
+      "Cases with Historical Trending が有効になっているか",
+      "ダッシュボードの実行ユーザーが「自分」になっているか",
+      "Case Lifecycle レポートの Range 項目が0になっているか"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "レポートやリストビューのマイルストン状況は、エンタイトルメントプロセスの終了時刻をもとに表示されます。プロファイルに Entitlement Process End Time 項目へのアクセスがないと、正しくない状況が表示されることがあります。ケースレコードと関連リストは正しく表示されます。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.reports_support_crts.htm&type=5",
+     "x": "マイルストンの状況は、エンタイトルメントプロセスの終了時刻をもとに表示されます。プロファイルに「Entitlement Process End Time」項目へのアクセスがないユーザーには、レポートやリストビューで正しくない状況が表示されることがあります。"
+    },
+    {
+     "q": "あるナレッジ管理チームは、どの記事がどのチャネルで何回閲覧されたかを日別に分析したいと考えています。コンサルタントは何を使うべきですか?",
+     "o": [
+      "Knowledge Article Views カスタムレポートタイプ",
+      "Cases with Articles レポート",
+      "Case History レポートタイプ",
+      "Knowledge のリストビュー"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "記事の閲覧数は Knowledge Article Views カスタムレポートタイプで集計し、1行が「日付・チャネル・ロール」の組み合わせになります。Cases with Articles はケースに添付された記事を見るためのもので、閲覧数の分析には向きません。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.knowledge_custom_reports_article.htm&type=5",
+     "x": "記事の閲覧数・投票・検索は、Knowledge Article Views、Knowledge Article Votes、Knowledge Article Searches のカスタムレポートタイプで集計します。1行は「日付・チャネル・ロール」の組み合わせです。"
+    },
+    {
+     "q": "あるコンタクトセンターでは、50人のサービス担当者がそれぞれ自分のケースだけを見るダッシュボードを使いたいと考えています。ダッシュボードとフォルダを人数分作る手間は避けたいです。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "実行ユーザーを「ダッシュボードの閲覧者」にした動的ダッシュボードを1つ作る",
+      "担当者ごとに実行ユーザーを指定したダッシュボードを50個作る",
+      "実行ユーザーを管理者に固定したダッシュボードを1つ作る",
+      "担当者ごとに非公開フォルダを作り、レポートを保存する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "動的ダッシュボードは閲覧者それぞれのアクセス権でデータを表示するので、1つで個別の表示ができます。管理者に固定すると全員が同じデータ(管理者が見られるデータ)を見ることになり、目的に合いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.dashboards_view_as.htm&type=5",
+     "x": "ダッシュボードの閲覧者(The dashboard viewer)閲覧者それぞれのアクセス権でデータを見せる。これを動的ダッシュボードと呼ぶ"
+    },
+    {
+     "q": "ある会社は、動的ダッシュボードを毎朝メールで経営層に配信したいと考えています。コンサルタントが伝えるべき制約はどれですか?",
+     "o": [
+      "動的ダッシュボードは購読もスケジュール更新もできず、手動で更新する",
+      "動的ダッシュボードは Lightning Experience で表示できない",
+      "動的ダッシュボードにはフィルタを追加できない",
+      "動的ダッシュボードは公開フォルダに保存できない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "動的ダッシュボードは購読と更新のスケジュールができず、手動で更新します。保存できないのは非公開フォルダです。フィルタは追加できます。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.dashboards_dynamic_overview.htm&type=5",
+     "x": "動的ダッシュボードは非公開フォルダに保存できません。更新のスケジュールも購読もできないので、手動で更新します。"
+    },
+    {
+     "q": "ある会社の管理者が、サポート用ダッシュボードの実行ユーザーをシステム管理者に設定しようとしています。コンサルタントが指摘すべきリスクはどれですか?",
+     "o": [
+      "閲覧者が本来は見られない個人情報などのデータまで見えてしまうおそれがある",
+      "ダッシュボードが動的ダッシュボードの上限数に数えられる",
+      "ダッシュボードの更新ができなくなる",
+      "ダッシュボードのフィルタが使えなくなる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ダッシュボードは実行ユーザーの権限でデータを表示するため、管理者を実行ユーザーにすると、閲覧者が普段は見られないデータまで見える可能性があります。実行ユーザーを固定したダッシュボードは動的ダッシュボードの上限には数えられません。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.dashboards_view_as_considerations.htm&type=5",
+     "x": "実行ユーザーを管理者などにすると、閲覧者が本来は見られないデータ(個人を特定できる情報など)まで見えてしまうおそれがあります。"
+    },
+    {
+     "q": "あるサポート部門の部長は、全社の経営会議で全員が同じケース件数とSLA達成率を見られるようにしたいと考えています。閲覧者の権限によって数字が変わっては困ります。どの設定が適切ですか?",
+     "o": [
+      "実行ユーザーを特定のユーザーに固定したダッシュボード",
+      "実行ユーザーを「ダッシュボードの閲覧者」にした動的ダッシュボード",
+      "閲覧者ごとに作った個人用レポート",
+      "履歴トレンドレポートの購読"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "実行ユーザーを固定すると、閲覧者の権限に関係なく全員が同じデータを見ます。動的ダッシュボードは閲覧者ごとにデータが変わるので、全員が同じ数字を見るという要件に合いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.dashboards_view_as.htm&type=5",
+     "x": "経営層全員に同じ全体の数字を見せたいときは、実行ユーザーを固定したダッシュボードにする。閲覧者の権限に関係なく同じデータが表示される"
+    },
+    {
+     "q": "Enterprise Edition の組織で、動的ダッシュボードについて正しい説明はどれですか?(2つ選択)",
+     "o": [
+      "作成・編集には「Manage Dynamic Dashboards」権限が必要である",
+      "組織で作れる数は最大5個である",
+      "非公開フォルダに保存できる",
+      "更新のスケジュールを設定できる"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "動的ダッシュボードの作成・編集には Manage Dynamic Dashboards 権限が必要で、上限は Enterprise Edition で5個です。非公開フォルダには保存できず、更新のスケジュールも設定できません。",
+     "u": "https://help.salesforce.com/s/articleView?id=analytics.dashboards_dynamic_overview.htm&type=5",
+     "x": "動的ダッシュボードを作るには「Manage Dynamic Dashboards」権限が必要です。上限は Enterprise Edition で5個、Unlimited と Performance Edition で10個、Developer Edition で3個です。"
+    }
+   ]
+  },
+  {
+   "id": "analytics",
+   "no": "Ch5·2",
+   "title": "リアルタイム監視と高度な分析",
+   "tag": "Contact Center Analytics",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>監視画面の名前、Omni Supervisor でしょ? 知ってる知ってる!</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>半分正解だ。Enhanced Omni-Channel では Command Center for Service に改名された。中身は同じだ。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>えっ、名前が変わったの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>はい。試験は Summer '25 準拠なので Omni Supervisor の名前で出るかもしれません。どちらの名前でも同じ機能だとわかれば大丈夫です。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>クラス名のリネームだ。メソッドは変わっていない。</p></div><p class=\"one\">Command Center for Service(旧称 Omni Supervisor)は、Omni-Channel でルーティングされる作業と担当者の状況をリアルタイムで見て、その場で手を打つための画面です。過去の実績はレポートや CRM Analytics、AIエージェントの効果は Agent Analytics で分析します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>空港の管制塔です。今どの便(作業)がどこにいて、どの滑走路(キュー)が混んでいるかを見ながら、必要なら別の滑走路へ誘導します。過去の運航記録の分析は別の部署(レポート)が担当します。</p></div><h4>Command Center for Service のタブ</h4><div class=\"tw\"><table><thead><tr><th>タブ</th><th>見られること</th></tr></thead>\n<tr><td>Wallboard</td><td>自分が管理する担当者と作業の主要な指標を、ひと目で見る</td></tr>\n<tr><td>Service Reps</td><td>担当者の在席状況(プレゼンス状況)、チャネル、割り当てられたキュー、容量の使用率、ログイン時間、最後に作業を受け入れてからの時間</td></tr>\n<tr><td>Queues Backlog</td><td>キューの優先度、作業サイズ、待ち時間。キューベースか外部ルーティングが有効なときに表示される</td></tr>\n<tr><td>In-Progress Work</td><td>キューから担当者の画面へ流れている作業</td></tr>\n<tr><td>Skills Backlog</td><td>スキルベースルーティングで保留中の作業。スキルベースルーティングが有効なときだけ表示される</td></tr>\n<tr><td>Agentforce</td><td>Agentforce Service Agent と顧客の、進行中の拡張メッセージングの会話をリアルタイムで見る</td></tr>\n<tr><td>Reports</td><td>コンタクトセンターと担当者の過去の実績をレポートで見る</td></tr>\n</table></div><h4>スーパーバイザーができること</h4><ul>\n<li>担当者は助けが必要なとき、作業にフラグを立てられます。スーパーバイザーはフラグの列で並べ替えて、助けが必要な担当者を見つけます。</li>\n<li>会話を監視しながら、顧客には見えず担当者だけに見えるメッセージ(ウィスパーメッセージ)を送れます。</li>\n<li>Queues Backlog タブで担当者を新しいキューに追加しても、それまでのキューの割り当てはそのまま残ります。</li>\n<li>Enhanced Omni-Channel では、ケースなどの作業を、所有者項目を変えずに別のキュー・担当者・スキル・Omni-Channel フローへ割り当て直せます。割り当て直した作業は、キューでの優先度が保たれます。</li>\n<li>スーパーバイザー設定(supervisor configuration)で、スーパーバイザーのグループごとに、表示するタブと順番、見える担当者・キュー・スキル・アクションを決めます。担当者のタイムラインを隠すこともできます。</li>\n<li>Agentforce タブには最大10個の Service agent の会話が表示されます。「Monitor」で会話を見て、「Transfer to Rep」で人の担当者へ転送し、「Lower」でフラグを下ろします。</li>\n</ul><h4>過去の実績を見るレポート</h4><ul>\n<li>Omni-Channel のカスタムレポートタイプでは、AgentWork(エージェント作業)オブジェクトを Case、MessagingSession、Voice、Lead、WorkOrder とつないで、ケース種別ごとの作業量やチャネル種別ごとの作業時間などを集計できます。</li>\n<li>標準のレポートとダッシュボードは、設定の「Service Cloud Reports」ページでセットを選んでインストールします。先に Enhanced Omni-Channel を有効にしておき、インストールには「Modify All Data」権限が必要です。</li>\n<li>再インストールすると、同じ開発者名のレポートは上書きされます。変更を残したいレポートは、先に別のレポートとして保存します。</li>\n</ul><h4>高度な分析とAIエージェントの効果測定</h4><ul>\n<li>CRM Analytics の Service Analytics アプリは、テンプレートから構成ツールの質問に答えて作るアプリです。サービスマネージャーには傾向・過去実績・同僚との比較を含む全体像を、担当者には各ケースと顧客の要点を見せます。</li>\n<li>Agentforce Service Agent の効果は、Agentforce Studio の Agent Analytics(Service Agent Analytics)で見ます。エージェント、期間、チャネルなどで絞り込めます。</li>\n</ul><div class=\"tw\"><table><thead><tr><th>Agent Analytics の指標</th><th>意味</th></tr></thead>\n<tr><td>Deflection rate(回避率)</td><td>エスカレーションせずに終わったセッションの割合</td></tr>\n<tr><td>Escalation rate</td><td>人の担当者や別のエージェントへエスカレーションしたセッションの割合</td></tr>\n<tr><td>Abandonment rate</td><td>タイムアウトや離脱などで放棄されたセッションの割合</td></tr>\n<tr><td>Engagement rate</td><td>顧客が1つ以上メッセージを送ったセッションの割合</td></tr>\n<tr><td>Success rate</td><td>エージェントのアクションがエラーなく完了したやり取りの割合</td></tr>\n</table></div><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>リアルタイムの画面とレポート、どっちを使えばいいの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>「今どうなっているか」は Command Center for Service、「先月どうだったか」はレポートとダッシュボードです。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>Omni Supervisor は Enhanced Omni-Channel で Command Center for Service に改名されました。機能は同じです。</li>\n<li>Skills Backlog タブはスキルベースルーティング、Queues Backlog タブはキューベースか外部ルーティングのときに表示されます。</li>\n<li>スーパーバイザーごとに見せる範囲は、スーパーバイザー設定で決めます。</li>\n<li>Omni-Channel の作業の分析は AgentWork のレポートタイプ、AIエージェントの回避率やエスカレーション率は Agent Analytics で見ます。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "あるコンタクトセンターのスーパーバイザーは、チャット対応中の新人が困っているときに、顧客に気づかれないように助言を送りたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Command Center for Service で会話を監視し、担当者だけに見えるメッセージを送る",
+      "ケースフィードに投稿して担当者をメンションする",
+      "Omni-Channel フローで会話をスーパーバイザーに転送する",
+      "担当者の在席状況をオフラインに変える"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Command Center for Service(旧称 Omni Supervisor)では、会話を監視しながら、顧客には見えず担当者だけが見るメッセージ(ウィスパーメッセージ)を送れます。在席状況をオフラインにすると作業が追跡されなくなり、助言にはなりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_supervisor_intro.htm&type=5",
+     "x": "会話を監視しながら、顧客には見えず担当者だけに見えるメッセージ(ウィスパーメッセージ)を送れます。"
+    },
+    {
+     "q": "あるスーパーバイザーは、助けを求めている担当者をすぐに見つけたいと考えています。Command Center for Service でどうすべきですか?",
+     "o": [
+      "担当者が立てたフラグの列で並べ替える",
+      "Skills Backlog タブで保留中の作業を確認する",
+      "Reports タブで先月の処理時間を確認する",
+      "Wallboard タブで全体の待ち時間を確認する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "担当者は助けが必要なときに作業にフラグを立てられ、スーパーバイザーはフラグの列で並べ替えて該当者を見つけます。Skills Backlog や Reports は別の目的のタブです。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_supervisor_intro.htm&type=5",
+     "x": "担当者は助けが必要なとき、作業にフラグを立てられます。スーパーバイザーはフラグの列で並べ替えて、助けが必要な担当者を見つけます。"
+    },
+    {
+     "q": "ある会社はキューベースのルーティングだけを使っています。スーパーバイザーが Command Center for Service に Skills Backlog タブが表示されないと言っています。理由として正しいものはどれですか?",
+     "o": [
+      "Skills Backlog タブは、スキルベースルーティングが有効なときだけ表示される",
+      "Skills Backlog タブは、Agentforce Service Agent を使うときだけ表示される",
+      "Skills Backlog タブは、Partner Contact Center を使うときだけ表示される",
+      "Skills Backlog タブは、レポートをインストールしたときだけ表示される"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Skills Backlog タブはスキルベースルーティングが有効な組織でだけ表示されます。キューベースか外部ルーティングの場合は Queues Backlog タブで保留中の作業を見ます。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_supervisor_tabs_intro.htm&type=5",
+     "x": "Skills Backlogスキルベースルーティングで保留中の作業。スキルベースルーティングが有効なときだけ表示される"
+    },
+    {
+     "q": "あるスーパーバイザーは、Queues Backlog タブで担当者を新しいキューに追加しました。担当者のそれまでのキューの割り当てはどうなりますか?",
+     "o": [
+      "それまでのキューの割り当てもそのまま残る",
+      "それまでのキューの割り当ては自動で外れる",
+      "担当者の在席状況が自動でオフラインになる",
+      "それまでのキューの作業がすべて新しいキューへ移る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Queues Backlog タブで担当者を新しいキューに追加しても、それまでのキューの割り当ては残ります。在席状況や既存の作業は変わりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_supervisor_queues_tab.htm&type=5",
+     "x": "Queues Backlog タブで担当者を新しいキューに追加しても、それまでのキューの割り当てはそのまま残ります。"
+    },
+    {
+     "q": "あるコンタクトセンターでは、誤ったキューに入ったケースを、所有者項目を手で書き換えずに正しいスキルの担当者へ回したいと考えています。また、SLAを守るためにキューでの優先度は保ちたいです。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Enhanced Omni-Channel の作業の割り当て直し(Reassign Work)を使う",
+      "ケースの所有者を一括で変更する",
+      "ケースを複製して新しいキューに作り直す",
+      "エスカレーションルールでケースを再割り当てする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Enhanced Omni-Channel では、所有者項目を変えずに作業を別のキュー・担当者・スキル・Omni-Channel フローへ割り当て直せ、キューでの優先度も保たれます。所有者の一括変更や複製では、優先度を保ったルーティングになりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_agent_reassign_work.htm&type=5",
+     "x": "Enhanced Omni-Channel では、ケースなどの作業を、所有者項目を変えずに別のキュー・担当者・スキル・Omni-Channel フローへ割り当て直せます。割り当て直した作業は、キューでの優先度が保たれます。"
+    },
+    {
+     "q": "ある会社には地域ごとに3つのサポートチームがあり、各チームのスーパーバイザーには自分のチームの担当者とキューだけを Command Center for Service で見せたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "チームごとにスーパーバイザー設定を作り、見える担当者・キュー・スキルを指定する",
+      "各スーパーバイザーに動的ダッシュボードを作る",
+      "チームごとに別の Service Console アプリを作る",
+      "共有ルールで他チームのケースを非表示にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "スーパーバイザー設定では、スーパーバイザーのグループごとに表示するタブや、見える担当者・キュー・スキル・アクションを決められます。動的ダッシュボードや共有ルールでは Command Center for Service の表示範囲は制御できません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_create_supervisor_configuration.htm&type=5",
+     "x": "スーパーバイザー設定(supervisor configuration)で、スーパーバイザーのグループごとに、表示するタブと順番、見える担当者・キュー・スキル・アクションを決めます。担当者のタイムラインを隠すこともできます。"
+    },
+    {
+     "q": "ある会社は Agentforce Service Agent を Enhanced Chat で公開しました。スーパーバイザーは、AIエージェントと顧客の会話をリアルタイムで見て、必要なら人の担当者に引き継ぎたいと考えています。何を使うべきですか?",
+     "o": [
+      "Command Center for Service の Agentforce タブ",
+      "Agentforce Builder の会話プレビュー",
+      "Cases with Articles レポート",
+      "Service Analytics アプリ"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce タブでは、Agentforce Service Agent と顧客の進行中の会話をリアルタイムで監視し、Transfer to Rep で人の担当者へ転送できます。表示されるのは最大10個の Service agent の会話です。Agentforce Builder のプレビューはテスト用です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_supervisor_ai_agents_tab.htm&type=5",
+     "x": "Agentforce タブには最大10個の Service agent の会話が表示されます。「Monitor」で会話を見て、「Transfer to Rep」で人の担当者へ転送し、「Lower」でフラグを下ろします。"
+    },
+    {
+     "q": "あるオペレーションマネージャーは、チャネル種別ごとの担当者の作業時間や、ケース種別ごとの作業量を集計したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "AgentWork オブジェクトを Case や MessagingSession とつないだ Omni-Channel のレポートタイプを使う",
+      "Case Lifecycle レポートタイプを使う",
+      "Wallboard タブの数値を毎日メモする",
+      "Knowledge Article Views レポートタイプを使う"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Omni-Channel のレポートタイプでは AgentWork を Case、MessagingSession、Voice、Lead、WorkOrder とつなげ、作業量や作業時間を集計できます。Wallboard はリアルタイムの表示で、過去の集計には向きません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_custom_report_types.htm&type=5",
+     "x": "Omni-Channel のカスタムレポートタイプでは、AgentWork(エージェント作業)オブジェクトを Case、MessagingSession、Voice、Lead、WorkOrder とつないで、ケース種別ごとの作業量やチャネル種別ごとの作業時間などを集計できます。"
+    },
+    {
+     "q": "ある管理者は、Agentforce Service の標準のレポートとダッシュボードを Service Cloud Reports ページから再インストールしようとしています。コンサルタントが事前に伝えるべきことはどれですか?",
+     "o": [
+      "同じ開発者名のレポートは上書きされるので、変更を残したいレポートは先に別名で保存する",
+      "再インストールすると Command Center for Service が無効になる",
+      "再インストールには Standard Omni-Channel に戻す必要がある",
+      "再インストールしたレポートは Reports タブに表示されなくなる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "再インストールすると同じ開発者名のレポートは上書きされるため、変更したレポートは先に別のレポートとして保存します。インストールの前提は Enhanced Omni-Channel で、Modify All Data 権限が必要です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_install_reports.htm&type=5",
+     "x": "再インストールすると、同じ開発者名のレポートは上書きされます。変更を残したいレポートは、先に別のレポートとして保存します。"
+    },
+    {
+     "q": "ある会社は、Agentforce Service Agent がどれだけ人の担当者に引き継がずに問い合わせを終えられているかを測りたいと考えています。コンサルタントが見るべき指標はどれですか?",
+     "o": [
+      "Agent Analytics の Deflection rate",
+      "Agent Analytics の Engagement rate",
+      "Service Reps タブの Primary Capacity",
+      "Case Lifecycle の Range"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Deflection rate(回避率)は、エスカレーションせずに終わったセッションの割合です。Engagement rate は顧客がメッセージを送ったセッションの割合で、解決の度合いは表しません。Primary Capacity は人の担当者の容量です。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.generative_ai_agent_analytics_use.htm&type=5",
+     "x": "Deflection rate(回避率)エスカレーションせずに終わったセッションの割合"
+    }
+   ]
+  },
+  {
+   "id": "integ",
+   "no": "Ch5·3",
+   "title": "主要なインテグレーションと外部データ",
+   "tag": "Integrations",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>基幹システムの注文データ、全部 Salesforce にコピーしちゃえばいいよね!</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>ちょっと待ってください。何百万件もあって、毎分変わるデータだったらどうしますか?</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>うっ……コピーした瞬間から古くなっちゃう。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>コピーではなく参照渡しだ。Salesforce Connect なら必要なときに取りに行く。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そのとおりです。インテグレーションは「どこにデータを置くか」から考えます。</p></div><p class=\"one\">Agentforce Service は、外部のデータ、電話システム、注文管理や現場作業の製品とつないで使えます。コンサルタントは、データをコピーするか、その場で参照するかを要件から選びます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>図書館の本です。全部の本を自宅に買いそろえる(コピー)より、読みたいときに借りる(参照)ほうが、いつも最新版を読めて部屋も狭くなりません。</p></div><h4>外部データの扱い方</h4><div class=\"tw\"><table><thead><tr><th>方法</th><th>特徴</th></tr></thead>\n<tr><td>Salesforce Connect(外部オブジェクト)</td><td>外部システムのデータをコピーせず、必要なときにリアルタイムで参照・更新する</td></tr>\n<tr><td>Data 360 のゼロコピー(データフェデレーション)</td><td>Snowflake や Databricks などにあるデータを Data 360 に複製せず、その場でクエリして使う</td></tr>\n</table></div><h4>Salesforce Connect</h4><ul>\n<li>Salesforce Connect は、外部オブジェクトを外部システムのデータテーブルに対応付け、データをコピーせずに、必要なときにリアルタイムでアクセスします。</li>\n<li>推奨される場面は「組織にコピーしたくない大量のデータがある」「一度に必要なのは少量」「最新のデータにリアルタイムでアクセスしたい」の3つです。</li>\n<li>外部オブジェクトは、グローバル検索、参照関係、Salesforce モバイルアプリ、Apex、SOQL、API などで使えます。</li>\n<li>外部オブジェクトのレコードは既定では参照のみです。外部データソースの設定で、書き込み可能な外部オブジェクトにできます。</li>\n<li>Salesforce Connect は Enterprise・Performance・Unlimited Edition では追加費用のオプションです。外部オブジェクトは組織あたり最大200個です。</li>\n</ul><div class=\"tw\"><table><thead><tr><th>アダプター</th><th>使う場面</th></tr></thead>\n<tr><td>クロス組織(Cross-org)</td><td>別の Salesforce 組織のデータを参照する。コールアウトは提供側の組織の API 上限に数えられる</td></tr>\n<tr><td>OData 2.0 / 4.0 / 4.01</td><td>OData に対応した外部システム(SAP など)のデータをリアルタイムで参照する</td></tr>\n<tr><td>Apex のカスタムアダプター</td><td>ほかのアダプターが合わないときに、Apex Connector Framework で独自に作る。REST API へのコールアウトなど</td></tr>\n</table></div><h4>Data 360 のゼロコピー</h4><ul>\n<li>ゼロコピーのデータフェデレーションは、物理的に別のデータソースを、データを複製せずにクエリするしくみです。</li>\n<li>クエリフェデレーションでは、Data 360 が外部システムの計算エンジンに SQL を送り、結果だけを受け取ります。ファイルフェデレーションでは、オープンテーブル形式のストレージを Data 360 自身のエンジンで直接読みます。</li>\n<li>大きなデータや頻繁に変わるデータには、アクセラレーション(キャッシュ)を有効にして、一時的に Data 360 に保存する方法が推奨されています。</li>\n</ul><h4>電話システムとの連携</h4><div class=\"tw\"><table><thead><tr><th>製品(旧称)</th><th>向いている会社</th><th>請求</th></tr></thead>\n<tr><td>Agentforce Contact Center Voice(旧 Salesforce Voice Native Telephony)</td><td>Salesforce に組み込まれた電話を使い、すばやく構築して Agentforce の音声エージェントも使いたい</td><td>Salesforce から1本</td></tr>\n<tr><td>Partner Contact Center Voice(旧 Salesforce Voice with Partner Telephony)</td><td>今の電話プロバイダーを使い続けたい。プロバイダーとはマネージドパッケージで連携する</td><td>Salesforce とプロバイダーから別々</td></tr>\n<tr><td>Partner Contact Center with Amazon Connect(旧 Salesforce Voice with Amazon Connect)</td><td>セットアップを Salesforce に任せたい。Amazon Connect インスタンスも Salesforce が作る</td><td>Salesforce から1本</td></tr>\n<tr><td>Partner Contact Center with Amazon Connect - Bring Your Own(旧 Salesforce Voice with Partner Telephony from Amazon Connect)</td><td>自社で構築済みの Amazon Connect を使う。コンタクトフローや Lambda 関数は自分で設定する</td><td>Salesforce と AWS から別々</td></tr>\n</table></div><ul>\n<li>Partner Contact Center では、通話のルーティングは電話プロバイダー側で行われます。Salesforce のキューをプロバイダーのキューに対応付けます。対応付けのないキューに割り当てた通話はルーティングされません。</li>\n</ul><h4>ほかの製品やサードパーティとの連携</h4><ul>\n<li>Agentforce Field Service and Operations(旧 Field Service)では、ケースから作業指示(Work Order)を作るフローと、それを起動するクイックアクションを用意できます。</li>\n<li>Salesforce Order Management は、Agentforce Commerce(旧 Commerce Cloud)の B2C Commerce と B2B Commerce に統合され、Agentforce Service にもネイティブに対応しています。サービス担当者は Service Console で注文サマリーを開き、キャンセル、返品、交換などを処理してケースを関連付けられます。</li>\n<li>AppExchange のサードパーティ製品は、マネージドパッケージとしてインストールし、そのあと自社の環境とユーザーに合わせて設定します。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>外部オブジェクトって、普通のオブジェクトと同じように使えるの?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>ほぼ同じだ。ただし既定は読み取り専用だ。書き込みは設定で許可する。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>コピーしたくない大量のデータ、少量ずつ必要、リアルタイムが必要、の3条件なら Salesforce Connect です。</li>\n<li>別の Salesforce 組織のデータはクロス組織アダプター、SAP などの OData 対応システムは OData アダプターです。</li>\n<li>データウェアハウスのデータを Data 360 で複製せずに使うのがゼロコピーです。</li>\n<li>既存の Amazon Connect を使うなら Bring Your Own、構築を任せるなら Partner Contact Center with Amazon Connect です。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "ある会社のサービス担当者は、ERP にある数百万件の注文データのうち、対応中の顧客の注文だけを最新の状態で見たいと考えています。データは頻繁に更新され、Salesforce にコピーはしたくありません。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Salesforce Connect の外部オブジェクトで ERP のデータを参照する",
+      "毎晩 ETL ツールで注文データを取り込む",
+      "データローダで注文データをカスタムオブジェクトに移行する",
+      "注文データを CSV で添付ファイルとしてケースに保存する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Salesforce Connect は、コピーしたくない大量のデータ、一度に少量だけ必要、リアルタイムが必要、という場面に推奨されます。ETL やデータローダはデータをコピーするため、すぐに古くなります。",
+     "u": "https://help.salesforce.com/s/articleView?id=platform.platform_connect_about.htm&type=5",
+     "x": "推奨される場面は「組織にコピーしたくない大量のデータがある」「一度に必要なのは少量」「最新のデータにリアルタイムでアクセスしたい」の3つです。"
+    },
+    {
+     "q": "ある会社は、外部オブジェクトで表示している ERP の注文を、サービス担当者が取引先の関連リストから直接更新できるようにしたいと考えています。何を確認すべきですか?",
+     "o": [
+      "外部データソースの設定で、書き込み可能な外部オブジェクトを有効にする",
+      "外部オブジェクトは更新できないので、カスタムオブジェクトにコピーする",
+      "項目履歴管理を外部オブジェクトに設定する",
+      "外部オブジェクトに入力規則を追加する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "外部オブジェクトのレコードは既定では参照のみですが、外部データソースの設定で書き込み可能にできます。コピーは不要です。",
+     "u": "https://help.salesforce.com/s/articleView?id=platform.platform_connect_about.htm&type=5",
+     "x": "外部オブジェクトのレコードは既定では参照のみです。外部データソースの設定で、書き込み可能な外部オブジェクトにできます。"
+    },
+    {
+     "q": "ある会社は、買収した子会社が別の Salesforce 組織で管理している顧客の取引履歴を、自社のサービス担当者に見せたいと考えています。データはコピーしたくありません。どの Salesforce Connect アダプターが適切ですか?",
+     "o": [
+      "クロス組織(Cross-org)アダプター",
+      "OData 4.0 アダプター",
+      "Apex のカスタムアダプター",
+      "Amazon DynamoDB 用アダプター"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "クロス組織アダプターは Lightning Platform REST API で別の Salesforce 組織のデータにアクセスします。コールアウトは提供側の組織の API 上限に数えられる点に注意します。OData は OData に対応した外部システム向けです。",
+     "u": "https://help.salesforce.com/s/articleView?id=platform.platform_connect_adapters.htm&type=5",
+     "x": "クロス組織(Cross-org)別の Salesforce 組織のデータを参照する。コールアウトは提供側の組織の API 上限に数えられる"
+    },
+    {
+     "q": "ある小売企業は、Snowflake に保存している購買データを、Data 360 に複製せずにサービス担当者向けの顧客情報に活用したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Data 360 のゼロコピーのデータフェデレーション",
+      "Salesforce Connect のクロス組織アダプター",
+      "Email-to-Case",
+      "Service Cloud Reports のインストール"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ゼロコピーのデータフェデレーションは、Snowflake などの外部データを複製せずにクエリして使うしくみです。クロス組織アダプターは別の Salesforce 組織のデータ用です。",
+     "u": "https://help.salesforce.com/s/articleView?id=data.c360_a_byol_data_federation.htm&type=5",
+     "x": "ゼロコピーのデータフェデレーションは、物理的に別のデータソースを、データを複製せずにクエリするしくみです。"
+    },
+    {
+     "q": "ある会社は、すでに自社で Amazon Connect のコンタクトセンターを構築し、コンタクトフローや Lambda 関数を運用しています。この環境を Salesforce の担当者画面とつなぎたいと考えています。どの製品が最も適切ですか?",
+     "o": [
+      "Partner Contact Center with Amazon Connect - Bring Your Own",
+      "Partner Contact Center with Amazon Connect",
+      "Agentforce Contact Center Voice",
+      "Partner Contact Center Voice"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Bring Your Own(旧 Salesforce Voice with Partner Telephony from Amazon Connect)は、既存の Amazon Connect と連携し、フローや Lambda は自分で設定します。請求は Salesforce と AWS から別々です。Partner Contact Center with Amazon Connect は Salesforce が Amazon Connect インスタンスを作るモデルです。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.voice_telephony_models.htm&type=5",
+     "x": "Partner Contact Center with Amazon Connect - Bring Your Own(旧 Salesforce Voice with Partner Telephony from Amazon Connect)自社で構築済みの Amazon Connect を使う。コンタクトフローや Lambda 関数は自分で設定するSalesforce と AWS から別々"
+    },
+    {
+     "q": "ある会社は電話システムを新しく導入します。セットアップをできるだけ Salesforce に任せ、Amazon Connect を使い、請求も Salesforce からの1本にまとめたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Partner Contact Center with Amazon Connect",
+      "Partner Contact Center with Amazon Connect - Bring Your Own",
+      "Partner Contact Center Voice",
+      "Salesforce Connect の OData アダプター"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Partner Contact Center with Amazon Connect(旧 Salesforce Voice with Amazon Connect)では、Salesforce が Amazon Connect インスタンスの作成を含むセットアップの大部分を行い、請求は Salesforce から1本です。Bring Your Own は請求が別々で、設定も自分で行います。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.voice_telephony_models.htm&type=5",
+     "x": "Partner Contact Center with Amazon Connect(旧 Salesforce Voice with Amazon Connect)セットアップを Salesforce に任せたい。Amazon Connect インスタンスも Salesforce が作るSalesforce から1本"
+    },
+    {
+     "q": "ある会社は Partner Contact Center Voice で外部の電話プロバイダーと連携しました。テストで、一部の通話が担当者にまったく届きません。最も考えられる原因はどれですか?",
+     "o": [
+      "通話を割り当てた Salesforce のキューが、プロバイダーのキューに対応付けられていない",
+      "担当者に Knowledge ユーザーの権限がない",
+      "Email-to-Case が有効になっていない",
+      "Command Center for Service のスーパーバイザー設定がない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Partner Contact Center では通話のルーティングはプロバイダー側で行われるため、Salesforce のキューをプロバイダーのキューに対応付けます。対応付けのないキューに割り当てた通話はルーティングされません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.voice_and_your_telephony_provider.htm&type=5",
+     "x": "Partner Contact Center では、通話のルーティングは電話プロバイダー側で行われます。Salesforce のキューをプロバイダーのキューに対応付けます。対応付けのないキューに割り当てた通話はルーティングされません。"
+    },
+    {
+     "q": "ある家電メーカーでは、電話で受けた故障のケースから技術者の訪問を手配したいと考えています。コンサルタントが提案できる、Agentforce Field Service and Operations の標準の仕組みはどれですか?",
+     "o": [
+      "ケースから作業指示(Work Order)を作るフローとクイックアクション",
+      "ケースから商談を作る取引先チームの設定",
+      "ケースからナレッジ記事を作る Knowledge のアクション",
+      "ケースから外部オブジェクトを作る Salesforce Connect の設定"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce Field Service and Operations では、ケースから作業指示を作るフローと、それを起動するクイックアクションを用意できます。作業指示に対してサービス予約を作り、技術者を割り当てます。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.fs_go_default_settings.htm&type=5",
+     "x": "Agentforce Field Service and Operations(旧 Field Service)では、ケースから作業指示(Work Order)を作るフローと、それを起動するクイックアクションを用意できます。"
+    }
+   ]
+  },
+  {
+   "id": "slack",
+   "no": "Ch5·4",
+   "title": "Slack for Service・スウォーミング・インシデント管理",
+   "tag": "Slack & Swarming",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>たとえ話でいきましょう。難しい問い合わせは、昔は「1次窓口→2次→3次」とバケツリレーでした。</p><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>リレーのたびに説明し直しで、お客さんは待たされるんだよね。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>スウォーミングは、バケツリレーをやめて全員で火を囲む方式だ。</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>その「囲む場所」が Slack のチャンネルってこと?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>そうです。Salesforce のレコードのフィードで囲むこともできます。</p></div><p class=\"one\">Service Cloud for Slack アプリとスウォーミングを使うと、サービス担当者は Slack で専門家とすぐに協業し、ケースの情報を行き来させられます。多くの顧客に影響する障害は、Customer Service Incident Management でインシデントとしてまとめて管理します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>火事の現場です。ボヤ(1件のケース)は1人で消せますが、大火事(インシデント)は消防隊が集まり、原因を調べ(問題)、再発防止の工事(変更要求)まで行います。</p></div><h4>Service Cloud for Slack</h4><ul>\n<li>Service Cloud for Slack アプリは Slack Marketplace からインストールします。サービス担当者は Slack を離れずに、レコードの参照と更新、スウォームチャネルでの協業、ケースの管理ができます。</li>\n<li>Slack では取引先、取引先責任者、ケース、Customer Service Incident Management のレコードを検索・編集できます。Slack から作成できるのは、ケース、ナレッジ記事の下書き、Customer Service Incident Management のレコードです。</li>\n<li>スウォームで問題が解決したら、Slack のメッセージからナレッジ記事の下書きを作れます。作れるのは Salesforce でナレッジの作成権限を持つユーザーだけです。</li>\n<li>Slack のメッセージを Salesforce に送ると、ケースのフィードに表示され、Slack での進展をケースの関係者と共有できます。</li>\n</ul><h4>スウォーミングの設定手順</h4><ol class=\"steps\">\n<li>Swarming をオンにする</li>\n<li>ユーザー権限を設定する(Slack Service User 権限セットなど)</li>\n<li>Service Console にスウォーミング用のページレイアウト、タブ、関連リストを用意する</li>\n<li>スウォーミングのフロー(スウォームの開始、メンバー追加、終了のテンプレート)を設定する</li>\n<li>Expert Finder を設定する</li>\n<li>協業ツール(Slack)を設定する</li>\n</ol><h4>スウォーミングのポイント</h4><ul>\n<li>スウォーミング(Swarming)は、階層型(ティア型)のサポートに頼らず、担当者がほかの専門家を巻き込み、協業・参加・担当を記録するしくみです。</li>\n<li>Slack を使わない場合は、Swarm オブジェクトのフィード追跡を有効にすれば、Swarm レコードのフィードで協業できます。</li>\n<li>Expert Finder は Omni-Channel とスキルベースルーティングで動きます。サービスリソースにスキルを割り当て、Swarm Member オブジェクト用のサービスチャネル(状況ベースの容量モデル)を作ります。</li>\n<li>Slack でスウォームに参加するメンバーは、Service Cloud ユーザーであること、Salesforce アカウントを Service Cloud for Slack アプリに接続していること、依頼者と同じ Slack ワークスペースにいることが必要です。</li>\n<li>スウォームを終了すると、終了日時が入り、スウォームとメンバーの状況が Closed になり、担当者の Omni-Channel の容量が空きます。</li>\n</ul><h4>Customer Service Incident Management</h4><div class=\"tw\"><table><thead><tr><th>オブジェクト</th><th>役割</th></tr></thead>\n<tr><td>インシデント(Incident)</td><td>多くの顧客に影響する障害を記録する。重大インシデントとして印を付け、エスカレーションを早められる</td></tr>\n<tr><td>問題(Problem)</td><td>マネージャーと専門家が根本原因を分析する。影響を受けた資産とつなげ、ナレッジ記事も検索できる</td></tr>\n<tr><td>変更要求(Change Request)</td><td>根本原因がわかったあと、修正をデプロイして解決する。承認を得て実施し、Field Service で現場の作業員を派遣することもできる</td></tr>\n</table></div><ul>\n<li>ケースは1人の顧客の問い合わせ、インシデントは多くの顧客に及ぶ障害です。1つのインシデントに多くのケースを関連付けます。</li>\n<li>インシデントは、サービス担当者か監視システムが、直接またはケースから作成します。</li>\n<li>サンプルフローの「Change Case Owner to Incident Owner」は、インシデントに関連付けたケースの所有者をインシデントの所有者に変えます。「Close Change Request & Related Issues」は、変更要求と、関連するケース・問題・インシデントをまとめてクローズします。</li>\n</ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>Slack でスウォームに誰でも呼べるの?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>いいや。Service Cloud ユーザーで、アプリに接続済みで、同じワークスペースにいる人だけだ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul>\n<li>スウォーミングは階層型サポートの代わりに、専門家を巻き込んで協業するしくみです。協業の場は Slack か Swarm レコードのフィードです。</li>\n<li>専門家を探す Expert Finder は、Omni-Channel のスキルベースルーティングで動きます。</li>\n<li>Slack で解決した内容は、ナレッジ記事の下書きやケースフィードに残せます。</li>\n<li>ケースは個別の問い合わせ、インシデントは多くの顧客に及ぶ障害です。原因分析は問題、修正の実施は変更要求で行います。</li>\n</ul></div>",
+   "questions": [
+    {
+     "q": "あるソフトウェア会社では、難しいケースを1次から3次サポートへ順に回すため、解決までに時間がかかっています。サービス担当者が Slack で専門家をすぐに集めて協業し、その参加状況も記録したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Service Cloud for Slack アプリを使ったスウォーミング",
+      "ケースのエスカレーションルール",
+      "ケースチーム",
+      "Omni-Channel のキューの優先度の変更"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "スウォーミングは、階層型のサポートに頼らず専門家を巻き込み、協業・参加・担当を記録するしくみで、Slack と組み合わせられます。エスカレーションルールは階層を順に上げる仕組みで、課題の解決になりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.service_swarming_intro.htm&type=5",
+     "x": "スウォーミング(Swarming)は、階層型(ティア型)のサポートに頼らず、担当者がほかの専門家を巻き込み、協業・参加・担当を記録するしくみです。"
+    },
+    {
+     "q": "ある会社は Slack を導入していませんが、スウォーミングで専門家と協業したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Swarm オブジェクトのフィード追跡を有効にし、Swarm レコードのフィードで協業する",
+      "スウォーミングには Slack が必須なので、先に Slack を導入する",
+      "Partner Contact Center を導入する",
+      "Enhanced Chat の会話で協業する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "協業ツールを使わない場合は、Swarm オブジェクトのフィード追跡を有効にすれば、Swarm レコードのフィードで協業できます。Slack は必須ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.service_swarm_slack_collab_tool.htm&type=5",
+     "x": "Slack を使わない場合は、Swarm オブジェクトのフィード追跡を有効にすれば、Swarm レコードのフィードで協業できます。"
+    },
+    {
+     "q": "ある会社は、スウォームのメンバーとして、必要なスキルを持ち、いま手が空いている専門家を自動で探したいと考えています。Expert Finder を使うために必要な設定はどれですか?(2つ選択)",
+     "o": [
+      "Omni-Channel とスキルベースルーティングを有効にし、サービスリソースにスキルを割り当てる",
+      "Swarm Member オブジェクト用のサービスチャネルを状況ベースの容量モデルで作る",
+      "Salesforce Connect で外部の人事システムを参照する",
+      "ナレッジ記事にデータカテゴリを割り当てる"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Expert Finder は Omni-Channel とスキルベースルーティングで動きます。サービスリソースにスキルを割り当て、Swarm Member 用のサービスチャネルを状況ベースの容量モデルで作ります。外部システムやデータカテゴリは関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.prep_omni_for_swarming.htm&type=5",
+     "x": "Expert Finder は Omni-Channel とスキルベースルーティングで動きます。サービスリソースにスキルを割り当て、Swarm Member オブジェクト用のサービスチャネル(状況ベースの容量モデル)を作ります。"
+    },
+    {
+     "q": "あるサービス担当者が、Slack のスウォームチャネルに別部署の専門家を追加しようとしましたが、うまくいきません。その専門家は別の Slack ワークスペースを使っています。原因として最も考えられるものはどれですか?",
+     "o": [
+      "スウォームのメンバーは依頼者と同じ Slack ワークスペースにいる必要がある",
+      "スウォームのメンバーは Knowledge ユーザーである必要がある",
+      "スウォームのメンバーはキューである必要がある",
+      "スウォームのメンバーは Experience Cloud ユーザーである必要がある"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Slack でスウォームに参加するには、Service Cloud ユーザーであること、Salesforce アカウントをアプリに接続していること、依頼者と同じ Slack ワークスペースにいることが必要です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.service_swarming_limitations.htm&type=5",
+     "x": "Slack でスウォームに参加するメンバーは、Service Cloud ユーザーであること、Salesforce アカウントを Service Cloud for Slack アプリに接続していること、依頼者と同じ Slack ワークスペースにいることが必要です。"
+    },
+    {
+     "q": "ある会社では、Slack のスウォームで見つかった解決策をナレッジとして残したいと考えています。Service Cloud for Slack で何ができますか?",
+     "o": [
+      "Slack のメッセージからナレッジ記事の下書きを作る",
+      "Slack のメッセージから公開済みのナレッジ記事を直接作る",
+      "Slack から商談を作る",
+      "Slack からダッシュボードを作る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "スウォームで解決したら、Slack のメッセージからナレッジ記事の下書きを作れます。作れるのはナレッジの作成権限を持つユーザーだけです。Slack から作成できるのはケース、ナレッジ記事の下書き、Customer Service Incident Management のレコードです。",
+     "u": "https://help.salesforce.com/s/articleView?id=slack.slack_service_salesforce_actions.htm&type=5",
+     "x": "スウォームで問題が解決したら、Slack のメッセージからナレッジ記事の下書きを作れます。作れるのは Salesforce でナレッジの作成権限を持つユーザーだけです。"
+    },
+    {
+     "q": "ある通信会社で、ネットワーク障害のため、数百人の顧客から同じ内容のケースが届いています。コンサルタントは、これらをまとめて管理し、原因の調査と修正まで追跡する方法として何を推奨すべきですか?",
+     "o": [
+      "Customer Service Incident Management でインシデントを作り、ケースを関連付ける",
+      "ケースを1件ずつ手動でクローズする",
+      "ケースの割り当てルールを追加する",
+      "親ケースを作り、Web-to-Case で子ケースを作り直す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "インシデントは多くの顧客に及ぶ障害を表し、1つのインシデントに多くのケースを関連付けます。原因分析は問題、修正は変更要求で追跡します。割り当てルールや手動のクローズでは、障害全体の管理になりません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.incident_mgmt_case_vs_incident.htm&type=5",
+     "x": "ケースは1人の顧客の問い合わせ、インシデントは多くの顧客に及ぶ障害です。1つのインシデントに多くのケースを関連付けます。"
+    },
+    {
+     "q": "ある会社では、障害の修正をデプロイしたあと、変更要求に関連するケース・問題・インシデントをまとめてクローズしたいと考えています。Customer Service Incident Management で使えるものはどれですか?",
+     "o": [
+      "Close Change Request & Related Issues フロー",
+      "Change Case Owner to Incident Owner フロー",
+      "エンタイトルメントプロセス",
+      "Expert Finder"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Close Change Request & Related Issues フローは、変更要求と関連するケース・問題・インシデントをまとめてクローズします。Change Case Owner to Incident Owner はケースの所有者をインシデントの所有者に変えるフローです。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.incident_mgmt_flow_considerations.htm&type=5",
+     "x": "サンプルフローの「Change Case Owner to Incident Owner」は、インシデントに関連付けたケースの所有者をインシデントの所有者に変えます。「Close Change Request & Related Issues」は、変更要求と、関連するケース・問題・インシデントをまとめてクローズします。"
+    }
+   ]
+  }
+ ]
+}
