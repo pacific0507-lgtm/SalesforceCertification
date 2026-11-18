@@ -75,7 +75,7 @@
   {
    "chapter": 5,
    "chapter_title": "コンタクトセンター分析とインテグレーション",
-   "chapter_sub": "関係者ごとのレポートとダッシュボード、Omni Supervisor などのリアルタイム監視、外部データ・電話・Slack との主要なインテグレーションを学びます。",
+   "chapter_sub": "関係者ごとのレポートとダッシュボード、Command Center for Service(旧称 Omni Supervisor)などのリアルタイム監視、外部データ・電話・Slack との主要なインテグレーションを学びます。",
    "outline": "Contact Center Analytics 13% + Integrations 10%",
    "sections": [
     {"id": "reports", "no": "Ch5·1", "title": "サービスのレポートとダッシュボード", "tag": "Reports & Dashboards", "questions": 10,
@@ -84,7 +84,7 @@
      "brief": "Omni Supervisor(担当者・キュー・スキルの監視、作業の割り当て直し)、Omni-Channel のレポート(エージェントの作業、在席状況)、Messaging・音声の分析、CRM Analytics のサービス分析アプリ、AIエージェントの効果測定。Manage Agents, Queues, and Skills のページを根拠にする。"},
     {"id": "integ", "no": "Ch5·3", "title": "主要なインテグレーションと外部データ", "tag": "Integrations", "questions": 8,
      "brief": "Salesforce Connect(外部オブジェクト)、Data 360 のゼロコピー、Partner Contact Center と Amazon Connect などの電話連携、Agentforce Commerce・Agentforce Field Service and Operations との連携、API と AppExchange のサードパーティ製品の使い分けと考慮点。trailmix の Salesforce Connect、What is Zero Copy、Set Up Service Cloud Voice with Amazon Connect を根拠にする。"},
-    {"id": "slack", "no": "Ch5·4", "title": "Slack for Service・スウォーミング・インシデント管理", "tag": "Slack & Swarming", "questions": 7,
+    {"id": "slack", "no": "Ch5·4", "title": "Service Cloud for Slack・スウォーミング・インシデント管理", "tag": "Slack & Swarming", "questions": 7,
      "brief": "Slack for Service(Slack からのケース操作、エキスパートとの協業)、スウォーミング(Swarming)の設定と Slack でのスウォーム開始、Customer Service Incident Management の基本(インシデント、問題、変更要求、関連ケース)。trailmix の Agentforce Service for Slack トレイル、Enable Collaboration with Swarming、Customer Service Incident Management Basics を根拠にする。"}
    ]
   }
