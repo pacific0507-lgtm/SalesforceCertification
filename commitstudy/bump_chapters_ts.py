@@ -11,7 +11,7 @@ args = sys.argv[1:]
 old = None
 if "--changed" in args:
     i = args.index("--changed"); old = json.load(open(args[i + 1], encoding="utf-8")); args = args[:i] + args[i + 2:]
-subs = args or ["d360", "mcadmin", "afsales", "afspec", "mulepa", "fe", "sg"]
+subs = args or ["d360", "mcadmin", "afsales", "afsvc", "afspec", "mulepa", "fe", "sg"]
 now = int(time.time())
 for sj in subs:
     p = os.path.join(here, sj, "data", "chapters.json")

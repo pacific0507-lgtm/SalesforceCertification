@@ -1,0 +1,4934 @@
+[
+ {
+  "s": "Trailhead: Advanced Salesforce Release Readiness Strategies / Master the Release Readiness Process Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/advanced-salesforce-release-readiness-strategies/master-the-release-readiness-process",
+  "q": "Salesforce のメジャーリリースの新機能を実装するメリットはどれですか?",
+  "o": [
+   "新しい標準機能を簡単に提供できる。",
+   "未使用の機能ライセンスによる「将来の負債」を防げる。",
+   "バックログにあるカスタマイズを簡素化または強化できる。",
+   "A と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "メジャーリリースの新機能を実装するメリットは、カスタムコードやサードパーティのアプリなしで新しい標準機能を届けられること、バックログのカスタマイズを簡素化・強化できることです。本文が挙げるのは「機能負債(feature debt)」の防止で、「未使用の機能ライセンスによる将来の負債」ではありません。",
+  "qe": "Which of the following are benefits to implementing new features from a major Salesforce release?",
+  "oe": [
+   "Easily deliver new out-of-the-box functionality.",
+   "Prevent “future debt” with undeployed feature licenses.",
+   "Simplify or enhance customizations in your backlog.",
+   "A and C"
+  ],
+  "v": "要確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Advanced Salesforce Release Readiness Strategies / Master the Release Readiness Process Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/advanced-salesforce-release-readiness-strategies/master-the-release-readiness-process",
+  "q": "リリースノートについて正しい説明はどれですか?",
+  "o": [
+   "自分に関係する機能を見つける最善の方法は、製品エリアで絞り込み、1つの見出しの下にあるものだけを確認することである。",
+   "「How and When Do Features Become Available(機能が利用可能になる方法と時期)」の節には、各新機能がリリースされる日時の表がある。",
+   "リリースノートは頻繁に変わる生きた文書なので、Release Notes Changes の節で更新を定期的に確認するとよい。",
+   "ライセンスを持っていないアドオンに関する節はすべて読み飛ばす。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "リリースノートはリリースサイクル中も更新される「生きた文書」なので、Release Notes Changes(変更履歴)を定期的に確認します。How and When Do Features Become Available? にあるのは、デフォルトで有効か管理者の有効化が必要かの表で、リリース日時の表ではありません。アドオンの節も確認するよう勧められています。",
+  "qe": "Which statement about the Release Notes is true?",
+  "oe": [
+   "The best way to find features that apply to you is to filter by product area and review everything that appears under one single heading.",
+   "The section called How and When Do Features Become Available contains tabular summaries with the date and time that each new feature will be deployed.",
+   "The Release Notes is a living document that changes frequently, so it’s a good idea to check for updates regularly in the Release Notes Changes section.",
+   "Skip all sections related to add-ons unless you already have those licenses."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Advanced Salesforce Release Readiness Strategies / Test New Features Before a Release Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/advanced-salesforce-release-readiness-strategies/test-new-features-before-a-release",
+  "q": "自動化できないテストはどれですか?",
+  "o": [
+   "単体テスト",
+   "結合テスト",
+   "機能テスト",
+   "ユーザー受け入れテスト(UAT)"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "単体テスト、結合テスト、機能テストは CI ツールで自動実行できます。ユーザー受け入れテスト(UAT)は、エンドユーザーが最終的な機能を受け入れるかどうかを判断するテストなので、自動化できません。",
+  "qe": "Which of the following tests cannot be automated?",
+  "oe": [
+   "Unit",
+   "Integration",
+   "Functional",
+   "User acceptance testing (UAT)"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Advanced Salesforce Release Readiness Strategies / Test New Features Before a Release Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/advanced-salesforce-release-readiness-strategies/test-new-features-before-a-release",
+  "q": "回帰テストの目的は何ですか?",
+  "o": [
+   "変更後も既存のコードが動き続けることを確認する。",
+   "新しいコードのバグだけをテストする。",
+   "リストの項目数を確認する。",
+   "変数どうしの関係をテストする。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "回帰テストは、コードを変更したあとも既存の機能が正しく動き続けることを確認するテストです。変更が既存の機能に悪影響を与えること(回帰)を見つけます。新しいコードだけを対象にするわけではありません。",
+  "qe": "What is the purpose of a regression test?",
+  "oe": [
+   "Verify that existing code continues to work after modifications.",
+   "Test for bugs exclusively in new code.",
+   "Check the number of items in a list.",
+   "Test relationships between variables."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Advanced Salesforce Release Readiness Strategies / Communicate New Features to Users Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/advanced-salesforce-release-readiness-strategies/communicate-new-features-to-users",
+  "q": "新機能を、使う場面の中でユーザーに説明するのに最も適したコミュニケーションチャネルはどれですか?",
+  "o": [
+   "カスタマイズしたヘルプメニュー",
+   "フィードバック用の Slack グループ",
+   "アプリ内ガイダンス",
+   "社内ニュースレター"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "アプリ内ガイダンス(アプリ内プロンプト)は、ユーザーが作業している画面の中で、適切なタイミングで新機能を説明できます。メールやニュースレター、フィードバック用のグループは文脈の外で伝える手段です。",
+  "qe": "Which communication channel is most appropriate for explaining a new feature to a user in context?",
+  "oe": [
+   "Customized help menu",
+   "Feedback Slack group",
+   "In-app guidance",
+   "Internal newsletter"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Advanced Salesforce Release Readiness Strategies / Communicate New Features to Users Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/advanced-salesforce-release-readiness-strategies/communicate-new-features-to-users",
+  "q": "Salesforce の実装のロードマップを作る目的は何ですか?",
+  "o": [
+   "役員の賛同を得る。",
+   "目標とタイムラインをそろえる。",
+   "売上を伸ばす。",
+   "A と B"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Salesforce のロードマップには2つの目的があります。大きな変更に必要なリソースや承認を得るための賛同(役員の支持)と、目標・フェーズ・タイムライン・マイルストンをそろえる計画です。売上の向上は目的として挙げられていません。",
+  "qe": "What is the purpose of building a roadmap for your Salesforce implementation?",
+  "oe": [
+   "Get exec buy-in.",
+   "Align on goals and timelines.",
+   "Boost sales.",
+   "A and B"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の管理 / サービスコンソールを理解する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_cloud",
+  "q": "サービス担当者がメインペインでレコードを処理しながら、折りたたみ可能なサイドバーでケースのリストを確認できるコンソールの部分はどれですか?",
+  "o": [
+   "強調表示パネル",
+   "分割ビュー",
+   "ユーティリティバー",
+   "フィード"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "分割ビューはコンソールの左端にあり、ケースのリストを折りたたみ可能なサイドバーで開いたまま、メインペインでレコードを処理できます。強調表示パネルはレコードの重要項目、ユーティリティバーは画面下部のツールです。",
+  "qe": "Which part of the console lets service reps see a list of cases in a collapsible sidebar while working on a record in the main pane?",
+  "oe": [
+   "The Highlights Panel",
+   "The Split View",
+   "The Utility Bar",
+   "The Feed"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "console",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の管理 / サービスコンソールを理解する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_cloud",
+  "q": "ケースを作成するとき、サービス担当者は顧客の問題に関する具体的なメモをどこに追加すべきですか?",
+  "o": [
+   "[Contact Name (取引先責任者名)] 項目",
+   "[Case Origin (発生源)] 項目",
+   "[Subject (件名)] 項目",
+   "[Description (説明)] 項目"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ケースの問題に関する具体的で詳細なメモは [Description (説明)] 項目に入力します。件名は短い要約、発生源はケースが届いたチャネル、取引先責任者名は顧客です。",
+  "qe": "When creating a case, where should the service rep add specific notes about the customer's issue?",
+  "oe": [
+   "The Contact Name field",
+   "The Case Origin field",
+   "The Subject field",
+   "The Description field"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "console",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の管理 / Agentforce Service の管理 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_connect",
+  "q": "反復作業を減らすための知識ベースとマクロの実装は、サービスの設定のどのフェーズで行いますか?",
+  "o": [
+   "生産性と効率性",
+   "基盤",
+   "チャネルと拡張",
+   "インテリジェンス"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "実装の4つのフェーズは、基盤、生産性と効率性、チャネルと拡張、インテリジェンスです。知識ベース(記事のアップロード)とマクロ・クイックテキストなどの生産性ツールは「生産性と効率性」のフェーズに入ります。",
+  "qe": "Implementing a Knowledge base and macros to reduce repetitive tasks is part of which stage of service setup?",
+  "oe": [
+   "Productivity and Efficiency",
+   "Foundation",
+   "Channels and Expansion",
+   "Intelligence"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の管理 / Agentforce Service の管理 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_connect",
+  "q": "Salesforce Go の主な機能を正しく説明しているのはどれですか?",
+  "o": [
+   "ケース割り当てルールと自動レスポンスルールを設定するためのみに使用される。",
+   "機能を見つけることを含め、実装業務を簡単に管理できるよう設計されている。",
+   "設定をシンプルに保つため、アドオンライセンスの購入を防ぐ。",
+   "システム管理者は何百もの設定メニューを暗記する必要がある。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Salesforce Go はシステム管理者向けの統合ローンチパッドで、主要なサービス機能を見つけて有効にするなど、実装業務を簡単に管理できるように設計されています。設定メニューを暗記する必要はなくなります。",
+  "qe": "Which statement accurately describes a key function of Salesforce Go?",
+  "oe": [
+   "It is solely used for configuring case assignment and auto-response rules.",
+   "It is designed to help you manage implementation tasks easily, including discovering features.",
+   "It prevents the purchase of add-on licenses to keep the configuration simple.",
+   "It requires the admin to memorize hundreds of settings menus."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の管理 / 基本的なサービスチャネルを作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_channels",
+  "q": "メール-to-ケースの実装中に、メールアプリケーションを設定するためにシステム管理者が Salesforce からコピーする必要があるものは何ですか?",
+  "o": [
+   "サポートメールアドレスに送信される確認コード",
+   "名刺などに載せるためのサポートメールアドレス",
+   "メール転送アドレス",
+   "自動レスポンステンプレートの HTML コード"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "メール-to-ケースのガイド付き設定では、Salesforce に表示されたメール転送アドレスをコピーし、自社のメールアプリケーションの転送設定に貼り付けます。これでサポートアドレスに届いたメールがケースとして Salesforce に転送されます。",
+  "qe": "During an Email-to-Case implementation, what must an admin copy from Salesforce to configure their email application?",
+  "oe": [
+   "The verification code sent to the support email address",
+   "The support email address for advertising on business cards",
+   "The email-forwarding address",
+   "The HTML code for the auto-response template"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "intake",
+  "x": "ルーティングアドレス(例: support@自社ドメイン)を設定し、メールシステムから Salesforce が発行するメールサービスアドレスへ転送します。指定のアドレスが宛先・CC・BCCのどれかにあればケースが作られます。"
+ },
+ {
+  "s": "Trailhead: Agentforce Service の管理 / 基本的なサービスチャネルを作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_channels",
+  "q": "Web-to-ケース HTML ジェネレーターの目的は何ですか?",
+  "o": [
+   "送信後に顧客に表示される「ありがとうございます」ページの URL を作成する。",
+   "Web 開発者が公開する顧客向け Web フォームの HTML コードを提供する。",
+   "新しい Web ケースを転送するためにケースの割り当てルールを自動更新する。",
+   "サポートフォームに reCAPTCHA 確認を組み込む。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Web-to-ケースの HTML ジェネレーターは、選んだケース項目を含む Web フォームの HTML コードを作ります。そのコードを Web 開発者に渡して自社サイトに公開します。「ありがとうございます」ページの URL は自分で入力する設定項目の1つです。",
+  "qe": "What is the purpose of the Web-to-Case HTML Generator?",
+  "oe": [
+   "It creates the URL for the “thank you” page that customers see after submission.",
+   "It provides the HTML code for the customer-facing web form that a web developer posts.",
+   "It automatically updates the case assignment rules to route new web cases.",
+   "It embeds reCAPTCHA verification into the support form."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "intake",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の基本 / Agentforce Service 入門 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-platform-quick-look/get-to-know-the-service-cloud-platform",
+  "q": "Agentforce Service が Service Cloud から進化したことを示す根本的な変化は何ですか?",
+  "o": [
+   "ケース件数の削減のみに焦点を当てている。",
+   "人間のサービス担当者が不要になる。",
+   "AI、データ、CRM を統合してインテリジェントなエクスペリエンスを提供する。",
+   "音声チャネルとソーシャルメディアチャネルのみに対応している。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Agentforce Service は Service Cloud の進化形で、AI・データ・CRM を統合し、人間のエージェントと AI エージェントが連携するインテリジェントなサービスを実現します。人間の担当者が不要になるわけではありません。",
+  "qe": "What is the fundamental change that defines Agentforce Service’s evolution from Service Cloud?",
+  "oe": [
+   "It focuses only on case volume reduction.",
+   "It eliminates the need for human service reps.",
+   "It unifies AI, data, and CRM to deliver an intelligent experience.",
+   "It only supports voice and social media channels."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "outcome",
+  "x": "Agentforce Service(旧 Service Cloud)は、AI、データ、CRMを組み合わせ、AIエージェントとサービス担当者が協力して対応するサービス製品群です。"
+ },
+ {
+  "s": "Trailhead: Agentforce Service の基本 / Agentforce Service 入門 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-platform-quick-look/get-to-know-the-service-cloud-platform",
+  "q": "Agentforce Service で、AI エージェントは主にどのようにサービスエクスペリエンスに貢献しますか?",
+  "o": [
+   "複雑で価値の高いやり取りをすべて担当する。",
+   "人間の担当者とのやり取りからのみ学習する。",
+   "定型的な問い合わせに対応し、即座に回答する。",
+   "プロアクティブな営業アウトリーチのみに注力する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "AI エージェントは定型的な問い合わせに対応して即座に回答します。複雑で価値の高いやり取りは人間のサービス担当者が担い、AI と人が連携します。",
+  "qe": "How do AI agents primarily contribute to the service experience in Agentforce Service?",
+  "oe": [
+   "They are responsible for all complex, high-value interactions.",
+   "They only learn from human rep interactions.",
+   "They handle routine inquiries and provide immediate responses.",
+   "They solely focus on proactive sales outreach."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "outcome",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の基本 / エージェンティックエクスペリエンスでケースをより迅速に解決する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-platform-quick-look/resolve-cases-faster",
+  "q": "サービスコンソールから Slack スウォームを開始する主な目的は何ですか?",
+  "o": [
+   "請求レポートを自動生成する。",
+   "セルフサービス用の新しいナレッジ記事を作成する。",
+   "リアルタイムのケース解決に適切なエキスパートを専用チャンネルに集める。",
+   "最終確認のためにケースをマネージャーに割り当てる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "サービスコンソールから Slack スウォームを開始すると、ケースにリンクされた専用の Slack チャンネルに適切なエキスパート(AI の Slackbot を含む)が集まり、リアルタイムでケースを解決できます。解決策はケースレコードに取り込まれます。",
+  "qe": "What is the main purpose of starting a Slack swarm from the Service Console?",
+  "oe": [
+   "To automatically generate a billing report.",
+   "To create a new Knowledge article for self-service.",
+   "To bring the right experts into a dedicated channel for real-time case resolution.",
+   "To assign the case to a manager for final review."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の基本 / エージェンティックエクスペリエンスでケースをより迅速に解決する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-platform-quick-look/resolve-cases-faster",
+  "q": "Service Assistant がサービス担当者を支援するために実行するタスクはどれですか?",
+  "o": [
+   "すべての定型ケースを即座に自動クローズする。",
+   "担当者に関連データをプロアクティブに表示し、返信を作成する。",
+   "サービス履歴に基づいて顧客セグメントにプロモーションメールを送信する。",
+   "複雑で価値の高いやり取りをすべて処理する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Service Assistant はバックグラウンドで動き、関連データをプロアクティブに表示し、返信のドラフトを作り、長い会話を要約します。ケースを自動でクローズしたり、複雑なやり取りを代わりに処理したりはしません。",
+  "qe": "Which task does Service Assistant perform to help service reps?",
+  "oe": [
+   "It automatically closes all routine cases instantly.",
+   "It proactively surfaces relevant data and drafts responses for the rep.",
+   "It sends promotional emails to customer segments based on service history.",
+   "It handles all complex, high-value interactions."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の基本 / インテリジェントなオムニチャネルサービスを提供する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-platform-quick-look/deliver-omnichannel-service",
+  "q": "拡張オムニチャネルは、どのようにしてケースの割り当てを勘に頼らずに行えるようにしますか?",
+  "o": [
+   "優先度の高いケースを常に最新の担当者にルーティングする。",
+   "顧客が担当者の業務量を選択できるようにする。",
+   "問題解決に必要なスキルに基づいて作業項目を割り当てる。",
+   "標準営業時間内にのみケースを割り当てる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "拡張オムニチャネルは、「請求のエキスパート」「スペイン語が堪能」など、問題の解決に必要なスキルに基づいて作業項目を自動で割り当てます(スキルベースルーティング)。担当者が対応可能なときだけ作業をプッシュし、作業量のバランスも取ります。",
+  "qe": "How does Enhanced Omni-Channel remove the guesswork from case assignment?",
+  "oe": [
+   "It always routes high-priority cases to the newest rep.",
+   "It lets the customer choose the rep’s capacity.",
+   "It assigns work items based on the skills needed to solve the issue.",
+   "It only assigns cases during standard business hours."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "routing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service の基本 / インテリジェントなオムニチャネルサービスを提供する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-platform-quick-look/deliver-omnichannel-service",
+  "q": "スーパーバイザー向け Command Center は、サービスリーダー向けにどの AI 関連メトリクスを追跡しますか?",
+  "o": [
+   "採用された人間のエージェントの総数",
+   "すべてのマーケティングキャンペーンのコスト",
+   "自律型 AI エージェントの解決率と効率",
+   "作成された新しいセルフサービスポータルの数"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Command Center for Service は、サービスコンソールの1つのタブで、未対応の作業、顧客の待ち時間、担当者のパフォーマンスに加え、自律型 AI エージェントの解決率と効率を追跡できます。",
+  "qe": "What specific AI-related metric does the Supervisor’s Command Center track for service leaders?",
+  "oe": [
+   "The total number of human agents hired",
+   "The cost of every marketing campaign",
+   "The resolution rate and efficiency of autonomous AI agents",
+   "The number of new self-service portals created"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "analytics",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service: クイックルック / インテリジェントなサービスのために AI と担当者を統合する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/servicecloud-quick-look/servicecloud-quick-look-1",
+  "q": "Agentforce Service でのカスタマーサポートに対する統合アプローチの主な利点は何ですか?",
+  "o": [
+   "各コミュニケーションチャネルに特化したプラットフォームが作成される。",
+   "サービスが音声、メール、メッセージングなどのチャネルに限定される。",
+   "担当者がケースに対する応答のドラフトを作成することが義務付けられる。",
+   "担当者がすべての顧客履歴を参照できる統合コンソールが提供される。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Agentforce Service は、音声・チャット・メール・メッセージング・ソーシャルを1つのサービスコンソールにまとめます。担当者はお客様の履歴、納入商品、過去のやり取りを1つの画面で確認できます。チャネルごとに別のプラットフォームを作るわけではありません。",
+  "qe": "What is a primary benefit of the unified approach to customer support in Agentforce Service?",
+  "oe": [
+   "It creates specialized platforms for each communication channel.",
+   "It limits service to channels like voice, email, and messaging.",
+   "It requires reps to draft responses to cases.",
+   "It provides a unified console for reps to see all customer history."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "outcome",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service: クイックルック / インテリジェントなサービスのために AI と担当者を統合する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/servicecloud-quick-look/servicecloud-quick-look-1",
+  "q": "Agentforce Service では、AI エージェントとサービス担当者の間でどのようなワークフローが意図されていますか?",
+  "o": [
+   "AI エージェントはケースのクローズを管理し、担当者はすべての初期トラブルシューティングを実行する。",
+   "サービス担当者はサービスメッセージの下書きを作成し、AI エージェントは文法をレビューする。",
+   "AI エージェントは定型タスクを実行し、複雑なケースをサービス担当者に引き継ぐ。",
+   "サービス担当者と AI エージェントは引き継ぎを行わずに同じケースに取り組む。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "AI エージェントが定型的な質問を自律的に解決し、複雑なケースは会話のサマリーを付けてサービス担当者に引き継ぎます。担当者は関係構築など、重要で複雑な問題に集中できます。",
+  "qe": "In Agentforce Service, what is the intended workflow between AI agents and service reps?",
+  "oe": [
+   "AI agents manage case closure while reps perform all initial troubleshooting.",
+   "Service reps draft service messages, and AI agents review for grammar.",
+   "AI agents perform routine tasks and hand off complex cases to service reps.",
+   "Service reps and AI agents work on the same case without a handoff process."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "outcome",
+  "x": "複雑な案件は、会話の要約を付けてサービス担当者に引き継ぎます。"
+ },
+ {
+  "s": "Trailhead: プロジェクト管理のベストプラクティス / 要件の収集 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/best-practices-for-project-management/gather-requirements",
+  "q": "正誤問題: 範囲、スケジュール、コストは、いずれかの変更が他に影響するため、トリプル制約と呼ばれている。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "範囲・スケジュール・コストはトリプル制約と呼ばれ、どれか1つを変えるとほかの2つに影響します。範囲が広がればスケジュールとコストが増え、予算やスケジュールを削れば範囲も影響を受けます。",
+  "qe": "True or false: Scope, schedule, and cost are known as triple constraints, since a change in one will affect the others.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理のベストプラクティス / 要件の収集 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/best-practices-for-project-management/gather-requirements",
+  "q": "スコープクリープとは何ですか?",
+  "o": [
+   "承認のない許可されていない変更によってプロジェクトが失敗する原因",
+   "アジャイル方式のプロジェクト管理における変更容認の前向きな結果",
+   "従来のプロジェクト管理手法の使用に伴う避けられない副次的影響",
+   "予算を立てることで回避できるプロジェクト管理の問題"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "スコープクリープは、承認を得ない変更で範囲が少しずつ広がっていくことで、プロジェクトが失敗する主な原因です。範囲を適切に管理して、予算超過や遅延を防ぎます。",
+  "qe": "Scope creep is what?",
+  "oe": [
+   "A cause of project failure resulting from unauthorized changes without approval",
+   "A positive outcome of Agile project management’s embracement of change",
+   "An inevitable side effect of using a traditional project management methodology",
+   "A project management issue that can be avoided by developing a budget"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": "承認のない変更の積み重ね(スコープクリープ)は、失敗の大きな原因です。"
+ },
+ {
+  "s": "Trailhead: プロジェクト管理のベストプラクティス / 活動、スケジュール、コストの計画 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/best-practices-for-project-management/plan-the-activities-schedule-and-cost",
+  "q": "作業分解構造 (WBS) とは何ですか?",
+  "o": [
+   "プロジェクトのビジョンステートメント",
+   "プロジェクト終了後に結果報告を提供するツール",
+   "プロジェクトスケジュールの代わりになるもの",
+   "プロジェクトの範囲を視覚的に表示するツール"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "作業分解構造(WBS)は、プロジェクトの範囲を成果物や作業に分解して視覚的に示すツールです。スケジュールの代わりではなく、WBS をもとにスケジュールとコストを計画します。",
+  "qe": "What is a work breakdown structure (WBS)?",
+  "oe": [
+   "The vision statement of the project",
+   "A tool that provides a debrief after project closure",
+   "An alternative to a project schedule",
+   "A tool that provides a visual of a project’s scope"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理のベストプラクティス / 活動、スケジュール、コストの計画 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/best-practices-for-project-management/plan-the-activities-schedule-and-cost",
+  "q": "ガントチャートとは何ですか?",
+  "o": [
+   "プロジェクト憲章の作成に使用されるツール",
+   "作業分解構造の作成によく使用されるツール",
+   "プロジェクトスケジュールの作成によく使用されるツール",
+   "スポンサーや他の主要なステークホルダーを特定するために使用されるツール"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ガントチャートは、プロジェクトスケジュールの作成に最もよく使われるツールです。活動の順序と先行関係を踏まえて、期間を横棒で示します。範囲を表すのは WBS です。",
+  "qe": "What is a Gantt chart?",
+  "oe": [
+   "A tool used to develop a project charter",
+   "A tool often used to develop a work breakdown structure",
+   "A tool often used to develop a project schedule",
+   "A tool used to identify sponsors and other key stakeholders"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理のベストプラクティス / リスクの管理 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/best-practices-for-project-management/manage-risk",
+  "q": "リスクレジスターでどのようなことができますか?",
+  "o": [
+   "潜在的なリスクを特定する。",
+   "潜在的なリスクの所有権を得る。",
+   "問題が起きるありとあらゆる可能性を予測する。",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "リスクレジスターには、特定した潜在的なリスクを登録し、それぞれのリスクの所有者を決めます。発生し得るすべてのリスクを予測することは不可能で、リスク管理は繰り返し見直すプロセスです。",
+  "qe": "A risk register enables you to do what?",
+  "oe": [
+   "Identify potential risks.",
+   "Take ownership of potential risks.",
+   "Anticipate any and everything that may go wrong.",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理のベストプラクティス / リスクの管理 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/best-practices-for-project-management/manage-risk",
+  "q": "リスク姿勢とは何ですか?",
+  "o": [
+   "リスクに対する全体的な態度",
+   "許容できるリスクの上限と下限",
+   "報酬に対してリスクを受け入れる意欲の程度",
+   "状況に応じて許容できるリスクの量"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "リスク姿勢(リスク態度)は、リスクテイカーからリスク回避者まで、リスクに対する全体的な態度です。報酬に対してリスクを受け入れる意欲はリスク選好度、受け入れるリスクの上限と下限はリスクしきい値で、どちらもリスク姿勢に影響する要因です。",
+  "qe": "Risk attitude is what?",
+  "oe": [
+   "An overall position on risk",
+   "The upper and lower limits of acceptable risk",
+   "The degree of willingness to accept risk in relation to reward",
+   "The amount of risk acceptable depending on circumstances"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理のベストプラクティス / プロジェクトのパフォーマンスの管理 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/best-practices-for-project-management/manage-project-performance",
+  "q": "アーンドバリュー分析とは何ですか?",
+  "o": [
+   "プロジェクトのコストに対して完了した作業を計算する手法",
+   "プロジェクトのコストを計画するプロジェクトのライフサイクルフェーズ",
+   "プロジェクトを予定どおりに納品できるかどうかを判断するための手法",
+   "プロジェクトの範囲、ライフサイクル、コストの概要"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "アーンドバリュー分析は、ある時点でプロジェクトのコストに対してどれだけの作業が完了したかを計算する手法です。スケジュール差異やコスト差異から、計画との差を数値で示します。",
+  "qe": "Earned value analysis is what?",
+  "oe": [
+   "A technique for calculating what’s been done relative to the cost of a project",
+   "The project’s lifecycle phase where you plan the cost of a project",
+   "A technique for determining if the project will be delivered on time",
+   "A summary of the project’s scope, lifecycle, and cost"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: プロジェクト管理のベストプラクティス / プロジェクトのパフォーマンスの管理 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/best-practices-for-project-management/manage-project-performance",
+  "q": "アーンドバリュー指標によって何が判断されますか?",
+  "o": [
+   "プロジェクトスケジュール",
+   "プロジェクトのリスクが許容範囲内かどうか",
+   "プロジェクトが予定どおりに予算内で進んでいるかどうか",
+   "プロジェクトの予算"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "アーンドバリュー指標から、プロジェクトが予定どおりか、予算内で進んでいるかがわかります。たとえばスケジュール差異がマイナスなら、予定より遅れています。",
+  "qe": "Earned value metrics will determine what?",
+  "oe": [
+   "The project’s schedule",
+   "Whether project risks are tolerable",
+   "Whether the project is on time and on budget",
+   "The project’s budget"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": "進捗はアーンドバリューで測ります。コスト差異は EV − AC、スケジュール差異は EV − PV で、マイナスなら予算超過やスケジュールの遅れです。"
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理の基本 / カスタマーサービスインシデント管理をはじめる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-basics/get-started-with-customer-service-incident-management",
+  "q": "カスタマーサービスインシデント管理を使用したインシデントのフェーズは何ですか?",
+  "o": [
+   "インシデントの変更要求を作成する、根本原因を見つける、原因を修正する。",
+   "インシデントを認識する、根本原因を見つける、修正するための変更要求を作成する。",
+   "ケースを数える、問題を特定する、根本原因を見つける。",
+   "エージェントとコミュニケーションを行う、問題を見つける、問題を修正する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "カスタマーサービスインシデント管理は3つのフェーズで進みます。インシデントを認識し(関連ケースから影響の範囲を把握)、問題フェーズで根本原因を調べ、修正のための変更要求を作成します。",
+  "qe": "What are the stages of an incident using Customer Service Incident Management?",
+  "oe": [
+   "Create a change request for the incident, find the root cause, and fix it.",
+   "Recognize the incident, find the root cause, and create a change request to fix it.",
+   "Count cases, determine the problem, and find the root cause.",
+   "Communicate with agents, find the problem, and fix the problem."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理の基本 / カスタマーサービスインシデント管理をはじめる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-basics/get-started-with-customer-service-incident-management",
+  "q": "Ursa Major では、重要度 1 にランク付けされるインシデントの要因はどれですか?",
+  "o": [
+   "損害が拡大する可能性がある",
+   "修正するためのコストが高い",
+   "複数のお客様に影響を及ぼす",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "Ursa Major では、早急に修正しないと損害が拡大する可能性があり、複数のお客様に影響している問題を重要度1(緊急インシデント)とみなします。修正コストの高さは基準に含まれていません。",
+  "qe": "At Ursa Major, which factors give an incident a ranking of severity 1?",
+  "oe": [
+   "Potential for escalating damage",
+   "High cost to fix",
+   "Affects several customers",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理の基本 / カスタマーサービスインシデント管理を設定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-basics/set-up-customer-service-incident-management",
+  "q": "Service Cloud を持っていても、カスタマーサービスインシデント管理の追加ライセンスを購入する必要がある。",
+  "o": [
+   "True",
+   "False"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "カスタマーサービスインシデント管理は Service Cloud に含まれているので、追加ライセンスは不要です。",
+  "qe": "If you have Service Cloud, you must buy an additional license for Customer Service Incident Management.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理の基本 / カスタマーサービスインシデント管理を設定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-basics/set-up-customer-service-incident-management",
+  "q": "Ursa Major ではカスタマーサービスインシデント管理のためにどの関連リストをケースレコードページに追加しますか?",
+  "o": [
+   "[Problems (問題)] と [Case Related Issues (ケース関連の問題)]",
+   "[Case Related Issues (ケース関連の問題)] と [Related Change Requests (関連変更要求)]",
+   "[Related Change Requests (関連変更要求)] と [Related Cases (関連ケース)]",
+   "[Related Cases (関連ケース)] と [Related Incidents (関連インシデント)]"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "インシデント管理のために、ケースのページレイアウトに [Case Related Issues(ケース関連の問題)] と [Related Change Requests(関連変更要求)] の関連リストを追加します。",
+  "qe": "What related lists does Ursa Major add to the Case Record page for Customer Service Incident Management?",
+  "oe": [
+   "Problems and Case Related Issues",
+   "Case Related Issues and Related Change Requests",
+   "Related Change Requests and Related Cases",
+   "Related Cases and Related Incidents"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理の基本 / インシデントについてのスウォームを作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-basics/create-and-swarm-on-an-incident",
+  "q": "インシデントについてスウォームを行うのはどのような場合ですか?",
+  "o": [
+   "エキスパートの協力が必要な場合",
+   "インシデントが発生した場合",
+   "根本原因を見つける必要がある場合",
+   "多くの関連ケースがある場合"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "インシデントのスウォームは、エキスパートの協力が必要なときに開始します。例では、関連するナレッジ記事がなく回避策もないため、Slack でスウォームを開始し、エキスパートファインダーで適切なメンバーを集めました。インシデントが起きるたびにスウォームするわけではありません。",
+  "qe": "When do you swarm on an incident?",
+  "oe": [
+   "When you need help from experts",
+   "Whenever an incident occurs",
+   "When you need to find the root cause",
+   "When you have many related cases"
+  ],
+  "v": "要確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理の基本 / インシデントについてのスウォームを作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-basics/create-and-swarm-on-an-incident",
+  "q": "問題の根本原因を特定したら、何を行いますか?",
+  "o": [
+   "作業プランを開始する。",
+   "改善プランを含む変更要求を作成する。",
+   "インシデントをクローズする。",
+   "ケースをクローズする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "根本原因がわかったら、修正の手順を記録する変更要求を作成し、基本要件を含む改善プランを立てます。作業プランは変更要求の中で選ぶもので、インシデントやケースのクローズは修正が終わってからです。",
+  "qe": "What do you do when you determine the root cause of a problem?",
+  "oe": [
+   "Start a work plan.",
+   "Create a change request with a remediation plan.",
+   "Close the incident.",
+   "Close the cases."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理の基本 / 継続的な改善をめざす Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-basics/aim-for-constant-improvement",
+  "q": "Ursa Major はカスタマーサービスインシデント管理を拡張するためにどのように管理パッケージを使用しますか?",
+  "o": [
+   "メトリクスを追跡する",
+   "ケースを自動的にクローズする",
+   "パートナーインテグレーションを有効にする",
+   "A と C",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Ursa Major は、AgentExchange の管理パッケージでインシデントのメトリクス(レポートとダッシュボード)を追跡し、同じ方法でパートナーインテグレーションも追加します。ケースの自動クローズは管理パッケージではなくフローで行います。",
+  "qe": "How does Ursa Major use managed packages to extend Customer Service Incident Management?",
+  "oe": [
+   "To track metrics",
+   "To close cases automatically",
+   "To enable partner integrations",
+   "A and C",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理の基本 / 継続的な改善をめざす Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-basics/aim-for-constant-improvement",
+  "q": "[Close Change Request & Related Issues (変更要求および関連問題をクローズ)] フローを使用すると、何がクローズされますか?",
+  "o": [
+   "関連ケース",
+   "関連問題",
+   "関連リスト",
+   "A と C",
+   "A と B"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "[Close Change Request & Related Issues] フローは、変更要求と、関連する問題(ケース、問題、インシデント)をクローズします。関連リストはページの部品で、クローズするものではありません。",
+  "qe": "When you use the Close Change Requests & Related Issues flow, what gets closed?",
+  "oe": [
+   "Related cases",
+   "Related problems",
+   "Related lists",
+   "A and C",
+   "A and B"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": "サンプルフローの「Change Case Owner to Incident Owner」は、インシデントに関連付けたケースの所有者をインシデントの所有者に変えます。「Close Change Request & Related Issues」は、変更要求と、関連するケース・問題・インシデントをまとめてクローズします。"
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理: クイックルック / サービス障害に対処して、お客様の信頼を得る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-quick-look/address-disruptions-and-build-customer-trust",
+  "q": "インシデント管理のメリットの 1 つはどれですか?",
+  "o": [
+   "サービスの自動化が簡単に見つかる。",
+   "パートナーが SMS で連携してお客様をサポートできる。",
+   "スウォームでドキュメントコラボレーションを実施できる。",
+   "解決に向けて、フィールド技術者を派遣できる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "インシデント管理では、現地や客先での解決が必要なときに Field Service でフィールド技術者を派遣できます。エキスパートとの連携は Slack のスウォーミングで行い、SMS でのパートナー連携やドキュメント共同編集は機能として挙げられていません。",
+  "qe": "What is one of the benefits of Incident Management?",
+  "oe": [
+   "Service automation is easy to find.",
+   "Partners can connect on SMS to help customers.",
+   "Document collaboration is available to swarm.",
+   "Field techs are available to dispatch for resolutions."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: カスタマーサービスインシデント管理: クイックルック / サービス障害に対処して、お客様の信頼を得る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/customer-service-incident-management-quick-look/address-disruptions-and-build-customer-trust",
+  "q": "インシデント管理でお客様に最新情報を通知する 1 つの方法はどれですか?",
+  "o": [
+   "解決後にインシデントが自動的に終了する。",
+   "インシデントキューにあるケースに自動対応する。",
+   "お客様がモバイルアプリケーションにログインして状況を確認できる。",
+   "お客様が電話で問い合わせることができる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "インシデント管理は、関連するケースを自動的に分類してインシデントキューに転送し、影響を受けたお客様に自動で応答します。解決後も、関連するインシデント・問題・ケースを終了して、お客様に解決を伝えます。",
+  "qe": "What is one way Incident Management keeps your customers informed?",
+  "oe": [
+   "Incidents close automatically after resolution.",
+   "It automatically responds to cases in an incident queue.",
+   "Customers can log in to mobile apps to check status.",
+   "Customers can call a phone number."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 記事レコメンデーション / Einstein 記事レコメンデーションについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-article-recommendations-for-service/get-to-know-einstein-article-recommendations",
+  "q": "Einstein 記事レコメンデーションのメリットの 1 つはどれですか?",
+  "o": [
+   "すべての問題が解決される。",
+   "エージェントが過剰に検索することがなくなるものと思われる。",
+   "データサイエンスチームに取って代わることができる。",
+   "朝着る洋服を選びやすくなる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Einstein 記事レコメンデーションは、何十万件もの記事から関連する記事を数秒で見つけて推奨するので、エージェントが何度も検索する手間を省けます。",
+  "qe": "What’s one benefit of Einstein Article Recommendations?",
+  "oe": [
+   "It solves all of your problems.",
+   "It can eliminate excessive searching for your agents.",
+   "It can replace your data science team.",
+   "It can help you choose your outfit in the morning."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 記事レコメンデーション / Einstein 記事レコメンデーションについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-article-recommendations-for-service/get-to-know-einstein-article-recommendations",
+  "q": "Einstein 記事レコメンデーションのどのような点によってケースサイクルが短縮される可能性がありますか?",
+  "o": [
+   "AI を使用して特に複雑なケースを表示する。",
+   "エージェントに推奨される応答のリストを表示する。",
+   "AI を使用して関連性の高いナレッジ記事を表示するため、エージェントが手動で検索する必要がなくなる。",
+   "ケースの解決策を見つけるためのステップが 1 つ追加されるため、ケースサイクルが短縮されることはない。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Einstein 記事レコメンデーションは、AI でケースに関連するナレッジ記事を表示するので、エージェントが手動で探す必要がなくなり、ケースの処理時間が短くなります。推奨される返信のリストを出すのは Einstein Reply Recommendations(サービス返信)です。",
+  "qe": "How can Einstein Article Recommendations help shorten your case cycle?",
+  "oe": [
+   "It uses AI to surface the most complex cases.",
+   "It offers your agents a list of recommended replies.",
+   "It uses AI to surface relevant knowledge articles so agents don’t have to manually search for them.",
+   "It can’t help you shorten your case cycle because it adds an extra step to finding case solutions."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 記事レコメンデーション / 記事レコメンデーションを使い始める Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-article-recommendations-for-service/start-using-article-recommendations",
+  "q": "推奨記事と Einstein 記事レコメンデーションの違いは何ですか?",
+  "o": [
+   "Einstein 記事レコメンデーションで表示されるレコメンデーションは時間とともに向上する。",
+   "Einstein 記事レコメンデーションは推奨記事の別名にすぎない。",
+   "Einstein 記事レコメンデーションは AI によって駆動する。",
+   "A と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "推奨記事(Suggested Articles)はケースの項目のキーワードで記事を探します。Einstein 記事レコメンデーションは AI で過去のケースのデータから学習し、時間とともに推奨の精度が上がります。",
+  "qe": "What is the difference between Suggested Articles and Einstein Article Recommendations?",
+  "oe": [
+   "Einstein Article Recommendations offers recommendations that improve over time.",
+   "Einstein Article Recommendations is just another name for Suggested Articles.",
+   "Einstein Article Recommendations is powered by AI.",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": "Einstein Article Recommendations は過去の添付実績から推奨します。キーワードだけの Suggested Articles との違いが問われます。"
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 記事レコメンデーション / 記事レコメンデーションを使い始める Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-article-recommendations-for-service/start-using-article-recommendations",
+  "q": "関連性スコアはエージェントにどのような形で役立ちますか?",
+  "o": [
+   "どの記事がお客様の問題の解決に最も役立つ可能性が高いかをエージェントが把握できる。",
+   "Einstein の全体的なパフォーマンスがエージェントに示される。",
+   "エージェントが何件の記事を推奨しているかを追跡できる。",
+   "関連性スコアが高いほど、エージェントの IQ が高いことになる。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "関連性スコアは、推奨された記事がケースにどのくらい関連しているかを示します。エージェントは、どの記事が問題の解決に最も役立ちそうかを判断できます。",
+  "qe": "How can relevance scoring help your agents?",
+  "oe": [
+   "It lets agents know which article is most likely to help solve a customer’s problem.",
+   "It shows agents how Einstein is performing across the board.",
+   "It helps agents keep track of how many articles they’re recommending.",
+   "The higher the relevance score, the higher your agents’ IQ."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 記事レコメンデーション / 記事レコメンデーションを向上させる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-article-recommendations-for-service/improve-einsteins-recommendations",
+  "q": "Einstein によって推奨されたものではないナレッジ記事をケースの解決に使用する場合にエージェントがすべきことは何ですか?",
+  "o": [
+   "記事をケースに添付する。",
+   "他のすべてのエージェントにそのことをすぐに伝える。",
+   "無視して、次のケースに進む。",
+   "ケースの記事と添付を付箋に記録する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Einstein が推奨しなかった記事でケースを解決したときも、その記事をケースに添付します。Einstein は記事とケースの添付から学習するので、今後の推奨がより正確になります。",
+  "qe": "What should agents do if they use a knowledge article that wasn’t recommended by Einstein to solve a case?",
+  "oe": [
+   "Attach the article to the case.",
+   "Tell all other agents about it immediately.",
+   "Ignore it, and move to the next case.",
+   "Document the article-to-case attachment on a sticky note."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 記事レコメンデーション / 記事レコメンデーションを向上させる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-article-recommendations-for-service/improve-einsteins-recommendations",
+  "q": "Einstein 記事レコメンデーションに関する次の文のうち、正しいものはどれですか?",
+  "o": [
+   "Einstein のレコメンデーションは、ケースのすべての項目に基づく。",
+   "Einstein は Salesforce 知識ベースにある記事のみを推奨する。",
+   "Einstein はお客様のメッセージの語調に一致する記事を推奨する。",
+   "Einstein はインターネットをくまなく探して見つかった記事を推奨する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Einstein 記事レコメンデーションが推奨するのは、Salesforce の知識ベースにあるナレッジ記事です。インターネット上の記事は推奨しません。推奨に使うケース項目は管理者がモデルで選びます。",
+  "qe": "Which of these statements about Einstein Article Recommendations is true?",
+  "oe": [
+   "Einstein’s recommendations are based on all case fields.",
+   "Einstein only recommends articles that are in your Salesforce Knowledge base.",
+   "Einstein recommends articles that match the tone of the customer’s message.",
+   "Einstein recommends articles that come from all over the internet."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein ボットの基礎 / Einstein ボットの概要 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_bots_basics/learn-about-einstein-bots",
+  "q": "チャットボットとは何ですか?",
+  "o": [
+   "入力される言葉と出力する言葉を追跡するデータベース",
+   "人間の会話をシミュレーションするロボット",
+   "人間の会話をシミュレーションするアプリケーション",
+   "人間の会話を記録して再生するソフトウェア",
+   "機械のダイアログを作成するアプリケーション"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "チャットボットは、人間の会話を音声やテキストメッセージでシミュレーションするアプリケーションです。ロボットや録音の再生ではありません。",
+  "qe": "What is a chatbot?",
+  "oe": [
+   "A database that tracks words in and out",
+   "A robot that simulates people talking",
+   "An application that simulates human conversation",
+   "Software that records human conversations and plays them back",
+   "An application that creates dialog for machines"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein ボットの基礎 / Einstein ボットの概要 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_bots_basics/learn-about-einstein-bots",
+  "q": "チャットボットの利点は次のどれですか?",
+  "o": [
+   "ケースデフレクション、待機時間の短縮、NLU によるインテリジェントな応答",
+   "顧客の時間節約、便利なコンテンツの表示、最も効率のよい配布プロセス",
+   "インテリジェントな応答、ケースのすばやい作成、保存済みデータの使用",
+   "待機時間の短縮、効率的なサービス問題キュー、NUL の使用",
+   "ケースデフレクション、インテリジェントなエージェント、スクリプト化された会話"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "チャットボットの利点は、迅速なケースデフレクション(回避)、待ち時間の短縮とエージェントの時間の節約、NLU(自然言語理解)によるインテリジェントな応答です。",
+  "qe": "Which of the following are benefits of chatbots?",
+  "oe": [
+   "Case deflection, shorter wait times, and intelligent responses with NLU",
+   "Saved time for customers, the display of useful content, and more efficient distribution processes",
+   "Intelligent responses, quickly created cases, and use of stored data",
+   "Reduced wait times, efficient service issue queues, and use of NUL",
+   "Case deflection, intelligent agents, and scripted conversations"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein ボットの基礎 / ボットコンテンツの計画 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_bots_basics/plan-your-bot-content",
+  "q": "ボットを作成する前に知っておくことが重要な用語はどれですか?",
+  "o": [
+   "Intent、ダイアログ、整数、エンティティ",
+   "ダイアログ、入力、Intent、変数",
+   "変数、エンティティ、Intent、ディジェリドゥー",
+   "エンティティ、Intent、バリエーション、ダイアログ",
+   "変数、ダイアログ、ダイアログ Intent、エンティティ"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "ボットを作る前に知っておく用語は、ダイアログ、ダイアログ Intent(お客様がボットとやり取りする理由)、エンティティ(収集するデータの種類)、変数(収集したデータを入れるコンテナ)です。",
+  "qe": "Which terms are important to know before you build your bot?",
+  "oe": [
+   "Intents, dialogs, integers, and entities",
+   "Dialogs, enters, intents, and variables",
+   "Variables, entities, intents, and didgeridoos",
+   "Entities, intents, variants, and dialogs",
+   "Variables, dialogs, dialog intents, and entities"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein ボットの基礎 / ボットコンテンツの計画 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_bots_basics/plan-your-bot-content",
+  "q": "ボットコンテンツを計画するとき、計画の質問で焦点を当てることが重要なトピックはどれですか?",
+  "o": [
+   "コンテキスト、個性、会話の設計",
+   "設計、名前、挨拶",
+   "業種、形容詞、態度",
+   "個性、終了の挨拶、メニューオプション",
+   "場所、会話、声と語調"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "ボットのコンテンツを計画するときは、ボットのコンテキスト(会社、業種、よくある問い合わせ)、個性(名前、性格、ブランドとの近さ)、会話の設計について質問を立てて考えます。",
+  "qe": "When planning your bot content, which topics are important to focus on in your planning questions?",
+  "oe": [
+   "Context, personality, and conversation design",
+   "Design, names, and greetings",
+   "Industry, adjectives, and attitude",
+   "Personality, farewells, and menu options",
+   "Location, conversation, and voice and tone"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein ボットの基礎 / Einstein ボットの前提条件と有効化 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_bots_basics/enable-einstein-bots",
+  "q": "ボットを設定するにはどのライセンスが必要ですか?",
+  "o": [
+   "チャットボット",
+   "組み込みサービス",
+   "Chatter",
+   "Service Cloud",
+   "チャット"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Einstein ボットを設定するには Service Cloud ライセンスが必要です。",
+  "qe": "Which license do you need to set up bots?",
+  "oe": [
+   "Chatbots",
+   "Embedded Service",
+   "Chatter",
+   "Service Cloud",
+   "Chat"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein ボットの基礎 / Einstein ボットの前提条件と有効化 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_bots_basics/enable-einstein-bots",
+  "q": "Einstein ボットを有効にするにはどうすればよいですか?",
+  "o": [
+   "Einstein ボットの設定ページで切り替えスイッチをクリックする。",
+   "[新規ボット] をクリックする。",
+   "Einstein Bots ライセンスを取得する。",
+   "Flow Builder から新しいボットを起動する。",
+   "ユーザープロファイルで [チャットボットユーザー] を選択する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Einstein ボットは、[設定] の [Einstein Bots] ページで切り替えスイッチをオンにして有効にします。[新規ボットを作成] は有効化したあとにボットを作る操作です。",
+  "qe": "How do you enable Einstein Bots?",
+  "oe": [
+   "Click the toggle on the Einstein Bots setup page.",
+   "Click New Bot.",
+   "Obtain an Einstein Bots license.",
+   "Launch a new bot from Flow Builder.",
+   "Select Chatbot User on the User profile."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 分類アプリケーション / Einstein 分類アプリケーションについて知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_case_class/learn-about-einstein-case-classification",
+  "q": "Einstein 分類アプリケーションは何を実行しますか?",
+  "o": [
+   "過去のインテリジェンスに基づいて、エージェントやチームに項目値を推奨する AI",
+   "エージェントの時間を節約し、ケースを向上させる機械学習",
+   "選択リストやチェックボックスの過去の値に基づいて、エージェントに新規ケースを推奨する AI",
+   "選択リストやチェックボックスの項目値を推奨する、新規ケースの機械学習"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Einstein 分類アプリケーション(ケース分類とケースラップアップ)は、過去のクローズケースの値に基づいて、ケースの項目値をエージェントに推奨する AI です。ケースラップアップはチャットの終了時にも使えるので、新規ケースだけが対象ではありません。",
+  "qe": "What does the Einstein Classification app do?",
+  "oe": [
+   "AI that recommends field values for agents and teams based on past intelligence",
+   "Machine learning that saves agents time and improves cases",
+   "AI that recommends new cases to agents based on past picklist and checkbox values",
+   "Machine learning on new cases only that recommends picklist and checkbox field values"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 分類アプリケーション / Einstein 分類アプリケーションについて知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_case_class/learn-about-einstein-case-classification",
+  "q": "Service Cloud の設定において、ケース分類の設定が最後のステップであるのはなぜですか?",
+  "o": [
+   "AI を実装する前に、情報の取得方法とケース作業の割り当て方法を決定するために明確なケース管理プロセスが必要であるため",
+   "ケース管理、チャネル、ナレッジが最初に設定されていなければ、AI を使用できないため",
+   "エージェントは最後の手段としてのみケース分類を必要とするため",
+   "サービスチームからのフィードバックを必要とするため"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Service Cloud の設定では AI の追加は4番目(最後)のフェーズです。Einstein はケースを管理するビジネスプロセスを定義できないので、先に情報の取得方法とケースの割り当て方法を決め、ケース管理を設定しておく必要があります。",
+  "qe": "Why is setting up case classification the last step in setting up Service Cloud?",
+  "oe": [
+   "Clear case management processes are needed to determine how to capture information and assign case work before implementing AI.",
+   "Because if case management, channels, and knowledge aren’t set up first, AI isn’t available.",
+   "Because agents should only need case classification as a last resort.",
+   "Because it requires feedback from a service team."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 分類アプリケーション / 分類アプリケーションのためのデータの準備 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_case_class/prepare-your-data-for-case-classification",
+  "q": "Einstein 分類アプリケーション用のクローズケースデータはどのようにして準備しますか?",
+  "o": [
+   "5000 件以上のケースを確認用にエクスポートする。",
+   "予測するケース項目に正確な値が入力され、各項目に 400 件以上 (多ければ多いほどよい) のサンプルがあることを確認する。",
+   "正しく入力されていなくても、すべてのケースをエクスポートする。できるだけ多くのケースを使用することが最も重要である。",
+   "予測するケース項目に値が入力されていることと、各項目の過去 6 か月間のサンプルが 10 件以下であることを確認する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "予測する項目に正しい値が入力されていることを確認し、項目ごとに値のあるクローズケースが400件以上(多いほどよく、理想は1,000件以上)あるようにします。数を増やすために不正確なデータを含めるのは逆効果です。",
+  "qe": "How do you prepare closed-case data for Einstein classification apps?",
+  "oe": [
+   "Export at least 5000 cases to review.",
+   "Make sure that the case fields you want to predict are populated and correct, and that you have at least 400 samples per field (the more the better).",
+   "Export all of the cases you have, even if they aren’t filled correctly. It’s most important to have as many cases as you can.",
+   "Make sure that the case fields you want to predict are populated, and that you have no more than 10 samples per field over a 6 month period."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 分類アプリケーション / 分類アプリケーションのためのデータの準備 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_case_class/prepare-your-data-for-case-classification",
+  "q": "次のうち、モデルにバイアスがかかる可能性があるものはどれですか?",
+  "o": [
+   "データセットに優先度の低いケースがない場合",
+   "モデル名が長い場合",
+   "カスタムの [ケース優先度] 選択リストの値に「3」と「三」がある場合",
+   "A と C",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "低優先度のケースがないデータセットは特定の集団が欠けていて偏ります。「3」と「三」のように同じ値が別のラベルで入っているのは分類の誤りで、測定バイアスの原因になります。モデル名の長さは関係ありません。",
+  "qe": "Which of the following could lead to a biased model?",
+  "oe": [
+   "A dataset with no low-priority cases",
+   "A lengthy model name",
+   "A custom Case Priority picklist whose values include “3” and “Three”",
+   "A and C",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 分類アプリケーション / Einstein 分類アプリケーションの有効化 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_case_class/turn-on-einstein-case-classification",
+  "q": "エージェントがケース分類のおすすめを参照できるようにする実装手順はどれですか?",
+  "o": [
+   "予測する項目を選択する。",
+   "予測モデルを作成する。",
+   "予測するすべての項目の信頼性レベルを設定し、続いて結果を確認する。",
+   "コンソールユーザーに「Einstein ケース分類ユーザー」権限セットを割り当てる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "エージェントがケース分類のおすすめを見て使えるようにするには、コンソールユーザーに「Einstein ケース分類ユーザー」権限セットを割り当て、[Einstein 項目のおすすめ] コンポーネントをサービスコンソールに追加します。",
+  "qe": "Which implementation step enables agents to see case classification recommendations?",
+  "oe": [
+   "Select fields to predict.",
+   "Build a predictive model.",
+   "Set confidence levels on all predicted fields, then review the results.",
+   "Assign console users the Einstein Case Classification user permission set."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向けの Einstein 分類アプリケーション / Einstein 分類アプリケーションの有効化 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_case_class/turn-on-einstein-case-classification",
+  "q": "分類の信頼性レベルとは何ですか?",
+  "o": [
+   "信頼性レベルは、項目値の最適なおすすめが間違ったものである確率を表す。",
+   "信頼性レベルは、ケースがそのレベルで予測される割合を表す。",
+   "信頼性レベルは、項目値の最適なおすすめが正しいものである確率を表す。",
+   "信頼性レベルは予測されるケースの割合を確認できるようにするもので、スライダーで表される。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "信頼性レベルは、項目の推奨値(最適なおすすめ)が正しい確率を表します。設定した最小信頼性レベルを超えたときに、Einstein が最適な値を自動で選ぶようにできます。",
+  "qe": "What is a classification confidence level?",
+  "oe": [
+   "The confidence level represents the likelihood that the best recommendation for the field value is wrong.",
+   "The confidence level represents the percentage of cases predicted at that level.",
+   "The confidence level represents the likelihood that the best recommendation for the field value is correct.",
+   "The confidence level is represented by a slider that helps you see what percentage of cases are predicted."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein サービス返信 / サービスと生成 AI のメリットについて学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-service-replies/learn-the-benefits-of-service-and-generative-ai",
+  "q": "生成 AI は、どのような方法でカスタマーサービスの対応を向上させますか?",
+  "o": [
+   "コンテキストに応じた応答を瞬時に提示する。",
+   "サービス担当者を完全に置き換える。",
+   "一貫性を確保するために応答のばらつきを制限する。",
+   "お客様からのフィードバックの必要性を減らす。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "生成 AI は大規模言語モデルで、状況に合った応答をすぐに作ります。お客様は必要な回答をすぐに得られ、担当者は関係構築に集中できます。担当者を完全に置き換えるわけではありません。",
+  "qe": "How does generative AI improve customer service interactions?",
+  "oe": [
+   "By providing instant, contextually relevant responses",
+   "By replacing service reps entirely",
+   "By limiting the variety of responses to ensure consistency",
+   "By reducing the need for customer feedback"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein サービス返信 / サービスと生成 AI のメリットについて学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-service-replies/learn-the-benefits-of-service-and-generative-ai",
+  "q": "サービス返信はライブチャットチャネルでしか使用できない。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Einstein サービス返信は、チャットチャネルだけでなくメッセージングチャネルの会話でも、エージェントの応答のドラフトを作ります。",
+  "qe": "Service Replies can only be used in Live Chat channels.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein サービス返信 / Einstein サービスチャット返信を設定して使用する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-service-replies/configure-and-use-service-replies-for-chat",
+  "q": "サービス返信を Einstein データライブラリでグラウンディングするのはなぜですか?",
+  "o": [
+   "最も関連性の高い情報に基づく返信を取得するため",
+   "エージェントの介入なしで、カスタマーサービスプロセス全体を自動化するため",
+   "エージェントがメッセージを送信する速度を上げるため",
+   "後から使用できるようにサービス返信を蓄積しておくため"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "データライブラリ(Agentforce データライブラリ)でグラウンディングすると、ナレッジ記事やアップロードしたファイルの関連情報がプロンプトに追加され、最も関連性の高い情報に基づく返信が得られます。",
+  "qe": "Why would you want to ground Service Replies with an Einstein Data Library?",
+  "oe": [
+   "To get replies that are based on the most relevant information",
+   "To automate the entire customer service process without agent intervention",
+   "To increase the speed at which agents can send messages",
+   "To harvest them for use later"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein サービス返信 / Einstein サービスチャット返信を設定して使用する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-service-replies/configure-and-use-service-replies-for-chat",
+  "q": "Einstein サービス返信を使用すると、メッセージングセッションのサービスエージェントの効率がどのように高まりますか?",
+  "o": [
+   "エージェントの確認なしにケースを自動的にクローズする。",
+   "お客様のメッセージのコンテキストに基づいて事前に作成された返信を提案する。",
+   "よくある質問のリストをお客様に提供する。",
+   "お客様をセルフサービスポータルにリダイレクトする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "サービス返信は、お客様のメッセージの内容に応じた返信をエージェントに提案します。エージェントは数秒で最適な返信を確認・選択でき、記事を探す時間を省けます。ケースを自動でクローズすることはありません。",
+  "qe": "How does Einstein Service Replies enhance the efficiency of service agents in a messaging session?",
+  "oe": [
+   "By automatically closing cases without agent review",
+   "By suggesting prewritten responses based on the context of the customer's message",
+   "By providing a list of frequently asked questions to the customer",
+   "By redirecting customers to self-service portals"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein for Service のロールアウト戦略 / 人工知能を使用してサービスを向上させる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-for-service-rollout-strategies/use-artificial-intelligence-to-improve-service",
+  "q": "Einstein for Service はエージェントをどのような方法で支援しますか?",
+  "o": [
+   "Einstein は、エージェントが問題解決に要する時間を短縮できる機能の集合体である。",
+   "Einstein はデータサイエンスチームに取って代わることができる。",
+   "Einstein for Service は AI を駆使して、ケースのライフサイクルのステップを排除する。",
+   "Einstein for Service はエージェントにいつ休憩を取るべきか指示する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Einstein for Service は、ケースの作成から転送、解決まで、ケースのライフサイクルの各段階でエージェントを支援する機能の集まりで、問題解決にかかる時間を短縮します。ステップをなくすのではなく、各ステップを支援します。",
+  "qe": "How Does Einstein for Service help your agents?",
+  "oe": [
+   "Einstein is a set of features that helps your agents shorten the time it takes to solve problems.",
+   "Einstein can replace your data science teams.",
+   "Einstein for Service uses AI to eliminate steps in your case life cycle.",
+   "Einstein for Service tells your agents when to take a break."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein for Service のロールアウト戦略 / 人工知能を使用してサービスを向上させる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-for-service-rollout-strategies/use-artificial-intelligence-to-improve-service",
+  "q": "チームが Einstein for Service を使用した場合の利点はどれですか?",
+  "o": [
+   "送信可能な自動メールを増やすことができる。",
+   "数秒でデータベース全体から答えを見つけ出すことができる。",
+   "有用なデータをコンパイルするためのコードをより多く備えている。",
+   "AI をより効率的に利用できる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Einstein はデータベース全体を数秒で検索して答えを見つけ出せるので、チームは答えを探す時間を大幅に減らせます。",
+  "qe": "What is a benefit for your team when they use Einstein for Service?",
+  "oe": [
+   "They can send more automated emails.",
+   "They can find answers in an entire database in seconds.",
+   "They have more code in which to compile useful data.",
+   "They can use AI more efficiently."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein for Service のロールアウト戦略 / ロールアウト戦略を作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-for-service-rollout-strategies/create-a-rollout-strategy",
+  "q": "ロールアウト戦略の 3 つのフェーズは何ですか?",
+  "o": [
+   "計画、実行、評価。",
+   "調査、計画、実行。",
+   "睡眠、食事、反復。",
+   "有効化前、有効化、有効化後。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ロールアウト戦略のフェーズは、有効化前(課題・目標・成功の定義、データのクリーンアップ)、有効化(機能の設定、計画に沿った実行と調整)、有効化後(メンテナンス、進捗の定期的な評価)の3つです。",
+  "qe": "What are the three phases of a rollout strategy?",
+  "oe": [
+   "Plan, execute, and evaluate.",
+   "Research, plan, and execute.",
+   "Sleep, eat, and repeat.",
+   "Pre-enablement, enablement, and post-enablement."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein for Service のロールアウト戦略 / ロールアウト戦略を作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-for-service-rollout-strategies/create-a-rollout-strategy",
+  "q": "各自に適した Einstein for Service の機能を判断する最適な方法はどれですか?",
+  "o": [
+   "最大の課題と目標を上げ、Einstein for Service の機能と照らし合わせる。",
+   "Einstein for Service の機能を 1 つ選び、どうなるか確認する。",
+   "コースを受講して、AI の習熟度を高める。",
+   "データサイエンスチームに必要なものを決定してもらう。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "最大の課題と目標を洗い出し、Einstein for Service の機能と照らし合わせて、課題の解決につながる機能を選びます。",
+  "qe": "What’s the best way to determine what Einstein for Service features are right for you?",
+  "oe": [
+   "List your biggest challenges and your goals and match them with Einstein for Service features.",
+   "Pick one Einstein for Service feature and see how it goes.",
+   "Take a course and develop AI proficiency.",
+   "Have your data science team determine what they need."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein for Service のロールアウト戦略 / Einstein に向けた準備 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-for-service-rollout-strategies/get-ready-for-einstein-service",
+  "q": "Einstein for Service でデータが極めて重要なのはなぜですか?",
+  "o": [
+   "Einstein が学習するためには経時的なデータ収集が必要であるため。",
+   "Einstein にはお客様の個人情報が必要なため。",
+   "機能がデータを使用して他社と競合するため。",
+   "Einstein はデータなしで進化できるため、データはさほど重要でない。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Einstein は機械学習を使うので、時間をかけて集めたデータから学習します。データは Einstein が動くための燃料です。",
+  "qe": "Why is data so important for Einstein for Service?",
+  "oe": [
+   "Einstein depends on the collection of data over time in order to learn.",
+   "Einstein needs your customers’ personal information.",
+   "The features use data to compete with other businesses.",
+   "Data’s not so important—Einstein can grow without it."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Einstein for Service のロールアウト戦略 / Einstein に向けた準備 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/einstein-for-service-rollout-strategies/get-ready-for-einstein-service",
+  "q": "ロールアウト戦略を開始するときに考慮すべき点は何ですか?",
+  "o": [
+   "Einstein の各機能をすべて一度にロールアウトする。",
+   "まず選定したユーザーグループに機能をテストしてもらい、フィードバックに基づいて対策を講じる。",
+   "エージェント全員に無制限のアクセス権をすぐさま付与する。",
+   "データ要件は人々が考えるほど重要でないため無視する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ロールアウトを始めるときは、まずスーパーユーザーなど選んだユーザーグループに機能を試してもらい、そのフィードバックをもとに対応します。すべての機能を一度に全員へ展開するのは避けます。",
+  "qe": "What is something you should consider when kicking off your rollout strategy?",
+  "oe": [
+   "Rollout every Einstein feature all at once.",
+   "Let a select group of users test out a feature first so you can act on their feedback.",
+   "Give unlimited access to all of your agents right away.",
+   "Disregard data requirements—they’re not as important as people think."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / エンドユーザーを確認して、メッセージング履歴を共有する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/verify-end-user-share-msg-history",
+  "q": "次のうち、ユーザー検証を追加することの利点でないものはどれですか?",
+  "o": [
+   "エンドユーザーがチャット会話履歴を表示できるようになる。",
+   "ユーザーに Web サイトやモバイルアプリケーションにログインするよう要求することで、顧客データを保護する。",
+   "エンドユーザーに会話後のアンケートを送信する。",
+   "Web サイトやモバイルアプリケーションなどのデバイス間で、エンドユーザーがメッセージをやり取りできるようになる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ユーザー検証の利点は、セキュアなトークンによるデータ保護(ログインの要求)、デバイス間での会話の継続、会話履歴の表示期間の拡張です。会話後のアンケートは自動レスポンスコンポーネントで送るもので、ユーザー検証の利点ではありません。",
+  "qe": "Which of the following isn’t a benefit of adding user verification?",
+  "oe": [
+   "Let your end-user view their chat conversation history.",
+   "Protect customer data by requiring users to log in to your website or mobile app.",
+   "Send a post-conversation survey to your end users.",
+   "Let your end users message across devices, such as your website and mobile app."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / エンドユーザーを確認して、メッセージング履歴を共有する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/verify-end-user-share-msg-history",
+  "q": "ユーザー検証はバックグラウンドでどのように処理されますか?",
+  "o": [
+   "エンドユーザーが Web サイトやモバイルアプリケーションにログインすると、JSON Web トークンが割り当てられる。JSON Web キーにより JSON Web トークンが検証され、エンドユーザーがログアウトするまでメッセージング履歴が表示される。",
+   "エンドユーザーが Web サイトやモバイルアプリケーションからログアウトすると、JSON Web トークンが割り当てられる。JSON Web キーにより JSON Web トークンが検証され、エンドユーザーにメッセージング履歴が表示される。",
+   "エンドユーザーが Web サイトまたはモバイルアプリケーションにログインする。JSON Web キーが割り当てられて、JSON Web トークンにより JSON Web キーが検証され、エンドユーザーにメッセージング履歴が表示される。",
+   "エンドユーザーが Web サイトやモバイルアプリケーションにログインすると、JSON Web トークンが割り当てられる。JSON Web キーにより JSON Web トークンが検証され、エンドユーザーにメッセージング履歴が最大 6 時間表示される。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "エンドユーザーがログインすると JSON Web トークンが割り当てられ、JSON Web キーでトークンが検証されると、メッセージング履歴が表示されます。キーとトークンの役割を逆にしないこと、最大6時間の制限はユーザー検証を使わない場合であることに注意します。",
+  "qe": "How does user verification work behind the scenes?",
+  "oe": [
+   "End user logs in to your website or mobile app; a JSON web token is assigned to them. JSON web keys verify the JSON web token, messaging history is shown to the end-user until they log out.",
+   "End user logs out of your website or mobile app; a JSON web token is assigned to them. JSON web keys verify the JSON web token, messaging history is shown to the end user.",
+   "End user logs in to your website or mobile app. A JSON web key is assigned to them, JSON web tokens verify the JSON web key, messaging history is shown to the end-user.",
+   "End user logs in to your website or mobile app; a JSON web token is assigned to them. JSON web keys verify the JSON web token, messaging history is shown to the end user for up to 6 hours."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / 情報を収集してエンドユーザーを迅速にサポートする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/collect-information-to-help-end-users",
+  "q": "次のうち、事前チャット項目データの転送先にできないのはどれですか?",
+  "o": [
+   "メッセージングセッション項目",
+   "拡張ボット",
+   "キュー",
+   "音声チャネル"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "事前チャット項目のデータは、フローでメッセージングセッションの項目に保存したり、ボットに渡したり、エージェントやキューへの作業の転送に使ったりできます。音声チャネルは転送先になりません。",
+  "qe": "Which of the following is not a destination that Pre-Chat field data can be routed to?",
+  "oe": [
+   "A messaging session field",
+   "An enhanced bot",
+   "A queue",
+   "A voice channel"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / 情報を収集してエンドユーザーを迅速にサポートする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/collect-information-to-help-end-users",
+  "q": "次のうち、オムニフローでサポートできない事前チャットデータの使用方法はどれですか?",
+  "o": [
+   "事前チャットデータを使用して、作業や情報をエージェント、キュー、スキル、ボットに転送する。",
+   "事前チャットデータを使用して、レコードを検索してリンクする。",
+   "事前チャットフォームをカスタマイズする。",
+   "事前チャットデータを使用して、オブジェクトを更新する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "オムニチャネルフローは、事前チャットデータを使ってオブジェクトの更新(レコードを更新)、作業の転送(作業を転送)、レコードの検索とリンク(レコードを検索)を行えます。事前チャットフォーム自体のカスタマイズは、フローではなくメッセージングの設定で行います。",
+  "qe": "Which of the following usage of pre-chat data cannot be helped by Omni flow?",
+  "oe": [
+   "Use pre-chat data to route work or information to an agent, queue, skill, or bot.",
+   "Use pre-chat data to search for and link to a record.",
+   "Customize the pre-chat form.",
+   "Use Pre-Chat data to update an object."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / チャットボタンをいつ、どのように表示するかを決定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/decide-when-and-how-to-present-the-chat-button",
+  "q": "Web の拡張チャットリリースに営業時間を追加すると、どうなりますか?",
+  "o": [
+   "エンドユーザーに対してチャットボタンが Web ページに常に表示される。",
+   "営業時間外は Web ページにチャットボタンが表示されない。",
+   "チャットボタンはエンドユーザーに表示されるが、バナーでメッセージングが現在利用できないことが通知される。",
+   "ボットが挨拶をして、チャットに招待する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Web の拡張チャットのリリースに営業時間を追加すると、営業時間外はチャットボタンが表示されません。新規の会話が利用できないことをバナーで知らせるのは、アプリ内の拡張チャットの動作です。",
+  "qe": "After you add Business Hours to your Enhanced Chat for Web deployment, what happens?",
+  "oe": [
+   "The chat button is always displayed to end-users on your web page.",
+   "The chat button is hidden outside of business hours on your web page.",
+   "The chat button is visible to end-users but a banner tells them that messaging isn’t currently available.",
+   "A bot greets them and invites them to chat."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / チャットボタンをいつ、どのように表示するかを決定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/decide-when-and-how-to-present-the-chat-button",
+  "q": "次のうち、チャットボタンの表示/非表示 API を使用している場合にできない操作はどれですか?",
+  "o": [
+   "リリースに関連付けられた営業時間を上書きする。",
+   "Web ページの右下隅のチャットボタンが非表示になる。",
+   "サブドメインセッションの継続が許可されているページでの新規チャットを防止する。",
+   "リリースに営業時間を追加する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "表示/非表示 API では、右下のデフォルトのチャットボタンを非表示にしたり、サブドメインセッションの継続を許可するページで新しいチャットを防いだりできます。営業時間はリリース設定で関連付けるもので、API で営業時間を上書きすることはできません。",
+  "qe": "Which of the following are you unable to do when using the Show/Hide Chat Button API?",
+  "oe": [
+   "Override business hours that are associated with the deployment.",
+   "Hide the chat button from the lower right corner of your web page.",
+   "Prevent new chats on a page where subdomain session continuity is allowed.",
+   "Add business hours to your deployment."
+  ],
+  "v": "要確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / 構造化コンテンツをエンドユーザーに送信する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/send-structured-content-to-end-users",
+  "q": "次のうち、エージェントが送信できないメッセージングコンポーネントはどれですか?",
+  "o": [
+   "時間セレクター",
+   "セキュアなフォーム",
+   "自動応答",
+   "動的オプションが含まれる質問"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "エージェントが送信できるのは、静的オプションの質問、拡張リンク、セキュアなフォーム、動的オプションの質問、時間セレクターなどです。自動レスポンスは会話の決まったポイントで組織から自動的に送信されるコンポーネントで、エージェントが送るものではありません。",
+  "qe": "Which of the following messaging components can’t be sent by an agent?",
+  "oe": [
+   "Time selectors",
+   "Secure forms",
+   "Auto responses",
+   "Questions with dynamic options"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / 構造化コンテンツをエンドユーザーに送信する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/send-structured-content-to-end-users",
+  "q": "次の文のうち、誤っているものはどれですか?",
+  "o": [
+   "時間セレクターコンポーネントでは、エンドユーザーが予定時間を選択できる。",
+   "静的オプションが含まれる質問では、エンドユーザーがサポート理由を選択できる。",
+   "自動レスポンスでは、エンドユーザーにチャット後アンケートを自動的に送信できる。",
+   "自動レスポンスでは、顧客は自分より先に何人の他の顧客がキューで待機しているかがわかる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "自動レスポンスは、会話確認、会話を開始、会話を終了、非アクティブな会話の4つのポイントで送れます。会話の終了時にアンケートを送ることはできますが、キューで先に何人待っているかを伝える機能はありません。",
+  "qe": "Which of the following statements is false?",
+  "oe": [
+   "A time selector component lets an end user select an appointment time.",
+   "A question with static options lets an end user select their Support Reason.",
+   "An auto-response can automatically send your end user a post-chat survey.",
+   "An auto-response can tell a customer how many other customers are in the queue ahead of them."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / 顧客とメッセージをやり取りする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/message-with-a-customer",
+  "q": "次のうち、拡張会話ツールバーでエージェントが実行できない操作はどれですか?",
+  "o": [
+   "絵文字を送信する。",
+   "ファイルを添付する。",
+   "スーパーバイザーのサポートを求める。",
+   "動的メッセージングコンポーネントを送信する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "拡張会話コンポーネントのツールバーでは、絵文字、クイックテキスト、ファイルの添付、静的なメッセージングコンポーネントの送信、スーパーバイザーへの支援要求ができます。動的なメッセージングコンポーネントは、コンポーネントの右側にあるフローから送信します。",
+  "qe": "Which of the following is an agent unable to do in the enhanced conversation toolbar?",
+  "oe": [
+   "Send an emoji.",
+   "Attach a file.",
+   "Ask for supervisor assistance.",
+   "Send a dynamic messaging component."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: 拡張チャットの最適化 / 顧客とメッセージをやり取りする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/messaging-optimization-for-in-app-and-web/message-with-a-customer",
+  "q": "拡張チャットのエージェントがエンドユーザーに応答するために使用できないツールはどれですか?",
+  "o": [
+   "絵文字",
+   "クイックテキスト",
+   "音声メモ",
+   "メッセージングコンポーネント"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "拡張チャットのエージェントは、テキストと絵文字、クイックテキスト、画像・動画・ファイル、メッセージングコンポーネントで応答できます。音声メモは応答の手段として挙げられていません。",
+  "qe": "Which tool cannot be used by an Enhanced Chat agent to respond to an end-user?",
+  "oe": [
+   "An emoji",
+   "A quick text",
+   "A voice note",
+   "A messaging component"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Experience の エンタイトルメント管理 / マイルストーンの設定 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/entitlement-management-for-lightning-experience/set-up-milestones",
+  "q": "マイルストーンとは?",
+  "o": [
+   "予定されている会社のイベント",
+   "会社のサポートプロセスに必要なステップ",
+   "顧客の SLA に違反した場合に送信される警告",
+   "サービス予定がどれくらい先になるかを測定する方法"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "マイルストーンは、サポートプロセスで必要なステップ(初回応答、解決など)を表します。エンタイトルメントプロセスに追加して、SLA の時間目標を設定します。SLA 違反時の警告はマイルストーンのアクションです。",
+  "qe": "What is a milestone?",
+  "oe": [
+   "A planned company event",
+   "A required step in a company’s support process",
+   "A warning that’s sent out if a customer SLA is violated",
+   "A way of measuring how far away a service appointment is"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "entitle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Experience の エンタイトルメント管理 / マイルストーンの設定 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/entitlement-management-for-lightning-experience/set-up-milestones",
+  "q": "ケーストリガーは自動的に何を実行しますか?",
+  "o": [
+   "ケースをサポート担当者に割り当てる",
+   "ケースを正常に解決する",
+   "ケースを最上位レベルのサポートにエスカレーションする",
+   "適切なエンタイトルメントを新しいケースに追加する"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "エンタイトルメントは標準では新しいケースに自動で付きません。サンプルのケーストリガーは、ケースの [エンタイトルメント] 項目が空なら取引先責任者の有効なエンタイトルメントを探し、ケースに追加します。",
+  "qe": "What does the case trigger automatically do?",
+  "oe": [
+   "Assigns cases to support reps",
+   "Resolves cases successfully",
+   "Escalates cases to the top tier of support",
+   "Adds the correct entitlement to a new case"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "entitle",
+  "x": "Web-to-Case や Email-to-Case で作成されたケースには、エンタイトルメントが自動では付きません。自動で付ける仕組みを別に用意します。"
+ },
+ {
+  "s": "Trailhead: Lightning Experience の エンタイトルメント管理 / 顧客のケースでのエンタイトルメントの使用 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/entitlement-management-for-lightning-experience/use-entitlements-in-customer-cases",
+  "q": "マイルストーントラッカーでは担当者に何が表示されますか?",
+  "o": [
+   "有効なマイルストーンが目標日に達するまでの残り時間",
+   "期限切れのマイルストーンが目標日を過ぎてからの経過時間",
+   "利用可能なマイルストーンのリストピッカー",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "マイルストーントラッカーには、有効なマイルストーンの目標日までの残り時間、期限切れのマイルストーンが目標日を過ぎてからの経過時間、今後のマイルストーンのリストが表示されます。マイルストーンを選ぶリストピッカーは表示されません。",
+  "qe": "What does the milestone tracker show reps?",
+  "oe": [
+   "The time remaining until an active milestone reaches its Target Date",
+   "The time passed since an overdue milestone’s Target Date",
+   "A list picker for available milestones",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "entitle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Experience の エンタイトルメント管理 / 顧客のケースでのエンタイトルメントの使用 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/entitlement-management-for-lightning-experience/use-entitlements-in-customer-cases",
+  "q": "システム管理者がエンタイトルメントプロセスの複数のバージョンを作成して維持するにはどうすればよいでしょうか?",
+  "o": [
+   "いつでも好きなときにエンタイトルメントプロセスを編集する。",
+   "変更があるたびに、まったく新しいエンタイトルメントプロセスを作成する。",
+   "エンタイトルメントのバージョン管理を有効にする。",
+   "エンタイトルメント管理を最初からやり直す。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "エンタイトルメントプロセスは有効化後に変更できる回数が限られます。複数のバージョンを作って管理するには、エンタイトルメントのバージョン管理を有効にします。新しいバージョンには、エンタイトルメントとケースを旧バージョンから移行できます。",
+  "qe": "How can an admin create and maintain multiple versions of an entitlement process?",
+  "oe": [
+   "Edit the entitlement process whenever they want.",
+   "Create a brand-new entitlement process every time there’s a change.",
+   "Enable entitlement versioning.",
+   "Restart entitlement management from scratch."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "entitle",
+  "x": "エンタイトルメントプロセスを有効にしたあとは、マイルストンの削除やマイルストンアクションの作成ができません。変えるときは、エンタイトルメントのバージョン管理で新しいバージョンを作ります。"
+ },
+ {
+  "s": "Trailhead: Lightning Experience の エンタイトルメント管理 / 作業指示でのエンタイトルメントの使用 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/entitlement-management-for-lightning-experience/use-entitlements-with-work-orders",
+  "q": "作業指示の用途は?",
+  "o": [
+   "従業員への作業の割り当て",
+   "顧客の商品に必要な作業の追跡",
+   "修理に必要な予備部品の注文",
+   "会社の会議やイベント用のランチの購入"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "作業指示は、顧客が購入した商品に必要な作業(定期メンテナンスや修理など)を追跡するレコードです。エンタイトルメントプロセスを作業指示にも適用でき、作業のサービスレベルを管理できます。",
+  "qe": "What are work orders used for?",
+  "oe": [
+   "Assigning work to employees",
+   "Tracking the work needed on customers’ products",
+   "Ordering spare parts to complete repairs",
+   "Buying lunch for company meetings and events"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "entitle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Experience の エンタイトルメント管理 / 作業指示でのエンタイトルメントの使用 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/entitlement-management-for-lightning-experience/use-entitlements-with-work-orders",
+  "q": "作業種別から作業指示が作成されると、自動的に何が実行されますか?",
+  "o": [
+   "作業指示に重要な情報が記入される。",
+   "緊急メンテナンスがスケジュールされる。",
+   "作業を完了するために作業者が割り当てられる。",
+   "作業指示が記録されたことが顧客に通知される。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "作業種別から作業指示を作ると、予想所要時間、必要なスキル、必要な商品などの重要な情報が自動的に入力されます。作業者の割り当てや顧客への通知が自動で行われるわけではありません。",
+  "qe": "When a work order is created from a work type, what happens automatically?",
+  "oe": [
+   "The work order is filled in with important information.",
+   "Emergency maintenance is scheduled.",
+   "A worker is assigned to complete the job.",
+   "The customer is notified that the work order is logged."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "entitle",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Improved Service with Agentforce Commerce and Agentforce Service Integration / Increase Service Excellence with Agentforce Commerce Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/improved-service-commerce-and-service-cloud/increase-service-excellence-with-commerce-cloud",
+  "q": "Order Management System(OMS)は、サービスコンソールでサービス担当者に何を提供できますか?",
+  "o": [
+   "注文した商品、注文日、支払方法などの注文の内容",
+   "顧客のマーケティングの設定、クリック率、注文の統計",
+   "注文の金額、必要な出荷数、各倉庫での品目ごとの在庫数",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Salesforce Order Management(OMS)は、注文の内容(注文した商品、注文日、金額、支払方法)、出荷元や出荷数、注文の状況、配送業者や追跡番号をサービスコンソールに表示します。マーケティングの設定や倉庫ごとの在庫数は含まれません。",
+  "qe": "What can Order Management System provide to service reps in the Service Console?",
+  "oe": [
+   "The contents of the order, such as the products ordered, the order date, and the payment method used",
+   "The customer’s marketing preferences, click-through rates, and order statistics",
+   "The cost of the order, the number of shipments required, and the levels of each item available in each warehouse",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "integ",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Improved Service with Agentforce Commerce and Agentforce Service Integration / Increase Service Excellence with Agentforce Commerce Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/improved-service-commerce-and-service-cloud/increase-service-excellence-with-commerce-cloud",
+  "q": "Agentforce Service と Agentforce Commerce を統合すると、顧客にはどのようなメリットがありますか?",
+  "o": [
+   "サービス担当者が自宅を訪問して、問題をすばやく解決する対面の対応",
+   "より速く正確な注文の追跡、簡単な返品、すべての接点での一貫したサポート",
+   "指定のカウンターに行けば受けられる店舗での返品と割引",
+   "電話のたびに注文金額を下げられる特別なプロモーションコード"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Agentforce Service と Agentforce Commerce を統合すると、サービスコンソールで注文情報を確認し、返品や交換をすばやく処理できます。顧客は、注文の追跡が速く正確になり、返品が簡単になり、どの接点でも一貫したサポートを受けられます。",
+  "qe": "How do customers benefit when Agentforce Service and Agentforce Commerce are unified?",
+  "oe": [
+   "Face-to-face contact, where service reps show up at their door to solve problems quickly",
+   "Faster, more accurate order tracking; streamlined returns; and consistent support across all touchpoints",
+   "In-store returns and discounts when they go to the designated counter",
+   "Special promo codes to reduce the cost of their orders with every call"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "integ",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Improved Service with Agentforce Commerce and Agentforce Service Integration / Improve Service with AI Agents Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/improved-service-commerce-and-service-cloud/improve-returns-with-ai-agents",
+  "q": "AI エージェントは、顧客とのやり取りにどう応答するかをどのように決めますか?",
+  "o": [
+   "機械学習を使って、何をすべきかを自分で判断する。",
+   "アクションと指示を含む、あらかじめ定義されたトピックを参照する。",
+   "顧客のフィードバックに頼る。",
+   "サービスチームが書いた台本に従う。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "AI エージェントは Atlas 推論エンジンで顧客の要望を理解し、あらかじめ定義されたトピック(現在の名称はサブエージェント)を選びます。トピックには実行できるアクションと、判断の仕方を示す指示が入っています。台本に従うわけではありません。",
+  "qe": "How does an AI agent determine how to respond to customer interactions?",
+  "oe": [
+   "It uses machine learning to figure out what to do on its own.",
+   "It consults predefined topics that contain actions and instructions.",
+   "It relies on customer feedback.",
+   "It follows a script written by the service team."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Improved Service with Agentforce Commerce and Agentforce Service Integration / Improve Service with AI Agents Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/improved-service-commerce-and-service-cloud/improve-returns-with-ai-agents",
+  "q": "Ursa Major のリコールの対象外の商品を顧客が返品しようとすると、どうなりますか?",
+  "o": [
+   "エージェントはリコールの対象外であることを伝え、通常の返品として処理する。",
+   "エージェントはリコールしか扱えないと伝え、ほかに手伝えることがあるか尋ねる。",
+   "エージェントはケースを作成し、サービス担当者に引き継ぐ。",
+   "エージェントはリコールの一部として返品を処理し、顧客のケースファイルにメモを残す。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Recall Exchange トピックの指示では、注文の商品がリコールの対象かを確認します。対象外なら、AI エージェントはそのことを顧客に伝え、通常の返品のトピックを開始します。ケースを作って担当者に引き継ぐのは、顧客が希望したときや AI エージェントで解決できないときです。",
+  "qe": "What happens if a customer tries to return a product that’s not covered by Ursa Major’s recall?",
+  "oe": [
+   "The agent tells them it’s not part of the recall and processes it as a regular return.",
+   "The agent tells them it can only handle recalls and asks if they need help with anything else.",
+   "The agent creates a case and hands it off to a service rep.",
+   "The agent processes the return as part of the recall and puts a note in the customer’s case file."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "agents",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: AI 向けのナレッジグラウンディング: クイックルック / 大規模言語モデル向けにナレッジコンテンツを最適化する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge-grounding-for-ai-quick-look/optimize-knowledge-content-for-large-language-models",
+  "q": "生成 AI のグラウンディングについての最も適切な説明はどれですか?",
+  "o": [
+   "拡張生成を取得すること",
+   "すべてのサードパーティナレッジを Salesforce に統合すること",
+   "知識ベースのトレーニングに使用する信頼できる情報を同期すること",
+   "AI モデルを信頼できる情報源につなぐこと"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "グラウンディングとは、AI モデルを信頼できる情報源(ナレッジ記事など)に結び付けて、AI の回答の精度と関連性を高めることです。サードパーティのナレッジを Salesforce にまとめるのは統合ナレッジ(Unified Knowledge)の機能です。",
+  "qe": "Which of these best describes grounding in generative AI?",
+  "oe": [
+   "Retrieving an augmented generator",
+   "Integrating all your third-party knowledge in Salesforce",
+   "Syncing trusted information on which to train your knowledge base",
+   "Connecting your AI model to trusted sources of information"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: AI 向けのナレッジグラウンディング: クイックルック / 大規模言語モデル向けにナレッジコンテンツを最適化する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge-grounding-for-ai-quick-look/optimize-knowledge-content-for-large-language-models",
+  "q": "正誤問題: ナレッジセンターサービス (KCS) はナレッジ管理に関する業界標準のベストプラクティス集である。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "KCS(ナレッジセンターサービス)のプリンシプルは、ナレッジ管理の業界標準のベストプラクティス集です。正確で簡潔な記事づくりに役立ち、ナレッジのグラウンディングの改善にもつながります。",
+  "qe": "True or false: Knowledge-Centered Service (KCS) is a set of industry-standard best practices for knowledge management.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / Salesforce ナレッジの検索 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_search",
+  "q": "Salesforce ナレッジの検索の最適化が必要な理由は?",
+  "o": [
+   "サービス担当が記事を見つける時間が節約されるため。",
+   "検索結果でより関連性の高い記事が返されるため。",
+   "迅速かつ簡単なため。",
+   "上記のすべて"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ナレッジ検索を最適化すると、担当者が記事を探す時間が減り、関連性の高い記事が検索結果に返されます。しかも、いくつかの簡単な変更で行えます。",
+  "qe": "Why should you optimize search in Salesforce Knowledge?",
+  "oe": [
+   "Save service reps time in finding articles.",
+   "More relevant articles are returned in search results.",
+   "It's quick and easy.",
+   "All of the above"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / Salesforce ナレッジの検索 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_search",
+  "q": "検索の関連性はどのように判断されますか?",
+  "o": [
+   "ユーザーの検索履歴",
+   "検索語の頻度、順序、ユニーク性などの要素の数",
+   "記事の長さ",
+   "記事の評価"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "検索結果の並び順(関連性)は、検索語の出現頻度、順序、ユニーク性など、複数の要素で決まります。ユーザーの検索履歴や記事の長さで決まるわけではありません。",
+  "qe": "How is search relevance determined?",
+  "oe": [
+   "User's search history",
+   "Number of factors, including search term frequency, order, and uniqueness",
+   "Length of the article",
+   "Article ratings"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / Salesforce ナレッジの検索 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_search",
+  "q": "見出語化の利点とは?",
+  "o": [
+   "単語のスペルミスがあっても結果が返される。",
+   "類似する用語をグループ化できる。",
+   "記事で使用される検索語の正確なバリエーションを使用しなくても多数の結果が返される。",
+   "見いだすことができる。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "見出語化(レンマ化)は検索語の語形変化(バリエーション)を識別するので、記事と同じ形の語を使わなくても結果が返ります。スペルミスへの対応はスペル修正、似た語のグループ化はシノニムグループの機能です。",
+  "qe": "What are the benefits of lemmatization?",
+  "oe": [
+   "Even if you have a typo in the word, you get results.",
+   "You can group similar words together.",
+   "You get more results even when you don't use the exact variant of the search term used in the article.",
+   "Lemmings?!?!"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 最適な検索オプションの選択 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_choose",
+  "q": "スニペット、強調表示、オートコンプリートはどこで有効にできますか?",
+  "o": [
+   "検索設定",
+   "記事の設定",
+   "ナレッジの設定",
+   "サポート設定"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "スニペットと強調表示、タイトル検索とキーワード検索のオートコンプリートは、どれも [ナレッジの設定] で有効にします。",
+  "qe": "Where can you enable snippets, highlighting, and auto-complete?",
+  "oe": [
+   "Search Settings",
+   "Article Settings",
+   "Knowledge Settings",
+   "Support Settings"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 最適な検索オプションの選択 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_choose",
+  "q": "検索のスニペットが生成される方法は?",
+  "o": [
+   "検索エンジン内の奥深くから",
+   "メール、ロングテキストエリア、リッチテキストエリア、テキストエリア項目から",
+   "記事の説明項目から",
+   "記事の本文から"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "検索のスニペットと強調表示は、メール、ロングテキストエリア、リッチテキストエリア、テキストエリアの項目から生成されます。スニペットが作られないときは、記事の概要項目が表示されます。",
+  "qe": "How are search snippets generated?",
+  "oe": [
+   "From deep within the search engine",
+   "From email, long text area, rich text area, and text area fields",
+   "From the article's description field",
+   "From the article's body"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 最適な検索オプションの選択 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_choose",
+  "q": "オートコンプリートにはどのような種類がありますか?",
+  "o": [
+   "記事タイトル",
+   "質問のタイトル",
+   "キーワード検索",
+   "上記のすべて"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "ナレッジ検索のオートコンプリートには、記事と質問のタイトル用と、キーワード検索用があります。選択肢の3つすべてが当てはまります。",
+  "qe": "What types of auto-complete are there?",
+  "oe": [
+   "Article titles",
+   "Question titles",
+   "Keyword searches",
+   "All of the above"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 検索のカスタマイズの設定 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_setup",
+  "q": "昇格済み検索語を作成するときに必要な処理は?",
+  "o": [
+   "ケースを解決するためによく使用されるソリューション記事を選択する。",
+   "用語あたりのキーワード数を制限する。",
+   "同じ用語を使用する記事の数を制限する。",
+   "上記のすべて"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "昇格済み検索語は、よくあるサポートの問題を解決する記事に付けます。最良の結果を得るには選択的に使い、昇格済み用語の数と、用語あたりの記事の数を絞ります。",
+  "qe": "When creating promoted search terms, what should you do?",
+  "oe": [
+   "Choose articles that are most commonly used to resolve cases.",
+   "Limit the number of keywords per term.",
+   "Limit the number of articles that use the same term.",
+   "All of the above"
+  ],
+  "v": "要確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 検索のカスタマイズの設定 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_setup",
+  "q": "[設定] のどこでシノニムグループを作成できますか?",
+  "o": [
+   "ナレッジの設定",
+   "ナレッジシノニム",
+   "シノニム",
+   "検索設定"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "シノニムグループは [設定] の [カスタマイズ] | [検索] | [シノニム] で作成します。グループごとに2〜6個の語または句を登録し、どれか1つで検索するとグループ内のすべての語の結果が返ります。",
+  "qe": "Where in Setup can you create synonym groups?",
+  "oe": [
+   "Knowledge Settings",
+   "Knowledge Synonyms",
+   "Synonyms",
+   "Search Settings"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 検索のカスタマイズの設定 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_setup",
+  "q": "関連記事の推奨機能をカスタマイズするために選択できるケース項目は?",
+  "o": [
+   "使用可能な短いテキスト項目を 5 個まで選択できる。",
+   "[件名] 項目か [説明] 項目のいずれかを選択できる。",
+   "すべての項目を選択できる。",
+   "すべてのカスタム項目を選択できる。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "ナレッジは標準でケースの件名と説明から推奨記事を探します。推奨に使うケース項目はカスタマイズでき、使用可能な短いテキスト項目を5個まで選べます。",
+  "qe": "What case fields can you select to customize the suggested related articles feature?",
+  "oe": [
+   "Choose up to five of the available short text fields.",
+   "Choose between the Subject and Description field.",
+   "Choose all fields.",
+   "Choose all custom fields."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 分析を使用したより適切な判断 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_make",
+  "q": "[設定] のどこでナレッジ検索活動レポートの作成を開始しますか?",
+  "o": [
+   "レポートタイプ",
+   "ナレッジの設定",
+   "サポート設定",
+   "検索設定"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "ナレッジ検索活動レポートは、[設定] の [レポートタイプ] でカスタムレポートタイプを作るところから始めます。",
+  "qe": "Where in Setup do you start creating a Knowledge Search Activity Report?",
+  "oe": [
+   "Report Types",
+   "Knowledge Settings",
+   "Support Settings",
+   "Search Settings"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "reports",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 分析を使用したより適切な判断 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_make",
+  "q": "より適切なシノニムグループと昇格済み検索語を作成するには、ナレッジ検索活動レポートのどの項目を使用しますか?",
+  "o": [
+   "結果数",
+   "検索語",
+   "検索日",
+   "言語"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ナレッジ検索活動レポートの [検索語] 項目で、よく使われる検索語を確認します。同じことを指す語はシノニムグループにまとめ、上位の検索語に最も合う記事には昇格済み検索語を付けます。[結果数] も、結果が返らない検索語を見つけるのに使います。",
+  "qe": "What field in the Knowledge Search Activity Report do you use to create better synonym groups and promoted search terms?",
+  "oe": [
+   "Number of Results",
+   "Search Terms",
+   "Search Date",
+   "Language"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: ナレッジ検索の基本 / 分析を使用したより適切な判断 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledge_search_basics/knowledge_search_basics_make",
+  "q": "ナレッジ検索活動レポートをどのように使用して記事を改善できますか?",
+  "o": [
+   "[クリックされた記事タイトル] 項目からリストを作成して、人気記事をまとめる。",
+   "[期間] 項目を使用して、ユーザーが記事に費やした時間を確認する。",
+   "[検索語] 項目を使用して、タイトルにその用語が含まれる記事を検索する。",
+   "[平均クリック順位] 項目と [クリックされた記事タイトル] 項目を使用して、アクセス数が上位の記事と下位の記事を判断し、その記事に集中的に取り組む。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "[平均クリック順位] と [クリックされた記事タイトル] から、よく見られる上位の記事とあまり見られない下位の記事を判断します。上位の記事は改善に集中し、下位の記事は刷新するか削除を検討します。",
+  "qe": "How can you use the Knowledge Search Activity Report to improve articles?",
+  "oe": [
+   "Make a list from the Clicked Articles Title field and round up the usual suspects.",
+   "Use the Duration field to see how long users spend on an article.",
+   "Use the Search Terms field and find articles with those terms in the title.",
+   "Use the Average Click Rank and Clicked Article Title fields to determine the top and bottom articles accessed. Focus your efforts on those articles."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / ナレッジセンターサービスの使用開始 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/get-started-with-knowledgecentered-service",
+  "q": "KCS® 手法を使用することで、どのようなメリットがありますか?",
+  "o": [
+   "カスタマーエクスペリエンスが向上する。",
+   "必要なトレーニングが減少する。",
+   "コストが低減する。",
+   "A と C",
+   "A と B"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "KCS(ナレッジセンターサービス)手法のメリットとして、カスタマーエクスペリエンスの向上、従業員の離職率の低下、新規従業員のトレーニング時間の減少が挙げられています。",
+  "qe": "What are some of the benefits of using KCS® methodology?",
+  "oe": [
+   "Improved customer experience",
+   "Less training required",
+   "Lower costs",
+   "A and C",
+   "A and B"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / ナレッジセンターサービスの使用開始 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/get-started-with-knowledgecentered-service",
+  "q": "エージェントが記事を改善したいと思った場合、何をすべきですか?",
+  "o": [
+   "フラグを設定するか、修正する。",
+   "ただのマシンであるため、",
+   "スーパーバイザーに電話する。",
+   "別の記事を検索する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "KCS では、改善が必要な記事を見つけたら、トレーニングを受けたエージェントはその場で修正し、受けていないエージェントはフラグを設定して経験豊富なエージェントに修正してもらいます。",
+  "qe": "What should an agent do if they want to improve an article?",
+  "oe": [
+   "Flag it or fix it.",
+   "Ignore it.",
+   "Call their supervisor.",
+   "Search for a different article."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / 記事の状況の管理 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/manage-article-states",
+  "q": "記事の状況は何によって決まりますか?",
+  "o": [
+   "記事の正確性",
+   "記事の確信度",
+   "記事の表示",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "記事の状況は、記事の確信度(検証状況: 作業進行中・未検証・検証済み)と、記事の表示(誰が参照できるか)で表します。任意で記事ガバナンス(エクスペリエンスベース・コンプライアンスベース)も使います。正確性そのものではなく、正確性に対する確信度です。",
+  "qe": "What determines an article's state?",
+  "oe": [
+   "Article accuracy",
+   "Article confidence",
+   "Article visibility",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / 記事の状況の管理 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/manage-article-states",
+  "q": "通常、地域の法律に関する記事に適用されるのはどの種のガバナンスですか?",
+  "o": [
+   "コンプライアンスベース",
+   "エクスペリエンスベース",
+   "表示ベース",
+   "確信度ベース"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "地域の法律のように、ポリシー・法律・規制を扱う記事にはコンプライアンスベースのガバナンスを適用し、コンプライアンスのレビューを受けます。新しい記事のデフォルトはエクスペリエンスベースです。",
+  "qe": "What type of governance would typically apply to articles about local laws?",
+  "oe": [
+   "Compliance-based",
+   "Experience-based",
+   "Visibility-based",
+   "Confidence-based"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / KCS ユーザー向けの Lightning Knowledge の設定 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/set-up-lightning-knowledge-for-kcs-users",
+  "q": "KCS 候補者が記事に設定できるのはどの検証状況ですか?",
+  "o": [
+   "作業進行中",
+   "検証済み",
+   "レビュー済み",
+   "公開済み"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "KCS 候補者は記事を「作業進行中」または「未検証」で保存できますが、「検証済み」には設定できません。「検証済み」にできるのは寄稿者(確信がある場合)、公開者、コーチです。",
+  "qe": "Which validation status can a KCS candidate set for an article?",
+  "oe": [
+   "Work in Progress",
+   "Validated",
+   "Reviewed",
+   "Published"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / KCS ユーザー向けの Lightning Knowledge の設定 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/set-up-lightning-knowledge-for-kcs-users",
+  "q": "KCS のロールをサポートするために使用できるものはどれですか?",
+  "o": [
+   "ユーザープロファイル",
+   "カスタム項目",
+   "表示設定",
+   "A または B",
+   "A または C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "KCS のロールは、ロールごとのユーザープロファイルでも、ユーザーレコードのカスタム項目でも表せます。例では既存のプロファイルを作り直す手間を避け、KCS ロールと KCS コーチを示すカスタム項目を作りました。",
+  "qe": "Which can you use to support KCS roles?",
+  "oe": [
+   "User profiles",
+   "Custom fields",
+   "Visibility settings",
+   "A or B",
+   "A or C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / 記事検索と品質監査の最適化 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/optimize-article-search-and-quality-audits",
+  "q": "エージェントが記事を見つけやすくするにはどうすればよいですか?",
+  "o": [
+   "推奨記事を設定する。",
+   "データカテゴリを定義する。",
+   "記事の品質を監視する。",
+   "B と C",
+   "A と B"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "エージェントが記事を見つけやすくするには、データカテゴリで情報を整理して検索を最適化し、ケースの推奨記事を有効にします。記事の品質の監視は KCS コーチの品質監査の役割です。",
+  "qe": "How can you help agents find articles?",
+  "oe": [
+   "Set up suggested articles.",
+   "Define data categories.",
+   "Monitor article quality.",
+   "B and C",
+   "A and B"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / 記事検索と品質監査の最適化 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/optimize-article-search-and-quality-audits",
+  "q": "KCS コーチが行うことはどれですか?",
+  "o": [
+   "記事の品質を監視する。",
+   "レポートを向上させるためにパッケージをインストールする。",
+   "推奨記事を有効にする。",
+   "パフォーマンスの劣るエージェントを降格する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "KCS コーチは、記事の品質とエージェントのプロセスの使い方を監視します(月1回の品質監査など)。パッケージのインストールや推奨記事の有効化はシステム管理者の作業です。",
+  "qe": "What does a KCS coach do?",
+  "oe": [
+   "Monitor article quality.",
+   "Install packages for better reporting.",
+   "Enable suggested articles.",
+   "Demote agents for poor performance."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / 進化ループを使用したプロセスの改良 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/use-evolve-loop-to-improve-your-process",
+  "q": "検索ギャップとは何ですか?",
+  "o": [
+   "検索時に必要な記事が見つからないこと",
+   "記事をケースに添付しないこと",
+   "修正すべき記事にフラグを設定しないこと",
+   "適切な記事を検索していないこと"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "検索ギャップとは、検索しても必要な記事が見つからないことです。進化ループ(Evolve Loop)でレポートを分析し、見つかりにくい記事を見つかりやすくします。",
+  "qe": "What is a search gap?",
+  "oe": [
+   "Not finding the articles you need when you search",
+   "Not attaching articles to cases",
+   "Not flagging articles to fix",
+   "Not searching for the right articles"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service のナレッジセンターサービス / 進化ループを使用したプロセスの改良 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/use-evolve-loop-to-improve-your-process",
+  "q": "記事をケースに添付する必要がある状況はどれですか?",
+  "o": [
+   "変更しない。",
+   "常に",
+   "記事がケースの解決に役立つ場合",
+   "火曜日のみ"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "記事がケースの解決に役立つときに、その記事をケースに添付します。記事なしで解決できるケースもあるので「常に」ではありません。添付の頻度は進化ループで確認する指標の1つです。",
+  "qe": "When should you attach an article to a case?",
+  "oe": [
+   "Never",
+   "Always",
+   "When the article helps solve the case",
+   "Only on Tuesdays"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "kcs",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / Lightning Knowledge の機能の活用 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/harness-the-power-of-lightning-knowledge",
+  "q": "Ursa Major が Lightning Knowledge へのアップグレードを希望する理由は何ですか?",
+  "o": [
+   "新しい記事タイプ",
+   "レコードタイプの使用",
+   "添付ファイルのドラッグ",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "サービスチームが挙げた Lightning Knowledge の魅力には、ドラッグでのファイル添付や、レコードタイプでデバイスごとにレイアウトを変えられることがあります。Lightning Knowledge では記事タイプがレコードタイプに置き換わるので、「新しい記事タイプ」は誤りです。",
+  "qe": "Why does Ursa Major want to upgrade to Lightning Knowledge?",
+  "oe": [
+   "New article types",
+   "Use record types",
+   "Drag for file attachments",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": "Lightning Knowledge では、従来の記事タイプの代わりにレコードタイプで記事の種類(FAQ、手順書、ポリシーなど)を分けます。レコードタイプが記事の内容とレイアウトを決めます。"
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / Lightning Knowledge の機能の活用 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/harness-the-power-of-lightning-knowledge",
+  "q": "Lightning Knowledge にアップグレードすると、サービスチームにとってどのような利点がありますか?",
+  "o": [
+   "さまざまな検索条件でリストビューを作成することによって記事を管理できる。",
+   "6 つ以上のファイルを記事に添付できる。",
+   "Lightning アプリケーションビルダーでページを設定できる。",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "サービスチームにとっての利点は、検索条件付きのリストビューで記事を管理できることや、6つ以上のファイルを記事に添付できることです。Lightning アプリケーションビルダーでのページ設定は、システム管理者にとっての利点として挙げられています。",
+  "qe": "What are the benefits to the service team of upgrading to Lightning Knowledge?",
+  "oe": [
+   "Managing articles by creating list views with different filters.",
+   "Attaching more than five files to articles.",
+   "Configuring pages with Lightning App Builder.",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / 移行の計画 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/plan-the-migration",
+  "q": "移行後に変更される項目はどれですか?",
+  "o": [
+   "作成者",
+   "Created Date (作成日)",
+   "記事番号",
+   "記事の URL"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Lightning Knowledge への移行では、標準の自動採番の制限により記事番号が変わります。移行後は新しい記事番号を使います。",
+  "qe": "Which field changes after migration?",
+  "oe": [
+   "Create By",
+   "Created Date",
+   "Article number",
+   "Article URL"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / 移行の計画 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/plan-the-migration",
+  "q": "移行後、記事へのアクセスはどのようにして制御しますか?",
+  "o": [
+   "記事アクションを使用する。",
+   "プロファイルを使用する。",
+   "権限セットを使用する。",
+   "A と C",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "Classic のナレッジでは記事アクションで権限を決めていましたが、Lightning Knowledge ではユーザープロファイルと権限セットで記事へのアクセスを制御します。",
+  "qe": "How do you control access to articles after migration?",
+  "oe": [
+   "With article actions",
+   "With profiles",
+   "With permission sets",
+   "A and C",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / Sandbox へのテスト移行の実行 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/perform-a-test-migration-to-a-sandbox",
+  "q": "データ移行の概要で、黄色のフラグは何を意味しますか?",
+  "o": [
+   "その項目が日光を好む。",
+   "その項目がない。",
+   "その項目が 100% 移行されなかった。",
+   "その項目が正しく移行された。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "データ移行の概要で黄色の警告フラグが出るのは、問題がある(項目が100%移行されなかった)場合です。受け入れる前にメタデータとデータを検証します。",
+  "qe": "In your data migration summary, what does a cheery yellow flag mean?",
+  "oe": [
+   "The item likes sunshine.",
+   "The item is missing.",
+   "The item didn't migrate 100%.",
+   "The item migrated correctly."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / Sandbox へのテスト移行の実行 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/perform-a-test-migration-to-a-sandbox",
+  "q": "移行を受け入れる前に更新する必要があるカスタマイズはどれですか?",
+  "o": [
+   "古い記事タイプに基づいて作成されたカスタマイズ",
+   "コンパクトレイアウトを設定するカスタマイズ",
+   "ページにアクションを追加するカスタマイズ",
+   "コンパクトレイアウトを再作成するカスタマイズ"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "移行を受け入れると古い記事タイプは削除されます。その前に、古い記事タイプを参照するカスタマイズ(カスタムアプリケーションやコードなど)をすべて更新します。",
+  "qe": "What customizations should you update before accepting the migration?",
+  "oe": [
+   "Customizations that build on old article types.",
+   "Customizations that set up compact layouts.",
+   "Customizations that add actions to pages.",
+   "Customizations that re-create compact layouts."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / Lightning Knowledge の設定 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/set-up-lightning-knowledge",
+  "q": "移行後に変更が必要なのはどれですか?",
+  "o": [
+   "非連動選択リスト",
+   "連動選択リスト",
+   "数式",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "連動選択リストと数式は移行されないので、「Lightning Knowledge 移行後のチェックリスト」に沿って作り直します。",
+  "qe": "What requires changes after migration?",
+  "oe": [
+   "Non-dependent picklists",
+   "Dependent picklists",
+   "Formulas",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / Lightning Knowledge の設定 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/set-up-lightning-knowledge",
+  "q": "Lightning Knowledge では、どのようにして権限が決定されますか?",
+  "o": [
+   "記事アクション",
+   "ユーザープロファイル",
+   "ページアクション",
+   "権限スリップ"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Lightning Knowledge の権限は、ユーザープロファイル(と権限セット)で決まります。記事アクションで権限を決めるのは Classic のナレッジです。",
+  "qe": "How are permissions determined in Lightning Knowledge?",
+  "oe": [
+   "Article Actions",
+   "User profiles",
+   "Page actions",
+   "Permission slips"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / 本番への移行 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/migrate-into-production",
+  "q": "Salesforce サポートは、Maria の本番組織での移行の準備が整っていることをどのような方法で判断しますか?",
+  "o": [
+   "一連の質問をする。",
+   "Sandbox をテストする。",
+   "本番組織をテストする。",
+   "コイントスを行う。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "本番組織での移行は Salesforce サポートに有効化を依頼します。サポートは一連の質問(移行計画、フルコピー Sandbox でのテスト、直前の Sandbox 更新など)で準備ができているかを確認します。",
+  "qe": "How does Salesforce support determine that Maria is ready to migrate her production org?",
+  "oe": [
+   "Asks her a list of questions.",
+   "Tests her sandbox.",
+   "Tests her production org.",
+   "Flips a coin."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Lightning Knowledge への移行 / 本番への移行 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-migration/migrate-into-production",
+  "q": "Maria はどのような方法で本番組織を移行しますか?",
+  "o": [
+   "移行前作業と移行後作業を実行してから移行する。",
+   "移行前作業を実行し、移行し、移行後作業を実行する。",
+   "Sandbox をテストし、移行し、本番組織をテストする。",
+   "本番組織をテストし、移行し、Sandbox 組織をテストする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "本番組織でも Sandbox と同じ手順で、移行前の作業、移行、移行後の作業の順に進め、最後にテストします。",
+  "qe": "How does Maria migrate her production org?",
+  "oe": [
+   "Perform pre-migration tasks, post-migration tasks, then migrate.",
+   "Perform pre-migration tasks, migrate, and perform post-migration tasks.",
+   "Test her sandbox, migrate, and test her production org.",
+   "Test her production org, migrate, and test her sandbox org."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: パートナーコンタクトセンター / パートナーコンタクトセンターについて学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-voice/service-voice-learn",
+  "q": "パートナーコンタクトセンターとは",
+  "o": [
+   "Agentforce Service を使用して電話をかける唯一の方法。",
+   "CTI アダプターで通話を文字に起こし、Einstein Analytics でレポートを実行する AI 搭載のテレフォニーシステム。",
+   "テレフォニー、デジタルで行った会話、CRM などの機能を 1 か所で提供する Salesforce の通話オプション。",
+   "コーチング、音声トランスクリプト、自動コンソールインテグレーションを提供する Amazon Connect 用の新しい CTI オプション。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "パートナーコンタクトセンター(旧 Service Cloud Voice)は、テレフォニー、デジタルチャネルでの会話、CRM の顧客データを1つのプラットフォームにまとめる Salesforce の通話オプションです。Amazon Connect と事前統合されていますが、ほかのテレフォニーパートナーも使えます。",
+  "qe": "What is Partner Contact Center?",
+  "oe": [
+   "The only way to make phone calls with Agentforce Service.",
+   "An AI-powered telephony system that transcribes calls with CTI adapters and runs reports with Einstein Analytics.",
+   "A call option for Salesforce that offers capabilities such as telephony, digital conversations, and CRM in one place.",
+   "A new CTI option for Amazon Connect that offers coaching, voice transcription, and automatic console integration."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: パートナーコンタクトセンター / パートナーコンタクトセンターについて学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-voice/service-voice-learn",
+  "q": "Service Cloud パートナーコンタクトセンターの主な利点はどれですか?",
+  "o": [
+   "音声翻訳と手間のかからない通話ラップアップタスク",
+   "リアルタイムのトランスクリプト、強化されたデータ収集、AI、可視化",
+   "すべてのデジタルで行われた会話への簡単なアクセス、高度なオムニチャネル割り当て、通話レコードの検索時間の短縮",
+   "Einstein for Service という 1 つのプラットフォームと迅速なサードパーティシステムのプロビジョニング"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "パートナーコンタクトセンターの利点には、リアルタイムの音声トランスクリプト、通話をケースや取引先責任者に結びつけるデータ収集と可視性の改善、次善アクションやケースラップアップなどの AI 支援があります。",
+  "qe": "What are some key benefits of Partner Contact Center?",
+  "oe": [
+   "Voice translation and fewer call wrap-up tasks.",
+   "Real-time transcriptions, enhanced data collection, AI, and visibility.",
+   "Easy access to all digital conversations, advanced omni-channel assignment, and less time searching for call records.",
+   "One platform, Einstein for Service, and quicker provisioning of third-party systems."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: パートナーコンタクトセンター / パートナーコンタクトセンターの導入を計画する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-voice/service-voice-prepare",
+  "q": "パートナーコンタクトセンターを使用するために新しいトレーニングを作成する必要がある理由はどれですか?",
+  "o": [
+   "Amazon と Google との新しい AI オプションや、Einstein Analytics でのレポートの実行方法について、サービス担当者が学習できるようにするため",
+   "マネージャーがコーチングセッションにコンソールを使用できるようにするため",
+   "Voice のさまざまなライセンスオプションにどのようなオプションが含まれているかをサービスチームに通知するため",
+   "コンソールのオムニチャネルモジュールを使用して電話を受けたりかけたりする方法をサービス担当者とマネージャーが理解できるようにするため"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "パートナーコンタクトセンターでは、従来のコンソールフッターのソフトフォンではなく、オムニチャネルウィジェットで電話を受けたりかけたりします。そのため、担当者とマネージャーに新しい操作とオムニスーパーバイザーでのコーチングをトレーニングする必要があります。",
+  "qe": "Why would you need to create new training for using Partner Contact Center?",
+  "oe": [
+   "To help service reps learn about new AI options with Amazon and Google, as well as how to run reports in Einstein Analytics.",
+   "To help managers use the console for coaching sessions.",
+   "To inform the service team of what options are included with the different licensing options for voice.",
+   "To help reps and managers understand how to accept and make calls with the Omni-Channel module in the console."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: パートナーコンタクトセンター / パートナーコンタクトセンターの導入を計画する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-voice/service-voice-prepare",
+  "q": "Voice をサービスチームにロールアウトする前に行う必要があるものはどれですか?",
+  "o": [
+   "何も行わない。有効にするだけ",
+   "ブランド言語をチームに再確認させる",
+   "すべての通話を記録し、サービス担当者がコールスクリプトに従っていることを確認する",
+   "ライブアシスト中の各対応をサービスマネージャーが承認する"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Voice をロールアウトする前に、会社のブランドを反映した話し方や言い回しをチームに再確認させます。有効にするだけでは担当者が正しい使い方を知っているとは限りません。",
+  "qe": "What should you do before rolling out Voice to your service teams?",
+  "oe": [
+   "Nothing. Just turn it on.",
+   "Remind your team of your branding language.",
+   "Record all calls and verify that service reps follow call scripts.",
+   "Have a service manager approve each response during live-assists."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: パートナーコンタクトセンター / パートナーコンタクトセンターの導入を計画する Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-voice/service-voice-prepare",
+  "q": "パートナーコンタクトセンターには、どのようなテレフォニーパートナーシップオプションがありますか?",
+  "o": [
+   "オプションはない",
+   "Amazon Connect またはそのほかのコンタクトセンターパートナー",
+   "Salesforce CTI",
+   "特定の Salesforce パートナーシップに固定される"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "パートナーコンタクトセンターは、Amazon Connect の事前統合されたテレフォニーのほか、ほかのコンタクトセンターパートナー(現在のテレフォニープロバイダー)とも使えます。特定のパートナーシップに縛られることはありません。",
+  "qe": "What telephony partnership options are available for Partner Contact Center?",
+  "oe": [
+   "None.",
+   "Amazon Connect or other contact center partners.",
+   "Salesforce CTI.",
+   "You’re locked into a specific Salesforce partnership."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: パートナーコンタクトセンターの設定: クイックルック / パートナーコンタクトセンターの導入準備 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-voice-setup-quick-look/prepare-for-a-voice-implementation",
+  "q": "Voice の実装を準備するには、どのタスクを完了させる必要がありますか?",
+  "o": [
+   "Lambda アドオンライセンスを購入する。",
+   "Trailblazer Community にサインアップする。",
+   "Voice の概念と制限事項を確認する。",
+   "Salesforce のサービスクォータを増やす。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Voice の実装を準備するときは、Voice の概念と制約・制限事項を確認します。ほかに、Salesforce 側の前提条件の確認や、Amazon のサービスクォータの引き上げ(Salesforce ではなく Amazon 側)も準備に含まれます。",
+  "qe": "Which task should you complete to prepare for a Voice implementation?",
+  "oe": [
+   "Purchase a Lambda add-on license.",
+   "Sign up for the Trailblazer Community.",
+   "Review Voice concepts and limitations.",
+   "Increase Salesforce service quotas."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: パートナーコンタクトセンターの設定: クイックルック / パートナーコンタクトセンターの導入準備 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-cloud-voice-setup-quick-look/prepare-for-a-voice-implementation",
+  "q": "Voice を設定する際に重要な手順はどれですか?",
+  "o": [
+   "同時ネットワークの最大数を追加する。",
+   "ポーティング要求をできるだけ稼動開始日に先立って行う。",
+   "Agentforce Service または Amazon Web Services のデモの概要を説明する。",
+   "オムニチャネルのカスタムドメインを有効にする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "既存の電話番号を移す番号ポーティングには時間がかかるので、稼動開始日よりできるだけ早く要求を出します。",
+  "qe": "What is a key step to consider when setting up Voice?",
+  "oe": [
+   "Add the maximum number of concurrent networks.",
+   "Open a porting request as far in advance of your go-live date as possible.",
+   "Outline an Agentforce Service or Amazon Web Services demo.",
+   "Enable a custom domain for Omni-Channel."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / Salesforce がアジャイルを採用した理由の理解 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/understand-why-salesforce-adopted-agile",
+  "q": "Salesforce がアジャイルプロセスを採用した理由は何ですか?",
+  "o": [
+   "配信を遅らせる必要があったため",
+   "Dreamforce で要求水準を高める必要があったため",
+   "自社の成長を支える適切なプロセスが必要であったため",
+   "大手企業がすべてアジャイル手法を採用していたため"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Salesforce は、成長に伴うコミュニケーションの問題や痛みを解決し、成長を支えるプロセスを必要としていたため、アジャイルを採用しました。配信を遅らせるためではありません。",
+  "qe": "Why did Salesforce adopt agile processes?",
+  "oe": [
+   "We needed to slow down our delivery.",
+   "We had to up the ante at Dreamforce.",
+   "We needed a better process to help support our growth.",
+   "All of the big companies had adopted agile practices."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / Salesforce がアジャイルを採用した理由の理解 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/understand-why-salesforce-adopted-agile",
+  "q": "アジャイルアプローチの主なメリットは何ですか?",
+  "o": [
+   "誰もが従うべき 1 つの厳格なプロセスが規定される。",
+   "プロセスの終了時に 1 つの大きな配信が保証される。",
+   "すべてチームを中心に考える。",
+   "チームが現在の知識に基づいて継続的に適応することができる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "アジャイルは反復的なアプローチで、チームは新しく学んだことに基づいて継続的に適応できます。最後に1回だけ大きく配信するのではなく、最初から成果物を少しずつ作っていきます。",
+  "qe": "What is a key benefit of an agile approach?",
+  "oe": [
+   "It prescribes one very rigid process for everyone to follow.",
+   "It ensures one big delivery at the end of the process.",
+   "It places our teams at the center of everything.",
+   "It allows teams to continuously adapt based on current knowledge."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / Salesforce がアジャイルを採用した理由の理解 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/understand-why-salesforce-adopted-agile",
+  "q": "Salesforce でスクラムはどのように定義されていますか?",
+  "o": [
+   "管理者がチームの業務を所有できる集中型のフレームワーク",
+   "チームが各自の成果物やプロセスを所有できる適応型のフレームワーク",
+   "大人数のチームが協力して取り組む構造",
+   "不確実性や不安定性を生み出すプロセス"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Salesforce では、スクラムを柔軟(適応型)なフレームワークと位置づけています。チームが自分たちの業務の所有権を持ち、期待を共有します。150人を部門横断的な小さなチームに編成し、短いスプリントで作業しました。",
+  "qe": "How do we define Scrum at Salesforce?",
+  "oe": [
+   "A centralized framework that enables managers to own work for the team",
+   "An adaptable framework that empowers teams to own their deliverables and process",
+   "A structure that creates a large team of people to work together",
+   "A process that creates uncertainty and instability"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / Salesforce がアジャイルを採用した理由の理解 Q4",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/understand-why-salesforce-adopted-agile",
+  "q": "「完了の定義」とは何を意味しますか?",
+  "o": [
+   "「完了の定義」とは、夕食ができたことを告げる方法である。",
+   "「完了の定義」とは、予定していたことをすべて終了したため、今後予想外のことが起こらないことを保証するものである。",
+   "「完了の定義」とは、変更または進化させることができない基準である。",
+   "「完了の定義」により、部分的にテストされた作業をリリースに転送できる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "完了の定義(DoD)は、作業が本当に完了したとみなすためにチームが行うべきことを定めたガイドラインです。テストやセキュリティ対応の漏れなど、後で問題が出ることを防ぎます。",
+  "qe": "What do we mean by \"definition of done\"?",
+  "oe": [
+   "Definition of done is a way to tell if your dinner is ready.",
+   "Definition of done ensures we have finished everything we expect, so there are no surprises down the line.",
+   "Definition of done is a standard that cannot be changed or evolved.",
+   "Definition of done helps push partially tested work to deployment."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / Salesforce がアジャイルを採用した理由の理解 Q5",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/understand-why-salesforce-adopted-agile",
+  "q": "アジャイルプロセスを選択する 1 つの理由は何ですか?",
+  "o": [
+   "プロジェクトの目的および成果が明確である。",
+   "チームのプロジェクトに不明の要素が多々あり、途中で判明した内容に適応させる必要がある。",
+   "チームがすでに、あらゆる専門知識を備えている。",
+   "チームに、全ステップが定義されたプロジェクト計画が渡されている。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "アジャイルは、不明な点が多く、試して学んだことに合わせて方向を変える必要がある複雑な業務に向いています。目的が明確で、手順がすべて決まっている業務はウォーターフォールが向いています。",
+  "qe": "What is one reason to choose agile processes?",
+  "oe": [
+   "The project's objectives and outcomes are crystal clear.",
+   "The team's project has a lot of unknowns, and we need to adapt to discovery as we go.",
+   "The team has all the expertise and knowledge already.",
+   "The team has been given a project plan with all the steps defined."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / アジャイルの基本の学習 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/learn-the-basics-of-agile",
+  "q": "アジャイル宣言の最も大切な部分の 1 つであるのはどれですか?",
+  "o": [
+   "動くソフトウェア",
+   "プロセスとツール",
+   "包括的なドキュメント",
+   "計画に従うこと",
+   "契約交渉"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "アジャイルソフトウェア開発宣言は「プロセスやツールよりも個人と対話を」「包括的なドキュメントよりも動くソフトウェアを」「契約交渉よりも顧客との協調を」「計画に従うことよりも変化への対応を」重視します。選択肢では動くソフトウェアが重視される側です。",
+  "qe": "What is one of the most valued parts of the agile manifesto?",
+  "oe": [
+   "Working software",
+   "Processes and tools",
+   "Comprehensive documentation",
+   "Following a plan",
+   "Contract negotiation"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": "アジャイルソフトウェア開発宣言は、包括的な文書よりも動くソフトウェアに、計画に従うことよりも変化への対応に価値を置きます。"
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / アジャイルの基本の学習 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/learn-the-basics-of-agile",
+  "q": "アジャイルの原則および手法について正しい文はどれですか?",
+  "o": [
+   "アジャイルの原則は、チームの仕事の進め方を詳述したものである。",
+   "アジャイルの手法は、人々がフレームワークをアジャイルかつリーンな方法で設定するために役立つ。",
+   "アジャイルの原則は、業務の遂行に役立つ広範な方法である。",
+   "アジャイルの手法では複雑化が重視される。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "アジャイルの手法(プラクティス)は、スクラムや Kanban などのフレームワークをアジャイルかつリーンな方法で実践するのに役立ちます。アジャイルの原則は「物事をシンプルに保つ」「変化を受け入れる」などの12の原則で、細かな進め方ではありません。",
+  "qe": "Which statement is true regarding agile principles and practices?",
+  "oe": [
+   "Agile principles are the detailed logistics of how a team works.",
+   "Agile practices can help people enact the frameworks in an agile and lean way.",
+   "Agile principles are a wide variety of methods for helping us get work done.",
+   "Agile practices focus on adding complexity."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / アジャイルの基本の学習 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/learn-the-basics-of-agile",
+  "q": "どのような場合に、チームが本物のアジャイルであることがわかりますか?",
+  "o": [
+   "チームが製品やプロセスを改善および進化させている場合",
+   "チームが毎回プロセスに充実に従っている場合",
+   "チームが顧客に価値あるものをほとんど配信していない場合",
+   "活動で、テクノロジーに焦点が当てられている場合"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "本当にアジャイルなチームは、継続的に学習して製品とプロセスを改善・進化させています。何も考えずに毎回同じプロセスに従うことはアジャイルではありません。",
+  "qe": "How can we tell if a team is truly agile?",
+  "oe": [
+   "The team is improving and evolving their product and process.",
+   "The team follows the exact process every time.",
+   "The team infrequently delivers something of value to our customers.",
+   "Team activities focus on technology."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / リーンの原則の実践方法 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/learn-to-use-lean-principles",
+  "q": "品質を組み込むにはどうすればよいですか?",
+  "o": [
+   "コードがシンプルになりすぎないようにする。",
+   "全員が品質に対して責任を担うようにする。",
+   "テストロールを 1 人に割り当てる。",
+   "チームを「エンジニア」と「品質管理エンジニア」に分ける。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "品質を組み込むには、全員が品質に責任を持ちます。Salesforce は品質管理エンジニアの職務をなくし、コーディングからテストまで担当する「ハイブリッドエンジニア」を新設しました。",
+  "qe": "How can you build quality in?",
+  "oe": [
+   "Avoid making our code too simple.",
+   "Make sure everyone is responsible for quality.",
+   "Assign the testing role to one person",
+   "Split our teams into \"engineers\" and \"quality engineers.\""
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / リーンの原則の実践方法 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/learn-to-use-lean-principles",
+  "q": "無駄を省くことの例はどれですか?",
+  "o": [
+   "複数の作業を同時に行って、時間を最大限活用する。",
+   "次回のミーティングについて話し合うミーティングを繰り返す。",
+   "リサイクル用とコンポスト用のごみ箱に分別し忘れる。",
+   "作業が完了していないうちに締め切りになる。",
+   "業務の開始にあたってチームが必要な事項を揃えられるように、チームの準備の定義を作成する。"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "準備の定義は、作業を始める前に必要な事項の標準リストです。始めてから準備不足や不要な作業だと気づいて時間を無駄にすることを防ぐので、無駄を省く例になります。マルチタスクや計画のためだけの会議はむしろ無駄を生みます。",
+  "qe": "What is an example of eliminating waste?",
+  "oe": [
+   "Making sure you make the most of your time and multitask on different things",
+   "Lots of meetings that help you plan the next meeting",
+   "Forgetting to use the recycling and compost bins",
+   "Work that is incomplete when the deadline arrives",
+   "Creating a team definition of ready that guides what the team needs before they start work"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / リーンの原則の実践方法 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/learn-to-use-lean-principles",
+  "q": "リーンの原則で、Ohana 文化を反映するものはどれですか?",
+  "o": [
+   "ジャストインタイムの決断",
+   "品質を組み込む",
+   "人々を尊重する",
+   "いち早く配信する"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "「人々を尊重する」原則は、お互いを尊重し協力して取り組むことを重視し、家族の絆と互いへの責任を表す Ohana 文化を反映しています。マネージャーは「人々に仕えるリーダー」として、進め方をチームに任せます。",
+  "qe": "What is a lean principle that mirrors our Ohana culture?",
+  "oe": [
+   "Just-in-Time Decisions",
+   "Build Quality In",
+   "Respect People",
+   "Deliver Fast"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce のアジャイルの基礎 / リーンの原則の実践方法 Q4",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-agile-basics/learn-to-use-lean-principles",
+  "q": "Salesforce でリーンの原則がアジャイルプロセスにどのように影響するかを表すものはどれですか?",
+  "o": [
+   "マルチタスクを、業務の効率的な進め方と考える。",
+   "品質管理エンジニアとエンジニアの役割を融合させて、全員が品質を重視するようにした。",
+   "人々に業務の進め方を指示するものとする。",
+   "できるだけ早い段階で大きな決断を行い、きちんと計画を立てられるようにする。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "リーンの「品質を組み込む」原則に沿って、品質管理エンジニアとエンジニアの役割を統合し、全員が品質を重視するようにしました。人々に業務の進め方を指示しないこと、決断はジャストインタイムで行うことも、リーンの原則です。",
+  "qe": "What's one way the lean principles influence our agile process at Salesforce?",
+  "oe": [
+   "We believe that multitasking is an efficient way of working",
+   "The roles of quality engineer and engineer were merged so that everyone focused on quality.",
+   "We expect to tell people how to do their job.",
+   "We make large decisions as far in advance as possible so that we can plan better."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスの Salesforce フロー / サービスの Salesforce フローについて Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lightning_flow_for_service/learn-about-lightning-flow-for-service",
+  "q": "サービスの Salesforce フローはどのような形でサービス担当者の役に立ちますか?",
+  "o": [
+   "担当者が印刷可能なチェックリストが表示される。",
+   "経験豊富な担当者が新任の担当者に何をすべきか示すことができる。",
+   "フローとクイックアクションを使用して、担当者がカスタマーエンゲージメントを高める手順を進めるようにする。",
+   "担当者がレコードを開き、顧客との会話をシームレスに再開できる。",
+   "C と D"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "サービスの Salesforce フローは、アクション & おすすめコンポーネントに「ToDo」リストを表示し、フローやクイックアクションで担当者を案内します。一時停止中のフローも表示されるので、別の担当者がレコードを開いて途中から再開できます。印刷用のチェックリストではありません。",
+  "qe": "How does Salesforce Flow for Service help customer service reps?",
+  "oe": [
+   "It shows a checklist that reps can print.",
+   "It helps an experienced rep show a new rep what to do.",
+   "It uses flows and quick actions to walk reps through customer engagements.",
+   "It allows a rep to open a record and seamlessly resume a customer conversation.",
+   "C and D"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスの Salesforce フロー / サービスの Salesforce フローについて Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lightning_flow_for_service/learn-about-lightning-flow-for-service",
+  "q": "次のシナリオのうち、銀行におけるサービスの Salesforce フローの適切な使用事例はどれですか?",
+  "o": [
+   "お客様が口座残高を確認するために電話をしてきた場合に、サービス担当者が調べる。",
+   "お客様が融資の申し込みをしたときに、サービス担当者が信用実績チェックを実行し、申請書に記入して処理する。",
+   "お客様が自宅近くの支店を知りたい場合に、担当者が最寄りの支店を検索する。",
+   "担当者が休憩を取るときに、アクション & おすすめコンポーネントを使用してランチを食べに行く場所を決める。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "サービスの Salesforce フローは、決まった順序で複数のステップを進める業務に向いています。融資の申し込み(信用実績チェック、申請書の記入、処理)はその典型です。残高確認や支店検索のような1回の調べものには、ステップのリストは必要ありません。",
+  "qe": "For a banking institution, which scenario is a good use case for Salesforce Flow for Service?",
+  "oe": [
+   "When a customer calls and wants to confirm an account balance, the service rep looks it up.",
+   "When a customer applies for a loan, the service rep runs a credit history check, completes the application, and processes it.",
+   "When a customer wants to find a branch near their home, the rep locates a nearby office.",
+   "When reps get a break, they use the Actions & Recommendations component to map out where to go for lunch."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスの Salesforce フロー / Salesforce フローと RecordAction について Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lightning_flow_for_service/tools-lightning-flow-for-service",
+  "q": "RecordAction とは何ですか?",
+  "o": [
+   "RecordAction により、アクション & おすすめコンポーネントがフローまたはクイックアクションに関連付けられる。",
+   "RecordAction により、フローまたはクイックアクションがレコードに関連付けられる。",
+   "RecordAction により、レコードがアクション & おすすめコンポーネントに関連付けられる。",
+   "RecordAction により、アクションがフローまたはクイックアクションに関連付けられる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "RecordAction は、フローやクイックアクションをレコードに関連付けるものです。たとえば Verify Information フローを取引先責任者レコードに関連付けると、アクション & おすすめコンポーネントのリストに表示されます。",
+  "qe": "What's a RecordAction?",
+  "oe": [
+   "A RecordAction associates the Actions & Recommendations component with a flow or quick action.",
+   "A RecordAction associates a flow or quick action with a record.",
+   "A RecordAction associates a record with the Actions & Recommendations component.",
+   "A RecordAction associates an action with a flow or quick action."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービスの Salesforce フロー / Salesforce フローと RecordAction について Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lightning_flow_for_service/tools-lightning-flow-for-service",
+  "q": "プロセスの自動化ツールを使用して、サービスの Salesforce フローを設定するにはどうすればよいですか?",
+  "o": [
+   "Experience Cloud を使用してフローまたはクイックアクションを作成する。",
+   "Flow Builder を使用してプロセスをアクション & おすすめコンポーネントに追加する。",
+   "アクション & おすすめコンポーネントをプロセスに追加する。",
+   "Flow Builder を使用してフローを作成し、アクション & おすすめリリースまたはプロセス内でそのフローを指定する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "まず Flow Builder でフロー(またはクイックアクション)を作り、それをアクション & おすすめリリースで指定するか、Flow Builder の RecordAction を使ったプロセスで指定します。単純な用途はリリース、条件で表示を変えたい複雑な用途は Flow Builder が向いています。",
+  "qe": "How can you use process automation tools to set up Salesforce Flow for Service?",
+  "oe": [
+   "You use Experience Cloud to create flows and quick actions.",
+   "You use Flow Builder to add processes to the Actions & Recommendations component.",
+   "You add the Actions & Recommendations component to a process.",
+   "You use Flow Builder to create flows, and specify them in an Actions & Recommendations deployment or in a process."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "automation",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Knowledge の基本 / Knowledge 入門 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-basics/get-started-with-lightning-knowledge",
+  "q": "知識ベースとは何ですか?",
+  "o": [
+   "組織の役立つ情報を保存するための 1 つのリポジトリ",
+   "組織のすべてのコミュニケーションを制御するダッシュボード",
+   "優れたコラボレーションの原動力",
+   "すべての顧客のアルファベット順のリスト"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "知識ベースは、組織の役立つ情報(FAQ、手順、マニュアルなど)を1つのリポジトリに保存したものです。担当者は同じ質問をそのつど一から調べる必要がなくなります。",
+  "qe": "What is a knowledge base?",
+  "oe": [
+   "A single repository that stores helpful organizational information",
+   "A dashboard that controls all organization communication",
+   "The driving force for great collaboration",
+   "An alphabetical list of all your customers"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Knowledge の基本 / Knowledge 入門 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-basics/get-started-with-lightning-knowledge",
+  "q": "知識ベースで生産性を向上する方法はどれですか?",
+  "o": [
+   "ソーシャルメディアで会社が批判されているときに警告する。",
+   "商品情報を非公開にして顧客が会社に問い合わせるようにする。",
+   "従業員がケースクローズを練習するためのケースを作成する。",
+   "重要な情報を 1 か所で取得して統合する。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "知識ベースは重要な情報を1か所に集めて統合するので、ほかの担当者も記事を検索して同じ回答をすぐに提供できます。サービスを拡大し、回答の一貫性を保つのに役立ち、サービスでの AI の信頼できるデータ基盤にもなります。",
+  "qe": "How does a knowledge base improve productivity?",
+  "oe": [
+   "It raises alerts when your company is bad-mouthed on social media.",
+   "It keeps product information private so your customers have to call you.",
+   "It creates cases for employees to practice closing.",
+   "It captures and consolidates important information in one place."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Knowledge の基本 / Salesforce 知識ベースを準備する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-basics/prepare-the-kb-for-success",
+  "q": "担当者がケースを解決するときに最適な記事が提案されるようにするには、どうしたらよいですか?",
+  "o": [
+   "最も適格な担当者をケースに接続する。",
+   "ケースとレコードタイプのわかりやすいデータカテゴリを作成する。",
+   "すべての担当者がすべての記事を削除できるようにする。",
+   "10 件以上の記事を読んだうえで選択する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "記事を正しく見つけて提案できるようにするには、ケースやレコードタイプに合わせて、わかりやすいデータカテゴリを作ります。分類が明確なら、記事を探す人も書く人も、どのグループとカテゴリを選ぶべきか判断できます。",
+  "qe": "What should you do to ensure that the best articles are suggested as reps solve cases?",
+  "oe": [
+   "Connect the best qualified rep to the case.",
+   "Create descriptive data categories for your cases and record types.",
+   "Allow all reps to delete all articles.",
+   "Read at least 10 articles before you choose."
+  ],
+  "v": "要確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Knowledge の基本 / Salesforce 知識ベースを準備する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-basics/prepare-the-kb-for-success",
+  "q": "記事の寄稿者に必要なナレッジ権限は何ですか?",
+  "o": [
+   "「アプリケーションのカスタマイズ」権限とナレッジに対する「参照」、「作成」、および「編集」権限。",
+   "「記事の管理」権限とナレッジに対する「参照」、「作成」、「編集」、「アーカイブ」「公開」、および「削除」権限。",
+   "「記事の管理」権限とナレッジに対する「参照」、「作成」、「編集」、および「公開」権限。",
+   "記事の作成に必要な権限はない。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "寄稿者(記事を作成・編集・公開する人)には「記事の管理」権限と、ナレッジの「参照」「作成」「編集」「公開」権限が必要です。「アーカイブ」と「削除」まで持つのはナレッジ管理者で、参照者は「参照」だけです。",
+  "qe": "What Knowledge permissions do article contributors need?",
+  "oe": [
+   "Customize Application permission and Read, Create, and Edit Knowledge permissions.",
+   "Manage Article permission and Read, Create, Edit, Archive, Publish, and Delete article Knowledge permissions.",
+   "Manage Article permission and Read, Create, Edit, and Publish Knowledge permissions.",
+   "No permissions are required to create articles."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Knowledge の基本 / 簡単な知識ベースの設定 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-basics/set-up-a-simple-knowledge-base",
+  "q": "Salesforce Go を使用して Knowledge の何を設定できますか?",
+  "o": [
+   "ナレッジの著者",
+   "記事のカテゴリ",
+   "記事の概要",
+   "AI 基盤"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Salesforce Go では、ナレッジの有効化、記事の著者へのライセンス割り当て、最初のデータカテゴリグループとカテゴリの設定を自動で行えます。選択肢のうち設定できるのは記事のカテゴリです。",
+  "qe": "What can you set up for Knowledge using Salesforce Go?",
+  "oe": [
+   "Knowledge author",
+   "Article categories",
+   "Article summary",
+   "AI foundation"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce Knowledge の基本 / 簡単な知識ベースの設定 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/lightning-knowledge-basics/set-up-a-simple-knowledge-base",
+  "q": "記事の概要はどこに表示されますか?",
+  "o": [
+   "記事の最後",
+   "ケースの説明",
+   "タイトル領域",
+   "検索結果"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "記事の概要には何についての記事かを書きます。概要は検索結果に表示され、利用者が目的の記事かどうかを判断する手がかりになります。",
+  "qe": "Where does the article summary appear?",
+  "oe": [
+   "At the end of the article",
+   "In the case description",
+   "In the title area",
+   "In the search results"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "knowledge",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce メッセージング / メッセージングについて学ぶ Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-messaging/learn-about-messaging",
+  "q": "正誤問題: メッセージングを使用するメリットの 1 つは、お客様とサービス担当の両方の柔軟性や調整が向上することである。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "メッセージングでは、お客様は好きなチャネルで非同期にやり取りでき、セルフサービスで体験を柔軟に調整できます。担当者も自動化で空いた時間を複雑な問題に使えます。お客様と担当者の両方の柔軟性が高まります。",
+  "qe": "True or false: One of the benefits of using Messaging is increased flexibility and control for both customers and service reps.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce メッセージング / メッセージングについて学ぶ Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-messaging/learn-about-messaging",
+  "q": "メッセージングチャネルとは何ですか?",
+  "o": [
+   "お客様が開始したメッセージングセッション",
+   "お客様からの連絡手段。",
+   "気に入った夜のテレビ番組を視聴する場所",
+   "再利用可能な対話型コンポーネントで、営業担当がメッセージングセッションでお客様にメッセージを送信して情報を共有または収集できる。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "メッセージングチャネルは、お客様が会社に連絡する手段です(Facebook Messenger、WhatsApp、SMS、LINE、拡張チャットなど)。再利用可能な対話型コンポーネントはメッセージングコンポーネント、お客様とのやり取りの単位はメッセージングセッションです。",
+  "qe": "What is a messaging channel?",
+  "oe": [
+   "A messaging session initiated by your customer.",
+   "A way for customers to contact your business.",
+   "A place to watch your favorite nightly television program.",
+   "A reusable, interactive component that service reps can send to customers in a messaging session to share or gather information."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": "対話チャネルは、お客様とリアルタイムまたは非同期で会話する手段です。Messaging(Enhanced Chat、WhatsApp、SMS など)と音声があり、チャネルごとの特性と制約に合わせて選びます。"
+ },
+ {
+  "s": "Trailhead: Salesforce メッセージング / チャネルを使用してお客様にエンゲージする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-messaging/engage-customers-using-channels",
+  "q": "Web サイトやモバイルアプリケーションにメッセージを追加する目的で設定するのはどの種別のチャネルですか?",
+  "o": [
+   "Facebook Messenger",
+   "Service Cloud Voice",
+   "郵便",
+   "拡張チャット"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "自社の Web サイトやモバイルアプリにメッセージングを追加するには、拡張チャット(旧 Messaging for In-App and Web)のチャネルを設定します。Facebook Messenger は外部のメッセージングアプリ、Service Cloud Voice は電話のチャネルです。",
+  "qe": "To add Messaging to your website or mobile app, which type of channel would you set up?",
+  "oe": [
+   "Facebook Messenger",
+   "Service Cloud Voice",
+   "Snail Mail",
+   "Enhanced Chat"
+  ],
+  "v": "要確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce メッセージング / チャネルを使用してお客様にエンゲージする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-messaging/engage-customers-using-channels",
+  "q": "メッセージングセッションの転送方法を選定するのはどのツールですか?",
+  "o": [
+   "標準メッセージング",
+   "拡張メッセージング",
+   "Omnistudio",
+   "オムニチャネル"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "メッセージングセッションの転送(ルーティング)はオムニチャネルが制御します。お客様のメッセージを、キュー、オムニチャネルフロー、適任のサービス担当者に転送します。標準・拡張メッセージングはチャネルの種類です。",
+  "qe": "What tool controls how messaging sessions are routed?",
+  "oe": [
+   "Standard Messaging",
+   "Enhanced Messaging",
+   "OmniStudio",
+   "Omni-Channel"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "routing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce メッセージング / 基本的なメッセージング実装を拡張する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-messaging/enhance-a-basic-messaging-implementation",
+  "q": "時間セレクターコンポーネントはどのような用途に最適ですか?",
+  "o": [
+   "歴史上の好きな時代と未来の時代を行き来する場合",
+   "アクセス頻度の高い Web ページを共有する場合",
+   "会社のメッセージ履歴を追跡する場合",
+   "予定やサービス依頼をスケジュールする場合"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "時間セレクターは、メッセージングセッションの中でお客様に空いている時間帯を選んでもらうコンポーネントで、予定やサービス依頼のスケジュールに使います。よく見る Web ページの共有には拡張リンクを使います。",
+  "qe": "What is the time selector component best used for?",
+  "oe": [
+   "Traveling between your favorite historic and future eras",
+   "Sharing frequently visited web pages",
+   "Tracking your company’s messaging history",
+   "Scheduling appointments or service requests"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce メッセージング / 基本的なメッセージング実装を拡張する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-messaging/enhance-a-basic-messaging-implementation",
+  "q": "正誤問題: オムニチャネルフローは、一度に 1 つのメッセージングチャネルにのみ関連付けることができる。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "オムニチャネルフローは Flow Builder で作成し、1つ以上のメッセージングチャネルに割り当てられます。1つのチャネルにしか関連付けられないという記述は誤りです。",
+  "qe": "True or false: An Omni-Channel flow can be associated with only one messaging channel at a time.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "routing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce リリース準備状況戦略 / Salesforce のリリースプロセスを理解する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sf_releases/sf_releases_start",
+  "q": "Salesforce リリースはいつ行われますか?",
+  "o": [
+   "Spring、Summer、Autumn、Winter",
+   "Spring、Summer、Winter",
+   "カエデの葉が最初に散ったとき",
+   "1 年に 1 回"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Salesforce のメジャーリリースは年3回、Spring・Summer・Winter です。アップグレードは自動で行われ、日付は Salesforce Trust サイトで最大1年前に発表されます。",
+  "qe": "When do Salesforce releases happen?",
+  "oe": [
+   "Spring, Summer, Autumn, Winter",
+   "Spring, Summer, Winter",
+   "When the first maple leaf falls",
+   "Once a year"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": "Salesforce のリリースは年3回(Spring、Summer、Winter)で、自動で適用されます。"
+ },
+ {
+  "s": "Trailhead: Salesforce リリース準備状況戦略 / Salesforce のリリースプロセスを理解する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sf_releases/sf_releases_start",
+  "q": "エディション情報、重要な注記、新機能を有効化する手順を含め、新機能の詳細を学ぶためのベストプラクティスとは?",
+  "o": [
+   "リリースノート",
+   "Twitter",
+   "Trailhead フォーラム",
+   "サードパーティのブログ"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "新機能の詳細(エディション、重要な注記、有効化の手順など)を確認する正式で信頼できる情報源はリリースノートです。Trailblazer Community は質問や情報交換の場として役立ちます。",
+  "qe": "Where is the best place to find the details of new features, including edition information, important notes, and instructions for enabling new features?",
+  "oe": [
+   "Release Notes",
+   "Twitter",
+   "Trailhead Forums",
+   "Third-party Blogs"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce リリース準備状況戦略 / Sandbox プレビューで早期アクセスを利用する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sf_releases/sf-releases-sandbox-preview",
+  "q": "プレビュー Sandbox でリリースにアクセスするには、どうしたらよいですか?",
+  "o": [
+   "Sandbox プレビューの開始後に Sandbox を更新する。",
+   "Sandbox プレビュー期日の前に、Sandbox がプレビューインスタンスにあることを確認する。",
+   "サポートからのアップグレードを依頼し、インスタンス ID を提供する。",
+   "砂、板、シャベルを購入して Sandbox (砂箱) を自分で作る。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "プレビューインスタンスにある Sandbox だけに新しいリリースが早く適用されます。Sandbox プレビュー期日より前に、Sandbox がプレビューインスタンスにあることを確認しておきます。プレビュー期間中に更新(リフレッシュ)すると非プレビューインスタンスに移ってしまいます。",
+  "qe": "What should you do to get access to a release in a preview sandbox?",
+  "oe": [
+   "Refresh the sandbox after the sandbox preview starts.",
+   "Make sure the sandbox is on a preview instance before the sandbox preview cut-off date.",
+   "Request an upgrade from support and provide your instance ID.",
+   "Buy some sand, wood planks, and a shovel to build a sandbox yourself."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": "Sandbox は本番の4〜6週間前にアップグレードされます(Sandbox プレビュー)。プレビュー用の Sandbox を少なくとも1つ残し、締切日のあとは更新しないでおきます。"
+ },
+ {
+  "s": "Trailhead: Salesforce リリース準備状況戦略 / Sandbox プレビューで早期アクセスを利用する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sf_releases/sf-releases-sandbox-preview",
+  "q": "プレビュー Sandbox を使用する利点は何ですか?",
+  "o": [
+   "ハードウェアとソフトウェアを更新できる。",
+   "使用する機能を設定し、有効にする方法を学ぶことができる。",
+   "組織への機能のロールアウトを計画できる。",
+   "B と C",
+   "A と B"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "プレビュー Sandbox では、本番より4〜6週間早く新機能を試し、有効化と設定の方法を学び、ユーザーへのロールアウトを計画できます。ハードウェアやソフトウェアの更新はクラウドなので不要です。",
+  "qe": "What are the benefits of using a preview sandbox?",
+  "oe": [
+   "You can update hardware and software.",
+   "You can learn how to configure and enable features that you want to use.",
+   "You can plan the rollout of features to your organization.",
+   "B and C",
+   "A and B"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce リリース準備状況戦略 / 新機能の検索、有効化、コミュニケーション Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sf_releases/sf_releases_strategy",
+  "q": "組織に利益をもたらす、すべての新機能をすばやく特定する方法はどれですか?",
+  "o": [
+   "リリースノートの PDF ファイルを印刷し、次に長時間飛行機に乗るときにすべて読む。",
+   "[Feature Impact (機能の影響)] 条件を使用して、[Enabled for Users (ユーザーで有効)] 機能と [Admins must Enable (システム管理者による有効化が必要)] 機能を見つける。",
+   "エディション名でリリースノートを検索する。",
+   "リリースノートの「このリリースの優れた機能」セクションを読む。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "リリースノートの [機能の影響] 条件で [ユーザーで有効](自動有効機能)と [システム管理者による有効化が必要](簡易有効機能)を選ぶと、組織に役立つ新機能をすばやく見つけられます。PDF を全部読む必要はありません。",
+  "qe": "What is the quickest way to identify all the new features that will benefit your organization?",
+  "oe": [
+   "Print the Release Notes PDF file and read the whole thing on your next long flight.",
+   "Use the Feature Impact filter to find the \"Enabled for Users\" and \"Admins must Enable\" features.",
+   "Search the Release Notes for your edition name.",
+   "Read the \"Best Features in this Release\" section of the Release Notes."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce リリース準備状況戦略 / 新機能の検索、有効化、コミュニケーション Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/sf_releases/sf_releases_strategy",
+  "q": "関係者やユーザーに新しいリリースについて伝えるときのベストプラクティスはどれですか?",
+  "o": [
+   "リリースノートを確認する。",
+   "スーパーユーザーとコラボレーションする。",
+   "1 年後に新しいリリースについて伝える。",
+   "B と C",
+   "A と B"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "新しいリリースを伝える前に、まずリリースノートを確認して自動有効・簡易有効の機能を把握し、スーパーユーザーと協力して伝え方やトレーニングを準備します。リリースの重要な日付も事前に知らせるので、1年後に伝えるのは誤りです。",
+  "qe": "What are some strategies for communicating with stakeholders and users about new releases?",
+  "oe": [
+   "Review the Release Notes.",
+   "Collaborate with super users.",
+   "Communicate the new release after one year.",
+   "B and C",
+   "A and B"
+  ],
+  "v": "要確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: システム管理者向けの Salesforce アンケート / ケースの開始時や終了時にアンケートへの招待を送信する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-surveys-for-admins/surveys-case-scenario",
+  "q": "ケースがクローズされたときに送信するアンケートは、どのページで選択しますか?",
+  "o": [
+   "ケース自動レスポンスルール",
+   "アンケートレコード",
+   "サポート設定",
+   "ケースレコード"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "ケースのクローズ時に送るアンケートは [サポート設定] ページで選びます。ケース作成時(Web 経由など)のアンケート招待は、ケース自動レスポンスルールで送ります。",
+  "qe": "On which page do you select a survey to be sent when a case is closed?",
+  "oe": [
+   "Case Auto-Response Rules",
+   "Survey record",
+   "Support Settings",
+   "Case record"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "cx",
+  "x": "ケースのクローズ時のアンケートはサポート設定、作成時は自動レスポンスルールです。どちらもデフォルトの Experience Cloud サイトが必要です。"
+ },
+ {
+  "s": "Trailhead: システム管理者向けの Salesforce アンケート / ケースの開始時や終了時にアンケートへの招待を送信する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/salesforce-surveys-for-admins/surveys-case-scenario",
+  "q": "ケースに関連付けられているアンケートへの招待のお客様のフィードバックはどこで確認できますか?",
+  "o": [
+   "取引先責任者レコードの [詳細] タブにある [追加情報] セクション",
+   "ケースレコードの [関連] タブにある [アンケートへの招待と回答] 関連リスト",
+   "ケースレコードの [フィード] タブ",
+   "アンケートレコードの [詳細] タブ"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "ケースに関連するアンケートの回答は、ケースレコードの [関連] タブにある [アンケートの招待と回答] 関連リストで確認します。関連リストはページレイアウトに追加しておく必要があります。",
+  "qe": "Where can you see customer feedback for survey invitations associated with a case?",
+  "oe": [
+   "Additional Information section on the Details tab of the contact record",
+   "Survey Invitations and Responses list on the Related tab of the case record",
+   "Feed tab of the Case record",
+   "Details tab of the Survey record"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "cx",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムについて Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-about-scrum",
+  "q": "Salesforce でのスクラムの主要な属性の 1 つは何ですか?",
+  "o": [
+   "お客様への提供を整理するためのフレームワークである。",
+   "チームは長い反復またはスプリントで作業する。",
+   "すべての人が大規模な専門家チームに編成される。",
+   "スポーツチーム、特にサッカーで使用されるフレームワークである。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Salesforce でのスクラムの主要な特性は、顧客に高品質な価値を提供するフレームワークであること、全員が小規模な部門横断チームに編成されること、短い反復(スプリント)で作業することです。",
+  "qe": "One of the key attributes of Scrum at Salesforce is:",
+  "oe": [
+   "It's a framework to organize delivery to customers.",
+   "Teams work in long iterations or sprints.",
+   "Everyone is organized into large, specialist teams.",
+   "It is a framework used in sports teams, especially soccer."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムについて Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-about-scrum",
+  "q": "5 つのスクラム価値とは何ですか?",
+  "o": [
+   "信頼、Ohana、人々の尊重、計画、提供",
+   "価値、お客様、タイムボックス、コミュニケーション、励まし",
+   "スクラムリーダー、製品所有者、チーム、専門分野のエキスパート、テクニカルプログラムマネージャー",
+   "集中、勇気、率直さ、コミットメント、尊重"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "スクラムの5つの価値は、集中(重点的に取り組む)、勇気、率直さ、コミットメント、尊重です。スクラムリーダーや製品所有者は役割で、価値ではありません。",
+  "qe": "The five Scrum values are:",
+  "oe": [
+   "Trust, 'Ohana, respect people, planning, and delivery",
+   "Value, customer, time-box, communication, empowerment",
+   "Scrum Leads, product owners, the team, subject matter experts, technical program managers",
+   "Focus, courage, openness, commitment, and respect"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムについて Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-about-scrum",
+  "q": "主なスクラムチームの役割にはどのような特性がありますか?",
+  "o": [
+   "スクラムリーダーは省略可能な役割で、製品所有者はお客様にすることができ、チームはその人たちの計画に従う。",
+   "製品所有者は作業を細かく管理し、スクラムリーダーは作業に優先順位を付け、チームは指示に従って作業を実行する。",
+   "チームは作業を実行し、スクラムリーダーはプロセスの促進をサポートし、製品所有者はチームの方向性を定義する。",
+   "チームメンバーと部門マネージャーはすべてバックログの優先順位付けに責任を持つ。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "チームが作業を実行し、スクラムリーダーはプロセスの進行を支援し、製品所有者はバックログに優先順位を付けてチームの方向性を定義します。製品所有者が作業を細かく管理するわけではありません。",
+  "qe": "The main Scrum team roles have the following traits.",
+  "oe": [
+   "Scrum Leads are an optional role, product owners can be customers, the team follows their plan.",
+   "Product owners micromanage work, Scrum Leads prioritize work, and the team follows direction to deliver tasks.",
+   "The team does the work, the Scrum Lead helps facilitate the process, and the product owner defines the direction for the team.",
+   "Team members and functional managers are all responsible for prioritizing the backlog."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムワークフローの要素 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-the-elements-of-the-scrum-workflow",
+  "q": "次のうち、スクラムの成果の要素について正しいのはどれですか?",
+  "o": [
+   "製品バックログは、行う必要があると思われるすべてのことが含まれたリストである。",
+   "出荷できる可能性のある増分が、常に各スプリントでリリースされる。",
+   "スプリントバックログは、プロジェクトで実行できる可能性のあるすべての作業のリストである。",
+   "成果ではなく、結果に重点を置いている。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "製品バックログは、必要になる可能性のある作業(変更・更新・要件)をすべて含む順序付きリストです。スプリントバックログは、そのうち次のスプリントで取り組む作業です。Salesforce は結果(output)ではなく成果(outcome)を重視します。",
+  "qe": "Which of the following is true of the Scrum elements of delivery?",
+  "oe": [
+   "The product backlog is a list including everything that we think needs to be done.",
+   "Potentially shippable increments are always released each sprint.",
+   "The sprint backlog is a list of all work that can potentially be done on the project.",
+   "We focus on output, not outcome."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムワークフローの要素 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-the-elements-of-the-scrum-workflow",
+  "q": "スプリントの作業を完了することが重要なのはなぜですか?",
+  "o": [
+   "Salesforce では無駄を排除することを重視していて、完了していない作業は、お客様に価値を提供するのに役立たない無駄の 1 つの形態であるため。",
+   "作業が進展し、次の反復でテストする準備ができているということであるため。",
+   "計画とコミットメントを尊重することが望ましいため。",
+   "未完了のものを完全にテストする必要はないため。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "スクラムでは、完了していない進行中の作業は無駄の一形態と考えます。完了しなければ学習と適応ができず、ワークフロー全体が遅れ、お客様に価値を届けられません。",
+  "qe": "Finishing work in a sprint is important because:",
+  "oe": [
+   "We value eliminating waste, and unfinished work is a form of waste that does not help us deliver value to our customers.",
+   "It means that work is developed and ready for testing in the next iteration.",
+   "We like to honor our plans and commitments.",
+   "We don't need to fully test something unfinished."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムワークフローの要素 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-the-elements-of-the-scrum-workflow",
+  "q": "製品バックログとスプリントバックログの違いは何ですか?",
+  "o": [
+   "製品ログはチームが実行することを決定したすべてのことのリストで、 スプリントログは必要になる可能性のあることのリストである。",
+   "スプリントバックログは製品所有者によって優先順位付けされ、製品バックログはチームによって優先順位付けされる。",
+   "製品バックログは優先順位付けされ、スプリントバックログは優先順位付けされない。",
+   "製品バックログは必要になる可能性のあるすべてのことで、スプリントバックログは次の 2 週間でチームが責任を持つ作業である。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "製品バックログは必要になる可能性のあるすべての作業で、製品所有者が優先順位を付けます。スプリントバックログは、チームが次の2週間(1スプリント)で取り組むと約束した作業です。",
+  "qe": "What is the difference between a product backlog and a sprint backlog?",
+  "oe": [
+   "The product backlog is a list of everything the team has committed to do. The sprint backlog is a list of things that potentially can be needed.",
+   "The sprint backlog is prioritized by the product owner, the product backlog is prioritized by the team.",
+   "The product backlog is prioritized, the sprint backlog is not.",
+   "The product backlog is everything that can possibly be needed, the sprint backlog is the work committed by the team for the next 2 weeks."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムの実装 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/implement-scrum",
+  "q": "Salesforce で行われているスクラムミーティングの 2 つの主な種類は何ですか?",
+  "o": [
+   "計画および検査と、状況更新",
+   "スプリントミーティングと計画ミーティング",
+   "検査および適応ミーティングと計画ミーティング",
+   "リリース計画とスプリントデモ"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Salesforce のスクラムミーティングは、計画ミーティングと、検査および適応ミーティングの2種類です。計画にはリリース計画・スプリント計画・バックログ調整・デイリースタンドアップ、検査と適応には振り返りとスプリントデモがあります。",
+  "qe": "What are the two main types of Scrum meetings we have at Salesforce?",
+  "oe": [
+   "Planning and inspection, and status updates",
+   "Sprint and planning meetings",
+   "Inspect and adapt, and planning meetings",
+   "Release planning and sprint demos"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムの実装 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/implement-scrum",
+  "q": "計画で重要なのはどのミーティングですか?",
+  "o": [
+   "デモ/レビューミーティング、振り返りミーティング、状況ミーティング",
+   "リリース計画、スプリント計画、バックログ調整、デイリースタンドアップ",
+   "長期計画、レビュー、デモ",
+   "状況ミーティング、バックログ調整、デモ/レビュー"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "計画ミーティングは、リリース計画、スプリント計画、バックログ調整、デイリースタンドアップです。デモ/レビューと振り返りは検査および適応ミーティングに分類されます。",
+  "qe": "Which meetings are important for planning?",
+  "oe": [
+   "Demo/review, retros, status meetings",
+   "Release planning, sprint planning, backlog refinement, daily standup",
+   "Long-term planning, reviews, demos",
+   "Status meetings, backlog refinement, demo/review"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / スクラムの実装 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/implement-scrum",
+  "q": "振り返りとデモ/レビューの主な違いは何ですか?",
+  "o": [
+   "デモ/レビューは製品を作成するチームのみが行い、振り返りはすべてのチームが行う。",
+   "振り返りはリリースの変わり目でのみ行われ、デモ/レビューは月に 1 回以上行われる。",
+   "違いはなく、代替可能である。",
+   "前者はチームの作業を検査し、後者は製品やサービスを検査して適応させる。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "振り返りはスプリントの終わりに、チームの作業の進め方(プロセスとチーム)を検査します。スプリントデモ/レビューは、完成した成果物を製品所有者や関係者に見せ、製品やサービスを検査して適応させます。",
+  "qe": "The primary difference between a retrospective and a demo/review is:",
+  "oe": [
+   "Demo/reviews are only done by teams that build products, and retros are done by all teams.",
+   "Retrospectives happen at release boundaries, while demos/reviews happen at least monthly.",
+   "There's not a difference; they're interchangeable.",
+   "The first inspects how the team works, and the second inspects and adapts the product or service."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / Kanban について Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-about-kanban",
+  "q": "Kanban チームが迅速に成果を出す要因は何ですか?",
+  "o": [
+   "お客様との期待の設定、Kanban ボードの使用、互いに話すこと、ワークフローの使用。",
+   "フローの視覚化、ビジュアルインジケーターを使用した進行中の作業の制限、フローの管理、漸進的な変更への適応。",
+   "プロセスフローの管理、お客様との連絡先の一元化、効果的な監視機能、ツール。",
+   "お客様重視、作業を小規模に保つこと、毎日のミーティング、リードタイムの追跡。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Kanban の主要な特性は、ワークフローの視覚化、進行中の作業(WIP)の制限、フローの管理、増分的で漸進的な変更です。これらによって作業がスムーズに流れ、すばやく成果を出せます。",
+  "qe": "Kanban teams deliver fast by:",
+  "oe": [
+   "Setting expectations with customers, using a Kanban board, talking to each other, having a workflow",
+   "Visualizing flow, limiting work in progress with visual indicators, managing flow, and adapting with evolutionary changes",
+   "Managing process flow, a single point of contact with customers, effective monitoring capabilities, and tools",
+   "Customer focus, keeping work small, daily meetings, and tracking lead time"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / Kanban について Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-about-kanban",
+  "q": "Kanban は計画されていない作業や変更にどのように対応しますか?",
+  "o": [
+   "新しい要望をバックログの最下部に入れる。",
+   "すべてを中断して、新しい要望に取り組む。",
+   "新しい要望に優先度を割り当て、それが準備完了列の最上部になったときに作業を開始する。",
+   "お客様/関係者に更新情報を毎日提供する。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Kanban では、新しい要望の優先度を評価してボードに並べます。チームは1つの作業を終えると次に優先度の高い作業に取り組むので、要望は準備完了列の先頭に来たときに着手されます。すべてを中断して飛びつくわけではありません。",
+  "qe": "Kanban teams respond to unplanned work and changes by:",
+  "oe": [
+   "Putting the new request at the bottom of the backlog",
+   "Dropping everything to jump on the new request",
+   "Assessing the priority of the new request and starting the work when it is at the top of the Ready column",
+   "Giving the customer/stakeholder daily updates"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / Kanban について Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/learn-about-kanban",
+  "q": "Kanban チームは、次のどのプラクティスを使用して進捗状況を追跡し、予測可能性を高めますか?",
+  "o": [
+   "ストーリーポイント、タイムボックス、進行中の作業、迅速性",
+   "振り返り、計画、サポートポリシー、迅速性",
+   "反復、エピック、専門分野のエキスパート、調整",
+   "サイクルタイム、リードタイム、小さいバッチサイズ、スループット"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Kanban チームは、サイクル時間、リード時間、小さいバッチサイズ、スループットで進捗を追跡し、予測可能性を高めます。ストーリーポイント、タイムボックス、ベロシティはスクラムのスプリントで使う考え方です。",
+  "qe": "Kanban teams use which practices to track progress and improve predictability:",
+  "oe": [
+   "Storypoints, timebox, work in progress, velocity",
+   "Retrospectives, planning, support policies, velocity",
+   "Iterations, epics, subject matter experts, refinement",
+   "Cycle time, lead time, small batch size, and throughput"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / 最適なワークフローの選択 Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/choose-the-best-workflow",
+  "q": "どのような場合にチームは作業の管理に Kanban を選択しますか?",
+  "o": [
+   "チームがこれ以上計画を行いたくないと決定した場合。",
+   "チームの作業が予測しにくい場合。",
+   "チームが構造を好む場合。",
+   "チームが何に取り組むべきか決められず、目的の作業が完了しない場合。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "作業が予測しにくく、割り込みの多いチームは Kanban を選びます。2週間の作業に責任を持てて、関係者がスプリントの終わりまで待てる計画的なプロジェクトはスクラムが向いています。",
+  "qe": "When does a team choose Kanban to manage its work",
+  "oe": [
+   "The team decides it doesn't want to plan anymore.",
+   "The team's work is difficult to predict.",
+   "The team likes structure.",
+   "The team can't decide what to work on and doesn't finish work on target"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / 最適なワークフローの選択 Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/choose-the-best-workflow",
+  "q": "割り込み駆動型の作業とは何ですか?",
+  "o": [
+   "チームが計画を急いだために忘れられていて、今すぐ実行しなければならない作業項目。",
+   "メールやテキストで頻繁に割り込んで来る人によって定義された作業。",
+   "事前に予測することは難しいが、発生した場合にはチームが対応する必要がある作業。",
+   "現在進行中の作業より重要性または価値が低い作業。"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "割り込み駆動型の作業とは、事前に予測するのは難しいものの、発生したらすぐに対応できるチームが必要な作業です。事前に通知されない作業に対応するチームには Kanban が適しています。",
+  "qe": "What is interruption-driven work?",
+  "oe": [
+   "Work items that were forgotten about when the team rushed planning and now have to be done.",
+   "Work that is defined by someone continuously interrupting you with emails and texts.",
+   "Work that is difficult to predict in advance but needs a team in place to handle it when it comes up.",
+   "Work that is less important or valuable than what is currently in progress."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Salesforce でのスクラムと Kanban / 最適なワークフローの選択 Q3",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/scrum-and-kanban-at-salesforce/choose-the-best-workflow",
+  "q": "一部のチームがスクラムプロセスと Kanban プロセスを組み合わせているのはなぜですか?",
+  "o": [
+   "プロセスが多いほど、成果物が良いものになるため。",
+   "チームがどちらのプロセスを使用するか決定できないことがあるため。",
+   "Scrumban と言うのが楽しいため。",
+   "チームがスクラムの構造と Kanban の WIP 制限を好むため。"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "Scrumban は、定期的に計画とレビューを行うスクラムの構造と、Kanban の進行中の作業(WIP)の制限を組み合わせたものです。進捗を管理しやすく、緊急の作業にも対応できます。",
+  "qe": "Why do some teams combine Scrum and Kanban processes?",
+  "oe": [
+   "Because the more processes, the better the deliverable.",
+   "Teams sometimes can't decide which process to use.",
+   "Scrumban is fun to say.",
+   "Teams like the Scrum structure, with the Kanban WIP limits."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "engage",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Service 設定アシスタント: クイックルック / コンタクトセンターを設定する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-setup-assistant-quick-look/set-up-your-contact-center-instantly",
+  "q": "Service 設定アシスタントの主なメリットの 1 つはどれですか?",
+  "o": [
+   "ユーザーが 1 つのレポートで顧客データを確認できる。",
+   "ユーザーがSalesforce のあらゆる要素を実装できるようになる。",
+   "ユーザーが簡単な 2 ～ 3 の手順で Service Cloud を設定できる。",
+   "ユーザーがナレッジ記事を更新できる、"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "Service 設定アシスタントの主なメリットは、2〜3の簡単な手順で Service Cloud を使い始められることです。Salesforce のすべての機能を実装する道具ではありません。",
+  "qe": "What is one of the key benefits of Service Setup Assistant?",
+  "oe": [
+   "Provides you with customer data in one report.",
+   "Allows you to implement all aspects of Salesforce.",
+   "Helps you set up Service Cloud in a few easy steps.",
+   "Lets you update Knowledge articles."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Service 設定アシスタント: クイックルック / コンタクトセンターを設定する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/service-setup-assistant-quick-look/set-up-your-contact-center-instantly",
+  "q": "Service 設定アシスタントをチームに役立てる 1 つの方法はどれですか?",
+  "o": [
+   "担当者向けのベストプラクティスや実証済みのワークフローを自動的に追加する。",
+   "お客様が Salesforce の新機能を使う第一歩となる。",
+   "メール-to-オムニチャネルルーティングをすぐさま実装する。",
+   "システム管理者により重要なタスクを与える。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "Service 設定アシスタントを使うと、数回のクリックで Service Cloud の機能と Salesforce に組み込まれたベストプラクティスが担当者向けに用意されます。メール-to-ケース、クイックテキスト、オムニチャネルルーティング、ナレッジ、デフォルトのキューなども設定できます。",
+  "qe": "What is one way Service Setup Assistant helps your team?",
+  "oe": [
+   "Automatically adds best practices and proven workflows for reps.",
+   "Provides customers with a window into new Salesforce features.",
+   "Quickly implements Email-to-Omni-Channel routing.",
+   "Provides admins with more critical tasks."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "deploy",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Slack スウォーミング / スウォーミングでカスタマーサービスを変革する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/swarming-with-slack-basics/swarming-for-customer-success",
+  "q": "複雑なケースに関して、スウォーミングモデルが階層型モデルと異なる点は何ですか?",
+  "o": [
+   "1 人のエージェントがずっとお客様と関与する。",
+   "お客様は別のエージェントに転送される。",
+   "ケースは指揮系統に沿ってエスカレーションされる。",
+   "解決策は 1 人のエキスパートに留まり、下位と共有されない。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "スウォーミングでは、ケース所有者が所有権を持ったまま(お客様の担当者が変わらないまま)エキスパートを集めて解決します。階層型モデルでは、お客様が別の担当者に転送され、ケースが指揮系統に沿ってエスカレーションされ、解決策が上位のエキスパートに留まりがちです。",
+  "qe": "How is the swarming model different from the tiered model for complex cases?",
+  "oe": [
+   "One agent stays with the customer.",
+   "Customers transfer to different agents.",
+   "Cases are escalated up a chain of command.",
+   "The solution stays with one expert and doesn’t filter back down."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Slack スウォーミング / スウォーミングでカスタマーサービスを変革する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/swarming-with-slack-basics/swarming-for-customer-success",
+  "q": "Agentforce Service でのスウォーミングの利点は何ですか?",
+  "o": [
+   "作成されるナレッジ記事が少ない。",
+   "ケースがより早く解決され、お客様の労力が少ない。",
+   "AI エージェントが情報をサイロ化したままにする。",
+   "階層間の待ち時間が増加する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "Agentforce Service でのスウォーミングでは、エキスパートをケースに集めてトラブルシューティングを速め、お客様の労力を減らしてケースを早く解決します。解決後は Agentforce が会話を要約し、ナレッジ記事のドラフトも作るので、知識がサイロ化しません。",
+  "qe": "What is a benefit of swarming with Agentforce Service?",
+  "oe": [
+   "Fewer knowledge articles created.",
+   "Faster case resolution with less customer effort.",
+   "AI agents keep information siloed.",
+   "Increased wait time between tiers."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Slack スウォーミング / Slack スウォームを管理する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/swarming-with-slack-basics/manage-a-swarm",
+  "q": "スウォームにエキスパートを追加するにはどうすればよいですか?",
+  "o": [
+   "エキスパートファインダーを使用する。",
+   "Slack コンソールを使用する。",
+   "Slack チャンネルに追加する。",
+   "ケースを更新する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "スウォームのエキスパートはエキスパートファインダーで見つけて追加します。エキスパートファインダーは Salesforce Go で設定でき、適切な専門知識を持つ対応可能なメンバーを提示します。",
+  "qe": "How do you add experts to your swarm team?",
+  "oe": [
+   "Use Expert Finder.",
+   "Use the Slack Console.",
+   "Add them to a Slack channel.",
+   "Update the case."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Slack スウォーミング / Slack スウォームを管理する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/swarming-with-slack-basics/manage-a-swarm",
+  "q": "スウォームはどこで再オープンできますか?",
+  "o": [
+   "ケースレコードまたはスウォーム Slack チャンネルから",
+   "エキスパートファインダーから",
+   "サービスコンソールから",
+   "Salesforce Go から"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "スウォームは、ケースレコードまたはスウォームの Slack チャンネルから、いつでも再オープンできます。",
+  "qe": "Where can you reopen a swarm?",
+  "oe": [
+   "From the case record or the swarm Slack channel",
+   "From Expert Finder",
+   "From the Service Console",
+   "From Salesforce Go"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Slack / サービス向け Slack を知る Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/slack-first-service/discover-slack-first-service",
+  "q": "Slack はサービスチームがケースクローズまでの時間を短縮するためにどのように役立ちますか?",
+  "o": [
+   "優先度の高い顧客の問題について社内のすべてのチャンネルに通知が送信される。",
+   "サービスチームとのコラボレーション専用の整理されたチャンネルを作成できる。",
+   "商品やエンジニアリングなどの協力部署は必要に応じてサービスチャンネルに出入りすることで、適切なタイミングでサポートできる。",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "Slack では、サービスチーム専用の整理されたチャンネルでコラボレーションでき、製品やエンジニアリングなどの協力部署は必要に応じてチャンネルに出入りしてサポートできます。全チャンネルに通知を送るわけではありません。",
+  "qe": "How does Slack help your service team close cases faster?",
+  "oe": [
+   "Slack sends a notification to all channels in the company for priority customer issues.",
+   "You can create designated, organized channels for collaboration with your service team.",
+   "Supporting departments such as Product and Engineering can come in and out of service channels as needed to provide just-in-time support.",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Slack / サービス向け Slack を知る Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/slack-first-service/discover-slack-first-service",
+  "q": "効果的なカスタマーサービススウォームの主要なステップは何ですか?",
+  "o": [
+   "ケースを作成し、新しいスウォームチャンネルを作成し、メンバーを追加し、問題を解決し、スウォームチャンネルをアーカイブする。",
+   "ケースを作成し、ケースをエスカレーションし、チーム全体のチャンネルでスウォームを行い、問題を解決する。",
+   "スウォームチャンネルを作成し、チーム全体を追加し、トラブルシューティングを行い、、問題を解決する。",
+   "スウォームチャンネルを作成し、メンバーを追加し、問題を解決し、チャンネルを開いたままにする。",
+   "ケースを作成し、問題を解決し、メールを送信し、結果を投稿する。"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "スウォームは、ケースの作成、スウォームチャンネルの作成、メンバーの追加、問題の解決、スウォームチャンネルのアーカイブという流れで進みます。チーム全体のチャンネルではなく専用の一時的なチャンネルを使います。",
+  "qe": "What are the key steps of an effective customer service swarm?",
+  "oe": [
+   "Create a case, create a new swarm channel, add members, resolve the issue, archive the swarm channel.",
+   "Create a case, escalate the case, swarm in the all-team channel, resolve the issue.",
+   "Create a swarm channel, add the whole team, troubleshoot, resolve the issue.",
+   "Create a swarm channel, add members, resolve the issue, leave the channel open.",
+   "Create a case, resolve the issue, send an email, post the outcome."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Slack / Slack ファーストな考え方をサービスチームに取り入れる計画を作成する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/slack-first-service/create-a-plan-to-bring-slack-first-thinking-to-your-service-team",
+  "q": "サービスチャンネルの命名規則のベストプラクティスはどれですか?",
+  "o": [
+   "各チャンネルを区別するためにそれぞれに異なるプレフィックスを使用する。",
+   "一貫したプレフィックスを使用することでチャンネルを論理的にグループ化する。",
+   "覚えられやすくするためにクリエイティブな名前を使用する。",
+   "作成した各チャンネルに #customer-service-team を追加する。",
+   "すべての地域で共有する 1 つの Slack チャンネルを作成する。"
+  ],
+  "a": [
+   1
+  ],
+  "ex": "サービスのチャンネルには一貫したプレフィックス(#cx など)を付けて、論理的にグループ化します。命名規則とガイドラインを作って組織全体で共有することが勧められています。",
+  "qe": "What’s a naming convention best practice for your service channels?",
+  "oe": [
+   "Use a different prefix for each channel to make it differentiated.",
+   "Use a consistent prefix to logically group your channels.",
+   "Use creative names for channels so people will remember them.",
+   "Add #customer-service-team to each channel you create.",
+   "Create a single Slack channel for all of your regions to share."
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: サービス向け Slack / Slack ファーストな考え方をサービスチームに取り入れる計画を作成する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/slack-first-service/create-a-plan-to-bring-slack-first-thinking-to-your-service-team",
+  "q": "サービスでの Slack ワークフローの使用事例として適切なものはどれですか?",
+  "o": [
+   "オープンケースについての自動メッセージ",
+   "重大度が高いケースに対して発行されるアラート",
+   "商談の承認ルーティング",
+   "A と B",
+   "B と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "サービスでの Slack ワークフローの例には、長く開いたままのケースについての自動メッセージや、重大度の高いケースが作成されたときのアラートがあります。商談の承認ルーティングは営業の例です。",
+  "qe": "What’s a good example of a Slack workflow use case for service?",
+  "oe": [
+   "Automated nudge on an open case",
+   "Alert issued for a high-severity case",
+   "Approval routing for an opportunity",
+   "A and B",
+   "B and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "slack",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service 向け WhatsApp / WhatsApp を使ってみる Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/whatsapp-for-service-cloud/get-started-with-whatsapp",
+  "q": "サービス担当者がメッセージングセッション中にスーパーバイザーに質問するために使用可能なツールはどれですか?",
+  "o": [
+   "拡張リンク",
+   "クイックテキスト",
+   "セッション転送",
+   "フラグ有効化と示唆"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "メッセージングセッション中にフラグを有効にすると、スーパーバイザーがオムニスーパーバイザーで気づき、お客様に見えない形で答えを「ささやく(示唆)」ことができます。",
+  "qe": "What tool can a service rep use to ask their supervisor a question during a messaging session?",
+  "oe": [
+   "Enhanced link",
+   "Quick text",
+   "Session transfer",
+   "Flag raise and whisper"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service 向け WhatsApp / WhatsApp を使ってみる Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/whatsapp-for-service-cloud/get-started-with-whatsapp",
+  "q": "正誤問題: メッセージを拡張ボットに転送できるようにしたい場合は、オムニチャネルフローを使用する必要がある。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "メッセージングセッションのルーティングには、キューとルーティング設定を使う方法と、オムニチャネルフローを使う方法があります。拡張ボットへのルーティングなど複雑なロジックにはオムニチャネルフローを使います。",
+  "qe": "True or false: If you want to be able to route messages to enhanced bots, you must use an Omni-Channel flow.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "routing",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service 向け WhatsApp / WhatsApp チャネルを細かく調整する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/whatsapp-for-service-cloud/fine-tune-your-whatsapp-channel",
+  "q": "正誤問題: オプトイン/オプトアウトのカスタムキーワードを複数の言語で設定できる。",
+  "o": [
+   "正しい",
+   "誤り"
+  ],
+  "a": [
+   0
+  ],
+  "ex": "[チャネル言語] で、オプトイン・オプトアウト、サポートの依頼などのキーワードと自動レスポンスを言語ごとに設定できます。[言語を追加] でスペイン語などのキーワードと応答を追加できます。",
+  "qe": "True or false: You can set custom opt-in and opt-out keywords for multiple languages.",
+  "oe": [
+   "True",
+   "False"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service 向け WhatsApp / WhatsApp チャネルを細かく調整する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/whatsapp-for-service-cloud/fine-tune-your-whatsapp-channel",
+  "q": "ページコンポーネントのうち、拡張メッセージングセッションのリアルタイムのトランスクリプトが表示されるものはどれですか?",
+  "o": [
+   "会話後作業",
+   "会話",
+   "拡張会話",
+   "メッセージングユーザー"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "[拡張会話] コンポーネントは、拡張メッセージングセッションのリアルタイムのトランスクリプトを表示します。[会話後作業] はセッション終了後のまとめ時間のタイマー、[メッセージングユーザー] はお客様の名前や同意状況を表示します。",
+  "qe": "Which page component shows a real-time transcript of an enhanced messaging session?",
+  "oe": [
+   "After Conversation Work",
+   "Conversation",
+   "Enhanced Conversation",
+   "Messaging User"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service 向け WhatsApp / WhatsApp をメッセージングコンポーネントで拡張する Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/whatsapp-for-service-cloud/extend-whatsapp-with-messaging-components",
+  "q": "次の種別のメッセージングコンポーネントのうち、直近の注文を設定したクリック可能なリストをお客様に表示できるものはどれですか?",
+  "o": [
+   "拡張リンク",
+   "静的オプションが含まれる質問",
+   "動的オプションが含まれる質問",
+   "時間セレクター"
+  ],
+  "a": [
+   2
+  ],
+  "ex": "お客様ごとに内容が変わる直近の注文のリストは、「動的オプションが含まれる質問」コンポーネントで表示します。問い合わせ理由のような固定の選択肢は「静的オプションが含まれる質問」です。",
+  "qe": "Which type of messaging component can be used to show customers a clickable list of their recent orders?",
+  "oe": [
+   "Enhanced link",
+   "Question with static options",
+   "Question with dynamic options",
+   "Time selector"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service 向け WhatsApp / WhatsApp をメッセージングコンポーネントで拡張する Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/whatsapp-for-service-cloud/extend-whatsapp-with-messaging-components",
+  "q": "次の種別のメッセージングコンポーネントのうち、空いている時間枠を設定したクリック可能なリストをお客様に表示できるものはどれですか?",
+  "o": [
+   "拡張リンク",
+   "静的オプションが含まれる質問",
+   "動的オプションが含まれる質問",
+   "時間セレクター"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "空いている時間枠のリストは時間セレクターコンポーネントで表示します。時間セレクターも動的なコンテンツなので、サービスコンソールでは専用のフローコンポーネントとして表示されます。",
+  "qe": "Which type of messaging component can show customers a clickable list of open time slots?",
+  "oe": [
+   "Enhanced link",
+   "Question with static options",
+   "Question with dynamic options",
+   "Time selector"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service 向け WhatsApp / WhatsApp でお客様をサポートする Q1",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/whatsapp-for-service-cloud/help-customers-in-whatsapp",
+  "q": "サービスコンソールで、メッセージングコンポーネントはどこに表示されますか?",
+  "o": [
+   "メッセージングウィンドウのメッセージングコンポーネントアクション",
+   "フローページコンポーネント",
+   "オムニチャネルユーティリティ",
+   "A と B",
+   "A と C"
+  ],
+  "a": [
+   3
+  ],
+  "ex": "静的なメッセージングコンポーネントはメッセージングウィンドウのメッセージングコンポーネントアクションから送り、動的なコンポーネント(動的オプションの質問、時間セレクター)はフローのページコンポーネントとして表示されます。オムニチャネルユーティリティは受信したセッションを受け入れる場所です。",
+  "qe": "Where do messaging components appear in the Service Console?",
+  "oe": [
+   "Messaging component action in the messaging window",
+   "Flow page component",
+   "Omni-Channel utility",
+   "A and B",
+   "A and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ },
+ {
+  "s": "Trailhead: Agentforce Service 向け WhatsApp / WhatsApp でお客様をサポートする Q2",
+  "u": "https://trailhead.salesforce.com/ja/content/learn/modules/whatsapp-for-service-cloud/help-customers-in-whatsapp",
+  "q": "サービス担当者は拡張 WhatsApp メッセージングセッションをどこに転送できますか?",
+  "o": [
+   "別の担当者",
+   "フロー",
+   "キュー",
+   "同じ問題を抱えている別のお客様",
+   "A、B、C のすべて"
+  ],
+  "a": [
+   4
+  ],
+  "ex": "お客様をサポートできないときは、拡張 WhatsApp のメッセージングセッションを別の担当者、キュー、オムニチャネルルーティングフローに転送できます。",
+  "qe": "Who can a service rep transfer an enhanced WhatsApp messaging session to?",
+  "oe": [
+   "Another rep",
+   "A flow",
+   "A queue",
+   "Another customer with the same problem",
+   "A, B, and C"
+  ],
+  "v": "Trailhead のユニット本文で確認",
+  "f": "messaging",
+  "x": ""
+ }
+]

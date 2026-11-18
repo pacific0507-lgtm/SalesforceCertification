@@ -18,7 +18,7 @@ def rep(old, new, count=1):
     if n != count: sys.exit(f"置換対象が {n} 件(期待 {count} 件): {old[:90]!r}")
     s = s.replace(old, new)
 
-SUBJ = [("d360", "Data 360 コンサルタント"), ("mcadmin", "Marketing Cloud Engagement Administrator"), ("afsales", "Agentforce Sales コンサルタント"),
+SUBJ = [("d360", "Data 360 コンサルタント"), ("mcadmin", "Marketing Cloud Engagement Administrator"), ("afsales", "Agentforce Sales コンサルタント"), ("afsvc", "Agentforce Service コンサルタント"),
         ("afspec", "Agentforce スペシャリスト"), ("mulepa", "MuleSoft Platform Architect"), ("fe", "基本情報技術者"), ("sg", "情報セキュリティマネジメント")]
 rows = []
 for sid, name in SUBJ:

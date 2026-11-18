@@ -6,12 +6,13 @@ var SUBJ=[
  {id:"d360",short:"D360",title:"Data 360 コンサルタント",pal:"navy",h:60,qm:1.5},
  {id:"mcadmin",short:"MCA",title:"Marketing Cloud Administrator",pal:"orange",h:50,qm:1.5},
  {id:"afsales",short:"AF Sales",title:"Agentforce Sales コンサルタント",pal:"teal",h:40,qm:1.5},
+ {id:"afsvc",short:"AF Service",title:"Agentforce Service コンサルタント",pal:"brown",h:40,qm:1.5},
  {id:"afspec",short:"AF Spec",title:"Agentforce スペシャリスト",pal:"purple",h:40,qm:1.5},
  {id:"mulepa",short:"Mule PA",title:"MuleSoft Platform Architect",pal:"blue",h:60,qm:2},
  {id:"fe",short:"FE",title:"基本情報技術者",pal:"olive",h:150,qm:2.5},
  {id:"sg",short:"SG",title:"情報セキュリティマネジメント",pal:"pink",h:80,qm:2}];
 var PAL={navy:["#24345e","#90a6df","#dee3f2","#1c243b"],orange:["#b5560f","#f2a766","#f8e4d0","#3d2814"],teal:["#0b6e7c","#7ce5f3","#def0f2","#1c373b"],
- purple:["#6b3fa0","#c3a1f5","#e8dff5","#2b1f42"],blue:["#2456a6","#7db0ff","#dce7f7","#172a47"],olive:["#55691a","#cde38d","#edf2de","#333b1c"],pink:["#a8336d","#df90b7","#f2dee8","#3b1c2b"]};
+ purple:["#6b3fa0","#c3a1f5","#e8dff5","#2b1f42"],blue:["#2456a6","#7db0ff","#dce7f7","#172a47"],olive:["#55691a","#cde38d","#edf2de","#333b1c"],pink:["#a8336d","#df90b7","#f2dee8","#3b1c2b"],brown:["#7a4b2b","#dfb090","#f2e6de","#3b281c"]};
 var WD="日月火水木金土",DEFW=[90,30,30,30,30,30,90],REV=[0,3,5,7,10,14,21,28],QS=[20,30,40,50,60,70];
 var ARR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 function SB(id){for(var i=0;i<SUBJ.length;i++)if(SUBJ[i].id===id)return SUBJ[i];return null}
