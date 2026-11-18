@@ -1,0 +1,637 @@
+{
+ "chapter": 3,
+ "chapter_title": "ナレッジ管理と受付・対話チャネル",
+ "chapter_sub": "Salesforce Knowledge と KCS、Email-to-Case などの受付チャネル、Omni-Channel のルーティング、Messaging と音声、Agentforce Service Agent までを学びます。",
+ "sections": [
+  {
+   "id": "knowledge",
+   "no": "Ch3·1",
+   "title": "Salesforce Knowledge の記事ライフサイクルと設定",
+   "tag": "Knowledge Setup",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>問題です。公開中の FAQ を直したい。いったん非公開にしないとダメでしょうか?</p><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>うーん、直してる途中の文章をお客さんに見られたら困るし…いったん引っ込める!</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>不正解だ。「Edit as Draft」で下書きを作る。公開中の版は出たままだ。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>そうです。gitで言えば、本番ブランチはそのままで、別ブランチで直してからマージするイメージですね。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>なるほど、公開を止めずに直せるんだ。お客さん側は困らないね!</p></div><p class=\"one\">Salesforce Knowledge(Lightning Knowledge)は、記事を作って、承認して、公開し、古くなったらアーカイブする「記事のライフサイクル」を管理する機能です。誰がどの記事を見られるかも、チャネル、データカテゴリ、共有で細かく決められます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>図書館の本の管理です。新しい本は書庫で準備(下書き)し、棚に並べ(公開)、古くなったら保存庫へ移します(アーカイブ)。どの棚を誰が使えるか(チャネル)、どの分類に置くか(データカテゴリ)も決めます。</p></div><h4>有効化と記事の種類</h4><ul><li>「Knowledge Settings」で <b>Enable Lightning Knowledge</b> を選んで有効にします。<b>一度有効にすると無効に戻せません</b>。</li><li>有効化すると、オブジェクトマネージャーに「Knowledge」が現れ、項目やページレイアウトをここで管理します。</li><li>Lightning Knowledge では、従来の記事タイプの代わりに<b>レコードタイプ</b>で記事の種類(FAQ、手順書、ポリシーなど)を分けます。レコードタイプが記事の内容とレイアウトを決めます。</li><li>ページレイアウトはレコードタイプとプロファイルの組み合わせで割り当て、表示・編集できる項目を変えられます。</li></ul><h4>記事の版(公開状態)</h4><div class=\"tw\"><table><thead><tr><th>状態</th><th>内容</th></tr></thead><tr><td>下書き(Draft)</td><td>作成中・更新中の版。「Edit」「Publish」「Delete Draft」「Submit for Approval」が使える</td></tr><tr><td>公開済み(Published)</td><td>利用者が読める版。「Edit as Draft」で新しい下書きを作っても、公開中の版はそのまま公開され続ける</td></tr><tr><td>アーカイブ(Archived)</td><td>公開を終えた版。「Restore」で下書きに戻せる。記事の削除(Delete Article)はアーカイブ済みの記事だけが対象</td></tr></table></div><ul><li>アーカイブは将来の日付に予約できません。日付項目をもとに定期的にアーカイブしたいときは、フローを作ります。</li><li>公開は将来の日付に予約できますが、Lightning Knowledge では予約済みの記事の一覧は見られず、予約の取り消しもできません。</li><li>「Submit for Approval」を使うには承認を有効にしておく必要があります。多段階の複雑な承認には、Flow Orchestrator を使うフロー承認(Flow Approvals)が使えます。</li></ul><h4>翻訳</h4><ul><li>多言語は「Knowledge Settings」で Multiple Languages を選んで言語を追加します。<b>追加した言語は削除できません</b>。</li><li>言語ごとに、有効(Active)、翻訳の既定の担当者(Default Assignee)、既定のレビュー担当者(Default Reviewer)を決めます。担当者には個人かキューを指定できます。</li><li>翻訳はデータカテゴリを持てず、元の言語の記事(主記事)のカテゴリを引き継ぎます。</li></ul><h4>公開チャネル(誰に見せるか)</h4><div class=\"tw\"><table><thead><tr><th>チャネル</th><th>見られる人</th></tr></thead><tr><td>内部アプリ(Internal App)</td><td>Salesforce の社内ユーザー</td></tr><tr><td>顧客(Customer)</td><td>サイトやポータルの顧客ユーザー。Experience Cloud サイトでは Customer Community / Customer Community Plus ライセンスのユーザー</td></tr><tr><td>パートナー(Partner)</td><td>Partner Community ライセンスのパートナーユーザー</td></tr><tr><td>公開ナレッジベース(Public Knowledge Base)</td><td>ログインしない匿名ユーザー。Lightning Knowledge では Experience Cloud サイトで作るのが一般的</td></tr></table></div><h4>データカテゴリと共有</h4><ul><li>データカテゴリの上限: カテゴリグループは5つ(同時に有効なのは3つ)、1グループのカテゴリは100個、階層は5レベル、1記事に付けられるのは1グループあたり8カテゴリです。</li><li>カテゴリグループは「少ないほどよい」とされます。分類が分かりやすいほど、探す人も記事を登録する人も迷いません。</li><li>カテゴリの表示範囲(すべて/なし/カスタム)は、ロール、権限セット、プロファイルで設定します。あるカテゴリを見えるようにすると、その祖先と子孫のカテゴリも見えるようになります。</li><li>既定では、ナレッジユーザーは有効なカテゴリグループのすべてのカテゴリを見られます。</li><li>標準の共有モデル(組織の共有設定、共有ルール)を選ぶと、記事の項目(レコードタイプなど)を条件にアクセスを制御できます。このときデータカテゴリはアクセス制御には使われず、分類・絞り込み・検索に使われます。</li><li>共有は記事の版(Knowledge__kav)の単位で効きます。なお、手動共有と Apex 共有は Knowledge では使えません。</li><li>組織の共有設定を「公開/参照のみ」にすると、所有者以外は編集や公開などの作成操作ができません。これらには共有による書き込み権限が必要です。</li></ul><h4>主な権限</h4><div class=\"tw\"><table><thead><tr><th>やりたいこと</th><th>必要な権限</th></tr></thead><tr><td>公開済み記事を読む・検索する</td><td>Allow View Knowledge と、Knowledge の参照権限</td></tr><tr><td>下書きを読む</td><td>上に加えて View Draft Articles</td></tr><tr><td>記事を作成・編集する</td><td>Manage Articles と、作成・参照・編集のオブジェクト権限</td></tr><tr><td>記事を公開する</td><td>Manage Articles と Publish Articles</td></tr><tr><td>アーカイブ・復元する</td><td>Manage Articles と Archive Articles(アーカイブ済み記事の削除には「すべて変更」も必要)</td></tr></table></div><ul><li>記事を読む以上の操作をするサービス担当者には、ユーザーレコードで「ナレッジユーザー」ライセンスを有効にします。既定では、参照権限を持つ社内ユーザーは誰でも公開済み記事を読めます。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>カテゴリって、アクセス制御と分類のどっちなの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>既定ではアクセス制御にも使われます。標準の共有モデルに切り替えると、アクセスは共有ルールが決め、カテゴリは分類と絞り込みだけに使われます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>Lightning Knowledge は一度有効にすると無効にできません。</li><li>公開中の記事を直すときは「Edit as Draft」です。公開を止める必要はありません。</li><li>記事の種類はレコードタイプで分けます。従来の記事タイプとの違いが問われます。</li><li>データカテゴリの上限(グループ5つ・有効3つ、100カテゴリ、5レベル、1記事8カテゴリ)と、表示範囲が祖先・子孫に広がる点を押さえます。</li><li>追加した言語は削除できません。翻訳は主記事のカテゴリを引き継ぎます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある会社は Classic の Knowledge から Lightning Knowledge への切り替えを検討しています。管理者は「試しに有効にして、合わなければ戻せばよい」と考えています。コンサルタントが最初に伝えるべきことはどれですか?",
+     "o": [
+      "Lightning Knowledge は一度有効にすると無効にできない",
+      "Lightning Knowledge を有効にすると既存の記事はすべて削除される",
+      "Lightning Knowledge は Sandbox では有効にできない",
+      "Lightning Knowledge は有効化から30日以内なら無効にできる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Lightning Knowledge は、有効にすると無効に戻せません。そのため Sandbox で十分に検証してから本番で有効にします。既存記事が削除されたり、30日以内なら戻せたりするという記述は公式にはありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_lightning_enable.htm&type=5",
+     "x": "「Knowledge Settings」で Enable Lightning Knowledge を選んで有効にします。一度有効にすると無効に戻せません。"
+    },
+    {
+     "q": "あるコンタクトセンターでは、公開中の返品ポリシー記事に誤りが見つかりました。修正中もお客様は現在の記事を読めるようにしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "「Edit as Draft」で下書きを作って修正し、修正後に公開する",
+      "記事をアーカイブしてから復元し、修正後に公開する",
+      "記事を削除して新しい記事を作り直す",
+      "記事のレコードタイプを変更して非公開にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "「Edit as Draft」は公開済み記事から下書きを作る操作で、修正中も公開中の版は公開されたままです。アーカイブすると修正中は記事が読めなくなります。削除やレコードタイプの変更は目的に合いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_lightning_actions_reference.htm&type=5",
+     "x": "公開済み(Published)利用者が読める版。「Edit as Draft」で新しい下書きを作っても、公開中の版はそのまま公開され続ける"
+    },
+    {
+     "q": "ある会社では、製品のサポート終了日を記事の日付項目に持っています。その日付を過ぎた記事を自動でアーカイブしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "日付項目をもとに定期的に記事をアーカイブするフローを作る",
+      "記事の「Archive」アクションで将来日付のアーカイブを予約する",
+      "データカテゴリの表示範囲を「なし」に変更する",
+      "ナレッジの翻訳キューを使ってアーカイブを依頼する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Lightning Knowledge ではアーカイブを将来日付に予約できないため、日付項目をもとに定期的にアーカイブするフローを作ります。表示範囲の変更はアーカイブではなく、翻訳キューも関係ありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_lightning_limitations.htm&type=5",
+     "x": "アーカイブは将来の日付に予約できません。日付項目をもとに定期的にアーカイブしたいときは、フローを作ります。"
+    },
+    {
+     "q": "ある会社は、FAQ、トラブルシューティング手順、社内ポリシーの3種類の記事で、項目とレイアウトを変えたいと考えています。Lightning Knowledge で何を使うべきですか?",
+     "o": [
+      "Knowledge オブジェクトのレコードタイプ",
+      "記事タイプ(Article Type)をそれぞれ作成する",
+      "データカテゴリグループをそれぞれ作成する",
+      "公開チャネルをそれぞれ設定する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Lightning Knowledge では、標準のレコードタイプが従来の記事タイプの代わりになり、記事の内容とレイアウトを決めます。データカテゴリは分類、チャネルは公開先を決めるもので、項目やレイアウトは変えません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_lightning_record_types.htm&type=5",
+     "x": "Lightning Knowledge では、従来の記事タイプの代わりにレコードタイプで記事の種類(FAQ、手順書、ポリシーなど)を分けます。レコードタイプが記事の内容とレイアウトを決めます。"
+    },
+    {
+     "q": "あるグローバル企業は、地域、製品、顧客区分、言語、部門、サポートレベルの6つのカテゴリグループを有効にして記事を分類したいと考えています。コンサルタントが伝えるべき制約はどれですか?",
+     "o": [
+      "同時に有効にできるカテゴリグループは3つまで",
+      "1つのカテゴリグループに作れるカテゴリは50個まで",
+      "カテゴリグループの階層は3レベルまで",
+      "1つの記事に付けられるカテゴリは合計3つまで"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "データカテゴリグループは5つまで作成でき、同時に有効にできるのは3つです。1グループのカテゴリは100個、階層は5レベル、1記事には1グループあたり8カテゴリまでです。多くのグループを有効にする設計は見直しが必要です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.category_whatis.htm&type=5",
+     "x": "データカテゴリの上限: カテゴリグループは5つ(同時に有効なのは3つ)、1グループのカテゴリは100個、階層は5レベル、1記事に付けられるのは1グループあたり8カテゴリです。"
+    },
+    {
+     "q": "ある会社では「地域」カテゴリグループに「ヨーロッパ」>「フランス」>「パリ」という階層があります。あるロールのカテゴリ表示範囲を「フランス」だけに設定しました。このロールのユーザーが見られる記事はどれですか?(2つ選択)",
+     "o": [
+      "「ヨーロッパ」に分類された記事",
+      "「パリ」に分類された記事",
+      "「アジア」に分類された記事",
+      "「ドイツ」だけに分類された記事"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "カテゴリを見えるようにすると、そのカテゴリの祖先(ヨーロッパ)と子孫(パリ)も見えるようになります。直系の関係にない「アジア」や兄弟の「ドイツ」は見えません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.category_visibility_whatis.htm&type=5",
+     "x": "カテゴリの表示範囲(すべて/なし/カスタム)は、ロール、権限セット、プロファイルで設定します。あるカテゴリを見えるようにすると、その祖先と子孫のカテゴリも見えるようになります。"
+    },
+    {
+     "q": "ある会社は、記事のアクセスをデータカテゴリではなく、記事のレコードタイプやレビュー状況の項目を条件に制御したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Lightning Knowledge で標準の共有モデルを使い、項目を条件にした共有ルールを作る",
+      "記事ごとに手動共有を設定する",
+      "Apex 共有で記事ごとにアクセス権を付与する",
+      "データカテゴリグループを項目ごとに作成する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "標準の共有モデルでは、レコードタイプなど記事の項目を条件にした共有ルールでアクセスを制御できます。このときデータカテゴリは分類と検索に使われます。手動共有と Apex 共有は Knowledge では使えません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_sharing.htm&type=5",
+     "x": "標準の共有モデル(組織の共有設定、共有ルール)を選ぶと、記事の項目(レコードタイプなど)を条件にアクセスを制御できます。このときデータカテゴリはアクセス制御には使われず、分類・絞り込み・検索に使われます。"
+    },
+    {
+     "q": "あるサービス担当者は、公開済みの記事は読めますが、作成中の下書き記事を検索しても表示されません。この担当者に追加で必要な権限はどれですか?",
+     "o": [
+      "View Draft Articles",
+      "Publish Articles",
+      "Archive Articles",
+      "Manage Data Categories"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "下書きを読む・検索するには、Allow View Knowledge と参照権限に加えて View Draft Articles が必要です。Publish Articles は公開、Archive Articles はアーカイブ、Manage Data Categories はカテゴリの作成のための権限です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_setup_users_lex.htm&type=5",
+     "x": "下書きを読む上に加えて View Draft Articles"
+    },
+    {
+     "q": "ある会社は、ナレッジを英語・日本語・フランス語で提供します。翻訳依頼は言語ごとの翻訳チームに自動で割り当てたいと考えています。コンサルタントの推奨として正しいものはどれですか?(2つ選択)",
+     "o": [
+      "言語ごとの Default Assignee に翻訳チームのキューを指定する",
+      "追加した言語は削除できないため、追加前に対象言語を確定する",
+      "翻訳ごとに個別のデータカテゴリを割り当てる",
+      "言語ごとに別の Knowledge オブジェクトを作成する"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "言語ごとに既定の担当者(個人かキュー)を設定でき、翻訳依頼が自動で割り当てられます。また追加した言語は削除できないため、事前の確定が大切です。翻訳は主記事のカテゴリを引き継ぎ、個別には付けられません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_setup_multilingual.htm&type=5",
+     "x": "言語ごとに、有効(Active)、翻訳の既定の担当者(Default Assignee)、既定のレビュー担当者(Default Reviewer)を決めます。担当者には個人かキューを指定できます。"
+    }
+   ]
+  },
+  {
+   "id": "kcs",
+   "no": "Ch3·2",
+   "title": "KCS とナレッジの活用(サービス支援とセルフサービス)",
+   "tag": "KCS & Knowledge Use",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>KCSって、記事を書く専門チームを作ることでしょ?先に教えちゃうね!</p><p class=\"tk rou\" data-f=\"sweat\"><b class=\"who\">クラウドちゃん</b>うーん、逆です。専門チームではなく、ケースに対応している担当者自身が、その場で記事を作って直します。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>えっ、毎日の対応の「ついで」に書くの?</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>ついでではない。対応そのものだ。コードを直したらテストも直す。それと同じだ。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>そして記事の使われ方を分析して、プロセスを良くするのが Evolve Loop です。</p></div><p class=\"one\">KCS は、顧客対応の流れの中でナレッジを作り、使い、改善し続ける方法論です。Salesforce では、ケースからの記事作成、記事の推奨、外部ナレッジの統合、AIのグラウンディングがそれを支えます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>料理店のレシピノートです。お客様の注文を受けた料理人が、うまくいった作り方をその場でノートに書き足し、失敗した手順には付せんを貼ります。店長はよく使われるページや足りないページを見て、ノートを整えます。</p></div><h4>KCS の考え方</h4><ul><li>KCS(Knowledge-Centered Service、ナレッジ中心のサービス)は、Consortium for Service Innovation が提唱する方法論です。日々の顧客対応の中で記事を作り、直し、育てていきます。</li><li>Agentforce Service と Salesforce Knowledge は「KCS v6-Verified」の認定を受けています。</li><li>記事はケースに対応しながら「必要になったときに」作ります(需要主導、Demand-driven)。管理者は、記事を作るか直すかの判断を担当者に任せます(信頼、Trust)。</li></ul><h4>ケース対応の中で行うこと</h4><ol class=\"steps\"><li>把握(Capture): お客様の状況を、お客様自身の言葉で記録する</li><li>検索(Find): 既存の関連記事を探す</li><li>活用(Use): 記事の内容を伝えるか、記事のリンクを共有してケースを解決する</li><li>作成(Create): トレーニングを受けた担当者が、テンプレートからすぐに新しい記事を作る</li><li>修正またはフラグ(Fix or flag): トレーニングを受けた担当者はその場で直し、まだの担当者は誤りにフラグを立てて経験者に任せる</li><li>プロセスの改善(Evolve): マネージャー、コーチ、ドメインの専門家が利用状況と指標を見て、プロセスを良くする</li></ol><h4>Evolve Loop(継続的改善)</h4><ul><li>Evolve Loop は、記事や作業を分析してパターンを見つけ、コンテンツの健全性、プロセス、パフォーマンス、リーダーシップを改善する継続的改善のしくみです。問題のパターンが見えたら根本原因を分析します。</li><li>「Search Activity - Gaps」のように、検索されたのにどの記事もクリックされなかった語を見れば、足りない記事(ギャップ)が分かります。リンク率(記事がケースに添付される割合)も見ます。</li><li>作成した記事の数を評価指標にすると、とにかく数を作る行動を招きます。量より質が大切です。</li></ul><h4>記事の確信度(検証状況)と役割</h4><div class=\"tw\"><table><thead><tr><th>検証状況</th><th>意味</th></tr></thead><tr><td>Work In Progress</td><td>作成直後・編集中の既定の状態</td></tr><tr><td>Not Validated</td><td>解決策はあるが、まだ正確さに確信がない。経験の浅い担当者は検証済みにできない</td></tr><tr><td>Validated</td><td>チームが高い確信を持つ。お客様の確認や再利用で確信が高まる</td></tr></table></div><ul><li>KCS の役割には KCS Candidate、KCS Contributor、KCS Publisher、KCS Coach があり、入力規則で「Candidate は検証済みにできない」「Publisher は検証済みのときだけ社外公開できる」のように制御できます。</li></ul><h4>サービス担当者の記事活用</h4><ul><li>ケースのクローズ時に記事を作るオプションは Salesforce Classic だけです。Lightning Experience では Knowledge コンポーネントから作るか、ケースの項目を下書きに対応付けるクイックアクションを作ります。</li><li>Knowledge コンポーネントから作った記事は、自動ではケースに関連付けられません。</li><li>「Knowledge Settings」で「Suggest related articles on cases」を選ぶと、ケースの項目のキーワードで関連記事(Suggested Articles)を表示します。</li><li>Einstein Article Recommendations は、過去に似たケースに添付された記事や、「役に立たない」として却下された回数などから記事を推奨します。一度に最大5件を関連度順に表示します。</li><li>推奨はケースの作成時と、モデルに含めた項目の更新時に更新されます。新しく公開した記事は1日以内に推奨の対象になります。モデルの構築には最大48時間かかります。</li><li>Einstein Article Recommendations を使うときは、担当者に2種類の記事一覧が見えないよう、Suggested Articles を無効にすることが推奨されています。</li><li>記事のURLをメールや会話で共有するには、記事が公開済みで、公開ナレッジベース・顧客・パートナーのいずれかに公開されている必要があります。</li></ul><h4>外部ナレッジとAIのグラウンディング</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>役割</th></tr></thead><tr><td>Unified Knowledge</td><td>SharePoint、Confluence、Google Drive、ServiceNow、Zendesk、Webサイト(サイトマップ)などの外部ナレッジを Knowledge 記事として同期する。同期は1〜2時間ごと(サイトマップは12時間ごと)</td></tr><tr><td>Agentforce Data Library</td><td>Knowledge 記事と項目、アップロードしたファイル、Webソースを索引化し、AIエージェントの回答の根拠(グラウンディング)にする。Data 360 が必要で、Data 360 のクレジットを消費する</td></tr><tr><td>Answer Questions with Knowledge</td><td>データライブラリをもとに、引用付きの整った回答を返すエージェントのアクション</td></tr></table></div><ul><li>Unified Knowledge は外部ソースで公開済みのコンテンツだけを同期し、取り込んだ記事は Salesforce では参照のみです。フェデレーション検索と違い、コピーを保存して検索の関連度を横断で順位付けします。</li><li>同期した外部ナレッジは生成AIのグラウンディングに使われます。特定のソースを使わせたくないときは、Source 項目を条件にした共有ルールでアクセスを制限します。</li><li>RAG(Retrieval Augmented Generation、検索拡張生成)は、非構造化データから関連する正確な知識を取り出してプロンプトに加え、LLMの回答を根拠のあるものにするしくみです。</li><li>Knowledge のデータライブラリに含まれるのは公開済みの記事だけです。「Use Public Knowledge Articles」で公開ナレッジベースの記事だけに絞ったり、データカテゴリで絞り込んだりできます。</li><li>Answer Questions with Knowledge は権限と共有を守り、依頼したユーザーがアクセスできる記事だけを使って回答します。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>AIエージェントは、社内向けの下書き記事も読んで答えちゃうの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいえ。データライブラリに入るのは公開済みの記事だけで、さらに依頼したユーザーが見られる記事しか使いません。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>権限の外は見えない。安全設計だ。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>KCS は、ケース対応の中で担当者が記事を作り・直す方法論です。専門の執筆チームを作ることではありません。</li><li>Evolve Loop は、検索のギャップやリンク率などを見て、コンテンツとプロセスを改善するしくみです。記事の作成数は良い指標ではありません。</li><li>Lightning Experience では、ケースのクローズ時に記事を作るオプションはありません。Knowledge コンポーネントかクイックアクションを使います。</li><li>Einstein Article Recommendations は過去の添付実績から推奨します。キーワードだけの Suggested Articles との違いが問われます。</li><li>外部ナレッジは Unified Knowledge で同期し、AIの根拠には Agentforce Data Library を使います。どちらも権限と共有が効きます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "あるサポート部門は、記事の作成を専任のライターチームに任せていますが、記事が実際の問い合わせ内容に追いつきません。KCS の考え方に沿った改善策はどれですか?",
+     "o": [
+      "ケースに対応する担当者が、必要になったときにその場で記事を作り、直せるようにする",
+      "ライターチームを増員し、記事の作成数を毎月の評価指標にする",
+      "記事の作成を四半期ごとのまとめ作業にする",
+      "記事の公開を管理者の承認後に限定し、担当者には閲覧だけを許可する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "KCS は需要主導で、ケースに対応しながら必要なときに記事を作ります。管理者は記事の作成や修正の判断を担当者に任せます。作成数を指標にすると量を優先する行動を招くため、推奨されません。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/get-started-with-knowledgecentered-service",
+     "x": "記事はケースに対応しながら「必要になったときに」作ります(需要主導、Demand-driven)。管理者は、記事を作るか直すかの判断を担当者に任せます(信頼、Trust)。"
+    },
+    {
+     "q": "あるKCS導入企業のマネージャーは、記事の改善点を見つけたいと考えています。「検索されたのにどの記事もクリックされなかった語」を分析する目的として正しいものはどれですか?",
+     "o": [
+      "足りない記事(ギャップ)を見つけ、記事を作成または更新する",
+      "担当者ごとの記事作成数を比べて評価する",
+      "データカテゴリの数を減らす",
+      "記事の翻訳の優先度を決める"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Evolve Loop では、検索されたのにクリックされなかった語から、ナレッジの不足(ギャップ)を見つけて記事を作ったり直したりします。作成数による評価は量を優先させるため推奨されません。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/use-evolve-loop-to-improve-your-process",
+     "x": "「Search Activity - Gaps」のように、検索されたのにどの記事もクリックされなかった語を見れば、足りない記事(ギャップ)が分かります。リンク率(記事がケースに添付される割合)も見ます。"
+    },
+    {
+     "q": "あるKCS導入企業では、経験の浅い担当者が書いた記事を、確信が持てるまで社外に出したくありません。記事の検証状況として、解決策は書かれているがまだ正確さに確信がない状態はどれですか?",
+     "o": [
+      "Not Validated",
+      "Work In Progress",
+      "Validated",
+      "Archived"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Not Validated は、解決策はあるもののまだ正確さに確信がない状態で、経験の浅い担当者は検証済みにできません。Work In Progress は作成直後や編集中、Validated は高い確信がある状態です。",
+     "u": "https://trailhead.salesforce.com/content/learn/modules/knowledgecentered-service-in-lightning-knowledge/manage-article-states",
+     "x": "Not Validated解決策はあるが、まだ正確さに確信がない。経験の浅い担当者は検証済みにできない"
+    },
+    {
+     "q": "ある会社は Lightning Experience の Service Console を使っています。担当者がケースを解決したとき、ケースの件名や説明を引き継いだ記事の下書きをすぐ作れるようにしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "ケースの項目を記事の下書きに対応付けるクイックアクションを作り、ケースのレイアウトに追加する",
+      "ケースのクローズ時に記事を作成するオプションを有効にする",
+      "Einstein Article Recommendations を有効にする",
+      "Suggested Articles を有効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ケースのクローズ時に記事を作るオプションは Salesforce Classic だけです。Lightning Experience では、ケースの項目を対応付けて下書きを作るクイックアクションか、Knowledge コンポーネントを使います。記事の推奨機能は作成の手段ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_lightning_limitations.htm&type=5",
+     "x": "ケースのクローズ時に記事を作るオプションは Salesforce Classic だけです。Lightning Experience では Knowledge コンポーネントから作るか、ケースの項目を下書きに対応付けるクイックアクションを作ります。"
+    },
+    {
+     "q": "あるコンタクトセンターでは、似たケースが多いのに、キーワード検索だけの記事候補では適切な記事が上位に出ません。過去に似たケースに添付された記事から推奨したいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Einstein Article Recommendations",
+      "Suggested Articles",
+      "Einstein Reply Recommendations",
+      "Knowledge の検索シノニム"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Article Recommendations は、過去に似たケースに添付された記事や却下の回数などを使って推奨します。Suggested Articles はキーワード検索だけで、過去のケースのデータは使いません。Reply Recommendations は返信の推奨です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.einstein_article_recommendations_how.htm&type=5",
+     "x": "Einstein Article Recommendations は、過去に似たケースに添付された記事や、「役に立たない」として却下された回数などから記事を推奨します。一度に最大5件を関連度順に表示します。"
+    },
+    {
+     "q": "Einstein Article Recommendations を有効にした会社で、担当者が「関連記事の一覧が2つ表示されて紛らわしい」と言っています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Suggested Articles を無効にする",
+      "Einstein Article Recommendations のモデルを再構築する",
+      "Knowledge コンポーネントをケースページから外す",
+      "データカテゴリの表示範囲を「なし」にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Article Recommendations を使うときは、担当者に2種類の記事一覧が表示されないよう、Suggested Articles を無効にすることが推奨されています。モデルの再構築やコンポーネントの削除では解決しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.einstein_article_recommendations_how.htm&type=5",
+     "x": "Einstein Article Recommendations を使うときは、担当者に2種類の記事一覧が見えないよう、Suggested Articles を無効にすることが推奨されています。"
+    },
+    {
+     "q": "ある会社は、Confluence と SharePoint にある社内手順書を、Salesforce の検索や生成AIの回答にも使いたいと考えています。コンサルタントの説明として正しいものはどれですか?(2つ選択)",
+     "o": [
+      "Unified Knowledge で、外部ソースで公開済みのコンテンツを Knowledge 記事として同期できる",
+      "特定のソースをAIの根拠に使わせたくないときは、Source 項目を条件にした共有ルールで制限する",
+      "同期した記事は Salesforce 上で直接編集し、外部ソースに書き戻せる",
+      "外部ソースの下書きも同期され、社内ユーザーだけに表示される"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Unified Knowledge は外部ソースで公開済みのコンテンツを同期し、生成AIのグラウンディングにも使われます。特定のソースを除外するには Source 項目の共有ルールを使います。取り込んだ記事は参照のみで、下書きは同期されません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.knowledge_uk_considerations.htm&type=5",
+     "x": "同期した外部ナレッジは生成AIのグラウンディングに使われます。特定のソースを使わせたくないときは、Source 項目を条件にした共有ルールでアクセスを制限します。"
+    },
+    {
+     "q": "ある会社は、Agentforce Service Agent の回答を、公開ナレッジベースに公開している記事だけに限定したいと考えています。Agentforce Data Library で何を設定すべきですか?",
+     "o": [
+      "「Use Public Knowledge Articles」を有効にする",
+      "下書き記事もデータライブラリに含める",
+      "データライブラリに Text (Encrypted) 項目を追加する",
+      "Suggested Articles を有効にする"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Knowledge のデータライブラリには公開済みの記事だけが含まれ、「Use Public Knowledge Articles」を有効にすると公開ナレッジベースの記事だけに絞れます。データカテゴリで絞り込むこともできます。暗号化項目はアクションで使えません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.data_library_select_fields.htm&type=5",
+     "x": "Knowledge のデータライブラリに含まれるのは公開済みの記事だけです。「Use Public Knowledge Articles」で公開ナレッジベースの記事だけに絞ったり、データカテゴリで絞り込んだりできます。"
+    },
+    {
+     "q": "あるコンサルタントは、AIエージェントの回答を社内のナレッジに基づかせる方法を説明しています。RAG(検索拡張生成)の説明として正しいものはどれですか?",
+     "o": [
+      "非構造化データから関連する知識を取り出してプロンプトに加え、LLMの回答の根拠にするしくみ",
+      "LLMを自社データで追加学習させ、モデルそのものを作り直すしくみ",
+      "ケースを担当者のスキルに合わせて自動で割り当てるしくみ",
+      "記事を複数の言語に自動翻訳するしくみ"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "RAG は、非構造化データから関連する正確な知識を取り出してプロンプトに加え、LLMの回答を根拠のあるものにするフレームワークです。モデルの再学習ではありません。ルーティングや翻訳とは別のものです。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_parent_data.htm&type=5",
+     "x": "RAG(Retrieval Augmented Generation、検索拡張生成)は、非構造化データから関連する正確な知識を取り出してプロンプトに加え、LLMの回答を根拠のあるものにするしくみです。"
+    }
+   ]
+  },
+  {
+   "id": "intake",
+   "no": "Ch3·3",
+   "title": "受付チャネル: Email-to-Case・Web-to-Case と自動処理",
+   "tag": "Intake Channels",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\" data-f=\"think\"><b class=\"who\">コミットくん</b>なぞなぞだ。メールでもWebでも入れるが、出口は1つ。何だ?</p><p class=\"tk pote\" data-f=\"sweat\"><b class=\"who\">まなびん</b>え〜…ポスト?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>惜しいです。答えは「ケース」。Email-to-Case も Web-to-Case も、入口は違っても最後はケースになります。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>入口がバラバラでも、出口がケースにそろうから、対応も集計もしやすいんだね!</p></div><p class=\"one\">受付チャネルは、お客様の問い合わせをケースとして Salesforce に取り込む入口です。Email-to-Case と Web-to-Case で受け付け、自動レスポンスルールで受付確認を返し、割り当てルールとキューで担当へ振り分けます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>病院の受付です。電話、窓口、Web予約と入口はいろいろですが、どれも診察券(ケース)を作ります。受付票を渡し(自動レスポンス)、症状に合う診療科へ回します(割り当てルールとキュー)。</p></div><h4>チャネルの選び方</h4><ul><li>ケースは、お客様の好きな連絡手段から集まります。Experience Cloud サイト、Email-to-Case(メール)、Web-to-Case(Webフォーム)、音声、Messaging(WhatsApp、SMS、Facebook Messenger など)があります。</li><li>Webサイトや Experience Builder サイトにチャネルメニューを置くと、お客様がチャット、WhatsApp、テキスト、電話などから連絡方法を選べます。</li></ul><h4>Email-to-Case</h4><ul><li>On-Demand Email-to-Case は、メールのやり取りを自社ネットワークのファイアウォールの外で処理し、大きすぎるメールは受け付けません。</li><li>ルーティングアドレス(例: support@自社ドメイン)を設定し、メールシステムから Salesforce が発行するメールサービスアドレスへ転送します。指定のアドレスが宛先・CC・BCCのどれかにあればケースが作られます。</li><li>スレッド(返信を同じケースにまとめる処理)を正しく動かすため、転送に使うルーティングアドレスは1つにし、同じアドレスに向かう別名(エイリアス)や、件名にタグを付けるメールルールは避けます。</li></ul><div class=\"tw\"><table><thead><tr><th>制限</th><th>値</th></tr></thead><tr><td>受信メールのサイズ(ヘッダー、本文、添付を含む)</td><td>25 MB 未満</td></tr><tr><td>全メールサービス合計の1日の処理数</td><td>ユーザーライセンス数×1,000(上限1,000,000)</td></tr><tr><td>本文が切り詰められる長さ</td><td>131,072文字(ヘッダーは32,000文字)</td></tr></table></div><h4>Web-to-Case</h4><div class=\"tw\"><table><thead><tr><th>制限</th><th>値</th></tr></thead><tr><td>1日(24時間)に作成できるケース</td><td>5,000件。超えた分は保留キューに入り、上限がリセットされると送信される</td></tr><tr><td>保留キューの上限</td><td>Web-to-Lead と合わせて50,000件。超えたリクエストは拒否される</td></tr></table></div><ul><li>スパム対策には reCAPTCHA v2 を使えます。Webフォームでは添付ファイルを受け付けません。</li><li>Web-to-Case で作るケースにも入力規則が適用され、値が正しくないケースは作成されません。</li></ul><h4>受付後の自動処理</h4><ul><li>ケース自動レスポンスルールは、条件に応じたメールテンプレートで受付確認メールを自動で送ります。ケース用に同時に有効にできるルールは1つです。</li><li>ルールエントリは指定した順番で評価され、最初に一致したエントリで止まります。Email-to-Case には既定のテンプレートがないため、最後に条件なしのエントリを置くのが安全です。</li><li>自動レスポンスで送ったメールは、1日の送信メール上限にカウントされません。</li><li>ケース割り当てルールは、作成方法(手動、Web-to-Case、Email-to-Case など)に関係なく、ケースをユーザーかキューへ割り当てます。同時に有効にできるのは1つで、ルールエントリは最大3,000件(数式は300件)です。</li><li>どの条件にも一致しない Web からのケースは、サポート設定の「デフォルトのケース所有者」に割り当てられます。</li><li>共有モデルが非公開のとき、チームごとのキューを作ってメンバーにすると、そのチームだけがキューのケースを見て引き取れます。</li><li>Slack では、Service Cloud for Slack アプリでケースやナレッジ記事の下書きを作成でき、スウォーミング(Swarming)で専門家を集めてケースを解決できます。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>自動レスポンスのルールって、何個も同時に動かせないの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>ケース用に有効にできるのは1つです。1つのルールの中にエントリを並べて、条件ごとにテンプレートを変えます。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>Web-to-Case は24時間で5,000件まで。超えた分は保留キュー(Web-to-Lead と合わせて50,000件)に入ります。</li><li>自動レスポンスルールと割り当てルールは、ケース用にそれぞれ1つだけ有効にできます。エントリは上から評価され、最初の一致で止まります。</li><li>Email-to-Case には既定のテンプレートがないので、最後に条件なしのエントリを置きます。</li><li>メールのスレッドを守るには、転送用のルーティングアドレスを1つにし、件名タグや重複する別名を避けます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "あるメーカーは、新製品の発売キャンペーン中にWebフォームから大量の問い合わせを受ける見込みです。Web-to-Case について、コンサルタントが説明すべき内容はどれですか?",
+     "o": [
+      "24時間で作成できるケースは5,000件までで、超えた分は保留キューに入り、上限がリセットされると送信される",
+      "24時間で作成できるケースに上限はない",
+      "上限を超えたリクエストはすべて即座に破棄される",
+      "Webフォームに添付ファイルを付ければ上限を超えても受け付けられる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Web-to-Case は24時間で5,000件までケースを作成でき、超えた分は保留キューに入り、上限がリセットされると送信されます。保留キューは Web-to-Lead と合わせて50,000件までです。Webフォームは添付ファイルに対応していません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.customizesupport_web_to_case_notes.htm&type=5",
+     "x": "1日(24時間)に作成できるケース5,000件。超えた分は保留キューに入り、上限がリセットされると送信される"
+    },
+    {
+     "q": "ある会社では、Email-to-Case で、お客様の返信が既存のケースにまとまらず、同じ内容のケースが重複して作られています。support-us@ と support-uk@ という別名が、どちらも support@ に転送される設定でした。コンサルタントは何を推奨すべきですか?(2つ選択)",
+     "o": [
+      "同じサービスアドレスに向かう別名をやめ、転送に使うルーティングアドレスを1つにする",
+      "件名に [External] などのタグを付けるメールルールを避ける",
+      "ケース割り当てルールのエントリを増やす",
+      "Web-to-Case に切り替えて reCAPTCHA を有効にする"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Email-to-Case のスレッドを正しく動かすには、転送用のルーティングアドレスを1つにし、同じアドレスに向かう別名を避けます。件名を変えるメールルールもスレッドを壊すことがあります。割り当てルールや Web-to-Case への切り替えは原因に対処しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.customizesupport_forwarding_guidelines.htm&type=5",
+     "x": "スレッド(返信を同じケースにまとめる処理)を正しく動かすため、転送に使うルーティングアドレスは1つにし、同じアドレスに向かう別名(エイリアス)や、件名にタグを付けるメールルールは避けます。"
+    },
+    {
+     "q": "あるサポート部門は、メールで届いた問い合わせに、製品ごとに異なる受付確認メールを返したいと考えています。どの条件にも一致しないメールにも、必ず受付確認を送りたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "ケース自動レスポンスルールに製品ごとのエントリを作り、最後に条件なしのエントリを置く",
+      "製品ごとに自動レスポンスルールを作り、すべて有効にする",
+      "ケース割り当てルールでメールテンプレートを指定する",
+      "エスカレーションルールで受付確認メールを送る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ケース用の自動レスポンスルールは1つしか有効にできないため、1つのルールにエントリを並べます。エントリは最初に一致した時点で止まり、Email-to-Case には既定のテンプレートがないので、最後に条件なしのエントリを置きます。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.creating_auto-response_rules.htm&type=5",
+     "x": "ルールエントリは指定した順番で評価され、最初に一致したエントリで止まります。Email-to-Case には既定のテンプレートがないため、最後に条件なしのエントリを置くのが安全です。"
+    },
+    {
+     "q": "ある会社は、平常時と年末年始とでケースの割り当て先を変えたいと考えています。ケース割り当てルールについて正しい説明はどれですか?",
+     "o": [
+      "同時に有効にできるケース割り当てルールは1つで、時期に応じて有効にするルールを切り替える",
+      "複数のケース割り当てルールを同時に有効にし、優先順位を付ける",
+      "ケース割り当てルールは Web-to-Case のケースにしか適用されない",
+      "ケース割り当てルールの割り当て先はユーザーだけで、キューは指定できない"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ケース割り当てルールは同時に1つだけ有効にでき、平常時用と休日用のように用途ごとに作って切り替えます。作成方法に関係なく適用され、割り当て先にはユーザーとキューを指定できます。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.customize_leadrules.htm&type=5",
+     "x": "ケース割り当てルールは、作成方法(手動、Web-to-Case、Email-to-Case など)に関係なく、ケースをユーザーかキューへ割り当てます。同時に有効にできるのは1つで、ルールエントリは最大3,000件(数式は300件)です。"
+    },
+    {
+     "q": "ある会社では、ハードウェアとソフトウェアのサポートチームが別れており、共有モデルは非公開です。各チームが自分たちの担当ケースだけを見て引き取れるようにしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "チームごとにケースのキューを作り、メンバーを追加して、割り当てルールでキューに割り当てる",
+      "ケースの組織の共有設定を「公開/参照・更新可能」にする",
+      "チームごとに別の Email-to-Case 組織を作る",
+      "すべてのケースをデフォルトのケース所有者に割り当てる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "共有モデルが非公開でも、チームごとのキューを作ってメンバーにすれば、そのチームだけがキューのケースを見て引き取れます。共有設定を公開にすると、他チームのケースも見えてしまいます。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.customize_leadrules.htm&type=5",
+     "x": "共有モデルが非公開のとき、チームごとのキューを作ってメンバーにすると、そのチームだけがキューのケースを見て引き取れます。"
+    }
+   ]
+  },
+  {
+   "id": "routing",
+   "no": "Ch3·4",
+   "title": "Omni-Channel のルーティング設計",
+   "tag": "Omni-Channel Routing",
+   "html": "<div class=\"co talk\"><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>Omni-Channel って、要は「空いてる人に仕事を投げる」仕組みでしょ?</p><p class=\"tk pen\" data-f=\"wink\"><b class=\"who\">コミットくん</b>正解だ。ただし「誰が空いているか」の数え方が2通りある。</p><p class=\"tk pote\" data-f=\"surprise\"><b class=\"who\">まなびん</b>え、空いてるかどうかに数え方なんてあるの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>あります。タブの数で数えるタブベースと、作業の状況で数える状況ベースです。何日もかかるケースなら状況ベースが向いています。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>ロードバランサーの重み付けに似ている。重さの測り方を決めるのが設計だ。</p></div><p class=\"one\">Omni-Channel は、ケースやメッセージなどの作業を、担当者の空き状況とスキルに合わせて自動で配る(プッシュする)しくみです。キュー、スキル、Omni-Channel フローを組み合わせて設計します。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>タクシー配車アプリです。乗車依頼(作業)を、近くて空いている車(空きキャパシティ)へ配ります。英語ができる運転手やワゴン車が必要なら(スキル)、その条件に合う車だけに配ります。</p></div><h4>基本の部品</h4><div class=\"tw\"><table><thead><tr><th>部品</th><th>役割</th></tr></thead><tr><td>サービスチャネル</td><td>ケース、リード、カスタムオブジェクトなどを「作業項目」にし、作業の種類ごとの優先度を管理する</td></tr><tr><td>ルーティング設定</td><td>キューに割り当て、ルーティングの優先度、ルーティングモデル、プッシュタイムアウト、作業量を決める</td></tr><tr><td>プレゼンス状況</td><td>担当者がオンラインで作業を受けられるか、離席中かオフラインかを示す。どのサービスチャネルの作業を受けるかとひも付ける</td></tr><tr><td>プレゼンス設定</td><td>担当者が同時に持てる作業量(キャパシティ)と、作業を辞退できるかなどの動きを決める</td></tr></table></div><h4>ルーティング設定</h4><ul><li>ルーティングの優先度は、数字が小さいキューの作業項目から先に担当者へ配られます。同じ優先度なら、キューで待っている時間が長いものが先です。</li><li>プッシュタイムアウトは、担当者が作業に応答するまでの制限時間です。過ぎると別の担当者へ回されます。</li></ul><div class=\"tw\"><table><thead><tr><th>ルーティングモデル</th><th>配り方</th></tr></thead><tr><td>Least Active</td><td>使用中のキャパシティが最も少ない担当者へ配る</td></tr><tr><td>Most Available</td><td>空きキャパシティが最も多い担当者へ配る</td></tr></table></div><ul><li>どちらのモデルも、同点のときは最も長く作業を受けていない担当者へ配ります。</li></ul><h4>キュー・スキル・フロー</h4><ul><li>キューベースのルーティングは、キューのメンバーへ作業を配ります。1つのキューはふつう1つのスキル(例: スペイン語対応)を表します。</li><li>スキルベースのルーティングは、必要なスキルをすべて持ち、空きキャパシティがある担当者へ作業を配ります。</li><li>スキルは、ルーティング設定に付ける静的なスキルと、スキルベースのルーティングルールや Omni-Channel フローで条件に応じて付ける動的なスキルを組み合わせます。</li><li>必要なスキルを持つ担当者がいないと作業は配られません。追加スキルの破棄(Drop Additional Skills)を設定すると、決めた順にスキルを外して最も近い担当者へ配れます。</li><li>Omni-Channel フローは、Flow Builder で条件分岐を作り、Route Work アクションで作業を担当者、ボット(エージェント)、キュー、スキルへ振り分けます。振り分けられないときのためにフォールバックキューを指定します。</li><li>「Check Availability for Routing」アクションで、オンラインの担当者数や推定待ち時間を確かめてから振り分け先を決められます。</li><li>特定の担当者へ直接配る Direct-to-Agent ルーティングを使うには、Omni-Channel 設定で「Enable Skills-Based and Direct-to-Agent Routing」を有効にします。その担当者が不在のときはバックアップのキューへ回せます。</li></ul><h4>キャパシティモデル</h4><div class=\"tw\"><table><thead><tr><th>モデル</th><th>数え方</th></tr></thead><tr><td>タブベース</td><td>開いているコンソールのタブ数で数える。タブを閉じるかログアウトするとキャパシティが戻る。標準ナビゲーションのアプリでは使えない</td></tr><tr><td>状況ベース</td><td>作業項目の状況で数える。タブを閉じても完了するまでキャパシティを使い続ける。作業を一時停止できる</td></tr></table></div><ul><li>担当者が同時に開ける作業項目は最大100件です。</li><li>チャットのように中断できない作業は「主作業(中断不可)」、ケースのように後回しにできる作業は「中断可能」にして、受けられる担当者を分けられます。</li></ul><h4>監視と設定のヒント</h4><ul><li>Command Center for Service(拡張 Omni-Channel での Omni-Channel Supervisor の新しい名前。標準の Omni-Channel では旧名のまま)で、担当者の作業量、キューの待ち時間、作業の状況を監視し、担当者のキューやスキルを変更できます。</li><li>Omni-Channel のガイド付き設定フローが作るのはキューベースのルーティングです。スキルベースのルーティングは手動で設定します。</li></ul><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>優先度の「1」と「2」、どっちが先?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>数字が小さい「1」が先です。ここはよく逆に覚えてしまうので注意しましょう。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>Least Active は使用中が最も少ない人、Most Available は空きが最も多い人へ配ります。同点なら最も長く作業を受けていない人です。</li><li>ルーティングの優先度は数字が小さいほど先です。</li><li>複数の条件(言語と製品など)を同時に満たす担当者へ配るならスキルベース、条件で振り分け先を変えるなら Omni-Channel フローです。</li><li>何日も続く作業や、タブを閉じても作業を持ち続けたいときは状況ベースのキャパシティモデルです。</li><li>監視は Command Center for Service(旧 Omni-Channel Supervisor)で行います。</li></ul></div>",
+   "questions": [
+    {
+     "q": "あるコンタクトセンターでは、担当者Aの最大キャパシティは5、使用中は3です。担当者Bの最大キャパシティは10、使用中は5です。ルーティングモデルが Most Available のとき、新しい作業項目は誰に配られますか?",
+     "o": [
+      "担当者B(空きキャパシティ5)",
+      "担当者A(使用中のキャパシティ3)",
+      "最も長く作業を受けていない担当者",
+      "キューのメンバー全員に同時に配られる"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Most Available は空きキャパシティが最も多い担当者へ配ります。Aの空きは2、Bの空きは5なのでBです。Least Active なら使用中が少ないAになります。最も長く作業を受けていない担当者は同点のときの決め方です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.service_presence_routing_options.htm&type=5",
+     "x": "Most Available空きキャパシティが最も多い担当者へ配る"
+    },
+    {
+     "q": "ある多国籍企業は、スペイン語を話せて、かつ製品Xの上級資格を持つ担当者へケースを配りたいと考えています。条件の組み合わせが多く、キューを増やし続けたくありません。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "スキルベースのルーティングを使い、必要なスキルをすべて持つ担当者へ配る",
+      "言語と製品の組み合わせごとにキューを作る",
+      "ケース割り当てルールで担当者を固定する",
+      "ルーティングモデルを Least Active に変更する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "スキルベースのルーティングは、必要なスキルをすべて持ち空きキャパシティがある担当者へ作業を配ります。1つのキューはふつう1つのスキルを表すため、組み合わせごとにキューを作ると数が増え続けます。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_skills_based_routing_comparison_to_queues.htm&type=5",
+     "x": "スキルベースのルーティングは、必要なスキルをすべて持ち、空きキャパシティがある担当者へ作業を配ります。"
+    },
+    {
+     "q": "ある会社のサービス担当者は、数日かけて調査するケースを扱います。今はタブを閉じるとキャパシティが空き、担当者に作業が過剰に配られています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "状況ベースのキャパシティモデルに切り替える",
+      "プッシュタイムアウトを短くする",
+      "ルーティングの優先度の数字を大きくする",
+      "タブベースのキャパシティモデルのまま、ログアウトを禁止する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "状況ベースのキャパシティモデルは、作業の状況でキャパシティを数え、タブを閉じても完了するまでキャパシティを使い続けます。タブベースはタブを閉じるとキャパシティが戻るため、複数日の作業には向きません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.service_presence_capacity_model.htm&type=5",
+     "x": "状況ベース作業項目の状況で数える。タブを閉じても完了するまでキャパシティを使い続ける。作業を一時停止できる"
+    },
+    {
+     "q": "ある会社は、VIP のお客様からのメッセージを、そのお客様の担当者へ直接配りたいと考えています。担当者が不在のときは VIP キューへ回したいと考えています。コンサルタントの推奨として正しいものはどれですか?(2つ選択)",
+     "o": [
+      "Omni-Channel フローの Route Work アクションで、取引先責任者にひも付く担当者へ直接配る",
+      "担当者が不在のときのために、バックアップのキューを指定する",
+      "プレゼンス設定で担当者の辞退を禁止する",
+      "ケース自動レスポンスルールで担当者を指定する"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Direct-to-Agent ルーティングでは、Omni-Channel フローの Route Work アクションで、変数を使って取引先責任者の担当者へ直接配れます。担当者が必須でない場合は、不在時に回すバックアップのキューを指定します。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_route_to_specific_agent.htm&type=5",
+     "x": "特定の担当者へ直接配る Direct-to-Agent ルーティングを使うには、Omni-Channel 設定で「Enable Skills-Based and Direct-to-Agent Routing」を有効にします。その担当者が不在のときはバックアップのキューへ回せます。"
+    },
+    {
+     "q": "あるコンタクトセンターのスーパーバイザーは、拡張 Omni-Channel 環境で、キューの待ち時間と担当者の作業量をリアルタイムで見て、必要に応じて担当者のキューを変えたいと考えています。何を使うべきですか?",
+     "o": [
+      "Command Center for Service",
+      "Omni-Channel のガイド付き設定フロー",
+      "Einstein Article Recommendations",
+      "Web-to-Case の保留キュー"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Command Center for Service(拡張 Omni-Channel での Omni-Channel Supervisor の新しい名前)で、担当者の作業量やキューの待ち時間を監視し、キューやスキルを変更できます。ガイド付き設定フローは初期設定用です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.omnichannel_supervisor_intro.htm&type=5",
+     "x": "Command Center for Service(拡張 Omni-Channel での Omni-Channel Supervisor の新しい名前。標準の Omni-Channel では旧名のまま)で、担当者の作業量、キューの待ち時間、作業の状況を監視し、担当者のキューやスキルを変更できます。"
+    }
+   ]
+  },
+  {
+   "id": "messaging",
+   "no": "Ch3·5",
+   "title": "Messaging と音声: Enhanced Chat・WhatsApp・SMS・Partner Contact Center",
+   "tag": "Messaging & Voice",
+   "html": "<div class=\"co talk\"><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>まなびんさん、WhatsApp で3日前に問い合わせてきたお客様に、今から自由な文章で返信できますか?</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>できるでしょ。メッセージアプリなんだから、いつでも送れるよ!</p><p class=\"tk rou\" data-f=\"sweat\"><b class=\"who\">クラウドちゃん</b>実はできません。24時間を過ぎると、承認済みのテンプレートしか送れないんです。</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>WhatsApp のルールだ。マーケティングの押し売りを防ぐためだ。</p><p class=\"tk pote\" data-f=\"sad\"><b class=\"who\">まなびん</b>チャネルごとに独自のルールがあるんだね。そこまで知らないと設計できないや。</p></div><p class=\"one\">対話チャネルは、お客様とリアルタイムまたは非同期で会話する手段です。Messaging(Enhanced Chat、WhatsApp、SMS など)と音声があり、チャネルごとの特性と制約に合わせて選びます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>お店の連絡手段です。店内の呼び出しボタン(Enhanced Chat)、お客様が使い慣れたメッセージアプリ(WhatsApp、LINE)、電話(音声)。電話は自前の回線を引くか(Agentforce Contact Center Voice)、契約中の電話会社を使い続けるか(Partner Contact Center)を選びます。</p></div><h4>Messaging の基本</h4><ul><li>Messaging では、お客様が好きなメッセージアプリで連絡し、サービス担当者、AIエージェント、ボットが Service Console から対応します。</li><li>ほとんどの Messaging チャネルでは、担当者から会話を始めたり、自動の通知メッセージを送ったりできます。お客様が通知に返信すると、サポートチームへルーティングされます。</li></ul><div class=\"tw\"><table><thead><tr><th>チャネル</th><th>特徴</th></tr></thead><tr><td>Enhanced Chat(旧 Messaging for In-App and Web)</td><td>自社のWebサイトやモバイルアプリに組み込むチャット。非同期の会話で、お客様はいつでも続きを再開できる</td></tr><tr><td>WhatsApp</td><td>世界で広く使われるメッセージアプリ。24時間のカスタマーケアウィンドウとテンプレートの承認に注意する</td></tr><tr><td>SMS</td><td>ロングコード、フリーダイヤルのロングコード(米国・カナダ)、ショートコード(米国・カナダ)を使える</td></tr><tr><td>Facebook Messenger、Apple Messages for Business、LINE</td><td>お客様がふだん使うアプリで受け付ける。Bring Your Own Channel で他のチャネルも接続できる</td></tr></table></div><h4>提供終了と移行</h4><ul><li>従来の Chat(Legacy Chat)は2026年2月14日に提供を終了しました。この日以降、過去のチャットデータは参照できますが、Legacy Chat のセッションは行えません。</li><li>移行先は Enhanced Chat です。準備状況は Chat Transition Readiness Report で確認できます。</li><li>標準の SMS チャネルも2026年2月14日に廃止されたため、拡張(enhanced)SMS チャネルへアップグレードします。</li></ul><h4>WhatsApp の考慮点</h4><ul><li>お客様がメッセージを送ってから24時間が「カスタマーケアウィンドウ」です。これを過ぎると、担当者は事前に承認されたテンプレートでしか返信できません。</li><li>WhatsApp のテンプレートは Meta の承認が必要で、承認にはふつう最大1日かかります。テンプレートのメッセージは、オプトインしたお客様にいつでも送れます。</li><li>Service Console では、フラグによる支援要請、スーパーバイザーのささやき(whisper)、機密データのマスキングなどで担当者を支援できます。</li></ul><h4>音声の2つの選択肢</h4><div class=\"tw\"><table><thead><tr><th>製品</th><th>特徴と選びどころ</th></tr></thead><tr><td>Partner Contact Center(旧 Service Cloud Voice、Salesforce Voice with Telephony Providers)</td><td>Amazon Connect などサードパーティのテレフォニーやCCaaSを Salesforce につなぐ。既存のコンタクトセンター基盤を生かしたいときに選ぶ</td></tr><tr><td>Agentforce Contact Center Voice(旧 Salesforce Voice (Native Telephony))</td><td>Salesforce に組み込まれた音声。電話番号の調達から通話後の分析まで Salesforce が管理し、Agentforce の機能をフルに生かせる。既存の外部番号も追加できる</td></tr></table></div><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>Amazon Connect をもう使ってる会社は、どっちを選ぶの?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>既存の基盤を生かすなら Partner Contact Center です。Salesforce にすべて任せたいなら Agentforce Contact Center Voice です。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>Enhanced Chat の旧称は Messaging for In-App and Web です。Legacy Chat は2026年2月14日に提供を終了しました。</li><li>WhatsApp は24時間のカスタマーケアウィンドウを過ぎると、承認済みテンプレートでしか送れません。</li><li>Partner Contact Center は外部のコンタクトセンター(Amazon Connect など)と連携し、Agentforce Contact Center Voice は Salesforce 組み込みの音声です。</li><li>Enhanced Chat は非同期の会話で、お客様はいつでも続きを再開できます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある小売企業は、WhatsApp でお客様から問い合わせを受けています。配送遅延のお知らせを、最後のメッセージから数日たったお客様にも送りたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Meta の承認を受けた WhatsApp テンプレートを使い、フローで自動メッセージを送る",
+      "担当者が自由な文章のメッセージを手動で送る",
+      "Enhanced Chat の非同期会話でメッセージを送る",
+      "Web-to-Case のフォームのURLを送る"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "WhatsApp では、お客様のメッセージから24時間を過ぎると、承認済みのテンプレートでしか送れません。テンプレートのメッセージはオプトインしたお客様にいつでも送れます。自由な文章はウィンドウ内でしか送れません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.messaging_whatsapp_templates.htm&type=5",
+     "x": "WhatsApp のテンプレートは Meta の承認が必要で、承認にはふつう最大1日かかります。テンプレートのメッセージは、オプトインしたお客様にいつでも送れます。"
+    },
+    {
+     "q": "ある会社は、まだ従来の Chat(Legacy Chat)の設定を残しています。2026年11月現在、コンサルタントが説明すべき内容はどれですか?",
+     "o": [
+      "Legacy Chat は2026年2月14日に提供を終了しており、過去のデータは参照できるがセッションは行えない。Enhanced Chat へ移行する",
+      "Legacy Chat は引き続き利用でき、新機能も追加される",
+      "Legacy Chat の過去のチャットデータはすべて削除された",
+      "Legacy Chat の後継は Partner Contact Center である"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Legacy Chat は2026年2月14日に提供を終了しました。この日以降も過去のチャットデータは参照できますが、セッションは行えません。後継は Enhanced Chat(旧 Messaging for In-App and Web)です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.miaw_faq.htm&type=5",
+     "x": "従来の Chat(Legacy Chat)は2026年2月14日に提供を終了しました。この日以降、過去のチャットデータは参照できますが、Legacy Chat のセッションは行えません。"
+    },
+    {
+     "q": "ある会社は、自社のモバイルアプリにチャットを組み込みたいと考えています。お客様がアプリを閉じても、あとで同じ会話を続けられることが条件です。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Enhanced Chat(旧 Messaging for In-App and Web)",
+      "Legacy Chat",
+      "Web-to-Case",
+      "Partner Contact Center"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Enhanced Chat は、Webサイトやモバイルアプリに組み込める非同期の会話で、お客様はいつでも続きを再開できます。Legacy Chat は提供を終了しており、Web-to-Case はフォーム、Partner Contact Center は音声です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.miaw_replacing_chat_considerations.htm&type=5",
+     "x": "Enhanced Chat(旧 Messaging for In-App and Web)自社のWebサイトやモバイルアプリに組み込むチャット。非同期の会話で、お客様はいつでも続きを再開できる"
+    },
+    {
+     "q": "ある保険会社は、すでに Amazon Connect でコンタクトセンターを運用しています。この基盤を生かしながら、サービス担当者が Salesforce 上で電話を受け、顧客情報を見られるようにしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Partner Contact Center",
+      "Agentforce Contact Center Voice",
+      "Enhanced Chat",
+      "SMS チャネル"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Partner Contact Center(旧 Service Cloud Voice)は、Amazon Connect などサードパーティのテレフォニーやCCaaSを Salesforce につなぎます。Agentforce Contact Center Voice は Salesforce 組み込みの音声で、既存の Amazon Connect 基盤を生かす要件には合いません。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.voice_about.htm&type=5",
+     "x": "Partner Contact Center(旧 Service Cloud Voice、Salesforce Voice with Telephony Providers)Amazon Connect などサードパーティのテレフォニーやCCaaSを Salesforce につなぐ。既存のコンタクトセンター基盤を生かしたいときに選ぶ"
+    },
+    {
+     "q": "ある新興企業はまだ電話の基盤を持っていません。電話番号の調達から通話後の分析まで Salesforce でまとめて管理し、Agentforce の機能もフルに使いたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Agentforce Contact Center Voice",
+      "Partner Contact Center",
+      "Email-to-Case",
+      "Facebook Messenger チャネル"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Agentforce Contact Center Voice(旧 Salesforce Voice (Native Telephony))は Salesforce 組み込みの音声で、番号の調達から通話後の分析まで Salesforce が管理します。Partner Contact Center は外部のテレフォニーを前提にします。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.afcc_sv_salesforce_voice.htm&type=5",
+     "x": "Agentforce Contact Center Voice(旧 Salesforce Voice (Native Telephony))Salesforce に組み込まれた音声。電話番号の調達から通話後の分析まで Salesforce が管理し、Agentforce の機能をフルに生かせる。既存の外部番号も追加できる"
+    }
+   ]
+  },
+  {
+   "id": "agents",
+   "no": "Ch3·6",
+   "title": "Agentforce Service Agent とエージェント型サービス",
+   "tag": "Agentforce Service Agent",
+   "html": "<div class=\"co talk\"><p class=\"tk pen\"><b class=\"who\">コミットくん</b>たとえ話のリレーをしよう。AIエージェントは新人の窓口係だ。</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>サブエージェントは、その新人が担当する「業務マニュアルの章」です。返品の章、配送の章、という具合です。</p><p class=\"tk pote\" data-f=\"eager\"><b class=\"who\">まなびん</b>じゃあアクションは、マニュアルに書いてある「使っていい道具」だね。レジとか在庫検索とか!</p><p class=\"tk pen\"><b class=\"who\">コミットくん</b>そうだ。そして手に負えないときは、先輩を呼ぶ。それが Escalation だ。</p><p class=\"tk rou\" data-f=\"smile\"><b class=\"who\">クラウドちゃん</b>先輩への取り次ぎ役が、送信用の Omni-Channel フローです。</p></div><p class=\"one\">Agentforce Service Agent は、お客様のチャネルで24時間自律的に対応するAIエージェントです。サブエージェントとアクションで仕事を定め、必要に応じて本人確認を行い、手に負えない会話は Omni-Channel フローで人へ引き継ぎます。</p><div class=\"co tips\"><p><b class=\"lab\">たとえるなら</b>ホテルのコンシェルジュロボットです。道案内や予約確認のような決まった仕事はロボットがこなし、部屋番号を教える前には本人確認をします。複雑な相談は、フロントのスタッフへ引き継ぎます。</p></div><h4>AIエージェントに任せるかを決める観点</h4><div class=\"tw\"><table><thead><tr><th>観点</th><th>確認すること</th></tr></thead><tr><td>価値</td><td>なぜAIエージェントに任せるのか。速く、正確に、良い体験になるか</td></tr><tr><td>業務</td><td>エージェントが行う業務と、関係するビジネスプロセスを説明できるか</td></tr><tr><td>意思決定</td><td>人の判断なしに完了でき、従うべき方針やルールが明確か</td></tr><tr><td>リスク</td><td>セキュリティ、法律、倫理、規制の要件の中で動けるか</td></tr><tr><td>データ</td><td>データがエージェントの業務を支えられる状態か</td></tr></table></div><h4>作成と展開</h4><ul><li>エージェントはサブエージェント(旧称トピック)の集まりです。サブエージェントはエージェントができる仕事を定め、その中のアクションが仕事に使う道具です。指示(instructions)で、いつどのアクションを使うかを導きます。</li><li>エージェントを展開できるチャネルには、Lightning Experience の Agentforce パネル、Salesforce モバイルアプリ、Slack、メッセージングプラットフォーム、メールがあります。</li><li>お客様の会話は、受信用(inbound)の Omni-Channel フローでエージェントへ届きます。1つのエージェントに複数の受信フローをつなげますが、1つの受信フローがつながるエージェントは1つだけです。</li></ul><h4>人への引き継ぎと本人確認</h4><ul><li>Agentforce Service エージェントは Escalation サブエージェントを使い、送信用(outbound)の Omni-Channel フローで、担当者やキューへ会話を引き継ぎます。Escalation サブエージェントがないと引き継げません。</li><li>引き継ぎの試行は1セッションに1回です。引き継げなかったときは、エージェントが会話の文脈を保ったまま対応を続けます。ケースを作るよう指示を加えることもできます。</li><li>顧客確認サブエージェントは、ユーザー名かメールアドレスを聞いてワンタイムパスコードをメールで送り、照合します。コードの有効期限は5分で、3回失敗すると最初からやり直します。</li><li>本人確認ができるまで、個人データを扱うサブエージェントやアクションを使えないように制限します。</li></ul><h4>制約と運用</h4><ul><li>Agentforce Service Agent が対応するのは、お客様から始めた受信の会話だけです。セッションは開始から72時間後か、お客様が終了したときに閉じます。</li><li>Agentforce Service Agent は使った分だけ課金される製品で、アクションの実行などでクレジットを消費します。</li><li>エージェントのユーザーには、仕事に必要な権限だけを与えます(最小権限の原則)。</li></ul><h4>Einstein Bots からの移行</h4><ul><li>Einstein Bots は2026年8月17日から保守モードです。既存のボットは引き続きサポートされますが、新機能は追加されません。新しく導入するなら Agentforce が推奨です。</li><li>Agentforce Labs の Upgrade Agent ツール(ベータ)で、Einstein Bot を Agentforce Service Agent にアップグレードできます。新しいエージェントは別に作られるので、確認中も既存のボットはそのまま使えます。</li></ul><h4>サービス担当者を支援する Einstein for Service</h4><div class=\"tw\"><table><thead><tr><th>機能</th><th>内容</th></tr></thead><tr><td>Einstein Service Replies</td><td>チャットやメッセージの会話を追って、返信の下書きを担当者に推奨する。ケースからは推奨記事をもとにメールを下書きできる</td></tr><tr><td>Einstein Work Summaries</td><td>会話やケースから要約、問題、解決策を作る。Enhanced Messaging と音声では会話の終了時に自動で作られ、担当者が確認して保存する(自動保存も可)</td></tr></table></div><div class=\"co talk t2\"><p class=\"tk pote\" data-f=\"think\"><b class=\"who\">まなびん</b>AIに全部任せれば、担当者はいらなくなる?</p><p class=\"tk rou\"><b class=\"who\">クラウドちゃん</b>いいえ。方針が明確な仕事はエージェントに、判断が必要な複雑な相談は担当者へ。担当者には Service Replies や Work Summaries で支援します。</p></div><div class=\"co memo\"><p><b class=\"lab\">試験ポイント</b></p><ul><li>トピックは2026年4月から「サブエージェント」と呼ばれます。機能は同じです。</li><li>人への引き継ぎには Escalation サブエージェントと送信用の Omni-Channel フローが必要です。試行は1セッション1回です。</li><li>個人データを扱う前に、顧客確認サブエージェントで本人確認をします。</li><li>Einstein Bots は2026年8月17日から保守モードです。新規導入は Agentforce が推奨です。</li><li>Agentforce Service Agent は受信の会話だけに対応し、セッションは開始から72時間で閉じます。</li></ul></div>",
+   "questions": [
+    {
+     "q": "ある銀行は、問い合わせ対応にAIエージェントを使うか検討しています。融資の可否のように、担当者の判断が欠かせず明確なルールで決められない業務があります。Agentforce のユースケース評価で、この業務について特に確かめるべき観点はどれですか?",
+     "o": [
+      "意思決定: 人の判断なしに完了でき、従うべき方針やルールが明確か",
+      "チャネル: WhatsApp に対応しているか",
+      "データ量: 記事が1万件以上あるか",
+      "ライセンス: Knowledge User ライセンスを持っているか"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "ユースケースの評価では、価値、業務、意思決定、リスク、データを確かめます。人の判断が欠かせず明確なルールがない業務は、意思決定の観点で自律型AIに向かない可能性があります。ほかの選択肢は評価の観点ではありません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.agent_plan_use_case_about.htm&type=5",
+     "x": "意思決定人の判断なしに完了でき、従うべき方針やルールが明確か"
+    },
+    {
+     "q": "ある通信会社の Agentforce Service Agent は、解約の相談を受けると人の担当者へ引き継ぐ必要があります。Enhanced Chat で引き継ぎを実現するために必要なものはどれですか?(2つ選択)",
+     "o": [
+      "Escalation サブエージェント",
+      "担当者やキューへ振り分ける送信用の Omni-Channel フロー",
+      "ケース自動レスポンスルール",
+      "Einstein Article Recommendations"
+     ],
+     "a": [
+      0,
+      1
+     ],
+     "ex": "Agentforce Service エージェントは Escalation サブエージェントを使い、送信用の Omni-Channel フローで担当者やキューへ会話を引き継ぎます。Escalation サブエージェントがないと引き継げません。自動レスポンスや記事の推奨は引き継ぎに関係しません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_escalation.htm&type=5",
+     "x": "Agentforce Service エージェントは Escalation サブエージェントを使い、送信用(outbound)の Omni-Channel フローで、担当者やキューへ会話を引き継ぎます。Escalation サブエージェントがないと引き継げません。"
+    },
+    {
+     "q": "あるEC企業は、Agentforce Service Agent に注文状況を答えさせたいと考えています。ただし、相手が本人であると確認できるまで、注文情報を扱うアクションは使わせたくありません。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "顧客確認サブエージェントを追加し、本人確認ができるまで注文情報のサブエージェントやアクションを制限する",
+      "Einstein Bots のダイアログで本人確認を作る",
+      "Escalation サブエージェントで必ず担当者へ引き継ぐ",
+      "データ公開範囲を「なし」にしてエージェントからすべてのデータを隠す"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "顧客確認サブエージェントは、メールで送ったワンタイムパスコードで本人を確認します。確認できるまで個人データを扱うサブエージェントやアクションを制限できます。Einstein Bots は保守モードで、新規導入には推奨されません。",
+     "u": "https://help.salesforce.com/s/articleView?id=ai.service_agent_customer_verification.htm&type=5",
+     "x": "本人確認ができるまで、個人データを扱うサブエージェントやアクションを使えないように制限します。"
+    },
+    {
+     "q": "ある会社は Einstein Bots でFAQ対応をしています。2026年11月現在、今後のAI活用についてコンサルタントが推奨すべきものはどれですか?",
+     "o": [
+      "既存のボットは使い続けられるが、新しい導入には Agentforce を使い、Upgrade Agent ツールで Agentforce Service Agent への移行を検討する",
+      "Einstein Bots にはまだ新機能が追加されるため、新規のボットも Einstein Bots で作る",
+      "Einstein Bots は2026年8月17日にすべて停止したため、すぐに削除する",
+      "Einstein Bots を Partner Contact Center に移行する"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Bots は2026年8月17日から保守モードで、既存のボットはサポートされますが新機能は追加されません。新規導入には Agentforce が推奨され、Upgrade Agent ツール(ベータ)で既存ボットを残したまま新しいエージェントを作れます。",
+     "u": "https://help.salesforce.com/s/articleView?id=release-notes.rn_einstein_bots_maintenance_mode.htm&release=262.0.0&type=5",
+     "x": "Einstein Bots は2026年8月17日から保守モードです。既存のボットは引き続きサポートされますが、新機能は追加されません。新しく導入するなら Agentforce が推奨です。"
+    },
+    {
+     "q": "あるコンタクトセンターでは、通話やメッセージの終了後に担当者が要約を手入力しており、後処理の時間が長くなっています。会話の終了時に要約、問題、解決策を自動で作り、担当者が確認して保存できるようにしたいと考えています。コンサルタントは何を推奨すべきですか?",
+     "o": [
+      "Einstein Work Summaries",
+      "Einstein Service Replies",
+      "Einstein Article Recommendations",
+      "ケース自動レスポンスルール"
+     ],
+     "a": [
+      0
+     ],
+     "ex": "Einstein Work Summaries は、会話やケースから要約、問題、解決策を作ります。Enhanced Messaging と音声では会話の終了時に自動で作られ、担当者が確認して保存します。Service Replies は会話中の返信の下書きを推奨する機能です。",
+     "u": "https://help.salesforce.com/s/articleView?id=service.cc_generative_ai_work_summaries.htm&type=5",
+     "x": "Einstein Work Summaries会話やケースから要約、問題、解決策を作る。Enhanced Messaging と音声では会話の終了時に自動で作られ、担当者が確認して保存する(自動保存も可)"
+    }
+   ]
+  }
+ ]
+}
