@@ -146,6 +146,12 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - 作り直し: `python3 build_afspec.py afspec/manuscript <out> && python3 figs_m/apply_afspec.py <out>/chapters.json <out>/chapters.json && cp afspec/data/terms.json <out>/`
 - 過去問: Notion の1ページ(v2026-08-19 英語164問)から重複5問を除いた159問を `afspec/pastq/`(in_/out_/dups.json/ids.json/SPEC.md)に。原本は「Question 122」が2回入っていて本来の Q123 がないため、2つ目を Q123 として Q122 の重複にした。公式ドキュメントで検証し、確認済み114・原本どおり31・解答を修正8・要確認6。`python3 add_pastq_afspec.py afspec/pastq afspec/pastq afspec/data <out>` で問題集と本文(関連知識17件)に追加。問題の番号は `afspec/pastq/ids.json` で出典ごとに固定(118〜276)
 
+## 科目 Agentforce Service コンサルタント(afsvc)
+- `afsvc_SPEC.md` 原稿の仕様(問題は4択)、`afsvc/manuscript/out_ch1〜5.json`(5章22項目・152問)、`build_afsvc.py` で data を組み立て(用語カード `afsvc/terms.json` も写す。確認は `python3 check_terms.py afsvc`)、`figs_m/spec_N.py` と `figs_m/apply_afsvc.py` で図(1項目1枚)を入れる。Trailhead のクイズは `afsvc/trailhead/out.json`(`python3 add_trailhead.py afsvc`)
+- 出題範囲(cx)は試験ガイドの8分野に、項目ごとに対応付ける(build_afsvc.py の CXS)
+- 作り直し: `python3 build_afsvc.py afsvc/manuscript afsvc/data && python3 figs_m/apply_afsvc.py afsvc/data/chapters.json afsvc/data/chapters.json && python3 add_trailhead.py afsvc`。公開データは `afsvc/data/`。`make_catalog.py` で catalog.json も作り直す
+- `patch_add_afsvc.py` で科目を登録(rebuild.sh の最後。略称 AF​Service、色は茶 brown)。学習計画の科目は `plan/plan.js`
+
 ## 科目 基本情報技術者(fe)・情報セキュリティマネジメント(sg)
 - `fe_SPEC.md`・`sg_SPEC.md` 原稿の仕様、`fe/manuscript/out_ch1〜12.json`・`sg/manuscript/out_ch1〜7.json`。`build_fe.py`・`build_sg.py` で data を組み立て(用語カード `fe/terms.json`・`sg/terms.json` も写す。確認は `python3 check_terms.py fe sg`)、`figs_m/spec_L.py`・`spec_M.py` と `figs_m/apply_fe.py`・`apply_sg.py` で図を入れる
 - IPA 公開問題(令和5〜8年度)・サンプル問題・FE 科目A免除の修了試験(IPA 提供問題)は `fe/pastq/`・`sg/pastq/`。`python3 add_pastq_ipa.py <pastq> <組み立てた data> <出力>` で問題集と本文(関連知識)に追加。出典は s に「令和8年度 基本情報技術者試験 公開問題 科目A 問1」「令和8年度 7月実施分 修了認定に係る試験(基本情報技術者試験に係る問題) 問1」の形。ほかの回と同じ問題は skip(重複)にする。令和2〜4年度の FE・SG の CBT 問題は IPA が非公開
