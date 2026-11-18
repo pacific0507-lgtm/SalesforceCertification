@@ -1,0 +1,92 @@
+{
+ "subject": "afsvc",
+ "exam": "Salesforce Certified Agentforce Service Consultant (Service-Con-201)",
+ "source": "https://help.salesforce.com/s/articleView?id=005298989&type=1",
+ "total_questions": 152,
+ "chapters": [
+  {
+   "chapter": 1,
+   "chapter_title": "業界知識と導入戦略",
+   "chapter_sub": "コンタクトセンターのKPIとビジネス課題から、コンサルティングの進め方、デプロイとトレーニング、データ移行と品質までを学びます。",
+   "outline": "Industry Knowledge 12% + Implementation Strategies 12%",
+   "sections": [
+    {"id": "kpi", "no": "Ch1·1", "title": "コンタクトセンターの主要指標とKPI", "tag": "Contact Center KPIs", "questions": 9,
+     "brief": "平均処理時間(AHT)、初回解決率(FCR)、顧客満足度(CSAT)、回避率(deflection)、平均応答時間、放棄率、バックログ、SLA遵守率、顧客維持率などの定義と、それぞれに影響する要因(チャネル構成、ルーティング、ナレッジ、自動化、AIエージェント)。KPI の改善にどの機能が効くかの対応づけ。公式の trailmix にある顧客維持率の記事(salesforce.com)と Agentforce Service の概要モジュールを根拠にする。"},
+    {"id": "outcome", "no": "Ch1·2", "title": "顧客の望む成果と、リスク・メリット・ビジネス課題", "tag": "Business Outcomes", "questions": 9,
+     "brief": "顧客の目標(コスト削減、CSAT向上、24時間対応、オムニチャネル化)を実現するときのリスク・メリット・課題。業界の動向(生成AI、Agentforce のエージェント、データの課題)。サポート部門の業務プロセスとワークフロー、技術サポートと顧客サポートの違い。Agentforce Service の全体像(Service Console、Omni-Channel、Knowledge、Messaging、Agentforce Service Agent、Agentforce Field Service and Operations との関係)を俯瞰する。"},
+    {"id": "engage", "no": "Ch1·3", "title": "コンサルティングの進め方: 要件定義・ステークホルダー・スコープ", "tag": "Consulting Engagement", "questions": 6,
+     "brief": "ディスカバリー、要件の収集と優先順位付け、ステークホルダー管理、導入スコープの管理。標準機能とカスタム開発の利点と限界、宣言型ツールを使うべき場面。プロジェクト管理のベストプラクティス、アジャイル/スクラム/カンバン(trailmix の Best Practices for Project Management、Salesforce Agile Basics、Scrum and Kanban at Salesforce)。"},
+    {"id": "deploy", "no": "Ch1·4", "title": "デプロイとトレーニングの戦略・変革管理", "tag": "Deployment & Training", "questions": 6,
+     "brief": "Sandbox の種類と使い分け、テスト、リリース計画、段階的ロールアウト。Salesforce の年3回のリリースへの備え(Release Readiness)。トレーニング方式(役割別、トレーナー育成、アプリ内ガイダンス)、変革管理、定着の測定。trailmix の Salesforce Release Readiness Strategies / Advanced Release Readiness と変革管理の記事を根拠にする。"},
+    {"id": "datamig", "no": "Ch1·5", "title": "データ移行・データ品質・ガバナンス・大量データ", "tag": "Data Migration & Quality", "questions": 6,
+     "brief": "ケース・取引先・取引先責任者・ナレッジ記事の移行順序と考慮点(データインポートウィザード、データローダ、ナレッジ記事インポーター)。重複管理(一致ルール・重複ルール)、入力規則、データガバナンス。大量データ(LDV)の考慮点(データスキュー、スキニーテーブル、インデックス、アーカイブ)。trailmix の Large Data Volumes、Duplicate Management、Import External Content into Salesforce Knowledge を根拠にする。"}
+   ]
+  },
+  {
+   "chapter": 2,
+   "chapter_title": "Agentforce Service のソリューション設計",
+   "chapter_sub": "サービス担当者の作業画面、顧客の体験、データのセキュリティとコンプライアンスを、制約とトレードオフを踏まえて設計する方法を学びます。",
+   "outline": "Agentforce Service Solution Design 15%",
+   "sections": [
+    {"id": "console", "no": "Ch2·1", "title": "サービス担当者の体験: Service Console とレコードページ", "tag": "Service Rep Experience", "questions": 8,
+     "brief": "Service Console(コンソールナビゲーション、タブとサブタブ、分割ビュー、ユーティリティバー、Omni-Channel ウィジェット)、Lightning レコードページ、Dynamic Forms、動的アクション、ページレイアウトとコンパクトレイアウト、強調表示パネル、マクロ、クイックテキスト、ケースフィード、履歴。設計時の制約とトレードオフ(画面の重さ、プロファイル別の割り当て)。"},
+    {"id": "cx", "no": "Ch2·2", "title": "顧客体験の設計: セルフサービスとチャネルの選択", "tag": "Customer Experience", "questions": 7,
+     "brief": "顧客がどこで・どう助けを求めるかの設計(セルフサービスのヘルプセンター、Experience Cloud サイトのテンプレート、AIエージェント、担当者へのエスカレーション)。顧客の待ち時間・継続性・パーソナライズのトレードオフ。Salesforce Surveys による顧客の声の収集。Agentforce Commerce と Agentforce Service の連携(trailmix のモジュール)による購入後のサポート体験。"},
+    {"id": "security", "no": "Ch2·3", "title": "データのセキュリティとコンプライアンス", "tag": "Security & Compliance", "questions": 8,
+     "brief": "ケースの組織の共有設定、ロール階層、共有ルール、キューとケースチーム、権限セット/権限セットグループ、項目レベルセキュリティ。Experience Cloud ユーザーの共有セットと共有グループ、外部組織の共有設定。Knowledge のデータカテゴリによる表示制御。Shield(プラットフォーム暗号化、項目監査履歴、イベントモニタリング)、AI利用時の Einstein Trust Layer とデータマスキング、顧客確認(Customer Verification)。"}
+   ]
+  },
+  {
+   "chapter": 3,
+   "chapter_title": "ナレッジ管理と受付・対話チャネル",
+   "chapter_sub": "Salesforce Knowledge と KCS、Email-to-Case などの受付チャネル、Omni-Channel のルーティング、Messaging と音声、Agentforce Service Agent までを学びます。",
+   "outline": "Knowledge Management 12% + Intake and Interaction Channels 13%",
+   "sections": [
+    {"id": "knowledge", "no": "Ch3·1", "title": "Salesforce Knowledge の記事ライフサイクルと設定", "tag": "Knowledge Setup", "questions": 9,
+     "brief": "Lightning Knowledge の有効化、レコードタイプによる記事の種類、記事のバージョン(下書き・公開済み・アーカイブ)、承認プロセス、翻訳、公開チャネル(内部アプリ・顧客・パートナー・公開ナレッジベース)。データカテゴリとカテゴリグループ、ベストプラクティス、ナレッジの共有の考慮点。ナレッジユーザー権限とナレッジの各種権限。"},
+    {"id": "kcs", "no": "Ch3·2", "title": "KCS とナレッジの活用(サービス支援とセルフサービス)", "tag": "KCS & Knowledge Use", "questions": 9,
+     "brief": "ナレッジ中心のサービス(KCS)の Solve Loop と Evolve Loop、ケースからの記事作成・添付。Knowledge の検索、Einstein Article Recommendations、Experience Cloud での公開、Unified Knowledge(外部ナレッジの同期)。AIのグラウンディング(Knowledge Grounding、RAG、Agentforce Data Library)。trailmix の Enhance Agentforce Service with Lightning Knowledge と RAG Quick Look を根拠にする。"},
+    {"id": "intake", "no": "Ch3·3", "title": "受付チャネル: Email-to-Case・Web-to-Case と自動処理", "tag": "Intake Channels", "questions": 5,
+     "brief": "Email-to-Case(On-Demand)、Web-to-Case(1日あたりの上限など公式の制限値)、ケース自動レスポンスルール、ケース割り当てルール、キュー。チャネルごとに受付の方法を選ぶ考え方(メール・Web・電話・チャット・ソーシャル・Slack)。Add Service Cloud Channels のページを根拠にする。"},
+    {"id": "routing", "no": "Ch3·4", "title": "Omni-Channel のルーティング設計", "tag": "Omni-Channel Routing", "questions": 5,
+     "brief": "サービスチャネル、ルーティング設定(優先度、ルーティングモデル、作業量)、在席状況、キューベースとスキルベースのルーティング、Omni-Channel フロー、直接ルーティング、Omni Supervisor での監視。キャパシティモデル(タブベース/状況ベース)。設計の考慮点とベストプラクティス(Omni-Channel for Administrators ガイドを根拠にする)。"},
+    {"id": "messaging", "no": "Ch3·5", "title": "Messaging と音声: Enhanced Chat・WhatsApp・SMS・Partner Contact Center", "tag": "Messaging & Voice", "questions": 5,
+     "brief": "Messaging(Enhanced Chat(旧 Messaging for In-App and Web)、WhatsApp、SMS、Facebook Messenger、Apple Messages for Business)の機能とユースケース、Legacy Chat からの移行(2026-02-14 提供終了)、WhatsApp の考慮点。音声: Partner Contact Center(旧 Service Cloud Voice、Amazon Connect など)と Agentforce Contact Center Voice の違い。"},
+    {"id": "agents", "no": "Ch3·6", "title": "Agentforce Service Agent とエージェント型サービス", "tag": "Agentforce Service Agent", "questions": 5,
+     "brief": "顧客サービスでAIエージェントを使うべき場面と使わない場面。Agentforce Service Agent の作成(Agentforce Builder、サブエージェント(旧称トピック)・指示・アクション)、チャネルへの展開(Deploy Your Agent to Channels)、Omni-Channel フローでの人へのエスカレーション、顧客確認。Einstein Bots(2026-08-17 から保守モード)との比較とアップグレード。サービス担当者向けの Einstein for Service(Service Replies、Work Summaries)にも触れる。"}
+   ]
+  },
+  {
+   "chapter": 4,
+   "chapter_title": "ケース管理",
+   "chapter_sub": "作成からクローズまでのケース管理、ケースの回避、エンタイトルメントとマイルストン、Agentforce Service の自動化機能の使い分けを学びます。",
+   "outline": "Case Management 13%",
+   "sections": [
+    {"id": "caseproc", "no": "Ch4·1", "title": "ケース管理の設計: 作成からクローズまで", "tag": "Case Lifecycle", "questions": 5,
+     "brief": "ケースの状況とサポートプロセス、レコードタイプ、ケースの割り当て・エスカレーションルール、ケースチーム、ケースのマージ、ケース階層(親ケース)、クローズ時の処理。KPI(処理時間・再オープン率など)に合わせたプロセス設計。インシデント管理は Ch5·4 で扱うので、ここではケースとの関係に一言触れるだけにする。Set Up and Manage Cases のページを根拠にする。"},
+    {"id": "deflect", "no": "Ch4·2", "title": "ケースの回避: Experience Cloud・Agentforce・Knowledge", "tag": "Case Deflection", "questions": 5,
+     "brief": "セルフサービスで問い合わせを減らす仕組み: Experience Cloud ヘルプセンターでの記事検索、ケースの回避(Contact Support フォームと記事提案)、AIエージェントによる自己解決、Knowledge の公開。回避の効果測定(回避率のレポート)。"},
+    {"id": "entitle", "no": "Ch4·3", "title": "エンタイトルメント・マイルストン・資産・営業時間・SLA", "tag": "Entitlements & SLAs", "questions": 5,
+     "brief": "エンタイトルメント、エンタイトルメントプロセス、マイルストン(成功・警告・違反アクション)、サービス契約、契約品目、資産、営業時間と祝日、エンタイトルメントテンプレート。SLA をどう表現するか。trailmix の Entitlement Management for Lightning Experience と Set Up and Manage Entitlements and Milestones を根拠にする。"},
+    {"id": "automation", "no": "Ch4·4", "title": "Agentforce Service の自動化の使い分け", "tag": "Service Automation", "questions": 5,
+     "brief": "Salesforce Flow for Service(画面フロー、レコードトリガフロー、アクションとおすすめ)、マクロ、クイックテキスト、承認プロセス、Einstein Case Classification・ケースのラップアップ、Service Replies・Work Summaries などの Einstein for Service。どの要件にどの自動化を使うかの判断。"}
+   ]
+  },
+  {
+   "chapter": 5,
+   "chapter_title": "コンタクトセンター分析とインテグレーション",
+   "chapter_sub": "関係者ごとのレポートとダッシュボード、Omni Supervisor などのリアルタイム監視、外部データ・電話・Slack との主要なインテグレーションを学びます。",
+   "outline": "Contact Center Analytics 13% + Integrations 10%",
+   "sections": [
+    {"id": "reports", "no": "Ch5·1", "title": "サービスのレポートとダッシュボード", "tag": "Reports & Dashboards", "questions": 10,
+     "brief": "サポート向けのカスタムレポートタイプ(Use Custom Report Types to Report on Support Activity)、ケース履歴、マイルストンのレポート、ナレッジのレポート。ダッシュボードのデータ表示(実行ユーザー、動的ダッシュボード)、関係者(サービス担当者・スーパーバイザー・経営層)ごとの見せ方。Configure Dashboard Data Visibility を根拠にする。"},
+    {"id": "analytics", "no": "Ch5·2", "title": "リアルタイム監視と高度な分析", "tag": "Contact Center Analytics", "questions": 10,
+     "brief": "Omni Supervisor(担当者・キュー・スキルの監視、作業の割り当て直し)、Omni-Channel のレポート(エージェントの作業、在席状況)、Messaging・音声の分析、CRM Analytics のサービス分析アプリ、AIエージェントの効果測定。Manage Agents, Queues, and Skills のページを根拠にする。"},
+    {"id": "integ", "no": "Ch5·3", "title": "主要なインテグレーションと外部データ", "tag": "Integrations", "questions": 8,
+     "brief": "Salesforce Connect(外部オブジェクト)、Data 360 のゼロコピー、Partner Contact Center と Amazon Connect などの電話連携、Agentforce Commerce・Agentforce Field Service and Operations との連携、API と AppExchange のサードパーティ製品の使い分けと考慮点。trailmix の Salesforce Connect、What is Zero Copy、Set Up Service Cloud Voice with Amazon Connect を根拠にする。"},
+    {"id": "slack", "no": "Ch5·4", "title": "Slack for Service・スウォーミング・インシデント管理", "tag": "Slack & Swarming", "questions": 7,
+     "brief": "Slack for Service(Slack からのケース操作、エキスパートとの協業)、スウォーミング(Swarming)の設定と Slack でのスウォーム開始、Customer Service Incident Management の基本(インシデント、問題、変更要求、関連ケース)。trailmix の Agentforce Service for Slack トレイル、Enable Collaboration with Swarming、Customer Service Incident Management Basics を根拠にする。"}
+   ]
+  }
+ ]
+}
