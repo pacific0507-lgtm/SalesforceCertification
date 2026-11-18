@@ -1,0 +1,212 @@
+{
+ "replace": [
+  {
+   "en": "Service Console",
+   "ja": "サービスコンソール",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_migration_whatsnew/lex_migration_whatsnew_service",
+   "note": "Trailhead ja「Lightning サービスコンソールのカスタマイズ」「サービスコンソール」"
+  },
+  {
+   "en": "Omni-Channel",
+   "ja": "オムニチャネル",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_migration_whatsnew/lex_migration_whatsnew_service",
+   "note": "Trailhead ja「マクロ、オムニチャネル、Open CTI ソフトフォン」「プレゼンス状況を設定し、オムニチャネル」。Enhanced/Standard Omni-Channel は protect で英語のまま"
+  },
+  {
+   "en": "Web-to-Case",
+   "ja": "Web-to-ケース",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_channels",
+   "note": "Trailhead ja「Web-to-Case (Web-to-ケース)」"
+  },
+  {
+   "en": "Email-to-Case",
+   "ja": "メール-to-ケース",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_channels",
+   "note": "Trailhead ja「Email-to-Case (メール-to-ケース)」。On-Demand Email-to-Case は protect"
+  },
+  {
+   "en": "Dynamic Forms",
+   "ja": "動的フォーム",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/lex_customization/lex_customization_compact_layouts",
+   "note": "Trailhead ja「動的フォーム移行ウィザード」「動的フォームと動的強調表示パネル」"
+  },
+  {
+   "en": "Einstein Work Summaries",
+   "ja": "Einstein 作業概要",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer",
+   "note": "Trailhead ja「Einstein サービス返信や Einstein 作業概要などの埋め込み型生成 AI」"
+  },
+  {
+   "en": "Einstein Service Replies",
+   "ja": "Einstein サービス返信",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer",
+   "note": "同上"
+  },
+  {
+   "en": "Work Summaries",
+   "ja": "作業概要",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer",
+   "note": "Einstein Work Summaries のあとに置き換える"
+  },
+  {
+   "en": "Service Replies",
+   "ja": "サービス返信",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer",
+   "note": "Einstein Service Replies のあとに置き換える"
+  },
+  {
+   "en": "Einstein Bots",
+   "ja": "Einstein ボット",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/service_bots_basics/learn-about-einstein-bots",
+   "note": "Trailhead ja「Einstein ボットの概要」「Einstein ボットを作成する」"
+  },
+  {
+   "en": "Einstein Bot",
+   "ja": "Einstein ボット",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/service_bots_basics/learn-about-einstein-bots",
+   "note": "単数形"
+  },
+  {
+   "en": "マイルストン",
+   "ja": "マイルストーン",
+   "source": "https://trailhead.salesforce.com/ja/content/learn/modules/service_lex/service_lex_connect",
+   "note": "Trailhead ja「エンタイトルメントとマイルストーン」。日本語の表記ゆれ"
+  }
+ ],
+ "keep": [
+  {
+   "en": "Command Center for Service",
+   "why": "ユーザーの指定で「Command Center for Service(旧称 Omni Supervisor)」にそろえる。日本語版 Trailhead では「Command Center for Service (サービス向けコマンドセンター)」と併記(service_lex_connect)"
+  },
+  {
+   "en": "Lightning Knowledge",
+   "why": "日本語版 Trailhead でも英語のまま(lex_migration_whatsnew_service)"
+  },
+  {
+   "en": "Experience Cloud",
+   "why": "日本語版でも英語のまま"
+  },
+  {
+   "en": "Agentforce Service Agent",
+   "why": "製品名。日本語版でも英語のまま"
+  },
+  {
+   "en": "Enhanced Chat",
+   "why": "製品名。日本語の画面名を確認できなかった"
+  },
+  {
+   "en": "Partner Contact Center",
+   "why": "製品名"
+  },
+  {
+   "en": "Agentforce Contact Center Voice",
+   "why": "製品名"
+  },
+  {
+   "en": "Salesforce Connect",
+   "why": "日本語版でも英語のまま"
+  }
+ ],
+ "unconfirmed": [
+  {
+   "en": "Enhanced Omni-Channel",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Standard Omni-Channel",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "On-Demand Email-to-Case",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Enhanced Messaging",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Messaging",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Einstein Case Classification",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Einstein Article Recommendations",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Einstein Case Wrap-Up",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Case Deflection",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Contact Support Form",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Unified Knowledge",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Agentforce Data Library",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Expert Finder",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Customer Service Incident Management",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Actions & Recommendations",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Service Intelligence",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Agent Analytics",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Queues Backlog",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Skills Backlog",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Least Active",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Most Available",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Field Audit Trail",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  },
+  {
+   "en": "Shield Platform Encryption",
+   "why": "日本語の画面名を公式(Trailhead ja・ヘルプ)で確かめられなかったので英語のまま"
+  }
+ ],
+ "dropped": [],
+ "protect": [
+  "Enhanced Omni-Channel",
+  "Standard Omni-Channel",
+  "On-Demand Email-to-Case",
+  "Omni-Channel Supervisor"
+ ],
+ "tight": true
+}

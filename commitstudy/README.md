@@ -149,7 +149,8 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 ## 科目 Agentforce Service コンサルタント(afsvc)
 - `afsvc_SPEC.md` 原稿の仕様(問題は4択)、`afsvc/manuscript/out_ch1〜5.json`(5章22項目・152問)、`build_afsvc.py` で data を組み立て(用語カード `afsvc/terms.json` も写す。確認は `python3 check_terms.py afsvc`)、`figs_m/spec_N.py` と `figs_m/apply_afsvc.py` で図(1項目1枚)を入れる。Trailhead のクイズは `afsvc/trailhead/out.json`(`python3 add_trailhead.py afsvc`)
 - 出題範囲(cx)は試験ガイドの8分野に、項目ごとに対応付ける(build_afsvc.py の CXS)
-- 作り直し: `python3 build_afsvc.py afsvc/manuscript afsvc/data && python3 figs_m/apply_afsvc.py afsvc/data/chapters.json afsvc/data/chapters.json && python3 add_trailhead.py afsvc`。公開データは `afsvc/data/`。`make_catalog.py` で catalog.json も作り直す
+- 作り直し: `python3 build_afsvc.py afsvc/manuscript afsvc/data && python3 figs_m/apply_afsvc.py afsvc/data/chapters.json afsvc/data/chapters.json && python3 add_trailhead.py afsvc && python3 apply_jaui.py afsvc/jaui/glossary.json afsvc/data <out> && python3 figs_m/apply_afsvc.py <out>/chapters.json <out>/chapters.json`(<out> を afsvc/data に写し、`python3 bump_chapters_ts.py afsvc`)。公開データは `afsvc/data/`。`make_catalog.py` で catalog.json も作り直す
+- `afsvc/jaui/glossary.json`: 英語のままの機能名を日本語版 Trailhead で確認できた画面名に(サービスコンソール・オムニチャネル・メール-to-ケース・Web-to-ケース・動的フォーム・Einstein 作業概要・Einstein サービス返信・Einstein ボット、マイルストーン の表記)。"tight": true で日本語名の前後の空白を詰める。Command Center for Service は指定どおり英語のまま
 - `patch_add_afsvc.py` で科目を登録(rebuild.sh の最後。略称 AF​Service、色は茶 brown)。学習計画の科目は `plan/plan.js`
 
 ## 科目 基本情報技術者(fe)・情報セキュリティマネジメント(sg)

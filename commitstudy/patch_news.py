@@ -8,7 +8,7 @@ NEWS = [
  ("2026-11-18", "新機能", "Agentforce Service コンサルタントを追加(5章22項目・問題152問・用語カード199枚)", [
    "8つ目の科目です(旧 Service Cloud コンサルタント)。試験の8分野(業界知識・導入戦略・ソリューション設計・ナレッジ管理・受付と対話のチャネル・ケース管理・コンタクトセンター分析・インテグレーション)に沿った5章・22項目のテキストと、全項目の図、用語カード199枚があります",
    "問題は、公式ヘルプにもとづくオリジナル問題152問(4択)と、Trailhead のモジュールのクイズ196問です。問題集の絞込の「出典」で切り替えられ、「出題範囲」で試験の8分野ごとにも絞れます",
-   "名称は最新の公式名にそろえています(例: Command Center for Service(旧称 Omni Supervisor)、Enhanced Chat(旧 Messaging for In-App and Web)、Partner Contact Center(旧 Service Cloud Voice)、サブエージェント(旧称トピック))",
+   "名称は最新の公式名にそろえています(例: Command Center for Service(旧称 Omni Supervisor)、Enhanced Chat(旧 Messaging for In-App and Web)、Partner Contact Center(旧 Service Cloud Voice)、サブエージェント(旧称トピック))。英語のままだった機能名は、日本語の画面の名称にそろえました(例: サービスコンソール、オムニチャネル、メール-to-ケース、動的フォーム、Einstein 作業概要)",
    "試験は採点対象60問・105分・合格ライン78%です(テキストの最初の「このテキストの使い方」にも書いています)。学習計画の資格にも追加しました",
  ]),
  ("2026-11-17", "新機能", "テキストの上のメニューに「いまの節の表示」", [

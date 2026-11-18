@@ -4,12 +4,14 @@
     (図は figs_m/spec_*.py を直して作り直す)
   - 「日本語名(英語名)」と併記していたところは「日本語名(英語名)」のまま残す
   - 用語カードの表が英語名だけだったときは「日本語名(英語名)」にする
+  - glossary に "tight": true があれば、日本語名の前後の空白を、隣も日本語なら詰める
   - 置き換え後、問題の該当箇所 x が本文と一致するか確かめ、一致しなくなったものは本文側の文字列に合わせる
 """
 import html, json, os, re, sys
 gp, src, dst = sys.argv[1:4]
 GJ = json.load(open(gp, encoding="utf-8")); G = GJ["replace"]
 PROTECT = GJ.get("protect", [])
+TIGHT = GJ.get("tight", False)
 G = sorted(G, key=lambda r: -len(r["en"]))
 os.makedirs(dst, exist_ok=True)
 def rx(en): return re.compile(r"(?<![A-Za-z0-9])" + re.escape(en) + r"(?![A-Za-z0-9])")
@@ -33,6 +35,12 @@ def conv(t):
     for k, v in keep.items(): t = t.replace(k, v)
     # 「英語名(日本語名)」と書いていたところは「日本語名(英語名)」に
     for r, en, ja in RX: t = t.replace(ja + "(" + ja + ")", ja + "(" + en + ")").replace(ja + "(" + ja + ")", ja + "(" + en + ")")
+    # glossary の "tight": true のとき、日本語名の前後に英語のとき入れていた空白を、隣も日本語なら詰める(「の オムニチャネル フロー」→「のオムニチャネルフロー」)
+    if TIGHT:
+        J = r"[\u3000-\u30ff\u4e00-\u9fff\uff01-\uff5e]"
+        for ja in sorted(set(EN2JA.values()), key=len, reverse=True):
+            if re.match(J, ja[0]): t = re.sub(r"(" + J + r") (?=" + re.escape(ja) + r")", r"\1", t)
+            if re.match(J, ja[-1]): t = re.sub(r"(?<=" + re.escape(ja) + r") (?=" + J + r")", "", t)
     # 表記ゆれ: 公式の表記「データローダー」にそろえる
     t = re.sub(r"データローダ(?!ー)", "データローダー", t)
     return t
