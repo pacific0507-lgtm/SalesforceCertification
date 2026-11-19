@@ -73,3 +73,4 @@ python3 $C/patch_texts_kind.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_texts_groups.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_practice_kind.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_subj_order_kind.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_tc_star.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
