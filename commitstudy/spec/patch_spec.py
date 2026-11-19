@@ -19,7 +19,7 @@ def rep(old, new, count=1):
     s = s.replace(old, new)
 
 SUBJ = [("d360", "Data 360 コンサルタント"), ("mcadmin", "Marketing Cloud Engagement Administrator"), ("afsales", "Agentforce Sales コンサルタント"), ("afsvc", "Agentforce Service コンサルタント"),
-        ("afspec", "Agentforce スペシャリスト"), ("mulepa", "MuleSoft Platform Architect"), ("fe", "基本情報技術者"), ("sg", "情報セキュリティマネジメント")]
+        ("afspec", "Agentforce スペシャリスト"), ("mulepa", "MuleSoft Platform Architect"), ("fe", "基本情報技術者"), ("sg", "情報セキュリティマネジメント"), ("eisei1", "第一種衛生管理者")]
 rows = []
 for sid, name in SUBJ:
     R = json.load(open(os.path.join(root, sid, "data", "qrows.json"), encoding="utf-8"))

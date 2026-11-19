@@ -1,6 +1,6 @@
 """章ごとの原稿(out_ch1.json など)と公表問題(pastq/out.json)から、科目 eisei1(第一種衛生管理者)のデータファイルを組み立てる。
 使い方: python3 build_eisei1.py <原稿フォルダ(eisei1/manuscript)> <出力フォルダ(eisei1/data)>
-  - 項目の html(図は figs_m/apply_eisei1.py が原稿に入れる)を章ごとの chapters.json にする。plain の項目(取りこぼし注意まとめ)は
+  - 項目の html(図はこのあと figs_m/apply_eisei1.py で chapters.json に入れる)を章ごとの chapters.json にする。plain の項目(取りこぼし注意まとめ)は
     <article class="feat plain"> にして「理解した」と練習問題のリンクを付けない
   - オリジナル問題: 出典 s は「オリジナル(法令・公式資料にもとづく) eisei1-orig-<項目>-NN」。keep のない問題は選択肢を固定の乱数で並べ替える
   - 公表問題(過去問): 出典 s は「令和8年10月公表 問1」(第二種は「令和8年10月公表 第二種 問13」)。選択肢は公表どおりの順(並べ替えない)、正解は公表の正答
