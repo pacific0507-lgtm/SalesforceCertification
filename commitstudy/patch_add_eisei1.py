@@ -17,7 +17,8 @@ def rep(old, new, count=1):
     if n != count: sys.exit(f"置換対象が {n} 件(期待 {count} 件): {old[:90]!r}")
     s = s.replace(old, new)
 # 略称は「衛生」と「1種」の間に幅0の改行位置を入れ、狭い枠では2行に折り返す(AF​Service と同じ)
-ID, SHORT, TITLE, PAL, COLOR, NAME = "eisei1", "衛生​1種", "第一種衛生管理者", "gray", "#3d4650", "グレー"
+#  日本語はどこでも折り返せるため、「衛生」「1種」の中は語結合子(U+2060)で折り返さないようにする
+ID, SHORT, TITLE, PAL, COLOR, NAME = "eisei1", "衛\u2060生\u200b1\u2060種", "第一種衛生管理者", "gray", "#3d4650", "グレー"
 
 # ---- FAMD.consts ----
 lines = s.split("\n"); li = [i for i, l in enumerate(lines) if "window.FAMD=" in l]
