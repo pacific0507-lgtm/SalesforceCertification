@@ -18,26 +18,30 @@ def jesc(t): return json.dumps(t, ensure_ascii=False)[1:-1].replace("</", "<\\/"
 JS = r'''
 /* ==テキスト一覧: 科目の並べ替えと合格の印(ユーザーごと)== */
 function csTextsExtra(){var n=0;(function wait(){var list=document.querySelector("#groups .grp .list");
+  /* 種類ごとのグループ(Salesforce / 情報処理 / その他)に分かれていても、並べ替えは各グループの中で行う。並び順は全科目で1つの列(cs-subj-order)に保存する */
+  var lists=function(){var L=[].slice.call(document.querySelectorAll("#groups .grp[data-k] .list"));return L.length?L:(list?[list]:[])};
   if(!list||!list.querySelector(".tx[data-id]")||(!window.__famLsReady&&n<40)){if(n++<60)setTimeout(wait,200);return}
   var LSg=function(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},LSs=function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-  var cards=function(){return [].slice.call(list.querySelectorAll(".tx[data-id]"))};
-  function applyOrder(){var ord=LSg("cs-subj-order",[]);if(!ord.length)return;var cs=cards(),pos={};ord.forEach(function(id,i){pos[id]=i});
-    cs.sort(function(a,b){var x=pos[a.dataset.id],y=pos[b.dataset.id];return (x==null?999:x)-(y==null?999:y)}).forEach(function(c){list.appendChild(c)})}
+  var cards=function(l){var a=[];(l?[l]:lists()).forEach(function(x){a=a.concat([].slice.call(x.querySelectorAll(".tx[data-id]")))});return a};
+  function applyOrder(){var ord=LSg("cs-subj-order",[]);if(!ord.length)return;var pos={};ord.forEach(function(id,i){pos[id]=i});
+    lists().forEach(function(l){cards(l).sort(function(a,b){var x=pos[a.dataset.id],y=pos[b.dataset.id];return (x==null?999:x)-(y==null?999:y)}).forEach(function(c){l.appendChild(c)})})}
   function paint(){var P=LSg("cs-subj-passed",{}),ed=list.classList.contains("ed");
-    cards().forEach(function(c,i,all){var id=c.dataset.id,box=c.querySelector(".tx-ed");
+    lists().forEach(function(l){cards(l).forEach(function(c,i,all){var id=c.dataset.id,box=c.querySelector(".tx-ed");
       if(!box){box=document.createElement("div");box.className="tx-ed";c.appendChild(box)}
       c.classList.toggle("passed",!!P[id]);
       var b=c.querySelector(".pass-b");if(P[id]&&!b){b=document.createElement("span");b.className="pass-b";b.textContent="合格";var tt=c.querySelector(".tt");(tt||c).appendChild(b)}else if(!P[id]&&b)b.remove();
-      box.innerHTML=ed?'<button type="button" data-mv="-1"'+(i===0?" disabled":"")+' aria-label="上へ">↑</button><button type="button" data-mv="1"'+(i===all.length-1?" disabled":"")+' aria-label="下へ">↓</button><button type="button" class="pz" data-pass aria-pressed="'+(!!P[id])+'">'+(P[id]?"合格済み":"合格した")+'</button>':""})}
+      box.innerHTML=ed?'<button type="button" data-mv="-1"'+(i===0?" disabled":"")+' aria-label="上へ">↑</button><button type="button" data-mv="1"'+(i===all.length-1?" disabled":"")+' aria-label="下へ">↓</button><button type="button" class="pz" data-pass aria-pressed="'+(!!P[id])+'">'+(P[id]?"合格済み":"合格した")+'</button>':""})})}
   if(!document.getElementById("tx-edbtn")){var bar=document.createElement("div");bar.className="tx-edbar";
     bar.innerHTML='<button type="button" id="tx-edbtn" aria-pressed="false">並べ替え・合格の印</button>';list.parentElement.insertBefore(bar,list);
     var top=bar.querySelector("button"),done=document.createElement("button");done.type="button";done.id="tx-done";done.className="tx-done";done.textContent="完了";done.hidden=true;document.body.appendChild(done);
-    var setEd=function(on){list.classList.toggle("ed",on);top.setAttribute("aria-pressed",String(on));top.hidden=on;done.hidden=!on;paint()};
+    var setEd=function(on){lists().forEach(function(l){l.classList.toggle("ed",on)});top.setAttribute("aria-pressed",String(on));top.hidden=on;done.hidden=!on;paint()};
     top.onclick=function(){setEd(true)};done.onclick=function(){setEd(false)};
     /* 別の画面へ移ったら、下の完了ボタンを片付ける */
     var mo=setInterval(function(){if(!document.body.contains(list)){done.remove();clearInterval(mo)}},500)}
-  list.addEventListener("click",function(e){var b=e.target.closest(".tx-ed button");if(!b)return;e.preventDefault();e.stopPropagation();var c=b.closest(".tx"),id=c.dataset.id;
-    if(b.dataset.mv){var cs=cards(),i=cs.indexOf(c),j=i+(+b.dataset.mv);if(j<0||j>=cs.length)return;var ids=cs.map(function(x){return x.dataset.id});var t=ids[i];ids[i]=ids[j];ids[j]=t;LSs("cs-subj-order",ids);
+  (document.getElementById("groups")||list).addEventListener("click",function(e){var b=e.target.closest(".tx-ed button");if(!b)return;e.preventDefault();e.stopPropagation();var c=b.closest(".tx"),id=c.dataset.id;
+    if(b.dataset.mv){var cl=c.closest(".list"),cs=cards(cl),i=cs.indexOf(c),j=i+(+b.dataset.mv);if(j<0||j>=cs.length)return;var t=cs[i];cs[i]=cs[j];cs[j]=t;
+      var ids=[];lists().forEach(function(l){(l===cl?cs:cards(l)).forEach(function(x){ids.push(x.dataset.id)})});LSs("cs-subj-order",ids);
+      cs=cards(cl);
       /* 動いたことがわかるように: 入れ替わった2枚を元の位置からすべらせ、動かしたカードを光らせる */
       var y0=new Map(cs.map(function(x){return [x,x.getBoundingClientRect().top]}));applyOrder();
       cards().forEach(function(x){var dy=y0.get(x)-x.getBoundingClientRect().top;if(!dy)return;x.style.transition="none";x.style.transform="translateY("+dy+"px)";x.style.zIndex=x===c?"2":"1";void x.offsetWidth;
