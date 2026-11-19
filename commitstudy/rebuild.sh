@@ -69,3 +69,4 @@ python3 $C/patch_sticky_thead.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_csloc.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_secband.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_add_afsvc.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_texts_kind.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
