@@ -1,0 +1,704 @@
+[
+ {
+  "subject": "anei",
+  "sec": "c1-2-2",
+  "no": "Ch1·2-2",
+  "title": "労働者・事業者",
+  "chars": 1160,
+  "sharoushi_questions": 8,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c1-2-3",
+  "no": "Ch1·2-3",
+  "title": "化学物質・作業環境測定",
+  "chars": 457,
+  "sharoushi_questions": 1,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c2-1-1",
+  "no": "Ch2·1-1",
+  "title": "総括安全衛生管理者",
+  "chars": 1690,
+  "sharoushi_questions": 14,
+  "numcards": 2
+ },
+ {
+  "subject": "anei",
+  "sec": "c2-1-3",
+  "no": "Ch2·1-3",
+  "title": "衛生管理者",
+  "chars": 1930,
+  "sharoushi_questions": 13,
+  "numcards": 4
+ },
+ {
+  "subject": "anei",
+  "sec": "c2-1-4",
+  "no": "Ch2·1-4",
+  "title": "安全衛生推進者等",
+  "chars": 1081,
+  "sharoushi_questions": 7,
+  "numcards": 2
+ },
+ {
+  "subject": "anei",
+  "sec": "c2-1-5",
+  "no": "Ch2·1-5",
+  "title": "産業医等",
+  "chars": 1990,
+  "sharoushi_questions": 13,
+  "numcards": 4
+ },
+ {
+  "subject": "anei",
+  "sec": "c2-1-6",
+  "no": "Ch2·1-6",
+  "title": "作業主任者",
+  "chars": 1362,
+  "sharoushi_questions": 7,
+  "numcards": 2
+ },
+ {
+  "subject": "anei",
+  "sec": "c2-3-2",
+  "no": "Ch2·3-2",
+  "title": "衛生委員会",
+  "chars": 821,
+  "sharoushi_questions": 5,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c2-3-3",
+  "no": "Ch2·3-3",
+  "title": "安全衛生委員会",
+  "chars": 632,
+  "sharoushi_questions": 3,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c2-3-4",
+  "no": "Ch2·3-4",
+  "title": "安全管理者等に関する教育等",
+  "chars": 510,
+  "sharoushi_questions": 0,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c3-1-2",
+  "no": "Ch3·1-2",
+  "title": "健康障害等を防止するために必要な措置",
+  "chars": 1232,
+  "sharoushi_questions": 6,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c3-1-4",
+  "no": "Ch3·1-4",
+  "title": "事業者の行うべき調査等",
+  "chars": 1078,
+  "sharoushi_questions": 2,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c4-2-1",
+  "no": "Ch4·2-1",
+  "title": "譲渡等の制限等",
+  "chars": 967,
+  "sharoushi_questions": 7,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c4-3-1",
+  "no": "Ch4·3-1",
+  "title": "定期自主検査と特定自主検査",
+  "chars": 1224,
+  "sharoushi_questions": 13,
+  "numcards": 2
+ },
+ {
+  "subject": "anei",
+  "sec": "c5-1-1",
+  "no": "Ch5·1-1",
+  "title": "製造等の禁止",
+  "chars": 753,
+  "sharoushi_questions": 1,
+  "numcards": 3
+ },
+ {
+  "subject": "anei",
+  "sec": "c5-1-2",
+  "no": "Ch5·1-2",
+  "title": "製造の許可",
+  "chars": 605,
+  "sharoushi_questions": 1,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c5-2-1",
+  "no": "Ch5·2-1",
+  "title": "表示等",
+  "chars": 756,
+  "sharoushi_questions": 1,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c5-2-2",
+  "no": "Ch5·2-2",
+  "title": "文書の交付等",
+  "chars": 984,
+  "sharoushi_questions": 3,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c5-2-3",
+  "no": "Ch5·2-3",
+  "title": "事業者が行うべき調査等",
+  "chars": 1501,
+  "sharoushi_questions": 6,
+  "numcards": 4
+ },
+ {
+  "subject": "anei",
+  "sec": "c6-1-1",
+  "no": "Ch6·1-1",
+  "title": "雇入れ時、作業内容変更時の安全衛生教育",
+  "chars": 980,
+  "sharoushi_questions": 14,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c6-1-2",
+  "no": "Ch6·1-2",
+  "title": "特別教育",
+  "chars": 1017,
+  "sharoushi_questions": 8,
+  "numcards": 2
+ },
+ {
+  "subject": "anei",
+  "sec": "c6-1-3",
+  "no": "Ch6·1-3",
+  "title": "職長等の教育",
+  "chars": 886,
+  "sharoushi_questions": 5,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c6-1-4",
+  "no": "Ch6·1-4",
+  "title": "その他、安全衛生教育に関する事項",
+  "chars": 800,
+  "sharoushi_questions": 3,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c6-2-2",
+  "no": "Ch6·2-2",
+  "title": "中高年齢者等についての配慮",
+  "chars": 420,
+  "sharoushi_questions": 2,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-1-1",
+  "no": "Ch7·1-1",
+  "title": "作業環境測定・作業時間の制限",
+  "chars": 1166,
+  "sharoushi_questions": 9,
+  "numcards": 5
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-2-1",
+  "no": "Ch7·2-1",
+  "title": "健康診断",
+  "chars": 1365,
+  "sharoushi_questions": 7,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-2-2",
+  "no": "Ch7·2-2",
+  "title": "一般健康診断",
+  "chars": 1607,
+  "sharoushi_questions": 17,
+  "numcards": 6
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-2-3",
+  "no": "Ch7·2-3",
+  "title": "特殊健康診断",
+  "chars": 957,
+  "sharoushi_questions": 4,
+  "numcards": 2
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-2-4",
+  "no": "Ch7·2-4",
+  "title": "自発的健康診断の結果提出",
+  "chars": 646,
+  "sharoushi_questions": 3,
+  "numcards": 3
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-2-5",
+  "no": "Ch7·2-5",
+  "title": "健康診断の結果及び実施後の措置",
+  "chars": 1416,
+  "sharoushi_questions": 13,
+  "numcards": 3
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-2-6",
+  "no": "Ch7·2-6",
+  "title": "面接指導等",
+  "chars": 1694,
+  "sharoushi_questions": 23,
+  "numcards": 3
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-2-7",
+  "no": "Ch7·2-7",
+  "title": "心理的な負担の程度を把握するための検査等",
+  "chars": 1398,
+  "sharoushi_questions": 12,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-3-1",
+  "no": "Ch7·3-1",
+  "title": "健康管理手帳",
+  "chars": 544,
+  "sharoushi_questions": 0,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-3-2",
+  "no": "Ch7·3-2",
+  "title": "病者の就業禁止",
+  "chars": 548,
+  "sharoushi_questions": 1,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-3-3",
+  "no": "Ch7·3-3",
+  "title": "受動喫煙の防止",
+  "chars": 553,
+  "sharoushi_questions": 0,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c7-3-4",
+  "no": "Ch7·3-4",
+  "title": "健康教育等",
+  "chars": 656,
+  "sharoushi_questions": 0,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c8-1-1",
+  "no": "Ch8·1-1",
+  "title": "事業者の講ずる措置",
+  "chars": 460,
+  "sharoushi_questions": 0,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c8-1-2",
+  "no": "Ch8·1-2",
+  "title": "快適な職場環境の形成のための指針の公表等",
+  "chars": 153,
+  "sharoushi_questions": 0,
+  "numcards": 0
+ },
+ {
+  "subject": "anei",
+  "sec": "c8-1-4",
+  "no": "Ch8·1-4",
+  "title": "労働安全衛生規則で定める衛生基準",
+  "chars": 1097,
+  "sharoushi_questions": 0,
+  "numcards": 2
+ },
+ {
+  "subject": "anei",
+  "sec": "c8-1-5",
+  "no": "Ch8·1-5",
+  "title": "事務所衛生基準規則で定める衛生基準",
+  "chars": 471,
+  "sharoushi_questions": 1,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c8-2-1",
+  "no": "Ch8·2-1",
+  "title": "免許等",
+  "chars": 715,
+  "sharoushi_questions": 3,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c8-4-1",
+  "no": "Ch8·4-1",
+  "title": "計画の届出・厚生労働大臣等の審査",
+  "chars": 1440,
+  "sharoushi_questions": 9,
+  "numcards": 5
+ },
+ {
+  "subject": "anei",
+  "sec": "c8-4-3",
+  "no": "Ch8·4-3",
+  "title": "報告等",
+  "chars": 1224,
+  "sharoushi_questions": 7,
+  "numcards": 1
+ },
+ {
+  "subject": "anei",
+  "sec": "c8-5-7",
+  "no": "Ch8·5-7",
+  "title": "派遣労働者に係る適用の特例",
+  "chars": 850,
+  "sharoushi_questions": 1,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c3-1-1",
+  "no": "Ch3·1-1",
+  "title": "労働時間",
+  "chars": 2435,
+  "sharoushi_questions": 12,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c3-1-2",
+  "no": "Ch3·1-2",
+  "title": "法定労働時間と特例",
+  "chars": 933,
+  "sharoushi_questions": 7,
+  "numcards": 2
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c3-2-1",
+  "no": "Ch3·2-1",
+  "title": "休憩",
+  "chars": 1828,
+  "sharoushi_questions": 15,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c3-2-2",
+  "no": "Ch3·2-2",
+  "title": "休日",
+  "chars": 1827,
+  "sharoushi_questions": 6,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c3-3-1",
+  "no": "Ch3·3-1",
+  "title": "非常災害の場合等の時間外・休日労働",
+  "chars": 1680,
+  "sharoushi_questions": 3,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c3-3-2",
+  "no": "Ch3·3-2",
+  "title": "労使協定による時間外・休日労働",
+  "chars": 3373,
+  "sharoushi_questions": 17,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c3-3-3",
+  "no": "Ch3·3-3",
+  "title": "上限規制",
+  "chars": 3213,
+  "sharoushi_questions": 12,
+  "numcards": 6
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c3-5-2",
+  "no": "Ch3·5-2",
+  "title": "労働時間等に関する規定の適用除外",
+  "chars": 3284,
+  "sharoushi_questions": 7,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c4-1-1",
+  "no": "Ch4·1-1",
+  "title": "1箇月単位の変形労働時間制の採用要件",
+  "chars": 1630,
+  "sharoushi_questions": 15,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c4-1-2",
+  "no": "Ch4·1-2",
+  "title": "時間外労働となる時間と特例",
+  "chars": 1576,
+  "sharoushi_questions": 7,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c4-2-1",
+  "no": "Ch4·2-1",
+  "title": "フレックスタイム制の採用要件",
+  "chars": 1806,
+  "sharoushi_questions": 8,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c4-2-2",
+  "no": "Ch4·2-2",
+  "title": "フレックスタイム制の効果・労働時間の限度・その他",
+  "chars": 3741,
+  "sharoushi_questions": 9,
+  "numcards": 2
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c4-3-1",
+  "no": "Ch4·3-1",
+  "title": "1年単位の変形労働時間制の採用要件",
+  "chars": 2979,
+  "sharoushi_questions": 14,
+  "numcards": 7
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c4-4-1",
+  "no": "Ch4·4-1",
+  "title": "1週間単位の非定型的変形労働時間制",
+  "chars": 1421,
+  "sharoushi_questions": 5,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c5-1-1",
+  "no": "Ch5·1-1",
+  "title": "年次有給休暇の発生要件",
+  "chars": 2231,
+  "sharoushi_questions": 14,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c5-1-2",
+  "no": "Ch5·1-2",
+  "title": "付与日数",
+  "chars": 4611,
+  "sharoushi_questions": 9,
+  "numcards": 6
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c5-2-1",
+  "no": "Ch5·2-1",
+  "title": "年次有給休暇の取得方法",
+  "chars": 2322,
+  "sharoushi_questions": 13,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c5-2-2",
+  "no": "Ch5·2-2",
+  "title": "計画的付与",
+  "chars": 1395,
+  "sharoushi_questions": 5,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c5-2-3",
+  "no": "Ch5·2-3",
+  "title": "時季指定義務",
+  "chars": 3969,
+  "sharoushi_questions": 7,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c5-2-5",
+  "no": "Ch5·2-5",
+  "title": "年次有給休暇中の賃金",
+  "chars": 1397,
+  "sharoushi_questions": 2,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c5-2-6",
+  "no": "Ch5·2-6",
+  "title": "未成年者の年次有給休暇",
+  "chars": 776,
+  "sharoushi_questions": 0,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c7-1-1",
+  "no": "Ch7·1-1",
+  "title": "最低年齢",
+  "chars": 1669,
+  "sharoushi_questions": 3,
+  "numcards": 3
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c7-1-2",
+  "no": "Ch7·1-2",
+  "title": "年齢証明書",
+  "chars": 568,
+  "sharoushi_questions": 1,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c7-2-1",
+  "no": "Ch7·2-1",
+  "title": "労働時間・休日",
+  "chars": 1992,
+  "sharoushi_questions": 10,
+  "numcards": 3
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c7-3-1",
+  "no": "Ch7·3-1",
+  "title": "深夜業",
+  "chars": 1470,
+  "sharoushi_questions": 3,
+  "numcards": 3
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c7-3-2",
+  "no": "Ch7·3-2",
+  "title": "就業制限",
+  "chars": 1578,
+  "sharoushi_questions": 1,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c8-1-1",
+  "no": "Ch8·1-1",
+  "title": "坑内業務の就業制限",
+  "chars": 999,
+  "sharoushi_questions": 2,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c8-1-2",
+  "no": "Ch8·1-2",
+  "title": "危険有害業務の就業制限",
+  "chars": 1659,
+  "sharoushi_questions": 7,
+  "numcards": 5
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c8-2-1",
+  "no": "Ch8·2-1",
+  "title": "産前産後",
+  "chars": 1734,
+  "sharoushi_questions": 9,
+  "numcards": 3
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c8-2-2",
+  "no": "Ch8·2-2",
+  "title": "妊産婦の就業制限",
+  "chars": 1233,
+  "sharoushi_questions": 6,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c8-2-3",
+  "no": "Ch8·2-3",
+  "title": "育児時間",
+  "chars": 701,
+  "sharoushi_questions": 3,
+  "numcards": 2
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c8-2-4",
+  "no": "Ch8·2-4",
+  "title": "生理日の就業制限",
+  "chars": 814,
+  "sharoushi_questions": 4,
+  "numcards": 0
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c9-1-1",
+  "no": "Ch9·1-1",
+  "title": "就業規則の作成・変更",
+  "chars": 3465,
+  "sharoushi_questions": 15,
+  "numcards": 1
+ },
+ {
+  "subject": "rokiho",
+  "sec": "c9-1-2",
+  "no": "Ch9·1-2",
+  "title": "就業規則の記載事項と作成手続",
+  "chars": 3331,
+  "sharoushi_questions": 28,
+  "numcards": 0
+ }
+]
