@@ -77,3 +77,4 @@ python3 $C/patch_tc_star.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_add_eisei1.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_optmk.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_touch_hover.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_pastq_same.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
