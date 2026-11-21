@@ -206,9 +206,42 @@ function bindFocus(){
   window.addEventListener("popstate",function(){if(document.body.classList.contains("focus")){upHist=false;focusMode(false)}});
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&document.body.classList.contains("focus"))closeFocus()});
 }
+/* 用語カードを横にすべらせて前後のカードへ(社労士版 2026-11-11 と同じ動き)。
+   指に合わせてカードが動き、となりのカード(左へなら次・右へなら前)が横から付いてくる。60px 以上動かして離すと移り、足りなければ戻る。
+   「前へ」「次へ」のボタンも同じ動きで移る。縦の動きはふつうのスクロール(touch-action: pan-y) */
+function bindSwipe(){
+  var box=$("#p-g .flip"),cw=box&&box.parentNode;if(!box||!cw)return;
+  if(!document.getElementById("cs-fc-swipe")){var st=document.createElement("style");st.id="cs-fc-swipe";
+    st.textContent=".cw{overflow-x:clip}.cw>.fc-peek{position:absolute;pointer-events:none;z-index:1}.cw>.fc-peek .fc{cursor:default}.cw>.flip.drag,.cw>.fc-peek{will-change:transform}";document.head.appendChild(st)}
+  var pk=null,pd=0,busy=false,sx=null,sy=0,ax="",EZ="transform .28s cubic-bezier(.2,.7,.3,1)";
+  function W(){return box.offsetWidth+16}
+  function peekHTML(c){var sj=SUBJ.filter(function(s){return s.id===c.subj})[0]||{short:"",color:""};
+    return '<div class="fc"><div class="front"><p class="bx-k tq-h"><span class="tq-sj" style="--gc:'+sj.color+'">'+esc(sj.short)+'</span><span>'+esc(c.title)+'</span></p><h3>'+esc(c.t)+'</h3></div></div>'}
+  function peek(d){if(pk&&pd===d)return pk;drop();if(TL.length<2)return null;var c=TL[((TI+d)%TL.length+TL.length)%TL.length];if(!c)return null;
+    pk=document.createElement("div");pk.className="flip fc-peek";pk.setAttribute("aria-hidden","true");pk.innerHTML=peekHTML(c);
+    pk.style.left=box.offsetLeft+"px";pk.style.top=box.offsetTop+"px";pk.style.width=box.offsetWidth+"px";
+    var f=pk.querySelector(".fc");if(f)f.style.minHeight=box.offsetHeight+"px";cw.appendChild(pk);pd=d;return pk}
+  function drop(){if(pk)pk.remove();pk=null;pd=0}
+  function drag(dx){var d=dx<0?1:-1,p=peek(d);box.classList.add("drag");box.style.transition="none";box.style.transform="translateX("+(p?dx:dx/3)+"px)";
+    if(p){p.style.transition="none";p.style.transform="translateX("+(dx+d*W())+"px)"}}
+  function back(){var p=pk,d=pd;box.classList.remove("drag");box.style.transition=EZ;box.style.transform="";if(p){p.style.transition=EZ;p.style.transform="translateX("+d*W()+"px)"}
+    setTimeout(function(){if(pk===p)drop();if(!busy)box.style.transition=""},290)}
+  function go(d){if(busy)return;if(TL.length<2){TI+=d;drawCard();return}var p=peek(d);if(!p){TI+=d;drawCard();return}busy=true;var w=W();
+    if(!p.style.transform)p.style.transform="translateX("+d*w+"px)";p.offsetWidth;
+    box.classList.remove("drag");box.style.transition=EZ;p.style.transition=EZ;box.style.transform="translateX("+(-d*w)+"px)";p.style.transform="translateX(0)";
+    setTimeout(function(){TI+=d;drawCard();box.style.transition="none";box.style.transform="";box.offsetWidth;box.style.transition="";drop();busy=false},290)}
+  box.style.touchAction="pan-y";
+  box.addEventListener("touchstart",function(e){if(busy||e.touches.length>1){sx=null;return}sx=e.touches[0].clientX;sy=e.touches[0].clientY;ax=""},{passive:true});
+  box.addEventListener("touchmove",function(e){if(sx==null)return;var dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;
+    if(!ax&&(Math.abs(dx)>8||Math.abs(dy)>8))ax=Math.abs(dx)>Math.abs(dy)?"x":"y";if(ax==="x"){e.preventDefault();drag(dx)}},{passive:false});
+  function end(e){if(sx==null)return;var t=e.changedTouches&&e.changedTouches[0],dx=(t?t.clientX:sx)-sx;sx=null;if(ax!=="x")return;
+    if(e.cancelable)e.preventDefault();if(dx<-60)go(1);else if(dx>60)go(-1);else back()}
+  box.addEventListener("touchend",end);box.addEventListener("touchcancel",end);
+  $("#g-prev").onclick=function(){if(TL.length)go(-1)};$("#g-next").onclick=function(){if(TL.length)go(1)};
+}
 function init(){
   $$(".tabs [role=tab]").forEach(function(b){b.onclick=function(){setTab(b.id.slice(2))}});
-  bindQ();bindTerms();bindFocus();renderMeter();loadCloudAct();
+  bindQ();bindTerms();bindSwipe();bindFocus();renderMeter();loadCloudAct();
   if(location.hash==="#terms")ST.tab="g";
   setTab(ST.tab==="g"?"g":"q");requestAnimationFrame(function(){setTab(ST.tab)});
   refreshQ(true);
