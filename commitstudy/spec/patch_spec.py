@@ -66,6 +66,7 @@ MARKUP = f"""
     [C("data/&lt;科目&gt;/qrows.json"), "問題の索引(出典の種類・項目・問題文)。ホームや記録の集計に使う"],
     [C("data/&lt;科目&gt;/sections.json"), "項目の一覧(章・番号・題名)"],
     [C("data/&lt;科目&gt;/terms.json"), "用語カード(項目・用語・説明)"],
+    [C("data/&lt;科目&gt;/imp.json"), "節の重要度(★)。make_imp.py が過去問から作る(過去問のない科目は secs が空)"],
     [C("data/&lt;科目&gt;/img/"), "問題の図(webp)。IPA と MuleSoft の過去問で使う。scr_*.webp はテキストの「実際の画面」(screens/apply_screens.py が切り出し・赤枠を付けて差し込む。表示と拡大は patch_scr.py)"],
     [C("data/catalog.json"), "科目カードのタグに出す、出典ごとの問題数と用語カードの枚数"],
     [C("brand/"), "キャラの顔・使い方ページの画面写真"],
@@ -134,6 +135,12 @@ MARKUP = f"""
    <li>本文の該当箇所には「問題 N」の印が付き、押すとその箇所の問題を一覧します(全問正解なら緑)。</li>
    <li>答え合わせのあとの「テキストのこの場所」は、節の article を <code>cloneNode(true)</code> で写して約0.56倍に縮め、高さ230pxの窓に x の文が真ん中に来るよう置きます。赤枠の点滅(2回)は、場所の絵が画面に6割以上入ってきたとき(IntersectionObserver)に出し、いったん画面から出てまた入るともう一度出します。写しからは id・data-sec・マーカーの data-k/h/t などを外し、inert・aria-hidden を付けます(マーカー・暗記・検索・目次の追跡・表の見出しの追従に数えない)。列の幅は、テキストを見たときの幅を画面の幅ごとに <code>cs-csloc-w-v1</code>(端末だけ)に控えて使い、ない幅は同じ種類の画面の幅から見積もります。窓と写しを ResizeObserver で見て描き直します(<code>patch_csloc.py</code>)。</li>
    <li>テキストの右端の「節の地図」は、いまの節の直下の要素を色の帯にし、見えている範囲を枠で出します。表示の設定 <code>prefs.csmap</code>(on/off)はほかの表示の設定と同じく保存・同期します。</li>
+   <li>地図の帯の色(<code>patch_csmap_color.py</code>)は、本文の要素を <code>getComputedStyle</code> で読んで決めます。見出しは文字の色、囲み・表・図は背景の色(透明なら表の table → td → th の背景)に、左の太い線(border-left 2px 以上)か細い枠を inset の box-shadow で足します。掛け合いは吹き出し(<code>p.tk .bub</code>)ごとの背景と枠、段落・箇条書きは文字の色を color-mix で 35% にした色です。位置は article との getBoundingClientRect の差を article の縮み(写しの transform)で割って求めます。右端の地図は、節・高さ・幅のほか、配色・ライト/ダーク(html の data-theme・body の data-pal・端末のダーク設定)が変わったときにも塗り直します。</li>
+   <li>節の重要度(<code>patch_imp.py</code>)は、テキストを組み立てたあと(initText の最後)に <code>data/&lt;科目&gt;/imp.json</code> を科目ごとに1回読み、節の見出し(<code>.feat&gt;h3</code>)の末尾に <code>button.imp</code>、目次(<code>#toc-list</code> の行と PC の <code>#toc-ol</code>)に <code>span.imp-mini</code> を足します。ボタンなのでマーカー・メモの位置(tnodes)には数えず、titleOf・いまの節の表示・テキストのこの場所の文・AI先生に渡す本文も印の文字を除きます。押したときの枠は document.body に置く position:fixed の <code>#imp-pop</code>(本文の外)で、スクロールでは印について動きます。表示の設定 <code>prefs.imp</code>(on/off、はじめは on。off は body.imp-off)。
+    <code>imp.json</code> は <code>python3 make_imp.py</code> で全科目を作り直します(過去問を足した・まとめた・節を付け替えたら作り直して公開。rebuild.sh の最後の <code>make_imp.py --check</code> が、questions.json と合わないとき知らせます)。数えるのは過去問(出典が「オリジナル」「Trailhead」で始まらない問題)だけで、節は問題の <code>f</code>。
+    第一種衛生管理者は公表の回(令和N年M月公表。同じ問題をまとめた <code>s2</code> のほかの回も数える)、基本情報技術者は試験の回(修了認定試験の各回・各年度の公開問題・サンプル問題。公開問題とサンプル問題は科目A・Bで1回)、情報セキュリティマネジメントは各年度の公開問題とサンプル問題の回で、出題された回の数(同じなら問題の数)で比べます。
+    Salesforce の科目(Data 360・MCA・AF Sales・AF スペシャリスト・MuleSoft)の過去問の出典(v2026-02-28 など)は試験の年度ではなく問題集の版で、1問は1つの版にしか入っていない(AF スペシャリストは版が1つ)ため、問題の数で比べます。
+    過去問のある節を多い順に並べて上位30%を★★★、次の35%を★★、残りを★にし、同じ数の節は順位のまんなかで同じ★にします。1回(問題の数で比べる科目は1問)だけの出題と、過去問のない節は★、問題が1問もない節には出しません。Agentforce Service コンサルタントは過去問がないので出しません。</li>
    <li>上のメニューの下の「いまの節の表示」(<code>patch_secband.py</code>)は、テキストの章(<code>.chap</code>)と項目(<code>.feat</code>)を上から見て、メニューの下端+24px より上に頭がある最後のものを選びます。それが節(<code>data-sec</code>)なら、全体の節(ロックの有無に関係なくすべて)の中の何番目かを「n / 全体」で出し、節でなければ「– / 全体」と章だけを出します。スクロールは requestAnimationFrame でまとめ、文字が変わったときだけ書き換えます。帯で増えたメニューの高さは、ResizeObserver で測る <code>--barh</code> に入り、本文の上の余白・項目と章の <code>scroll-margin-top</code>(<code>--barh</code> + 14px)・PC の左の目次・節の地図の上端・表の見出しの追従がそれに合わせて動きます。表示の設定 <code>prefs.secb</code>(on/off、はじめは on)。</li>
   </ul>
  </section>

@@ -160,3 +160,5 @@ python3 commitstudy/add_questions.py notion.txt commitstudy/d360/add_v20250320.j
 - 作り直し: `python3 build_fe.py fe/manuscript <b> && python3 figs_m/apply_fe.py <b>/chapters.json <b>/chapters.json && python3 add_pastq_ipa.py fe/pastq <b> fe/data`(sg も同じ)。公開データは `fe/data/`・`sg/data/`。`make_catalog.py` で catalog.json も作り直す
 - `patch_add_fe.py`・`patch_add_sg.py` で科目を登録(`mk_ipa_patch` 由来。テキスト一覧では「Salesforce・情報処理技術者試験」のグループ)。`patch_ipa_display.py` で改行の表示(pre-wrap)・選択肢記号 J まで・出題回の「令和N年度」「サンプル問題」のまとめ
 - 問題文の書式: `qfmt.js`(csQF)で、〔見出し〕・「｜」区切りの表・プログラムの枠・図の囲みを組み立てる(`patch_qfmt.py` で問題集とトレーニングの問題文に使う)。データ側のきまりは qfmt.js の先頭のコメント。確認は `node qfmt_preview.js fe/data <out.html>`
+- `make_imp.py` + `patch_imp.py`: 節の重要度(★★★ 頻出 / ★★ よく出る / ★ 出題少なめ)。`python3 make_imp.py` で全科目の過去問から `<科目>/data/imp.json`(公開先 data/<科目>/imp.json)を作る。過去問を足した・まとめた・節を付け替えたら作り直して公開する(rebuild.sh の最後の `make_imp.py --check` が古いと知らせる)。科目ごとの数え方は make_imp.py の冒頭と使い方ページ(仕様)に書いた
+- `patch_csmap_color.py`: 節の地図・テキストのこの場所の地図の色を、getComputedStyle で実際の画面の色から読む
