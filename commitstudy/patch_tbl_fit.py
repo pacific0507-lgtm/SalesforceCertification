@@ -9,7 +9,7 @@
      写しのマスには文字を入れず、CSS(::before の content)で元の見出しの文字を出す。マーカー・検索・用語のリンク・選んだ文字の数え方など、
      本文の文字をたどる処理に写しが入らないようにするため。
   2. スマホで表の中の文字が1〜2文字ずつ改行されて読みにくいのを直す(テキストの表)。
-     - 短いマス(空白を除いて10文字まで)は折り返さない(.tf-nw)
+     - 短いマス(空白を除いて10文字まで。「この箇所の問題」のボタンは数えない)は折り返さない(.tf-nw)
      - 長いマスは、左右の余白を含めて 8〜9 文字分の最低の幅(21文字以上は9文字分)。行の見出し(tbody th)でも折り返す(.tf-wr)
      入りきらない分は、表の囲み(.tw)の中で横にスクロールする。文字は変えない。
   「テキストのこの場所」の写し(data-csclone)の中では、見出しの写しは出さない。節の地図・場所のひとことでは .tf-wrap も「表」として扱う。
@@ -48,7 +48,7 @@ var de=document.documentElement,S={top:-1,list:[],vis:[]},io=null,ro=null,mbRO=n
 function len(t){return String(t||'').replace(/\s+/g,'').length}
 /* 2. テキストの表のマスの折り返し */
 function fit(tb){if(tb.dataset.tf)return;tb.dataset.tf='1';
-  Array.prototype.forEach.call(tb.querySelectorAll('th,td'),function(c){var n=len(c.textContent);if(!n)return;
+  Array.prototype.forEach.call(tb.querySelectorAll('th,td'),function(c){var k=c.cloneNode(true);Array.prototype.forEach.call(k.querySelectorAll('button,svg,.qx-b'),function(x){x.remove()});var n=len(k.textContent);if(!n)return;
     if(n<=10)c.classList.add('tf-nw');else{c.classList.add('tf-wr');c.style.minWidth=(n<=20?8:9)+'em'}})}
 /* 1. 見出しの追従 */
 function measure(){var b=document.getElementById('mbar')||document.querySelector('.mbar'),r=b?b.getBoundingClientRect():null;
@@ -59,7 +59,7 @@ function bgOf(el){var bg=getComputedStyle(el).backgroundColor;
   while((!bg||bg==='transparent'||/rgba\([^)]*,\s*0\)$/.test(bg))&&el.parentElement){el=el.parentElement;bg=getComputedStyle(el).backgroundColor}return bg}
 function txt(c){var t=c.innerText;if(t==null||t==='')t=c.textContent;return String(t||'').replace(/\n{2,}/g,'\n').trim()}
 function stick(tb){if(tb.dataset.th||!tb.tHead||!tb.tHead.rows.length)return;
-  var tw=tb.parentElement;if(!tw||tw.children.length!==1||!(tw.classList.contains('tw')||tw.classList.contains('qb-tw')))return;
+  var tw=tb.parentElement;if(!tw||tw.children.length!==1||tw.classList.contains('tf-sh')||!(tw.classList.contains('tw')||tw.classList.contains('qb-tw')))return;
   tb.dataset.th='1';
   var wrap=document.createElement('div');wrap.className='tf-wrap';tw.parentNode.insertBefore(wrap,tw);
   var sh=document.createElement('div');sh.className=tw.className+' tf-sh';sh.setAttribute('aria-hidden','true');
@@ -83,8 +83,8 @@ function stick(tb){if(tb.dataset.th||!tb.tHead||!tb.tHead.rows.length)return;
 function prune(){S.list=S.list.filter(function(x){if(x.wrap.isConnected)return true;if(io)io.unobserve(x.wrap);if(ro)ro.unobserve(x.tb);return false});
   S.vis=S.vis.filter(function(x){return x.wrap.isConnected})}
 function scan(){raf=0;try{prune();measure();
-  Array.prototype.forEach.call(document.querySelectorAll('#chapters .tw > table'),function(tb){if(!tb.closest('[data-csclone]'))fit(tb)});
-  Array.prototype.forEach.call(document.querySelectorAll('#chapters .tw > table, .qb-tw > table'),function(tb){if(!tb.closest('[data-csclone]'))stick(tb)});
+  Array.prototype.forEach.call(document.querySelectorAll('#chapters .tw > table'),function(tb){if(!tb.closest('[data-csclone],.tf-sh'))fit(tb)});
+  Array.prototype.forEach.call(document.querySelectorAll('#chapters .tw > table, .qb-tw > table'),function(tb){if(!tb.closest('[data-csclone],.tf-sh'))stick(tb)});
   check()}catch(e){}}
 function req(){if(!raf)raf=requestAnimationFrame(scan)}
 if(window.IntersectionObserver)io=new IntersectionObserver(function(es){es.forEach(function(e){var x=e.target.__tf;if(!x)return;var k=S.vis.indexOf(x);

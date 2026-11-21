@@ -84,4 +84,4 @@ python3 $C/make_imp.py --check
 python3 $C/patch_famls_safe.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_vb_ref.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
 python3 $C/patch_tbl_fit.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
-python3 $C/patch_ios_nozoom.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
+python3 $C/patch_ios_fix.py $OUT $OUT.tmp; mv $OUT.tmp $OUT
