@@ -45,7 +45,7 @@ function cslBands(art){var out=[],ar=art.getBoundingClientRect(),sc=ar.height?(a
     var cs=getComputedStyle(ch),g=geo(ch),st;if(!g.h)return;
     if(hd)st="background:"+cs.color;
     else if(k==="tx"&&!cslVis(cs.backgroundColor)&&!(parseFloat(cs.borderLeftWidth)>=2))st="background:"+cslFade(cs.color);
-    else st=cslLook(ch,cs,k==="tb"?[ch.querySelector("table"),ch.querySelector("td"),ch.querySelector("th")]:k==="fg"?[ch.querySelector("svg"),ch.querySelector("img")]:null);
+    else st=cslLook(ch,cs,k==="tb"?(function(){/* 表の見出しの写し(.tf-sh)ではなく、本物の表から読む */var tw=ch.querySelector(".tw:not(.tf-sh),.qb-tw")||ch;return [tw,tw.querySelector("table"),tw.querySelector("td"),tw.querySelector("th")]})():k==="fg"?[ch.querySelector("svg"),ch.querySelector("img")]:null);
     out.push({k:k,top:g.top,h:g.h,hd:hd,name:nm,st:st})});return out}
 function cslPaint(box,bands,H){if(!box)return;var h="";bands.forEach(function(b){h+='<span class="csmap-b csmap-'+b.k+'" style="top:'+(b.top/H*100).toFixed(3)+'%;height:'+(b.h/H*100).toFixed(3)+'%;'+esc(b.st||"")+'"></span>'});box.innerHTML=h}
 /* 配色・ライト/ダークの目印(変わったら節の地図を塗り直す) */
