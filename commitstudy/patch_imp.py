@@ -37,6 +37,11 @@ html[data-theme=dark]{--imp-hi:#ff8a62}
 .imp-mini.imp2{color:var(--accent)}
 nav.toc a .imp-mini{margin-left:auto}
 nav.toc a .imp-mini+.td{margin-left:4px}
+/* 目次の行で「いまここ」と星が両方あるときは、右に縦に並べる(上: いまここ、下: 星) */
+.tr-it:has(.hb):has(.imp-mini){display:grid;grid-template-columns:auto minmax(0,1fr) auto;column-gap:8px;row-gap:3px;align-items:center}
+.tr-it:has(.hb):has(.imp-mini)>.mk,.tr-it:has(.hb):has(.imp-mini)>.tt{grid-row:1/span 2}
+.tr-it:has(.hb):has(.imp-mini)>.hb{grid-column:3;grid-row:1;justify-self:end;align-self:end;margin-left:0}
+.tr-it:has(.hb):has(.imp-mini)>.imp-mini{grid-column:3;grid-row:2;justify-self:end;align-self:start;margin-left:0}
 #imp-pop{position:fixed;z-index:70;left:16px;top:0;width:min(340px,calc(100vw - 32px));box-sizing:border-box;max-height:min(46vh,340px);overflow:auto;-webkit-overflow-scrolling:touch;padding:10px 12px 11px;border:1px solid var(--line);border-radius:12px;background:var(--surface,#fff);color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.18);font-family:var(--f-body);font-size:12.5px;font-weight:400;line-height:1.65;text-align:left}
 #imp-pop[hidden]{display:none}
 #imp-pop .imp-ph{display:flex;align-items:baseline;gap:8px;margin:0 0 4px;font-size:13px;font-weight:700}
